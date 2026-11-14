@@ -1,12 +1,15 @@
-# Content review needed before adding guide content
+# Content review status
 
-This repository is public. The source guide was shared as a confidential draft, so its text and contact information are intentionally not copied here.
+The site now contains the November 2026 working guide content, entered for review after public-release approval.
 
-Before loading programme or contact data:
+Before using this as an operational referral directory, verify with the responsible agencies:
 
-- Confirm that the guide owner approves public release of the relevant content, or make the repository private before adding it.
-- Confirm current programme names, eligibility language, benefits, application steps, document requirements, costs, contacts, addresses, URLs, and parish coverage with the responsible agencies.
-- Record the source and date checked for every service or contact record.
-- Resolve unclear or conflicting details with the guide owner; do not infer missing information.
-- Confirm that map pins correspond to verified service locations. A zero or empty result must not be presented as proof that a service is unavailable.
-- Confirm the final referral and urgent-safety wording with the responsible programme and safeguarding leads.
+- Programme names, target groups, eligibility wording, benefits and application processes
+- Document requirements, fees and costs
+- Contact numbers, addresses, email addresses, websites and hotlines
+- Parish-level availability and local referral routes
+- Urgent-safety and safeguarding wording
+
+The parish map is for browsing by parish. It does not show verified service-facility coordinates. Do not interpret an empty search as evidence that a service is unavailable.
+
+The content is a transcription of the supplied draft and has not been independently validated.
