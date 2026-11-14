@@ -1,9 +1,9 @@
 const PARISHES=[
  {name:'Hanover',short:'HAN',x:11.5,y:34},{name:'Westmoreland',short:'WML',x:13,y:55},{name:'St. James',short:'STJ',x:25.5,y:31},{name:'Trelawny',short:'TRE',x:37,y:29},{name:'St. Elizabeth',short:'STE',x:31,y:65},{name:'Manchester',short:'MAN',x:47,y:64},{name:'Clarendon',short:'CLA',x:58.5,y:63},{name:'St. Ann',short:'ANN',x:54,y:31},{name:'St. Catherine',short:'STC',x:68,y:55},{name:'St. Andrew',short:'STA',x:73,y:60},{name:'Kingston',short:'KIN',x:77,y:68},{name:'St. Mary',short:'STM',x:69,y:33},{name:'Portland',short:'POR',x:84,y:40},{name:'St. Thomas',short:'STT',x:87,y:64}
 ];
-const NAV=['about','referrals','programmes','categories','decision','contacts','services'];
+const NAV=['about','referrals','decision','services'];
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
-let data=null, selectedParish='ALL', programFilter='all', categoryFilter='all', mapFilter='all';
+let data=null, selectedParish='ALL', programFilter='all', categoryFilter='all', mapFilter='all', serviceCatalog=[];
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const norm=x=>String(x??'').toLowerCase();
 function showView(id){if(!NAV.includes(id))return;$$('.view').forEach(v=>v.classList.toggle('active',v.id===`view-${id}`));$$('[data-nav]').forEach(b=>b.classList.toggle('active',b.dataset.nav===id));history.replaceState(null,'',`#${id}`);window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});$('#mainNav').classList.remove('open');$('#menuToggle').setAttribute('aria-expanded','false')}
@@ -24,9 +24,135 @@ function renderDecision(){const q=norm($('#decisionSearch').value);const list=da
 $('#decisionSearch').addEventListener('input',renderDecision);
 function renderContacts(){const q=norm($('#contactSearch').value);const list=data.contacts.filter(c=>!q||norm(c.agency+' '+c.details).includes(q));$('#contactCards').innerHTML=list.length?list.map(c=>`<article class="contact-card"><div class="card-top"><span class="card-icon">⌖</span><span class="tag">Agency contact</span></div><h3>${esc(c.agency)}</h3><p class="contact-info">${esc(c.details)}</p><span class="verify-label">Copied from draft · Verify before use</span></article>`).join(''):'<div class="empty-state">No agency matches this search.</div>';$('#hotlineList').innerHTML=`<div class="hotline-text">${esc(data.hotlines)}</div>`;$('#documentCards').innerHTML=data.documents.map(d=>`<article class="document-card"><h3>${esc(d.document)}</h3><dl><div><dt>Where to apply</dt><dd>${esc(d.where)}</dd></div><div><dt>Requirements</dt><dd>${esc(d.requirements)}</dd></div><div><dt>Process</dt><dd>${esc(d.process)}</dd></div><div><dt>Cost stated in booklet</dt><dd>${esc(d.cost)}</dd></div></dl><span class="verify-label">Draft · confirm current fees and requirements</span></article>`).join('')}
 $('#contactSearch').addEventListener('input',renderContacts);
-function renderMap(){const pf=$('#parishFilter');pf.innerHTML='<option value="ALL">All parishes</option>'+PARISHES.map(p=>`<option value="${esc(p.name)}">${esc(p.name)}</option>`).join('');const modes=[['all','All support'],['Health Support','Health'],['Cash Assistance','Income'],['Skill Building','Skills & work'],['Housing Support','Housing'],['Family & Children Youth Support','Family'],['Justice & Safety Support','Safety']];$('#serviceFilters').innerHTML=modes.map((m,i)=>`<button class="chip ${i===0?'active':''}" data-map-filter="${esc(m[0])}">${esc(m[1])}</button>`).join('');$$('[data-map-filter]').forEach(b=>b.addEventListener('click',()=>{mapFilter=b.dataset.mapFilter;$$('[data-map-filter]').forEach(x=>x.classList.toggle('active',x===b));renderMapResults()}));
-$('#parishPins').innerHTML=PARISHES.map((p,i)=>`<button class="parish-pin ${selectedParish===p.name?'active':''}" data-parish="${esc(p.name)}" style="left:${p.x}%;top:${p.y}%;animation-delay:${i*24}ms" type="button" title="Select ${esc(p.name)}" aria-label="Select ${esc(p.name)} parish">${p.short}</button>`).join('');$$('[data-parish]').forEach(b=>b.addEventListener('click',()=>selectParish(b.dataset.parish)));pf.addEventListener('change',()=>selectParish(pf.value));$('#serviceSearch').addEventListener('input',renderMapResults);$('#mapCaveat').textContent=data.mapParishCaveat;renderMapResults()}
-function selectParish(p){selectedParish=p;$('#parishFilter').value=p;$$('[data-parish]').forEach(b=>b.classList.toggle('active',b.dataset.parish===p));renderMapResults()}
-function renderMapResults(){const q=norm($('#serviceSearch').value);const list=data.programmes.filter(p=>{const cat=categoryOf(p.name);const categoryOk=mapFilter==='all'||cat===mapFilter;const queryOk=!q||norm(Object.values(p).join(' ')).includes(q);return categoryOk&&queryOk});$('#serviceTitle').textContent=selectedParish==='ALL'?'Support routes in the guide':`Guide routes · ${selectedParish}`;$('#serviceCount').textContent=`${list.length} matching guide ${list.length===1?'route':'routes'}`;$('#mapStatus').textContent=selectedParish==='ALL'?'Choose a parish to orient your search; guide routes shown are national or parish-level descriptions.':`${selectedParish} selected · The booklet describes parish-level routes, but specific facilities are not geocoded or verified.`;$('#serviceResults').innerHTML=list.length?list.map(p=>`<article class="service-item"><b>${esc(p.name)}</b><small>${esc(categoryOf(p.name))} · ${esc(p.where)}</small><p>${esc(p.support)}</p></article>`).join(''):'<div class="empty-state">No route matches this filter. Try another support type.</div>'}
-async function init(){try{const r=await fetch('data/guide-content.json');if(!r.ok)throw Error('Content unavailable');data=await r.json();drawAbout();drawReferrals();drawProgramFilters();renderProgrammes();drawCategoryFilters();renderCategories();renderDecision();renderContacts();renderMap();const initial=location.hash.slice(1);showView(NAV.includes(initial)?initial:'about')}catch(e){console.error(e);$('#main').innerHTML='<div class="wrap page-content"><div class="empty-state"><b>Guide content could not be loaded.</b> Refresh the page or contact the site owner.</div></div>'}}
+function serviceKey(value){
+  const key=norm(value).replace(/[^a-z0-9]/g,'');
+  const aliases={
+    poorrelief:'localgovernmentassistance',
+    nationalhealthfundcard:'nhf',
+    compassionatefundprogramme:'mohwcompassionatefundprogramme',
+    chasemedicalassistance:'chasecompassionatemedicalassistance',
+    heartnstattrust:'heartnsta',
+    nhthomegrant:'nationalhousingtrustnht',
+    ncdacounsellingandtreatmentsupport:'ncdasupport',
+    nationalcouncilforseniorcitizensmealsonwheels:'seniorcitizenservicesmealsonwheels',
+    bureauofgenderaffairs:'bureauofgenderaffairsservices'
+  };
+  return aliases[key]||key;
+}
+function metadataFor(service){
+  const match=Object.entries(data.serviceMetadata||{}).find(([name])=>serviceKey(name)===serviceKey(service.name));
+  return match?.[1]||{};
+}
+function contactsFor(service,meta){
+  if(service.contactOnly&&service.contact)return [service.contact];
+  const keys=(meta.contactAgencies||[]).map(norm);
+  return data.contacts.filter(c=>keys.some(k=>norm(c.agency).includes(k)||k.includes(norm(c.agency))));
+}
+function buildServiceCatalog(){
+  const records=new Map();
+  const add=(record)=>{const key=serviceKey(record.name);let found=records.get(key);if(!found){found={...record,categories:[],categoryRows:[],aliases:[],contacts:[]};records.set(key,found)}else if(record.name!==found.name&&!found.aliases.includes(record.name))found.aliases.push(record.name);return found};
+  data.programmes.forEach(p=>add({...p,kind:'programme'}));
+  data.categories.forEach(row=>{const service=add({name:row.programme,support:row.benefits,where:'',bring:'',process:'',kind:'category'});service.categoryRows.push(row);if(row.programme!==service.name&&!service.aliases.includes(row.programme))service.aliases.push(row.programme)});
+  let services=[...records.values()];
+  services.forEach(s=>{
+    const meta=metadataFor(s);
+    s.meta=meta;
+    s.categories=[...new Set(s.categoryRows.map(r=>r.category))];
+    if(!s.categories.length)s.categories=[categoryOf(s.name)];
+    s.contacts=contactsFor(s,meta);
+    s.agency=meta.agency||s.contacts.map(c=>c.agency).join(' · ')||'Agency not specified in the guide';
+  });
+  data.contacts.forEach(contact=>{
+    const linked=services.some(s=>s.contacts.some(c=>c.agency===contact.agency));
+    if(!linked)services.push({name:contact.agency,support:'Agency contact listing from the guide. Contact the agency to confirm which programme or service fits your situation.',where:'See the agency contact information below.',bring:'Not specified for this agency listing.',process:'Contact the agency to ask about the service, eligibility, and current application or referral steps.',kind:'agency',contactOnly:true,contact,categories:['Agency contacts'],categoryRows:[],aliases:[],contacts:[contact],agency:contact.agency,meta:{}});
+  });
+  return services;
+}
+function serviceLogo(service){
+  if(service.meta?.logoUrl)return {url:service.meta.logoUrl,source:service.meta.logoSourceUrl||service.meta.officialUrl||''};
+  const n=norm(service.name+' '+service.agency);
+  if(n.includes('nhf'))return {url:'https://www.nhf.org.jm/wp-content/uploads/2024/03/I2243727422162013.png',source:'https://www.nhf.org.jm/'};
+  if(n.includes('heart'))return {url:'https://apply.heart-nta.org/images/heartnsta-logo-500.png',source:'https://apply.heart-nta.org/'};
+  if(n.includes('national housing trust')||n.includes('nht'))return {url:'https://jis.gov.jm/media/2025/09/NHT-Logo-e1756835690206-1200x825.jpeg',source:'https://jis.gov.jm/features/positive-feedback-to-expanded-national-housing-trust-benefits/'};
+  if(n.includes('cpfsa')||n.includes('child protection'))return {url:'https://jis.gov.jm/media/2021/04/CPFSA-Logo-670x450-2.jpg',source:'https://jis.gov.jm/cpfsa-says-persons-have-a-responsibility-to-report-cases-of-child-abuse/'};
+  if(n.includes('mlss')||n.includes('path')||n.includes('national insurance')||n.includes('social pension'))return {url:'https://pbs.twimg.com/profile_images/2008182207198687232/fyI2kJx5.jpg',source:'https://x.com/JamaicaMlss'};
+  return null;
+}
+function logoMarkup(service){
+  const logo=serviceLogo(service), initials=(service.name.match(/[A-Z0-9]+/g)||[]).slice(0,2).join('').slice(0,5)||'GOJ';
+  if(!logo)return '<span class="service-logo-fallback" aria-label="'+esc(service.agency)+'">'+esc(initials)+'</span>';
+  return '<img class="service-logo-image" src="'+esc(logo.url)+'" alt="'+esc(service.agency)+' logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="service-logo-fallback" hidden aria-label="'+esc(service.agency)+'">'+esc(initials)+'</span>';
+}
+function mapsSearchUrl(query){
+  const location=selectedParish==='ALL'?'Jamaica':selectedParish+', Jamaica';
+  return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent((query||'social protection agency')+', '+location);
+}
+function contactMarkup(contact){
+  const text=esc(contact.details||'Contact details are not listed in the guide.');
+  const withEmail=text.replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi,email=>'<a href="mailto:'+email+'">'+email+'</a>');
+  return '<p class="linked-contact-details">'+withEmail.replace(/;\s*/g,'<br>')+'</p>';
+}
+function renderMap(){
+  serviceCatalog=buildServiceCatalog();
+  const pf=$('#parishFilter');
+  pf.innerHTML='<option value="ALL">All parishes</option>'+PARISHES.map(p=>'<option value="'+esc(p.name)+'">'+esc(p.name)+'</option>').join('');
+  const modes=['All support',...new Set(data.categories.map(c=>c.category)),'Agency contacts'];
+  $('#serviceFilters').innerHTML=modes.map((name,i)=>'<button class="chip '+(i===0?'active':'')+'" data-map-filter="'+esc(i===0?'all':name)+'" type="button">'+esc(name)+'</button>').join('');
+  $$('[data-map-filter]').forEach(b=>b.addEventListener('click',()=>{mapFilter=b.dataset.mapFilter;$$('[data-map-filter]').forEach(x=>x.classList.toggle('active',x===b));renderMapResults()}));
+  $('#parishPins').innerHTML=PARISHES.map((p,i)=>'<button class="parish-pin '+(selectedParish===p.name?'active':'')+'" data-parish="'+esc(p.name)+'" style="left:'+p.x+'%;top:'+p.y+'%;animation-delay:'+(i*24)+'ms" type="button" title="Select '+esc(p.name)+'" aria-label="Select '+esc(p.name)+' parish">'+esc(p.short)+'</button>').join('');
+  $$('[data-parish]').forEach(b=>b.addEventListener('click',()=>selectParish(b.dataset.parish)));
+  pf.addEventListener('change',()=>selectParish(pf.value));
+  $('#serviceSearch').addEventListener('input',renderMapResults);
+  $('#mapCaveat').textContent=data.mapParishCaveat;
+  $('#directoryHotlines').innerHTML='<h3>Quick contacts listed in the guide</h3><p>'+esc(data.hotlines)+'</p>';
+  $('#serviceResults').addEventListener('click',e=>{const b=e.target.closest('[data-service-open]');if(b)openService(Number(b.dataset.serviceOpen))});
+  $('#serviceModalClose').addEventListener('click',()=>$('#serviceModal').close());
+  $('#serviceModal').addEventListener('click',e=>{if(e.target===$('#serviceModal'))$('#serviceModal').close()});
+  renderMapResults();
+}
+function selectParish(parish){
+  selectedParish=parish;$('#parishFilter').value=parish;
+  $$('[data-parish]').forEach(b=>b.classList.toggle('active',b.dataset.parish===parish));
+  renderMapResults();
+}
+function renderMapResults(){
+  if(!serviceCatalog.length)return;
+  const q=norm($('#serviceSearch').value).trim();
+  const list=serviceCatalog.filter(s=>{
+    const cats=s.categories||[];
+    const categoryOk=mapFilter==='all'||(mapFilter==='Agency contacts'?s.kind==='agency':cats.includes(mapFilter));
+    const searchable=[s.name,s.support,s.where,s.bring,s.process,s.agency,...s.aliases,...cats,...s.categoryRows.flatMap(r=>[r.programme,r.benefits,r.target]),...s.contacts.flatMap(c=>[c.agency,c.details])].join(' ');
+    return categoryOk&&(!q||norm(searchable).includes(q));
+  });
+  const status=selectedParish==='ALL'?'Browse national and parish-level routes in the guide.':selectedParish+' selected · this filters the search context but does not verify a local office or service location.';
+  $('#mapStatus').textContent=status;
+  $('#serviceTitle').textContent=selectedParish==='ALL'?'Services, programmes and agency contacts':selectedParish+' · services and referral routes';
+  $('#serviceCount').textContent=list.length+' matching '+(list.length===1?'result':'results');
+  $('#serviceResults').innerHTML=list.length?list.map((s,i)=>{
+    const index=serviceCatalog.indexOf(s),cats=(s.categories||[]).slice(0,2).map(c=>'<span class="service-tag">'+esc(c)+'</span>').join('');
+    return '<article class="service-card"><div class="service-card-top"><div class="service-logo">'+logoMarkup(s)+'</div><div class="service-labels">'+cats+(s.kind==='agency'?'<span class="service-tag agency-tag">Agency contact</span>':'')+'</div></div><h3>'+esc(s.name)+'</h3><p>'+esc(s.support||'Agency contact information and service routes listed in the guide.')+'</p><small class="service-agency-line">'+esc(s.agency)+'</small><div class="service-card-actions"><button class="service-open" type="button" data-service-open="'+index+'">View service details <span>→</span></button><a href="'+esc(mapsSearchUrl(s.agency==='Agency not specified in the guide'?s.name:s.agency))+'" target="_blank" rel="noopener noreferrer">Google Maps ↗</a></div></article>';
+  }).join(''):'<div class="empty-state">No services match that search. Try a broader need, programme name, agency, or parish.</div>';
+}
+function openService(index){
+  const s=serviceCatalog[index];if(!s)return;
+  const modal=$('#serviceModal'),logo=serviceLogo(s),meta=s.meta||{};
+  $('#serviceModalEyebrow').textContent=(s.kind==='agency'?'Agency contact':'Service profile')+' · '+(s.categories||[]).join(' · ');
+  $('#serviceModalTitle').textContent=s.name;
+  const parts=[];
+  parts.push('<div class="service-profile-intro"><div class="service-logo profile-logo">'+logoMarkup(s)+'</div><div><p>'+esc(s.support||'Contact this agency to ask which service fits your situation.')+'</p><small>'+esc(s.agency)+'</small></div></div>');
+  if(s.categoryRows.length){parts.push('<section><h3>Support and intended groups</h3>'+s.categoryRows.map(r=>'<div class="profile-fact"><b>'+esc(r.programme)+' · '+esc(r.category)+'</b><p>'+esc(r.benefits)+'</p><p><strong>Guide-listed target group:</strong> '+esc(r.target)+'</p></div>').join('')+'</section>')}
+  parts.push('<section class="profile-grid"><div><h3>Where to start</h3><p>'+esc(s.where||'The guide does not specify a starting location for this listing. Confirm the correct office with the responsible agency.')+'</p></div><div><h3>What to bring</h3><p>'+esc(s.bring||'The guide does not specify documents for this listing. Confirm requirements with the responsible agency.')+'</p></div><div><h3>Referral or application steps</h3><p>'+esc(s.process||'The guide does not list application steps for this entry. Contact the agency to confirm the current process.')+'</p></div></section>');
+  const contacts=s.contacts||[];
+  if(contacts.length){parts.push('<section><h3>Agency contacts from the guide</h3><div class="profile-contact-grid">'+contacts.map(c=>'<article class="profile-contact"><b>'+esc(c.agency)+'</b>'+contactMarkup(c)+'<a class="map-link" href="'+esc(mapsSearchUrl(c.agency))+'" target="_blank" rel="noopener noreferrer">Find this agency on Google Maps ↗</a><small>Contact details transcribed from the guide; confirm they are current.</small></article>').join('')+'</div></section>')}
+  else parts.push('<section><h3>Agency contact</h3><p>No matching agency contact is listed in the guide for this entry. Use the official agency link or Google Maps search to confirm how to reach the service.</p></section>');
+  const links=[];
+  if(meta.officialUrl)links.push('<a class="btn primary" href="'+esc(meta.officialUrl)+'" target="_blank" rel="noopener noreferrer">Official agency website ↗</a>');
+  links.push('<a class="btn ghost" href="'+esc(mapsSearchUrl(s.agency==='Agency not specified in the guide'?s.name:s.agency))+'" target="_blank" rel="noopener noreferrer">Open Google Maps directory ↗</a>');
+  if(logo?.source)links.push('<a class="source-link" href="'+esc(logo.source)+'" target="_blank" rel="noopener noreferrer">Logo source ↗</a>');
+  parts.push('<div class="profile-actions">'+links.join('')+'</div><p class="profile-note">The guide may not contain current eligibility, fees, hours, or availability. Confirm these directly with the responsible agency.</p>');
+  $('#serviceModalBody').innerHTML=parts.join('');
+  modal.showModal();
+}
+
+async function init(){try{const r=await fetch('data/guide-content.json');if(!r.ok)throw Error('Content unavailable');data=await r.json();drawAbout();drawReferrals();drawProgramFilters();renderProgrammes();drawCategoryFilters();renderCategories();renderDecision();renderContacts();renderMap();let initial=location.hash.slice(1);if(['programmes','categories','contacts'].includes(initial))initial='services';showView(NAV.includes(initial)?initial:'about')}catch(e){console.error(e);$('#main').innerHTML='<div class="wrap page-content"><div class="empty-state"><b>Guide content could not be loaded.</b> Refresh the page or contact the site owner.</div></div>'}}
 init();
