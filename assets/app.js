@@ -22,7 +22,7 @@ function renderCategories(){const q=norm($('#categorySearch').value);const list=
 $('#categorySearch').addEventListener('input',renderCategories);
 function renderDecision(){const q=norm($('#decisionSearch').value);const list=data.decision.filter(d=>!q||norm(Object.values(d).join(' ')).includes(q));$('#decisionCards').innerHTML=list.length?list.map(d=>`<article class="decision-card"><h3>${esc(d.situation)}</h3><p>${esc(d.options)}</p><div class="provider"><b>Named provider:</b> ${esc(d.provider)}</div></article>`).join(''):'<div class="empty-state">No pathway matches this search.</div>'}
 $('#decisionSearch').addEventListener('input',renderDecision);
-function renderContacts(){const q=norm($('#contactSearch').value);const list=data.contacts.filter(c=>!q||norm(c.agency+' '+c.details).includes(q));$('#contactCards').innerHTML=list.length?list.map(c=>`<article class="contact-card"><div class="card-top"><span class="card-icon">⌖</span><span class="tag">Agency contact</span></div><h3>${esc(c.agency)}</h3><p class="contact-info">${esc(c.details)}</p><span class="verify-label">Copied from draft · Verify before use</span></article>`).join(''):'<div class="empty-state">No agency matches this search.</div>';$('#hotlineList').innerHTML=`<div class="hotline-text">${esc(data.hotlines)}</div>`;$('#documentCards').innerHTML=data.documents.map(d=>`<article class="document-card"><h3>${esc(d.document)}</h3><dl><div><dt>Where to apply</dt><dd>${esc(d.where)}</dd></div><div><dt>Requirements</dt><dd>${esc(d.requirements)}</dd></div><div><dt>Process</dt><dd>${esc(d.process)}</dd></div><div><dt>Cost stated in booklet</dt><dd>${esc(d.cost)}</dd></div></dl><span class="verify-label">Draft · confirm current fees and requirements</span></article>`).join('')}
+function renderContacts(){const q=norm($('#contactSearch').value);const list=data.contacts.filter(c=>!q||norm(c.agency+' '+c.details).includes(q));$('#contactCards').innerHTML=list.length?list.map(c=>`<article class="contact-card"><div class="card-top"><span class="service-logo">${logoMarkup({name:c.agency,agency:c.agency,meta:{}})}</span><span class="tag">Agency contact</span></div><h3>${esc(c.agency)}</h3><p class="contact-info">${esc(c.details)}</p><span class="verify-label">Copied from draft · Verify before use</span></article>`).join(''):'<div class="empty-state">No agency matches this search.</div>';$('#hotlineList').innerHTML=`<div class="hotline-text">${esc(data.hotlines)}</div>`;$('#documentCards').innerHTML=data.documents.map(d=>`<article class="document-card"><h3>${esc(d.document)}</h3><dl><div><dt>Where to apply</dt><dd>${esc(d.where)}</dd></div><div><dt>Requirements</dt><dd>${esc(d.requirements)}</dd></div><div><dt>Process</dt><dd>${esc(d.process)}</dd></div><div><dt>Cost stated in booklet</dt><dd>${esc(d.cost)}</dd></div></dl><span class="verify-label">Draft · confirm current fees and requirements</span></article>`).join('')}
 $('#contactSearch').addEventListener('input',renderContacts);
 function serviceKey(value){
   const key=norm(value).replace(/[^a-z0-9]/g,'');
@@ -69,21 +69,22 @@ function buildServiceCatalog(){
   return services;
 }
 function serviceLogo(service){
-  if(service.meta?.logoUrl)return {url:service.meta.logoUrl,source:service.meta.logoSourceUrl||service.meta.officialUrl||''};
+  if(service.meta?.logoUrl)return {url:service.meta.logoUrl,source:service.meta.logoSourceUrl||service.meta.officialUrl||'',alt:service.meta.agency||service.name};
   const n=norm(service.name+' '+service.agency);
-  if(n.includes('nhf'))return {url:'https://www.nhf.org.jm/wp-content/uploads/2024/03/I2243727422162013.png',source:'https://www.nhf.org.jm/'};
-  if(n.includes('heart'))return {url:'https://apply.heart-nta.org/images/heartnsta-logo-500.png',source:'https://apply.heart-nta.org/'};
-  if(n.includes('national housing trust')||n.includes('nht'))return {url:'https://jis.gov.jm/media/2025/09/NHT-Logo-e1756835690206-1200x825.jpeg',source:'https://jis.gov.jm/features/positive-feedback-to-expanded-national-housing-trust-benefits/'};
-  if(n.includes('cpfsa')||n.includes('child protection'))return {url:'https://jis.gov.jm/media/2021/04/CPFSA-Logo-670x450-2.jpg',source:'https://jis.gov.jm/cpfsa-says-persons-have-a-responsibility-to-report-cases-of-child-abuse/'};
-  if(n.includes('mlss')||n.includes('path')||n.includes('national insurance')||n.includes('social pension'))return {url:'https://pbs.twimg.com/profile_images/2008182207198687232/fyI2kJx5.jpg',source:'https://x.com/JamaicaMlss'};
-  return null;
+  const registry=data.logoRegistry||[];
+  const match=registry.find(item=>(item.match||[]).some(term=>n.includes(norm(term))));
+  if(!match)return null;
+  return {logos:match.logos||null,url:match.logoUrl||'',source:match.logoSourceUrl||'',alt:match.alt||service.agency||service.name};
 }
 function logoMarkup(service){
   const logo=serviceLogo(service), known={'local government assistance':'BOS','grants (rada / jbdc)':'RADA','new social housing programme (nshp)':'NSHP','mohw compassionate fund programme':'MOHW','rha diagnostic support':'RHA','jamaican foundation for lifelong learning':'JFLL'};
   const words=service.name.split(/[^A-Za-z0-9]+/).filter(Boolean);
   const initials=known[norm(service.name)]||words.slice(0,2).map(w=>w.length<=5&&w===w.toUpperCase()?w:w[0].toUpperCase()).join('').slice(0,5)||'GOJ';
+  const fallback='<span class="service-logo-fallback" hidden aria-label="'+esc(service.agency)+'">'+esc(initials)+'</span>';
   if(!logo)return '<span class="service-logo-fallback" aria-label="'+esc(service.agency)+'">'+esc(initials)+'</span>';
-  return '<img class="service-logo-image" src="'+esc(logo.url)+'" alt="'+esc(service.agency)+' logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="service-logo-fallback" hidden aria-label="'+esc(service.agency)+'">'+esc(initials)+'</span>';
+  const image=(item)=>'<img class="service-logo-image" src="'+esc(item.url||item.logoUrl||'')+'" alt="'+esc(item.alt||logo.alt||service.agency)+' logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.hidden=true;const p=this.closest(\'.service-logo\');if(p&&!p.querySelector(\'.service-logo-image:not([hidden])\')){const f=p.querySelector(\'.service-logo-fallback\');if(f)f.hidden=false}">';
+  const imgs=logo.logos?.length?'<span class="service-logo-cluster">'+logo.logos.map(image).join('')+'</span>':image({url:logo.url,alt:logo.alt});
+  return imgs+fallback;
 }
 function mapsSearchUrl(query){
   const location=selectedParish==='ALL'?'Jamaica':selectedParish+', Jamaica';
