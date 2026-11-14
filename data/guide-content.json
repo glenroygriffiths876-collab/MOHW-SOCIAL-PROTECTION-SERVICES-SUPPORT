@@ -807,5 +807,51 @@
       ],
       "officialUrl": "https://mlss.gov.jm/"
     }
-  }
+  },
+  "quickContacts": [
+    {
+      "label": "Emergency",
+      "details": "119 Police · 110 Fire · 811 Ambulance"
+    },
+    {
+      "label": "Gender-based violence",
+      "details": "1-888-NO-ABUSE"
+    },
+    {
+      "label": "Bureau of Gender Affairs",
+      "details": "Female survivors: (876) 553-0372 · Male survivors: (876) 533-0387"
+    },
+    {
+      "label": "Victim Services Branch",
+      "details": "888-587-8423"
+    },
+    {
+      "label": "Child abuse reporting",
+      "details": "211 · 888-PROTECT (777-8328)"
+    },
+    {
+      "label": "Safe Spot child and youth support",
+      "details": "888-SAFE-SPOT (723-3776)"
+    },
+    {
+      "label": "Mental health support",
+      "details": "888-NEW-LIFE (639-5433)"
+    },
+    {
+      "label": "Substance misuse helpline",
+      "details": "(876) 564-HELP (4357)"
+    },
+    {
+      "label": "ODPEM disaster information",
+      "details": "(876) 906-9674 · Toll-free: 1-888-225-5637"
+    },
+    {
+      "label": "PATH / MLSS queries",
+      "details": "(876) 922-8000-13"
+    },
+    {
+      "label": "Drug Serv prescription WhatsApp",
+      "details": "(876) 532-5007"
+    }
+  ]
 }
