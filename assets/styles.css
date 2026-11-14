@@ -165,7 +165,7 @@
 }
 @media(max-width:700px){
   .map-shell{
-    width:min(100%,500px);
+    width:min(100%,290px);
     margin-inline:auto;
     border-radius:17px;
   }
