@@ -1,0 +1,26 @@
+{
+  "id": "./",
+  "name": "MOHW Social Protection Services Support Guide",
+  "short_name": "MOHW Support",
+  "description": "Jamaica social protection services and referral guide.",
+  "start_url": "./#about",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f7f8fc",
+  "theme_color": "#063d31",
+  "icons": [
+    {
+      "src": "https://dashboard.moh.gov.jm/static/images/moh2.85ae53e6c3ed.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://dashboard.moh.gov.jm/static/images/moh2.85ae53e6c3ed.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
