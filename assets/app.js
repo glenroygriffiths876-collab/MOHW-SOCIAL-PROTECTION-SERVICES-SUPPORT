@@ -72,6 +72,10 @@ function serviceLogo(service){
   if(service.meta?.logoUrl)return {url:service.meta.logoUrl,source:service.meta.logoSourceUrl||service.meta.officialUrl||'',alt:service.meta.agency||service.name};
   const n=norm(service.name+' '+service.agency);
   const registry=data.logoRegistry||[];
+  if(serviceKey(service.name)===serviceKey('Grants (RADA / JBDC)')){
+    const shared=registry.find(item=>item.id==='rada-jbdc');
+    if(shared)return {logos:shared.logos||null,url:shared.logoUrl||'',source:shared.logoSourceUrl||'',alt:shared.alt||service.name};
+  }
   const match=registry
     .map(item=>({item,score:Math.max(0,...(item.match||[]).filter(term=>n.includes(norm(term))).map(term=>norm(term).length))}))
     .filter(entry=>entry.score>0)
@@ -166,5 +170,5 @@ function openService(index){
   modal.showModal();
 }
 
-async function init(){try{const r=await fetch('data/guide-content.json?v=directory-5', {cache:'no-store'});if(!r.ok)throw Error('Content unavailable');data=await r.json();drawAbout();drawReferrals();drawProgramFilters();renderProgrammes();drawCategoryFilters();renderCategories();renderDecision();renderContacts();renderMap();let initial=location.hash.slice(1);if(['programmes','categories','contacts'].includes(initial))initial='services';showView(NAV.includes(initial)?initial:'about')}catch(e){console.error(e);$('#main').innerHTML='<div class="wrap page-content"><div class="empty-state"><b>Guide content could not be loaded.</b> Refresh the page or contact the site owner.</div></div>'}}
+async function init(){try{const r=await fetch('data/guide-content.json?v=directory-6', {cache:'no-store'});if(!r.ok)throw Error('Content unavailable');data=await r.json();drawAbout();drawReferrals();drawProgramFilters();renderProgrammes();drawCategoryFilters();renderCategories();renderDecision();renderContacts();renderMap();let initial=location.hash.slice(1);if(['programmes','categories','contacts'].includes(initial))initial='services';showView(NAV.includes(initial)?initial:'about')}catch(e){console.error(e);$('#main').innerHTML='<div class="wrap page-content"><div class="empty-state"><b>Guide content could not be loaded.</b> Refresh the page or contact the site owner.</div></div>'}}
 init();
