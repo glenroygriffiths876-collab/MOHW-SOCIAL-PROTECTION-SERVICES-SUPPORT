@@ -58,3 +58,85 @@
 @media(prefers-reduced-motion:reduce){.service-card{transition:none}.service-card:hover{transform:none}}
 
 .quick-contact-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:9px}.quick-contact{padding:9px 10px;border:1px solid #f1e8cc;border-radius:10px;background:rgba(255,255,255,.7)}.quick-contact b{display:block;margin:0 0 3px;color:#655124;font-size:10px}.quick-contact span{display:block;color:#665a40;font-size:10px;line-height:1.45}.directory-hotlines{margin-bottom:4px}@media(max-width:760px){.quick-contact-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:440px){.quick-contact-grid{grid-template-columns:1fr}}
+
+
+/* Parish map: preserve the source map's true proportions so parish markers stay aligned at every screen size. */
+.map-shell{
+  aspect-ratio:960/462;
+  max-height:405px;
+  border:1px solid rgba(255,255,255,.82);
+  border-radius:22px;
+  background:
+    radial-gradient(ellipse at 22% 20%,rgba(255,255,255,.52),transparent 38%),
+    linear-gradient(145deg,#bcecf0 0%,#71c9d7 42%,#3298ad 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.8),inset 0 -18px 34px rgba(13,85,103,.14),0 16px 30px rgba(18,86,91,.18),0 3px 0 rgba(23,102,100,.16);
+  isolation:isolate;
+}
+.map-shell>img{
+  object-fit:contain;
+  filter:saturate(1.18) contrast(1.025);
+}
+.map-shell::before{
+  content:"";
+  position:absolute;
+  z-index:2;
+  inset:0;
+  pointer-events:none;
+  border-radius:inherit;
+  background:
+    radial-gradient(ellipse at 18% 18%,rgba(255,255,255,.18),transparent 34%),
+    linear-gradient(135deg,rgba(51,190,180,.12),transparent 44%,rgba(23,102,131,.12));
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.24),inset 0 0 30px rgba(255,255,255,.2);
+}
+.map-shell::after{
+  content:"";
+  position:absolute;
+  z-index:3;
+  inset:0;
+  pointer-events:none;
+  border-radius:inherit;
+  background:linear-gradient(112deg,transparent 35%,rgba(255,255,255,.2) 48%,transparent 61%);
+  transform:translateX(-115%);
+  animation:mapGlint 8s ease-in-out infinite;
+}
+@keyframes mapGlint{
+  0%,54%{transform:translateX(-115%)}
+  82%,100%{transform:translateX(115%)}
+}
+.map-pins{z-index:5}
+.parish-pin{
+  min-width:clamp(29px,4.2vw,43px);
+  height:clamp(25px,2.9vw,31px);
+  padding:0 7px;
+  color:#fff;
+  border:1px solid rgba(255,255,255,.94);
+  background:linear-gradient(145deg,#286b50,#153a32);
+  box-shadow:0 8px 13px rgba(7,42,33,.3),inset 0 1px 0 rgba(255,255,255,.3),0 0 0 3px rgba(255,255,255,.2);
+  font-size:clamp(7px,.8vw,9px);
+  text-shadow:0 1px 2px rgba(0,0,0,.22);
+}
+.parish-pin:hover,.parish-pin:focus-visible{
+  z-index:2;
+  transform:translate(-50%,-56%) scale(1.1);
+  background:linear-gradient(145deg,#398c64,#1c5941);
+  outline:2px solid #fff;
+  outline-offset:2px;
+}
+.parish-pin.active{
+  z-index:3;
+  color:#19382d;
+  text-shadow:none;
+  background:linear-gradient(145deg,#ffe18a,#e8ae37);
+  border-color:#fff;
+  box-shadow:0 0 0 4px rgba(255,211,105,.34),0 10px 20px rgba(41,53,30,.3),inset 0 1px 0 rgba(255,255,255,.84);
+}
+.map-meta{align-items:center}
+.map-meta span:last-child{color:#81928a}
+@media(max-width:700px){
+  .map-shell{aspect-ratio:960/462;max-height:none;border-radius:18px}
+  .parish-pin{min-width:clamp(27px,8vw,34px);height:25px;padding:0 5px;font-size:7px}
+}
+@media(prefers-reduced-motion:reduce){
+  .map-shell::after{animation:none;display:none}
+  .parish-pin{animation:none}
+}
