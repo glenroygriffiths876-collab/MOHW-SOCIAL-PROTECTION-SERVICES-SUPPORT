@@ -856,6 +856,24 @@
   ],
   "logoRegistry": [
     {
+      "id": "rada-jbdc",
+      "match": [
+        "grants (rada / jbdc)"
+      ],
+      "logos": [
+        {
+          "url": "https://pbs.twimg.com/profile_images/928974675882979329/5jGY6j1p_400x400.jpg",
+          "source": "https://x.com/RADAJamaica",
+          "alt": "RADA"
+        },
+        {
+          "url": "https://www.sagicor.com/-/media/JAMAICA-IMAGES/Banking/JBDC-rev-log_1-Without-Background.png?h=109.523&hash=B59E60D56BAD03762C38487CC5E35EBDA704FC41&la=en-JM&w=107.27",
+          "source": "https://www.sagicor.com/en-jm/sme-business-centre",
+          "alt": "JBDC"
+        }
+      ]
+    },
+    {
       "id": "mohw",
       "match": [
         "ministry of health and wellness",
@@ -1072,9 +1090,9 @@
         "women's centre",
         "womens centre"
       ],
-      "logoUrl": "https://womenscentreja.com/wp-content/uploads/2024/08/Regional-Manager-East.pdf",
-      "logoSourceUrl": "https://womenscentreja.com/",
-      "alt": "Women’s Centre of Jamaica Foundation"
+      "logoUrl": "https://jis.gov.jm/media/2024/02/WCJF-1200x825.png",
+      "logoSourceUrl": "https://jis.gov.jm/charity-ball-to-assist-adolescent-mothers/",
+      "alt": "Women’s Centre of Jamaica Foundation sign and logo"
     },
     {
       "id": "rada",
@@ -1138,8 +1156,7 @@
     {
       "id": "jffl",
       "match": [
-        "jamaican foundation for lifelong learning",
-        "school feeding"
+        "jamaican foundation for lifelong learning"
       ],
       "logoUrl": "https://www.my-island-jamaica.com/images/jamaica_foundation_for_lifelong_learning.png",
       "logoSourceUrl": "https://jis.gov.jm/",
@@ -1161,9 +1178,9 @@
         "tax administration jamaica",
         "taj"
       ],
-      "logoUrl": "https://outsource2jamaica.com/wp-content/uploads/2023/05/TAJ-Logo-HIGH-RES.png",
-      "logoSourceUrl": "https://www.jamaicatax.gov.jm/",
-      "alt": "Tax Administration Jamaica"
+      "logoUrl": "https://jis.gov.jm/media/2025/03/TAJ-1200x825.jpg",
+      "logoSourceUrl": "https://jis.gov.jm/tax-filing-season-countdown-continues/",
+      "alt": "Tax Administration Jamaica sign"
     },
     {
       "id": "unresolved-partner-services",
@@ -1173,6 +1190,15 @@
       "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Jamaica_Coat_of_Arms.svg",
       "logoSourceUrl": "https://www.mcges.gov.jm/",
       "alt": "Government of Jamaica"
+    },
+    {
+      "id": "school-feeding-parent",
+      "match": [
+        "school feeding"
+      ],
+      "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Jamaica_Coat_of_Arms.svg",
+      "logoSourceUrl": "https://moey.gov.jm/",
+      "alt": "Government of Jamaica coat of arms · Ministry of Education programme"
     }
   ]
 }
