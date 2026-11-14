@@ -684,7 +684,24 @@
       "contactAgencies": [
         "Ministry of Health and Wellness"
       ],
-      "officialUrl": "https://www.moh.gov.jm/"
+      "officialUrl": "https://www.moh.gov.jm/",
+      "serviceUrl": "https://www.moh.gov.jm/emergency-disaster-management-and-special-services/enabling-environment-in-health-and-client-service-division/",
+      "serviceLinkLabel": "Enabling Environment Division page",
+      "socialNote": "These are Ministry-wide accounts. No separate EEHCSD social pages were listed on the division page.",
+      "socialLinks": [
+        {
+          "label": "Facebook",
+          "url": "https://www.facebook.com/themohgovjm"
+        },
+        {
+          "label": "Instagram",
+          "url": "https://www.instagram.com/themohwgovjm/"
+        },
+        {
+          "label": "X",
+          "url": "https://x.com/themohwgovjm"
+        }
+      ]
     },
     "RHA Diagnostic Support": {
       "agency": "Regional Health Authorities (RHAs)",
