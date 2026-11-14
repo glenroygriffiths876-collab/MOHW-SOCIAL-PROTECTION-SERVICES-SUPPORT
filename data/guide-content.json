@@ -926,8 +926,7 @@
     {
       "id": "nerha",
       "match": [
-        "northeast regional health authority",
-        "nerha"
+        "northeast regional health authority"
       ],
       "logoUrl": "https://islandhints.com/minio/imagebucket/logo%20%287%29-2qLgvWfkxouLl1vyPBJYi0GLz2Y.jpg",
       "logoSourceUrl": "https://www.nerha.gov.jm/",
@@ -936,8 +935,7 @@
     {
       "id": "serha",
       "match": [
-        "south east regional health authority",
-        "serha"
+        "south east regional health authority"
       ],
       "logoUrl": "https://islandhints.com/minio/imagebucket/images%2815%29-2qClTgzf4bn6O73apE9840VKZYE-2vItrW9JbBLCEsRif4wwON9dcZT.webp",
       "logoSourceUrl": "https://www.serha.gov.jm/",
@@ -946,8 +944,7 @@
     {
       "id": "wrha",
       "match": [
-        "western regional health authority",
-        "wrha"
+        "western regional health authority"
       ],
       "logoUrl": "https://islandhints.com/minio/imagebucket/wrhalogo3-2sYm6vexloQJArDeIjbnG6m6Xxi.webp",
       "logoSourceUrl": "https://www.wrha.gov.jm/",
@@ -972,8 +969,7 @@
     {
       "id": "nis",
       "match": [
-        "national insurance scheme",
-        "nis"
+        "national insurance scheme"
       ],
       "logoUrl": "https://mlss.gov.jm/wp-content/uploads/2017/11/nis-logo-1-269x300.png",
       "logoSourceUrl": "https://mlss.gov.jm/departments/national-insurance-scheme/",
@@ -995,7 +991,6 @@
     {
       "id": "heart",
       "match": [
-        "heart",
         "nsta"
       ],
       "logoUrl": "https://apply.heart-nta.org/images/heartnsta-logo-500.png",
@@ -1006,7 +1001,6 @@
       "id": "nhf",
       "match": [
         "national health fund",
-        "nhf",
         "jamaica drug for elderly"
       ],
       "logoUrl": "https://www.nhf.org.jm/wp-content/uploads/2024/03/I2243727422162013.png",
@@ -1017,7 +1011,6 @@
       "id": "nht",
       "match": [
         "national housing trust",
-        "nht",
         "home grant"
       ],
       "logoUrl": "https://jis.gov.jm/media/2025/09/NHT-Logo-e1756835690206-1200x825.jpeg",
@@ -1047,7 +1040,6 @@
     {
       "id": "ncda",
       "match": [
-        "ncda",
         "national council on drug abuse"
       ],
       "logoUrl": "https://ncda.org.jm/wp-content/uploads/2020/09/ncda-front-page1.jpg",
@@ -1068,8 +1060,7 @@
     {
       "id": "jcpd",
       "match": [
-        "jamaica council for persons with disabilities",
-        "jcpd"
+        "jamaica council for persons with disabilities"
       ],
       "logoUrl": "https://my.jcpd.gov.jm/themes/jcpd_theme/images/jcpd-logo-lg.png",
       "logoSourceUrl": "https://my.jcpd.gov.jm/",
@@ -1097,7 +1088,6 @@
     {
       "id": "rada",
       "match": [
-        "rada",
         "rural agricultural development authority"
       ],
       "logoUrl": "https://pbs.twimg.com/profile_images/928974675882979329/5jGY6j1p_400x400.jpg",
@@ -1117,8 +1107,7 @@
     {
       "id": "pica",
       "match": [
-        "passport immigration",
-        "pica"
+        "passport immigration"
       ],
       "logoUrl": "https://outsource2jamaica.com/wp-content/uploads/2023/05/PICA-LOGO-HIGH-RES.png",
       "logoSourceUrl": "https://www.pica.gov.jm/",
@@ -1127,8 +1116,7 @@
     {
       "id": "nira",
       "match": [
-        "national identification and registration authority",
-        "nira"
+        "national identification and registration authority"
       ],
       "logoUrl": "https://apps2.rgd.gov.jm/assets/images/NIRA.png",
       "logoSourceUrl": "https://apps2.rgd.gov.jm/",
@@ -1137,8 +1125,7 @@
     {
       "id": "ita",
       "match": [
-        "island traffic authority",
-        "ita"
+        "island traffic authority"
       ],
       "logoUrl": "https://mtm.gov.jm/wp-content/uploads/2025/11/New-ITA-Logo-.png",
       "logoSourceUrl": "https://mtm.gov.jm/",
@@ -1175,8 +1162,7 @@
     {
       "id": "taj",
       "match": [
-        "tax administration jamaica",
-        "taj"
+        "tax administration jamaica"
       ],
       "logoUrl": "https://jis.gov.jm/media/2025/03/TAJ-1200x825.jpg",
       "logoSourceUrl": "https://jis.gov.jm/tax-filing-season-countdown-continues/",
