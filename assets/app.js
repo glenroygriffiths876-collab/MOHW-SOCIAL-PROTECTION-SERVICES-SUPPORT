@@ -31,7 +31,7 @@ function serviceKey(value){
     nationalhealthfundcard:'nhf',
     compassionatefundprogramme:'mohwcompassionatefundprogramme',
     chasemedicalassistance:'chasecompassionatemedicalassistance',
-    heartnstattrust:'heartnsta',
+    heartnstatrust:'heartnsta',
     nhthomegrant:'nationalhousingtrustnht',
     ncdacounsellingandtreatmentsupport:'ncdasupport',
     nationalcouncilforseniorcitizensmealsonwheels:'seniorcitizenservicesmealsonwheels',
@@ -79,7 +79,9 @@ function serviceLogo(service){
   return null;
 }
 function logoMarkup(service){
-  const logo=serviceLogo(service), initials=(service.name.match(/[A-Z0-9]+/g)||[]).slice(0,2).join('').slice(0,5)||'GOJ';
+  const logo=serviceLogo(service), known={'local government assistance':'BOS','grants (rada / jbdc)':'RADA','new social housing programme (nshp)':'NSHP','mohw compassionate fund programme':'MOHW','rha diagnostic support':'RHA','jamaican foundation for lifelong learning':'JFLL'};
+  const words=service.name.split(/[^A-Za-z0-9]+/).filter(Boolean);
+  const initials=known[norm(service.name)]||words.slice(0,2).map(w=>w.length<=5&&w===w.toUpperCase()?w:w[0].toUpperCase()).join('').slice(0,5)||'GOJ';
   if(!logo)return '<span class="service-logo-fallback" aria-label="'+esc(service.agency)+'">'+esc(initials)+'</span>';
   return '<img class="service-logo-image" src="'+esc(logo.url)+'" alt="'+esc(service.agency)+' logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="service-logo-fallback" hidden aria-label="'+esc(service.agency)+'">'+esc(initials)+'</span>';
 }
@@ -100,7 +102,7 @@ function renderMap(){
   serviceCatalog=buildServiceCatalog();
   const pf=$('#parishFilter');
   pf.innerHTML='<option value="ALL">All parishes</option>'+PARISHES.map(p=>'<option value="'+esc(p.name)+'">'+esc(p.name)+'</option>').join('');
-  const modes=['All support',...new Set(data.categories.map(c=>c.category)),'Agency contacts'];
+  const modes=['All support','Health','Cash & benefits','Housing','Skills & education','Family & youth','Wellbeing & safety','Agency contacts'];
   $('#serviceFilters').innerHTML=modes.map((name,i)=>'<button class="chip '+(i===0?'active':'')+'" data-map-filter="'+esc(i===0?'all':name)+'" type="button">'+esc(name)+'</button>').join('');
   $$('[data-map-filter]').forEach(b=>b.addEventListener('click',()=>{mapFilter=b.dataset.mapFilter;$$('[data-map-filter]').forEach(x=>x.classList.toggle('active',x===b));renderMapResults()}));
   $('#parishPins').innerHTML=PARISHES.map((p,i)=>'<button class="parish-pin '+(selectedParish===p.name?'active':'')+'" data-parish="'+esc(p.name)+'" style="left:'+p.x+'%;top:'+p.y+'%;animation-delay:'+(i*24)+'ms" type="button" title="Select '+esc(p.name)+'" aria-label="Select '+esc(p.name)+' parish">'+esc(p.short)+'</button>').join('');
@@ -112,6 +114,7 @@ function renderMap(){
   $('#serviceResults').addEventListener('click',e=>{const b=e.target.closest('[data-service-open]');if(b)openService(Number(b.dataset.serviceOpen))});
   $('#serviceModalClose').addEventListener('click',()=>$('#serviceModal').close());
   $('#serviceModal').addEventListener('click',e=>{if(e.target===$('#serviceModal'))$('#serviceModal').close()});
+  $('#showAgencyContacts').addEventListener('click',()=>{mapFilter='Agency contacts';$$('[data-map-filter]').forEach(x=>x.classList.toggle('active',x.dataset.mapFilter==='Agency contacts'));renderMapResults();$('#serviceResults').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'})});
   renderMapResults();
 }
 function selectParish(parish){
@@ -124,7 +127,8 @@ function renderMapResults(){
   const q=norm($('#serviceSearch').value).trim();
   const list=serviceCatalog.filter(s=>{
     const cats=s.categories||[];
-    const categoryOk=mapFilter==='all'||(mapFilter==='Agency contacts'?s.kind==='agency':cats.includes(mapFilter));
+    const categoryGroups={'Health':['Health Support'],'Cash & benefits':['Cash Assistance','Empowerment'],'Housing':['Housing Support'],'Skills & education':['Education & Youth','Skill Building'],'Family & youth':['Family & Children Youth Support','Senior Support','Child Protection and Family Support'],'Wellbeing & safety':['Psychosocial Support','Justice & Safety Support','Gender-Based Violence & Safety','Disaster & Emergency Relief']};
+    const categoryOk=mapFilter==='all'||(mapFilter==='Agency contacts'?s.kind==='agency':(categoryGroups[mapFilter]||[mapFilter]).some(c=>cats.includes(c)));
     const searchable=[s.name,s.support,s.where,s.bring,s.process,s.agency,...s.aliases,...cats,...s.categoryRows.flatMap(r=>[r.programme,r.benefits,r.target]),...s.contacts.flatMap(c=>[c.agency,c.details])].join(' ');
     return categoryOk&&(!q||norm(searchable).includes(q));
   });
