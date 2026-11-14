@@ -140,3 +140,38 @@
   .map-shell::after{animation:none;display:none}
   .parish-pin{animation:none}
 }
+
+
+/* Keep the parish selector compact and tactile on phones. */
+.map-shell{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s ease}
+@media(hover:hover){
+  .map-shell:hover{
+    transform:perspective(1100px) rotateX(1deg) translateY(-2px);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.88),inset 0 -18px 34px rgba(13,85,103,.14),0 22px 38px rgba(18,86,91,.23),0 4px 0 rgba(23,102,100,.16);
+  }
+}
+.parish-pin.active::after{
+  content:"";
+  position:absolute;
+  inset:-6px;
+  border:2px solid rgba(247,190,70,.86);
+  border-radius:inherit;
+  animation:parishPulse 1.9s ease-out infinite;
+  pointer-events:none;
+}
+@keyframes parishPulse{
+  0%{transform:scale(.84);opacity:.85}
+  75%,100%{transform:scale(1.32);opacity:0}
+}
+@media(max-width:700px){
+  .map-shell{
+    width:min(100%,500px);
+    margin-inline:auto;
+    border-radius:17px;
+  }
+  .parish-pin{min-width:27px;height:24px;padding:0 4px;font-size:7px}
+}
+@media(prefers-reduced-motion:reduce){
+  .map-shell{transition:none}
+  .parish-pin.active::after{animation:none;display:none}
+}
