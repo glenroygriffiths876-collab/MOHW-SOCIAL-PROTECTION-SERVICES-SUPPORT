@@ -853,5 +853,326 @@
       "label": "Drug Serv prescription WhatsApp",
       "details": "(876) 532-5007"
     }
+  ],
+  "logoRegistry": [
+    {
+      "id": "mohw",
+      "match": [
+        "ministry of health and wellness",
+        "mohw compassionate"
+      ],
+      "logoUrl": "https://roadsafetyfund.un.org/sites/default/files/images/partnerlogos/2023-04/27eETZ7x_400x400.jpg",
+      "logoSourceUrl": "https://www.moh.gov.jm/",
+      "alt": "Ministry of Health and Wellness"
+    },
+    {
+      "id": "rha",
+      "match": [
+        "rha diagnostic support",
+        "regional health authorities",
+        "regional health authority"
+      ],
+      "logos": [
+        {
+          "url": "https://islandhints.com/minio/imagebucket/logo%20%287%29-2qLgvWfkxouLl1vyPBJYi0GLz2Y.jpg",
+          "source": "https://www.nerha.gov.jm/",
+          "alt": "NERHA"
+        },
+        {
+          "url": "https://islandhints.com/minio/imagebucket/images%2815%29-2qClTgzf4bn6O73apE9840VKZYE-2vItrW9JbBLCEsRif4wwON9dcZT.webp",
+          "source": "https://www.serha.gov.jm/",
+          "alt": "SERHA"
+        },
+        {
+          "url": "https://pbs.twimg.com/profile_images/2011082370703560704/texCByYG.jpg",
+          "source": "https://x.com/SRHAJamaica",
+          "alt": "SRHA"
+        },
+        {
+          "url": "https://islandhints.com/minio/imagebucket/wrhalogo3-2sYm6vexloQJArDeIjbnG6m6Xxi.webp",
+          "source": "https://www.wrha.gov.jm/",
+          "alt": "WRHA"
+        }
+      ]
+    },
+    {
+      "id": "srha",
+      "match": [
+        "southern regional health authority",
+        "srhajamaica"
+      ],
+      "logoUrl": "https://pbs.twimg.com/profile_images/2011082370703560704/texCByYG.jpg",
+      "logoSourceUrl": "https://x.com/SRHAJamaica",
+      "alt": "Southern Regional Health Authority"
+    },
+    {
+      "id": "nerha",
+      "match": [
+        "northeast regional health authority",
+        "nerha"
+      ],
+      "logoUrl": "https://islandhints.com/minio/imagebucket/logo%20%287%29-2qLgvWfkxouLl1vyPBJYi0GLz2Y.jpg",
+      "logoSourceUrl": "https://www.nerha.gov.jm/",
+      "alt": "North East Regional Health Authority"
+    },
+    {
+      "id": "serha",
+      "match": [
+        "south east regional health authority",
+        "serha"
+      ],
+      "logoUrl": "https://islandhints.com/minio/imagebucket/images%2815%29-2qClTgzf4bn6O73apE9840VKZYE-2vItrW9JbBLCEsRif4wwON9dcZT.webp",
+      "logoSourceUrl": "https://www.serha.gov.jm/",
+      "alt": "South East Regional Health Authority"
+    },
+    {
+      "id": "wrha",
+      "match": [
+        "western regional health authority",
+        "wrha"
+      ],
+      "logoUrl": "https://islandhints.com/minio/imagebucket/wrhalogo3-2sYm6vexloQJArDeIjbnG6m6Xxi.webp",
+      "logoSourceUrl": "https://www.wrha.gov.jm/",
+      "alt": "Western Regional Health Authority"
+    },
+    {
+      "id": "mlss",
+      "match": [
+        "ministry of labour and social security",
+        "path",
+        "social pension",
+        "rehabilitation grants",
+        "steps to work",
+        "economic empowerment grant",
+        "social intervention programme",
+        "emergency assistance"
+      ],
+      "logoUrl": "https://pbs.twimg.com/profile_images/2008182207198687232/fyI2kJx5.jpg",
+      "logoSourceUrl": "https://x.com/JamaicaMlss",
+      "alt": "Ministry of Labour and Social Security"
+    },
+    {
+      "id": "nis",
+      "match": [
+        "national insurance scheme",
+        "nis"
+      ],
+      "logoUrl": "https://mlss.gov.jm/wp-content/uploads/2017/11/nis-logo-1-269x300.png",
+      "logoSourceUrl": "https://mlss.gov.jm/departments/national-insurance-scheme/",
+      "alt": "National Insurance Scheme"
+    },
+    {
+      "id": "local-government",
+      "match": [
+        "local government assistance",
+        "new social housing programme",
+        "board of supervision",
+        "ministry of local government",
+        "poor relief"
+      ],
+      "logoUrl": "https://static.wixstatic.com/media/763c49_0082ec1c6ca5469c8c4b77d9c2cf6591~mv2.png/v1/fill/w_418%2Ch_406%2Cal_c%2Cq_85%2Cenc_avif%2Cquality_auto/763c49_0082ec1c6ca5469c8c4b77d9c2cf6591~mv2.png",
+      "logoSourceUrl": "https://www.localgovjamaica.gov.jm/",
+      "alt": "Ministry of Local Government and Community Development"
+    },
+    {
+      "id": "heart",
+      "match": [
+        "heart",
+        "nsta"
+      ],
+      "logoUrl": "https://apply.heart-nta.org/images/heartnsta-logo-500.png",
+      "logoSourceUrl": "https://apply.heart-nta.org/",
+      "alt": "HEART/NSTA Trust"
+    },
+    {
+      "id": "nhf",
+      "match": [
+        "national health fund",
+        "nhf",
+        "jamaica drug for elderly"
+      ],
+      "logoUrl": "https://www.nhf.org.jm/wp-content/uploads/2024/03/I2243727422162013.png",
+      "logoSourceUrl": "https://www.nhf.org.jm/",
+      "alt": "National Health Fund"
+    },
+    {
+      "id": "nht",
+      "match": [
+        "national housing trust",
+        "nht",
+        "home grant"
+      ],
+      "logoUrl": "https://jis.gov.jm/media/2025/09/NHT-Logo-e1756835690206-1200x825.jpeg",
+      "logoSourceUrl": "https://jis.gov.jm/features/positive-feedback-to-expanded-national-housing-trust-benefits/",
+      "alt": "National Housing Trust"
+    },
+    {
+      "id": "chase",
+      "match": [
+        "chase"
+      ],
+      "logoUrl": "https://static.wixstatic.com/media/4c5cae_78566b87dcb9496f808d6c1b5bb7543e~mv2.png/v1/fill/w_980%2Ch_980%2Cal_c%2Cq_90%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/4c5cae_78566b87dcb9496f808d6c1b5bb7543e~mv2.png",
+      "logoSourceUrl": "https://chase.org.jm/",
+      "alt": "CHASE Fund"
+    },
+    {
+      "id": "cpfsa",
+      "match": [
+        "cpfsa",
+        "child protection",
+        "family services"
+      ],
+      "logoUrl": "https://jis.gov.jm/media/2021/04/CPFSA-Logo-670x450-2.jpg",
+      "logoSourceUrl": "https://jis.gov.jm/cpfsa-says-persons-have-a-responsibility-to-report-cases-of-child-abuse/",
+      "alt": "Child Protection and Family Services Agency"
+    },
+    {
+      "id": "ncda",
+      "match": [
+        "ncda",
+        "national council on drug abuse"
+      ],
+      "logoUrl": "https://ncda.org.jm/wp-content/uploads/2020/09/ncda-front-page1.jpg",
+      "logoSourceUrl": "https://ncda.org.jm/",
+      "alt": "National Council on Drug Abuse"
+    },
+    {
+      "id": "ncsc",
+      "match": [
+        "national council for senior citizens",
+        "senior citizen services",
+        "meals on wheels"
+      ],
+      "logoUrl": "https://www.mlss.gov.jm/wp-content/uploads/2023/06/NCSC-LOGO-Horizontal.png",
+      "logoSourceUrl": "https://www.mlss.gov.jm/",
+      "alt": "National Council for Senior Citizens"
+    },
+    {
+      "id": "jcpd",
+      "match": [
+        "jamaica council for persons with disabilities",
+        "jcpd"
+      ],
+      "logoUrl": "https://my.jcpd.gov.jm/themes/jcpd_theme/images/jcpd-logo-lg.png",
+      "logoSourceUrl": "https://my.jcpd.gov.jm/",
+      "alt": "Jamaica Council for Persons with Disabilities"
+    },
+    {
+      "id": "victim-services",
+      "match": [
+        "victim services"
+      ],
+      "logoUrl": "https://moj.gov.jm/sites/default/files/inline-images/VICTIM%20SERVICES%20LOGO%20COL%20%281%29%20%281%29.jpg",
+      "logoSourceUrl": "https://moj.gov.jm/",
+      "alt": "Victim Services Branch"
+    },
+    {
+      "id": "womens-centre",
+      "match": [
+        "women's centre",
+        "womens centre"
+      ],
+      "logoUrl": "https://womenscentreja.com/wp-content/uploads/2024/08/Regional-Manager-East.pdf",
+      "logoSourceUrl": "https://womenscentreja.com/",
+      "alt": "Women’s Centre of Jamaica Foundation"
+    },
+    {
+      "id": "rada",
+      "match": [
+        "rada",
+        "rural agricultural development authority"
+      ],
+      "logoUrl": "https://pbs.twimg.com/profile_images/928974675882979329/5jGY6j1p_400x400.jpg",
+      "logoSourceUrl": "https://x.com/RADAJamaica",
+      "alt": "Rural Agricultural Development Authority"
+    },
+    {
+      "id": "jbdc",
+      "match": [
+        "jbdc",
+        "jamaica business development corporation"
+      ],
+      "logoUrl": "https://www.sagicor.com/-/media/JAMAICA-IMAGES/Banking/JBDC-rev-log_1-Without-Background.png?h=109.523&hash=B59E60D56BAD03762C38487CC5E35EBDA704FC41&la=en-JM&w=107.27",
+      "logoSourceUrl": "https://www.sagicor.com/en-jm/sme-business-centre",
+      "alt": "Jamaica Business Development Corporation"
+    },
+    {
+      "id": "pica",
+      "match": [
+        "passport immigration",
+        "pica"
+      ],
+      "logoUrl": "https://outsource2jamaica.com/wp-content/uploads/2023/05/PICA-LOGO-HIGH-RES.png",
+      "logoSourceUrl": "https://www.pica.gov.jm/",
+      "alt": "Passport, Immigration and Citizenship Agency"
+    },
+    {
+      "id": "nira",
+      "match": [
+        "national identification and registration authority",
+        "nira"
+      ],
+      "logoUrl": "https://apps2.rgd.gov.jm/assets/images/NIRA.png",
+      "logoSourceUrl": "https://apps2.rgd.gov.jm/",
+      "alt": "National Identification and Registration Authority"
+    },
+    {
+      "id": "ita",
+      "match": [
+        "island traffic authority",
+        "ita"
+      ],
+      "logoUrl": "https://mtm.gov.jm/wp-content/uploads/2025/11/New-ITA-Logo-.png",
+      "logoSourceUrl": "https://mtm.gov.jm/",
+      "alt": "Island Traffic Authority"
+    },
+    {
+      "id": "eoj",
+      "match": [
+        "electoral office of jamaica"
+      ],
+      "logoUrl": "https://jis.gov.jm/media/2020/08/WhatsApp-Image-2020-08-28-at-2.37.20-PM.jpeg",
+      "logoSourceUrl": "https://jis.gov.jm/march-31-deadline-to-register-voters-list/",
+      "alt": "Electoral Commission of Jamaica"
+    },
+    {
+      "id": "jffl",
+      "match": [
+        "jamaican foundation for lifelong learning",
+        "school feeding"
+      ],
+      "logoUrl": "https://www.my-island-jamaica.com/images/jamaica_foundation_for_lifelong_learning.png",
+      "logoSourceUrl": "https://jis.gov.jm/",
+      "alt": "Jamaican Foundation for Lifelong Learning"
+    },
+    {
+      "id": "goj",
+      "match": [
+        "bureau of gender affairs",
+        "government of jamaica"
+      ],
+      "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Jamaica_Coat_of_Arms.svg",
+      "logoSourceUrl": "https://commons.wikimedia.org/wiki/File:Jamaica_Coat_of_Arms.svg",
+      "alt": "Government of Jamaica coat of arms"
+    },
+    {
+      "id": "taj",
+      "match": [
+        "tax administration jamaica",
+        "taj"
+      ],
+      "logoUrl": "https://outsource2jamaica.com/wp-content/uploads/2023/05/TAJ-Logo-HIGH-RES.png",
+      "logoSourceUrl": "https://www.jamaicatax.gov.jm/",
+      "alt": "Tax Administration Jamaica"
+    },
+    {
+      "id": "unresolved-partner-services",
+      "match": [
+        "ministry of culture, gender"
+      ],
+      "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Jamaica_Coat_of_Arms.svg",
+      "logoSourceUrl": "https://www.mcges.gov.jm/",
+      "alt": "Government of Jamaica"
+    }
   ]
 }
