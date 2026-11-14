@@ -82,3 +82,5 @@
 }
 @media(max-height:560px) and (orientation:landscape){.gia-panel{height:calc(100dvh - 100px);bottom:74px}.gia-launcher,.guide-tool-dock{bottom:10px}}
 @media(prefers-reduced-motion:reduce){.guide-help-fab,.guide-tool-options button,.gia-launcher,.gia-panel,.guide-tool-toast{transition:none;animation:none}}
+
+.guide-share-qr{padding-top:13px}.guide-share-qr[hidden]{display:none}.guide-qr-back{display:block;margin:0 0 13px;padding:0;border:0;background:none;color:#187552;font-weight:800;cursor:pointer}.guide-share-qr h3{margin:5px 0 12px;color:#193c2e;font-size:21px}.guide-qr-frame{display:grid;place-items:center;min-height:210px;border:1px solid #e5ebdf;border-radius:16px;background:white;padding:12px}.guide-qr-frame img{display:block;width:min(220px,100%);height:auto;aspect-ratio:1;object-fit:contain}.guide-qr-frame p{margin:0;color:#68776d;text-align:center;font-size:12px;line-height:1.5}.guide-share-qr>p{color:#718076;font-size:12px;line-height:1.5}.guide-copy-qr{width:100%;padding:11px;border:0;border-radius:999px;background:#185c41;color:white;font-weight:800;cursor:pointer}

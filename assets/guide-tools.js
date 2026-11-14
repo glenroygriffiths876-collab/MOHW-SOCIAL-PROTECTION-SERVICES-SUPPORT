@@ -27,7 +27,7 @@
     if (q('#guideHelpFab')) return;
     const dock = document.createElement('div');
     dock.className = 'guide-tool-dock';
-    dock.innerHTML = '<button type="button" class="guide-help-fab" id="guideHelpFab" aria-label="Share this guide, report an issue, or send feedback" aria-expanded="false"><span aria-hidden="true">↗</span><span class="guide-help-label">Guide tools</span></button><section class="guide-help-panel" id="guideHelpPanel" aria-label="Guide tools" hidden><div class="guide-help-panel-head"><div><span class="guide-tool-kicker">Help us improve</span><h2>Guide tools</h2></div><button type="button" class="guide-tool-close" aria-label="Close guide tools">×</button></div><p>Share this guide or tell us what needs attention.</p><div class="guide-tool-options"><button type="button" data-guide-tool="share"><span>↗</span><b>Share this guide</b><small>Send a link to someone who may find it helpful.</small></button><button type="button" data-guide-tool="report"><span>⚑</span><b>Report an issue</b><small>Flag a broken link, incorrect detail, or technical problem.</small></button><button type="button" data-guide-tool="feedback"><span>✳</span><b>Send feedback</b><small>Suggest an improvement to the guide.</small></button></div><small class="guide-tool-foot">Your message opens WhatsApp. It is not sent until you review and press Send.</small></section>';
+    dock.innerHTML = '<button type="button" class="guide-help-fab" id="guideHelpFab" aria-label="Share this guide, report an issue, or send feedback" aria-expanded="false"><span aria-hidden="true">↗</span><span class="guide-help-label">Guide tools</span></button><section class="guide-help-panel" id="guideHelpPanel" aria-label="Guide tools" hidden><div class="guide-help-panel-head"><div><span class="guide-tool-kicker">Help us improve</span><h2>Guide tools</h2></div><button type="button" class="guide-tool-close" aria-label="Close guide tools">×</button></div><p>Share this guide or tell us what needs attention.</p><div class="guide-tool-options" id="guideToolOptions"><button type="button" data-guide-tool="share"><span>↗</span><b>Share link</b><small>Open your device’s share options.</small></button><button type="button" data-guide-tool="copy"><span>⧉</span><b>Copy link</b><small>Copy this guide’s web address.</small></button><button type="button" data-guide-tool="qr"><span>▦</span><b>QR code</b><small>Let someone scan the guide link.</small></button><button type="button" data-guide-tool="report"><span>⚑</span><b>Report an issue</b><small>Flag an incorrect detail, broken link, or technical problem.</small></button><button type="button" data-guide-tool="feedback"><span>✳</span><b>Send feedback</b><small>Suggest an improvement to the guide.</small></button></div><div id="guideShareQr" class="guide-share-qr" hidden><button type="button" class="guide-qr-back" data-guide-tool="back">← Share options</button><span class="guide-tool-kicker">SHARE THIS GUIDE</span><h3>Scan to open the guide</h3><div class="guide-qr-frame"><img id="guideQrImage" alt="QR code for this guide link"><p hidden>QR code needs an internet connection to load. You can still copy or share the link.</p></div><p>Open your phone camera and point it at the code.</p><button type="button" class="guide-copy-qr" data-guide-tool="copy">Copy guide link</button></div><small class="guide-tool-foot">Your message opens WhatsApp. It is not sent until you review and press Send.</small></section>';
     document.body.append(dock);
 
     const modal = document.createElement('dialog');
@@ -50,6 +50,9 @@
       const button=event.target.closest('[data-guide-tool]'); if(!button)return;
       const action=button.dataset.guideTool;
       if(action==='share'){closePanel();await shareGuide();return;}
+      if(action==='copy'){await copyGuide();return;}
+      if(action==='qr'){q('#guideToolOptions')?.setAttribute('hidden','');q('#guideShareQr')?.removeAttribute('hidden');const image=q('#guideQrImage');if(image&&!image.src)image.src='https://api.qrserver.com/v1/create-qr-code/?size=360x360&margin=12&data='+encodeURIComponent(GUIDE_URL);return;}
+      if(action==='back'){q('#guideShareQr')?.setAttribute('hidden','');q('#guideToolOptions')?.removeAttribute('hidden');return;}
       openMessage(action);
     });
     q('#guideMessageClose').addEventListener('click',()=>modal.close());
@@ -83,6 +86,7 @@
       modal.showModal();
       setTimeout(()=>q('#guideMessageText').focus(),80);
     }
+    async function copyGuide(){try{await navigator.clipboard.writeText(GUIDE_URL);showToast('Guide link copied. You can now share it.');}catch(error){showToast('Copy is unavailable here. Try Share link instead.');}}
     async function shareGuide(){
       const shareData={title:'Social Protection Services Support Guide · Jamaica',text:'Explore Jamaica’s Social Protection Services Support Guide by service, parish, and need.',url:GUIDE_URL};
       if(navigator.share){
