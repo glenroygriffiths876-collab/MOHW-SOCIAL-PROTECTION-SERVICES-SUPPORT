@@ -102,7 +102,7 @@ function renderMap(){
   serviceCatalog=buildServiceCatalog();
   const pf=$('#parishFilter');
   pf.innerHTML='<option value="ALL">All parishes</option>'+PARISHES.map(p=>'<option value="'+esc(p.name)+'">'+esc(p.name)+'</option>').join('');
-  const modes=['All support','Health','Cash & benefits','Housing','Skills & education','Family & youth','Wellbeing & safety','Agency contacts'];
+  const modes=['All support','Health','Cash & benefits','Housing','Skills & education','Family & youth','Wellbeing & safety','Community & other','Agency contacts'];
   $('#serviceFilters').innerHTML=modes.map((name,i)=>'<button class="chip '+(i===0?'active':'')+'" data-map-filter="'+esc(i===0?'all':name)+'" type="button">'+esc(name)+'</button>').join('');
   $$('[data-map-filter]').forEach(b=>b.addEventListener('click',()=>{mapFilter=b.dataset.mapFilter;$$('[data-map-filter]').forEach(x=>x.classList.toggle('active',x===b));renderMapResults()}));
   $('#parishPins').innerHTML=PARISHES.map((p,i)=>'<button class="parish-pin '+(selectedParish===p.name?'active':'')+'" data-parish="'+esc(p.name)+'" style="left:'+p.x+'%;top:'+p.y+'%;animation-delay:'+(i*24)+'ms" type="button" title="Select '+esc(p.name)+'" aria-label="Select '+esc(p.name)+' parish">'+esc(p.short)+'</button>').join('');
@@ -110,7 +110,7 @@ function renderMap(){
   pf.addEventListener('change',()=>selectParish(pf.value));
   $('#serviceSearch').addEventListener('input',renderMapResults);
   $('#mapCaveat').textContent=data.mapParishCaveat;
-  $('#directoryHotlines').innerHTML='<h3>Quick contacts listed in the guide</h3><p>'+esc(data.hotlines)+'</p>';
+  $('#directoryHotlines').innerHTML='<h3>Quick contacts listed in the guide</h3><div class="quick-contact-grid">'+(data.quickContacts||[]).map(c=>'<div class="quick-contact"><b>'+esc(c.label)+'</b><span>'+esc(c.details)+'</span></div>').join('')+'</div>';
   $('#serviceResults').addEventListener('click',e=>{const b=e.target.closest('[data-service-open]');if(b)openService(Number(b.dataset.serviceOpen))});
   $('#serviceModalClose').addEventListener('click',()=>$('#serviceModal').close());
   $('#serviceModal').addEventListener('click',e=>{if(e.target===$('#serviceModal'))$('#serviceModal').close()});
@@ -127,8 +127,8 @@ function renderMapResults(){
   const q=norm($('#serviceSearch').value).trim();
   const list=serviceCatalog.filter(s=>{
     const cats=s.categories||[];
-    const categoryGroups={'Health':['Health Support'],'Cash & benefits':['Cash Assistance','Empowerment'],'Housing':['Housing Support'],'Skills & education':['Education & Youth','Skill Building'],'Family & youth':['Family & Children Youth Support','Senior Support','Child Protection and Family Support'],'Wellbeing & safety':['Psychosocial Support','Justice & Safety Support','Gender-Based Violence & Safety','Disaster & Emergency Relief']};
-    const categoryOk=mapFilter==='all'||(mapFilter==='Agency contacts'?s.kind==='agency':(categoryGroups[mapFilter]||[mapFilter]).some(c=>cats.includes(c)));
+    const categoryGroups={'Health':['Health Support'],'Cash & benefits':['Cash Assistance','Empowerment'],'Housing':['Housing Support'],'Skills & education':['Education & Youth','Skill Building'],'Family & youth':['Family & Children Youth Support','Senior Support','Child Protection and Family Support'],'Wellbeing & safety':['Psychosocial Support','Justice & Safety Support','Gender-Based Violence & Safety','Disaster & Emergency Relief'],'Community & other':['Other support']};
+    const categoryOk=mapFilter==='all'||(mapFilter==='Agency contacts'?s.contacts.length>0:(categoryGroups[mapFilter]||[mapFilter]).some(c=>cats.includes(c)));
     const searchable=[s.name,s.support,s.where,s.bring,s.process,s.agency,...s.aliases,...cats,...s.categoryRows.flatMap(r=>[r.programme,r.benefits,r.target]),...s.contacts.flatMap(c=>[c.agency,c.details])].join(' ');
     return categoryOk&&(!q||norm(searchable).includes(q));
   });
@@ -162,5 +162,5 @@ function openService(index){
   modal.showModal();
 }
 
-async function init(){try{const r=await fetch('data/guide-content.json?v=directory-2');if(!r.ok)throw Error('Content unavailable');data=await r.json();drawAbout();drawReferrals();drawProgramFilters();renderProgrammes();drawCategoryFilters();renderCategories();renderDecision();renderContacts();renderMap();let initial=location.hash.slice(1);if(['programmes','categories','contacts'].includes(initial))initial='services';showView(NAV.includes(initial)?initial:'about')}catch(e){console.error(e);$('#main').innerHTML='<div class="wrap page-content"><div class="empty-state"><b>Guide content could not be loaded.</b> Refresh the page or contact the site owner.</div></div>'}}
+async function init(){try{const r=await fetch('data/guide-content.json?v=directory-3');if(!r.ok)throw Error('Content unavailable');data=await r.json();drawAbout();drawReferrals();drawProgramFilters();renderProgrammes();drawCategoryFilters();renderCategories();renderDecision();renderContacts();renderMap();let initial=location.hash.slice(1);if(['programmes','categories','contacts'].includes(initial))initial='services';showView(NAV.includes(initial)?initial:'about')}catch(e){console.error(e);$('#main').innerHTML='<div class="wrap page-content"><div class="empty-state"><b>Guide content could not be loaded.</b> Refresh the page or contact the site owner.</div></div>'}}
 init();
