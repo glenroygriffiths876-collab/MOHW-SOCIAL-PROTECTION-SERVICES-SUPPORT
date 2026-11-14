@@ -144,8 +144,8 @@ $('#decisionCards').addEventListener('click',e=>{
  const directory=e.target.closest('[data-decision-directory]');
  if(directory){
   showView('services');selectedParish='ALL';mapFilter='all';$('#parishFilter').value='ALL';$('#serviceSearch').value=directory.dataset.decisionDirectory;
-  $('[data-map-filter]').forEach(b=>b.classList.toggle('active',b.dataset.mapFilter==='all'));
-  $('[data-parish]').forEach(b=>b.classList.remove('active'));renderMapResults();
+  $$('[data-map-filter]').forEach(b=>b.classList.toggle('active',b.dataset.mapFilter==='all'));
+  $$('[data-parish]').forEach(b=>b.classList.remove('active'));renderMapResults();
  }
 });
 function renderContacts(){const q=norm($('#contactSearch').value);const list=data.contacts.filter(c=>!q||norm(c.agency+' '+c.details).includes(q));$('#contactCards').innerHTML=list.length?list.map(c=>{const meta=metadataForContact(c);return `<article class="contact-card"><div class="card-top"><span class="service-logo">${logoMarkup({name:c.agency,agency:c.agency,meta:{}})}</span><span class="tag">Agency contact</span></div><h3>${esc(c.agency)}</h3><p class="contact-info">${esc(c.details)}</p>${socialLinksMarkup(meta.socialLinks)}<span class="verify-label">Copied from draft · Verify before use</span></article>`}).join(''):'<div class="empty-state">No agency matches this search.</div>';$('#hotlineList').innerHTML=`<div class="hotline-text">${esc(data.hotlines)}</div>`;$('#documentCards').innerHTML=data.documents.map(d=>`<article class="document-card"><h3>${esc(d.document)}</h3><dl><div><dt>Where to apply</dt><dd>${esc(d.where)}</dd></div><div><dt>Requirements</dt><dd>${esc(d.requirements)}</dd></div><div><dt>Process</dt><dd>${esc(d.process)}</dd></div><div><dt>Cost stated in booklet</dt><dd>${esc(d.cost)}</dd></div></dl><span class="verify-label">Draft · confirm current fees and requirements</span></article>`).join('')}
