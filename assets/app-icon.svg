@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+<title id="title">MOHW Social Protection Guide</title><desc id="desc">A navy app icon with bright geometric shapes around a social care heart emblem.</desc>
+<defs>
+  <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#0b104b"/><stop offset="1" stop-color="#05052d"/></linearGradient>
+  <linearGradient id="tile" x2=".8" y2="1"><stop stop-color="#fffefb"/><stop offset="1" stop-color="#eaf6f5"/></linearGradient>
+  <linearGradient id="heart" x2="1" y2="1"><stop stop-color="#169d67"/><stop offset="1" stop-color="#087a72"/></linearGradient>
+  <clipPath id="round"><rect width="512" height="512" rx="112"/></clipPath>
+</defs>
+<g clip-path="url(#round)">
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".97">
+    <rect x="-57" y="57" width="212" height="212" rx="37" transform="rotate(-43 49 163)" stroke="#13d9ec" stroke-width="20"/>
+    <rect x="-82" y="87" width="218" height="218" rx="38" transform="rotate(-43 27 196)" stroke="#e20c79" stroke-width="13"/>
+    <rect x="356" y="347" width="207" height="207" rx="35" transform="rotate(-43 459 450)" stroke="#ffc928" stroke-width="19"/>
+    <rect x="390" y="368" width="182" height="182" rx="32" transform="rotate(-43 481 459)" stroke="#10d6e9" stroke-width="13"/>
+  </g>
+  <g opacity=".95">
+    <circle cx="364" cy="37" r="11" fill="#08cb78"/><circle cx="410" cy="55" r="9" fill="#e20c79"/><circle cx="454" cy="35" r="10" fill="#ffc928"/><circle cx="487" cy="77" r="8" fill="#9a35df"/>
+    <circle cx="34" cy="395" r="9" fill="#08cb78"/><circle cx="66" cy="428" r="8" fill="#e20c79"/><circle cx="38" cy="467" r="10" fill="#ffc928"/>
+  </g>
+  <rect x="111" y="101" width="290" height="310" rx="66" fill="#05052d" opacity=".30"/>
+  <rect x="104" y="92" width="304" height="310" rx="66" fill="url(#tile)" stroke="#ffffff" stroke-width="4"/>
+  <path d="M256 313c-17-13-74-50-82-91-8-39 34-59 63-34l19 17 19-17c29-25 71-5 63 34-8 41-65 78-82 91Z" fill="none" stroke="url(#heart)" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M171 233h42l17-25 25 57 21-37 13 14h52" fill="none" stroke="#142847" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="256" cy="177" r="13" fill="#ffc928" stroke="#142847" stroke-width="4"/>
+  <path d="M256 193c-1 23-1 40-1 57m-1-35-24 17m25-17 25 15m-25 20-18 22m19-22 20 22" fill="none" stroke="#efa91f" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M183 342h146" stroke="#d8e5e2" stroke-width="2"/>
+  <text x="256" y="370" text-anchor="middle" fill="#101945" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="800" letter-spacing="3">SUPPORT</text>
+  <text x="256" y="389" text-anchor="middle" fill="#52706c" font-family="Arial,Helvetica,sans-serif" font-size="9" font-weight="700" letter-spacing="2.3">MOHW · JAMAICA</text>
+</g></svg>
