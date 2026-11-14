@@ -41,3 +41,32 @@ footer{background-color:#070735!important;background-image:linear-gradient(rgba(
 .scene-ordinal,.step-scene-rings,.step-scene-graphic{display:none!important}
 .step-scene img{filter:saturate(1.03) contrast(1.02)}
 @media(max-width:700px){.hero-copybox,.referral-hero-copy,.illustrated-hero-copy{padding:14px;border-radius:16px;background:linear-gradient(100deg,rgba(5,6,43,.94),rgba(5,6,43,.82))}}
+
+
+/* Full, legible MOHW header wordmark and balanced mobile identity */
+.site-header .brand{gap:13px;min-width:0;flex:0 1 auto}
+.site-header .brand-mark{
+ width:146px;height:58px;flex:0 0 146px;display:grid;place-items:center;
+ overflow:hidden;padding:4px 7px;border-radius:11px;background:#fff!important;
+ box-shadow:0 4px 14px rgba(0,0,0,.22);line-height:normal
+}
+.site-header .brand-mark img{
+ position:static!important;inset:auto!important;display:block!important;
+ width:100%!important;height:100%!important;max-width:100%!important;max-height:100%!important;
+ object-fit:contain!important;object-position:center!important
+}
+.site-header .brand-copy b{font-size:16px;line-height:1.18;letter-spacing:-.01em}
+.site-header .brand-copy small{font-size:11px;line-height:1.25;margin-top:5px;color:#f0edff}
+@media(max-width:760px){
+ .site-header .navbar{min-height:75px;gap:10px}
+ .site-header .brand{gap:9px}
+ .site-header .brand-mark{width:112px;height:49px;flex-basis:112px;padding:3px 5px;border-radius:10px}
+ .site-header .brand-copy b{font-size:15px}
+ .site-header .brand-copy small{font-size:10px;margin-top:4px}
+ .site-header .menu-toggle{min-width:42px;min-height:42px;padding:7px 9px}
+}
+@media(max-width:390px){
+ .site-header .brand-mark{width:96px;height:44px;flex-basis:96px}
+ .site-header .brand-copy b{font-size:14px}
+ .site-header .brand-copy small{font-size:9.5px}
+}
