@@ -22,7 +22,7 @@ function renderCategories(){const q=norm($('#categorySearch').value);const list=
 $('#categorySearch').addEventListener('input',renderCategories);
 function renderDecision(){const q=norm($('#decisionSearch').value);const list=data.decision.filter(d=>!q||norm(Object.values(d).join(' ')).includes(q));$('#decisionCards').innerHTML=list.length?list.map(d=>`<article class="decision-card"><h3>${esc(d.situation)}</h3><p>${esc(d.options)}</p><div class="provider"><b>Named provider:</b> ${esc(d.provider)}</div></article>`).join(''):'<div class="empty-state">No pathway matches this search.</div>'}
 $('#decisionSearch').addEventListener('input',renderDecision);
-function renderContacts(){const q=norm($('#contactSearch').value);const list=data.contacts.filter(c=>!q||norm(c.agency+' '+c.details).includes(q));$('#contactCards').innerHTML=list.length?list.map(c=>`<article class="contact-card"><div class="card-top"><span class="service-logo">${logoMarkup({name:c.agency,agency:c.agency,meta:{}})}</span><span class="tag">Agency contact</span></div><h3>${esc(c.agency)}</h3><p class="contact-info">${esc(c.details)}</p><span class="verify-label">Copied from draft · Verify before use</span></article>`).join(''):'<div class="empty-state">No agency matches this search.</div>';$('#hotlineList').innerHTML=`<div class="hotline-text">${esc(data.hotlines)}</div>`;$('#documentCards').innerHTML=data.documents.map(d=>`<article class="document-card"><h3>${esc(d.document)}</h3><dl><div><dt>Where to apply</dt><dd>${esc(d.where)}</dd></div><div><dt>Requirements</dt><dd>${esc(d.requirements)}</dd></div><div><dt>Process</dt><dd>${esc(d.process)}</dd></div><div><dt>Cost stated in booklet</dt><dd>${esc(d.cost)}</dd></div></dl><span class="verify-label">Draft · confirm current fees and requirements</span></article>`).join('')}
+function renderContacts(){const q=norm($('#contactSearch').value);const list=data.contacts.filter(c=>!q||norm(c.agency+' '+c.details).includes(q));$('#contactCards').innerHTML=list.length?list.map(c=>{const meta=metadataForContact(c);return `<article class="contact-card"><div class="card-top"><span class="service-logo">${logoMarkup({name:c.agency,agency:c.agency,meta:{}})}</span><span class="tag">Agency contact</span></div><h3>${esc(c.agency)}</h3><p class="contact-info">${esc(c.details)}</p>${socialLinksMarkup(meta.socialLinks)}<span class="verify-label">Copied from draft · Verify before use</span></article>`}).join(''):'<div class="empty-state">No agency matches this search.</div>';$('#hotlineList').innerHTML=`<div class="hotline-text">${esc(data.hotlines)}</div>`;$('#documentCards').innerHTML=data.documents.map(d=>`<article class="document-card"><h3>${esc(d.document)}</h3><dl><div><dt>Where to apply</dt><dd>${esc(d.where)}</dd></div><div><dt>Requirements</dt><dd>${esc(d.requirements)}</dd></div><div><dt>Process</dt><dd>${esc(d.process)}</dd></div><div><dt>Cost stated in booklet</dt><dd>${esc(d.cost)}</dd></div></dl><span class="verify-label">Draft · confirm current fees and requirements</span></article>`).join('')}
 $('#contactSearch').addEventListener('input',renderContacts);
 function serviceKey(value){
   const key=norm(value).replace(/[^a-z0-9]/g,'');
@@ -106,6 +106,17 @@ function contactMarkup(contact){
   emails.forEach((email,i)=>{linked=linked.replace('EMAILTOKEN'+i+'TOKEN','<a href="mailto:'+email+'">'+email+'</a>')});
   return '<p class="linked-contact-details">'+linked.replace(/;\s*/g,'<br>')+'</p>';
 }
+function socialLinksMarkup(links,label='Ministry social pages'){
+  if(!Array.isArray(links)||!links.length)return '';
+  return '<div class="social-link-list" aria-label="'+esc(label)+'">'+links.map(item=>'<a href="'+esc(item.url)+'" target="_blank" rel="noopener noreferrer">'+esc(item.label)+' ↗</a>').join('')+'</div>';
+}
+function metadataForContact(contact){
+  const key=serviceKey(contact.agency);
+  return Object.values(data.serviceMetadata||{}).find(meta=>(meta.contactAgencies||[]).some(name=>{
+    const candidate=serviceKey(name);
+    return key===candidate||key.includes(candidate)||candidate.includes(key);
+  }))||{};
+}
 function renderMap(){
   serviceCatalog=buildServiceCatalog();
   const pf=$('#parishFilter');
@@ -163,12 +174,14 @@ function openService(index){
   else parts.push('<section><h3>Agency contact</h3><p>No matching agency contact is listed in the guide for this entry. Use the official agency link or Google Maps search to confirm how to reach the service.</p></section>');
   const links=[];
   if(meta.officialUrl)links.push('<a class="btn primary" href="'+esc(meta.officialUrl)+'" target="_blank" rel="noopener noreferrer">Official agency website ↗</a>');
+  if(meta.serviceUrl)links.push('<a class="btn ghost" href="'+esc(meta.serviceUrl)+'" target="_blank" rel="noopener noreferrer">'+esc(meta.serviceLinkLabel||'Related official page')+' ↗</a>');
   links.push('<a class="btn ghost" href="'+esc(mapsSearchUrl(s.agency==='Agency not specified in the guide'?s.name:s.agency))+'" target="_blank" rel="noopener noreferrer">Open Google Maps directory ↗</a>');
   if(logo?.source)links.push('<a class="source-link" href="'+esc(logo.source)+'" target="_blank" rel="noopener noreferrer">Logo source ↗</a>');
+  if(meta.socialLinks?.length)parts.push('<section class="profile-socials"><h3>Ministry social pages</h3><p>'+esc(meta.socialNote||'Official Ministry social channels.')+'</p>'+socialLinksMarkup(meta.socialLinks)+'</section>');
   parts.push('<div class="profile-actions">'+links.join('')+'</div><p class="profile-note">The guide may not contain current eligibility, fees, hours, or availability. Confirm these directly with the responsible agency.</p>');
   $('#serviceModalBody').innerHTML=parts.join('');
   modal.showModal();
 }
 
-async function init(){try{const r=await fetch('data/guide-content.json?v=directory-7', {cache:'no-store'});if(!r.ok)throw Error('Content unavailable');data=await r.json();drawAbout();drawReferrals();drawProgramFilters();renderProgrammes();drawCategoryFilters();renderCategories();renderDecision();renderContacts();renderMap();let initial=location.hash.slice(1);if(['programmes','categories','contacts'].includes(initial))initial='services';showView(NAV.includes(initial)?initial:'about')}catch(e){console.error(e);$('#main').innerHTML='<div class="wrap page-content"><div class="empty-state"><b>Guide content could not be loaded.</b> Refresh the page or contact the site owner.</div></div>'}}
+async function init(){try{const r=await fetch('data/guide-content.json?v=directory-8', {cache:'no-store'});if(!r.ok)throw Error('Content unavailable');data=await r.json();drawAbout();drawReferrals();drawProgramFilters();renderProgrammes();drawCategoryFilters();renderCategories();renderDecision();renderContacts();renderMap();let initial=location.hash.slice(1);if(['programmes','categories','contacts'].includes(initial))initial='services';showView(NAV.includes(initial)?initial:'about')}catch(e){console.error(e);$('#main').innerHTML='<div class="wrap page-content"><div class="empty-state"><b>Guide content could not be loaded.</b> Refresh the page or contact the site owner.</div></div>'}}
 init();
