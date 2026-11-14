@@ -1,0 +1,84 @@
+/* Social Protection guide tools: share, feedback and Gia assistant */
+.visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.guide-tool-dock{position:fixed;z-index:1000;right:max(18px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));font-family:inherit}
+.guide-help-fab{display:flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.34);border-radius:999px;background:#f2c84b;color:#17382e;padding:12px 17px;font:inherit;font-weight:800;font-size:14px;line-height:1;box-shadow:0 10px 32px rgba(16,42,32,.24);cursor:pointer;transition:transform .22s,box-shadow .22s}
+.guide-help-fab:hover,.gia-launcher:hover{transform:translateY(-3px);box-shadow:0 15px 38px rgba(16,42,32,.28)}
+.guide-help-fab>span:first-child{font-size:20px}.guide-help-label{letter-spacing:.01em}
+.guide-help-panel{position:absolute;right:0;bottom:calc(100% + 12px);width:min(360px,calc(100vw - 32px));padding:21px;border:1px solid rgba(23,74,50,.14);border-radius:22px;background:#fffdf7;box-shadow:0 20px 70px rgba(14,37,27,.26);animation:guidePop .22s ease both}
+.guide-help-panel[hidden],.gia-panel[hidden]{display:none}
+.guide-help-panel-head,.guide-dialog-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+.guide-tool-kicker{display:block;color:#25845f;font-size:10px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+.guide-help-panel h2,.guide-message-dialog h2{margin:4px 0 0;color:#16372b;font-size:24px;line-height:1.1}
+.guide-help-panel>p,.guide-message-intro{color:#607167;line-height:1.55;margin:10px 0 16px;font-size:14px}
+.guide-tool-close{width:36px;height:36px;border:1px solid #e2e8e1;border-radius:50%;background:white;color:#234637;font-size:24px;line-height:1;cursor:pointer}
+.guide-tool-options{display:grid;gap:8px}
+.guide-tool-options button{text-align:left;display:grid;grid-template-columns:34px 1fr;column-gap:10px;align-items:center;padding:12px;border:1px solid #e8eee7;border-radius:14px;background:#fff;color:#18392d;cursor:pointer;transition:background .18s,border-color .18s,transform .18s}
+.guide-tool-options button:hover{background:#f0f6ed;border-color:#a8cdb5;transform:translateX(2px)}
+.guide-tool-options button>span{grid-row:span 2;display:grid;place-items:center;width:32px;height:32px;border-radius:11px;background:#e4f2e8;color:#168055;font-size:18px}
+.guide-tool-options b{font-size:14px}.guide-tool-options small{margin-top:2px;color:#718076;font-size:11px;line-height:1.35}
+.guide-tool-foot{display:block;margin:13px 1px 0;color:#818a83;font-size:11px;line-height:1.45}
+.guide-message-dialog{width:min(540px,calc(100vw - 28px));max-width:540px;max-height:min(88vh,760px);padding:0;border:1px solid rgba(23,74,50,.14);border-radius:24px;background:#fffdf7;color:#19372c;box-shadow:0 28px 100px rgba(10,29,20,.35)}
+.guide-message-dialog::backdrop{background:rgba(9,26,19,.62);backdrop-filter:blur(5px)}
+#guideMessageForm{padding:clamp(20px,5vw,32px)}
+.guide-message-dialog h2{font-size:clamp(23px,5vw,30px)}
+.guide-field-label{display:block;margin:16px 0 7px;color:#294a3c;font-size:13px;font-weight:800}
+.guide-message-dialog select,.guide-message-dialog textarea{display:block;width:100%;border:1px solid #d9e4da;border-radius:12px;padding:12px 13px;background:#fff;color:#1b3529;font:inherit;font-size:14px}
+.guide-message-dialog textarea{resize:vertical;min-height:120px;line-height:1.5}
+.guide-message-dialog select:focus,.guide-message-dialog textarea:focus,.gia-compose input:focus{outline:3px solid rgba(49,158,109,.2);border-color:#319e6d}
+.guide-privacy-note{color:#748177;font-size:12px;line-height:1.5}
+.guide-dialog-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}
+.guide-dialog-actions button{border-radius:999px;padding:12px 17px;font:inherit;font-weight:800;font-size:13px;cursor:pointer}
+.guide-secondary{border:1px solid #dce4da;background:white;color:#385449}
+.guide-primary{border:0;background:#185c41;color:white;box-shadow:0 6px 15px rgba(24,92,65,.2)}
+.guide-primary span{color:#f5cc56;margin-left:5px}
+.guide-tool-toast{position:fixed;z-index:1100;left:50%;bottom:22px;transform:translate(-50%,15px);opacity:0;pointer-events:none;padding:12px 18px;border-radius:999px;background:#183b2e;color:white;font-size:13px;box-shadow:0 8px 26px #12372e44;transition:.22s}
+.guide-tool-toast.show{opacity:1;transform:translate(-50%,0)}
+.gia-launcher{position:fixed;z-index:990;left:max(18px,env(safe-area-inset-left));bottom:max(18px,env(safe-area-inset-bottom));display:flex;align-items:center;gap:11px;padding:8px 15px 8px 8px;border:1px solid rgba(255,255,255,.8);border-radius:999px;background:linear-gradient(115deg,#14553d,#10382d 75%);color:white;text-align:left;box-shadow:0 12px 30px rgba(15,45,33,.28);cursor:pointer;transition:transform .22s,box-shadow .22s}
+.gia-launcher img{width:48px;height:48px;flex:none;border-radius:50%;object-fit:cover;object-position:50% 28%;border:2px solid rgba(255,255,255,.84);box-shadow:0 0 0 3px rgba(248,197,71,.8)}
+.gia-launcher-copy{display:grid;gap:3px}.gia-launcher-copy b{font-size:14px}.gia-launcher-copy small{font-size:10px;color:#d2e3d8}
+.gia-launcher-arrow{display:grid;place-items:center;width:27px;height:27px;margin-left:2px;border-radius:50%;background:#f4c951;color:#18382c;font-size:16px;font-weight:900}
+.gia-launcher-pulse{position:absolute;top:3px;left:5px;width:11px;height:11px;border:2px solid white;border-radius:50%;background:#f06f5c;animation:giaPulse 2.6s infinite}
+.gia-panel{position:fixed;z-index:995;left:max(18px,env(safe-area-inset-left));bottom:calc(max(18px,env(safe-area-inset-bottom)) + 72px);display:flex;flex-direction:column;width:min(410px,calc(100vw - 32px));height:min(690px,calc(100dvh - 132px));overflow:hidden;border:1px solid rgba(20,75,52,.16);border-radius:25px;background:#fffdf7;color:#203a2f;box-shadow:0 24px 80px rgba(8,31,21,.32);animation:guidePop .2s ease both}
+.gia-head{display:flex;justify-content:space-between;align-items:center;padding:17px 18px;background:linear-gradient(120deg,#134d38,#17382e);color:#fff}
+.gia-identity{display:flex;gap:12px;align-items:center}
+.gia-identity img{width:53px;height:53px;object-fit:cover;object-position:50% 28%;border:2px solid #f0c74b;border-radius:50%;box-shadow:0 4px 14px #071c15}
+.gia-presence{display:flex;align-items:center;gap:6px;font-size:9px;letter-spacing:.15em;font-weight:900;color:#bddac9}
+.gia-presence i{width:7px;height:7px;border-radius:50%;background:#57d793;box-shadow:0 0 0 4px #57d7932b}
+.gia-head h2{margin:4px 0 1px;font-size:19px;line-height:1.1}.gia-head h2 span{font-size:14px}
+.gia-head p{margin:0;color:#cee0d5;font-size:11px}
+.gia-close{width:34px;height:34px;border:1px solid #ffffff49;border-radius:50%;background:#ffffff12;color:white;font-size:22px;cursor:pointer}
+.gia-intro{display:flex;gap:10px;padding:13px 15px 7px}.gia-intro p{margin:0;color:#596c60;font-size:12px;line-height:1.5}
+.gia-spark{display:grid;place-items:center;flex:none;width:25px;height:25px;border-radius:8px;background:#f8edc8;color:#a36c0d}
+.gia-shortcuts{display:flex;gap:7px;overflow-x:auto;padding:5px 14px 11px;scrollbar-width:thin}
+.gia-shortcuts button{flex:none;border:1px solid #d9e8d9;border-radius:99px;padding:7px 11px;background:#eff6ed;color:#286145;font:inherit;font-weight:700;font-size:11px;cursor:pointer}
+.gia-messages{flex:1;overflow:auto;overscroll-behavior:contain;padding:10px 13px 12px;background:linear-gradient(#f8f8f0,#fbf7ec)}
+.gia-message{width:fit-content;max-width:96%;margin:0 0 10px;padding:10px 12px;border-radius:13px 13px 13px 4px;background:#fff;color:#53665b;font-size:12px;line-height:1.5;box-shadow:0 3px 10px #1d493109}
+.gia-message-user{margin-left:auto;border-radius:13px 13px 4px 13px;background:#195a41;color:white}
+.gia-results{display:grid;gap:8px;margin-bottom:12px}
+.gia-result-card{padding:12px;border:1px solid #e2e9dc;border-radius:14px;background:#fff;box-shadow:0 5px 15px #143b2910}
+.gia-result-kind{display:inline-block;padding:4px 7px;border-radius:99px;background:#f9edcb;color:#856018;font-size:9px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.gia-result-card h3{margin:8px 0 4px;color:#193c2e;font-size:14px;line-height:1.25}
+.gia-result-card p{margin:0 0 10px;color:#627167;font-size:11px;line-height:1.45}
+.gia-result-card button,.gia-inline-nav{border:0;padding:0;background:none;color:#187552;font-size:11px;font-weight:900;cursor:pointer}
+.gia-result-card button span{color:#e2a91d;margin-left:4px}
+.gia-inline-nav{padding:8px 10px;border:1px solid #d8e7d9;border-radius:99px;background:white}
+.gia-compose{display:flex;gap:9px;padding:11px 13px;border-top:1px solid #e7e8df;background:#fff}
+.gia-compose input{min-width:0;flex:1;border:1px solid #dce5db;border-radius:99px;padding:11px 14px;color:#1b3529;font:inherit;font-size:13px}
+.gia-compose button{width:42px;height:42px;flex:none;border:0;border-radius:50%;background:#e9bc38;color:#193b2e;font-size:20px;font-weight:900;cursor:pointer}
+.gia-note{padding:0 12px 11px;background:#fff;color:#849087;text-align:center;font-size:9px}
+@keyframes guidePop{from{opacity:0;transform:translateY(8px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes giaPulse{0%,100%{box-shadow:0 0 0 0 #ef705b55}50%{box-shadow:0 0 0 6px #ef705b00}}
+@media(max-width:600px){
+ .guide-tool-dock{right:12px;bottom:max(12px,env(safe-area-inset-bottom))}
+ .guide-help-fab{width:51px;height:51px;justify-content:center;padding:0;border-radius:50%}
+ .guide-help-label{display:none}
+ .guide-help-fab>span:first-child{font-size:22px}
+ .guide-help-panel{right:0;width:min(340px,calc(100vw - 24px))}
+ .gia-launcher{left:12px;bottom:max(12px,env(safe-area-inset-bottom));padding:6px 11px 6px 6px;gap:8px}
+ .gia-launcher img{width:42px;height:42px}
+ .gia-launcher-copy b{font-size:13px}.gia-launcher-copy small{font-size:9px}
+ .gia-panel{left:10px;bottom:calc(max(12px,env(safe-area-inset-bottom)) + 61px);width:calc(100vw - 20px);height:min(680px,calc(100dvh - 112px));border-radius:21px}
+ .guide-message-dialog{width:calc(100vw - 22px);border-radius:20px}
+}
+@media(max-height:560px) and (orientation:landscape){.gia-panel{height:calc(100dvh - 100px);bottom:74px}.gia-launcher,.guide-tool-dock{bottom:10px}}
+@media(prefers-reduced-motion:reduce){.guide-help-fab,.guide-tool-options button,.gia-launcher,.gia-panel,.guide-tool-toast{transition:none;animation:none}}
