@@ -1,0 +1,608 @@
+{
+  "edition": "November 2026 Edition",
+  "status": "Working draft · based on supplied guide · not independently verified",
+  "about": {
+    "intro": "The Social Protection Services Support Guide is a practical resource for healthcare workers, patients, caregivers, and families seeking information on social protection services in Jamaica. It brings together programmes, agencies, referral points, and contact information to help people identify a possible service and take the next step.",
+    "why": "Health outcomes can be affected by income, food security, housing, disability, family stability, education, safety, and access to community support. This guide is intended to help connect clinical care with relevant social protection services.",
+    "audience": "Healthcare workers can use the guide to screen for social needs, support discharge planning, make informed referrals, and guide patients toward services. Patients and caregivers can use it to explore possible assistance, where to start, and what information may be requested.",
+    "how": [
+      "Start with the overview to understand agencies and types of support.",
+      "Compare programme profiles, target groups, benefits, and referral options.",
+      "Use the Decision Guide to connect a situation with a possible programme or agency.",
+      "Use the Contact Directory to confirm current requirements, locations, forms, and application steps."
+    ],
+    "disclaimer": "This guide does not replace official agency assessments or eligibility decisions. Requirements, benefits, and contact details may change. Confirm current information directly with the responsible ministry, agency, medical social work department, or parish office before applying or advising someone."
+  },
+  "referralSteps": [
+    [
+      "Identify the need",
+      "Ask respectful questions about what is affecting care or wellbeing. Possible needs include food, medication, transport, housing, safety, income, disability support, school attendance, caregiving, mental health, or help after an emergency."
+    ],
+    [
+      "Check urgency and safety",
+      "If there is immediate danger, serious medical distress, suspected abuse, suicidal thoughts, severe neglect, or a child-protection concern, treat it as urgent. Follow facility emergency and safeguarding procedures first, then connect with the appropriate clinician, social worker, hotline, police, child-protection or crisis-response service."
+    ],
+    [
+      "Match the person to a service",
+      "Use the programme profiles, Decision Guide, and Contact Directory to identify a suitable starting point. When needs overlap, prioritise immediate safety, health, and basic needs before longer-term support."
+    ],
+    [
+      "Prepare for the referral",
+      "Explain the purpose and what the service may ask for. Depending on the programme, useful documents may include identification, TRN, proof of address, clinic card, prescription, medical letter, discharge summary, birth certificate, school information, disability documentation, or evidence of an emergency."
+    ],
+    [
+      "Make a warm referral where possible",
+      "With the person’s consent, help connect them directly: call the agency, send a referral note, link to a medical social worker, confirm office hours, or explain the next step."
+    ],
+    [
+      "Document and follow up",
+      "Record the need, referral, agency/contact, and urgent concerns in line with facility policy. Where appropriate, check later whether the person accessed the service or needs further support."
+    ]
+  ],
+  "programmes": [
+    {
+      "name": "PATH",
+      "where": "Visit the Office in the Parish where you reside",
+      "bring": "Birth Certificates (all members); TRN & National ID (Adults)",
+      "process": "Interview completed → household scored → home visit for verification → approved applicants receive PATH benefits",
+      "support": "Conditional cash grants for eligible households’ members; benefits are provided for up to four years before reassessment."
+    },
+    {
+      "name": "Local Government Assistance",
+      "where": "Municipal Corporation / Poor Relief Department",
+      "bring": "Valid ID / TRN (if available); Application form Supporting documents (proof of need, bills, etc.)",
+      "process": "Visit or call Office → complete relevant section of the form → Assessment/investigation by Poor Relief Officer → Decision communicated to the applicant",
+      "support": "Poor relief, emergency assistance, homeless support, institutional care/infirmary placement, meals, housing, or community assistance based on assessed need. Other services"
+    },
+    {
+      "name": "HEART / NSTA",
+      "where": "Online or any HEART Office",
+      "bring": "Application form; TRN; Valid ID / Birth certificate; Email address & mobile number; Academic qualifications; Course-related supporting documents",
+      "process": "Complete and submit application → complete any required assessments → documents reviewed → accepted applicants register and start training",
+      "support": "Skills training, certification, assessments, and employment-readiness support; course schedules and duration vary by programme."
+    },
+    {
+      "name": "NHF",
+      "where": "NHF office/card centre",
+      "bring": "National ID; TRN; Completed form (signed by doctor)",
+      "process": "Available online and pharmacies Doctor completes form and sign → patient submits to NHF → receives card → use at pharmacies for subsidised medication and laboratories for subsidised lab tests",
+      "support": "NHF card covers all ages with chronic illnesses; diagnostic tests, ECG, ECO, Persons with disabilities (registered with JCPD – double the subsidy Children – double subsidy"
+    },
+    {
+      "name": "NIS",
+      "where": "Visit the Office in the Parish where you reside",
+      "bring": "TRN; Valid ID; Birth Certificate or Passport; Bank account details; Marriage Certificate or Deed Poll (if applicable), NIS number",
+      "process": "Check contributions → apply 4 months before 65th birthdate if retired → submit form and supporting documents → NIS verifies record and claim → if pension approved, payments made to the bank account. Check contributions record periodically. Invalidity insurance Widows Pension",
+      "support": "Social insurance for eligible contributors and dependents; payments made by direct deposit."
+    },
+    {
+      "name": "National Housing Trust (NHT)",
+      "where": "Nearest NHT Service Centre",
+      "bring": "Valid Photo ID, TRN, NIS card, Proof of Income, Land Title/Authorization letter, and NHT Registration number",
+      "process": "Visit office for initial assessment → Interview and income verification → Social work field visit (if applying for social housing) → Final approval for grant, 0% rate, or unit allocation",
+      "support": "Non-repayable home grants (up to $3.5M);"
+    },
+    {
+      "name": "New Social Housing Programme (NSHP)",
+      "where": "• Office of your local Member of Parliament (MP) • Ministry of Economic Growth and Job Creation (MEGJC) • Poor Relief Department of your parish Municipal Corporation",
+      "bring": "• Valid Government Photo ID • Tax Registration Number (TRN) & NIS card • Proof of land ownership, registered title, or a notarized letter of legal permission to build on the land • Proof of income / financial status (or affidavit of indigent status)",
+      "process": "Submit an application via your local MP or Poor Relief office → Rigorous filtering and verification of living conditions → Case review and field assessment by a social worker/officer → Final selection by the NSHP Project Oversight Committee → Unit construction and formal handover.",
+      "support": "Housing solution - ranging from 1 to 3-bedroom detached units or semi-permanent modular structures"
+    },
+    {
+      "name": "Grants (RADA / JBDC)",
+      "where": "RADA Parish Office or JBDC Office",
+      "bring": "TRN; Business/Farm Registration; Valid ID",
+      "process": "Meet advisor → business/farm assessed → may receive training, site visit, or grant approval",
+      "support": "Technical advice, training, business development support, farm support, and grant or loan referrals where available, back yard gardening"
+    },
+    {
+      "name": "CHASE / Compassionate Medical Assistance",
+      "where": "CHASE application route on CHASE Fund Website or corporate office in Kingston",
+      "bring": "Medical report or doctor's letter; Diagnosis, prescription or diagnostic request; Cost estimate/proforma invoice; ID, TRN, and proof of financial need",
+      "process": "Doctor/social worker confirms need → application and supporting documents submitted → case reviewed → approved funds or services are paid to provider or coordinated through the public system",
+      "support": "Case-by-case assistance for specialised surgeries, diagnostics, medication, cancer care, kidney treatment and other urgent or severe medical needs."
+    },
+    {
+      "name": "MOHW Compassionate Fund Programme",
+      "where": "MOHW Enabling Environment in Health and Client Services Division in Kingston, Public hospital or health facility Social Work Department under the relevant Regional Health Authority",
+      "bring": "Application form, ID, TRN, Medical report or doctor's letter; prescription (if applicable, Proforma invoice/Quotation, Pre-authorised letter (if insured), Birth certificate (if minor), Job letter (if employed), Character reference, and Written letter of request",
+      "process": "Doctor confirms need → application and supporting documents submitted → case reviewed → applicant receives MOHW commitment letter of approved amount → applicant receives service → service provider submits signed commitment letter, and invoice to MOHW",
+      "support": "Case-by-case assistance for specialised surgeries, medication, cancer care, device, kidney treatment, and other urgent or severe medical needs."
+    },
+    {
+      "name": "RHA Diagnostic Support",
+      "where": "Public hospital or health facility under the relevant Regional Health Authority",
+      "bring": "Public hospital registration; Doctor's referral or diagnostic request; Patient ID and clinic/hospital information",
+      "process": "Public doctor issues request → hospital schedules in-house test or outsourcing referral → patient receives approved diagnostic service at no out-of-pocket cost where covered",
+      "support": "CT scans, MRIs, ultrasounds, and other approved diagnostic tests/services for public patients."
+    },
+    {
+      "name": "NCDA Support",
+      "where": "NCDA office, helpline, or community clinic",
+      "bring": "Basic personal information; Referral note if available; Health or social history relevant to treatment",
+      "process": "Contact NCDA → screening or assessment → counselling, community clinic appointment or referral → follow-up support as needed",
+      "support": "Confidential counselling, prevention, drug testing, treatment referral, outreach, and psychosocial support."
+    },
+    {
+      "name": "Child Protection and Family Services Agency (CPFSA)",
+      "where": "Nearest CPFSA Parish Office or Regional Office",
+      "bring": "Child's birth certificate, if available; Parent's or guardian's identification; Relevant medical, school or other supporting documents, if applicable; Details of the concern or incident being reported",
+      "process": "Report concern or request assistance → intake and assessment → investigation or referral, as appropriate → intervention and follow-up.",
+      "support": "Child abuse, neglect and abandonment investigations, Counselling and family support, Foster care and adoption services, Residential care and protection, Court and child welfare services"
+    },
+    {
+      "name": "Victim Services Branch",
+      "where": "Ministry of Justice Victim Services office or helpline",
+      "bring": "Basic personal information; Police report or case reference if available; Court date or referral information if applicable",
+      "process": "Contact VSB → needs assessment → counselling, court support, referral or crisis response arranged → follow-up support provided",
+      "support": "Free confidential counselling, emotional support, court orientation, referral and victim-sensitive services."
+    },
+    {
+      "name": "Women's Centre Programme for Adolescent Mothers",
+      "where": "Women's Centre main centre, outreach station, school, clinic, or hospital referral",
+      "bring": "Birth certificate or ID if available; School information; Clinic card or pregnancy-related referral if available",
+      "process": "Referral or walk-in → intake and counselling → education support during pregnancy → reintegration planning after birth",
+      "support": "Continuing education, counselling, parenting guidance and reintegration support for adolescent mothers."
+    },
+    {
+      "name": "Senior Citizen Services / Meals on Wheels",
+      "where": "National Council for Senior Citizens, MLSS parish office, health centre, or community referral point",
+      "bring": "Valid ID or birth certificate; TRN if available; Proof of address and need",
+      "process": "Referral or application → needs assessment → programme match or referral → follow-up by senior services or parish office",
+      "support": "Meals, referrals, social support, advocacy and senior-focused welfare assistance where available."
+    },
+    {
+      "name": "Bureau of Gender Affairs Services",
+      "where": "GBV helpline, Ministry of Culture, Gender, Entertainment and Sport, police domestic violence intervention centre, or referral partner",
+      "bring": "Basic personal information if safe to provide; Incident details or referral note if available; Immediate safety concerns and preferred safe contact method",
+      "process": "Call or text for support → trained social worker or counsellor assesses safety and need → referral made for counselling, shelter, police, victim services, legal aid or welfare support → follow-up arranged where safe",
+      "support": "Gender-based violence response, domestic violence support, psychosocial counselling, public education, gender equality training and referral coordination."
+    }
+  ],
+  "categories": [
+    {
+      "category": "Cash Assistance",
+      "programme": "PATH",
+      "benefits": "Direct cash payments to help basic needs, Post Secondary Grant and Tertiary Bursary for students from PATH households",
+      "target": "Low-income families, children, disabled and the elderly."
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "Rehabilitation Grants",
+      "benefits": "One-off grants for compassionate aid, education, or disaster relief and micro – business grants.",
+      "target": "Funeral assistance, medical emergencies, minor home repairs, victims of disasters, needy students, indigent."
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "Social Pension",
+      "benefits": "Non-contributory pension for those without income.",
+      "target": "Seniors aged 75 and older who are not receiving any other pension or benefit."
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "Poor Relief",
+      "benefits": "Financial assistance and food supplies, Clothing, bedding and medical assistance, Housing and transportation support, Education and funeral assistance, Shelter and care for persons unable to care for themselves, Emergency assistance following disasters",
+      "target": "Destitute individuals unable to work due to physical or mental conditions, Elderly persons and persons with disabilities in need, Homeless individuals, Families experiencing severe hardship or emergencies."
+    },
+    {
+      "category": "Health Support",
+      "programme": "National Health Fund Card",
+      "benefits": "Significant subsidies on prescription drugs for chronic illnesses.",
+      "target": "People with health conditions."
+    },
+    {
+      "category": "Health Support",
+      "programme": "Jamaica Drug for Elderly Programme",
+      "benefits": "Free or low-cost essential drugs for specific conditions.",
+      "target": "Seniors aged 60 and over."
+    },
+    {
+      "category": "Health Support",
+      "programme": "Compassionate Fund Programme",
+      "benefits": "Case-by-case help for specialised surgeries, dialysis treatment, medication, cancer care, and severe medical needs.",
+      "target": "Vulnerable patients who cannot afford urgent or specialised care."
+    },
+    {
+      "category": "Health Support",
+      "programme": "CHASE Medical Assistance",
+      "benefits": "Case-by-case help for specialised surgeries, diagnostics, medication, cancer care, and severe medical needs.",
+      "target": "Vulnerable patients who cannot afford urgent or specialised care."
+    },
+    {
+      "category": "Health Support",
+      "programme": "RHA Diagnostic Support",
+      "benefits": "Free approved diagnostic services through public hospitals or outsourced private partners.",
+      "target": "Registered public hospital patients with a public doctor's referral."
+    },
+    {
+      "category": "Health Support",
+      "programme": "Poor Relief",
+      "benefits": "Infirmary care",
+      "target": "Vulnerable elderly and homeless"
+    },
+    {
+      "category": "Education & Youth",
+      "programme": "School Feeding",
+      "benefits": "Daily nutritious meals in public schools.",
+      "target": "Students in public educational institutions."
+    },
+    {
+      "category": "Education & Youth",
+      "programme": "Jamaican Foundation for Lifelong Learning",
+      "benefits": "Free continuing education",
+      "target": "Jamaican citizens of any age who want additional support"
+    },
+    {
+      "category": "Skill Building",
+      "programme": "HEART/NSTA Trust",
+      "benefits": "Competency-based vocational training and certification. Level 4 is equivalent to an Associate Degree, and Level 5 to Bachelors",
+      "target": "Job seekers and workers who want new skills or improved qualifications."
+    },
+    {
+      "category": "Skill Building",
+      "programme": "Social Intervention Programme (SIP)",
+      "benefits": "Tertiary tuition, On the Job Training (OJT), Micro business grants",
+      "target": "Working age individuals"
+    },
+    {
+      "category": "Skill Building",
+      "programme": "Steps to Work",
+      "benefits": "Job readiness, skills training and entrepreneurship training to help exit PATH beneficiaries.",
+      "target": "Working-age members of PATH households."
+    },
+    {
+      "category": "Empowerment",
+      "programme": "Economic Empowerment Grant",
+      "benefits": "Grants up to $200,000 for individuals to start or grow a business.",
+      "target": "Persons with Disabilities (PwDs) and their caregivers."
+    },
+    {
+      "category": "Empowerment",
+      "programme": "Social Intervention Programme (SIP)",
+      "benefits": "Special employment and entrepreneurship grants.",
+      "target": "“At-risk” youth aged 16 to 40."
+    },
+    {
+      "category": "Psychosocial Support",
+      "programme": "NCDA Counselling and Treatment Support",
+      "benefits": "Counselling, drug testing, prevention programmes, community clinics, and treatment referrals.",
+      "target": "Persons affected by substance misuse, families, schools, workplaces, and vulnerable groups."
+    },
+    {
+      "category": "Housing Support",
+      "programme": "NHT Home Grant",
+      "benefits": "Provides up to $3.5 million in non-repayable, direct financial assistance to offset costs when buying, building, or repairing a home.",
+      "target": "Low-income NHT contributors earning up to $30,000.99 weekly who do not currently own a home."
+    },
+    {
+      "category": "Housing Support",
+      "programme": "New Social Housing Programme (NSHP)",
+      "benefits": "Provides free of charge housing solution - ranging from 1 to 3-bedroom detached units or semi-permanent modular structures",
+      "target": "Low-income and informal workers, persons experiencing long-term health crises, victims in crisis, senior living alone in unsafe/collapsing building."
+    },
+    {
+      "category": "Disaster & Emergency Relief",
+      "programme": "MLSS Emergency Assistance",
+      "benefits": "Shelter information, relief coordination, emergency assessment, welfare grants, and referrals after disasters.",
+      "target": "Households affected by hurricanes, floods, fires, or other emergencies."
+    },
+    {
+      "category": "Justice & Safety Support",
+      "programme": "Victim Services Branch",
+      "benefits": "Counselling, emotional support, court orientation, referral, and victim-sensitive interventions.",
+      "target": "Victims of crime, witnesses, families, and children needing court-related support."
+    },
+    {
+      "category": "Family & Children Youth Support",
+      "programme": "Women's Centre Programme for Adolescent Mothers",
+      "benefits": "Continuing education, counselling, parenting support, and reintegration support into school after childbirth.",
+      "target": "Pregnant adolescents, adolescent mothers, and their families."
+    },
+    {
+      "category": "Senior Support",
+      "programme": "National Council for Senior Citizens / Meals on Wheels",
+      "benefits": "Meals, referrals, advocacy, social support, senior citizens club, and community-based assistance for seniors.",
+      "target": "Older persons, shut-ins, indigent seniors, and caregivers seeking referral support."
+    },
+    {
+      "category": "Gender-Based Violence & Safety",
+      "programme": "Bureau of Gender Affairs",
+      "benefits": "24/7 GBV helpline, safety assessment, counselling, referralls, community education, and gender-sensitivity training. National Shelter Unit- Domestic Violence and Sexual Harassment Tribunal",
+      "target": "Survivors, persons at risk, witnesses, families, communities, and service providers needing GBV guidance."
+    },
+    {
+      "category": "Child Protection and Family Support",
+      "programme": "Child Protection and Family Services Agency (CPFSA)",
+      "benefits": "Child abuse reporting and investigation, Child protection and family support, Foster care and adoption, Residential care for children, Counselling and referrals",
+      "target": "Children at risk of abuse, neglect or harm, Children needing care and protection, Parents and families needing support"
+    }
+  ],
+  "documents": [
+    {
+      "document": "Birth Certificate",
+      "where": "National Identification and Registration Authority (NIRA)",
+      "requirements": "Birth details; valid ID where required; supporting documents if applicable",
+      "process": "1. Complete application. 2. Provide birth details/identification. 3. Pay applicable fee. 4. Collect or receive certificate.",
+      "cost": "7-14 weeks $1,500.00"
+    },
+    {
+      "document": "Taxpayer Registration Number (TRN)",
+      "where": "Tax Administration Jamaica (TAJ)",
+      "requirements": "Valid government ID; birth certificate/supporting documents where required",
+      "process": "1. Complete TRN application. 2. Submit acceptable identification. 3. Application is processed. 4. Receive TRN.",
+      "cost": "Free"
+    },
+    {
+      "document": "NIS Number/Card",
+      "where": "Ministry of Labour & Social Security – NIS",
+      "requirements": "Birth Certificate or Passport; completed NIS application",
+      "process": "1. Complete NIS application. 2. Provide proof of age/identity. 3. Submit application at NIS office. 4. Receive NIS number/card.",
+      "cost": "Free"
+    },
+    {
+      "document": "National Voters ID",
+      "where": "Electoral Office of Jamaica (EOJ)",
+      "requirements": "Must generally be 18+ and a Jamaican citizen ordinarily resident in Jamaica; bring birth certificate/proof of age if recently turned 18. Other personal information is collected during registration.",
+      "process": "1. Visit an EOJ constituency office. 2. Complete Registration Record Card. 3. Photo and fingerprints are taken. 4. EOJ verifies your residence. 5. Information is processed. 6. Once registered and the Voters' List is published, collect your Voter ID.",
+      "cost": "Free"
+    },
+    {
+      "document": "Personal Bank Account",
+      "where": "Any commercial bank or its online banking platform.",
+      "requirements": "Valid government-issued photo ID (e.g., passport, driver's license or voter ID); Tax Registration Number (TRN); Proof of residential address (e.g., utility bill or bank statement); Proof of income or source of funds (e.g., job letter or payslip); Minimum opening deposit, if required",
+      "process": "1. Choose a bank and account type. 2.Gather the required documents. 3.Complete the application online or at a branch. 3.Submit documents for verification. 4.Make the required opening deposit. 5.Receive your account details and debit card, if applicable",
+      "cost": "Varies by bank and account type. Minimum opening deposits may apply."
+    },
+    {
+      "document": "Passport (Not free Identification)",
+      "where": "Passport, Immigration & Citizenship Agency (PICA)",
+      "requirements": "Birth Certificate/Citizenship Certificate; 2 identical photos; government ID; certified application; name-change documents where applicable",
+      "process": "1. Complete passport application. 2. Get application/photos certified. 3. Gather birth certificate, ID and photos. 4. Submit application to PICA. 5. Pay fee. 6. Collect passport when ready..",
+      "cost": "Contact the entity to confirm the cost based on the service"
+    },
+    {
+      "document": "Driver's License (Not free Identification)",
+      "where": "Island Traffic Authority (ITA) / TAJ",
+      "requirements": "Provisional license; birth certificate/proof of age; TRN; medical certificate; photographs; required tests",
+      "process": "1. Get learner's/provisional license. 2. Pass Road Code Test. 3. Take driving lessons. 4. Book and complete driving test. 5. Pass yard and road tests. 6. Pay applicable fee. 7. Receive driver's licence.",
+      "cost": "Contact the entity to confirm the cost based on the service"
+    }
+  ],
+  "decision": [
+    {
+      "situation": "Someone who wants/needs mental health support",
+      "options": "Outpatient mental health clinics (counselling, crisis interventions – psychology and psychiatric care), Mental health and suicide prevention hotline, Wellness bus Child guidance services",
+      "provider": "MOHW, NCDA, the public community health clinics in SERHA, NERHA, SRHA, WRHA"
+    },
+    {
+      "situation": "A Parent or Student",
+      "options": "PATH (Cash for school/health)",
+      "provider": "Ministry of Labour and Social Security (MLSS)"
+    },
+    {
+      "situation": "A Parent or Student",
+      "options": "Rehabilitation Programme",
+      "provider": "Ministry of Labour and Social Security (MLSS)"
+    },
+    {
+      "situation": "A Parent or Student",
+      "options": "STW/ OJT/SIP",
+      "provider": "Ministry of Labour and Social Security (MLSS)"
+    },
+    {
+      "situation": "A Parent or Student",
+      "options": "School Feeding & Tertiary Grants",
+      "provider": "MOESYI/ Poor Relief"
+    },
+    {
+      "situation": "A Parent or Student",
+      "options": "Early Stimulation Programme (for children with disabilities)",
+      "provider": "Ministry of Labour and Social Security (MLSS)"
+    },
+    {
+      "situation": "A Senior (60+)",
+      "options": "NHF Card (Low-cost medicine)",
+      "provider": "National Health Fund (NHF)"
+    },
+    {
+      "situation": "A Senior (60+)",
+      "options": "Social Pension (for those 75+ without a pension)",
+      "provider": "Ministry of Labour and Social Security (MLSS)"
+    },
+    {
+      "situation": "A Senior (60+)",
+      "options": "NIS Pension (if you contributed while working)",
+      "provider": "Ministry of Labour and Social Security (MLSS)"
+    },
+    {
+      "situation": "A Senior (60+)",
+      "options": "Meals, referrals, advocacy, social support, senior citizens club, and community-based assistance for seniors.",
+      "provider": "NCSC – National Council for Senior Citizens"
+    },
+    {
+      "situation": "A Senior (60+)",
+      "options": "Institutional care Infirmary",
+      "provider": "Poor Relief"
+    },
+    {
+      "situation": "Looking for Skills Training and Work",
+      "options": "HEART/NSTA Trust (Free skills training)",
+      "provider": "HEART/NSTA Trust"
+    },
+    {
+      "situation": "Looking for Skills Training and Work",
+      "options": "Steps to Work (Job readiness for PATH families)",
+      "provider": "Ministry of Labour and Social Security (MLSS)"
+    },
+    {
+      "situation": "A Person with a Disability",
+      "options": "Economic Empowerment Grant (Business startup)",
+      "provider": "Jamaica Council for Persons with Disabilities (JCPD)"
+    },
+    {
+      "situation": "A Person with a Disability",
+      "options": "Non-repayable grant of up to $300,000 per person (max 2 per household) for necessary physical accessibility modifications to home",
+      "provider": "National Housing Trust (NHT)"
+    },
+    {
+      "situation": "A Person with a Disability",
+      "options": "Early Stimulation Programme",
+      "provider": "Ministry of Labour and Social Security (MLSS)"
+    },
+    {
+      "situation": "In a Crisis (Fire, Death)",
+      "options": "Rehabilitation / Compassionate Grants",
+      "provider": "Ministry of Labour and Social Security (MLSS)"
+    },
+    {
+      "situation": "In a Crisis (Fire, Death)",
+      "options": "Emergency Poor Relief",
+      "provider": "Board of Supervision, Ministry of Local Government and Community Development (MLGCD)"
+    },
+    {
+      "situation": "An Entrepreneur/Farmer/ Backyard Gardening",
+      "options": "JBDC / MIDA (Small business loans/advice)",
+      "provider": "JBDC"
+    },
+    {
+      "situation": "An Entrepreneur/Farmer/ Backyard Gardening",
+      "options": "RADA Grants (Farming support)",
+      "provider": "RADA"
+    },
+    {
+      "situation": "A Patient Needing Tests",
+      "options": "RHA diagnostic support for CT scans, MRIs, ultrasounds, and approved tests",
+      "provider": "Regional Health Authorities (RHAs)"
+    },
+    {
+      "situation": "A Patient Needing Treatment",
+      "options": "Compassionate Fund Programme / CHASE medical assistance for urgent or specialised care",
+      "provider": "Ministry of Health and Wellness (MOHW)/ CHASE"
+    },
+    {
+      "situation": "Affected by Substance Misuse",
+      "options": "NCDA counselling, community clinic support, prevention programmes, and treatment referrals",
+      "provider": "National Council on Drug Abuse (NCDA)"
+    },
+    {
+      "situation": "Experiencing Abuse, Domestic Violence, or GBV",
+      "options": "Call 1-888-NO-ABUSE for BGA support; if in immediate danger, contact police/emergency services. Ask for counselling, safe referral, victim services, shelter, or legal/welfare referral. Female helpline: 876-553-0372, Male helpline: 876-553-0387",
+      "provider": "BGA / MOJ VSB / Police DVIC / CPFSA where children are involved"
+    },
+    {
+      "situation": "Affected by Disaster or Fire",
+      "options": "Shelter information, damage assessment, emergency assistance, and recovery referrals",
+      "provider": "MLSS / MLGCD"
+    },
+    {
+      "situation": "A Pregnant Adolescent or Adolescent Mother or Vulnerable Chidren",
+      "options": "Contact the Women's Centre for education continuation, counselling, parenting guidance, and school reintegration support,",
+      "provider": "Women's Centre of Jamaica Foundation"
+    }
+  ],
+  "contacts": [
+    {
+      "agency": "Bureau of Gender Affairs",
+      "details": "Ministry of Culture, Gender, Entertainment and Sport, 4–6 Trafalgar Road, Kingston 5; 📞 (876) 929-6660 (876) 978-7654 / (876) 978-5347; Sexual Harassment Tribunal 📞 (876) 756-8576 ✉️Email: info@mcges.gov.jm; 🌐Website: mcges.gov.jm. GBV helpline: 1-888-NO-ABUSE. No Excuse for Abuse text/helpline: (876) 553-0372 for female survivors and (876) 533-0387 for male survivors."
+    },
+    {
+      "agency": "Culture, Health, Arts, Sports, and Education Fund (CHASE) Fund",
+      "details": "8 Belmont Road, Kingston 5, Jamaica; 📞 Phone: (876) 908-4134 or (876) 908-4144; chase.org.jm; ✉️Email: info@chase.org.jm, chase12@cwjamaica.com"
+    },
+    {
+      "agency": "Child Protection & Family Services (CPFSA)",
+      "details": "48 Duke Street, Kingston; 📞 Phone: (876) 948-2841-2; 🌐Website:childprotection.gov.jm; ✉️Email: report@childprotection.gov.jm; 📱 Social Media Instagram/Facebook/X: @cpfsajm"
+    },
+    {
+      "agency": "Electoral Office of Jamaica",
+      "details": "43 Duke Street, Kingston (Head Office); 📞 Phone: (876) 922-0425-9 / 1-888-991-VOTE (8683) ✉️Email: eojinfo@eoj.com.jm"
+    },
+    {
+      "agency": "HEART/NSTA Trust",
+      "details": "6B Oxford Road, Kingston 5; 📞 Phone: (876) 99-HEART (994-3278); ✉️Email: info@heart-nsta.org; 🌐Website: heart-nsta.org; 📱 Social Media Instagram/Facebook/X: @heartnstatrust; LinkedIn: HEART/NSTA Trust"
+    },
+    {
+      "agency": "Island Traffic Authority (ITA) / TAJ",
+      "details": "145 Maxfield Avenue, Kingston 10. 📞 Phone: (876) 926-8912 / (876) 618-0959 • TAJ: 888-TAX-HELP / (888) 829-4357, (876) 754-2814 or (876) 754-2816 ✉️Email: customerservice@ta.org.jm, dita@mtw.gov.jm / info@ita.gov.jm 🌐Website: www.ta.org.jm; 📱 Social Media Instagram & TikTok: @islandtrafficauthority; Instagram @jamaicataxonline; X @JamaicaTax; Facebook: Tax Administration Jamaica"
+    },
+    {
+      "agency": "Jamaica Business Development Corporation (JBDC)",
+      "details": "Carlton Alexander Building, 39 Hope Road, Kingston 10, Jamaica; (876) 928-5161-5; 🌐Website: jbdc.net; ✉️Email: info@jbdc.net; 📱 Social Media Facebook: @JBDCja; Instagram/X: @jbdcja"
+    },
+    {
+      "agency": "Jamaica Council for Persons with Disabilities (JCPD)",
+      "details": "1c Pawsey Rd, Kingston;📞 Phone (876) 968-8373 / 618-1133; 🌐Website: jcpd.gov.jm; ✉️jcpd@mlss.gov.jm; 📱 Social Media Instagram: @jcpdja; Facebook: Jamaica Council for Persons with Disabilities"
+    },
+    {
+      "agency": "Ministry of Health and Wellness (MOHW)",
+      "details": "5 Sylvan Avenue, Kingston 5; 📞 Phone: (876) 633-8172 / (876) 633-7771; ✉️Email: compassionate.Funds@moh.gov.jm"
+    },
+    {
+      "agency": "Ministry of Labour and Social Security (MLSS)",
+      "details": "1F North Street, Kingston 📞 Phone: (876) 922-8000-13; ✉️Email clientcare@mlss.gov.jm; 🌐Website mlss.gov.jm; 📱 Social Media Facebook: @mlssjamaica; Instagram/X: @mlssjamaica"
+    },
+    {
+      "agency": "Ministry of Local Government and Community Development (MLGCD) – Board of Supervision Parish Poor Relief Department",
+      "details": "61 Hagley Park Road, Kingston 10, Jamaica 📞 Phone: (876) 618-7360-9 or (876) 754-0992-9; 🌐 Website: localgovjamaica.gov.jm; ✉️Email: boardofsupervision@mlgcd.gov.jm 📱 Social Media Facebook: @mlgcd; Instagram: @localgovja; X: @LocalGovJa,"
+    },
+    {
+      "agency": "National Council for Senior Citizens",
+      "details": "Ministry of Labour and Social Security; 11 West King's House Road, Kingston 10; 📞 Phone: (876) 922-8000-13; ✉️Email: ncsc@mlss.gov.jm."
+    },
+    {
+      "agency": "National Council on Drug Abuse (NCDA)",
+      "details": "13 Molynes Road, Kingston 10; 🌐 Website: ncda.org.jm; ✉️Email info@ncda.org.jm; Substance Misuse Helpline: 📞 Phone: (876) 564-HELP (4357)."
+    },
+    {
+      "agency": "National Health Fund (NHF)",
+      "details": "The Towers, 6th Floor, 25 Dominica Drive, Kingston 5, Jamaica 📞 Phone: 876-906-1106 | 876-906-4381 1-888-DIAL-NHF (342-5643); 🌐 Website: www.nhf.org.jm ✉️Email: customercare@nhf.org.jm; info@nhf.org.jm; 📱 Social Media Facebook/Instagram: @NHFJamaica; X: @nhfjamaica"
+    },
+    {
+      "agency": "National Housing Trust (NHT)",
+      "details": "4 Park Boulevard, Kingston 5, Jamaica 📞 Phone: 876-929-6500-9 | Toll-Free: 1-888-CALL-NHT (225-5648) ✉️ Email: wecare@nht.gov.jm🌐 Website: https://www.nht.gov.jm/📱 Social Media: Facebook: @TheNHT | Instagram: @nationalhousingtrust | X: @TheNHT | TikTok: @nationalhousingtrust"
+    },
+    {
+      "agency": "Northeast Regional Health Authority (NERHA)",
+      "details": "Shops 34-38, Ocean Village Shopping Centre, Ocho Rios, St. Ann, Jamaica 📞 Phone: 876-795-3107 | Toll-Free: 1-888-429-5646 ✉️ Email: info@nerha.gov.jm; 🌐 Website: https://www.nerha.gov.jm/📱 Social Media: Facebook: @nerhajm | Instagram: @mohnerha"
+    },
+    {
+      "agency": "Passport, Immigration and Citizenship Agency (PICA)",
+      "details": "25C Constant Spring Road, Kingston 10; 📞 Phone: (876) 754-PICA or (876) 754-7422; Email: info@pica.gov.jm, 🌐Website: www.pica.gov.jm; 📱 Social Media Facebook: @PICAJamaicaInstagram: @pica.jamaicaX (formerly Twitter): @PICAJamaica"
+    },
+    {
+      "agency": "National Identification and Registration Authority (NIRA)",
+      "details": "Twickenham Park, Spanish Town, St. Catherine, Jamaica; 📞 Phone: 876) 749-0550 / (876) 619-1260, WhatsApp (Text Only): (876) 570-1225 or (876) 570-1205 1; 🌐 Website: rgd.gov.jm; ✉️Email: information@rgd.gov.jm; 📱 Social Media- Facebook: rgd.jamaicaX (Twitter) & Instagram: rgd_jamaica"
+    },
+    {
+      "agency": "Rural Agricultural Development Authority (RADA)",
+      "details": "6 Hope Gardens, Kingston, Jamaica 📞 Phone: 1-888-ASK-RADA (275-7232); 🌐 Website: rada.gov.jm; ✉️ Email: customer.service@rada.gov.jm; 📱 Social Media: Facebook: @radajamaica; Instagram/X: @radajm"
+    },
+    {
+      "agency": "South East Regional Health Authority (SERHA)",
+      "details": "The Towers, 2nd Floor, 25 Dominica Drive, Kingston 5, Jamaica📞 Phone: 876-754-3439✉️ Email: email@serha.gov.jm🌐 Website: SERHA Official Site📱 Social Media: Facebook: @theserhajm (or @serha.jamaica) Instagram: @theserhajm"
+    },
+    {
+      "agency": "Southern Regional Health Authority (SRHA)",
+      "details": "3 Brumalia Road, Mandeville, Manchester, Jamaica 📞 Phone: 876-962-8232 | 876-625-0612✉️ Email: pr@srha.gov.jm 🌐 Website: https://www.srha.gov.jm/📱 Social Media: Facebook: @southernregionalhealthauthority | Instagram: @southernregionalhealth"
+    },
+    {
+      "agency": "Tax Administration Jamaica (TAJ)",
+      "details": "Donald Sangster Building, 116 East Street, Kingston 4 📞 Phone: 888-TAX-HELP / (888) 829-4357; (876) 902-9463; ✉️ Email: taxhelp@taj.gov.jm 🌐Website: www.jamaicatax.gov.jm; 📱 Social Media Instagram: @jamaicataxonline • X: @JamaicaTax • Facebook: Tax Administration Jamaica • LinkedIn: Tax Administration Jamaica"
+    },
+    {
+      "agency": "Victim Services Branch, Ministry of Justice",
+      "details": "47E Old Hope Road, Kingston 5, Jamaica 📞 Phone: Tollfree: 888-587-8423; (876) 946-0663 / (876) 946-9287; 🌐 Website: moj.gov.jm."
+    },
+    {
+      "agency": "Western Regional Health Authority (WRHA)",
+      "details": "31B Fairview Shopping Center, Alice Eldemire Drive, Montego Bay, St. James, Jamaica 📞 Phone: 876-630-1860 ✉️ Email: info@wrha.gov.jm🌐 Website: https://www.wrha.gov.jm/📱 Social Media: Facebook: @wrhagovjm | Instagram: @wrhagovjm"
+    },
+    {
+      "agency": "Women's Centre of Jamaica Foundation",
+      "details": "42 Trafalgar Road, Kingston 10; 📞 Phone: (876) 929-7608 / (876) 929-0977; ✉️ Email: pr@womenscentreja.com; 🌐 Website: womenscentreja.com."
+    }
+  ],
+  "hotlines": "Important Hotlines and Quick Contacts Emergency danger: 119 police / 110 fire / 811 ambulance GBV / Domestic Violence: 1-888-NO-ABUSE; BGA text/helpline: (876) 553-0372 female survivors, (876) 533-0387 male survivors Victim Services Branch: 888-587-8423 Child Abuse Reporting: 211 or 888-PROTECT (777-8328) Safe Spot Child/Youth Support: 888-SAFE-SPOT (723-3776) Mental Health Support: 888-NEW-LIFE (639-5433) Substance Misuse Helpline: (876) 564-HELP (4357) ODPEM Disaster Information: (876) 906-9674 / Toll free 1-888-225-5637 PATH / MLSS Queries: (876) 922-8000-13 Drug Serv WhatsApp Prescriptions: (876) 532-5007",
+  "mapParishCaveat": "The map is a parish-based way to browse the guide. It does not show verified facility coordinates or prove that a programme is available in a particular parish. Contact the responsible agency or parish office to confirm local access."
+}
