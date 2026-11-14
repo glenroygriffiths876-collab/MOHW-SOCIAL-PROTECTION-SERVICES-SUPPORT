@@ -29,3 +29,15 @@ footer{background-color:#070735!important;background-image:linear-gradient(rgba(
 ::selection{background:#ffc928;color:#070735}
 @media(max-width:760px){body{background-attachment:scroll;background-position:left top;background-size:auto 100vh}.site-header{background-size:cover,420px auto}.hero,.referral-hero,.referral-journey,.page-hero,.nav-section,.home-intro,.about-story,.referral-start-section,.referral-care-section,.referral-followup-section{background-size:cover,auto 100%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Readable copy over the bright geometric field */
+.hero-copybox,.referral-hero-copy,.illustrated-hero-copy{
+ position:relative;z-index:2;padding:17px 18px;border:1px solid rgba(255,255,255,.14);border-radius:18px;
+ background:linear-gradient(100deg,rgba(5,6,43,.91) 0%,rgba(5,6,43,.78) 72%,rgba(5,6,43,.58) 100%);
+ box-shadow:0 12px 34px rgba(0,0,25,.18)
+}
+.hero-copybox h1,.referral-hero-copy h1,.illustrated-hero-copy h1,.hero-copybox>p,.referral-hero-copy>p,.illustrated-hero-copy>p{ text-shadow:0 2px 9px rgba(0,0,24,.88) }
+.hero-copybox .badge,.illustrated-hero-note{background-color:rgba(7,7,53,.55)}
+.scene-ordinal,.step-scene-rings,.step-scene-graphic{display:none!important}
+.step-scene img{filter:saturate(1.03) contrast(1.02)}
+@media(max-width:700px){.hero-copybox,.referral-hero-copy,.illustrated-hero-copy{padding:14px;border-radius:16px;background:linear-gradient(100deg,rgba(5,6,43,.94),rgba(5,6,43,.82))}}

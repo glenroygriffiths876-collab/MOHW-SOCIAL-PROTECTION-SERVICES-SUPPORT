@@ -17,13 +17,17 @@ function drawReferrals(){
  const steps=data.referralSteps;let active=0;
  const scenes={
   0:{kind:'listening',image:'assets/referral-listening.webp',alt:'An older Jamaican woman sharing her concern with a community health worker who listens attentively',caption:'Begin by understanding what matters to the person.'},
+  1:{kind:'safety',image:'assets/referral-safety.webp',alt:'A community health worker checks on a woman’s safety and wellbeing in a private, welcoming room',caption:'Check immediate safety and wellbeing first.'},
+  2:{kind:'matching',image:'assets/referral-match.webp',alt:'A Jamaican community navigator and client compare support options and a parish map together',caption:'Choose a service that fits the person’s needs.'},
   3:{kind:'preparing',image:'assets/referral-preparing.webp',alt:'A Jamaican community worker helps a father and child organize papers together at a service desk',caption:'Prepare together, one step at a time.'},
+  4:{kind:'handoff',image:'assets/referral-warmhandoff.webp',alt:'A Jamaican social worker and client make a supportive agency phone call together',caption:'Connect the person directly wherever possible.'},
   5:{kind:'followup',image:'assets/referral-followup.webp',alt:'A Jamaican support worker and senior client sharing a follow-up call and reviewing a checklist together',caption:'Keep the person involved in what happens next.'}
  };
  function showStep(index){
   active=(index+steps.length)%steps.length;
   const [title,copy]=steps[active],scene=scenes[active];
-  const visual=scene?'<figure class="step-scene step-scene-'+scene.kind+'"><img src="'+scene.image+'" alt="'+scene.alt+'"><figcaption>'+scene.caption+'</figcaption><span class="scene-ordinal" aria-hidden="true">'+String(active+1).padStart(2,'0')+'</span></figure>':'<div class="step-scene step-scene-graphic step-scene-graphic-'+String(active+1).padStart(2,'0')+'" aria-hidden="true"><div class="step-scene-rings"><span>'+String(active+1).padStart(2,'0')+'</span><i></i><i></i><i></i></div><b>'+esc(title)+'</b><small>REFERRAL STEP</small></div>';
+  const chosenScene=scene||{kind:'default',image:'assets/referral-match.webp',alt:'A client and community navigator explore a possible support option together',caption:'Explore a possible next step together.'};
+  const visual='<figure class="step-scene step-scene-'+chosenScene.kind+'"><img src="'+chosenScene.image+'" alt="'+chosenScene.alt+'"><figcaption>'+chosenScene.caption+'</figcaption></figure>';
   panel.innerHTML='<article class="journey-feature-card"><div class="journey-feature-copy"><div class="journey-feature-meta"><span>STEP '+String(active+1).padStart(2,'0')+'</span><span>OF '+String(steps.length).padStart(2,'0')+'</span></div><h3 id="activeReferralStepTitle">'+esc(title)+'</h3><p>'+esc(copy)+'</p><div class="step-source-note"><span>✳</span> Use the guide as a starting point; confirm details with the responsible agency.</div></div>'+visual+'</article>';
   nav.innerHTML=steps.map((s,i)=>'<button type="button" class="journey-step-tab '+(i===active?'is-current':'')+'" data-ref-step="'+i+'" aria-current="'+(i===active?'step':'false')+'" aria-controls="referralStepPanel" aria-label="Step '+(i+1)+': '+esc(s[0])+'"><span class="tab-number">'+String(i+1).padStart(2,'0')+'</span><span class="tab-title">'+esc(s[0])+'</span><i aria-hidden="true"></i></button>').join('');
   $$('.journey-step-tab',nav).forEach(button=>button.addEventListener('click',()=>showStep(Number(button.dataset.refStep))));
