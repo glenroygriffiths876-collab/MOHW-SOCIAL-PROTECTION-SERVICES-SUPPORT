@@ -4,3 +4,24 @@
 body{background-color:#f7f8fc;background-image:url('./geometry-bg.svg');background-repeat:no-repeat;background-position:top center;background-size:100% auto}.hero,.referral-hero{background-color:#063d31}.hero{background-image:linear-gradient(110deg,#063d31f5,#063d31e8),url('./geometry-bg.svg');background-size:cover,cover;background-position:center}
 .hero-art,.chapter-card,.service-card,.decision-card,.intro-side,.disclaimer,.referral-step,.service-profile{box-shadow:0 18px 48px #0a35411c}.btn.primary,.find{background:linear-gradient(135deg,#0b7654,#08a9a5)!important;color:#fff!important}.btn.primary:hover{filter:brightness(1.1)}::selection{background:#f4c52f;color:#102d28}
 @media(max-width:760px){body{background-size:auto 760px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* Deep evergreen is the canvas across chapters; the geometric reference stays as a bright, text-free accent. */
+html{background:#063d31!important}
+body{background-color:#063d31!important;background-image:linear-gradient(180deg,#063d31e8,#063d31e8),url('./geometry-bg.svg?v=green-canvas-1')!important;background-position:center top;background-size:cover,cover;background-attachment:scroll;color:#f4fff8}
+main,.view{background:transparent!important;color:#f4fff8}
+.site-header{background:#063d31!important}
+.home-intro,.about-story,.nav-section,.page-hero,.referral-start-section,.referral-care-section,.referral-followup-section{
+ background-color:#084735!important;
+ background-image:linear-gradient(115deg,#063d31eF,#0b553feF),url('./geometry-bg.svg?v=green-canvas-1')!important;
+ background-position:center,center;background-size:cover,cover;color:#f4fff8!important
+}
+.home-intro .lead,.home-intro .section-head p,.about-story-copy p,.about-story-copy h2,
+.nav-section .section-head h2,.nav-section .section-head p,.page-hero h1,.page-hero p,
+.referral-start-section h2,.referral-start-section p,.referral-care-section h2,.referral-care-section p,
+.referral-followup-section h2,.referral-followup-section p{color:#f4fff8}
+.home-intro .accent,.about-story-copy .accent,.page-hero .accent{color:#ffd347}
+.chapter-card,.home-card,.referral-route-card,.referral-care-card,.referral-followup-card{background:#fffaf0;color:#17382e}
+footer{background:#052d26!important;color:#e8f6ed!important}
+@media(max-width:760px){
+ body{background-size:auto 100%,auto 100%;background-attachment:scroll}
+ .home-intro,.about-story,.nav-section,.page-hero,.referral-start-section,.referral-care-section,.referral-followup-section{background-size:cover,auto 100%}
+}
