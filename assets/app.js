@@ -72,7 +72,10 @@ function serviceLogo(service){
   if(service.meta?.logoUrl)return {url:service.meta.logoUrl,source:service.meta.logoSourceUrl||service.meta.officialUrl||'',alt:service.meta.agency||service.name};
   const n=norm(service.name+' '+service.agency);
   const registry=data.logoRegistry||[];
-  const match=registry.find(item=>(item.match||[]).some(term=>n.includes(norm(term))));
+  const match=registry
+    .map(item=>({item,score:Math.max(0,...(item.match||[]).filter(term=>n.includes(norm(term))).map(term=>norm(term).length))}))
+    .filter(entry=>entry.score>0)
+    .sort((a,b)=>b.score-a.score)[0]?.item;
   if(!match)return null;
   return {logos:match.logos||null,url:match.logoUrl||'',source:match.logoSourceUrl||'',alt:match.alt||service.agency||service.name};
 }
