@@ -113,3 +113,9 @@
 }
 @media(max-width:360px){.guide-action-dock{left:5px;right:5px;gap:2px}.guide-action{font-size:8px}}
 @media(prefers-reduced-motion:reduce){.guide-action,.guide-share-options button{transition:none}}
+
+@media(max-width:600px){
+ body{padding-bottom:calc(94px + env(safe-area-inset-bottom))}
+ .gia-launcher{bottom:calc(max(9px,env(safe-area-inset-bottom)) + 68px)!important}
+ .gia-panel{bottom:calc(max(9px,env(safe-area-inset-bottom)) + 126px)!important;height:min(680px,calc(100dvh - 185px))}
+}
