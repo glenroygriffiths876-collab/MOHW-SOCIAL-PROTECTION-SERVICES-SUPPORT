@@ -84,3 +84,32 @@
 @media(prefers-reduced-motion:reduce){.guide-help-fab,.guide-tool-options button,.gia-launcher,.gia-panel,.guide-tool-toast{transition:none;animation:none}}
 
 .guide-share-qr{padding-top:13px}.guide-share-qr[hidden]{display:none}.guide-qr-back{display:block;margin:0 0 13px;padding:0;border:0;background:none;color:#187552;font-weight:800;cursor:pointer}.guide-share-qr h3{margin:5px 0 12px;color:#193c2e;font-size:21px}.guide-qr-frame{display:grid;place-items:center;min-height:210px;border:1px solid #e5ebdf;border-radius:16px;background:white;padding:12px}.guide-qr-frame img{display:block;width:min(220px,100%);height:auto;aspect-ratio:1;object-fit:contain}.guide-qr-frame p{margin:0;color:#68776d;text-align:center;font-size:12px;line-height:1.5}.guide-share-qr>p{color:#718076;font-size:12px;line-height:1.5}.guide-copy-qr{width:100%;padding:11px;border:0;border-radius:999px;background:#185c41;color:white;font-weight:800;cursor:pointer}
+/* Direct WAPS-style actions with branded MOHW share and app-install surfaces */
+.guide-action-dock{position:fixed;z-index:1001;right:max(18px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:9px}
+.guide-action{display:flex;align-items:center;gap:10px;min-width:152px;min-height:50px;padding:8px 15px;border:1px solid #ffffff80;border-radius:999px;color:#fff;font:inherit;font-size:13px;font-weight:850;box-shadow:0 10px 28px #081f163d;cursor:pointer;transition:transform .2s,filter .2s,box-shadow .2s}
+.guide-action:hover{transform:translateY(-3px);filter:brightness(1.08);box-shadow:0 14px 34px #081f164d}
+.guide-action i{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#ffffff2e;font-style:normal;font-size:17px}
+.guide-action.share{background:#073f32}.guide-action.issue{background:#d94e57}.guide-action.feedback{background:#087c78}.guide-action.install{background:#f0bb2f;color:#15382d}
+.guide-message-dialog{max-height:min(88dvh,760px);overflow:auto}
+.guide-share-brand{display:flex;align-items:center;gap:12px}.guide-share-brand img{width:54px;height:54px;object-fit:contain;background:#fff;border-radius:14px;padding:5px;border:1px solid #e5ece5}.guide-share-brand h2{margin:4px 0 0}
+.guide-share-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:16px 0}
+.guide-share-options button{min-height:98px;text-align:left;display:grid;grid-template-columns:36px 1fr;align-items:center;column-gap:9px;padding:12px;border:1px solid #dbe8df;border-radius:16px;background:#fff;color:#16372b;cursor:pointer}
+.guide-share-options button:hover{border-color:#19a980;box-shadow:0 8px 20px #12372e14}
+.guide-share-options button>span{grid-row:span 2;display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:#e4f6ea;color:#0a704d;font-size:19px;font-weight:900}
+.guide-share-options b{font-size:13px}.guide-share-options small{color:#68776d;font-size:11px;line-height:1.35}
+.guide-share-url{display:flex;align-items:center;gap:8px;padding:8px 9px 8px 12px;border:1px solid #e0e8e1;border-radius:13px;background:#f6faf5}
+.guide-share-url span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#58695e;font-size:11px;flex:1}
+.guide-share-url button{border:0;border-radius:9px;background:#0b6042;color:#fff;padding:9px 12px;font-weight:800}
+.guide-share-qr{margin-top:15px;text-align:center;padding:16px;border-radius:18px;background:#f5faf5}.guide-share-qr[hidden]{display:none}.guide-share-qr img{width:min(220px,100%);margin:auto;border-radius:10px;background:#fff}.guide-share-qr p{margin:9px 0 0;font-size:13px;color:#607167}
+.guide-install-card{display:flex;align-items:center;gap:13px;margin:18px 0;padding:13px;border:1px solid #dfe9df;border-radius:17px;background:#f7fbf5}
+.guide-install-app-icon{width:58px;height:58px;display:grid;place-items:center;background:#fff;border-radius:16px;border:1px solid #e4ebe2;overflow:hidden}.guide-install-app-icon img{width:100%;height:100%;object-fit:contain;padding:5px}
+.guide-install-card b,.guide-install-card small{display:block}.guide-install-card small{margin-top:4px;color:#69796e;font-size:11px}.guide-install-check{margin-left:auto;color:#149666;font-weight:900;font-size:20px}
+.guide-install-buttons{display:flex;gap:10px;flex-wrap:wrap}
+@media(max-width:600px){
+ .guide-action-dock{left:8px;right:8px;bottom:max(9px,env(safe-area-inset-bottom));flex-direction:row;justify-content:center;gap:6px;padding:7px;background:#072d23f2;border:1px solid #ffffff35;border-radius:20px;box-shadow:0 12px 35px #061d18aa;backdrop-filter:blur(15px)}
+ .guide-action{min-width:0;flex:1;max-width:92px;min-height:52px;justify-content:center;flex-direction:column;gap:2px;padding:4px 3px;border:0;border-radius:13px;background:transparent!important;color:#fff!important;box-shadow:none;font-size:9px}
+ .guide-action:hover{transform:translateY(-2px);box-shadow:none}.guide-action i{width:26px;height:26px;font-size:15px;background:#ffffff20}.guide-action.install i{background:#f0bb2f;color:#15382d}
+ .guide-message-dialog{width:calc(100vw - 20px);padding:20px 16px;border-radius:22px}.guide-share-options{gap:8px}.guide-share-options button{min-height:88px;padding:9px}
+}
+@media(max-width:360px){.guide-action-dock{left:5px;right:5px;gap:2px}.guide-action{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.guide-action,.guide-share-options button{transition:none}}
