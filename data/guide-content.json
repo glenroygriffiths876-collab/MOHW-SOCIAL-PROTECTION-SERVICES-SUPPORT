@@ -604,5 +604,208 @@
     }
   ],
   "hotlines": "Important Hotlines and Quick Contacts Emergency danger: 119 police / 110 fire / 811 ambulance GBV / Domestic Violence: 1-888-NO-ABUSE; BGA text/helpline: (876) 553-0372 female survivors, (876) 533-0387 male survivors Victim Services Branch: 888-587-8423 Child Abuse Reporting: 211 or 888-PROTECT (777-8328) Safe Spot Child/Youth Support: 888-SAFE-SPOT (723-3776) Mental Health Support: 888-NEW-LIFE (639-5433) Substance Misuse Helpline: (876) 564-HELP (4357) ODPEM Disaster Information: (876) 906-9674 / Toll free 1-888-225-5637 PATH / MLSS Queries: (876) 922-8000-13 Drug Serv WhatsApp Prescriptions: (876) 532-5007",
-  "mapParishCaveat": "The map is a parish-based way to browse the guide. It does not show verified facility coordinates or prove that a programme is available in a particular parish. Contact the responsible agency or parish office to confirm local access."
+  "mapParishCaveat": "The map is a parish-based way to browse the guide. It does not show verified facility coordinates or prove that a programme is available in a particular parish. Contact the responsible agency or parish office to confirm local access.",
+  "serviceMetadata": {
+    "PATH": {
+      "agency": "Programme of Advancement Through Health and Education (PATH) · MLSS",
+      "contactAgencies": [
+        "Ministry of Labour and Social Security"
+      ],
+      "officialUrl": "https://mlss.gov.jm/departments/path/",
+      "logoUrl": "https://pbs.twimg.com/profile_images/2008182207198687232/fyI2kJx5.jpg",
+      "logoSourceUrl": "https://x.com/JamaicaMlss"
+    },
+    "Local Government Assistance": {
+      "agency": "Ministry of Local Government and Community Development · Parish Poor Relief",
+      "contactAgencies": [
+        "Board of Supervision Parish Poor Relief Department"
+      ],
+      "officialUrl": "https://mlgcd.gov.jm/"
+    },
+    "HEART / NSTA": {
+      "agency": "HEART/NSTA Trust",
+      "contactAgencies": [
+        "HEART/NSTA Trust"
+      ],
+      "officialUrl": "https://apply.heart-nta.org/",
+      "logoUrl": "https://apply.heart-nta.org/images/heartnsta-logo-500.png",
+      "logoSourceUrl": "https://apply.heart-nta.org/"
+    },
+    "NHF": {
+      "agency": "National Health Fund (NHF)",
+      "contactAgencies": [
+        "National Health Fund"
+      ],
+      "officialUrl": "https://www.nhf.org.jm/",
+      "logoUrl": "https://www.nhf.org.jm/wp-content/uploads/2024/03/I2243727422162013.png",
+      "logoSourceUrl": "https://www.nhf.org.jm/"
+    },
+    "NIS": {
+      "agency": "National Insurance Scheme · MLSS",
+      "contactAgencies": [
+        "Ministry of Labour and Social Security"
+      ],
+      "officialUrl": "https://mlss.gov.jm/"
+    },
+    "National Housing Trust (NHT)": {
+      "agency": "National Housing Trust (NHT)",
+      "contactAgencies": [
+        "National Housing Trust"
+      ],
+      "officialUrl": "https://www.nht.gov.jm/",
+      "logoUrl": "https://jis.gov.jm/media/2025/09/NHT-Logo-e1756835690206-1200x825.jpeg",
+      "logoSourceUrl": "https://jis.gov.jm/features/positive-feedback-to-expanded-national-housing-trust-benefits/"
+    },
+    "New Social Housing Programme (NSHP)": {
+      "agency": "New Social Housing Programme · local and parish referral routes",
+      "contactAgencies": [
+        "Ministry of Local Government and Community Development",
+        "Board of Supervision Parish Poor Relief Department"
+      ],
+      "officialUrl": "https://mlgcd.gov.jm/"
+    },
+    "Grants (RADA / JBDC)": {
+      "agency": "Rural Agricultural Development Authority (RADA) · Jamaica Business Development Corporation (JBDC)",
+      "contactAgencies": [
+        "Rural Agricultural Development Authority",
+        "Jamaica Business Development Corporation"
+      ],
+      "officialUrl": "https://rada.gov.jm/"
+    },
+    "CHASE / Compassionate Medical Assistance": {
+      "agency": "Culture, Health, Arts, Sports and Education (CHASE) Fund",
+      "contactAgencies": [
+        "Culture, Health, Arts, Sports, and Education Fund"
+      ],
+      "officialUrl": "https://chase.org.jm/"
+    },
+    "MOHW Compassionate Fund Programme": {
+      "agency": "Ministry of Health and Wellness (MOHW)",
+      "contactAgencies": [
+        "Ministry of Health and Wellness"
+      ],
+      "officialUrl": "https://www.moh.gov.jm/"
+    },
+    "RHA Diagnostic Support": {
+      "agency": "Regional Health Authorities (RHAs)",
+      "contactAgencies": [
+        "Regional Health Authority"
+      ]
+    },
+    "NCDA Support": {
+      "agency": "National Council on Drug Abuse (NCDA)",
+      "contactAgencies": [
+        "National Council on Drug Abuse"
+      ],
+      "officialUrl": "https://ncda.org.jm/"
+    },
+    "Child Protection and Family Services Agency (CPFSA)": {
+      "agency": "Child Protection and Family Services Agency (CPFSA)",
+      "contactAgencies": [
+        "Child Protection & Family Services"
+      ],
+      "officialUrl": "https://childprotection.gov.jm/",
+      "logoUrl": "https://jis.gov.jm/media/2021/04/CPFSA-Logo-670x450-2.jpg",
+      "logoSourceUrl": "https://jis.gov.jm/cpfsa-says-persons-have-a-responsibility-to-report-cases-of-child-abuse/"
+    },
+    "Victim Services Branch": {
+      "agency": "Victim Services Branch · Ministry of Justice",
+      "contactAgencies": [
+        "Victim Services Branch"
+      ]
+    },
+    "Women's Centre Programme for Adolescent Mothers": {
+      "agency": "Women's Centre of Jamaica Foundation",
+      "contactAgencies": [
+        "Women's Centre of Jamaica Foundation"
+      ],
+      "officialUrl": "https://womenscentre.org.jm/"
+    },
+    "Senior Citizen Services / Meals on Wheels": {
+      "agency": "National Council for Senior Citizens",
+      "contactAgencies": [
+        "National Council for Senior Citizens"
+      ]
+    },
+    "Bureau of Gender Affairs Services": {
+      "agency": "Bureau of Gender Affairs",
+      "contactAgencies": [
+        "Bureau of Gender Affairs"
+      ],
+      "officialUrl": "https://mcges.gov.jm/"
+    },
+    "Rehabilitation Grants": {
+      "agency": "Ministry of Labour and Social Security (MLSS)",
+      "contactAgencies": [
+        "Ministry of Labour and Social Security"
+      ],
+      "officialUrl": "https://mlss.gov.jm/"
+    },
+    "Social Pension": {
+      "agency": "Ministry of Labour and Social Security (MLSS)",
+      "contactAgencies": [
+        "Ministry of Labour and Social Security"
+      ],
+      "officialUrl": "https://mlss.gov.jm/"
+    },
+    "Jamaica Drug for Elderly Programme": {
+      "agency": "National Health Fund (NHF)",
+      "contactAgencies": [
+        "National Health Fund"
+      ],
+      "officialUrl": "https://www.nhf.org.jm/"
+    },
+    "School Feeding": {
+      "agency": "School Feeding Programme",
+      "contactAgencies": []
+    },
+    "Jamaican Foundation for Lifelong Learning": {
+      "agency": "Jamaican Foundation for Lifelong Learning",
+      "contactAgencies": []
+    },
+    "Social Intervention Programme (SIP)": {
+      "agency": "Ministry of Labour and Social Security (MLSS)",
+      "contactAgencies": [
+        "Ministry of Labour and Social Security"
+      ],
+      "officialUrl": "https://mlss.gov.jm/"
+    },
+    "Steps to Work": {
+      "agency": "Ministry of Labour and Social Security (MLSS)",
+      "contactAgencies": [
+        "Ministry of Labour and Social Security"
+      ],
+      "officialUrl": "https://mlss.gov.jm/"
+    },
+    "Economic Empowerment Grant": {
+      "agency": "Ministry of Labour and Social Security (MLSS)",
+      "contactAgencies": [
+        "Ministry of Labour and Social Security"
+      ],
+      "officialUrl": "https://mlss.gov.jm/"
+    },
+    "NCDA Counselling and Treatment Support": {
+      "agency": "National Council on Drug Abuse (NCDA)",
+      "contactAgencies": [
+        "National Council on Drug Abuse"
+      ],
+      "officialUrl": "https://ncda.org.jm/"
+    },
+    "NHT Home Grant": {
+      "agency": "National Housing Trust (NHT)",
+      "contactAgencies": [
+        "National Housing Trust"
+      ],
+      "officialUrl": "https://www.nht.gov.jm/",
+      "logoUrl": "https://jis.gov.jm/media/2025/09/NHT-Logo-e1756835690206-1200x825.jpeg",
+      "logoSourceUrl": "https://jis.gov.jm/features/positive-feedback-to-expanded-national-housing-trust-benefits/"
+    },
+    "MLSS Emergency Assistance": {
+      "agency": "Ministry of Labour and Social Security (MLSS)",
+      "contactAgencies": [
+        "Ministry of Labour and Social Security"
+      ],
+      "officialUrl": "https://mlss.gov.jm/"
+    }
+  }
 }
