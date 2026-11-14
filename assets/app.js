@@ -89,8 +89,10 @@ function mapsSearchUrl(query){
 }
 function contactMarkup(contact){
   const text=esc(contact.details||'Contact details are not listed in the guide.');
-  const withEmail=text.replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi,email=>'<a href="mailto:'+email+'">'+email+'</a>');
-  return '<p class="linked-contact-details">'+withEmail.replace(/;\s*/g,'<br>')+'</p>';
+  let linked=text.replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi,email=>'<a href="mailto:'+email+'">'+email+'</a>');
+  linked=linked.replace(/(?:https?:\/\/)?(?:www\.)?[A-Z0-9.-]+\.(?:gov\.jm|org\.jm|com\.jm|gov|org|com)(?:\/[A-Z0-9._~:/?#\[\]@!$&'()*+,;=%-]*)?/gi,url=>{const href=url.startsWith('http')?url:'https://'+url;return '<a href="'+href+'" target="_blank" rel="noopener noreferrer">'+url+'</a>'});
+  linked=linked.replace(/(?:\+?1[\s.-]?)?\(?876\)?[\s.-]?\d{3}[\s.-]?\d{4}(?:-\d{1,2})?/g,phone=>'<a href="tel:'+phone.replace(/[^\d+]/g,'')+'">'+phone+'</a>');
+  return '<p class="linked-contact-details">'+linked.replace(/;\s*/g,'<br>')+'</p>';
 }
 function renderMap(){
   serviceCatalog=buildServiceCatalog();
