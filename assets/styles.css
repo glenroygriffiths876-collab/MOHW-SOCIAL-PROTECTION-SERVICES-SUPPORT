@@ -176,6 +176,6 @@
   .parish-pin.active::after{animation:none;display:none}
 }
 
-.service-logo-cluster{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px;width:100%;height:100%;align-items:center;justify-items:center}.service-logo-cluster .service-logo-image{max-width:23px;max-height:20px}.contact-card .service-logo{flex:0 0 58px;width:58px;height:52px}
+.service-logo-cluster{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px;width:100%;height:100%;align-items:center;justify-items:center}.service-logo-cluster .service-logo-image{max-width:28px;max-height:24px}.contact-card .service-logo{flex:0 0 58px;width:58px;height:52px}
 
 [hidden]{display:none!important}
