@@ -24,83 +24,38 @@
   }[(location.hash || '#about').slice(1)] || titleForPage());
 
   function mountHelp() {
-    if (q('#guideHelpFab')) return;
-    const dock = document.createElement('div');
-    dock.className = 'guide-tool-dock';
-    dock.innerHTML = '<button type="button" class="guide-help-fab" id="guideHelpFab" aria-label="Share this guide, report an issue, or send feedback" aria-expanded="false"><span aria-hidden="true">↗</span><span class="guide-help-label">Guide tools</span></button><section class="guide-help-panel" id="guideHelpPanel" aria-label="Guide tools" hidden><div class="guide-help-panel-head"><div><span class="guide-tool-kicker">Help us improve</span><h2>Guide tools</h2></div><button type="button" class="guide-tool-close" aria-label="Close guide tools">×</button></div><p>Share this guide or tell us what needs attention.</p><div class="guide-tool-options" id="guideToolOptions"><button type="button" data-guide-tool="share"><span>↗</span><b>Share link</b><small>Open your device’s share options.</small></button><button type="button" data-guide-tool="copy"><span>⧉</span><b>Copy link</b><small>Copy this guide’s web address.</small></button><button type="button" data-guide-tool="qr"><span>▦</span><b>QR code</b><small>Let someone scan the guide link.</small></button><button type="button" data-guide-tool="report"><span>⚑</span><b>Report an issue</b><small>Flag an incorrect detail, broken link, or technical problem.</small></button><button type="button" data-guide-tool="feedback"><span>✳</span><b>Send feedback</b><small>Suggest an improvement to the guide.</small></button></div><div id="guideShareQr" class="guide-share-qr" hidden><button type="button" class="guide-qr-back" data-guide-tool="back">← Share options</button><span class="guide-tool-kicker">SHARE THIS GUIDE</span><h3>Scan to open the guide</h3><div class="guide-qr-frame"><img id="guideQrImage" alt="QR code for this guide link"><p hidden>QR code needs an internet connection to load. You can still copy or share the link.</p></div><p>Open your phone camera and point it at the code.</p><button type="button" class="guide-copy-qr" data-guide-tool="copy">Copy guide link</button></div><small class="guide-tool-foot">Your message opens WhatsApp. It is not sent until you review and press Send.</small></section>';
+    if(q('#guideActionDock'))return;
+    const dock=document.createElement('nav');dock.id='guideActionDock';dock.className='guide-action-dock';dock.setAttribute('aria-label','Guide actions');
+    dock.innerHTML='<button class="guide-action share" data-action="share" aria-label="Share this guide" title="Share"><i>↗</i><span>Share</span></button><button class="guide-action issue" data-action="issue" aria-label="Report an issue" title="Report an issue"><i>⚑</i><span>Report</span></button><button class="guide-action feedback" data-action="feedback" aria-label="Send feedback" title="Send feedback"><i>✳</i><span>Feedback</span></button><button class="guide-action install" data-action="install" aria-label="Install this app" title="Install app"><i>↓</i><span>Install app</span></button>';
     document.body.append(dock);
-
-    const modal = document.createElement('dialog');
-    modal.className = 'guide-message-dialog';
-    modal.id = 'guideMessageDialog';
-    modal.setAttribute('aria-labelledby','guideMessageTitle');
-    modal.innerHTML = '<form method="dialog" id="guideMessageForm"><div class="guide-dialog-head"><div><span class="guide-tool-kicker">Social Protection Guide · Jamaica</span><h2 id="guideMessageTitle">Tell us what you think</h2></div><button type="button" class="guide-tool-close" id="guideMessageClose" aria-label="Close">×</button></div><p class="guide-message-intro" id="guideMessageIntro"></p><label class="guide-field-label" for="guideMessageType">What is this about?</label><select id="guideMessageType"><option>Feedback</option><option>Incorrect or outdated information</option><option>Broken link or contact</option><option>Technical issue</option><option>Accessibility suggestion</option><option>Other suggestion</option></select><label class="guide-field-label" for="guideMessageText">Your message</label><textarea id="guideMessageText" rows="5" maxlength="1200" placeholder="Describe the issue or suggestion. Please do not include anyone’s name, health details, or other private information." required></textarea><p class="guide-privacy-note">The message will include the page name and guide link to help us locate the issue. Please leave out personal or sensitive information.</p><div class="guide-dialog-actions"><button type="button" class="guide-secondary" id="guideMessageCancel">Cancel</button><button type="submit" class="guide-primary">Continue to WhatsApp <span>→</span></button></div></form>';
-    document.body.append(modal);
-
-    const fab=q('#guideHelpFab'), panel=q('#guideHelpPanel');
-    fab.addEventListener('click', () => {
-      const open=panel.hidden;
-      panel.hidden=!open;
-      fab.setAttribute('aria-expanded',String(open));
-      if(open) q('.guide-tool-close',panel).focus();
-    });
-    q('.guide-tool-close',panel).addEventListener('click', closePanel);
-    function closePanel(){ panel.hidden=true; fab.setAttribute('aria-expanded','false'); }
-    panel.addEventListener('click', async event => {
-      const button=event.target.closest('[data-guide-tool]'); if(!button)return;
-      const action=button.dataset.guideTool;
-      if(action==='share'){closePanel();await shareGuide();return;}
-      if(action==='copy'){await copyGuide();return;}
-      if(action==='qr'){q('#guideToolOptions')?.setAttribute('hidden','');q('#guideShareQr')?.removeAttribute('hidden');const image=q('#guideQrImage');if(image&&!image.src)image.src='https://api.qrserver.com/v1/create-qr-code/?size=360x360&margin=12&data='+encodeURIComponent(GUIDE_URL);return;}
-      if(action==='back'){q('#guideShareQr')?.setAttribute('hidden','');q('#guideToolOptions')?.removeAttribute('hidden');return;}
-      openMessage(action);
-    });
-    q('#guideMessageClose').addEventListener('click',()=>modal.close());
-    q('#guideMessageCancel').addEventListener('click',()=>modal.close());
-    modal.addEventListener('click',event=>{if(event.target===modal)modal.close();});
-    q('#guideMessageForm').addEventListener('submit',event=>{
-      event.preventDefault();
-      const text=q('#guideMessageText').value.trim();
-      if(!text){q('#guideMessageText').focus();return;}
-      const kind=q('#guideMessageType').value;
-      const message=[
-        'Social Protection Services Support Guide — '+(kind==='Feedback'?'Feedback':'Report / feedback'),
-        'Page: '+pageName(),
-        'Topic: '+kind,
-        'Message: '+text,
-        'Page link: '+location.href,
-        'Device view: '+window.innerWidth+' × '+window.innerHeight,
-        'Date: '+new Date().toLocaleString()
-      ].join('\n');
-      window.open('https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(message),'_blank','noopener,noreferrer');
-      modal.close();
-    });
-    function openMessage(action){
-      closePanel();
-      q('#guideMessageTitle').textContent=action==='report'?'Report an issue':'Send feedback';
-      q('#guideMessageIntro').textContent=action==='report'
-        ?'Tell us what is not working or which guide detail needs checking. Your WhatsApp app will open with a draft for you to review.'
-        :'Tell us what would make this guide more useful. Your WhatsApp app will open with a draft for you to review.';
-      q('#guideMessageType').value=action==='report'?'Technical issue':'Feedback';
-      q('#guideMessageText').value='';
-      modal.showModal();
-      setTimeout(()=>q('#guideMessageText').focus(),80);
-    }
-    async function copyGuide(){try{await navigator.clipboard.writeText(GUIDE_URL);showToast('Guide link copied. You can now share it.');}catch(error){showToast('Copy is unavailable here. Try Share link instead.');}}
-    async function shareGuide(){
-      const shareData={title:'Social Protection Services Support Guide · Jamaica',text:'Explore Jamaica’s Social Protection Services Support Guide by service, parish, and need.',url:GUIDE_URL};
-      if(navigator.share){
-        try{await navigator.share(shareData);return;}catch(error){if(error?.name==='AbortError')return;}
-      }
-      try{
-        await navigator.clipboard.writeText(GUIDE_URL);
-        showToast('Guide link copied. You can now share it.');
-      }catch(error){
-        const wa='https://wa.me/?text='+encodeURIComponent(shareData.text+' '+GUIDE_URL);
-        window.open(wa,'_blank','noopener,noreferrer');
-      }
-    }
+    const logo='https://dashboard.moh.gov.jm/static/images/moh2.85ae53e6c3ed.png';
+    const share=document.createElement('dialog');share.id='guideShareDialog';share.className='guide-message-dialog guide-share-dialog';share.setAttribute('aria-labelledby','guideShareTitle');
+    share.innerHTML='<div class="guide-dialog-head"><div class="guide-share-brand"><img src="'+logo+'" alt="Ministry of Health &amp; Wellness"><div><span class="guide-tool-kicker">JAMAICA · MOHW</span><h2 id="guideShareTitle">Share this guide</h2></div></div><button class="guide-tool-close" data-close aria-label="Close">×</button></div><p class="guide-message-intro">Help someone find social protection services and referral information.</p><div class="guide-share-options"><button data-share="native"><span>↗</span><b>Share link</b><small>Open your device’s sharing options</small></button><button data-share="copy"><span>⧉</span><b>Copy link</b><small>Copy the guide address</small></button><button data-share="whatsapp"><span>◉</span><b>WhatsApp</b><small>Send the guide link in a message</small></button><button data-share="qr"><span>▦</span><b>QR code</b><small>Let someone scan this guide</small></button></div><div class="guide-share-url"><span id="guideShareUrl"></span><button data-share="copy">Copy</button></div><div class="guide-share-qr" id="guideShareQr" hidden><img alt="QR code linking to the Social Protection Services Support Guide"><p>Scan with a phone camera to open the guide.</p></div>';
+    document.body.append(share);
+    const message=document.createElement('dialog');message.id='guideMessageDialog';message.className='guide-message-dialog';message.setAttribute('aria-labelledby','guideMessageTitle');
+    message.innerHTML='<form id="guideMessageForm"><div class="guide-dialog-head"><div class="guide-share-brand"><img src="'+logo+'" alt=""><div><span class="guide-tool-kicker">MOHW SOCIAL PROTECTION GUIDE</span><h2 id="guideMessageTitle">Send feedback</h2></div></div><button type="button" class="guide-tool-close" data-close aria-label="Close">×</button></div><p class="guide-message-intro" id="guideMessageIntro"></p><label class="guide-field-label" for="guideMessageType">What is this about?</label><select id="guideMessageType"><option>Feedback</option><option>Incorrect or outdated information</option><option>Broken link or contact</option><option>Technical issue</option><option>Accessibility suggestion</option><option>Other suggestion</option></select><label class="guide-field-label" for="guideMessageText">Your message</label><textarea id="guideMessageText" rows="5" maxlength="1200" placeholder="Tell us what happened or what would make the guide better." required></textarea><p class="guide-privacy-note">Please do not include anyone’s name, health details, or other private information. Nothing is sent until you review and press Send in WhatsApp.</p><div class="guide-dialog-actions"><button type="button" class="guide-secondary" data-close>Cancel</button><button type="submit" class="guide-primary">Continue to WhatsApp <span>→</span></button></div></form>';
+    document.body.append(message);
+    const install=document.createElement('dialog');install.id='guideInstallDialog';install.className='guide-message-dialog';install.setAttribute('aria-labelledby','guideInstallTitle');
+    install.innerHTML='<div class="guide-dialog-head"><div class="guide-share-brand"><img src="'+logo+'" alt=""><div><span class="guide-tool-kicker">MOHW · SOCIAL PROTECTION</span><h2 id="guideInstallTitle">Add this guide to your device</h2></div></div><button class="guide-tool-close" data-close aria-label="Close">×</button></div><div class="guide-install-card"><div class="guide-install-app-icon"><img src="'+logo+'" alt=""></div><div><b>Social Protection Guide</b><small>Jamaica · Ministry of Health &amp; Wellness</small></div><span class="guide-install-check">✓</span></div><p class="guide-message-intro" id="guideInstallInstructions">Install the guide for an app-style icon and a full-screen experience.</p><div class="guide-install-buttons"><button class="guide-primary" id="guideInstallNow">Install app <span>↓</span></button><button class="guide-secondary" data-close>Maybe later</button></div>';
+    document.body.append(install);
+    const shareUrl=GUIDE_URL; q('#guideShareUrl').textContent=shareUrl;
+    const open=d=>{if(!d.open)d.showModal()},close=d=>{if(d.open)d.close()};
+    const shareData={title:'MOHW Social Protection Services Support Guide',text:'Find social protection services and referral information across Jamaica.',url:shareUrl};
+    let deferred=null;
+    window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferred=e;});
+    window.addEventListener('appinstalled',()=>{deferred=null;showToast('The guide is installed on your device.');});
+    const copy=async()=>{try{await navigator.clipboard.writeText(shareUrl);}catch{const x=document.createElement('textarea');x.value=shareUrl;x.style='position:fixed;opacity:0';document.body.append(x);x.select();document.execCommand('copy');x.remove();}showToast('Guide link copied.');};
+    const nativeShare=async()=>{if(navigator.share){try{await navigator.share(shareData);return;}catch(e){if(e.name==='AbortError')return;}}await copy();};
+    const report=(issue)=>{q('#guideMessageTitle').textContent=issue?'Report an issue':'Send feedback';q('#guideMessageType').value=issue?'Technical issue':'Feedback';q('#guideMessageIntro').textContent=issue?'Tell us what is wrong or not working. The page name and link will be added automatically.':'Share a suggestion to help improve this guide.';q('#guideMessageText').value='';open(message);setTimeout(()=>q('#guideMessageText').focus(),50);};
+    const deviceInstructions=()=>/iphone|ipad|ipod/i.test(navigator.userAgent)?'In Safari, tap Share, then “Add to Home Screen”. Confirm the name and tap Add.':/android/i.test(navigator.userAgent)?'In Chrome, tap the menu (⋮), then “Install app” or “Add to Home screen”.':'In Chrome or Edge, use the install icon in the address bar or browser menu and choose “Install”.';
+    const installNow=async()=>{if(deferred){const p=deferred;deferred=null;close(install);try{await p.prompt();const c=await p.userChoice;if(c?.outcome==='accepted')showToast('The guide is being installed.');}catch{open(install);}return;}q('#guideInstallInstructions').textContent=deviceInstructions();q('#guideInstallNow').textContent='Got it';open(install);};
+    dock.addEventListener('click',e=>{const a=e.target.closest('[data-action]')?.dataset.action;if(a==='share'){q('#guideShareQr').hidden=true;open(share);}if(a==='issue')report(true);if(a==='feedback')report(false);if(a==='install')installNow();});
+    share.addEventListener('click',async e=>{const a=e.target.closest('[data-share]')?.dataset.share;if(!a)return;if(a==='native'){close(share);await nativeShare();}if(a==='copy')await copy();if(a==='whatsapp')window.open('https://wa.me/?text='+encodeURIComponent(shareData.text+' '+shareUrl),'_blank','noopener,noreferrer');if(a==='qr'){const box=q('#guideShareQr');box.hidden=false;const img=box.querySelector('img');if(!img.src)img.src='https://api.qrserver.com/v1/create-qr-code/?size=360x360&margin=12&data='+encodeURIComponent(shareUrl);}});
+    [share,message,install].forEach(d=>d.addEventListener('click',e=>{if(e.target===d||e.target.closest('[data-close]'))close(d);}));
+    q('#guideMessageForm').addEventListener('submit',e=>{e.preventDefault();const text=q('#guideMessageText').value.trim();if(!text){q('#guideMessageText').focus();return;}const topic=q('#guideMessageType').value;const body=['MOHW Social Protection Services Support Guide — '+q('#guideMessageTitle').textContent,'Page: '+pageName(),'Topic: '+topic,'Message: '+text,'Page link: '+location.href,'Device view: '+innerWidth+' × '+innerHeight,'Date: '+new Date().toLocaleString()].join('\\n');window.open('https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(body),'_blank','noopener,noreferrer');close(message);showToast('WhatsApp opened. Review your message before sending.');});
+    q('#guideInstallNow').addEventListener('click',async()=>{if(deferred){const p=deferred;deferred=null;close(install);try{await p.prompt();await p.userChoice;}catch{}}else close(install);});
   }
+
   function showToast(message){
     let toast=q('#guideToolToast');
     if(!toast){toast=document.createElement('div');toast.id='guideToolToast';toast.className='guide-tool-toast';toast.setAttribute('role','status');document.body.append(toast);}
