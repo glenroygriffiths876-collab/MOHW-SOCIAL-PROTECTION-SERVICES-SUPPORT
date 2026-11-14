@@ -7,8 +7,8 @@
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#f7f8fc",
-  "theme_color": "#063d31",
+  "background_color": "#070735",
+  "theme_color": "#070735",
   "icons": [
     {
       "src": "https://dashboard.moh.gov.jm/static/images/moh2.85ae53e6c3ed.png",
