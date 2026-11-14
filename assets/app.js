@@ -47,8 +47,107 @@ $('#modalClose').addEventListener('click',()=>$('#programmeModal').close());$('#
 function drawCategoryFilters(){const cats=['All',...new Set(data.categories.map(c=>c.category))];$('#categoryFilters').innerHTML=cats.map((c,i)=>`<button class="chip ${i===0?'active':''}" data-cat-filter="${esc(i===0?'all':c)}">${esc(i===0?'All categories':c)}</button>`).join('');$$('[data-cat-filter]').forEach(b=>b.addEventListener('click',()=>{categoryFilter=b.dataset.catFilter;$$('[data-cat-filter]').forEach(x=>x.classList.toggle('active',x===b));renderCategories()}))}
 function renderCategories(){const q=norm($('#categorySearch').value);const list=data.categories.filter(c=>(categoryFilter==='all'||c.category===categoryFilter)&&(!q||norm(Object.values(c).join(' ')).includes(q)));$('#categoryCount').textContent=`${list.length} listings across ${new Set(list.map(c=>c.category)).size} categories · Source: supplied guide`;$('#categoryCards').innerHTML=list.length?list.map(c=>`<article class="category-card"><span class="tag">${esc(c.category)}</span><h3>${esc(c.programme)}</h3><p>${esc(c.benefits)}</p><span class="category-programme"><b>Guide names as target group:</b> ${esc(c.target)}</span></article>`).join(''):'<div class="empty-state">No category listing matches this search.</div>'}
 $('#categorySearch').addEventListener('input',renderCategories);
-function renderDecision(){const q=norm($('#decisionSearch').value);const list=data.decision.filter(d=>!q||norm(Object.values(d).join(' ')).includes(q));$('#decisionCards').innerHTML=list.length?list.map(d=>`<article class="decision-card"><h3>${esc(d.situation)}</h3><p>${esc(d.options)}</p><div class="provider"><b>Named provider:</b> ${esc(d.provider)}</div></article>`).join(''):'<div class="empty-state">No pathway matches this search.</div>'}
+let selectedDecisionSituation='';
+const decisionLabels={
+ 'Someone who wants/needs mental health support':'Mental health and wellbeing',
+ 'A Parent or Student':'Family, school and student support',
+ 'A Senior (60+)':'Support for seniors',
+ 'Looking for Skills Training and Work':'Training and employment',
+ 'A Person with a Disability':'Disability support',
+ 'In a Crisis (Fire, Death)':'Crisis, bereavement and emergency',
+ 'An Entrepreneur/Farmer/ Backyard Gardening':'Business, farming and gardening',
+ 'A Patient Needing Tests':'Tests and diagnostic support',
+ 'A Patient Needing Treatment':'Help with treatment costs',
+ 'Affected by Substance Misuse':'Substance-use support',
+ 'Experiencing Abuse, Domestic Violence, or GBV':'Safety, abuse and violence support',
+ 'Affected by Disaster or Fire':'Disaster recovery',
+ 'A Pregnant Adolescent or Adolescent Mother or Vulnerable Chidren':'Adolescent parents and vulnerable children'
+};
+const decisionIcons=[
+ {match:/mental|substance|wellbeing/i,icon:'♡'},
+ {match:/family|school|student|adolescent/i,icon:'⌂'},
+ {match:/senior/i,icon:'✿'},
+ {match:/training|employment|business|farming/i,icon:'↗'},
+ {match:/disability/i,icon:'◎'},
+ {match:/crisis|emergency|disaster/i,icon:'✳'},
+ {match:/test|diagnostic|treatment/i,icon:'✚'},
+ {match:/safety|abuse|violence/i,icon:'⌑'}
+];
+function decisionLabel(s){return decisionLabels[s]||s.replace('Chidren','Children')}
+function decisionIcon(s){return decisionIcons.find(x=>x.match.test(decisionLabel(s)))?.icon||'✦'}
+function decisionMatchText(d){return norm(Object.values(d).join(' '))}
+function decisionServiceMatches(d){
+ const query=String(d.options||'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+ const matches=[];
+ serviceCatalog.forEach((s,index)=>{
+  const names=[s.name,...(s.aliases||[]),...(s.categoryRows||[]).map(r=>r.programme)];
+  if(names.some(name=>{
+   const term=String(name).toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+   return term.length>=4&&query.includes(term);
+  }))matches.push(index);
+ });
+ const hints=[
+  [/mental health|suicide|substance misuse|substance use|ncda/i,['NCDA Support']],
+  [/rehabilitation/i,['Rehabilitation Grants']],
+  [/stw|ojt|sip|steps to work/i,['Steps to Work','Social Intervention Programme (SIP)']],
+  [/school feeding|tertiary grants/i,['School Feeding','PATH']],
+  [/nhf card|low.cost medicine|drug for elderly/i,['NHF','Jamaica Drug for Elderly Programme']],
+  [/social pension/i,['Social Pension']],
+  [/nis|nis pension/i,['NIS']],
+  [/senior citizen|meals on wheels|infirmary|institutional care/i,['Senior Citizen Services / Meals on Wheels','Local Government Assistance','Poor Relief']],
+  [/heart\s*\/?\s*nsta|skills training/i,['HEART / NSTA']],
+  [/economic empowerment/i,['Economic Empowerment Grant']],
+  [/accessibility modification|home modification|nht/i,['National Housing Trust (NHT)']],
+  [/small business|jbdc|mida|rada grants|farming support/i,['Grants (RADA / JBDC)']],
+  [/diagnostic|ct scans|mri/i,['RHA Diagnostic Support']],
+  [/compassionate fund|chase medical/i,['CHASE / Compassionate Medical Assistance','MOHW Compassionate Fund Programme']],
+  [/victim services|domestic violence|bga|no.abuse|shelter|gbv/i,['Bureau of Gender Affairs Services','Victim Services Branch']],
+  [/child protection|vulnerable children/i,['Child Protection and Family Services Agency (CPFSA)']],
+  [/disaster|emergency poor relief|rehabilitation \/ compassionate/i,['MLSS Emergency Assistance','Local Government Assistance']],
+  [/women.s centre|adolescent mother/i,["Women's Centre Programme for Adolescent Mothers"]]
+ ];
+ const addByName=name=>{const normalized=name.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();serviceCatalog.forEach((s,index)=>{if(s.name.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim()===normalized&&!matches.includes(index))matches.push(index)})};
+ hints.forEach(([pattern,names])=>{if(pattern.test(d.options||''))names.forEach(addByName)});
+ return matches.slice(0,3);
+}
+function renderDecision(){
+ const input=$('#decisionSearch'),q=norm(input?.value).trim();
+ const groups=[...new Set(data.decision.map(d=>d.situation))].map(situation=>({situation,items:data.decision.filter(d=>d.situation===situation)}));
+ const visibleGroups=groups.filter(g=>!q||g.items.some(d=>decisionMatchText(d).includes(q))||norm(g.situation).includes(q));
+ $('#decisionTally').textContent=q?visibleGroups.length+' matching '+(visibleGroups.length===1?'situation':'situations')+' · search also checks options and agencies':groups.length+' situations · '+data.decision.length+' guide options';
+ $('#decisionSituations').innerHTML=visibleGroups.length?visibleGroups.map((g,i)=>'<button type="button" class="decision-situation-card tone-'+(i%4)+' '+(selectedDecisionSituation===g.situation?'active':'')+'" data-decision-situation="'+esc(g.situation)+'" aria-pressed="'+(selectedDecisionSituation===g.situation)+'"><span class="decision-situation-icon">'+decisionIcon(g.situation)+'</span><span class="decision-situation-copy"><b>'+esc(decisionLabel(g.situation))+'</b><small>'+g.items.length+' '+(g.items.length===1?'guide option':'guide options')+'</small></span><span class="decision-situation-arrow">→</span></button>').join(''):'<div class="empty-state">No situation matches that search. Try a programme, agency, or a broader word.</div>';
+ let routes=[];
+ if(selectedDecisionSituation){routes=data.decision.filter(d=>d.situation===selectedDecisionSituation&&(!q||decisionMatchText(d).includes(q)))}
+ else if(q){routes=data.decision.filter(d=>decisionMatchText(d).includes(q))}
+ const heading=$('#decisionResultsHeading');
+ if(!routes.length){
+  if(selectedDecisionSituation&&q)heading.innerHTML='<div><div class="eyebrow"><i></i> Refine your search</div><h2>No options match “'+esc(input.value.trim())+'” in '+esc(decisionLabel(selectedDecisionSituation))+'.</h2><p>Clear the search to see every option for this situation, or choose another situation above.</p></div><button type="button" class="decision-clear" data-decision-clear-search>Clear search</button>';
+  else if(q)heading.innerHTML='<div><div class="eyebrow"><i></i> Search results</div><h2>Guide options matching “'+esc(input.value.trim())+'”</h2><p>Choose a situation above to narrow these results.</p></div>';
+  else heading.innerHTML='<div><div class="eyebrow"><i></i> Your next step</div><h2>Choose a situation to see possible routes.</h2><p>Each route below will connect you to the relevant service profile or agency listings in Find Services.</p></div>';
+  $('#decisionCards').innerHTML='<div class="decision-route-empty"><span>✦</span><div><b>Start with what is happening.</b><p>Pick one of the situation tiles above, or search for a programme, service, or agency.</p></div></div>';
+  return;
+ }
+ heading.innerHTML='<div><div class="eyebrow"><i></i> '+(selectedDecisionSituation?'Possible routes for this situation':'Search results from the guide')+'</div><h2>'+(selectedDecisionSituation?esc(decisionLabel(selectedDecisionSituation)):'Matching guide options')+'</h2><p>'+routes.length+' '+(routes.length===1?'option':'options')+' listed in the guide. Select an option to explore service details.</p></div><button type="button" class="decision-clear" data-decision-clear-selection>See all situations</button>';
+ $('#decisionCards').innerHTML=routes.map((d,i)=>{
+   const related=decisionServiceMatches(d);
+   const actions=related.length?related.map(index=>'<button type="button" class="decision-profile-link" data-decision-service="'+index+'">View '+esc(serviceCatalog[index].name)+' details <span>↗</span></button>').join(''):'';
+   return '<article class="decision-card decision-route-card tone-'+(i%4)+'"><div class="decision-route-icon">'+decisionIcon(d.situation)+'</div><div class="decision-route-copy"><span class="decision-route-label">OPTION '+String(i+1).padStart(2,'0')+'</span><h3>'+esc(d.options)+'</h3><div class="provider"><b>Named provider</b><span>'+esc(d.provider)+'</span></div><div class="decision-card-actions">'+actions+'<button type="button" class="decision-directory-link" data-decision-directory="'+esc(d.provider)+'">Browse agency listings <span>→</span></button></div></div></article>';
+ }).join('');
+}
 $('#decisionSearch').addEventListener('input',renderDecision);
+$('#decisionSituations').addEventListener('click',e=>{const b=e.target.closest('[data-decision-situation]');if(!b)return;selectedDecisionSituation=b.dataset.decisionSituation;renderDecision();$('#decisionResultsHeading').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'})});
+$('#decisionReset').addEventListener('click',()=>{selectedDecisionSituation='';$('#decisionSearch').value='';renderDecision()});
+$('#decisionResultsHeading').addEventListener('click',e=>{if(e.target.closest('[data-decision-clear-selection]')){selectedDecisionSituation='';renderDecision()}else if(e.target.closest('[data-decision-clear-search]')){$('#decisionSearch').value='';renderDecision()}});
+$('#decisionCards').addEventListener('click',e=>{
+ const profile=e.target.closest('[data-decision-service]');
+ if(profile){openService(Number(profile.dataset.decisionService));return}
+ const directory=e.target.closest('[data-decision-directory]');
+ if(directory){
+  showView('services');selectedParish='ALL';mapFilter='all';$('#parishFilter').value='ALL';$('#serviceSearch').value=directory.dataset.decisionDirectory;
+  $('[data-map-filter]').forEach(b=>b.classList.toggle('active',b.dataset.mapFilter==='all'));
+  $('[data-parish]').forEach(b=>b.classList.remove('active'));renderMapResults();
+ }
+});
 function renderContacts(){const q=norm($('#contactSearch').value);const list=data.contacts.filter(c=>!q||norm(c.agency+' '+c.details).includes(q));$('#contactCards').innerHTML=list.length?list.map(c=>{const meta=metadataForContact(c);return `<article class="contact-card"><div class="card-top"><span class="service-logo">${logoMarkup({name:c.agency,agency:c.agency,meta:{}})}</span><span class="tag">Agency contact</span></div><h3>${esc(c.agency)}</h3><p class="contact-info">${esc(c.details)}</p>${socialLinksMarkup(meta.socialLinks)}<span class="verify-label">Copied from draft · Verify before use</span></article>`}).join(''):'<div class="empty-state">No agency matches this search.</div>';$('#hotlineList').innerHTML=`<div class="hotline-text">${esc(data.hotlines)}</div>`;$('#documentCards').innerHTML=data.documents.map(d=>`<article class="document-card"><h3>${esc(d.document)}</h3><dl><div><dt>Where to apply</dt><dd>${esc(d.where)}</dd></div><div><dt>Requirements</dt><dd>${esc(d.requirements)}</dd></div><div><dt>Process</dt><dd>${esc(d.process)}</dd></div><div><dt>Cost stated in booklet</dt><dd>${esc(d.cost)}</dd></div></dl><span class="verify-label">Draft · confirm current fees and requirements</span></article>`).join('')}
 $('#contactSearch').addEventListener('input',renderContacts);
 function serviceKey(value){
@@ -210,5 +309,5 @@ function openService(index){
   modal.showModal();
 }
 
-async function init(){try{const r=await fetch('data/guide-content.json?v=directory-8', {cache:'no-store'});if(!r.ok)throw Error('Content unavailable');data=await r.json();drawAbout();drawReferrals();drawProgramFilters();renderProgrammes();drawCategoryFilters();renderCategories();renderDecision();renderContacts();renderMap();let initial=location.hash.slice(1);if(['programmes','categories','contacts'].includes(initial))initial='services';showView(NAV.includes(initial)?initial:'about')}catch(e){console.error(e);$('#main').innerHTML='<div class="wrap page-content"><div class="empty-state"><b>Guide content could not be loaded.</b> Refresh the page or contact the site owner.</div></div>'}}
+async function init(){try{const r=await fetch('data/guide-content.json?v=directory-8', {cache:'no-store'});if(!r.ok)throw Error('Content unavailable');data=await r.json();drawAbout();drawReferrals();drawProgramFilters();renderProgrammes();drawCategoryFilters();renderCategories();renderDecision();renderContacts();renderMap();renderDecision();let initial=location.hash.slice(1);if(['programmes','categories','contacts'].includes(initial))initial='services';showView(NAV.includes(initial)?initial:'about')}catch(e){console.error(e);$('#main').innerHTML='<div class="wrap page-content"><div class="empty-state"><b>Guide content could not be loaded.</b> Refresh the page or contact the site owner.</div></div>'}}
 init();
