@@ -1,0 +1,26 @@
+{
+  "metadata": {
+    "contentStatus": "awaiting-authorization",
+    "notice": "Do not add content from the confidential draft while this repository is public unless release is approved.",
+    "lastReviewed": null
+  },
+  "schema": [
+    "serviceName",
+    "category",
+    "agency",
+    "parish",
+    "coverageArea",
+    "summary",
+    "whereToStart",
+    "requirements",
+    "process",
+    "cost",
+    "phone",
+    "email",
+    "website",
+    "sourceUrl",
+    "verifiedOn",
+    "verificationStatus"
+  ],
+  "services": []
+}
