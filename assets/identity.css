@@ -1,26 +1,31 @@
-:root{--mohw-forest:#063d31;--mohw-navy:#070735;--mohw-cyan:#08d9eb;--mohw-magenta:#e20c79;--mohw-gold:#ffc928}
+:root{--green:#1268a7;--green2:#e20c79;--gold:#ffc928;--red:#e20c79;--ink:#1b2947;--muted:#5c6785;--line:#e8e5f2;--paper:#070735;--white:#fffdf7;--dark:#070735;--mohw-navy:#070735;--mohw-cyan:#08d9eb;--mohw-magenta:#e20c79;--mohw-gold:#ffc928}
 html{min-height:100%;background:#070735!important}
-body{min-height:100vh;background-color:#070735!important;background-image:linear-gradient(rgba(7,7,53,.3),rgba(7,7,53,.3)),url('./geometry-bg.svg?v=navy-geometry-2')!important;background-position:center top;background-size:cover;background-attachment:fixed;background-repeat:no-repeat;color:#f8f7ff}
-.site-header{background:#063d31!important;color:#fff!important;box-shadow:0 12px 34px #031c1745}
-.site-header .nav button{color:#f3fff9}
-.site-header .nav button:hover,.site-header .nav button.active{background:#ffffff19}
-.site-header .brand-copy b{color:#fff}.site-header .brand-copy small{color:#cae8d7}
+body{min-height:100vh;background-color:#070735!important;background-image:linear-gradient(90deg,rgba(7,7,53,.48) 0%,rgba(7,7,53,.20) 50%,rgba(7,7,53,.10) 100%),url('./geometry-bg.svg?v=navy-geometry-2')!important;background-position:center top;background-size:cover;background-attachment:fixed;background-repeat:no-repeat;color:#f8f7ff}
+.site-header{background-color:#070735!important;background-image:linear-gradient(rgba(7,7,53,.30),rgba(7,7,53,.30)),url('./geometry-bg.svg?v=navy-geometry-2')!important;background-position:center,center 7%;background-size:cover,520px auto;background-repeat:no-repeat,repeat-x;color:#fff!important;box-shadow:0 10px 28px #07073588;border-bottom:1px solid #ffffff2e}
+.site-header .nav button{color:#f3f5ff}
+.site-header .nav button:hover,.site-header .nav button.active{background:#ffffff20}
+.site-header .brand-copy b{color:#fff}.site-header .brand-copy small{color:#e1e4ff}
+.site-header .brand-mark{background:#fff!important;color:#070735;box-shadow:0 6px 18px #0004}
 .topline{background:linear-gradient(90deg,#08d9eb 0 22%,#ffc928 22% 40%,#e20c79 40% 62%,#06c97b 62% 82%,#7427df 82%)}
 main,.view{background:transparent!important;color:#f8f7ff}
-.hero,.referral-hero,.referral-journey,.page-hero,.nav-section,.home-intro,.about-story,.referral-start-section,.referral-care-section,.referral-followup-section{
- background-color:transparent!important;background-image:none!important;color:#f8f7ff!important
-}
+.hero,.referral-hero,.referral-journey,.page-hero,.nav-section,.home-intro,.about-story,.referral-start-section,.referral-care-section,.referral-followup-section{background-color:transparent!important;background-image:none!important;color:#f8f7ff!important}
 .home-intro,.section-tight,.page-content{background-color:transparent!important;color:#f8f7ff}
 .home-intro h2,.section-head h2,.about-story-copy h2,.page-hero h1,.referral-section-intro h2,.journey-intro h2{color:#fff}
 .home-intro .lead,.home-intro .section-head p,.about-story-copy p,.page-hero p,.section-head>p{color:#d6d5ea}
-.eyebrow,.referral-overline{color:#8fe8d0}
+.eyebrow,.referral-overline{color:#90e8ef}
 .home-intro .accent,.about-story-copy .accent,.page-hero .accent{color:#ffd347}
-.page-hero{border-color:#ffffff22}
-.chapter-card,.home-card,.referral-route-card,.referral-care-card,.referral-followup-card,.intro-side,.disclaimer,.step-card,.programme-card,.category-card,.decision-card,.contact-card,.document-card,.map-card,.map-aside,.service-card{color:#19382f}
+.page-hero{border-color:#ffffff35}
+.chapter-card,.home-card,.referral-route-card,.referral-care-card,.referral-followup-card,.intro-side,.disclaimer,.step-card,.programme-card,.category-card,.decision-card,.contact-card,.document-card,.map-card,.map-aside,.service-card{color:#19304b}
 .chapter-card,.home-card,.referral-route-card,.referral-care-card,.referral-followup-card,.intro-side,.step-card,.programme-card,.category-card,.decision-card,.contact-card,.document-card,.map-card,.map-aside,.service-card{background-color:#fffdf7}
-footer{background:#070735!important;color:#e8e7f7!important;border-top:1px solid #ffffff25}
-.btn.primary,.find{background:linear-gradient(135deg,#0b7654,#08a9a5)!important;color:#fff!important}
+footer{background-color:#070735!important;background-image:linear-gradient(rgba(7,7,53,.28),rgba(7,7,53,.28)),url('./geometry-bg.svg?v=navy-geometry-2')!important;background-position:center;background-size:cover;color:#f0efff!important;border-top:1px solid #ffffff35}
+.btn.primary,.find{background:linear-gradient(120deg,#e20c79,#8122d8 52%,#08a9d4)!important;color:#fff!important}
 .btn.primary:hover{filter:brightness(1.1)}
-::selection{background:#f4c52f;color:#102d28}
-@media(max-width:760px){body{background-attachment:fixed;background-position:center top;background-size:auto 100vh}}
+.guide-action-dock{background-color:#070735!important;background-image:linear-gradient(rgba(7,7,53,.72),rgba(7,7,53,.72)),url('./geometry-bg.svg?v=navy-geometry-2')!important;background-position:center;background-size:cover;border-color:#ffffff55}
+.guide-action.share,.guide-primary,.guide-tool-toast,.gia-launcher,.gia-head,.hotline-panel,.practice-note{background-color:#070735!important;background-image:linear-gradient(120deg,rgba(7,7,53,.76),rgba(7,7,53,.68)),url('./geometry-bg.svg?v=navy-geometry-2')!important;background-position:center;background-size:cover;color:#fff!important}
+.guide-action.feedback{background:#087c78!important}
+.guide-action.issue{background:#d94e57!important}
+.guide-action.install{background:#f0bb2f!important;color:#15382d!important}
+.aside-icon,.art-center{background:#070735!important;color:#ffc928}
+::selection{background:#ffc928;color:#070735}
+@media(max-width:760px){body{background-attachment:scroll;background-position:left top;background-size:auto 100vh}.site-header{background-size:cover,420px auto}.hero,.referral-hero,.referral-journey,.page-hero,.nav-section,.home-intro,.about-story,.referral-start-section,.referral-care-section,.referral-followup-section{background-size:cover,auto 100%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
