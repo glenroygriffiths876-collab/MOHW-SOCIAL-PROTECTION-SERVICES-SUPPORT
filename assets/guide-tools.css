@@ -119,3 +119,15 @@
  .gia-launcher{bottom:calc(max(9px,env(safe-area-inset-bottom)) + 68px)!important}
  .gia-panel{bottom:calc(max(9px,env(safe-area-inset-bottom)) + 126px)!important;height:min(680px,calc(100dvh - 185px))}
 }
+
+/* Compact desktop controls keep the directory unobstructed; labels appear on hover/focus. */
+@media(min-width:601px){
+ .guide-action-dock{gap:11px}
+ .guide-action{position:relative;min-width:52px;width:52px;height:52px;min-height:52px;padding:10px;justify-content:center;border-radius:50%}
+ .guide-action svg{width:26px;height:26px;flex:none}
+ .guide-action>span{position:absolute;clip:rect(0 0 0 0);clip-path:inset(50%);width:1px;height:1px;overflow:hidden;white-space:nowrap}
+ .guide-action:hover>span,.guide-action:focus-visible>span{position:absolute;clip:auto;clip-path:none;right:calc(100% + 12px);top:50%;transform:translateY(-50%);width:auto;height:auto;overflow:visible;padding:8px 11px;border-radius:9px;background:#073f32;color:#fff;white-space:nowrap;box-shadow:0 6px 18px #051e1740;font-size:12px}
+}
+.guide-action svg{display:block;width:25px;height:25px}
+.guide-share-options button>span{font-size:0}
+.guide-share-options button>span:before{font-size:18px}
