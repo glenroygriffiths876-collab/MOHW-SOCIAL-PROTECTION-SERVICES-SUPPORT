@@ -289,6 +289,25 @@
       "<small>Address or agency page listed in an official directory, not a confirmed appointment, eligibility decision, opening status or GPS pin. Source directory checked 15 November 2026.</small></section>";
   }
 
+
+  // Only generic (non-case) context is retained on the device, for this tab.
+  // Never persist questions, numbers, documents, case details or messages.
+  function storeContext(){
+    try{window.sessionStorage?.setItem("mohw-gia-context",JSON.stringify({role:state.role,parish:state.parish}));}catch{}
+  }
+  function restoreContext(){
+    try{
+      const saved=JSON.parse(window.sessionStorage?.getItem("mohw-gia-context")||"{}");
+      if(saved.role==="client"||saved.role==="provider")state.role=saved.role;
+      if(PARISHES.includes(saved.parish))state.parish=saved.parish;
+    }catch{}
+  }
+  function genericDestination(){
+    const s=state.selected;
+    return s&&s.kind!=="custom"&&!state.localOfficeUsed&&
+      [s.agency,s.name].some(v=>v&&normal(v)===normal(state.destination));
+  }
+
   function topicMatches(query){
     return TOPICS.filter(t=>t.pattern.test(query)).map(t=>t.id);
   }
@@ -512,6 +531,8 @@
     const name=state.destination.trim()||(s?.agency||"Receiving service to confirm");
     const map=mapsUrl(name,state.parish,state.mapsProvided);
     const officialOffice=state.localOfficeUsed===state.parish?"Office chosen from official parish directory; current opening and service must still be confirmed.":"";
+    const officialLink=state.localOfficeUsed===state.parish ?
+      (directoryRoute(s)==="nht"?parishRecord()?.nht?.source:parishRecord()?.mlss?.source)||"" : "";
     const base=guideDocs(s),extra=workerDocs();
     const list=(arr,offset)=>arr.map((d,i)=>(state.ready.has(offset+i)?"☑ ":"☐ ")+d);
     const locationLine=(state.mapsProvided.trim()&&validMapsLink(state.mapsProvided)?
@@ -526,6 +547,7 @@
         "Parish: "+(state.parish==="Not selected"?"To be confirmed":state.parish),
         locationLine,
         officialOffice,
+        officialLink?"Office listing source: "+officialLink:"",
         "",
         "Could you please confirm:",
         "• Whether this is the appropriate service and office",
@@ -546,6 +568,7 @@
       "Parish: "+(state.parish==="Not selected"?"Please confirm":state.parish),
       locationLine,
       officialOffice,
+      officialLink?"Office listing source: "+officialLink:"",
       "",
       "DOCUMENT CHECKLIST",
       ...(base.length?["Listed in the support guide (confirm current requirements):",...list(base,0)]:[]),
@@ -721,7 +744,7 @@
     if(/^(?:start again|reset|new request)$/.test(lower)){act("start");return;}
     const parish=extractParish(question);
     if(parish&&parish!==state.parish){
-      state.parish=parish;
+      state.parish=parish;storeContext();
       if(state.localOfficeUsed){state.localOfficeUsed="";state.destination=state.selected?.agency||"";state.mapsProvided="";state.consent=false;}
     }
     const numberInText=question.match(/(?:\+?1[\s().-]*)?(?:876|658)[\s().-]*\d{3}[\s().-]*\d{4}/);
@@ -843,6 +866,10 @@
     if(!digits){message("Enter a valid phone number, including the area or country code.",true);$("#gia2To")?.focus();return;}
     if(!parishChosen()){message("Please choose the destination parish first, so the referral does not point to the wrong place.",true);$("#gia2Parish")?.focus();return;}
     if(!state.destination.trim()){message("Enter the office or facility you want the recipient to find.",true);$("#gia2Destination")?.focus();return;}
+    if(state.recipientMode==="client"&&genericDestination()){
+      message("Please confirm the specific local office before sending travel directions. Select a verified parish listing when available, or enter the confirmed office name/address. You can also send a general enquiry to the agency.",true);
+      $("#gia2Destination")?.focus();return;
+    }
     if(state.mapsProvided.trim()&&!validMapsLink(state.mapsProvided)){message("That is not a supported Google Maps link. Correct the link or leave it blank to use a Maps search.",true);$("#gia2Map")?.focus();return;}
     if(!state.consent){message("Please confirm the recipient agrees to receive this information and that you have reviewed its contents.",true);$("#gia2Consent")?.focus();return;}
     const url="https://wa.me/"+digits+"?text="+encodeURIComponent(referralText());
@@ -862,7 +889,7 @@
     }
     if(action==="ask"){state.question="";show("home");$("#gia2Question")?.focus();return;}
     if(action.startsWith("role:")){
-      state.role=action.slice(5)==="provider"?"provider":"client";render();return;
+      state.role=action.slice(5)==="provider"?"provider":"client";storeContext();render();return;
     }
     if(action.startsWith("useOffice:")){
       const kind=action.slice(10);
@@ -914,6 +941,7 @@
     }
     if(action==="openWhatsApp"){launchWhatsApp();return;}
     if(action==="copyReferral"){
+      if(state.recipientMode==="client"&&genericDestination()){message("Please confirm the exact local office before sharing visit directions. Agency enquiries can be prepared without one.",true);return;}
       if(!parishChosen()){message("Choose a parish to create parish-specific referral directions.",true);return;}
       if(state.mapsProvided.trim()&&!validMapsLink(state.mapsProvided)){message("Correct or remove the invalid Google Maps link first.",true);return;}
       copy(referralText());return;
@@ -945,10 +973,10 @@
     });
     dialog.addEventListener("change",e=>{
       if(e.target.id==="gia2Role"){
-        preserveInputs();state.role=e.target.value;render();return;
+        preserveInputs();state.role=e.target.value;storeContext();render();return;
       }
       if(e.target.id==="gia2Parish"){
-        preserveInputs();render();return;
+        preserveInputs();storeContext();render();return;
       }
       if(e.target.id==="gia2ContextParish"){
         preserveInputs();
@@ -958,7 +986,7 @@
           state.destination=state.selected?.agency||"";
           state.mapsProvided="";state.localOfficeUsed="";state.consent=false;
         }
-        render();return;
+        storeContext();render();return;
       }
       if(e.target.matches("[data-doc]")){
         const i=Number(e.target.dataset.doc);
@@ -979,7 +1007,7 @@
           state.localOfficeUsed="";state.destination=state.selected?.agency||"";
           state.mapsProvided="";state.consent=false;
         }
-        state.parish=parish;
+        state.parish=parish;storeContext();
         if($("#gia2Dialog")?.open)render();
       },
       getParish:()=>state.parish,
@@ -1007,6 +1035,7 @@
       if(response.ok)parishDirectory=await response.json();
       else throw new Error("Local directory unavailable");
     }catch(error){console.warn("GIA parish data unavailable; map search remains usable",error);}
+    restoreContext();
     mount();
   },{once:true});
 })();
