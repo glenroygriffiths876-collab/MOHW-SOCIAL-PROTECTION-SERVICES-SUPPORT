@@ -154,3 +154,7 @@
 .gia2-voice:focus-visible{outline:3px solid #efaa54;outline-offset:2px}
 .gia2-optional select{width:100%;box-sizing:border-box;color:#214733;background:#fff;border:1px solid #b9d1c0;border-radius:9px;padding:10px;font-size:13px}
 @media(max-width:620px){.gia2-roadmap article{padding:11px}.gia2-barriers .gia2-pill{font-size:11px}}
+
+.gia2-barriers summary{cursor:pointer;font-weight:800;font-size:12px;color:#245b3c;list-style-position:inside;padding:6px 0}
+.gia2-barriers[open] summary{margin-bottom:9px}
+.gia2-barriers summary:focus-visible{outline:3px solid #efaa54;outline-offset:2px;border-radius:5px}
