@@ -276,8 +276,9 @@
       "<p>Police stations and their contact arrangements can differ within "+label+". Confirm the correct station and emergency arrangements through official channels. Do not treat a Maps result as a verified station.</p>"+
       linkTo(mapSearch(state.destination||"Police Station"),"Search police stations on Maps");
     else if(route==="health")content=
-      "<p>For public healthcare referrals, "+label+" is served by the <strong>"+esc(p.healthAuthority.name)+"</strong>. Confirm the particular hospital, health centre or social work service before advising travel.</p>"+
-      linkTo(parishDirectory.sources.health,"MOHW health authorities")+
+      "<p>"+(roleIsProvider()?"For a healthcare or social-service handover in ":"For help finding public health services in ")+label+", contact the <strong>"+esc(p.healthAuthority.name)+"</strong> or the parish health department. The exact clinic or social-work service must be confirmed.</p>"+
+      localOfficeMarkup(p.healthDept,"healthDept",false)+
+      linkTo(p.healthAuthority.source||parishDirectory.sources.health,"Official health region directory")+
       linkTo(mapSearch(s?.kind==="custom" ? state.destination||"public health centre" : s?.name||"health centre"),"Search "+state.parish+" services on Maps")+
       (/(?:medicat|medicin|prescri|pharmac|drug serv)/i.test(state.question+" "+s?.name)?localOfficeMarkup(p.drugServ,"drugServ",false):"");
     else content=
