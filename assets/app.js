@@ -261,6 +261,7 @@ function renderMap(){
   $('#mapCaveat').textContent=data.mapParishCaveat;
   $('#directoryHotlines').innerHTML='<h3>Quick contacts listed in the guide</h3><div class="quick-contact-grid">'+(data.quickContacts||[]).map(c=>'<div class="quick-contact"><b>'+esc(c.label)+'</b><span>'+esc(c.details)+'</span></div>').join('')+'</div>';
   $('#serviceResults').addEventListener('click',e=>{const b=e.target.closest('[data-service-open]');if(b)openService(Number(b.dataset.serviceOpen))});
+  $('#serviceModalBody').addEventListener('click',e=>{const button=e.target.closest('[data-gia-referral]');if(!button)return;$('#serviceModal').close();if(window.MOHWGIA?.openReferral)window.MOHWGIA.openReferral(button.dataset.giaReferral);else alert('GIA is unavailable. Please reload this page.');});
   $('#serviceModalClose').addEventListener('click',()=>$('#serviceModal').close());
   $('#serviceModal').addEventListener('click',e=>{if(e.target===$('#serviceModal'))$('#serviceModal').close()});
   $('#showAgencyContacts').addEventListener('click',()=>{mapFilter='Agency contacts';$$('[data-map-filter]').forEach(x=>x.classList.toggle('active',x.dataset.mapFilter==='Agency contacts'));renderMapResults();$('#serviceResults').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'})});
@@ -303,7 +304,8 @@ function openService(index){
   if(contacts.length){parts.push('<section><h3>Agency contacts from the guide</h3><div class="profile-contact-grid">'+contacts.map(c=>'<article class="profile-contact"><b>'+esc(c.agency)+'</b>'+contactMarkup(c)+'<a class="map-link" href="'+esc(mapsSearchUrl(c.agency))+'" target="_blank" rel="noopener noreferrer">Find this agency on Google Maps ↗</a><small>Contact details transcribed from the guide; confirm they are current.</small></article>').join('')+'</div></section>')}
   else parts.push('<section><h3>Agency contact</h3><p>No matching agency contact is listed in the guide for this entry. Use the official agency link or Google Maps search to confirm how to reach the service.</p></section>');
   const links=[];
-  if(meta.officialUrl)links.push('<a class="btn primary" href="'+esc(meta.officialUrl)+'" target="_blank" rel="noopener noreferrer">Official agency website ↗</a>');
+  links.push('<button class="btn primary" type="button" data-gia-referral="'+esc(s.name)+'">Prepare referral with GIA ↗</button>');
+  if(meta.officialUrl)links.push('<a class="btn ghost" href="'+esc(meta.officialUrl)+'" target="_blank" rel="noopener noreferrer">Official agency website ↗</a>');
   if(meta.serviceUrl)links.push('<a class="btn ghost" href="'+esc(meta.serviceUrl)+'" target="_blank" rel="noopener noreferrer">'+esc(meta.serviceLinkLabel||'Related official page')+' ↗</a>');
   links.push('<a class="btn ghost" href="'+esc(mapsSearchUrl(s.agency==='Agency not specified in the guide'?s.name:s.agency))+'" target="_blank" rel="noopener noreferrer">Open Google Maps directory ↗</a>');
   if(logo?.source)links.push('<a class="source-link" href="'+esc(logo.source)+'" target="_blank" rel="noopener noreferrer">Logo source ↗</a>');
