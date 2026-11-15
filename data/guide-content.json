@@ -603,7 +603,7 @@
       "details": "42 Trafalgar Road, Kingston 10; 📞 Phone: (876) 929-7608 / (876) 929-0977; ✉️ Email: pr@womenscentreja.com; 🌐 Website: womenscentreja.com."
     }
   ],
-  "hotlines": "Important Hotlines and Quick Contacts Emergency danger: 119 police / 110 fire / 811 ambulance GBV / Domestic Violence: 1-888-NO-ABUSE; BGA text/helpline: (876) 553-0372 female survivors, (876) 533-0387 male survivors Victim Services Branch: 888-587-8423 Child Abuse Reporting: 211 or 888-PROTECT (777-8328) Safe Spot Child/Youth Support: 888-SAFE-SPOT (723-3776) Mental Health Support: 888-NEW-LIFE (639-5433) Substance Misuse Helpline: (876) 564-HELP (4357) ODPEM Disaster Information: (876) 906-9674 / Toll free 1-888-225-5637 PATH / MLSS Queries: (876) 922-8000-13 Drug Serv WhatsApp Prescriptions: (876) 532-5007",
+  "hotlines": "Important Hotlines and Quick Contacts Emergency danger: 119 police / 110 fire / 110 ambulance GBV / Domestic Violence: 1-888-NO-ABUSE; BGA text/helpline: (876) 553-0372 female survivors, (876) 533-0387 male survivors Victim Services Branch: 888-587-8423 Child Abuse Reporting: 211 or 888-PROTECT (777-8328) Safe Spot Child/Youth Support: 888-SAFE-SPOT (723-3776) Mental Health Support: 888-NEW-LIFE (639-5433) Substance Misuse Helpline: (876) 564-HELP (4357) ODPEM Disaster Information: (876) 906-9674 / Toll free 1-888-225-5637 PATH / MLSS Queries: (876) 922-8000-13 Drug Serv WhatsApp Prescriptions: (876) 532-5007",
   "mapParishCaveat": "The map is a parish-based way to browse the guide. It does not show verified facility coordinates or prove that a programme is available in a particular parish. Contact the responsible agency or parish office to confirm local access.",
   "serviceMetadata": {
     "PATH": {
@@ -828,7 +828,7 @@
   "quickContacts": [
     {
       "label": "Emergency",
-      "details": "119 Police · 110 Fire · 811 Ambulance"
+      "details": "119 Police · 110 Fire · 110 Ambulance"
     },
     {
       "label": "Gender-based violence",
@@ -1204,5 +1204,11 @@
       "logoSourceUrl": "https://moey.gov.jm/",
       "alt": "Government of Jamaica coat of arms · Ministry of Education programme"
     }
-  ]
+  ],
+  "emergencyNumberVerification": {
+    "verifiedAgainst": "Jamaica Constabulary Force official website; MOHW Child Health and Development Passport",
+    "police": "119",
+    "fireAndAmbulance": "110",
+    "note": "Official emergency number correction to working guide data, 15 November 2026; other guide contact details remain subject to agency verification."
+  }
 }
