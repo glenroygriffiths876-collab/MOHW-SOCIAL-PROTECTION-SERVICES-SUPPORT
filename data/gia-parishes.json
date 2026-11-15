@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "reviewed": "2026-11-15",
-  "coverage": "14 Jamaican parishes; MLSS/NIS offices and NHT branches or service centres transcribed from official public agency listings. These are not verified live operating hours or GPS pins.",
+  "coverage": "14 Jamaican parishes; MLSS/NIS offices and NHT branches or service centres transcribed from official public agency listings. These are not verified live operating hours or GPS pins. One illustrative public Drug Serv site per parish comes from the NHF Drug Serv official facility directory. These are not exhaustive lists.",
   "sources": {
     "mlss": "https://www.mlss.gov.jm/parish-offices/",
     "nht": "https://www-1.nht.gov.jm/index.php/contact",
@@ -69,6 +69,13 @@
         "phone": "876-956-2982",
         "source": "https://www-1.nht.gov.jm/index.php/contact",
         "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      },
+      "drugServ": {
+        "name": "Noel Holmes Hospital Drug Serv",
+        "address": "Noel Holmes Hospital, Lucea, Hanover, Jamaica",
+        "phone": "876-956-2733",
+        "source": "https://www.nhf.org.jm/drug-serv/",
+        "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
       }
     },
     "St. James": {
@@ -90,6 +97,13 @@
         "phone": "876-952-0063",
         "source": "https://www-1.nht.gov.jm/index.php/contact",
         "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      },
+      "drugServ": {
+        "name": "St. James Type 5 Health Centre Drug Serv",
+        "address": "Payne Street, Montego Bay, St. James, Jamaica",
+        "phone": "",
+        "source": "https://www.nhf.org.jm/drug-serv/",
+        "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
       }
     },
     "Westmoreland": {
@@ -111,6 +125,13 @@
         "phone": "876-955-2877",
         "source": "https://www-1.nht.gov.jm/index.php/contact",
         "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      },
+      "drugServ": {
+        "name": "Savanna-la-Mar Public General Hospital Drug Serv",
+        "address": "Barracks Road, Savanna-la-Mar, Westmoreland, Jamaica",
+        "phone": "876-955-9946",
+        "source": "https://www.nhf.org.jm/drug-serv/",
+        "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
       }
     },
     "Trelawny": {
@@ -132,6 +153,13 @@
         "phone": "876-954-3771",
         "source": "https://www-1.nht.gov.jm/index.php/contact",
         "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      },
+      "drugServ": {
+        "name": "Falmouth Hospital Drug Serv",
+        "address": "Rodney Street, Falmouth, Trelawny, Jamaica",
+        "phone": "876-954-3250",
+        "source": "https://www.nhf.org.jm/drug-serv/",
+        "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
       }
     },
     "St. Elizabeth": {
@@ -153,6 +181,13 @@
         "phone": "876-966-2510",
         "source": "https://www-1.nht.gov.jm/index.php/contact",
         "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      },
+      "drugServ": {
+        "name": "Black River Hospital Drug Serv",
+        "address": "45 High Street, Black River, St. Elizabeth, Jamaica",
+        "phone": "876-634-3339",
+        "source": "https://www.nhf.org.jm/drug-serv/",
+        "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
       }
     },
     "Manchester": {
@@ -174,6 +209,13 @@
         "phone": "876-962-2549",
         "source": "https://www-1.nht.gov.jm/index.php/contact",
         "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      },
+      "drugServ": {
+        "name": "Mandeville Regional Hospital Drug Serv",
+        "address": "32 Hargreaves Avenue, Mandeville, Manchester, Jamaica",
+        "phone": "876-962-6479",
+        "source": "https://www.nhf.org.jm/drug-serv/",
+        "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
       }
     },
     "Clarendon": {
@@ -195,6 +237,13 @@
         "phone": "876-986-2051",
         "source": "https://www-1.nht.gov.jm/index.php/contact",
         "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      },
+      "drugServ": {
+        "name": "May Pen Hospital Drug Serv",
+        "address": "Manchester Avenue, May Pen, Clarendon, Jamaica",
+        "phone": "876-908-5471",
+        "source": "https://www.nhf.org.jm/drug-serv/",
+        "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
       }
     },
     "St. Ann": {
@@ -216,6 +265,13 @@
         "phone": "876-974-4934",
         "source": "https://www-1.nht.gov.jm/index.php/contact",
         "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      },
+      "drugServ": {
+        "name": "St. Ann's Bay Hospital Drug Serv",
+        "address": "Seville, St. Ann's Bay, St. Ann, Jamaica",
+        "phone": "876-972-2272",
+        "source": "https://www.nhf.org.jm/drug-serv/",
+        "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
       }
     },
     "St. Mary": {
@@ -237,6 +293,13 @@
         "phone": "876-994-2216",
         "source": "https://www-1.nht.gov.jm/index.php/contact",
         "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      },
+      "drugServ": {
+        "name": "Port Maria Hospital Drug Serv",
+        "address": "Trinity, Port Maria, St. Mary, Jamaica",
+        "phone": "876-994-2228",
+        "source": "https://www.nhf.org.jm/drug-serv/",
+        "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
       }
     },
     "Portland": {
@@ -258,6 +321,13 @@
         "phone": "876-993-3863",
         "source": "https://www-1.nht.gov.jm/index.php/contact",
         "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      },
+      "drugServ": {
+        "name": "Port Antonio Hospital Drug Serv",
+        "address": "Naylors Hill, Port Antonio, Portland, Jamaica",
+        "phone": "876-993-2646",
+        "source": "https://www.nhf.org.jm/drug-serv/",
+        "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
       }
     },
     "St. Thomas": {
@@ -279,6 +349,13 @@
         "phone": "876-982-9417",
         "source": "https://www-1.nht.gov.jm/index.php/contact",
         "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      },
+      "drugServ": {
+        "name": "Princess Margaret Hospital Drug Serv",
+        "address": "54 Lyssons Road, Morant Bay, St. Thomas, Jamaica",
+        "phone": "876-908-5468",
+        "source": "https://www.nhf.org.jm/drug-serv/",
+        "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
       }
     },
     "St. Catherine": {
@@ -300,6 +377,13 @@
         "phone": "876-984-8023",
         "source": "https://www-1.nht.gov.jm/index.php/contact",
         "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      },
+      "drugServ": {
+        "name": "Spanish Town Hospital Drug Serv",
+        "address": "Burke Road, Spanish Town, St. Catherine, Jamaica",
+        "phone": "",
+        "source": "https://www.nhf.org.jm/drug-serv/",
+        "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
       }
     },
     "St. Andrew": {
@@ -321,6 +405,13 @@
         "phone": "876-929-6500",
         "source": "https://www-1.nht.gov.jm/index.php/contact",
         "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      },
+      "drugServ": {
+        "name": "Stony Hill Health Centre Drug Serv",
+        "address": "Stony Hill, St. Andrew, Jamaica",
+        "phone": "876-942-9677",
+        "source": "https://www.nhf.org.jm/drug-serv/",
+        "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
       }
     },
     "Kingston": {
@@ -342,6 +433,13 @@
         "phone": "876-929-6500",
         "source": "https://www-1.nht.gov.jm/index.php/contact",
         "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      },
+      "drugServ": {
+        "name": "Kingston Public Hospital Drug Serv",
+        "address": "North Street, Kingston, Jamaica",
+        "phone": "876-908-5473",
+        "source": "https://www.nhf.org.jm/drug-serv/",
+        "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
       }
     }
   }
