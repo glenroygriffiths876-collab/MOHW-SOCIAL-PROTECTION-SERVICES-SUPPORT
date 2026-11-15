@@ -264,9 +264,10 @@
     if(!s)return viewHome();
     const docs=composeDocs(s),contact=s.contacts[0];
     const isPathway=s.kind==="decision";
+    const guidance=state.tone==="cost"?"The guide does not establish every fee or eligibility rule. Please confirm current conditions with the receiving agency.":state.tone==="apply"?"Here are the application steps described in the guide. The agency should confirm the current process.":state.tone==="maps"?"I can help you search for the office, but I cannot confirm which local branch is operating.":null;
     return say("<strong>"+esc(s.name)+"</strong><p>"+(isPathway?
       "The guide suggests these possible providers. We should confirm which agency or programme can meet the person's need.":
-      "This looks like a possible starting point. Here’s the practical information I can find in the guide.")+"</p>")+
+      (guidance||"This looks like a possible starting point. Here’s the practical information I can find in the guide."))+"</p>")+
       "<div class=\"gia2-detail\">"+
       line("What support is described",s.support)+line("Who it may help",s.targets.join("; "))+line("Where to begin",s.where)+line("How it works in the guide",s.process)+
       (docs.length?"<div class=\"gia2-fact\"><b>Documents listed in the guide</b><p>"+esc(short(docs.join("; "),320))+"</p></div>":"")+
@@ -450,21 +451,61 @@
   function chooseService(id){
     const s=catalog.find(c=>c.id===id);
     if(!s)return;
-    state.selected=s;state.ready=new Set();state.destination=s.agency||s.name;state.mapsProvided="";state.consent=false;
+    state.selected=s;state.ready=new Set();state.destination=s.kind==="decision"?"":(s.agency||s.name);state.mapsProvided="";state.consent=false;state.tone="";
     show("service");
   }
   function handleAsk(raw){
     const question=String(raw||"").trim();
     if(!question)return;
-    state.question=question;
-    if(DANGER.test(question)){show("urgent");return;}
     const lower=normal(question);
-    if(state.selected && /(?:whats ?app|send|refer(?:ral)?)/i.test(question) && question.length<95){show("refer");return;}
-    if(state.selected && /(?:bring|documents?|paperwork|requirements?)/i.test(question) && question.length<95){show("documents");return;}
-    if(state.selected && /(?:where|location|map|directions|address|office)/i.test(question) && question.length<70){show("service");return;}
-    if(/^(hi|hello|hey|good morning|good evening)[!. ]*$/.test(lower)){show("home");return;}
-    if(/^(follow up|followup|check referral)$/.test(lower)){show("follow");return;}
-    if(/^(birth certificate|trn|nis card|passport|voters? id|national id|drivers? license)$/.test(lower)){state.selected=null;show("documents");return;}
+    // Urgent-safety routing always takes priority over programme lookup.
+    if(DANGER.test(question)){state.question=question;show("urgent");return;}
+    if(/^(?:hi|hello|hey|good morning|good afternoon|good evening|what can you do)[!. ]*$/.test(lower)){show("home");return;}
+    if(/^(?:start again|reset|new request)$/.test(lower)){act("start");return;}
+    const parish=extractParish(question);
+    if(parish)state.parish=parish;
+    const direct=explicitService(question);
+    const wantsDocs=/\b(?:document|documents|paperwork|papers|bring|requirements|application form|birth certificate|trn|passport|national id|identification)\b/i.test(question);
+    const wantsReferral=/\b(?:whats\s?app|send (?:this|that|it|information|referral)|message (?:her|him|them|the client)|share (?:this|it|that)|refer(?:ral)?)\b/i.test(question);
+    const wantsFollow=/\b(?:follow[- ]?up|followup|check (?:again|on the referral)|what happened next)\b/i.test(question);
+    const wantsMaps=/\b(?:where is|address|directions|location|map|nearest office|closest office)\b/i.test(question);
+    const wantsCost=/\b(?:fee|fees|cost|costs|price|free|eligible|eligibility|qualify)\b/i.test(question);
+    const wantsApply=/\b(?:apply|application|process|register|sign up|how do i get|how can i get)\b/i.test(question);
+    const knownDocument=(guide?.documents||[]).find(d=>{
+      const norm=normal(d.document);
+      const search=normal(question);
+      const term=norm.split(" (")[0];
+      return term.length>3 && (" "+search+" ").includes(" "+term+" ");
+    });
+    if(direct){
+      if(state.selected?.id!==direct.id){
+        state.selected=direct;state.destination=direct.kind==="decision"?"":direct.agency;state.mapsProvided="";state.ready=new Set();state.customDocs="";state.consent=false;
+      }
+      state.question=question;
+      if(!state.originalQuestion)state.originalQuestion=question;
+      if(wantsReferral){show("refer");return;}
+      if(wantsDocs){show("documents");return;}
+      if(wantsFollow){show("follow");return;}
+      state.tone=wantsCost?"cost":wantsApply?"apply":wantsMaps?"maps":"";
+      show("service");return;
+    }
+    if(knownDocument && !state.selected){
+      state.question=knownDocument.document;show("documents");return;
+    }
+    if(wantsFollow && !/another service/.test(lower)){show("follow");return;}
+    if(state.selected){
+      state.question=question;
+      if(wantsReferral){show("refer");return;}
+      if(wantsDocs){show("documents");return;}
+      if(wantsMaps||wantsCost||wantsApply||/^(tell me more|more details|how does it work|what about it)$/.test(lower)){
+        state.tone=wantsCost?"cost":wantsApply?"apply":wantsMaps?"maps":"";
+        show("service");return;
+      }
+    }
+    // A new need starts a fresh search without clearing the last selection prematurely.
+    state.originalQuestion=question;
+    state.question=question;
+    state.tone="";state.focusTopic="";
     state.topicIds=topicMatches(question);
     state.results=scoreServices(question);
     state.page=0;state.selected=null;state.ready=new Set();state.destination="";
@@ -502,22 +543,24 @@
     if(get("gia2Date")!==undefined)state.followDate=get("gia2Date");
     if(get("gia2CaseRef")!==undefined)state.sessionRef=get("gia2CaseRef");
     if(get("gia2CustomDocs")!==undefined)state.customDocs=get("gia2CustomDocs");
-    if(get("gia2Question")!==undefined)state.question=get("gia2Question");
+    if(get("gia2Question")!==undefined && get("gia2Question").trim())state.question=get("gia2Question");
   }
   function updatePreview(){
     const p=$("#gia2Preview");if(p)p.textContent=referralText();
     const f=$("#gia2FollowPreview");if(f)f.textContent=followText();
     const progress=$("#gia2DocProgress");if(progress)progress.textContent=state.ready.size+" of "+composeDocs(state.selected).length+" marked available";
+    const advice=$("#gia2FollowAdvice");if(advice)advice.textContent=followAdvice(state.outcome);
   }
   function launchWhatsApp(){
     preserveInputs();
     const digits=phone(state.phone);
     if(!digits){message("Enter a valid phone number, including the area or country code.",true);$("#gia2To")?.focus();return;}
     if(!state.destination.trim()){message("Enter the office or facility you want the recipient to find.",true);$("#gia2Destination")?.focus();return;}
+    if(state.mapsProvided.trim()&&!validMapsLink(state.mapsProvided)){message("That is not a supported Google Maps link. Correct the link or leave it blank to use a Maps search.",true);$("#gia2Map")?.focus();return;}
     if(!state.consent){message("Please confirm the recipient agrees to receive this information and that you have reviewed its contents.",true);$("#gia2Consent")?.focus();return;}
     const url="https://wa.me/"+digits+"?text="+encodeURIComponent(referralText());
     const opened=window.open(url,"_blank","noopener,noreferrer");
-    message("WhatsApp opened for review. GIA has not sent the message.");
+    message("WhatsApp should open with the prepared message. Review it there and tap Send yourself. If it did not open, use Copy message.");
   }
   function doPrint(){
     const pre=document.createElement("pre");pre.id="gia2Print";pre.textContent=followText();
@@ -526,28 +569,46 @@
   }
   function act(action){
     preserveInputs();
-    if(action==="start"){Object.assign(state,{view:"home",question:"",topicIds:[],results:[],page:0,selected:null,parish:"Not selected",destination:"",mapsProvided:"",phone:"",ready:new Set(),consent:false,outcome:"",next:"",followDate:"",sessionRef:"",customDocs:""});show("home");return;}
+    if(action==="start"){
+      Object.assign(state,{view:"home",question:"",tone:"",topicIds:[],results:[],page:0,selected:null,parish:"Not selected",destination:"",mapsProvided:"",phone:"",ready:new Set(),consent:false,outcome:"",next:"",followDate:"",sessionRef:"",customDocs:"",focusTopic:"",originalQuestion:""});
+      show("home");return;
+    }
     if(action==="ask"){state.question="";show("home");$("#gia2Question")?.focus();return;}
-    if(action==="custom"){state.selected={id:"custom",name:"Custom destination",kind:"custom",agency:"",support:"",where:"",bring:"",process:"",targets:[],categories:[],contacts:[],meta:{}};state.ready=new Set();state.destination="";state.customDocs="";show("refer");return;}
-    if(action==="refreshDocs"){state.ready=new Set();show("refer");return;}
+    if(action==="custom"){
+      state.selected={id:"custom",name:"Custom destination",kind:"custom",agency:"",support:"",where:"",bring:"",process:"",targets:[],categories:[],contacts:[],meta:{}};
+      state.ready=new Set();state.destination="";state.customDocs="";state.mapsProvided="";state.consent=false;show("refer");return;
+    }
+    if(action==="refreshDocs"){show("refer");return;}
     if(action==="services"){document.querySelector('[data-nav="services"]')?.click();$("#gia2Dialog").close();return;}
-    if(action==="documents"){show("documents");return;}
-    if(action==="checklist"){show("documents");return;}
+    if(action==="documents"||action==="checklist"){show("documents");return;}
     if(action==="refer"){ensureServiceForReferral();return;}
     if(action==="service"){show(state.selected?"service":"home");return;}
     if(action==="follow"){show("follow");return;}
     if(action==="backResults"){show("results");return;}
     if(action==="more"){state.page=1;show("results");return;}
+    if(action==="plan"){copy(actionPlanText());return;}
+    if(action.startsWith("focus:")){
+      const id=action.slice(6);
+      if(id==="all"){state.focusTopic="";state.results=scoreServices(state.originalQuestion||state.question);state.page=0;show("results");}
+      else topicFocus(id);
+      return;
+    }
     if(action.startsWith("topic:")){
       const topic=TOPICS.find(t=>t.id===action.slice(6));if(topic)handleAsk(topic.terms);return;
     }
     if(action==="directions"||action==="map"){
-      const s=state.selected;
-      const url=mapsUrl(state.destination||s?.agency||"social services",state.parish,state.mapsProvided);
-      window.open(url,"_blank","noopener,noreferrer");message("This is a Maps search. Confirm the exact office before travelling.");return;
+      if(state.mapsProvided.trim()&&!validMapsLink(state.mapsProvided)){message("That Google Maps link needs correcting. Remove it to use a location search.",true);return;}
+      const name=state.destination||state.selected?.agency||"social services";
+      const url=mapsUrl(name,state.parish,state.mapsProvided);
+      window.open(url,"_blank","noopener,noreferrer");
+      message(state.mapsProvided.trim()?"Opening the supplied Maps link.":"Opening a Maps search. Confirm the exact office before travel.");
+      return;
     }
     if(action==="openWhatsApp"){launchWhatsApp();return;}
-    if(action==="copyReferral"){copy(referralText());return;}
+    if(action==="copyReferral"){
+      if(state.mapsProvided.trim()&&!validMapsLink(state.mapsProvided)){message("Correct or remove the invalid Google Maps link first.",true);return;}
+      copy(referralText());return;
+    }
     if(action==="copyFollow"){copy(followText());return;}
     if(action==="printFollow"){doPrint();return;}
   }
@@ -582,7 +643,7 @@
       preserveInputs();updatePreview();
     });
     dialog.addEventListener("input",e=>{
-      if(e.target.matches("#gia2To,#gia2Destination,#gia2Map,#gia2Parish,#gia2CaseRef,#gia2Next,#gia2Date,#gia2Outcome")){
+      if(e.target.matches("#gia2To,#gia2Destination,#gia2Map,#gia2Parish,#gia2CustomDocs,#gia2CaseRef,#gia2Next,#gia2Date,#gia2Outcome")){
         preserveInputs();updatePreview();
       }
     });
