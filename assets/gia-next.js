@@ -973,6 +973,16 @@
       }
     });
     window.MOHWGIA={
+      setParish:(parish)=>{
+        if(!PARISHES.includes(parish)||parish==="Not selected")return;
+        if(state.parish!==parish && state.localOfficeUsed){
+          state.localOfficeUsed="";state.destination=state.selected?.agency||"";
+          state.mapsProvided="";state.consent=false;
+        }
+        state.parish=parish;
+        if($("#gia2Dialog")?.open)render();
+      },
+      getParish:()=>state.parish,
       open:()=>open("home"),
       openReferral:(name)=>{
         const wanted=catalog.find(s=>key(s.name)===key(name)||s.aliases?.some(a=>key(a)===key(name)));
