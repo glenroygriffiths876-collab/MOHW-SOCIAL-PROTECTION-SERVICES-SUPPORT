@@ -214,11 +214,11 @@
   const parishKnown = ()=>parishChosen() && !!parishDirectory?.parishes?.[state.parish];
   const parishRecord = ()=>parishKnown()?parishDirectory.parishes[state.parish]:null;
   function directoryRoute(s){
-    const text=normal(s?.name||"")+" "+normal(s?.agency||"");
+    const text=normal(s?.name||"")+" "+normal(s?.agency||"")+" "+(s?.kind==="custom"?normal(state.destination):"");
     if(/\bnht\b|national housing trust/.test(text))return "nht";
     if(/\bnis\b|national insurance|social pension/.test(text))return "nis";
     if(/\bpath\b|programme of advancement/.test(text))return "path";
-    if(/\bnhf\b|national health fund|j a d e p|jadep/.test(text))return "nhf";
+    if(/\bnhf\b|national health fund|j a d e p|jadep|drug serv/.test(text))return "nhf";
     if(/\bheart\b|\bnsta\b|skills training|vocational/.test(text))return "heart";
     if(/local government|poor relief|municipal/.test(text))return "poor-relief";
     if(/police station|police post|constabulary/.test(text+" "+normal(state.destination)))return "police";
@@ -240,7 +240,7 @@
   function localOfficeMarkup(office,kind,canSelect){
     if(!office)return "";
     return "<div class=\"gia2-local-office\"><span class=\"gia2-local-tag\">Official directory listing · confirm current details</span>"+
-      "<strong>"+esc(office.name)+"</strong><p>"+esc(office.address)+"</p><p>Telephone listed: <a href=\"tel:"+esc(office.phone.replace(/[^\d]/g,""))+"\">"+esc(office.phone)+"</a></p>"+
+      "<strong>"+esc(office.name)+"</strong><p>"+esc(office.address)+"</p>"+(office.phone?"<p>Telephone listed: <a href=\"tel:"+esc(office.phone.replace(/[^\d]/g,""))+"\">"+esc(office.phone)+"</a></p>":"")+
       (office.scope?"<p class=\"gia2-local-caution\">"+esc(office.scope)+"</p>":"")+
       "<div class=\"gia2-local-actions\">"+linkTo(office.source,"Official agency listing")+linkTo(mapSearch(office.address),"Find address on Maps")+
       (canSelect?pill("useOffice:"+kind,"Use this office in referral"):"")+"</div></div>";
@@ -263,8 +263,9 @@
       "<p>PATH is administered through MLSS. Please confirm which "+label+" office handles PATH enquiries before directing someone there.</p>"+
       localOfficeMarkup(p.mlss,"mlss",false)+linkTo(parishDirectory.serviceRoutes.path.source,"Official PATH information");
     else if(route==="nhf")content=
-      "<p>NHF-approved pharmacies and services vary by facility. Search the official provider directory for "+label+" and check which services the selected location provides.</p>"+
-      linkTo(parishDirectory.sources.nhf,"Find NHF providers")+linkTo(parishDirectory.sources.nhfDrugServ,"Find Drug Serv locations");
+      "<p>NHF-approved pharmacies, Drug Serv and NHF Card-related services are not interchangeable. Search the official provider directory for "+label+" and verify which service a facility offers.</p>"+
+      localOfficeMarkup(p.drugServ,"drugServ",false)+
+      linkTo(parishDirectory.sources.nhf,"Find NHF providers")+linkTo(parishDirectory.sources.nhfDrugServ,"All Drug Serv facilities");
     else if(route==="heart")content=
       "<p>Training institutions, courses and parish intake arrangements vary. Use the official HEART/NSTA directory to locate a suitable "+label+" option.</p>"+
       linkTo(parishDirectory.sources.heart,"HEART parish contacts")+linkTo(parishDirectory.sources.heartProgrammes,"HEART training programmes");
@@ -277,7 +278,8 @@
     else if(route==="health")content=
       "<p>For public healthcare referrals, "+label+" is served by the <strong>"+esc(p.healthAuthority.name)+"</strong>. Confirm the particular hospital, health centre or social work service before advising travel.</p>"+
       linkTo(parishDirectory.sources.health,"MOHW health authorities")+
-      linkTo(mapSearch(s?.kind==="custom" ? state.destination||"public health centre" : s?.name||"health centre"),"Search "+state.parish+" services on Maps");
+      linkTo(mapSearch(s?.kind==="custom" ? state.destination||"public health centre" : s?.name||"health centre"),"Search "+state.parish+" services on Maps")+
+      (/(?:medicat|medicin|prescri|pharmac|drug serv)/i.test(state.question+" "+s?.name)?localOfficeMarkup(p.drugServ,"drugServ",false):"");
     else content=
       "<p>This service may operate nationally or through another local agency. Confirm its "+label+" catchment and current service point before travelling.</p>"+
       linkTo(s?.meta?.officialUrl||parishDirectory.sources.health,"Find agency information")+
