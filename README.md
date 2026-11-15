@@ -33,3 +33,17 @@ The guide content is transcribed from the supplied November 2026 booklet. Progra
 ## Local preview
 
 Open index.html through a static HTTP server so the content JSON loads correctly.
+
+
+## GIA — guided social support assistant (version 3, November 2026)
+
+The floating **Ask GIA** assistant can guide a worker or caregiver from a short description of need to a relevant programme, agency or situation-based referral route. It supports multi-need prioritisation, common follow-up questions, agency contacts, document checklists, and worker-reviewed WhatsApp information containing an agency name, phone recipient, parish and Google Maps link/search.
+
+- **Referral preparation:** Recipients are entered by the worker. GIA opens WhatsApp prefilled; users still review and send messages themselves. It cannot send messages automatically.
+- **Document provenance:** Lists from the booklet are clearly separated from additional documents entered by the referring worker. Neither should be treated as live-confirmed requirements.
+- **Location:** A worker can supply a Maps link; otherwise GIA provides a Google Maps search, not a verified office pin or current opening hours.
+- **Safety:** Urgent language shows an emergency-first panel, which complements rather than replaces facility policies and professional judgement.
+- **Follow-up:** GIA composes copyable or printable draft notes; there is no server-side case record, authentication, automated reminder, or backend referral tracking.
+- **Intelligence:** GIA is a rule-guided conversational tool based on the guide content, **not** a live generative AI service and not a programme eligibility assessor.
+
+Future operational development would require validated parish-level destination coordinates, secure authorised case management and a maintained programme-content verification process.
