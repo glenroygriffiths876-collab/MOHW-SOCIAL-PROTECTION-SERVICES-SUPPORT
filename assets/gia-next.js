@@ -325,7 +325,8 @@
   function viewResults(){
     if(state.results.length===0){
       return say("<strong>I haven’t found a clear starting point yet.</strong><p>Could you describe the main need another way? I can also show you broad categories or help you contact a medical social worker.</p>")+
-      searchForm()+"<div class=\"gia2-actions\">"+TOPICS.map(t=>pill("topic:"+t.id,t.label)).join("")+"</div>"+options();
+      searchForm()+"<div class=\"gia2-actions\">"+TOPICS.slice(0,5).map(t=>pill("topic:"+t.id,t.label)).join("")+"</div>"+
+      "<details class=\"gia2-expand\"><summary>More types of support</summary><div class=\"gia2-actions\">"+TOPICS.slice(5).map(t=>pill("topic:"+t.id,t.label)).join("")+"</div></details>"+options();
     }
     const multi=state.topicIds.length>1;
     const shown=state.results.slice(0,state.page?9:3);
@@ -373,7 +374,7 @@
       (s.meta.officialUrl&&/^https:\/\//.test(s.meta.officialUrl)?"<a class=\"gia2-link\" href=\""+esc(s.meta.officialUrl)+"\" target=\"_blank\" rel=\"noopener noreferrer\">Open official agency website ↗</a>":"")+
       "</div><div class=\"gia2-primary-actions\">"+
       pill("refer","Prepare a referral","gia2-primary")+pill("checklist","Check documents")+pill("plan","Copy action plan")+pill("directions","Find office on Maps")+"</div>"+
-      "<div class=\"gia2-barriers\"><h4>Something making the referral difficult?</h4><div class=\"gia2-actions\">"+BARRIERS.slice(0,5).map(b=>pill("barrier:"+b.id,b.label)).join("")+"</div></div>"+
+      "<details class=\"gia2-barriers\"><summary>Having trouble completing the referral?</summary><div class=\"gia2-actions\">"+BARRIERS.map(b=>pill("barrier:"+b.id,b.label)).join("")+"</div></details>"+
       "<div class=\"gia2-actions\">"+pill("follow","Follow up later")+pill("backResults","Other options")+pill("start","New request")+"</div>"+
       guidesource();
   }
