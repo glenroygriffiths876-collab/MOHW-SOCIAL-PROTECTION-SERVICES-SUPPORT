@@ -111,6 +111,12 @@ test("Browser-only voice affordance exists",()=>script.includes("window.SpeechRe
 test("Geometric navy styling matches site's assets",()=>giaCss.includes("geometry-bg.svg")&&giaCss.includes("#070735")&&giaCss.includes("#08d9eb")&&giaCss.includes("#e20c79")&&giaCss.includes("#ffc928"));
 test("Parish directory covers all 14 parishes",()=>Object.keys(parishes.parishes).length===14);
 test("Every parish has an NHF Drug Serv reference",()=>Object.values(parishes.parishes).every(p=>p.drugServ?.name&&p.drugServ.source.includes("nhf.org.jm/drug-serv")));
+test("All 14 parishes have official health department contact listings",()=>Object.values(parishes.parishes).every(p=>p.healthDept?.name&&p.healthDept?.phone&&p.healthDept.source.startsWith("https://")));
+gia.act("start");gia.act("role:provider");gia.handleAsk("RHA Diagnostic Support in Hanover");
+test("Provider gets Hanover parish health department",()=>gia.state.parish==="Hanover"&&content.innerHTML.includes("Hanover Health Department")&&content.innerHTML.includes("Fort Charlotte Drive")&&content.innerHTML.includes("healthcare or social-service handover"));
+gia.act("role:client");gia.handleAsk("RHA Diagnostic Support in St. Mary");
+test("Client gets St Mary parish health department",()=>gia.state.parish==="St. Mary"&&content.innerHTML.includes("St. Mary Health Department")&&content.innerHTML.includes("Llanrumney Buccaneers")&&content.innerHTML.includes("help finding public health services"));
+
 test("Directory can pass selected parish into GIA",()=>app.includes("MOHWGIA?.setParish?.(parish)")&&script.includes("setParish:(parish)"));
 
 gia.act("start");gia.act("role:provider");gia.handleAsk("Hello");
