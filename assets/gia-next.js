@@ -216,56 +216,94 @@
     return "<form id=\"gia2SearchForm\" class=\"gia2-inputbar\"><label class=\"gia2-visually-hidden\" for=\"gia2Question\">Ask GIA</label><input id=\"gia2Question\" name=\"question\" autocomplete=\"off\" maxlength=\"320\" placeholder=\"e.g. Help with transport to clinic\" value=\""+esc(state.question)+"\" required><button class=\"gia2-send\" type=\"submit\" aria-label=\"Find support\">➜</button></form>";
   }
   function viewHome(){
-    return say("<strong>Hello! I’m GIA.</strong><p>Tell me what someone needs, and I’ll help you find a sensible next step. We can also prepare a referral together.</p>")+
+    const intro=state.selected?"I’m still here if you need anything else about "+esc(state.selected.name)+".":"Hi, I’m GIA. What would you like help with today?";
+    return say("<strong>"+intro+"</strong><p>Tell me what’s happening in everyday words. I’ll help you identify a service and prepare the next step—without making you go through a long questionnaire.</p>")+
       "<div class=\"gia2-feature-grid\">"+
-      pill("ask","Find the right support","gia2-feature")+pill("refer","Send a WhatsApp referral","gia2-feature")+
-      pill("documents","What documents are needed?","gia2-feature")+pill("follow","Follow up on a referral","gia2-feature")+
-      "</div>"+searchForm()+"<p class=\"gia2-privacy\">Please do not enter names, diagnoses or other private client details.</p>";
+      pill("ask","Find help for someone","gia2-feature")+pill("refer","Prepare a WhatsApp referral","gia2-feature")+
+      pill("documents","Check required documents","gia2-feature")+pill("follow","Follow up on a referral","gia2-feature")+
+      "</div>"+searchForm()+
+      "<p class=\"gia2-privacy\">For example: “My mum needs help with food and getting to clinic.” Please leave out names and medical details.</p>";
   }
   function viewResults(){
     if(state.results.length===0){
-      return say("<strong>I’m not finding a clear match yet.</strong><p>Can you describe the main concern in a few words? For example: help with rent, medication, school or an older relative.</p>")+
-      searchForm()+"<div class=\"gia2-actions\">"+TOPICS.slice(0,8).map(t=>pill("topic:"+t.id,t.label)).join("")+"</div>"+options();
+      return say("<strong>I haven’t found a clear starting point yet.</strong><p>Could you describe the main need another way? I can also show you broad categories or help you contact a medical social worker.</p>")+
+      searchForm()+"<div class=\"gia2-actions\">"+TOPICS.map(t=>pill("topic:"+t.id,t.label)).join("")+"</div>"+options();
     }
-    const plural=state.topicIds.length>1;
-    const intro=plural?"I noticed several possible needs. Here are a few starting points; we can deal with them one at a time.":"Here are the most relevant starting points I found in the guide.";
-    const visible=state.results.slice(0,state.page?9:3);
-    return "<div class=\"gia2-user-bubble\">"+esc(state.question)+"</div>"+say("<strong>"+intro+"</strong><p>You can review a service, check documents and prepare the next step without leaving GIA.</p>")+
-      "<div class=\"gia2-service-list\">"+visible.map((r,i)=>{
-        const s=r.service;
-        return "<article class=\"gia2-service\"><div><span class=\"gia2-tag\">"+esc(s.kind==="agency"?"Agency":s.kind==="decision"?"Guide recommendation":"Possible support")+"</span><h4>"+esc(s.name)+"</h4><p>"+esc(short(s.support,180))+"</p></div><button type=\"button\" class=\"gia2-choose\" data-service=\""+esc(s.id)+"\">Explore this service <span>→</span></button></article>";
+    const multi=state.topicIds.length>1;
+    const shown=state.results.slice(0,state.page?9:3);
+    const narrative=multi?
+      "You mentioned "+sayNeeds(state.topicIds)+". These may involve different services, so we can work through them one at a time.":
+      "I found some possible starting points based on what you described.";
+    const chips=multi?
+      "<div class=\"gia2-focus\"><p>Which would you like to work on first?</p><div class=\"gia2-actions\">"+
+      state.topicIds.map(id=>pill("focus:"+id,TOPICS.find(t=>t.id===id)?.label||id,state.focusTopic===id?"gia2-focus-active":"")).join("")+
+      pill("focus:all","All needs",!state.focusTopic?"gia2-focus-active":"")+"</div></div>":"";
+    return "<div class=\"gia2-user-bubble\">"+esc(state.originalQuestion||state.question)+"</div>"+
+      say("<strong>"+narrative+"</strong><p>These are options to explore, not a determination of eligibility. I’ll help you prepare once you choose one.</p>")+
+      chips+
+      "<div class=\"gia2-service-list\">"+shown.map(({service:v})=>{
+        const title=v.kind==="decision"?"Guide pathway":v.kind==="agency"?"Agency contact":"Possible service";
+        return "<article class=\"gia2-service\"><div><span class=\"gia2-tag\">"+title+"</span><h4>"+esc(v.name)+"</h4><p>"+esc(short(v.support,180))+"</p></div><button type=\"button\" class=\"gia2-choose\" data-service=\""+esc(v.id)+"\">See what to do next <span>→</span></button></article>";
       }).join("")+"</div>"+
       (state.results.length>3&&!state.page?pill("more","Show more options"):"")+
-      "<div class=\"gia2-subtools\">"+pill("ask","Change the need")+pill("refer","Prepare a referral")+"</div>"+guidesource();
+      "<div class=\"gia2-subtools\">"+pill("ask","Explain a different need")+pill("refer","Prepare a referral")+"</div>"+guidesource();
+  }
+  function contactActions(s){
+    const c=s.contacts?.[0];
+    if(!c)return "";
+    const details=String(c.details||"");
+    const matches=details.match(/(?:\+?1[\s-]?)?\(?876\)?[\s-]?\d{3}[\s-]?\d{4}|(?:1[\s-]?)?888[\s-]?\d{3}[\s-]?\d{4}/);
+    const mail=details.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
+    const actions=[];
+    if(matches){const ph=matches[0].replace(/[^\d]/g,"");actions.push("<a class=\"gia2-small-link\" href=\"tel:"+esc(ph)+"\">Call number in guide ↗</a>");}
+    if(mail)actions.push("<a class=\"gia2-small-link\" href=\"mailto:"+esc(mail[0])+"\">Email agency ↗</a>");
+    return actions.length?"<div class=\"gia2-contact-actions\">"+actions.join("")+"</div>":"";
   }
   function viewService(){
     const s=state.selected;
     if(!s)return viewHome();
-    const docs=composeDocs(s);
-    const contact=s.contacts[0];
-    return say("<strong>"+esc(s.name)+"</strong><p>This may be a useful starting point. Let’s check what it offers and prepare for the next step.</p>")+
+    const docs=composeDocs(s),contact=s.contacts[0];
+    const isPathway=s.kind==="decision";
+    return say("<strong>"+esc(s.name)+"</strong><p>"+(isPathway?
+      "The guide suggests these possible providers. We should confirm which agency or programme can meet the person's need.":
+      "This looks like a possible starting point. Here’s the practical information I can find in the guide.")+"</p>")+
       "<div class=\"gia2-detail\">"+
-      line("Type of support",s.support)+line("Who it may help",s.targets.join("; "))+line("Where to start",s.where)+line("Guide-listed process",s.process)+
-      (docs.length?"<div class=\"gia2-fact\"><b>Documents mentioned</b><p>"+esc(short(docs.join("; "),240))+"</p></div>":"")+
-      (contact?"<details class=\"gia2-expand\"><summary>Agency contact details</summary><p>"+esc(contact.details)+"</p></details>":"")+
-      (s.meta.officialUrl&&/^https:\/\//.test(s.meta.officialUrl)?"<a class=\"gia2-link\" href=\""+esc(s.meta.officialUrl)+"\" target=\"_blank\" rel=\"noopener noreferrer\">Official agency website ↗</a>":"")+
+      line("What support is described",s.support)+line("Who it may help",s.targets.join("; "))+line("Where to begin",s.where)+line("How it works in the guide",s.process)+
+      (docs.length?"<div class=\"gia2-fact\"><b>Documents listed in the guide</b><p>"+esc(short(docs.join("; "),320))+"</p></div>":"")+
+      (contact?"<details class=\"gia2-expand\"><summary>Contact details from the guide</summary><p>"+esc(contact.details)+"</p>"+contactActions(s)+"</details>":"")+
+      (s.meta.officialUrl&&/^https:\/\//.test(s.meta.officialUrl)?"<a class=\"gia2-link\" href=\""+esc(s.meta.officialUrl)+"\" target=\"_blank\" rel=\"noopener noreferrer\">Open official agency website ↗</a>":"")+
       "</div><div class=\"gia2-primary-actions\">"+
-      pill("refer","Prepare WhatsApp referral","gia2-primary")+pill("checklist","Document checklist")+
-      pill("directions","Find office on Google Maps")+pill("follow","Plan a follow-up")+"</div>"+
-      "<div class=\"gia2-actions\">"+pill("backResults","Other options")+pill("start","New request")+"</div>"+guidesource();
+      pill("refer","Prepare a referral","gia2-primary")+pill("checklist","Check documents")+pill("plan","Copy action plan")+pill("directions","Find office on Maps")+"</div>"+
+      "<div class=\"gia2-actions\">"+pill("follow","Follow up later")+pill("backResults","Other options")+pill("start","New request")+"</div>"+
+      guidesource();
+  }
+  function guideDocs(s){
+    let list=cleanDocs(s?.bring);
+    if(!list.length){
+      const row=guide?.programmes?.find(p=>key(p.name)===s?.id);
+      list=cleanDocs(row?.bring);
+    }
+    return list;
+  }
+  function workerDocs(){
+    return [...new Set(String(state.customDocs||"").split(/\n|;/).map(x=>x.trim()).filter(Boolean))].slice(0,16);
   }
   function viewDocs(){
     const s=state.selected;
     if(!s){
-      return say("<strong>Let’s find the right documents.</strong><p>Which programme or application are you preparing for? You can search by name or by the person’s need.</p>")+searchForm()+
-      "<div class=\"gia2-document-directory\"><h4>How to obtain common documents</h4>"+(guide.documents||[]).map((d,i)=>"<details class=\"gia2-expand\" "+(normal(state.question).includes(normal(d.document))?"open":"")+"><summary>"+esc(d.document)+"</summary><p><b>Where:</b> "+esc(d.where)+"</p><p><b>What is needed:</b> "+esc(d.requirements)+"</p><p><b>Process:</b> "+esc(d.process)+"</p><p><b>Cost in guide:</b> "+esc(d.cost)+"</p></details>").join("")+"</div>"+options();
+      return say("<strong>Let’s get the paperwork sorted.</strong><p>Search the name of a programme, or explore how to obtain a common Jamaican document.</p>")+
+      searchForm()+"<div class=\"gia2-document-directory\"><h4>Document application guidance in the booklet</h4>"+
+      (guide.documents||[]).map(d=>"<details class=\"gia2-expand\" "+(normal(state.question).includes(normal(d.document))?"open":"")+"><summary>"+esc(d.document)+"</summary><p><b>Where:</b> "+esc(d.where)+"</p><p><b>Listed requirements:</b> "+esc(d.requirements)+"</p><p><b>Process:</b> "+esc(d.process)+"</p><p><b>Cost in booklet:</b> "+esc(d.cost)+"</p></details>").join("")+"</div>"+options();
     }
-    const docs=composeDocs(s);
-    return say("<strong>Here is the document checklist for "+esc(s.name)+".</strong><p>Tick what the person already has. The requirements below come from the guide; the agency should confirm current requirements and alternatives.</p>")+
-      (docs.length?"<div class=\"gia2-checklist\">"+docs.map((d,i)=>"<label><input type=\"checkbox\" data-doc=\""+i+"\" "+(state.ready.has(i)?"checked":"")+"><span>"+esc(d)+"</span></label>").join("")+"</div>":"<p class=\"gia2-muted\">This guide does not specify individual documents for this entry. Ask the receiving agency for its current checklist.</p>")+
+    const base=guideDocs(s),extras=workerDocs(),docs=composeDocs(s);
+    return say("<strong>Here’s the preparation list for "+esc(s.name)+".</strong><p>Tick what is available. The agency should still confirm which documents are essential and which alternatives it accepts.</p>")+
+      (docs.length?"<div class=\"gia2-checklist\">"+
+        (base.length?"<div class=\"gia2-check-head\">From the support guide</div>"+base.map((d,i)=>"<label><input type=\"checkbox\" data-doc=\""+i+"\" "+(state.ready.has(i)?"checked":"")+"><span>"+esc(d)+"</span></label>").join(""):"")+
+        (extras.length?"<div class=\"gia2-check-head\">Added by the referring worker</div>"+extras.map((d,i)=>"<label><input type=\"checkbox\" data-doc=\""+(base.length+i)+"\" "+(state.ready.has(base.length+i)?"checked":"")+"><span>"+esc(d)+"</span></label>").join(""):"")+
+        "</div>":"<p class=\"gia2-muted\">No individual document list is specified for this option in the guide. Ask the receiving agency.</p>")+
       "<div class=\"gia2-checkline\" id=\"gia2DocProgress\">"+state.ready.size+" of "+docs.length+" marked available</div>"+
-      "<div class=\"gia2-primary-actions\">"+pill("refer","Prepare WhatsApp message","gia2-primary")+pill("service","Back to service")+"</div>"+
-      "<details class=\"gia2-expand\"><summary>How do I obtain missing documents?</summary>"+(guide.documents||[]).map(d=>"<div class=\"gia2-mini-doc\"><b>"+esc(d.document)+"</b><p>"+esc(d.where)+" · "+esc(short(d.process,175))+"</p></div>").join("")+"</details>";
+      "<div class=\"gia2-primary-actions\">"+pill("refer","Prepare WhatsApp information","gia2-primary")+pill("service","Back to service")+"</div>"+
+      "<details class=\"gia2-expand\"><summary>Where can I get missing documents?</summary>"+(guide.documents||[]).map(d=>"<div class=\"gia2-mini-doc\"><b>"+esc(d.document)+"</b><p>"+esc(d.where)+" · "+esc(short(d.process,165))+"</p></div>").join("")+"</details>";
   }
   function referralText(){
     const s=state.selected;
