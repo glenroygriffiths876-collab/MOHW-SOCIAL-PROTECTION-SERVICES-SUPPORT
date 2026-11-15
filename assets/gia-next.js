@@ -490,12 +490,12 @@
   function viewDocs(){
     const s=state.selected;
     if(!s){
-      return say("<strong>Let’s get the paperwork sorted.</strong><p>Search the name of a programme, or explore how to obtain a common Jamaican document.</p>")+
+      return say("<strong>"+(roleIsProvider()?"Let’s check the referral paperwork.":"Let’s see what you need to bring.")+"</strong><p>Search the name of a programme or explore how to obtain a common Jamaican document. Choose your parish above for more relevant local guidance.</p>")+
       searchForm()+"<div class=\"gia2-document-directory\"><h4>Document application guidance in the booklet</h4>"+
       (guide.documents||[]).map(d=>"<details class=\"gia2-expand\" "+(normal(state.question).includes(normal(d.document))?"open":"")+"><summary>"+esc(d.document)+"</summary><p><b>Where:</b> "+esc(d.where)+"</p><p><b>Listed requirements:</b> "+esc(d.requirements)+"</p><p><b>Process:</b> "+esc(d.process)+"</p><p><b>Cost in booklet:</b> "+esc(d.cost)+"</p></details>").join("")+"</div>"+options();
     }
     const base=guideDocs(s),extras=workerDocs(),docs=composeDocs(s);
-    return say("<strong>Here’s the preparation list for "+esc(s.name)+".</strong><p>Tick what is available. The agency should still confirm which documents are essential and which alternatives it accepts.</p>")+
+    return say("<strong>Here’s the preparation list for "+esc(s.name)+".</strong><p>"+(roleIsProvider()?"Check what the person has available and clarify accepted alternatives with the receiving agency.":"Tick what you already have. Ask the agency what you really need to bring, and whether other identification can be used.")+"</p>")+
       (docs.length?"<div class=\"gia2-checklist\">"+
         (base.length?"<div class=\"gia2-check-head\">From the support guide</div>"+base.map((d,i)=>"<label><input type=\"checkbox\" data-doc=\""+i+"\" "+(state.ready.has(i)?"checked":"")+"><span>"+esc(d)+"</span></label>").join(""):"")+
         (extras.length?"<div class=\"gia2-check-head\">Added by the referring worker</div>"+extras.map((d,i)=>"<label><input type=\"checkbox\" data-doc=\""+(base.length+i)+"\" "+(state.ready.has(base.length+i)?"checked":"")+"><span>"+esc(d)+"</span></label>").join(""):"")+
@@ -633,7 +633,7 @@
     })[outcome]||"Record what happened, the responsible role and the next contact date.";
   }
   function viewFollow(){
-    return say("<strong>Let’s see what happened next.</strong><p>Choose an outcome and I’ll suggest a sensible follow-up action. You can copy the note into your approved system.</p>")+
+    return say("<strong>"+(roleIsProvider()?"Let’s complete the follow-up.":"Let’s see what happened next.")+"</strong><p>"+(roleIsProvider()?"Choose the outcome and a responsible next step. Copy the note into your approved system.":"What happened when you contacted the agency? I can help you write down what to do next.")+"</p>")+
       "<div class=\"gia2-form\">"+
       "<label for=\"gia2CaseRef\">Reference without identifying details (optional)</label><input id=\"gia2CaseRef\" maxlength=\"50\" placeholder=\"e.g. Referral 014\" value=\""+esc(state.sessionRef)+"\">"+
       "<label for=\"gia2Outcome\">What happened?</label><select id=\"gia2Outcome\"><option value=\"\">Choose an outcome</option>"+["Received assistance","Appointment arranged","Awaiting response","Could not access service","Declined assistance","Needs changed"].map(v=>"<option "+(state.outcome===v?"selected":"")+">"+v+"</option>").join("")+"</select>"+
@@ -646,7 +646,7 @@
       "<div class=\"gia2-actions\">"+pill("service","Back to service")+pill("start","New request")+"</div>";
   }
   function viewUrgent(){
-    return say("<strong>This may need urgent support.</strong><p>If there is immediate danger, serious medical distress, abuse in progress or a child at risk, follow your facility’s emergency and safeguarding procedures first. Do not delay for a directory search.</p>")+
+    return say("<strong>This may need urgent support.</strong><p>"+(roleIsProvider()?"Follow your facility’s emergency and safeguarding procedures before considering an ordinary referral.":"If someone is in immediate danger, seriously ill, being harmed or at risk of harm, contact emergency services and seek help from a trusted person nearby.")+" Do not delay for a directory search.</p>")+
       "<div class=\"gia2-urgent\"><a href=\"tel:119\">Police emergency: <b>119</b></a><a href=\"tel:110\">Fire / ambulance: <b>110</b></a><a href=\"tel:211\">Child abuse reporting: <b>211</b></a></div>"+
       "<p class=\"gia2-muted\">Use a safe device and private communication method if violence or abuse is involved.</p>"+
       "<div class=\"gia2-actions\">"+pill("start","Back to GIA")+pill("services","Find additional support")+"</div>";
@@ -690,7 +690,10 @@
     if(/^(?:(?:hi|hello|hey)(?: gia)?|good morning(?: gia)?|good afternoon(?: gia)?|good evening(?: gia)?|what can you do)[!. ]*$/.test(lower)){show("home");return;}
     if(/^(?:start again|reset|new request)$/.test(lower)){act("start");return;}
     const parish=extractParish(question);
-    if(parish)state.parish=parish;
+    if(parish&&parish!==state.parish){
+      state.parish=parish;
+      if(state.localOfficeUsed){state.localOfficeUsed="";state.destination=state.selected?.agency||"";state.mapsProvided="";state.consent=false;}
+    }
     const numberInText=question.match(/(?:\+?1[\s().-]*)?(?:876|658)[\s().-]*\d{3}[\s().-]*\d{4}/);
     if(numberInText)state.phone=numberInText[0];
     const direct=explicitService(question);
@@ -709,7 +712,7 @@
     });
     if(direct){
       if(state.selected?.id!==direct.id){
-        state.selected=direct;state.destination=direct.kind==="decision"?"":direct.agency;state.mapsProvided="";state.ready=new Set();state.customDocs="";state.consent=false;
+        state.selected=direct;state.destination=direct.kind==="decision"?"":direct.agency;state.mapsProvided="";state.ready=new Set();state.customDocs="";state.consent=false;state.localOfficeUsed="";
       }
       state.question=question;
       if(!state.originalQuestion)state.originalQuestion=question;
@@ -730,7 +733,7 @@
       const useful=/(?:hospital|clinic|health centre|health center|police station|office|infirmary|laboratory|pharmacy|nht|nhf|path|nis)/i.test(candidate);
       if(useful){
         state.selected={id:"custom",name:"Custom destination",kind:"custom",agency:"",support:"",where:"",bring:"",process:"",targets:[],categories:[],contacts:[],meta:{}};
-        state.destination=candidate;state.ready=new Set();state.customDocs="";state.mapsProvided="";state.consent=false;
+        state.destination=candidate;state.ready=new Set();state.customDocs="";state.mapsProvided="";state.consent=false;state.localOfficeUsed="";
       }
       state.question=question;show("refer");return;
     }
@@ -784,7 +787,10 @@
       state.parish=get("gia2Parish");
       if(state.localOfficeUsed){state.destination=state.selected?.agency||"";state.localOfficeUsed="";state.mapsProvided="";}
     }
-    if(get("gia2Destination")!==undefined)state.destination=get("gia2Destination");
+    if(get("gia2Destination")!==undefined){
+      if(state.localOfficeUsed && state.destination!==get("gia2Destination"))state.localOfficeUsed="";
+      state.destination=get("gia2Destination");
+    }
     if(get("gia2Map")!==undefined)state.mapsProvided=get("gia2Map");
     if($("#gia2Consent"))state.consent=$("#gia2Consent").checked;
     if(get("gia2Outcome")!==undefined)state.outcome=get("gia2Outcome");
@@ -821,7 +827,7 @@
   function act(action){
     preserveInputs();
     if(action==="start"){
-      Object.assign(state,{view:"home",question:"",tone:"",topicIds:[],results:[],page:0,selected:null,parish:state.parish,destination:"",mapsProvided:"",phone:"",ready:new Set(),consent:false,outcome:"",next:"",followDate:"",sessionRef:"",customDocs:"",focusTopic:"",originalQuestion:"",barrier:"",recipientMode:"client"});
+      Object.assign(state,{view:"home",question:"",tone:"",topicIds:[],results:[],page:0,selected:null,parish:state.parish,destination:"",mapsProvided:"",phone:"",ready:new Set(),consent:false,outcome:"",next:"",followDate:"",sessionRef:"",customDocs:"",focusTopic:"",originalQuestion:"",barrier:"",recipientMode:"client",localOfficeUsed:""});
       show("home");return;
     }
     if(action==="ask"){state.question="";show("home");$("#gia2Question")?.focus();return;}
@@ -843,7 +849,7 @@
     if(action==="custom"){
       state.recipientMode="client";
       state.selected={id:"custom",name:"Custom destination",kind:"custom",agency:"",support:"",where:"",bring:"",process:"",targets:[],categories:[],contacts:[],meta:{}};
-      state.ready=new Set();state.destination="";state.customDocs="";state.mapsProvided="";state.consent=false;show("refer");return;
+      state.ready=new Set();state.destination="";state.customDocs="";state.mapsProvided="";state.consent=false;state.localOfficeUsed="";show("refer");return;
     }
     if(action==="refreshDocs"){show("refer");return;}
     if(action==="services"){document.querySelector('[data-nav="services"]')?.click();$("#gia2Dialog").close();return;}
