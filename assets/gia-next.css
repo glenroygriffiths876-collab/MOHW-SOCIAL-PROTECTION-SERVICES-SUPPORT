@@ -108,3 +108,24 @@
 }
 .gia2-chat-follow{margin-top:19px;padding-top:14px;border-top:1px solid #deebe1}
 .gia2-chat-follow label{display:block;color:#1d5c41;font-weight:800;font-size:12px;line-height:1.4;margin:0 0 7px}
+
+/* GIA 3.0: clearer priorities, optional detail panels and contextual guidance */
+.gia2-focus{margin:11px 0 15px;padding:12px;border:1px solid #c9e2d2;border-radius:15px;background:#f1f8f3}
+.gia2-focus p{font-weight:800;color:#1a583d;font-size:12px;margin:0 0 8px}
+.gia2-focus .gia2-actions{margin:0;gap:6px}
+.gia2-pill.gia2-focus-active{color:#fff;background:#176a44;border-color:#176a44}
+.gia2-contact-actions{display:flex;flex-wrap:wrap;gap:8px;margin:11px 0 0}
+.gia2-small-link{display:inline-flex;align-items:center;text-decoration:none;font-weight:750;font-size:12px;border-radius:9px;padding:9px 11px;background:#e5f4ec;border:1px solid #c5e4d3;color:#0d5b3d}
+.gia2-small-link:hover{background:#d3eedd}
+.gia2-next-tip{font-size:12px;line-height:1.5;background:#edf6ed;border:1px solid #c8e4d2;border-radius:12px;padding:12px;margin:6px 0;color:#28513c}
+.gia2-optional{margin-top:9px}
+.gia2-optional summary{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:23px}
+.gia2-optional summary span{font-size:11px;font-weight:600;color:#6a836f}
+.gia2-optional[open] summary{margin-bottom:9px}
+.gia2-optional label:not(.gia2-consent){display:block;color:#355c42;font-size:12px;font-weight:750;margin:9px 0 6px}
+.gia2-optional input:not([type="checkbox"]),.gia2-optional textarea{width:100%;box-sizing:border-box}
+.gia2-check-head{font-weight:850;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:#386e50;background:#e7f4e9;padding:8px;border-radius:7px;margin:6px 0 0}
+.gia2-compact-checks{margin:5px 0 0;padding:4px 8px}
+.gia2-compact-checks label{font-size:12px}
+.gia2-optional .gia2-pill{margin-top:7px}
+@media(max-width:620px){.gia2-small-link{flex:1;justify-content:center}.gia2-optional{padding:12px 11px}}
