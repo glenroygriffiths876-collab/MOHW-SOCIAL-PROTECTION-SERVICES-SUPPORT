@@ -106,3 +106,5 @@
  body.gia2-print > *:not(#gia2Print){display:none!important}
  body.gia2-print #gia2Print{display:block!important;white-space:pre-wrap!important;position:static!important;margin:20px!important;padding:0!important;color:black!important;font:12pt/1.6 Arial,sans-serif!important}
 }
+.gia2-chat-follow{margin-top:19px;padding-top:14px;border-top:1px solid #deebe1}
+.gia2-chat-follow label{display:block;color:#1d5c41;font-weight:800;font-size:12px;line-height:1.4;margin:0 0 7px}
