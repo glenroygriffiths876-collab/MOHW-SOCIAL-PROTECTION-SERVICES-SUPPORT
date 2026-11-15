@@ -82,7 +82,7 @@ test("Bad Maps URL blocks sharing",()=>opened.length===1);
 gia.state.mapsProvided="";gia.state.consent=false;
 gia.act("openWhatsApp");
 test("Consent gate blocks sharing",()=>opened.length===1);
-test("Action plan available",()=>gia.actionPlanText().includes("SOCIAL SUPPORT ACTION PLAN"));
+test("Action plan available",()=>gia.actionPlanText().includes("NEXT STEPS"));
 
 gia.act("start");gia.handleAsk("My aunt needs help with food, transport, and medication");
 test("Several needs recognised",()=>gia.state.topicIds.includes("food")&&gia.state.topicIds.includes("health")&&gia.state.topicIds.includes("transport"));
@@ -136,6 +136,15 @@ test("Missing parish displays clarification instead of invented local office",()
 gia.act("start");gia.handleAsk("NHT in Hanover");gia.state.phone="8765551234";gia.state.consent=true;gia.state.parish="Not selected";gia.act("openWhatsApp");
 test("WhatsApp is blocked without destination parish",()=>opened.length===1);
 test("Parish-specific data source is included in loader",()=>script.includes('PARISH_URL = "./data/gia-parishes.json"'));
+gia.act("role:client");gia.handleAsk("NHT in Hanover");
+test("Client action plan uses straightforward language",()=>gia.actionPlanText().includes("MY SOCIAL SUPPORT NEXT STEPS")&&!gia.actionPlanText().includes("approved system"));
+gia.act("role:provider");
+test("Provider action plan includes clinical workflow language",()=>gia.actionPlanText().includes("SOCIAL SUPPORT ACTION PLAN")&&gia.actionPlanText().includes("approved system"));
+gia.act("follow");
+test("Provider follow-up supports professional documentation",()=>content.innerHTML.includes("approved"));
+gia.act("role:client");
+test("Client follow-up asks for personal next step",()=>content.innerHTML.includes("What will you do next?"));
+
 
 test("Original guide records preserved",()=>guide.programmes.length===17&&guide.categories.length===26&&guide.decision.length===26&&guide.contacts.length===25);
 test("Directory-to-GIA deep link present",()=>app.includes("data-gia-referral")&&app.includes("window.MOHWGIA.openReferral"));
