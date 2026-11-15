@@ -141,6 +141,17 @@ test("Missing parish displays clarification instead of invented local office",()
 gia.act("start");gia.handleAsk("NHT in Hanover");gia.state.phone="8765551234";gia.state.consent=true;gia.state.parish="Not selected";gia.act("openWhatsApp");
 test("WhatsApp is blocked without destination parish",()=>opened.length===1);
 test("Parish-specific data source is included in loader",()=>script.includes('PARISH_URL = "./data/gia-parishes.json"'));
+test("Only non-case role and parish are allowed in session preferences",()=>script.includes('JSON.stringify({role:state.role,parish:state.parish})')&&!script.includes('JSON.stringify({role:state.role,parish:state.parish,phone'));
+gia.act("start");gia.act("role:client");gia.handleAsk("NHT in Hanover");
+gia.state.phone="8765551234";gia.state.consent=true;
+const beforeGeneric=opened.length;
+gia.act("openWhatsApp");
+test("Generic national agency name cannot be sent as exact office directions",()=>opened.length===beforeGeneric);
+gia.act("useOffice:nht");
+gia.state.consent=true;
+gia.act("openWhatsApp");
+test("Verified NHT parish office can be included in prepared WhatsApp",()=>opened.length===beforeGeneric+1&&decodeURIComponent(opened.at(-1)).includes("Office listing source:")&&decodeURIComponent(opened.at(-1)).includes("Uptown Shopping Centre"));
+
 gia.act("role:client");gia.handleAsk("NHT in Hanover");
 test("Client action plan uses straightforward language",()=>gia.actionPlanText().includes("MY SOCIAL SUPPORT NEXT STEPS")&&!gia.actionPlanText().includes("approved system"));
 gia.act("role:provider");
