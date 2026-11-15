@@ -1,10 +1,11 @@
-/* GIA 4.0: privacy-first guided social-support and referral companion.
+/* GIA 5.0: privacy-first guided social-support and referral companion.
  * Uses the November 2026 guide data. Does not determine eligibility, store case data,
  * authenticate users, contact agencies, send messages, or verify live availability.
  */
 (() => {
   "use strict";
   const GUIDE_URL = "./data/guide-content.json";
+  const PARISH_URL = "./data/gia-parishes.json";
   const PARISHES = ["Not selected","Hanover","St. James","Westmoreland","Trelawny","St. Elizabeth","Manchester","Clarendon","St. Ann","St. Mary","Portland","St. Thomas","St. Catherine","St. Andrew","Kingston"];
   const TOPICS = [
     {id:"food",label:"Food & essentials",pattern:/food|hungr|meal|grocer|basic need|school feed|clothing/i,terms:"food meal school feeding poor relief assistance"},
@@ -54,12 +55,12 @@
     if(!input.trim()||/not specified/i.test(input))return [];
     return [...new Set(input.split(/;\s*/).map(s=>s.trim().replace(/\.$/,"")).filter(Boolean))].slice(0,18);
   };
-  let guide=null, catalog=[];
+  let guide=null, catalog=[], parishDirectory=null;
   const state={
     view:"home", question:"", tone:"", topicIds:[], results:[], page:0, selected:null,
     parish:"Not selected", destination:"", mapsProvided:"", phone:"", ready:new Set(),
     consent:false, outcome:"", next:"", followDate:"", sessionRef:"", lastSource:"",
-    recipientMode:"client", customDocs:"", focusTopic:"", originalQuestion:"", guidePage:"", barrier:"", documentNotes:""
+    recipientMode:"client", customDocs:"", focusTopic:"", originalQuestion:"", guidePage:"", barrier:"", documentNotes:"", role:""
   };
   const key = value => {
     const n=normal(value);return normal(ALIASES[n]||n).replace(/\s/g,"");
@@ -204,6 +205,73 @@
     return say("<strong>Here’s a simple way to organise the different needs.</strong><p>This is a draft starting sequence—not a clinical assessment or a decision about eligibility. Discuss the priorities with the person and confirm each referral.</p>")+
       "<div class=\"gia2-roadmap\">"+steps.map((x,i)=>"<article><span>"+(i+1)+"</span><div><h4>"+esc(x.label)+"</h4><p>Possible starting points: "+esc(x.results.map(s=>s.name).join(" · ")||"Ask a medical social worker")+"</p><button class=\"gia2-choose\" type=\"button\" data-action=\"focus:"+esc(x.id)+"\">Explore this need →</button></div></article>").join("")+"</div>"+
       "<div class=\"gia2-primary-actions\">"+pill("copyRoadmap","Copy the plan","gia2-primary")+pill("backResults","Back to options")+"</div>";
+  }
+
+
+  const roleIsProvider = ()=>state.role==="provider";
+  const contextRole = ()=>roleIsProvider()?"Healthcare or social-service provider":state.role==="client"?"Individual or caregiver":"Choose your role";
+  const parishKnown = ()=>state.parish!=="Not selected" && !!parishDirectory?.parishes?.[state.parish];
+  const parishRecord = ()=>parishKnown()?parishDirectory.parishes[state.parish]:null;
+  function directoryRoute(s){
+    const text=normal(s?.name||"")+" "+normal(s?.agency||"");
+    if(/\bnht\b|national housing trust/.test(text))return "nht";
+    if(/\bnis\b|national insurance|social pension/.test(text))return "nis";
+    if(/\bpath\b|programme of advancement/.test(text))return "path";
+    if(/\bnhf\b|national health fund|j a d e p|jadep/.test(text))return "nhf";
+    if(/\bheart\b|\bnsta\b|skills training|vocational/.test(text))return "heart";
+    if(/local government|poor relief|municipal/.test(text))return "poor-relief";
+    if(/hospital|health|clinic|diagnostic|medical|compassionate fund/.test(text))return "health";
+    return "general";
+  }
+  function mapSearch(title){
+    return mapsUrl(title,state.parish,"");
+  }
+  function linkTo(url,title){
+    if(!/^https:\/\//.test(url||""))return "";
+    return "<a class=\"gia2-local-link\" href=\""+esc(url)+"\" target=\"_blank\" rel=\"noopener noreferrer\">"+esc(title)+" ↗</a>";
+  }
+  function contextBar(){
+    const options=PARISHES.map(p=>"<option value=\""+esc(p)+"\" "+(p===state.parish?"selected":"")+">"+esc(p==="Not selected"?"Select parish":p)+"</option>").join("");
+    return "<div class=\"gia2-context\" id=\"gia2Context\"><div class=\"gia2-context-field\"><label for=\"gia2Role\">I am...</label><select id=\"gia2Role\"><option value=\"\" "+(!state.role?"selected":"")+">Choose my role</option><option value=\"client\" "+(state.role==="client"?"selected":"")+">Seeking help</option><option value=\"provider\" "+(state.role==="provider"?"selected":"")+">Health/social worker</option></select></div>"+
+      "<div class=\"gia2-context-field\"><label for=\"gia2ContextParish\">Parish</label><select id=\"gia2ContextParish\">"+options+"</select></div></div>";
+  }
+  function localOfficeMarkup(office,kind,canSelect){
+    if(!office)return "";
+    return "<div class=\"gia2-local-office\"><span class=\"gia2-local-tag\">Official directory listing · confirm current details</span>"+
+      "<strong>"+esc(office.name)+"</strong><p>"+esc(office.address)+"</p><p>Telephone listed: <a href=\"tel:"+esc(office.phone.replace(/[^\d]/g,""))+"\">"+esc(office.phone)+"</a></p>"+
+      (office.scope?"<p class=\"gia2-local-caution\">"+esc(office.scope)+"</p>":"")+
+      "<div class=\"gia2-local-actions\">"+linkTo(office.source,"Official agency listing")+linkTo(mapSearch(office.address),"Find address on Maps")+
+      (canSelect?pill("useOffice:"+kind,"Use this office in referral"):"")+"</div></div>";
+  }
+  function parishHelp(s){
+    const route=directoryRoute(s);
+    if(!parishKnown()){
+      return "<div class=\"gia2-local-panel\"><h4>Find support in the right parish</h4><p>Choose a parish at the top. I'll show official local office listings where available and the right health region. Until then, these are national programme options—not confirmed local facilities.</p></div>";
+    }
+    const p=parishRecord();
+    const label=esc(state.parish);
+    let content="";
+    if(route==="nht")content=localOfficeMarkup(p.nht,"nht",true);
+    else if(route==="nis")content=localOfficeMarkup(p.mlss,"mlss",true);
+    else if(route==="path")content=
+      "<p>PATH is administered through MLSS. Please confirm which "+label+" office handles PATH enquiries before directing someone there.</p>"+
+      localOfficeMarkup(p.mlss,"mlss",false)+linkTo(parishDirectory.serviceRoutes.path.source,"Official PATH information");
+    else if(route==="nhf")content=
+      "<p>NHF-approved pharmacies and services vary by facility. Search the official provider directory for "+label+" and check which services the selected location provides.</p>"+
+      linkTo(parishDirectory.sources.nhf,"Find NHF providers")+linkTo(parishDirectory.sources.nhfDrugServ,"Find Drug Serv locations");
+    else if(route==="heart")content=
+      "<p>Training institutions, courses and parish intake arrangements vary. Use the official HEART/NSTA directory to locate a suitable "+label+" option.</p>"+
+      linkTo(parishDirectory.sources.heart,"HEART parish contacts")+linkTo(parishDirectory.sources.heartProgrammes,"HEART training programmes");
+    else if(route==="poor-relief")content=
+      "<p>Ask the "+label+" municipal corporation/poor relief department about the appropriate local assessment and intake route. This guide does not verify a specific office address.</p>"+
+      linkTo("https://www.localgovjamaica.gov.jm/","Local Government ministry")+linkTo(mapSearch("Municipal Corporation Poor Relief Office"),"Search local offices on Maps");
+    else content=
+      "<p>For public healthcare referrals, "+label+" is served by the <strong>"+esc(p.healthAuthority.name)+"</strong>. Confirm the particular hospital, health centre or social work service before advising travel.</p>"+
+      linkTo(parishDirectory.sources.health,"MOHW health authorities")+
+      linkTo(mapSearch(s?.kind==="custom" ? state.destination||"public health centre" : s?.name||"health centre"),"Search "+state.parish+" services on Maps");
+    if(route!=="health"&&route!=="general")content+="<p class=\"gia2-local-caution\">For healthcare or social-work handover: "+esc(p.healthAuthority.name)+".</p>";
+    return "<section class=\"gia2-local-panel\"><div class=\"gia2-local-heading\"><span>📍</span><div><h4>"+label+" service guidance</h4><p>"+esc(p.healthAuthority.name)+"</p></div></div>"+content+
+      "<small>Address or agency page listed in an official directory, not a confirmed appointment, eligibility decision, opening status or GPS pin. Source directory checked 15 November 2026.</small></section>";
   }
 
   function topicMatches(query){
