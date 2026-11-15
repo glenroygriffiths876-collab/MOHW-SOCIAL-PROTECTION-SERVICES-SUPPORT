@@ -405,12 +405,35 @@
       "<div class=\"gia2-primary-actions\">"+pill("refer","Prepare WhatsApp information","gia2-primary")+pill("service","Back to service")+"</div>"+
       "<details class=\"gia2-expand\"><summary>Where can I get missing documents?</summary>"+(guide.documents||[]).map(d=>"<div class=\"gia2-mini-doc\"><b>"+esc(d.document)+"</b><p>"+esc(d.where)+" · "+esc(short(d.process,165))+"</p></div>").join("")+"</details>";
   }
+
   function referralText(){
     const s=state.selected;
     const name=state.destination.trim()||(s?.agency||"Receiving service to confirm");
     const map=mapsUrl(name,state.parish,state.mapsProvided);
     const base=guideDocs(s),extra=workerDocs();
     const list=(arr,offset)=>arr.map((d,i)=>(state.ready.has(offset+i)?"☑ ":"☐ ")+d);
+    const locationLine=(state.mapsProvided.trim()&&validMapsLink(state.mapsProvided)?
+      "Google Maps link supplied by worker (check destination): ":
+      "Google Maps search (confirm exact destination): ")+map;
+    if(state.recipientMode==="agency"){
+      return [
+        "SOCIAL SUPPORT SERVICE ENQUIRY",
+        "Good day. I am seeking general referral information about "+(s?.kind==="custom"?name:(s?.name||"your service"))+".",
+        "",
+        "Proposed destination: "+name,
+        "Parish: "+(state.parish==="Not selected"?"To be confirmed":state.parish),
+        locationLine,
+        "",
+        "Could you please confirm:",
+        "• Whether this is the appropriate service and office",
+        "• The current referral/application process and documents required",
+        "• Office hours, appointment arrangements, accessibility and any fees",
+        base.length?"The support guide lists: "+base.join("; ")+". Please confirm these requirements.":"",
+        "",
+        "No client-identifying or clinical information is included in this initial enquiry.",
+        "Thank you."
+      ].filter(Boolean).join("\n");
+    }
     return [
       "YOUR SOCIAL SUPPORT VISIT INFORMATION",
       "Hello. Here is the information to help you prepare.",
@@ -418,7 +441,7 @@
       "Service: "+(s?.kind==="custom"?name:(s?.name||"Service to confirm")),
       "Office or destination: "+name,
       "Parish: "+(state.parish==="Not selected"?"Please confirm":state.parish),
-      (state.mapsProvided.trim()&&validMapsLink(state.mapsProvided)?"Google Maps link supplied by worker (check destination): ":"Google Maps search (confirm exact destination): ")+map,
+      locationLine,
       "",
       "DOCUMENT CHECKLIST",
       ...(base.length?["Listed in the support guide (confirm current requirements):",...list(base,0)]:[]),
@@ -468,6 +491,7 @@
       "<details class=\"gia2-expand gia2-optional\"><summary>Location link and document options <span>optional</span></summary>"+
       "<label for=\"gia2Map\">Paste a confirmed Google Maps pin (if you have one)</label><input id=\"gia2Map\" type=\"url\" maxlength=\"650\" placeholder=\"https://maps.app.goo.gl/...\" value=\""+esc(state.mapsProvided)+"\">"+
       "<p class=\"gia2-muted\">Otherwise GIA includes a Google Maps search. It is not a verified office address.</p>"+
+      "<label for=\"gia2RecipientMode\">Who will receive this message?</label><select id=\"gia2RecipientMode\"><option value=\"client\" "+(state.recipientMode==="client"?"selected":"")+">Person or caregiver — visit instructions</option><option value=\"agency\" "+(state.recipientMode==="agency"?"selected":"")+">Receiving agency — general enquiry</option></select>"+
       "<label for=\"gia2CustomDocs\">Additional documents confirmed by the agency (one per line)</label><textarea id=\"gia2CustomDocs\" rows=\"2\" maxlength=\"1200\" placeholder=\"e.g. Referral letter\">"+esc(state.customDocs)+"</textarea>"+
       pill("refreshDocs","Update checklist")+
       "</details>"+
@@ -480,7 +504,7 @@
       "<label class=\"gia2-consent\"><input id=\"gia2Consent\" type=\"checkbox\" "+(state.consent?"checked":"")+"><span>The recipient agrees to receive this information on WhatsApp, and I have reviewed it for confidential details.</span></label>"+
       "<details class=\"gia2-expand\"><summary>Read the WhatsApp message before sharing</summary><pre id=\"gia2Preview\">"+esc(referralText())+"</pre></details>"+
       "<p class=\"gia2-error\" id=\"gia2Validation\" role=\"status\"></p>"+
-      "<div class=\"gia2-primary-actions\">"+pill("openWhatsApp","Open WhatsApp to send","gia2-primary")+pill("copyReferral","Copy message")+pill("map","Check destination on Maps")+"</div>"+
+      "<div class=\"gia2-primary-actions\">"+pill("openWhatsApp","Open WhatsApp to review","gia2-primary")+pill("copyReferral","Copy message")+pill("map","Check destination on Maps")+"</div>"+
       "<p class=\"gia2-muted\">The message opens inside WhatsApp for you to review and send. GIA does not send it automatically.</p>"+
       "</div><div class=\"gia2-actions\">"+pill("checklist","View full document guidance")+(s.kind==="custom"?"":pill("service","Back to service"))+pill("start","New request")+"</div>";
   }
@@ -661,6 +685,7 @@
     if(get("gia2Date")!==undefined)state.followDate=get("gia2Date");
     if(get("gia2CaseRef")!==undefined)state.sessionRef=get("gia2CaseRef");
     if(get("gia2CustomDocs")!==undefined)state.customDocs=get("gia2CustomDocs");
+    if(get("gia2RecipientMode")!==undefined)state.recipientMode=get("gia2RecipientMode");
     if(get("gia2Question")!==undefined && get("gia2Question").trim())state.question=get("gia2Question");
   }
   function updatePreview(){
@@ -694,6 +719,7 @@
     if(action==="ask"){state.question="";show("home");$("#gia2Question")?.focus();return;}
     if(action==="voice"){dictate();return;}
     if(action==="custom"){
+      state.recipientMode="client";
       state.selected={id:"custom",name:"Custom destination",kind:"custom",agency:"",support:"",where:"",bring:"",process:"",targets:[],categories:[],contacts:[],meta:{}};
       state.ready=new Set();state.destination="";state.customDocs="";state.mapsProvided="";state.consent=false;show("refer");return;
     }
@@ -766,7 +792,7 @@
       preserveInputs();updatePreview();
     });
     dialog.addEventListener("input",e=>{
-      if(e.target.matches("#gia2To,#gia2Destination,#gia2Map,#gia2Parish,#gia2CustomDocs,#gia2CaseRef,#gia2Next,#gia2Date,#gia2Outcome")){
+      if(e.target.matches("#gia2To,#gia2Destination,#gia2Map,#gia2Parish,#gia2RecipientMode,#gia2CustomDocs,#gia2CaseRef,#gia2Next,#gia2Date,#gia2Outcome")){
         preserveInputs();updatePreview();
       }
     });
