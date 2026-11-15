@@ -460,10 +460,12 @@
     const lower=normal(question);
     // Urgent-safety routing always takes priority over programme lookup.
     if(DANGER.test(question)){state.question=question;show("urgent");return;}
-    if(/^(?:hi|hello|hey|good morning|good afternoon|good evening|what can you do)[!. ]*$/.test(lower)){show("home");return;}
+    if(/^(?:(?:hi|hello|hey)(?: gia)?|good morning(?: gia)?|good afternoon(?: gia)?|good evening(?: gia)?|what can you do)[!. ]*$/.test(lower)){show("home");return;}
     if(/^(?:start again|reset|new request)$/.test(lower)){act("start");return;}
     const parish=extractParish(question);
     if(parish)state.parish=parish;
+    const numberInText=question.match(/(?:\+?1[\s().-]*)?(?:876|658)[\s().-]*\d{3}[\s().-]*\d{4}/);
+    if(numberInText)state.phone=numberInText[0];
     const direct=explicitService(question);
     const wantsDocs=/\b(?:document|documents|paperwork|papers|bring|requirements|application form|birth certificate|trn|passport|national id|identification)\b/i.test(question);
     const wantsReferral=/\b(?:whats\s?app|send (?:this|that|it|information|referral)|message (?:her|him|them|the client)|share (?:this|it|that)|refer(?:ral)?)\b/i.test(question);
@@ -488,6 +490,16 @@
       if(wantsFollow){show("follow");return;}
       state.tone=wantsCost?"cost":wantsApply?"apply":wantsMaps?"maps":"";
       show("service");return;
+    }
+    if(wantsReferral && !direct && !state.selected){
+      const target=question.match(/\b(?:to|for)\s+(.+?)(?:(?:\s+(?:at|in)\s+)(?:Hanover|St\.? James|Westmoreland|Trelawny|St\.? Elizabeth|Manchester|Clarendon|St\.? Ann|St\.? Mary|Portland|St\.? Thomas|St\.? Catherine|St\.? Andrew|Kingston))?\s*$/i);
+      const candidate=target?.[1]?.replace(/(?:\+?1[\s().-]*)?(?:876|658)[\s().-]*\d{3}[\s().-]*\d{4}/g,"").trim()||"";
+      const useful=/(?:hospital|clinic|health centre|health center|police station|office|infirmary|laboratory|pharmacy|nht|nhf|path|nis)/i.test(candidate);
+      if(useful){
+        state.selected={id:"custom",name:"Custom destination",kind:"custom",agency:"",support:"",where:"",bring:"",process:"",targets:[],categories:[],contacts:[],meta:{}};
+        state.destination=candidate;state.ready=new Set();state.customDocs="";state.mapsProvided="";state.consent=false;
+      }
+      state.question=question;show("refer");return;
     }
     if(knownDocument && !state.selected){
       state.question=knownDocument.document;show("documents");return;
@@ -647,6 +659,18 @@
         preserveInputs();updatePreview();
       }
     });
+    window.MOHWGIA={
+      open:()=>open("home"),
+      openReferral:(name)=>{
+        const wanted=catalog.find(s=>key(s.name)===key(name)||s.aliases?.some(a=>key(a)===key(name)));
+        if(wanted){
+          state.selected=wanted;state.destination=wanted.kind==="decision"?"":(wanted.agency||wanted.name);
+          state.ready=new Set();state.customDocs="";state.mapsProvided="";state.consent=false;
+        }
+        open("refer");
+      },
+      openNeed:(need)=>{open("home");handleAsk(need);}
+    };
     render();
   }
   document.addEventListener("DOMContentLoaded",async()=>{
