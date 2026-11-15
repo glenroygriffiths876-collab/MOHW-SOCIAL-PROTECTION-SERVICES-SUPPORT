@@ -559,21 +559,36 @@
   }
   function actionPlanText(){
     const s=state.selected;
-    if(!s)return "Choose a service before preparing an action plan.";
+    if(!s)return "Choose a service before preparing next steps.";
     const base=guideDocs(s),extra=workerDocs();
+    if(!roleIsProvider()){
+      return [
+        "MY SOCIAL SUPPORT NEXT STEPS",
+        "Parish: "+(parishChosen()?state.parish:"Please choose a parish"),
+        "Programme or agency to ask about: "+s.name,
+        "Possible help: "+(s.support||"Ask the receiving agency about its services"),
+        "Where to start: "+(s.where||"Ask for the correct local office"),
+        "What the guide says to bring: "+(base.length?base.join("; "):"Ask the agency"),
+        "Other documents noted: "+(extra.length?extra.join("; "):"None"),
+        "Before going: Confirm the correct office, documents, opening hours, any costs and whether you need an appointment.",
+        "I can ask for help from a trusted person or healthcare worker if needed.",
+        "The agency decides eligibility and availability. This is a guide, not an approval."
+      ].join("\n\n");
+    }
     return [
       "SOCIAL SUPPORT ACTION PLAN — DRAFT",
       "Needs discussed: "+sayNeeds(state.topicIds),
-      "Service to confirm: "+s.name,
+      "Parish: "+(parishChosen()?state.parish:"To establish"),
+      "Programme/service to confirm: "+s.name,
       "Relevant agency: "+(s.agency||"Confirm with programme"),
-      "Parish: "+state.parish,
+      "Relevant health region: "+(parishRecord()?.healthAuthority?.name||"Select parish"),
       "Possible assistance described: "+(s.support||"See responsible agency"),
       "Guide application process: "+(s.process||"Confirm process with agency"),
       "Guide-listed documents: "+(base.length?base.join("; "):"Not specified"),
       "Worker-entered additional documents: "+(extra.length?extra.join("; "):"None"),
-      "Next step: Confirm suitability, location, documentation, accessibility and service availability with the receiving agency.",
-      "Document actual contact, referral and outcome in your authorised clinical/social work record.",
-      "Source: November 2026 Social Protection Services Support Guide; current arrangements require confirmation."
+      "Next step: Confirm suitability, parish catchment, accessible location, documentation, service capacity and consent.",
+      "Document actual contact, referral and outcome in the approved system.",
+      "Source: November 2026 Social Protection Services Support Guide; verify current agency arrangements."
     ].join("\n\n");
   }
   function viewRefer(){
@@ -612,14 +627,27 @@
       "</div><div class=\"gia2-actions\">"+pill("checklist","View full document guidance")+(s.kind==="custom"?"":pill("service","Back to service"))+pill("start","New request")+"</div>";
   }
   function followText(){
+    const selected=state.selected?.name||"Service to confirm";
+    if(!roleIsProvider()){
+      return [
+        "MY SUPPORT FOLLOW-UP NOTES",
+        "Parish: "+(parishChosen()?state.parish:"Not chosen"),
+        "Service: "+selected,
+        "What happened: "+(state.outcome||"To confirm"),
+        "My next step: "+(state.next||"Decide whom to contact"),
+        "Date to check again: "+(state.followDate||"Choose a date"),
+        "Keep these notes somewhere safe. GIA does not save cases or set reminders."
+      ].join("\n");
+    }
     return [
       "SOCIAL SUPPORT FOLLOW-UP NOTE (DRAFT)",
-      "Service: "+(state.selected?.name||"Not yet selected"),
+      "Parish: "+(parishChosen()?state.parish:"Not yet selected"),
+      "Service: "+selected,
       "Non-identifying reference: "+(state.sessionRef||"Not entered"),
       "Outcome: "+(state.outcome||"To confirm"),
       "Next step and responsible role: "+(state.next||"To be agreed"),
       "Follow-up date: "+(state.followDate||"To be agreed"),
-      "Note: Transfer relevant details to your approved record. This page does not save case records or set reminders."
+      "Transfer relevant details to the approved record. GIA does not store case records or set reminders."
     ].join("\n");
   }
   function followAdvice(outcome){
@@ -635,14 +663,14 @@
   function viewFollow(){
     return say("<strong>"+(roleIsProvider()?"Let’s complete the follow-up.":"Let’s see what happened next.")+"</strong><p>"+(roleIsProvider()?"Choose the outcome and a responsible next step. Copy the note into your approved system.":"What happened when you contacted the agency? I can help you write down what to do next.")+"</p>")+
       "<div class=\"gia2-form\">"+
-      "<label for=\"gia2CaseRef\">Reference without identifying details (optional)</label><input id=\"gia2CaseRef\" maxlength=\"50\" placeholder=\"e.g. Referral 014\" value=\""+esc(state.sessionRef)+"\">"+
+      (roleIsProvider()?"<label for=\"gia2CaseRef\">Reference without identifying details (optional)</label><input id=\"gia2CaseRef\" maxlength=\"50\" placeholder=\"e.g. Referral 014\" value=\""+esc(state.sessionRef)+"\">":"")+
       "<label for=\"gia2Outcome\">What happened?</label><select id=\"gia2Outcome\"><option value=\"\">Choose an outcome</option>"+["Received assistance","Appointment arranged","Awaiting response","Could not access service","Declined assistance","Needs changed"].map(v=>"<option "+(state.outcome===v?"selected":"")+">"+v+"</option>").join("")+"</select>"+
       "<div class=\"gia2-next-tip\" id=\"gia2FollowAdvice\">"+esc(followAdvice(state.outcome))+"</div>"+
-      "<label for=\"gia2Next\">Next step and responsible person/role</label><textarea id=\"gia2Next\" maxlength=\"700\" rows=\"3\" placeholder=\"e.g. Referring worker to confirm appointment\">"+esc(state.next)+"</textarea>"+
+      "<label for=\"gia2Next\">"+(roleIsProvider()?"Next step and responsible person/role":"What will you do next?")+"</label><textarea id=\"gia2Next\" maxlength=\"700\" rows=\"3\" placeholder=\"e.g. Referring worker to confirm appointment\">"+esc(state.next)+"</textarea>"+
       "<label for=\"gia2Date\">Date to check again</label><input id=\"gia2Date\" type=\"date\" value=\""+esc(state.followDate)+"\">"+
       "<details class=\"gia2-expand\"><summary>Preview your follow-up note</summary><pre id=\"gia2FollowPreview\">"+esc(followText())+"</pre></details>"+
       "<div class=\"gia2-primary-actions\">"+pill("copyFollow","Copy follow-up note","gia2-primary")+pill("printFollow","Print note")+"</div>"+
-      "<p class=\"gia2-muted\">GIA does not create a case record or set a reminder. Put the note in your approved record and schedule follow-up there.</p></div>"+
+      "<p class=\"gia2-muted\">"+(roleIsProvider()?"GIA does not create a case record or reminder. Use your approved record and follow-up system.":"GIA does not save these notes or set a reminder. Keep a copy somewhere safe.")+"</p></div>"+
       "<div class=\"gia2-actions\">"+pill("service","Back to service")+pill("start","New request")+"</div>";
   }
   function viewUrgent(){
@@ -916,6 +944,9 @@
     dialog.addEventListener("change",e=>{
       if(e.target.id==="gia2Role"){
         preserveInputs();state.role=e.target.value;render();return;
+      }
+      if(e.target.id==="gia2Parish"){
+        preserveInputs();render();return;
       }
       if(e.target.id==="gia2ContextParish"){
         preserveInputs();
