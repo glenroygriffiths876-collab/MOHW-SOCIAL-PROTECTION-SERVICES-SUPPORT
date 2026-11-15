@@ -73,6 +73,21 @@
     ['Education and work', 'education school training employment'],
     ['Emotional support', 'mental counselling wellbeing']
   ];
+  const QUESTIONS = [
+    ['What kind of food support is needed?', [['Food for a household','Poor Relief food'],['Meals for an older person','Senior Citizen Services Meals'],['Meals for a student','School Feeding'],['Not sure yet','food meals']]],
+    ['What is preventing the journey?', [['Cannot afford transport','Poor Relief transportation'],['Needs accessible transport or someone to accompany them','transportation disability'],['Not sure yet','transportation']]],
+    ['What needs to be paid for or arranged?', [['Ongoing prescription medication','NHF medication'],['A test or scan','RHA Diagnostic Support'],['Specialised treatment or equipment','Compassionate medical treatment'],['Not sure yet','medical assistance']]],
+    ['What housing help is needed?', [['Somewhere to stay or emergency support','Poor Relief homeless shelter'],['Repairs or rebuilding','housing repairs rehabilitation'],['Making a home accessible','disability accessibility modifications'],['Not sure yet','Local Government Assistance housing']]],
+    ['Who needs the support?', [['A child with a disability','Early Stimulation children disabilities'],['An adult with a disability','disability assistance'],['An older person needing daily care','senior care infirmary'],['A caregiver who needs help','caregiver support'],['Not sure yet','disability support']]],
+    ['Which situation is closest?', [['Household struggling with basic expenses','PATH cash household'],['Older person asking about a pension','Social Pension NIS'],['Help after a crisis or disaster','Rehabilitation Grants emergency'],['Not sure yet','cash assistance']]],
+    ['What is the immediate goal?', [['Staying in school','PATH school assistance'],['Learning a skill or finding work','HEART training employment'],['Returning to education after pregnancy','Women Centre adolescent education'],['Not sure yet','HEART PATH education']]],
+    ['What support is being sought?', [['Mental health support','mental health counselling'],['Support with substance use','NCDA counselling'],['Support after violence or abuse','Victim Services Bureau Gender'],['Not sure yet','psychosocial support']]]
+  ];
+  const PARISH_OPTIONS = ['Not specified','Hanover','Westmoreland','St. James','Trelawny','St. Elizabeth','Manchester','Clarendon','St. Ann','St. Catherine','St. Andrew','Kingston','St. Mary','Portland','St. Thomas'];
+  function detectNeeds(text) {
+    const patterns = [/food|hungr|meal|grocer/, /transport|travel|bus fare|taxi|getting to|cannot get to|can t get to/, /medicin|medication|treatment|prescription|scan|dialysis/, /hous|shelter|homeless|rent|roof/, /disabil|disabled|caregiv|autis|daily care/, /income|money|cash|pension|financial/, /school|education|training|employment|job/, /mental|counsell|substance|emotional/];
+    return patterns.flatMap((pattern,index)=>pattern.test(normal(text))?[index]:[]);
+  }
   const BARRIERS = {
     'Missing documents': 'Ask the agency which documents are essential, which alternatives it accepts, and whether an initial assessment can begin while documents are obtained.',
     'Cannot travel': 'Ask about telephone intake, an accessible appointment, an authorised representative, or a local referral route. Confirm what the agency can actually offer.',
@@ -94,6 +109,20 @@
       const title = Array.isArray(step) ? step[0] : typeof step === 'string' ? step : step.title;
       const body = Array.isArray(step) ? step[1] : typeof step === 'string' ? step : step.description;
       entries.push({title:`Step ${i + 1} · ${title}`,body,section:'Referral Procedures',nav:'referrals'});
+    }
+    for (const d of data.documents || []) entries.push({title:d.document,body:d.requirements,where:d.where,bring:d.requirements,process:d.process,section:'Document requirements',nav:'services',term:d.where});
+    const aliases = {'Poor Relief':'Local Government Assistance','National Health Fund Card':'NHF','HEART/NSTA Trust':'HEART / NSTA','Compassionate Fund Programme':'MOHW Compassionate Fund Programme','CHASE Medical Assistance':'CHASE / Compassionate Medical Assistance'};
+    for (const entry of entries) {
+      const canonical=aliases[entry.title] || entry.title;
+      const profile=entries.find(e=>e.section==='Programme profiles' && e.title===canonical);
+      if(profile && profile!==entry) {
+        entry.where=profile.where;entry.bring=profile.bring;entry.process=profile.process;entry.term=profile.term;
+      }
+      const meta=data.serviceMetadata?.[canonical] || data.serviceMetadata?.[entry.title] || {};
+      entry.agency=meta.agency || entry.where || '';
+      entry.url=/^https:\/\//.test(meta.officialUrl || '')?meta.officialUrl:'';
+      entry.contacts=(data.contacts || []).filter(c=>(meta.contactAgencies || []).some(name=>normal(c.agency).includes(normal(name))));
+      entry.canonical=canonical;
     }
     return entries;
   }
@@ -121,12 +150,12 @@
       return {...entry,score:score + matches.length * 12,matches};
     }).filter(entry => entry.score > 0).sort((a,b) => b.score-a.score);
     const seen = new Set();
-    return ranked.filter(entry => {const key=normal(entry.title);if(seen.has(key))return false;seen.add(key);return true;}).slice(0,8);
+    return ranked.filter(entry => {const key=normal(entry.canonical || entry.title);if(seen.has(key))return false;seen.add(key);return true;}).slice(0,8);
   }
   function mountGia(initialGuide) {
     if(q('#giaLauncher')) return;
     let guide = initialGuide, entries = guideEntries(guide || {});
-    let state = {view:'home', query:'', need:'', barrier:'', selected:null, plan:'', outcome:'', next:'', date:''};
+    let state = {guided:false, needIndex:null, detail:'', parish:'Not specified', showAll:false, detected:[], completed:[], view:'help', query:'', need:'', barrier:'', selected:null, plan:'', outcome:'', next:'', date:''};
     let results = [];
     const launcher = document.createElement('button');
     launcher.id='giaLauncher'; launcher.className='gia-launcher'; launcher.type='button';
@@ -137,24 +166,38 @@
     document.body.append(launcher,panel);
     const workspace=q('#giaWorkspace',panel);
     const button=(action,label)=>`<button type="button" data-action="${action}">${label}</button>`;
+    function beginNeed(index) {
+      state.guided=true;state.needIndex=index;state.need=NEEDS[index][1];state.detail='';state.selected=null;state.plan='';state.completed=[];state.showAll=false;
+      render('clarify');
+    }
+    function contactDetails(entry) {
+      return `<section class="gia-contact-block"><h4>Contact the service</h4><p>${esc(entry.agency || 'Confirm the responsible agency in the source section.')}</p>${entry.contacts.map(c=>`<details><summary>${esc(c.agency)}</summary><p>${esc(c.details)}</p></details>`).join('')}${entry.url?`<a href="${esc(entry.url)}" target="_blank" rel="noopener noreferrer">Open agency website ↗</a>`:''}<small>Agency details are transcribed from the working guide. Confirm current arrangements.</small></section>`;
+    }
     function render(view=state.view) {
       state.view=view;
       panel.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-current',String(b.dataset.view===view)));
       if(!guide){workspace.innerHTML=`<h3 tabindex="-1">The guide could not load</h3><p>Check your connection and try again. Your current entries will stay here.</p>${button('retry','Try again')}${button('directory','Open directory')}`;return;}
       const source=`<p class="gia-source">Source · ${esc(guide.edition)} · working draft, agency verification pending.</p>`;
       if(view==='home') workspace.innerHTML=`<h3 tabindex="-1">What would you like to do?</h3><p>Start with a need, find a specific resource, or work through an unsuccessful referral.</p><div class="gia-start"><button data-view="help"><b>Help someone</b><span>Choose a need and prepare the next step</span></button><button data-view="search"><b>Find information</b><span>Search programmes, contacts and referral guidance</span></button><button data-view="follow"><b>Follow up</b><span>Review an outcome and decide what happens next</span></button></div>${source}`;
-      if(view==='help') workspace.innerHTML=`<h3 tabindex="-1">What matters most today?</h3><p>Choose one priority together. You can change it at any time.</p><div class="gia-choices">${NEEDS.map(([label,query],i)=>`<button data-need="${i}" aria-pressed="${state.need===query}">${label}</button>`).join('')}</div><form data-form="help"><label for="giaSituation">Or describe the support needed</label><textarea id="giaSituation" maxlength="500" rows="3" placeholder="For example, transport to clinic is too expensive">${esc(state.query)}</textarea><button type="submit" class="gia-primary">Explore support</button></form><details><summary>Urgent safety concern?</summary><p>${esc(guide.referralSteps?.[1]?.[1] || 'Follow your facility’s emergency and safeguarding procedures.')}</p><button data-nav="referrals">Open referral guidance</button></details>`;
+      if(view==='help') workspace.innerHTML=`<h3 tabindex="-1">Tell me what’s getting in the way.</h3><p>Describe the situation or choose a need. We’ll work out a practical starting point together.</p><div class="gia-choices">${NEEDS.map(([label,query],i)=>`<button data-need="${i}" aria-pressed="${state.need===query}">${label}</button>`).join('')}</div><form data-form="help"><label for="giaSituation">Or describe the support needed</label><textarea id="giaSituation" maxlength="500" rows="3" placeholder="For example, transport to clinic is too expensive">${esc(state.query)}</textarea><button type="submit" class="gia-primary">Explore support</button></form><details><summary>Urgent safety concern?</summary><p>${esc(guide.referralSteps?.[1]?.[1] || 'Follow your facility’s emergency and safeguarding procedures.')}</p><button data-nav="referrals">Open referral guidance</button></details>`;
+      if(view==='priority') workspace.innerHTML=`<h3 tabindex="-1">Which need should we work on first?</h3><p>I found these possible needs in your description. Choose the person’s priority, or change the description.</p><blockquote>${esc(state.query)}</blockquote><div class="gia-start">${state.detected.map(i=>`<button data-need="${i}">${esc(NEEDS[i][0])}</button>`).join('')}</div>${button('edit','Change the description')}`;
+      if(view==='clarify') {
+        const question=QUESTIONS[state.needIndex];
+        workspace.innerHTML=`<div class="gia-progress">Understand the need → Choose support → Prepare next step</div><h3 tabindex="-1">${esc(question[0])}</h3><p>This helps narrow the guide to the kind of support you need.</p><div class="gia-start">${question[1].map(([label],i)=>`<button data-detail="${i}">${esc(label)}</button>`).join('')}</div>${button('edit','Back to needs')}`;
+      }
       if(view==='search') workspace.innerHTML=`<h3 tabindex="-1">Find information quickly</h3><form data-form="search"><label for="giaSearch">Programme, need, document or agency</label><input id="giaSearch" type="search" maxlength="180" value="${esc(state.query)}" placeholder="Try PATH, transport or referral steps" required><button type="submit" class="gia-primary">Search guide</button></form><p>Use a programme profile to find its agency links and application information.</p>${source}`;
       if(view==='results') {
-        results=searchGuide(state.need ? entries.filter(e=>e.section!=='Referral Procedures') : entries,state.need || state.query);
-        workspace.innerHTML=`<h3 tabindex="-1">Possible starting points</h3>${/danger|abuse|suicid|violence|neglect|emergency/i.test(state.query)?`<aside class="gia-urgent"><b>Check urgency and safety first</b><p>${esc(guide.referralSteps?.[1]?.[1] || '')}</p><button data-nav="referrals">Open referral guidance</button></aside>`:''}<p>Your priority · <strong>${esc(state.query)}</strong></p>${button('edit','Change the need')}${source}${results.length?'<p>Matches reflect the guide wording. Confirm suitability and availability with the agency.</p>':'<p>No matching entry was found. Try a shorter need or a programme name, or browse the directory. An empty result does not mean help is unavailable.</p>'+button('directory','Browse services')}<div class="gia-results">${results.map((e,i)=>`<article class="gia-result-card"><small>${esc(e.section)}</small><h4>${esc(e.title)}</h4><p>${esc(e.body)}</p>${e.target?`<p><b>Group listed in guide</b> ${esc(e.target)}</p>`:''}<small>Matched words · ${esc(e.matches.join(', '))}</small><button data-select="${i}">Review this option</button></article>`).join('')}</div>`;
+        results=searchGuide(state.guided ? entries.filter(e=>['Programme profiles','Support categories','Decision Guide'].includes(e.section)) : entries,state.guided ? state.need : state.query);
+        if(state.guided && state.detail==='A caregiver who needs help') results=[];
+        workspace.innerHTML=`<h3 tabindex="-1">Let’s choose a starting point</h3>${/danger|abuse|suicid|violence|neglect|emergency/i.test(state.query)?`<aside class="gia-urgent"><b>Check urgency and safety first</b><p>${esc(guide.referralSteps?.[1]?.[1] || '')}</p><button data-nav="referrals">Open referral guidance</button></aside>`:''}<p>Your priority · <strong>${esc(state.guided ? NEEDS[state.needIndex]?.[0] || state.query : state.query)}</strong>${state.detail?' · '+esc(state.detail):''}</p>${button('edit','Change the need')}${source}${results.length?'<p>Matches reflect the guide wording. Confirm suitability and availability with the agency.</p>':'<p>The guide does not identify a clear service for this request. Ask the facility social worker or receiving agency to help clarify the support needed. You can also change the need or browse the directory. This does not mean assistance is unavailable.</p>'+button('directory','Browse services')}<div class="gia-results">${results.slice(0,state.showAll || !state.guided ? 8 : 3).map((e,i)=>`<article class="gia-result-card"><small>${esc(e.section)}</small><h4>${esc(e.title)}</h4><p>${esc(e.body?.length>220?e.body.slice(0,217)+'…':e.body)}</p>${e.target?`<p><b>Group listed in guide</b> ${esc(e.target)}</p>`:''}<small>Guide section · ${esc(e.section)}</small><button data-select="${i}">Review this option</button></article>`).join('')}</div>${state.guided && results.length>3 && !state.showAll?button('more','Show more options'):''}`;
       }
       if(view==='option') {
         const e=state.selected;
-        workspace.innerHTML=`<h3 tabindex="-1">${esc(e.title)}</h3><p>${esc(e.body)}</p>${source}<dl>${[['Where to start',e.where],['Documents listed',e.bring],['Process in the guide',e.process],['Group listed',e.target]].filter(([,v])=>v).map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl><h4>Confirm before a visit</h4><ul><li>Correct service and catchment area</li><li>Current availability, appointment and access arrangements</li><li>Required documents, accepted alternatives and any costs</li></ul><button data-nav="${e.nav}" data-term="${esc(e.term || '')}">Open source section and contacts</button><label for="giaBarrier">What might make this difficult?</label><select id="giaBarrier"><option value="">No barrier selected / not sure</option>${Object.keys(BARRIERS).map(b=>`<option ${state.barrier===b?'selected':''}>${b}</option>`).join('')}</select><p id="giaBarrierAdvice" role="status">${esc(BARRIERS[state.barrier] || '')}</p><div class="gia-actions">${button('plan','Prepare action plan')}${button('results','Compare other options')}</div>`;
+        workspace.innerHTML=`<h3 tabindex="-1">${esc(e.title)}</h3><p>${esc(e.body)}</p>${source}<dl>${[['Where to start',e.where],['Documents listed',e.bring],['Process in the guide',e.process],['Group listed',e.target]].filter(([,v])=>v).map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl>${contactDetails(e)}<details class="gia-call"><summary>What to ask when you call</summary><p>“I’m asking about ${esc(e.title)}. Is this the right service for ${esc(state.detail || state.query)}? Which office should we contact, what documents are needed, and are there any costs or appointment requirements?”</p></details><h4>Prepare before a visit</h4><p>Tick only the arrangements you have confirmed with the service.</p><div class="gia-checklist">${['Correct service and catchment area','Availability, appointment and access arrangements','Documents, accepted alternatives and costs'].map((label,i)=>`<label><input type="checkbox" data-check="${i}" ${state.completed.includes(i)?'checked':''}>${label}</label>`).join('')}</div><label for="giaParish">Parish to discuss with the agency</label><select id="giaParish">${PARISH_OPTIONS.map(v=>`<option ${v===state.parish?'selected':''}>${v}</option>`).join('')}</select><small>Used in your plan. Local availability still needs confirmation.</small><button data-nav="${e.nav}" data-term="${esc(e.term || '')}">Open source section and contacts</button><label for="giaBarrier">What might make this difficult?</label><select id="giaBarrier"><option value="">No barrier selected / not sure</option>${Object.keys(BARRIERS).map(b=>`<option ${state.barrier===b?'selected':''}>${b}</option>`).join('')}</select><p id="giaBarrierAdvice" role="status">${esc(BARRIERS[state.barrier] || '')}</p><div class="gia-actions">${button('plan','Prepare action plan')}${button('results','Compare other options')}</div>`;
       }
-      if(view==='plan') workspace.innerHTML=`<h3 tabindex="-1">Review the action plan</h3><p>Edit this draft together before copying or printing. Add only information appropriate for the recipient.</p><label for="giaPlan">Client instructions / referral preparation</label><textarea id="giaPlan" rows="14" maxlength="10000">${esc(state.plan)}</textarea><div class="gia-actions">${button('copy','Copy reviewed text')}${button('print','Print reviewed text')}${button('follow','Plan follow-up')}${button('option','Back to option')}</div><p id="giaStatus" role="status"></p><p>Preparing this text does not send a referral. Record any referral in your approved system.</p>`;
+      if(view==='plan') workspace.innerHTML=`<h3 tabindex="-1">Review the action plan</h3><p>Edit this draft together before copying or printing. Add only information appropriate for the recipient.</p><label for="giaPlan">Client instructions / referral preparation</label><textarea id="giaPlan" rows="14" maxlength="10000">${esc(state.plan)}</textarea><div class="gia-actions">${button('copy','Copy reviewed text')}${button('print','Print reviewed text')}${button('follow','Plan follow-up')}${button('option','Back to option')}</div><details><summary>Changed the arrangements?</summary><p>Rebuild the draft from your current choices. This replaces edits in the text above.</p>${button('refreshPlan','Rebuild draft from current choices')}</details><p id="giaStatus" role="status"></p><p>Preparing this text does not send a referral. Record any referral in your approved system.</p>`;
       if(view==='follow') workspace.innerHTML=`<h3 tabindex="-1">What happened after the referral?</h3><p>Use this checklist during follow-up, then transfer the reviewed note to your approved records.</p><label for="giaOutcome">Outcome</label><select id="giaOutcome"><option value="">Choose an outcome</option>${['Received help','Awaiting response','Could not access service','Needs changed'].map(v=>`<option ${state.outcome===v?'selected':''}>${v}</option>`).join('')}</select><label for="giaFollowBarrier">Barrier, if any</label><select id="giaFollowBarrier"><option value="">None / not sure</option>${Object.keys(BARRIERS).map(v=>`<option ${state.barrier===v?'selected':''}>${v}</option>`).join('')}</select><p id="giaFollowAdvice" role="status">${esc(BARRIERS[state.barrier] || '')}</p><label for="giaNext">Next action and responsible role</label><textarea id="giaNext" rows="3" maxlength="1000" placeholder="For example, referring worker to confirm appointment arrangements">${esc(state.next)}</textarea><label for="giaDate">Date to check again</label><input id="giaDate" type="date" value="${esc(state.date)}"><div class="gia-actions">${button('copyFollow','Copy follow-up note')}${button('help','Explore another option')}</div><p id="giaStatus" role="status"></p><p>This page does not save case records or send reminders.</p>`;
+      if(['priority','clarify'].includes(view) && /danger|abuse|suicid|violence|neglect|emergency/i.test(state.query)) workspace.insertAdjacentHTML('afterbegin',`<aside class="gia-urgent"><b>Check urgency and safety first</b><p>${esc(guide.referralSteps?.[1]?.[1] || '')}</p><button data-nav="referrals">Open referral guidance</button></aside>`);
       workspace.insertAdjacentHTML('beforeend',`<div class="gia-reset">${button('reset','Clear this session')}</div>`);
       workspace.scrollTop=0;workspace.querySelector('h3')?.focus();
     }
@@ -168,7 +211,7 @@
     }
     function makePlan() {
       const e=state.selected;
-      return ['MOHW Social Support — action plan draft',`Priority: ${state.query}`,`Option to confirm: ${e.title}`,`Where to start: ${e.where || 'Open the source section and confirm the responsible agency.'}`,`Documents listed: ${e.bring || 'Confirm requirements directly with the agency.'}`,`Next step: ${e.process || 'Contact the responsible agency to confirm the appropriate referral route.'}`,`Barrier: ${state.barrier || 'None selected / not sure'}`,BARRIERS[state.barrier] || '', 'Before travelling: confirm availability, catchment, appointment, accessibility, documents and costs.', 'Agreed client action: ', 'Agreed worker action: ', 'Follow-up date: ',`Source: ${guide.edition}, ${e.section}. Working draft; requirements need agency confirmation.`].filter(Boolean).join('\n\n');
+      return ['MOHW Social Support — action plan draft',`Priority: ${state.guided ? NEEDS[state.needIndex]?.[0] || state.query : state.query}`,`Specific need: ${state.detail || state.query}`,`Parish to confirm: ${state.parish}`,`Option to confirm: ${e.title}`,`Where to start: ${e.where || 'Open the source section and confirm the responsible agency.'}`,`Documents listed: ${e.bring || 'Confirm requirements directly with the agency.'}`,`Next step: ${e.process || 'Contact the responsible agency to confirm the appropriate referral route.'}`,`Barrier: ${state.barrier || 'None selected / not sure'}`,BARRIERS[state.barrier] || '', 'Before travelling: confirm availability, catchment, appointment, accessibility, documents and costs.', `Preparation confirmed: ${state.completed.length} of 3 checks. Confirm outstanding arrangements before travelling.`, 'Client action: Gather the documents listed above and agree a suitable appointment with the worker.', `Worker action: Contact ${e.agency || 'the receiving service'} to confirm suitability and access.`, `Follow-up date: ${state.date || 'Agree a date together.'}`,`Source: ${guide.edition}, ${e.section}. Working draft; requirements need agency confirmation.`].filter(Boolean).join('\n\n');
     }
     async function copy(text) {try{await navigator.clipboard.writeText(text);q('#giaStatus',panel).textContent='Copied. Review the destination before pasting.';}catch{q('#giaStatus',panel).textContent='Copy unavailable. Select and copy the text manually.';}}
     function close(){preserve();panel.close();}
@@ -179,24 +222,40 @@
     panel.addEventListener('change',event=>{
       const id=event.target.id;
       if(id==='giaBarrier'||id==='giaFollowBarrier'){state.barrier=event.target.value;q(id==='giaBarrier'?'#giaBarrierAdvice':'#giaFollowAdvice',panel).textContent=BARRIERS[state.barrier] || '';}
+      if(id==='giaParish') state.parish=event.target.value;
+      if(event.target.dataset.check!==undefined){const index=Number(event.target.dataset.check);state.completed=state.completed.filter(i=>i!==index);if(event.target.checked)state.completed.push(index);}
       if(id==='giaOutcome') state.outcome=event.target.value;
     });
-    panel.addEventListener('submit',event=>{event.preventDefault();preserve();if(!state.query.trim())return;state.need='';state.selected=null;state.plan='';render('results');});
+    panel.addEventListener('submit',event=>{
+      event.preventDefault();preserve();if(!state.query.trim())return;
+      state.need='';state.selected=null;state.plan='';state.showAll=false;
+      state.guided=event.target.dataset.form==='help';
+      if(state.guided){
+        state.detected=detectNeeds(state.query);
+        if(state.detected.length>1){render('priority');return;}
+        if(state.detected.length===1){beginNeed(state.detected[0]);return;}
+        state.guided=false;
+      }
+      render('results');
+    });
     panel.addEventListener('click',async event=>{
       const target=event.target.closest('button');if(!target)return;preserve();
       if(target.dataset.view){render(target.dataset.view);return;}
-      if(target.dataset.need!==undefined){const [label,query]=NEEDS[Number(target.dataset.need)];state.query=label;state.need=query;state.selected=null;state.plan='';render('results');return;}
-      if(target.dataset.select!==undefined){state.selected=results[Number(target.dataset.select)];state.plan='';render('option');return;}
+      if(target.dataset.need!==undefined){const index=Number(target.dataset.need);if(state.view==='help')state.query=NEEDS[index][0];beginNeed(index);return;}
+      if(target.dataset.detail!==undefined){const [label,query]=QUESTIONS[state.needIndex][1][Number(target.dataset.detail)];state.detail=label;state.need=query;render('results');return;}
+      if(target.dataset.select!==undefined){const selected=results[Number(target.dataset.select)];if(state.selected?.canonical!==selected.canonical)state.completed=[];state.selected=selected;state.plan='';render('option');return;}
       if(target.dataset.nav){document.querySelector(`[data-nav="${target.dataset.nav}"]`)?.click();if(target.dataset.term){q('[data-map-filter="all"]')?.click();const field=q('#serviceSearch');field.value=target.dataset.term;field.dispatchEvent(new Event('input',{bubbles:true}));}close();return;}
       const action=target.dataset.action;
       if(action==='close')close();
       else if(action==='retry'){target.disabled=true;guide=await waitForGuide();entries=guideEntries(guide||{});render();}
       else if(action==='directory'){document.querySelector('[data-nav="services"]')?.click();close();}
+      else if(action==='more'){state.showAll=true;render('results');}
       else if(action==='edit')render('help');
       else if(action==='reset'){workspace.innerHTML='<h3 tabindex="-1">Clear this session?</h3><p>This removes the current draft and answers from this page.</p>'+button('confirmReset','Clear answers')+button('cancelReset','Keep working');workspace.querySelector('h3').focus();}
-      else if(action==='confirmReset'){state={view:'home',query:'',need:'',barrier:'',selected:null,plan:'',outcome:'',next:'',date:''};render();}
+      else if(action==='confirmReset'){state={guided:false, needIndex:null, detail:'', parish:'Not specified', showAll:false, detected:[], completed:[], view:'help',query:'',need:'',barrier:'',selected:null,plan:'',outcome:'',next:'',date:''};render();}
       else if(action==='cancelReset')render();
       else if(action==='plan'){state.plan=state.plan || makePlan();render('plan');}
+      else if(action==='refreshPlan'){state.plan=makePlan();render('plan');}
       else if(action==='copy')await copy(state.plan);
       else if(action==='copyFollow'){await copy(['Follow-up draft',`Option: ${state.selected?.title || 'To be recorded'}`,`Outcome: ${state.outcome || 'Not recorded'}`,`Barrier: ${state.barrier || 'Not recorded'}`,`Next action and responsible role: ${state.next || 'To be agreed'}`,`Check again: ${state.date || 'To be agreed'}`].join('\n'));}
       else if(action==='print'){
