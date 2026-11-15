@@ -53,3 +53,15 @@ Future operational development would require validated parish-level destination 
 Every unified-directory service profile has a **Prepare referral with GIA** action. GIA also recognises direct requests for named programmes and can open a custom-destination referral from free text mentioning a hospital, clinic or office. A typed recipient number is used only to construct the user-reviewed WhatsApp click-to-chat URL.
 
 Regression checks should cover direct programme questions (PATH/NHF/NIS), multi-need focus, document guidance, follow-up context, urgent safety, safe/unsafe Maps links, recipient consent, custom document provenance, and referral deep links.
+
+
+## GIA 4.0: practical case-navigation improvements (15 November 2026)
+
+- **Barriers to referral:** concise advice and agency-call questions for missing or expired documents, inability to travel, unaffordable costs, unsuccessful contact, unavailable services and communication/accessibility needs; the assistant does not guarantee an alternative or offer approval.
+- **Multiple needs:** a worker can prioritise one need or prepare a draft multi-need support roadmap, with possible programme starting points and clear uncertainty.
+- **Optional voice dictation:** if the browser exposes speech recognition, pressing the microphone transcribes a question without submitting it automatically. Users review the transcript; the browser's speech provider may handle audio. Do not dictate private details.
+- **WhatsApp audiences:** client/caregiver visit instructions by default, or a separate general agency enquiry template that does not include client-identifying or clinical information.
+- **Privacy:** draft worker action plans use broad needs rather than copying raw free-text client descriptions. Referral messages remain user-reviewed and sent only inside WhatsApp.
+- **Testing:** GitHub Actions runs an expanded smoke suite for contextual follow-ups, multiple-need planning, barriers, safety routing, WhatsApp preparation, document source labels, and Maps link validation.
+
+GIA remains a rule-guided, browser-based assistant and does not access a private patient database or provide live generative AI responses, programme eligibility decisions, confirmed office hours, or automatically sent communications. The parish selector is context; it does not confirm local office locations.
