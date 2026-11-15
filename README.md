@@ -92,3 +92,15 @@ GIA remains a rule-guided, browser-based assistant and does not access a private
 **Integration:** The main directory parish selection is passed to GIA. A service profile can open GIA with that programme preselected. Local office data is precached for offline access.
 
 **Limits:** GIA remains a deterministic, guide-grounded assistant. It is not a live generative AI service, eligibility assessor, secure clinical record, automated reminder system or live appointment/office-hours verification service.
+
+
+### Updated parish-health department reference points
+
+The local guidance also incorporates a parish health department listing for each parish. For Kingston and St. Andrew, the listed KSA health department covers both parishes. Health department addresses and phone contacts are from the official MOHW or relevant regional authority directory, as referenced per entry in data/gia-parishes.json. These are enquiry and routing contacts, not proof that a particular clinic, social-work service, or appointment is available there.
+
+- MOHW parish health department contact listing: https://www.moh.gov.jm/contact-us/
+- WRHA local facility listings: https://www.wrha.gov.jm/health-facilities/hanover/ and equivalent parish pages
+- SRHA contacts: https://srha.gov.jm/contact.php
+- NERHA health departments: https://www.nerha.gov.jm/health-centres
+
+For the website version, the asset URLs are revisioned and the service-worker cache is incremented to prevent an installed PWA from indefinitely displaying an older GIA colour palette or local directory. Actual on-device caching can still require reopening the app or refreshing once.
