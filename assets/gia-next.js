@@ -1,4 +1,4 @@
-/* GIA 2.0: privacy-first guided social-support and referral companion.
+/* GIA 3.0: privacy-first guided social-support and referral companion.
  * Uses the November 2026 guide data. Does not determine eligibility, store case data,
  * authenticate users, contact agencies, send messages, or verify live availability.
  */
@@ -18,7 +18,7 @@
     {id:"wellbeing",label:"Emotional support",pattern:/mental|stress|counsel|anxiet|depress|substance|addict|drug use|psycholog/i,terms:"mental health NCDA counselling wellbeing"},
     {id:"safety",label:"Safety & protection",pattern:/abuse|violence|unsafe|neglect|victim|protection|crime|harass|gender.based|domestic|police/i,terms:"victim services child protection bureau gender safety"}
   ];
-  const DANGER = /(?:suicid|kill myself|self.harm|overdos|immediate danger|life.threatening|unconscious|not breathing|severe bleeding|being attacked|right now.*(?:abuse|violence)|child.*(?:in danger|being abused)|abuse.*(?:happening now|right now))/i;
+  const DANGER = /(?:suicid|kill myself|hurt (?:myself|himself|herself)|harm (?:myself|himself|herself)|self[ -]?harm|take (?:my|his|her) life|overdos|immediate danger|life[ -]?threatening|unconscious|not breathing|severe bleeding|being attacked|right now.*(?:abuse|violence)|child.*(?:in danger|being abused)|abuse.*(?:happening now|right now))/i;
   const ALIASES = {"poor relief":"local government assistance","national health fund card":"nhf","heart nsta trust":"heart / nsta","nht home grant":"national housing trust (nht)","compassionate fund programme":"mohw compassionate fund programme","chase medical assistance":"chase / compassionate medical assistance"};
   const $ = (selector,root=document) => root.querySelector(selector);
   const $$ = (selector,root=document) => Array.from(root.querySelectorAll(selector));
@@ -30,9 +30,23 @@
     if(p.length===10 && /^(876|658)/.test(p))p="1"+p;
     return p.length>=8 && p.length<=15 && p[0]!=="0" ? p : "";
   };
+  // Only genuine Google Maps hosts/paths are accepted as confirmed destination links.
+  // A general Google Maps SEARCH is generated when no verified pin is provided.
+  const validMapsLink = value => {
+    try {
+      const u=new URL(String(value||"").trim());
+      if(u.protocol!=="https:" || u.username || u.password) return false;
+      const host=u.hostname.toLowerCase();
+      if(host==="maps.app.goo.gl") return true;
+      if(host==="goo.gl") return u.pathname.startsWith("/maps/");
+      const exactHosts=["google.com","google.com.jm","google.co.uk","google.ca","google.com.au"];
+      const base=host.replace(/^(?:www\.|maps\.)/,"");
+      return exactHosts.includes(base)&&(/(?:^\/maps(?:\/|$))/.test(u.pathname)||host.startsWith("maps."));
+    } catch {return false;}
+  };
   const mapsUrl = (destination,parish,provided) => {
     const exact=String(provided||"").trim();
-    try {const u=new URL(exact);if(u.protocol==="https:" && /^(www\.)?(google\.[a-z.]+|maps\.app\.goo\.gl|maps\.google\.[a-z.]+)$/.test(u.hostname) && (u.hostname.includes("maps")||u.pathname.includes("/maps")))return exact;}catch{}
+    if(exact && validMapsLink(exact))return exact;
     return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent([destination,parish==="Not selected"?"":parish,"Jamaica"].filter(Boolean).join(", "));
   };
   const cleanDocs = value => {
@@ -45,7 +59,7 @@
     view:"home", question:"", tone:"", topicIds:[], results:[], page:0, selected:null,
     parish:"Not selected", destination:"", mapsProvided:"", phone:"", ready:new Set(),
     consent:false, outcome:"", next:"", followDate:"", sessionRef:"", lastSource:"",
-    recipientMode:"client", customDocs:""
+    recipientMode:"client", customDocs:"", focusTopic:"", originalQuestion:"", guidePage:""
   };
   const key = value => {
     const n=normal(value);return normal(ALIASES[n]||n).replace(/\s/g,"");
@@ -80,6 +94,50 @@
       services.push({id:"agency-"+key(c.agency),name:c.agency,kind:"agency",support:"Contact this agency to discuss available services.",where:"Confirm the office and service with the agency.",bring:"",process:"Contact the responsible agency for the referral process.",targets:[],categories:["Agency contacts"],contacts:[c],meta:{},agency:c.agency,aliases:[]});
     });
     return services;
+  }
+
+  const namedServiceAliases = [
+    ["PATH",["path","programme of advancement through health"]],
+    ["NHF",["nhf","national health fund"]],
+    ["NIS",["nis","national insurance scheme"]],
+    ["National Housing Trust (NHT)",["nht","national housing trust"]],
+    ["HEART / NSTA",["heart","heart nsta","heart trust"]],
+    ["Local Government Assistance",["poor relief","municipal corporation assistance"]],
+    ["Child Protection and Family Services Agency (CPFSA)",["cpfsa","child protection agency"]],
+    ["Victim Services Branch",["victim services","victim support"]],
+    ["NCDA Support",["ncda","national council on drug abuse"]],
+    ["New Social Housing Programme (NSHP)",["nshp","new social housing"]]
+  ];
+  function explicitService(query){
+    const q=" "+normal(query)+" ";
+    for(const [name,aliases] of namedServiceAliases){
+      if(aliases.some(a=>q.includes(" "+normal(a)+" "))){
+        const match=catalog.find(s=>key(s.name)===key(name));
+        if(match)return match;
+      }
+    }
+    const named=catalog.filter(s=>s.kind!=="decision" && s.name.length>6 &&
+      q.includes(" "+normal(s.name)+" "));
+    return named.length===1?named[0]:null;
+  }
+  function extractParish(query){
+    const q=" "+normal(query)+" ";
+    return PARISHES.find(p=>p!=="Not selected"&&q.includes(" "+normal(p)+" "))||null;
+  }
+  const friendlyNeeds = ids => ids.map(id=>TOPICS.find(t=>t.id===id)?.label.toLowerCase()).filter(Boolean);
+  function sayNeeds(ids){
+    const labels=friendlyNeeds(ids);
+    if(labels.length===0)return "the person's situation";
+    if(labels.length===1)return labels[0];
+    if(labels.length===2)return labels.join(" and ");
+    return labels.slice(0,-1).join(", ")+", and "+labels.at(-1);
+  }
+  function topicFocus(id){
+    state.focusTopic=id;
+    const selected=TOPICS.find(t=>t.id===id);
+    state.results=scoreServices((state.originalQuestion||state.question)+" "+(selected?.terms||""));
+    state.page=0;
+    show("results");
   }
   function topicMatches(query){
     return TOPICS.filter(t=>t.pattern.test(query)).map(t=>t.id);
@@ -126,7 +184,7 @@
       if(s.kind==="decision")score*=0.90;
       return {service:s,score,why};
     }).filter(v=>v.score>1.5).sort((a,b)=>b.score-a.score);
-    return scored.slice(0,14);
+    return scored.slice(0,20);
   }
   function composeDocs(s){
     let list=cleanDocs(s?.bring);
