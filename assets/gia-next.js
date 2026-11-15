@@ -210,7 +210,8 @@
 
   const roleIsProvider = ()=>state.role==="provider";
   const contextRole = ()=>roleIsProvider()?"Healthcare or social-service provider":state.role==="client"?"Individual or caregiver":"Choose your role";
-  const parishKnown = ()=>state.parish!=="Not selected" && !!parishDirectory?.parishes?.[state.parish];
+  const parishChosen = ()=>state.parish!=="Not selected";
+  const parishKnown = ()=>parishChosen() && !!parishDirectory?.parishes?.[state.parish];
   const parishRecord = ()=>parishKnown()?parishDirectory.parishes[state.parish]:null;
   function directoryRoute(s){
     const text=normal(s?.name||"")+" "+normal(s?.agency||"");
@@ -246,8 +247,12 @@
   }
   function parishHelp(s){
     const route=directoryRoute(s);
+    if(!parishChosen()){
+      return "<div class=\"gia2-local-panel\"><h4>Find support in the right parish</h4><p>Choose a parish at the top. I'll show official local office listings where available and the appropriate health region. Until then these are national programmes, not confirmed local facilities.</p></div>";
+    }
     if(!parishKnown()){
-      return "<div class=\"gia2-local-panel\"><h4>Find support in the right parish</h4><p>Choose a parish at the top. I'll show official local office listings where available and the right health region. Until then, these are national programme options—not confirmed local facilities.</p></div>";
+      return "<div class=\"gia2-local-panel\"><h4>"+esc(state.parish)+" guidance</h4><p>The local office directory is not available at the moment. You can still use a parish-specific Maps search, but confirm the receiving office with the agency.</p>"+
+        linkTo(mapSearch(s?.name||state.destination||"social services office"),"Search "+state.parish+" offices")+"</div>";
     }
     const p=parishRecord();
     const label=esc(state.parish);
@@ -399,7 +404,7 @@
       "<div class=\"gia2-role-choice\"><p>First, who is asking for help?</p><div class=\"gia2-actions\">"+
       pill("role:client","I need help for myself or my family","gia2-primary")+
       pill("role:provider","I work in health or social services")+"</div></div>":"";
-    const local=parishKnown()?
+    const local=parishChosen()?
       "<p class=\"gia2-context-hint\">📍 Starting with services in <strong>"+esc(state.parish)+"</strong>. You can change parish above.</p>":
       "<p class=\"gia2-context-hint\">📍 Choose your parish above so I can show relevant local offices, not just national programmes.</p>";
     return say("<strong>"+title+"</strong><p>"+intro+"</p>")+choose+local+
@@ -432,7 +437,7 @@
     return "<div class=\"gia2-user-bubble\">"+esc(state.originalQuestion||state.question)+"</div>"+
       say("<strong>"+narrative+"</strong><p>These are options to explore, not a determination of eligibility. I’ll help you prepare once you choose one.</p>")+
       chips+
-      "<div class=\"gia2-parish-results\">"+(parishKnown()?"📍 Showing guidance for "+esc(state.parish)+". Check each service for local offices and contacts.":"📍 Choose a parish above to see relevant local office listings; the options below are national or guide-based.")+"</div>"+
+      "<div class=\"gia2-parish-results\">"+(parishChosen()?"📍 Showing guidance for "+esc(state.parish)+". Check each service for local offices and contacts.":"📍 Choose a parish above to see relevant local office listings; the options below are national or guide-based.")+"</div>"+
       "<div class=\"gia2-service-list\">"+shown.map(({service:v})=>{
         const title=v.kind==="decision"?"Guide pathway":v.kind==="agency"?"Agency contact":"Possible service";
         return "<article class=\"gia2-service\"><div><span class=\"gia2-tag\">"+title+"</span><h4>"+esc(v.name)+"</h4><p>"+esc(short(v.support,180))+"</p></div><button type=\"button\" class=\"gia2-choose\" data-service=\""+esc(v.id)+"\">"+(roleIsProvider()?"View referral route":"See how to get help")+" <span>→</span></button></article>";
@@ -649,6 +654,7 @@
   function render(){
     const content=$("#gia2Content");
     if(!content)return;
+    const context=$("#gia2ContextMount");if(context)context.innerHTML=contextBar();
     const names={home:"Here to help",results:"Suggested support",service:"Service details",documents:"Document guidance",refer:"Prepare a referral",follow:"Follow-up",urgent:"Urgent support",barrier:"Solve a referral problem",roadmap:"Plan next steps"};
     $("#gia2Step").textContent=names[state.view]||"Here to help";
     content.innerHTML=state.view==="home"?viewHome():state.view==="results"?viewResults():state.view==="service"?viewService():
@@ -799,7 +805,7 @@
     preserveInputs();
     const digits=phone(state.phone);
     if(!digits){message("Enter a valid phone number, including the area or country code.",true);$("#gia2To")?.focus();return;}
-    if(!parishKnown()){message("Please choose the destination parish first, so the referral does not point to the wrong place.",true);$("#gia2Parish")?.focus();return;}
+    if(!parishChosen()){message("Please choose the destination parish first, so the referral does not point to the wrong place.",true);$("#gia2Parish")?.focus();return;}
     if(!state.destination.trim()){message("Enter the office or facility you want the recipient to find.",true);$("#gia2Destination")?.focus();return;}
     if(state.mapsProvided.trim()&&!validMapsLink(state.mapsProvided)){message("That is not a supported Google Maps link. Correct the link or leave it blank to use a Maps search.",true);$("#gia2Map")?.focus();return;}
     if(!state.consent){message("Please confirm the recipient agrees to receive this information and that you have reviewed its contents.",true);$("#gia2Consent")?.focus();return;}
@@ -815,10 +821,24 @@
   function act(action){
     preserveInputs();
     if(action==="start"){
-      Object.assign(state,{view:"home",question:"",tone:"",topicIds:[],results:[],page:0,selected:null,parish:"Not selected",destination:"",mapsProvided:"",phone:"",ready:new Set(),consent:false,outcome:"",next:"",followDate:"",sessionRef:"",customDocs:"",focusTopic:"",originalQuestion:"",barrier:"",recipientMode:"client"});
+      Object.assign(state,{view:"home",question:"",tone:"",topicIds:[],results:[],page:0,selected:null,parish:state.parish,destination:"",mapsProvided:"",phone:"",ready:new Set(),consent:false,outcome:"",next:"",followDate:"",sessionRef:"",customDocs:"",focusTopic:"",originalQuestion:"",barrier:"",recipientMode:"client"});
       show("home");return;
     }
     if(action==="ask"){state.question="";show("home");$("#gia2Question")?.focus();return;}
+    if(action.startsWith("role:")){
+      state.role=action.slice(5)==="provider"?"provider":"client";render();return;
+    }
+    if(action.startsWith("useOffice:")){
+      const kind=action.slice(10);
+      const profile=parishRecord();
+      const office=kind==="nht"?profile?.nht:kind==="mlss"?profile?.mlss:null;
+      if(!office){message("Please choose a parish with a listed local office before using this action.",true);return;}
+      state.destination=office.name+", "+office.address;
+      state.localOfficeUsed=state.parish;
+      state.mapsProvided="";
+      state.consent=false;
+      show("refer");return;
+    }
     if(action==="voice"){dictate();return;}
     if(action==="custom"){
       state.recipientMode="client";
@@ -848,6 +868,7 @@
       const topic=TOPICS.find(t=>t.id===action.slice(6));if(topic)handleAsk(topic.terms);return;
     }
     if(action==="directions"||action==="map"){
+      if(!parishChosen()){message("Choose the parish above before looking up a local destination.",true);return;}
       if(state.mapsProvided.trim()&&!validMapsLink(state.mapsProvided)){message("That Google Maps link needs correcting. Remove it to use a location search.",true);return;}
       const name=state.destination||state.selected?.agency||"social services";
       const url=mapsUrl(name,state.parish,state.mapsProvided);
@@ -857,6 +878,7 @@
     }
     if(action==="openWhatsApp"){launchWhatsApp();return;}
     if(action==="copyReferral"){
+      if(!parishChosen()){message("Choose a parish to create parish-specific referral directions.",true);return;}
       if(state.mapsProvided.trim()&&!validMapsLink(state.mapsProvided)){message("Correct or remove the invalid Google Maps link first.",true);return;}
       copy(referralText());return;
     }
@@ -871,7 +893,7 @@
     button.innerHTML="<img src=\"./assets/gia-avatar.jpg\" alt=\"\"><span><b>Ask GIA</b><small>I'm here to help</small></span>";
     const dialog=document.createElement("dialog");
     dialog.id="gia2Dialog";dialog.className="gia2-dialog";dialog.setAttribute("aria-labelledby","gia2Heading");
-    dialog.innerHTML="<header class=\"gia2-header\"><img class=\"gia2-avatar\" src=\"./assets/gia-avatar.jpg\" alt=\"\"><div class=\"gia2-heading\"><h2 id=\"gia2Heading\">GIA <span>· Your support guide</span></h2><p id=\"gia2Step\">Here to help</p></div><button type=\"button\" class=\"gia2-close\" id=\"gia2Close\" aria-label=\"Close GIA\">×</button></header><main id=\"gia2Content\" class=\"gia2-content\"></main><footer class=\"gia2-footer\"><span><i class=\"gia2-online\"></i> Guided by the MOHW Social Support directory</span><span class=\"gia2-note\" id=\"gia2Status\" role=\"status\"></span></footer>";
+    dialog.innerHTML="<header class=\"gia2-header\"><img class=\"gia2-avatar\" src=\"./assets/gia-avatar.jpg\" alt=\"\"><div class=\"gia2-heading\"><h2 id=\"gia2Heading\">GIA <span>· Your support guide</span></h2><p id=\"gia2Step\">Here to help</p></div><button type=\"button\" class=\"gia2-close\" id=\"gia2Close\" aria-label=\"Close GIA\">×</button></header><div id=\"gia2ContextMount\"></div><main id=\"gia2Content\" class=\"gia2-content\"></main><footer class=\"gia2-footer\"><span><i class=\"gia2-online\"></i> Guided by the MOHW Social Support directory</span><span class=\"gia2-note\" id=\"gia2Status\" role=\"status\"></span></footer>";
     document.body.append(button,dialog);
     button.addEventListener("click",()=>open());
     $("#gia2Close").addEventListener("click",()=>dialog.close());
@@ -886,6 +908,19 @@
       const action=e.target.closest("[data-action]");if(action)act(action.dataset.action);
     });
     dialog.addEventListener("change",e=>{
+      if(e.target.id==="gia2Role"){
+        preserveInputs();state.role=e.target.value;render();return;
+      }
+      if(e.target.id==="gia2ContextParish"){
+        preserveInputs();
+        const before=state.parish;
+        state.parish=e.target.value;
+        if(before!==state.parish && state.localOfficeUsed){
+          state.destination=state.selected?.agency||"";
+          state.mapsProvided="";state.localOfficeUsed="";state.consent=false;
+        }
+        render();return;
+      }
       if(e.target.matches("[data-doc]")){
         const i=Number(e.target.dataset.doc);
         if(e.target.checked)state.ready.add(i);else state.ready.delete(i);
@@ -918,6 +953,11 @@
       if(!response.ok)throw new Error("Guide unavailable");
       guide=await response.json();catalog=buildCatalog(guide);
     }catch(error){console.warn("GIA could not load guide data",error);}
+    try{
+      const response=await fetch(PARISH_URL,{cache:"no-store"});
+      if(response.ok)parishDirectory=await response.json();
+      else throw new Error("Local directory unavailable");
+    }catch(error){console.warn("GIA parish data unavailable; map search remains usable",error);}
     mount();
   },{once:true});
 })();
