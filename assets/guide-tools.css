@@ -179,3 +179,8 @@
 .gia-workspace .gia-checklist input{width:22px;min-height:22px;height:22px;flex:none;accent-color:#155b42;margin-top:2px}
 .gia-workspace .gia-urgent{background:#fff0dc;border:1px solid #b77827;border-radius:14px;padding:16px;margin-bottom:18px}
 .gia-workspace .gia-start button:hover span{color:white}
+/* Override the site's light-on-dark page typography inside Gia's light workspace. */
+.gia-panel.gia-workflow .gia-workspace p,.gia-panel.gia-workflow .gia-workspace dd,.gia-panel.gia-workflow .gia-workspace li{color:#263f32!important}
+.gia-panel.gia-workflow{max-width:calc(100vw - 40px)}
+body.gia-open{overflow:hidden}
+@media(max-width:600px){.gia-panel.gia-workflow{max-width:100%;width:100%}}

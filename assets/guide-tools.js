@@ -215,8 +215,8 @@
     }
     async function copy(text) {try{await navigator.clipboard.writeText(text);q('#giaStatus',panel).textContent='Copied. Review the destination before pasting.';}catch{q('#giaStatus',panel).textContent='Copy unavailable. Select and copy the text manually.';}}
     function close(){preserve();panel.close();}
-    launcher.addEventListener('click',()=>{panel.showModal();launcher.setAttribute('aria-expanded','true');render();});
-    panel.addEventListener('close',()=>{preserve();launcher.setAttribute('aria-expanded','false');launcher.focus();});
+    launcher.addEventListener('click',()=>{document.body.classList.add('gia-open');panel.showModal();launcher.setAttribute('aria-expanded','true');render();});
+    panel.addEventListener('close',()=>{document.body.classList.remove('gia-open');preserve();launcher.setAttribute('aria-expanded','false');launcher.focus();});
     panel.addEventListener('cancel',preserve);
     panel.addEventListener('input',preserve);
     panel.addEventListener('change',event=>{
