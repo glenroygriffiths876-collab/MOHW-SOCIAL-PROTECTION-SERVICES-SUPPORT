@@ -8,7 +8,7 @@
   const PARISHES = ["Not selected","Hanover","St. James","Westmoreland","Trelawny","St. Elizabeth","Manchester","Clarendon","St. Ann","St. Mary","Portland","St. Thomas","St. Catherine","St. Andrew","Kingston"];
   const TOPICS = [
     {id:"food",label:"Food & essentials",pattern:/food|hungr|meal|grocer|basic need|school feed|clothing/i,terms:"food meal school feeding poor relief assistance"},
-    {id:"health",label:"Medication & care",pattern:/medicin|pharmac|nhf|prescri|treatment|medical|surg|scan|diagnos|dialysis|hospital|clinic|health/i,terms:"NHF compassionate treatment diagnostic medical health"},
+    {id:"health",label:"Medication & care",pattern:/medic(?:in|at)|\bmeds\b|pharmac|nhf|prescri|treatment|medical|surg|scan|diagnos|dialysis|hospital|clinic|health/i,terms:"NHF compassionate treatment diagnostic medical health"},
     {id:"transport",label:"Getting to appointments",pattern:/transport|bus fare|taxi fare|travel to|getting to|can't get to|cannot get to|reach the clinic/i,terms:"poor relief emergency assistance transport appointment"},
     {id:"income",label:"Financial support",pattern:/cash|money|financial|benefit|path|nis|pension|unemploy|income|bill|poverty|poor|social pension/i,terms:"PATH NIS social pension cash poor relief assistance"},
     {id:"housing",label:"Housing & shelter",pattern:/hous|homeless|shelter|roof|rent|landlord|accommodation|home repairs|building/i,terms:"housing NHT new social housing poor relief"},
@@ -179,7 +179,7 @@
     const b=barrierById(state.barrier);
     return b?["REFERRAL BARRIER — QUESTIONS TO CONFIRM","Service: "+(state.selected?.name||"To be confirmed"),"Barrier: "+b.label,
       "Suggested approach: "+b.advice,"Questions:",...b.questions.map((q,i)=>(i+1)+". "+q),
-      "Agency arrangements must be confirmed before making promises to a patient."].join("\n"):"No barrier chosen.";
+      "Confirm any alternatives and arrangements directly with the receiving agency before making promises to a patient."].join("\n"):"No barrier chosen.";
   }
   const NEED_ORDER=["safety","health","food","housing","transport","disability","family","income","wellbeing","jobs"];
   function roadmap(){
