@@ -279,8 +279,39 @@
   function guidesource(){
     return "<small class=\"gia2-source\">November 2026 guide · Confirm current arrangements with the agency</small>";
   }
+
+  const voiceAvailable=()=>!!(window.SpeechRecognition||window.webkitSpeechRecognition);
+  const voiceButton=()=>voiceAvailable()?'<button type="button" class="gia2-voice" data-action="voice" aria-label="Dictate a question using your microphone" title="Speak your request">🎙</button>':"";
+  function dictate(){
+    const Engine=window.SpeechRecognition||window.webkitSpeechRecognition;
+    if(!Engine){message("Voice input is not supported by this browser. You can still type your request.");return;}
+    const field=$("#gia2Question");
+    if(!field){message("Return to Find help to speak a question.");return;}
+    let recorder;
+    try{
+      recorder=new Engine();
+      recorder.lang="en-JM";
+      recorder.interimResults=false;
+      recorder.maxAlternatives=1;
+      const button=$(".gia2-voice");
+      if(button)button.setAttribute("aria-busy","true");
+      recorder.onresult=event=>{
+        const transcript=event.results?.[0]?.[0]?.transcript||"";
+        if(transcript.trim()){
+          field.value=transcript.trim();
+          state.question=transcript.trim();
+          message("I heard your request. Review it and tap the arrow to continue.");
+        }
+      };
+      recorder.onerror=()=>message("Voice input did not finish. Please try typing instead.");
+      recorder.onend=()=>{if(button)button.removeAttribute("aria-busy");};
+      recorder.start();
+      message("Listening. Voice transcription may be handled by your browser's speech provider; avoid names and private medical details.");
+    }catch{message("Microphone input could not start. You can type instead.");}
+  }
+
   function searchForm(){
-    return "<form id=\"gia2SearchForm\" class=\"gia2-inputbar\"><label class=\"gia2-visually-hidden\" for=\"gia2Question\">Ask GIA</label><input id=\"gia2Question\" name=\"question\" autocomplete=\"off\" maxlength=\"320\" placeholder=\"e.g. Help with transport to clinic\" value=\""+esc(state.question)+"\" required><button class=\"gia2-send\" type=\"submit\" aria-label=\"Find support\">➜</button></form>";
+    return "<form id=\"gia2SearchForm\" class=\"gia2-inputbar\"><label class=\"gia2-visually-hidden\" for=\"gia2Question\">Ask GIA</label><input id=\"gia2Question\" name=\"question\" autocomplete=\"off\" maxlength=\"320\" placeholder=\"e.g. Help with transport to clinic\" value=\""+esc(state.question)+"\" required>"+voiceButton()+"<button class=\"gia2-send\" type=\"submit\" aria-label=\"Find support\">➜</button></form>";
   }
   function viewHome(){
     const intro=state.selected?"I’m still here if you need anything else about "+esc(state.selected.name)+".":"Hi, I’m GIA. What would you like help with today?";
@@ -387,7 +418,7 @@
       "Service: "+(s?.kind==="custom"?name:(s?.name||"Service to confirm")),
       "Office or destination: "+name,
       "Parish: "+(state.parish==="Not selected"?"Please confirm":state.parish),
-      (state.mapsProvided.trim()&&validMapsLink(state.mapsProvided)?"Confirmed Maps link (provided by worker): ":"Google Maps search (confirm exact destination): ")+map,
+      (state.mapsProvided.trim()&&validMapsLink(state.mapsProvided)?"Google Maps link supplied by worker (check destination): ":"Google Maps search (confirm exact destination): ")+map,
       "",
       "DOCUMENT CHECKLIST",
       ...(base.length?["Listed in the support guide (confirm current requirements):",...list(base,0)]:[]),
@@ -407,7 +438,7 @@
     const base=guideDocs(s),extra=workerDocs();
     return [
       "SOCIAL SUPPORT ACTION PLAN — DRAFT",
-      "Need described (non-identifying): "+(state.originalQuestion||state.question||"Not recorded"),
+      "Needs discussed: "+sayNeeds(state.topicIds),
       "Service to confirm: "+s.name,
       "Relevant agency: "+(s.agency||"Confirm with programme"),
       "Parish: "+state.parish,
@@ -501,7 +532,7 @@
     content.innerHTML=state.view==="home"?viewHome():state.view==="results"?viewResults():state.view==="service"?viewService():
       state.view==="documents"?viewDocs():state.view==="refer"?viewRefer():state.view==="follow"?viewFollow():state.view==="urgent"?viewUrgent():state.view==="barrier"?viewBarrier():state.view==="roadmap"?viewRoadmap():viewHome();
     if(["results","service"].includes(state.view)||(state.view==="documents"&&state.selected)){
-      content.insertAdjacentHTML("beforeend","<div class=\"gia2-chat-follow\"><label for=\"gia2Question\">Another question? Just ask.</label><form id=\"gia2SearchForm\" class=\"gia2-inputbar\"><input id=\"gia2Question\" name=\"question\" autocomplete=\"off\" maxlength=\"320\" placeholder=\"e.g. What documents do I bring?\" value=\"\"><button type=\"submit\" class=\"gia2-send\" aria-label=\"Ask GIA\">➜</button></form></div>");
+      content.insertAdjacentHTML("beforeend","<div class=\"gia2-chat-follow\"><label for=\"gia2Question\">Another question? Just ask.</label><form id=\"gia2SearchForm\" class=\"gia2-inputbar\"><input id=\"gia2Question\" name=\"question\" autocomplete=\"off\" maxlength=\"320\" placeholder=\"e.g. What documents do I bring?\" value=\"\">"+voiceButton()+"<button type=\"submit\" class=\"gia2-send\" aria-label=\"Ask GIA\">➜</button></form></div>");
     }
     content.scrollTop=0;
   }
@@ -661,6 +692,7 @@
       show("home");return;
     }
     if(action==="ask"){state.question="";show("home");$("#gia2Question")?.focus();return;}
+    if(action==="voice"){dictate();return;}
     if(action==="custom"){
       state.selected={id:"custom",name:"Custom destination",kind:"custom",agency:"",support:"",where:"",bring:"",process:"",targets:[],categories:[],contacts:[],meta:{}};
       state.ready=new Set();state.destination="";state.customDocs="";state.mapsProvided="";state.consent=false;show("refer");return;
