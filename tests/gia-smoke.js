@@ -110,6 +110,9 @@ test("Browser-only voice affordance exists",()=>script.includes("window.SpeechRe
 
 test("Geometric navy styling matches site's assets",()=>giaCss.includes("geometry-bg.svg")&&giaCss.includes("#070735")&&giaCss.includes("#08d9eb")&&giaCss.includes("#e20c79")&&giaCss.includes("#ffc928"));
 test("Parish directory covers all 14 parishes",()=>Object.keys(parishes.parishes).length===14);
+test("Every parish has an NHF Drug Serv reference",()=>Object.values(parishes.parishes).every(p=>p.drugServ?.name&&p.drugServ.source.includes("nhf.org.jm/drug-serv")));
+test("Directory can pass selected parish into GIA",()=>app.includes("MOHWGIA?.setParish?.(parish)")&&script.includes("setParish:(parish)"));
+
 gia.act("start");gia.act("role:provider");gia.handleAsk("Hello");
 test("Provider role uses a professional introduction",()=>gia.state.role==="provider"&&content.innerHTML.includes("colleague"));
 gia.act("role:client");gia.handleAsk("Hello");
@@ -125,6 +128,8 @@ gia.act("start");gia.handleAsk("PATH in Hanover");
 test("PATH local guidance does not assert NIS office is PATH intake",()=>content.innerHTML.includes("confirm which")&&content.innerHTML.includes("PATH enquiries"));
 gia.act("start");gia.handleAsk("NHF in Portland");
 test("NHF service route links to official provider directory",()=>content.innerHTML.includes("nhf.org.jm/providers")&&gia.state.parish==="Portland");
+test("NHF local Drug Serv guidance is visible but not a guarantee",()=>content.innerHTML.includes("Port Antonio Hospital Drug Serv")&&content.innerHTML.includes("confirm")&&content.innerHTML.includes("NHF"));
+
 gia.act("start");gia.handleAsk("NIS in Trelawny");
 test("MLSS NIS office offered in correct parish",()=>content.innerHTML.includes("King Street")&&content.innerHTML.includes("876-954-3312"));
 gia.act("role:provider");gia.handleAsk("NHT");
