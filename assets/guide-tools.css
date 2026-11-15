@@ -129,3 +129,43 @@
  .guide-action:hover>span,.guide-action:focus-visible>span{position:absolute;clip:auto;clip-path:none;right:calc(100% + 12px);top:50%;transform:translateY(-50%);width:auto;height:auto;overflow:visible;padding:8px 11px;border-radius:9px;background:#073f32;color:#fff;white-space:nowrap;box-shadow:0 6px 18px #051e1740;font-size:12px}
 }
 .guide-action svg{display:block;width:25px;height:25px}
+
+/* Gia's task workspace uses native dialog focus handling and a full mobile viewport. */
+.gia-workflow.gia-panel {position:fixed;inset:0 20px 0 auto;margin:auto 0;width:min(580px,calc(100vw - 40px));height:min(850px,calc(100dvh - 40px));max-height:calc(100dvh - 40px);padding:0;border:1px solid #b9d5c5;border-radius:24px;background:#f7faf6;color:#153e30;box-shadow:0 24px 90px #102c3955;overflow:hidden}
+.gia-workflow:not([open]) {display:none!important}
+.gia-workflow[open] {display:flex;flex-direction:column}
+.gia-workflow::backdrop {background:#112d2955;backdrop-filter:blur(3px)}
+.gia-workflow .gia-head {flex:none;padding:20px;background:#0b4937;color:white}
+.gia-workflow .gia-head h2 {font-size:23px;color:white}
+.gia-workflow .gia-head p {color:#e0eee3;font-size:14px}
+.gia-tabs {display:flex;gap:6px;padding:12px;background:#edf3e9;flex:none}
+.gia-workflow button {min-height:44px;border:1px solid #a4c3ad;border-radius:12px;padding:10px 14px;background:white;color:#154c37;font:inherit;font-weight:650;cursor:pointer}
+.gia-workflow button:hover,.gia-workflow button[aria-current=true],.gia-workflow .gia-primary {background:#145c42;color:white}
+.gia-workflow button:focus-visible,.gia-workflow input:focus-visible,.gia-workflow textarea:focus-visible,.gia-workflow select:focus-visible,.gia-workflow summary:focus-visible {outline:3px solid #b67b00;outline-offset:3px}
+.gia-tabs button {flex:1;font-size:14px;padding:8px}
+.gia-workspace {flex:1;min-height:0;overflow:auto;padding:24px;font-size:16px;line-height:1.55;overscroll-behavior:contain}
+.gia-workspace h3 {font-size:25px;line-height:1.2;margin:0 0 14px;color:#123c2e}
+.gia-workspace h4 {font-size:18px;margin:12px 0}
+.gia-workspace p {margin:12px 0}
+.gia-start {display:grid;gap:12px;margin:24px 0}
+.gia-start button {text-align:left;padding:18px}
+.gia-start b,.gia-start span {display:block}.gia-start span {font-size:14px;font-weight:400;margin-top:5px}
+.gia-choices {display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:20px 0}
+.gia-workspace label {display:block;font-weight:700;margin:18px 0 8px}
+.gia-workspace input,.gia-workspace textarea,.gia-workspace select {display:block;width:100%;box-sizing:border-box;border:1px solid #8fae9b;border-radius:10px;padding:12px;background:white;color:#193b2d;font:inherit;min-height:46px}
+.gia-workspace textarea {resize:vertical}.gia-workspace form button {margin-top:12px;width:100%}
+.gia-workspace details {margin-top:22px;padding:14px;background:#fff4df;border-radius:12px}
+.gia-workspace summary {cursor:pointer;font-weight:700}
+.gia-workspace .gia-source {font-size:13px;color:#52634e;border-left:3px solid #b58a32;padding-left:10px}
+.gia-workspace .gia-results {display:grid;gap:12px}
+.gia-workspace .gia-result-card {padding:18px;background:white;border:1px solid #cbdcca;border-radius:16px}
+.gia-workspace .gia-result-card p {font-size:15px;color:#263f32;line-height:1.6}
+.gia-workspace small {display:block;font-size:12px;color:#52634e}
+.gia-workspace dt {font-weight:700;margin-top:16px}.gia-workspace dd {margin:4px 0}
+.gia-actions {display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.gia-reset {margin-top:30px;padding-top:16px;border-top:1px solid #d1ddce}.gia-reset button {font-size:13px}
+.gia-workflow .gia-note {flex:none;margin:0;padding:10px 18px;font-size:12px;line-height:1.4;background:#edf3e9;color:#435b49}
+#giaPrint {display:none}
+@media(max-width:600px){.gia-workflow.gia-panel {inset:0!important;margin:0;width:100%;height:100dvh!important;max-height:100dvh;border-radius:0}.gia-workflow .gia-head {padding:15px}.gia-workspace {padding:20px}.gia-workflow .gia-note {padding-bottom:max(10px,env(safe-area-inset-bottom))}}
+@media(prefers-reduced-motion:reduce){.gia-launcher,.gia-launcher-pulse {animation:none!important;transition:none!important}}
+@media print{body.gia-printing>*:not(#giaPrint){display:none!important}body.gia-printing #giaPrint{display:block;white-space:pre-wrap;font:12pt/1.6 sans-serif;color:black}body.gia-printing{padding:0!important}}

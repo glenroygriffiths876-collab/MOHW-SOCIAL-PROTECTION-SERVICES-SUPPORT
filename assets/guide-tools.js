@@ -7,7 +7,7 @@
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const waitForGuide = async () => {
     try {
-      const response = await fetch('data/guide-content.json?v=gia-feedback-1', {cache:'no-store'});
+      const response = await fetch('data/guide-content.json', {cache:'no-cache'});
       if (!response.ok) throw new Error('Guide unavailable');
       return await response.json();
     } catch (error) {
@@ -63,115 +63,153 @@
     clearTimeout(showToast.timer);showToast.timer=setTimeout(()=>toast.classList.remove('show'),2800);
   }
 
-  function mountGia(guide) {
-    if(q('#giaLauncher'))return;
-    const avatar=GIA_IMAGE;
-    const launcher=document.createElement('button');
-    launcher.className='gia-launcher';launcher.id='giaLauncher';launcher.type='button';
-    launcher.setAttribute('aria-label','Open Gia, the guide assistant');launcher.setAttribute('aria-expanded','false');
-    launcher.innerHTML='<span class="gia-launcher-pulse"></span><img src="'+avatar+'" alt=""><span class="gia-launcher-copy"><b>Ask Gia</b><small>Find a helpful next step</small></span><span class="gia-launcher-arrow" aria-hidden="true">↑</span>';
-    document.body.append(launcher);
-    const panel=document.createElement('section');
-    panel.className='gia-panel';panel.id='giaPanel';panel.hidden=true;panel.setAttribute('role','dialog');panel.setAttribute('aria-modal','false');panel.setAttribute('aria-labelledby','giaTitle');
-    panel.innerHTML='<header class="gia-head"><div class="gia-identity"><img src="'+avatar+'" alt="Gia"><div><span class="gia-presence"><i></i> GUIDE ASSISTANT</span><h2 id="giaTitle">Hi, I’m Gia <span>👋🏾</span></h2><p>Let’s find a helpful next step.</p></div></div><button class="gia-close" type="button" aria-label="Close Gia">×</button></header><div class="gia-intro"><span class="gia-spark">✳</span><p>I can search the booklet for programmes, services, referral steps, and agency contacts. Tell me what kind of support you are looking for.</p></div><div class="gia-shortcuts" aria-label="Try asking Gia"><button type="button" data-gia-prompt="cash assistance PATH">Cash help</button><button type="button" data-gia-prompt="housing">Housing</button><button type="button" data-gia-prompt="mental health">Wellbeing</button><button type="button" data-gia-prompt="referral steps">Referral steps</button></div><div class="gia-messages" id="giaMessages" aria-live="polite"><div class="gia-message gia-message-assistant">You can search by a service name, a need, or a parish. I’ll show guide information and where to confirm details.</div></div><form class="gia-compose" id="giaForm"><label class="visually-hidden" for="giaInput">Ask Gia about a service or support need</label><input id="giaInput" maxlength="180" autocomplete="off" placeholder="What support are you looking for?"><button type="submit" aria-label="Send question">↑</button></form><div class="gia-note">Guide search only · No personal details needed · Not an eligibility decision</div>';
-    document.body.append(panel);
-    const messages=q('#giaMessages'),input=q('#giaInput');
-    const close=()=>{panel.hidden=true;launcher.setAttribute('aria-expanded','false');launcher.focus();};
-    launcher.addEventListener('click',()=>{const open=panel.hidden;panel.hidden=!open;launcher.setAttribute('aria-expanded',String(open));if(open)setTimeout(()=>input.focus(),100);});
-    q('.gia-close',panel).addEventListener('click',close);
-    panel.addEventListener('click',event=>{
-      const shortcut=event.target.closest('[data-gia-prompt]');
-      if(shortcut){input.value=shortcut.dataset.giaPrompt;submitQuery(input.value);}
-      const directory=event.target.closest('[data-gia-directory]');
-      if(directory){showDirectory(directory.dataset.giaDirectory);}
-      const nav=event.target.closest('[data-gia-nav]');
-      if(nav){document.querySelector('[data-nav="'+nav.dataset.giaNav+'"]')?.click();close();}
-    });
-    q('#giaForm').addEventListener('submit',event=>{event.preventDefault();submitQuery(input.value);});
-    function submitQuery(raw){
-      const query=raw.trim();if(!query)return;
-      messages.insertAdjacentHTML('beforeend','<div class="gia-message gia-message-user">'+esc(query)+'</div>');
-      input.value='';
-      const answer=findAnswers(guide,query);
-      messages.insertAdjacentHTML('beforeend',answer);
-      messages.scrollTop=messages.scrollHeight;
-    }
-    function showDirectory(term){
-      const search=q('#serviceSearch');
-      document.querySelector('[data-nav="services"]')?.click();
-      if(search){search.value=term;search.dispatchEvent(new Event('input',{bubbles:true}));}
-      close();
-    }
+  const NEEDS = [
+    ['Food and daily essentials', 'food meals clothing poor relief'],
+    ['Transport to care', 'transport transportation'],
+    ['Medication or treatment', 'medication treatment medical'],
+    ['Housing', 'housing shelter homeless'],
+    ['Disability and caregiving', 'disability disabilities caregiver care'],
+    ['Income and benefits', 'cash income financial pension'],
+    ['Education and work', 'education school training employment'],
+    ['Emotional support', 'mental counselling wellbeing']
+  ];
+  const BARRIERS = {
+    'Missing documents': 'Ask the agency which documents are essential, which alternatives it accepts, and whether an initial assessment can begin while documents are obtained.',
+    'Cannot travel': 'Ask about telephone intake, an accessible appointment, an authorised representative, or a local referral route. Confirm what the agency can actually offer.',
+    'Cannot afford costs': 'Confirm all application, travel and service costs before arranging a visit. Ask the receiving service or facility social worker about available assistance.',
+    'No response': 'Check the contact details and opening hours, record the attempted contact in your approved records, and ask for an alternative contact or escalation route.',
+    'Service unavailable': 'Clarify whether the issue is capacity, catchment area or eligibility. Review another guide option and confirm availability before redirecting the person.',
+    'Communication or caregiver support': 'Ask the person how they prefer to communicate and whom they want involved. Confirm accessibility and representative arrangements with the service.'
+  };
+  function normal(value) {
+    return String(value || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
   }
-
-  function normal(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,' ').trim();}
-  function editDistance(a,b){
-    if(Math.abs(a.length-b.length)>2)return 3;
-    let prev=Array.from({length:b.length+1},(_,i)=>i);
-    for(let i=1;i<=a.length;i++){
-      const cur=[i];
-      for(let j=1;j<=b.length;j++)cur[j]=Math.min(cur[j-1]+1,prev[j]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1));
-      prev=cur;
+  function guideEntries(data) {
+    const entries = [];
+    for (const p of data.programmes || []) entries.push({title:p.name, body:p.support, where:p.where, bring:p.bring, process:p.process, section:'Programme profiles', nav:'services', term:p.name});
+    for (const c of data.categories || []) entries.push({title:c.programme, body:c.benefits, target:c.target, section:'Support categories', nav:'services', term:c.programme});
+    for (const d of data.decision || []) entries.push({title:d.options, body:d.situation, where:d.provider, section:'Decision Guide', nav:'decision'});
+    for (const c of data.contacts || []) entries.push({title:c.agency, body:c.details, section:'Agency contacts', nav:'services', term:c.agency});
+    for (const [i, step] of (data.referralSteps || []).entries()) {
+      const title = Array.isArray(step) ? step[0] : typeof step === 'string' ? step : step.title;
+      const body = Array.isArray(step) ? step[1] : typeof step === 'string' ? step : step.description;
+      entries.push({title:`Step ${i + 1} · ${title}`,body,section:'Referral Procedures',nav:'referrals'});
     }
-    return prev[b.length];
+    return entries;
   }
-  function findAnswers(data,query){
-    const qn=normal(query), tokens=qn.split(/\s+/).filter(t=>t.length>1);
-    const synonyms={
-      money:['cash','financial','benefit','benefits','grant','assistance','path','income','poor','food'],
-      cash:['money','financial','benefit','benefits','grant','assistance','path','income'],
-      house:['housing','shelter','rent','home','homeless'], housing:['house','shelter','rent','home','homeless'],
-      health:['medical','clinic','hospital','medicine','medication','treatment'],
-      mental:['wellbeing','wellness','counselling','counseling','psychology','crisis','suicide'],
-      wellbeing:['mental','wellness','counselling','counseling','psychology'],
-      child:['children','school','youth','family','caregiver'], children:['child','youth','family'],
-      disability:['disabled','disabilities','accessibility','special needs'],
-      referral:['refer','referring','process','steps','pathway','procedure'],
-      domestic:['violence','abuse','gender','safety'], abuse:['violence','gender','safety'],
-      work:['employment','job','skills','training'], job:['employment','work','skills'],
-      parish:['location','near','where','office','contact']
-    };
-    const expanded=new Set(tokens);
-    tokens.forEach(t=>(synonyms[t]||[]).forEach(v=>expanded.add(v)));
-    const entries=[];
-    (data.programmes||[]).forEach((x,i)=>entries.push({kind:'programme',title:x.name,body:[x.support,x.where,x.bring,x.process].filter(Boolean).join(' '),data:x,nav:'services',search:x.name}));
-    (data.categories||[]).forEach(x=>entries.push({kind:'support category',title:x.programme+' · '+x.category,body:[x.benefits,x.target].filter(Boolean).join(' '),data:x,nav:'services',search:x.programme+' '+x.category}));
-    (data.decision||[]).forEach(x=>entries.push({kind:'decision guide',title:x.situation,body:[x.options,x.provider].filter(Boolean).join(' '),data:x,nav:'decision',search:x.situation}));
-    (data.contacts||[]).forEach(x=>entries.push({kind:'agency contact',title:x.agency,body:x.details||'',data:x,nav:'services',search:x.agency}));
-    (data.referralSteps||[]).forEach((x,i)=>entries.push({kind:'referral procedure',title:'Step '+(i+1)+' · '+(typeof x==='string'?x:(x.title||'Referral step')),body:typeof x==='string'?x:[x.title,x.description,x.detail].filter(Boolean).join(' '),data:x,nav:'referrals',search:typeof x==='string'?x:[x.title,x.description,x.detail].filter(Boolean).join(' ')}));
-    function score(entry){
-      const title=normal(entry.title), body=normal(entry.body), all=title+' '+body, words=new Set(all.split(' '));
-      let total=0,hits=0;
-      for(const token of expanded){
-        if(!token)continue;
-        if(title===token)total+=12,hits++;
-        else if(title.includes(token))total+=7,hits++;
-        else if(words.has(token))total+=5,hits++;
-        else if(body.includes(token))total+=2.5,hits++;
-        else if(token.length>=4){
-          const candidate=[...words].filter(w=>Math.abs(w.length-token.length)<=2).some(w=>editDistance(token,w)<=1);
-          if(candidate)total+=1.5,hits++;
-        }
+  function oneEditApart(a, b) {
+    if (Math.abs(a.length - b.length) > 1) return false;
+    let i=0, j=0, edits=0;
+    while (i<a.length && j<b.length) {
+      if(a[i]===b[j]) {i++;j++;continue;}
+      if(++edits>1) return false;
+      if(a.length>=b.length) i++;
+      if(b.length>=a.length) j++;
+    }
+    return edits + (a.length-i) + (b.length-j) <= 1;
+  }
+  function searchGuide(entries, query) {
+    const stop = new Set('a an the i am is are has have with for to of in on at and or this that someone person help need needs wants can cannot who she he her his my me please get looking about'.split(' '));
+    const aliases = {child:['children'], children:['child'], caregiver:['caregiving','care'], food:['meals','feeding'], transport:['transportation'], disabled:['disability','disabilities'], disability:['disabled','disabilities'], elderly:['senior','seniors'], older:['senior','seniors'], job:['employment','training'], money:['cash','financial'], medicine:['medication','drugs'], housing:['shelter','homeless'], counselling:['counseling'], referral:['referral','step'], steps:['step'], documents:['documents','identification'], unwell:['medical'], mental:['mental','psychosocial']};
+    const words = [...new Set(normal(query).split(' ').filter(w => w.length > 1 && !stop.has(w)))];
+    if (!words.length) return [];
+    const ranked = entries.map(entry => {
+      const title = normal(entry.title), body = normal([entry.body,entry.target,entry.where,entry.bring,entry.process].join(' '));
+      const vocabulary = new Set((title+' '+body).split(' '));
+      const matches = words.filter(word => [word,...(aliases[word] || [])].some(term => vocabulary.has(term) || (term.length >= 5 && [...vocabulary].some(candidate => oneEditApart(term, candidate)))));
+      const score = matches.reduce((sum, word) => sum + ([word,...(aliases[word] || [])].some(term => title.split(' ').includes(term)) ? 7 : 2), 0) + (title === normal(query) ? 30 : 0);
+      return {...entry,score:score + matches.length * 12,matches};
+    }).filter(entry => entry.score > 0).sort((a,b) => b.score-a.score);
+    const seen = new Set();
+    return ranked.filter(entry => {const key=normal(entry.title);if(seen.has(key))return false;seen.add(key);return true;}).slice(0,8);
+  }
+  function mountGia(initialGuide) {
+    if(q('#giaLauncher')) return;
+    let guide = initialGuide, entries = guideEntries(guide || {});
+    let state = {view:'home', query:'', need:'', barrier:'', selected:null, plan:'', outcome:'', next:'', date:''};
+    let results = [];
+    const launcher = document.createElement('button');
+    launcher.id='giaLauncher'; launcher.className='gia-launcher'; launcher.type='button';
+    launcher.setAttribute('aria-label','Open Gia, the guide assistant');launcher.setAttribute('aria-haspopup','dialog');launcher.setAttribute('aria-expanded','false');
+    launcher.innerHTML=`<span class="gia-launcher-pulse"></span><img src="${GIA_IMAGE}" alt=""><span class="gia-launcher-copy"><b>Ask Gia</b><small>Find your next step</small></span>`;
+    const panel = document.createElement('dialog');panel.id='giaPanel';panel.className='gia-panel gia-workflow';panel.setAttribute('aria-labelledby','giaTitle');
+    panel.innerHTML=`<header class="gia-head"><div class="gia-identity"><img src="${GIA_IMAGE}" alt=""><div><h2 id="giaTitle">Let’s work through it</h2><p>Gia · MOHW Social Support</p></div></div><button class="gia-close" aria-label="Close Gia" data-action="close">×</button></header><nav class="gia-tabs" aria-label="Gia tools"><button data-view="help">Help someone</button><button data-view="search">Find information</button><button data-view="follow">Follow up</button></nav><main class="gia-workspace" id="giaWorkspace"></main><p class="gia-note">Keep names and identifying details out. Drafts stay in this open page and clear on reload.</p>`;
+    document.body.append(launcher,panel);
+    const workspace=q('#giaWorkspace',panel);
+    const button=(action,label)=>`<button type="button" data-action="${action}">${label}</button>`;
+    function render(view=state.view) {
+      state.view=view;
+      panel.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-current',String(b.dataset.view===view)));
+      if(!guide){workspace.innerHTML=`<h3 tabindex="-1">The guide could not load</h3><p>Check your connection and try again. Your current entries will stay here.</p>${button('retry','Try again')}${button('directory','Open directory')}`;return;}
+      const source=`<p class="gia-source">Source · ${esc(guide.edition)} · working draft, agency verification pending.</p>`;
+      if(view==='home') workspace.innerHTML=`<h3 tabindex="-1">What would you like to do?</h3><p>Start with a need, find a specific resource, or work through an unsuccessful referral.</p><div class="gia-start"><button data-view="help"><b>Help someone</b><span>Choose a need and prepare the next step</span></button><button data-view="search"><b>Find information</b><span>Search programmes, contacts and referral guidance</span></button><button data-view="follow"><b>Follow up</b><span>Review an outcome and decide what happens next</span></button></div>${source}`;
+      if(view==='help') workspace.innerHTML=`<h3 tabindex="-1">What matters most today?</h3><p>Choose one priority together. You can change it at any time.</p><div class="gia-choices">${NEEDS.map(([label,query],i)=>`<button data-need="${i}" aria-pressed="${state.need===query}">${label}</button>`).join('')}</div><form data-form="help"><label for="giaSituation">Or describe the support needed</label><textarea id="giaSituation" maxlength="500" rows="3" placeholder="For example, transport to clinic is too expensive">${esc(state.query)}</textarea><button type="submit" class="gia-primary">Explore support</button></form><details><summary>Urgent safety concern?</summary><p>${esc(guide.referralSteps?.[1]?.[1] || 'Follow your facility’s emergency and safeguarding procedures.')}</p><button data-nav="referrals">Open referral guidance</button></details>`;
+      if(view==='search') workspace.innerHTML=`<h3 tabindex="-1">Find information quickly</h3><form data-form="search"><label for="giaSearch">Programme, need, document or agency</label><input id="giaSearch" type="search" maxlength="180" value="${esc(state.query)}" placeholder="Try PATH, transport or referral steps" required><button type="submit" class="gia-primary">Search guide</button></form><p>Use a programme profile to find its agency links and application information.</p>${source}`;
+      if(view==='results') {
+        results=searchGuide(state.need ? entries.filter(e=>e.section!=='Referral Procedures') : entries,state.need || state.query);
+        workspace.innerHTML=`<h3 tabindex="-1">Possible starting points</h3>${/danger|abuse|suicid|violence|neglect|emergency/i.test(state.query)?`<aside class="gia-urgent"><b>Check urgency and safety first</b><p>${esc(guide.referralSteps?.[1]?.[1] || '')}</p><button data-nav="referrals">Open referral guidance</button></aside>`:''}<p>Your priority · <strong>${esc(state.query)}</strong></p>${button('edit','Change the need')}${source}${results.length?'<p>Matches reflect the guide wording. Confirm suitability and availability with the agency.</p>':'<p>No matching entry was found. Try a shorter need or a programme name, or browse the directory. An empty result does not mean help is unavailable.</p>'+button('directory','Browse services')}<div class="gia-results">${results.map((e,i)=>`<article class="gia-result-card"><small>${esc(e.section)}</small><h4>${esc(e.title)}</h4><p>${esc(e.body)}</p>${e.target?`<p><b>Group listed in guide</b> ${esc(e.target)}</p>`:''}<small>Matched words · ${esc(e.matches.join(', '))}</small><button data-select="${i}">Review this option</button></article>`).join('')}</div>`;
       }
-      return hits?total/(Math.sqrt(tokens.length||1)):0;
+      if(view==='option') {
+        const e=state.selected;
+        workspace.innerHTML=`<h3 tabindex="-1">${esc(e.title)}</h3><p>${esc(e.body)}</p>${source}<dl>${[['Where to start',e.where],['Documents listed',e.bring],['Process in the guide',e.process],['Group listed',e.target]].filter(([,v])=>v).map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl><h4>Confirm before a visit</h4><ul><li>Correct service and catchment area</li><li>Current availability, appointment and access arrangements</li><li>Required documents, accepted alternatives and any costs</li></ul><button data-nav="${e.nav}" data-term="${esc(e.term || '')}">Open source section and contacts</button><label for="giaBarrier">What might make this difficult?</label><select id="giaBarrier"><option value="">No barrier selected / not sure</option>${Object.keys(BARRIERS).map(b=>`<option ${state.barrier===b?'selected':''}>${b}</option>`).join('')}</select><p id="giaBarrierAdvice" role="status">${esc(BARRIERS[state.barrier] || '')}</p><div class="gia-actions">${button('plan','Prepare action plan')}${button('results','Compare other options')}</div>`;
+      }
+      if(view==='plan') workspace.innerHTML=`<h3 tabindex="-1">Review the action plan</h3><p>Edit this draft together before copying or printing. Add only information appropriate for the recipient.</p><label for="giaPlan">Client instructions / referral preparation</label><textarea id="giaPlan" rows="14" maxlength="10000">${esc(state.plan)}</textarea><div class="gia-actions">${button('copy','Copy reviewed text')}${button('print','Print reviewed text')}${button('follow','Plan follow-up')}${button('option','Back to option')}</div><p id="giaStatus" role="status"></p><p>Preparing this text does not send a referral. Record any referral in your approved system.</p>`;
+      if(view==='follow') workspace.innerHTML=`<h3 tabindex="-1">What happened after the referral?</h3><p>Use this checklist during follow-up, then transfer the reviewed note to your approved records.</p><label for="giaOutcome">Outcome</label><select id="giaOutcome"><option value="">Choose an outcome</option>${['Received help','Awaiting response','Could not access service','Needs changed'].map(v=>`<option ${state.outcome===v?'selected':''}>${v}</option>`).join('')}</select><label for="giaFollowBarrier">Barrier, if any</label><select id="giaFollowBarrier"><option value="">None / not sure</option>${Object.keys(BARRIERS).map(v=>`<option ${state.barrier===v?'selected':''}>${v}</option>`).join('')}</select><p id="giaFollowAdvice" role="status">${esc(BARRIERS[state.barrier] || '')}</p><label for="giaNext">Next action and responsible role</label><textarea id="giaNext" rows="3" maxlength="1000" placeholder="For example, referring worker to confirm appointment arrangements">${esc(state.next)}</textarea><label for="giaDate">Date to check again</label><input id="giaDate" type="date" value="${esc(state.date)}"><div class="gia-actions">${button('copyFollow','Copy follow-up note')}${button('help','Explore another option')}</div><p id="giaStatus" role="status"></p><p>This page does not save case records or send reminders.</p>`;
+      workspace.insertAdjacentHTML('beforeend',`<div class="gia-reset">${button('reset','Clear this session')}</div>`);
+      workspace.scrollTop=0;workspace.querySelector('h3')?.focus();
     }
-    const scored=entries.map(e=>({...e,score:score(e)})).filter(e=>e.score>0).sort((a,b)=>b.score-a.score);
-    const list=scored.slice(0,5);
-    const intro=list.length
-      ?'<div class="gia-message gia-message-assistant">I found a few relevant places in the guide. Start with the closest match, then confirm current details with the agency.</div>'
-      :'<div class="gia-message gia-message-assistant">I couldn’t find an exact match in the guide yet. Try a programme name (like PATH), a need (like food or housing), or ask me about referral steps.</div>';
-    const cards=list.map(e=>{
-      const summary=String(e.body||'').slice(0,310)+(String(e.body||'').length>310?'…':'');
-      const cta=e.nav==='services'?'Show in Find Services':e.nav==='decision'?'Open Decision Guide':'Open Referral Procedures';
-      const attr=e.nav==='services'?'data-gia-directory="'+esc(e.search)+'"':'data-gia-nav="'+e.nav+'"';
-      return '<article class="gia-result-card"><span class="gia-result-kind">'+esc(e.kind)+'</span><h3>'+esc(e.title)+'</h3><p>'+esc(summary||'See the guide section for related information.')+'</p><button type="button" '+attr+'>'+cta+' <span>→</span></button></article>';
-    }).join('');
-    return intro+(list.length?'<div class="gia-results">'+cards+'</div>':'<div class="gia-message gia-message-assistant"><button class="gia-inline-nav" type="button" data-gia-nav="services">Browse Find Services →</button> &nbsp; <button class="gia-inline-nav" type="button" data-gia-nav="referrals">See referral steps →</button></div>');
+    function preserve() {
+      const value=id=>q('#'+id,panel)?.value;
+      if(value('giaSituation')!==undefined) state.query=value('giaSituation');
+      if(value('giaSearch')!==undefined) state.query=value('giaSearch');
+      if(value('giaPlan')!==undefined) state.plan=value('giaPlan');
+      if(value('giaNext')!==undefined) state.next=value('giaNext');
+      if(value('giaDate')!==undefined) state.date=value('giaDate');
+    }
+    function makePlan() {
+      const e=state.selected;
+      return ['MOHW Social Support — action plan draft',`Priority: ${state.query}`,`Option to confirm: ${e.title}`,`Where to start: ${e.where || 'Open the source section and confirm the responsible agency.'}`,`Documents listed: ${e.bring || 'Confirm requirements directly with the agency.'}`,`Next step: ${e.process || 'Contact the responsible agency to confirm the appropriate referral route.'}`,`Barrier: ${state.barrier || 'None selected / not sure'}`,BARRIERS[state.barrier] || '', 'Before travelling: confirm availability, catchment, appointment, accessibility, documents and costs.', 'Agreed client action: ', 'Agreed worker action: ', 'Follow-up date: ',`Source: ${guide.edition}, ${e.section}. Working draft; requirements need agency confirmation.`].filter(Boolean).join('\n\n');
+    }
+    async function copy(text) {try{await navigator.clipboard.writeText(text);q('#giaStatus',panel).textContent='Copied. Review the destination before pasting.';}catch{q('#giaStatus',panel).textContent='Copy unavailable. Select and copy the text manually.';}}
+    function close(){preserve();panel.close();}
+    launcher.addEventListener('click',()=>{panel.showModal();launcher.setAttribute('aria-expanded','true');render();});
+    panel.addEventListener('close',()=>{preserve();launcher.setAttribute('aria-expanded','false');launcher.focus();});
+    panel.addEventListener('cancel',preserve);
+    panel.addEventListener('input',preserve);
+    panel.addEventListener('change',event=>{
+      const id=event.target.id;
+      if(id==='giaBarrier'||id==='giaFollowBarrier'){state.barrier=event.target.value;q(id==='giaBarrier'?'#giaBarrierAdvice':'#giaFollowAdvice',panel).textContent=BARRIERS[state.barrier] || '';}
+      if(id==='giaOutcome') state.outcome=event.target.value;
+    });
+    panel.addEventListener('submit',event=>{event.preventDefault();preserve();if(!state.query.trim())return;state.need='';state.selected=null;state.plan='';render('results');});
+    panel.addEventListener('click',async event=>{
+      const target=event.target.closest('button');if(!target)return;preserve();
+      if(target.dataset.view){render(target.dataset.view);return;}
+      if(target.dataset.need!==undefined){const [label,query]=NEEDS[Number(target.dataset.need)];state.query=label;state.need=query;state.selected=null;state.plan='';render('results');return;}
+      if(target.dataset.select!==undefined){state.selected=results[Number(target.dataset.select)];state.plan='';render('option');return;}
+      if(target.dataset.nav){document.querySelector(`[data-nav="${target.dataset.nav}"]`)?.click();if(target.dataset.term){q('[data-map-filter="all"]')?.click();const field=q('#serviceSearch');field.value=target.dataset.term;field.dispatchEvent(new Event('input',{bubbles:true}));}close();return;}
+      const action=target.dataset.action;
+      if(action==='close')close();
+      else if(action==='retry'){target.disabled=true;guide=await waitForGuide();entries=guideEntries(guide||{});render();}
+      else if(action==='directory'){document.querySelector('[data-nav="services"]')?.click();close();}
+      else if(action==='edit')render('help');
+      else if(action==='reset'){workspace.innerHTML='<h3 tabindex="-1">Clear this session?</h3><p>This removes the current draft and answers from this page.</p>'+button('confirmReset','Clear answers')+button('cancelReset','Keep working');workspace.querySelector('h3').focus();}
+      else if(action==='confirmReset'){state={view:'home',query:'',need:'',barrier:'',selected:null,plan:'',outcome:'',next:'',date:''};render();}
+      else if(action==='cancelReset')render();
+      else if(action==='plan'){state.plan=state.plan || makePlan();render('plan');}
+      else if(action==='copy')await copy(state.plan);
+      else if(action==='copyFollow'){await copy(['Follow-up draft',`Option: ${state.selected?.title || 'To be recorded'}`,`Outcome: ${state.outcome || 'Not recorded'}`,`Barrier: ${state.barrier || 'Not recorded'}`,`Next action and responsible role: ${state.next || 'To be agreed'}`,`Check again: ${state.date || 'To be agreed'}`].join('\n'));}
+      else if(action==='print'){
+        let print=q('#giaPrint');if(!print){print=document.createElement('pre');print.id='giaPrint';document.body.append(print);}print.textContent=state.plan;document.body.classList.add('gia-printing');window.print();document.body.classList.remove('gia-printing');print.remove();
+      }
+      else if(['results','option','follow','help'].includes(action))render(action);
+    });
+    render();
   }
 
   document.addEventListener('DOMContentLoaded', async () => {
     mountHelp();
     const guide=await waitForGuide();
-    mountGia(guide||{});
+    mountGia(guide);
   }, {once:true});
 })();
