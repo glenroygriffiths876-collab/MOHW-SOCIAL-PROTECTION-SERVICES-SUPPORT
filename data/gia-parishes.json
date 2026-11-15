@@ -1,0 +1,348 @@
+{
+  "version": "1.0",
+  "reviewed": "2026-11-15",
+  "coverage": "14 Jamaican parishes; MLSS/NIS offices and NHT branches or service centres transcribed from official public agency listings. These are not verified live operating hours or GPS pins.",
+  "sources": {
+    "mlss": "https://www.mlss.gov.jm/parish-offices/",
+    "nht": "https://www-1.nht.gov.jm/index.php/contact",
+    "heart": "https://www.heart-nsta.org/contact/",
+    "heartProgrammes": "https://programmes.heart-nsta.org/",
+    "nhf": "https://www.nhf.org.jm/providers/",
+    "nhfDrugServ": "https://www.nhf.org.jm/drug-serv/",
+    "health": "https://www.moh.gov.jm/about-us/"
+  },
+  "regions": {
+    "WRHA": "Western Regional Health Authority",
+    "SRHA": "Southern Regional Health Authority",
+    "NERHA": "North East Regional Health Authority",
+    "SERHA": "South East Regional Health Authority"
+  },
+  "serviceRoutes": {
+    "path": {
+      "type": "national_and_parish_enquiry",
+      "source": "https://mlss.gov.jm/departments/path/",
+      "note": "PATH is run by MLSS. Ask the ministry to identify the correct PATH point of intake for the parish; do not assume a particular NIS office processes PATH."
+    },
+    "nhf": {
+      "type": "official_directory",
+      "source": "https://www.nhf.org.jm/providers/",
+      "note": "Choose the correct NHF provider and service type on the official provider directory; participating locations and services can differ."
+    },
+    "health": {
+      "type": "health_region",
+      "source": "https://www.moh.gov.jm/about-us/",
+      "note": "Contact the appropriate parish public health service or hospital social worker for health and social support; no individual facility is assumed."
+    },
+    "heart": {
+      "type": "official_directory",
+      "source": "https://www.heart-nsta.org/contact/",
+      "note": "Use HEART's official institution and regional-office directories to identify an appropriate training or parish contact."
+    },
+    "nht": {
+      "type": "verified_parish_listing",
+      "source": "https://www-1.nht.gov.jm/index.php/contact",
+      "note": "NHT office or service-centre addresses are listed on the official NHT contact page; confirm the service and current hours before travelling."
+    },
+    "nis": {
+      "type": "verified_parish_listing",
+      "source": "https://www.mlss.gov.jm/parish-offices/",
+      "note": "MLSS publishes these offices under its NIS Parish Offices listing; confirm current services with the ministry."
+    }
+  },
+  "parishes": {
+    "Hanover": {
+      "region": "WRHA",
+      "healthAuthority": {
+        "name": "Western Regional Health Authority",
+        "source": "https://www.moh.gov.jm/about-us/"
+      },
+      "mlss": {
+        "name": "MLSS / NIS Parish Office",
+        "address": "Shop #4, Uptown Shopping Centre, Mosely Drive, Lucea, Hanover, Jamaica",
+        "phone": "876-956-3218",
+        "source": "https://www.mlss.gov.jm/parish-offices/",
+        "scope": "NIS parish office. PATH intake at this specific office is not confirmed."
+      },
+      "nht": {
+        "name": "NHT Branch or Service Centre",
+        "address": "Uptown Shopping Centre, Moseley Drive, Lucea, Hanover, Jamaica",
+        "phone": "876-956-2982",
+        "source": "https://www-1.nht.gov.jm/index.php/contact",
+        "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      }
+    },
+    "St. James": {
+      "region": "WRHA",
+      "healthAuthority": {
+        "name": "Western Regional Health Authority",
+        "source": "https://www.moh.gov.jm/about-us/"
+      },
+      "mlss": {
+        "name": "MLSS / NIS Parish Office",
+        "address": "4 Sam Sharpe Square, Montego Bay, St. James, Jamaica",
+        "phone": "876-971-4313",
+        "source": "https://www.mlss.gov.jm/parish-offices/",
+        "scope": "NIS parish office. PATH intake at this specific office is not confirmed."
+      },
+      "nht": {
+        "name": "NHT Branch or Service Centre",
+        "address": "42B Union Street, Montego Bay, St. James, Jamaica",
+        "phone": "876-952-0063",
+        "source": "https://www-1.nht.gov.jm/index.php/contact",
+        "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      }
+    },
+    "Westmoreland": {
+      "region": "WRHA",
+      "healthAuthority": {
+        "name": "Western Regional Health Authority",
+        "source": "https://www.moh.gov.jm/about-us/"
+      },
+      "mlss": {
+        "name": "MLSS / NIS Parish Office",
+        "address": "17 ¼ Lewis Street, Savanna-la-Mar, Westmoreland, Jamaica",
+        "phone": "876-955-2532",
+        "source": "https://www.mlss.gov.jm/parish-offices/",
+        "scope": "NIS parish office. PATH intake at this specific office is not confirmed."
+      },
+      "nht": {
+        "name": "NHT Branch or Service Centre",
+        "address": "123 Great George Street, Savanna-la-Mar, Westmoreland, Jamaica",
+        "phone": "876-955-2877",
+        "source": "https://www-1.nht.gov.jm/index.php/contact",
+        "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      }
+    },
+    "Trelawny": {
+      "region": "WRHA",
+      "healthAuthority": {
+        "name": "Western Regional Health Authority",
+        "source": "https://www.moh.gov.jm/about-us/"
+      },
+      "mlss": {
+        "name": "MLSS / NIS Parish Office",
+        "address": "4 King Street, Falmouth, Trelawny, Jamaica",
+        "phone": "876-954-3312",
+        "source": "https://www.mlss.gov.jm/parish-offices/",
+        "scope": "NIS parish office. PATH intake at this specific office is not confirmed."
+      },
+      "nht": {
+        "name": "NHT Branch or Service Centre",
+        "address": "85 Market Street, Falmouth, Trelawny, Jamaica",
+        "phone": "876-954-3771",
+        "source": "https://www-1.nht.gov.jm/index.php/contact",
+        "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      }
+    },
+    "St. Elizabeth": {
+      "region": "SRHA",
+      "healthAuthority": {
+        "name": "Southern Regional Health Authority",
+        "source": "https://www.moh.gov.jm/about-us/"
+      },
+      "mlss": {
+        "name": "MLSS / NIS Parish Office",
+        "address": "43 Main Street, Santa Cruz, St. Elizabeth, Jamaica",
+        "phone": "876-966-4096",
+        "source": "https://www.mlss.gov.jm/parish-offices/",
+        "scope": "NIS parish office. PATH intake at this specific office is not confirmed."
+      },
+      "nht": {
+        "name": "NHT Branch or Service Centre",
+        "address": "109 Main Street, Santa Cruz, St. Elizabeth, Jamaica",
+        "phone": "876-966-2510",
+        "source": "https://www-1.nht.gov.jm/index.php/contact",
+        "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      }
+    },
+    "Manchester": {
+      "region": "SRHA",
+      "healthAuthority": {
+        "name": "Southern Regional Health Authority",
+        "source": "https://www.moh.gov.jm/about-us/"
+      },
+      "mlss": {
+        "name": "MLSS / NIS Parish Office",
+        "address": "Shop 24, Mandeville Plaza, Mandeville, Manchester, Jamaica",
+        "phone": "876-625-8592",
+        "source": "https://www.mlss.gov.jm/parish-offices/",
+        "scope": "NIS parish office. PATH intake at this specific office is not confirmed."
+      },
+      "nht": {
+        "name": "NHT Branch or Service Centre",
+        "address": "Lot 22 Caledonia Mall, 3½ Caledonia Road, Mandeville, Manchester, Jamaica",
+        "phone": "876-962-2549",
+        "source": "https://www-1.nht.gov.jm/index.php/contact",
+        "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      }
+    },
+    "Clarendon": {
+      "region": "SRHA",
+      "healthAuthority": {
+        "name": "Southern Regional Health Authority",
+        "source": "https://www.moh.gov.jm/about-us/"
+      },
+      "mlss": {
+        "name": "MLSS / NIS Parish Office",
+        "address": "6B Manchester Avenue, May Pen, Clarendon, Jamaica",
+        "phone": "876-986-2472",
+        "source": "https://www.mlss.gov.jm/parish-offices/",
+        "scope": "NIS parish office. PATH intake at this specific office is not confirmed."
+      },
+      "nht": {
+        "name": "NHT Branch or Service Centre",
+        "address": "55 Manchester Avenue, May Pen, Clarendon, Jamaica",
+        "phone": "876-986-2051",
+        "source": "https://www-1.nht.gov.jm/index.php/contact",
+        "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      }
+    },
+    "St. Ann": {
+      "region": "NERHA",
+      "healthAuthority": {
+        "name": "North East Regional Health Authority",
+        "source": "https://www.moh.gov.jm/about-us/"
+      },
+      "mlss": {
+        "name": "MLSS / NIS Parish Office",
+        "address": "4 Windsor Road, St. Ann's Bay, St. Ann, Jamaica",
+        "phone": "876-972-0472",
+        "source": "https://www.mlss.gov.jm/parish-offices/",
+        "scope": "NIS parish office. PATH intake at this specific office is not confirmed."
+      },
+      "nht": {
+        "name": "NHT Branch or Service Centre",
+        "address": "28 Graham Street, Ocho Rios, St. Ann, Jamaica",
+        "phone": "876-974-4934",
+        "source": "https://www-1.nht.gov.jm/index.php/contact",
+        "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      }
+    },
+    "St. Mary": {
+      "region": "NERHA",
+      "healthAuthority": {
+        "name": "North East Regional Health Authority",
+        "source": "https://www.moh.gov.jm/about-us/"
+      },
+      "mlss": {
+        "name": "MLSS / NIS Parish Office",
+        "address": "51 Stennett Street, Port Maria, St. Mary, Jamaica",
+        "phone": "876-994-2314",
+        "source": "https://www.mlss.gov.jm/parish-offices/",
+        "scope": "NIS parish office. PATH intake at this specific office is not confirmed."
+      },
+      "nht": {
+        "name": "NHT Branch or Service Centre",
+        "address": "64 Stennett Street, Port Maria, St. Mary, Jamaica",
+        "phone": "876-994-2216",
+        "source": "https://www-1.nht.gov.jm/index.php/contact",
+        "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      }
+    },
+    "Portland": {
+      "region": "NERHA",
+      "healthAuthority": {
+        "name": "North East Regional Health Authority",
+        "source": "https://www.moh.gov.jm/about-us/"
+      },
+      "mlss": {
+        "name": "MLSS / NIS Parish Office",
+        "address": "28 Harbour Street, Port Antonio, Portland, Jamaica",
+        "phone": "876-993-2259",
+        "source": "https://www.mlss.gov.jm/parish-offices/",
+        "scope": "NIS parish office. PATH intake at this specific office is not confirmed."
+      },
+      "nht": {
+        "name": "NHT Branch or Service Centre",
+        "address": "28 Harbour Street, Port Antonio, Portland, Jamaica",
+        "phone": "876-993-3863",
+        "source": "https://www-1.nht.gov.jm/index.php/contact",
+        "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      }
+    },
+    "St. Thomas": {
+      "region": "SERHA",
+      "healthAuthority": {
+        "name": "South East Regional Health Authority",
+        "source": "https://www.moh.gov.jm/about-us/"
+      },
+      "mlss": {
+        "name": "MLSS / NIS Parish Office",
+        "address": "Shops 4–6, Morant Bay Plaza, Wharf Road, Morant Bay, St. Thomas, Jamaica",
+        "phone": "876-982-9569",
+        "source": "https://www.mlss.gov.jm/parish-offices/",
+        "scope": "NIS parish office. PATH intake at this specific office is not confirmed."
+      },
+      "nht": {
+        "name": "NHT Branch or Service Centre",
+        "address": "2 Georges Street, Morant Bay, St. Thomas, Jamaica",
+        "phone": "876-982-9417",
+        "source": "https://www-1.nht.gov.jm/index.php/contact",
+        "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      }
+    },
+    "St. Catherine": {
+      "region": "SERHA",
+      "healthAuthority": {
+        "name": "South East Regional Health Authority",
+        "source": "https://www.moh.gov.jm/about-us/"
+      },
+      "mlss": {
+        "name": "MLSS / NIS Parish Office",
+        "address": "10 Hanover Street, Spanish Town, St. Catherine, Jamaica",
+        "phone": "876-984-2554",
+        "source": "https://www.mlss.gov.jm/parish-offices/",
+        "scope": "NIS parish office. PATH intake at this specific office is not confirmed."
+      },
+      "nht": {
+        "name": "NHT Branch or Service Centre",
+        "address": "Twickenham, opposite Registrar General's Department, St. Catherine, Jamaica",
+        "phone": "876-984-8023",
+        "source": "https://www-1.nht.gov.jm/index.php/contact",
+        "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      }
+    },
+    "St. Andrew": {
+      "region": "SERHA",
+      "healthAuthority": {
+        "name": "South East Regional Health Authority",
+        "source": "https://www.moh.gov.jm/about-us/"
+      },
+      "mlss": {
+        "name": "MLSS / NIS Parish Office",
+        "address": "18 Ripon Road, Kingston 5, Jamaica",
+        "phone": "876-929-7145",
+        "source": "https://www.mlss.gov.jm/parish-offices/",
+        "scope": "NIS parish office. PATH intake at this specific office is not confirmed."
+      },
+      "nht": {
+        "name": "NHT Kingston & St. Andrew Head Office",
+        "address": "4 Park Boulevard, Kingston 5, Jamaica",
+        "phone": "876-929-6500",
+        "source": "https://www-1.nht.gov.jm/index.php/contact",
+        "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      }
+    },
+    "Kingston": {
+      "region": "SERHA",
+      "healthAuthority": {
+        "name": "South East Regional Health Authority",
+        "source": "https://www.moh.gov.jm/about-us/"
+      },
+      "mlss": {
+        "name": "MLSS / NIS Parish Office",
+        "address": "18 Ripon Road, Kingston 5, Jamaica",
+        "phone": "876-929-7145",
+        "source": "https://www.mlss.gov.jm/parish-offices/",
+        "scope": "NIS parish office. PATH intake at this specific office is not confirmed."
+      },
+      "nht": {
+        "name": "NHT Kingston & St. Andrew Head Office",
+        "address": "4 Park Boulevard, Kingston 5, Jamaica",
+        "phone": "876-929-6500",
+        "source": "https://www-1.nht.gov.jm/index.php/contact",
+        "scope": "Office address from NHT contact directory; service and hours should be confirmed."
+      }
+    }
+  }
+}
