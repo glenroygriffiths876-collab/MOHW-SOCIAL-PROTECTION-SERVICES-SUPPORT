@@ -60,7 +60,7 @@
     view:"home", question:"", tone:"", topicIds:[], results:[], page:0, selected:null,
     parish:"Not selected", destination:"", mapsProvided:"", phone:"", ready:new Set(),
     consent:false, outcome:"", next:"", followDate:"", sessionRef:"", lastSource:"",
-    recipientMode:"client", customDocs:"", focusTopic:"", originalQuestion:"", guidePage:"", barrier:"", documentNotes:"", role:""
+    recipientMode:"client", customDocs:"", focusTopic:"", originalQuestion:"", guidePage:"", barrier:"", documentNotes:"", role:"", localOfficeUsed:""
   };
   const key = value => {
     const n=normal(value);return normal(ALIASES[n]||n).replace(/\s/g,"");
@@ -220,6 +220,7 @@
     if(/\bnhf\b|national health fund|j a d e p|jadep/.test(text))return "nhf";
     if(/\bheart\b|\bnsta\b|skills training|vocational/.test(text))return "heart";
     if(/local government|poor relief|municipal/.test(text))return "poor-relief";
+    if(/police station|police post|constabulary/.test(text+" "+normal(state.destination)))return "police";
     if(/hospital|health|clinic|diagnostic|medical|compassionate fund/.test(text))return "health";
     return "general";
   }
@@ -265,10 +266,17 @@
     else if(route==="poor-relief")content=
       "<p>Ask the "+label+" municipal corporation/poor relief department about the appropriate local assessment and intake route. This guide does not verify a specific office address.</p>"+
       linkTo("https://www.localgovjamaica.gov.jm/","Local Government ministry")+linkTo(mapSearch("Municipal Corporation Poor Relief Office"),"Search local offices on Maps");
-    else content=
+    else if(route==="police")content=
+      "<p>Police stations and their contact arrangements can differ within "+label+". Confirm the correct station and emergency arrangements through official channels. Do not treat a Maps result as a verified station.</p>"+
+      linkTo(mapSearch(state.destination||"Police Station"),"Search police stations on Maps");
+    else if(route==="health")content=
       "<p>For public healthcare referrals, "+label+" is served by the <strong>"+esc(p.healthAuthority.name)+"</strong>. Confirm the particular hospital, health centre or social work service before advising travel.</p>"+
       linkTo(parishDirectory.sources.health,"MOHW health authorities")+
       linkTo(mapSearch(s?.kind==="custom" ? state.destination||"public health centre" : s?.name||"health centre"),"Search "+state.parish+" services on Maps");
+    else content=
+      "<p>This service may operate nationally or through another local agency. Confirm its "+label+" catchment and current service point before travelling.</p>"+
+      linkTo(s?.meta?.officialUrl||parishDirectory.sources.health,"Find agency information")+
+      linkTo(mapSearch(s?.name||"social services office"),"Search "+state.parish+" on Maps");
     if(route!=="health"&&route!=="general")content+="<p class=\"gia2-local-caution\">For healthcare or social-work handover: "+esc(p.healthAuthority.name)+".</p>";
     return "<section class=\"gia2-local-panel\"><div class=\"gia2-local-heading\"><span>📍</span><div><h4>"+label+" service guidance</h4><p>"+esc(p.healthAuthority.name)+"</p></div></div>"+content+
       "<small>Address or agency page listed in an official directory, not a confirmed appointment, eligibility decision, opening status or GPS pin. Source directory checked 15 November 2026.</small></section>";
@@ -496,6 +504,7 @@
     const s=state.selected;
     const name=state.destination.trim()||(s?.agency||"Receiving service to confirm");
     const map=mapsUrl(name,state.parish,state.mapsProvided);
+    const officialOffice=state.localOfficeUsed===state.parish?"Office chosen from official parish directory; current opening and service must still be confirmed.":"";
     const base=guideDocs(s),extra=workerDocs();
     const list=(arr,offset)=>arr.map((d,i)=>(state.ready.has(offset+i)?"☑ ":"☐ ")+d);
     const locationLine=(state.mapsProvided.trim()&&validMapsLink(state.mapsProvided)?
@@ -509,6 +518,7 @@
         "Proposed destination: "+name,
         "Parish: "+(state.parish==="Not selected"?"To be confirmed":state.parish),
         locationLine,
+        officialOffice,
         "",
         "Could you please confirm:",
         "• Whether this is the appropriate service and office",
@@ -528,6 +538,7 @@
       "Office or destination: "+name,
       "Parish: "+(state.parish==="Not selected"?"Please confirm":state.parish),
       locationLine,
+      officialOffice,
       "",
       "DOCUMENT CHECKLIST",
       ...(base.length?["Listed in the support guide (confirm current requirements):",...list(base,0)]:[]),
@@ -569,10 +580,10 @@
     }
     const base=guideDocs(s),extras=workerDocs(),docs=[...base,...extras];
     const displayName=s.kind==="custom"?(state.destination||"your destination"):s.name;
-    return say("<strong>Let’s prepare the message for "+esc(displayName)+".</strong><p>Just add the number, parish and correct office. The documents and Maps link can go into the same WhatsApp message.</p>")+
+    return say("<strong>"+(roleIsProvider()?"Let’s prepare a clear referral.":"Let’s prepare your visit information.")+"</strong><p>"+(roleIsProvider()?"Choose who will receive the message, confirm the parish office and review the details before sharing.":"I’ll help you find the right office and prepare a message with directions and documents.")+"</p>")+
       "<div class=\"gia2-form\">"+
       "<label for=\"gia2To\">Recipient’s WhatsApp number</label><input id=\"gia2To\" type=\"tel\" inputmode=\"tel\" autocomplete=\"off\" placeholder=\"876 555 1234\" value=\""+esc(state.phone)+"\">"+
-      "<label for=\"gia2Parish\">Where will they go? Choose the parish</label><select id=\"gia2Parish\">"+PARISHES.map(p=>"<option "+(p===state.parish?"selected":"")+">"+esc(p)+"</option>").join("")+"</select>"+
+      "<label for=\"gia2Parish\">Destination parish (required)</label><select id=\"gia2Parish\">"+PARISHES.map(p=>"<option "+(p===state.parish?"selected":"")+">"+esc(p)+"</option>").join("")+"</select>"+
       "<label for=\"gia2Destination\">Exact office, clinic or destination</label><input id=\"gia2Destination\" maxlength=\"160\" placeholder=\"e.g. Lucea PATH Office, Hanover\" value=\""+esc(state.destination||"")+"\">"+
       "<details class=\"gia2-expand gia2-optional\"><summary>Location link and document options <span>optional</span></summary>"+
       "<label for=\"gia2Map\">Paste a confirmed Google Maps pin (if you have one)</label><input id=\"gia2Map\" type=\"url\" maxlength=\"650\" placeholder=\"https://maps.app.goo.gl/...\" value=\""+esc(state.mapsProvided)+"\">"+
@@ -587,6 +598,7 @@
         (extras.length?"<div class=\"gia2-check-head\">Added by referring worker</div>"+extras.map((d,i)=>"<label><input type=\"checkbox\" data-doc=\""+(base.length+i)+"\" "+(state.ready.has(base.length+i)?"checked":"")+"> "+esc(d)+"</label>").join(""):"")+
         "</div></details>"
         :"<p class=\"gia2-muted\">No programme-specific checklist is available here; ask the receiving agency before travel.</p>")+
+      "<details class=\"gia2-expand gia2-parish-referral\"><summary>Local office guidance for "+esc(state.parish==="Not selected"?"your parish":state.parish)+"</summary>"+parishHelp(s)+"</details>"+
       "<label class=\"gia2-consent\"><input id=\"gia2Consent\" type=\"checkbox\" "+(state.consent?"checked":"")+"><span>The recipient agrees to receive this information on WhatsApp, and I have reviewed it for confidential details.</span></label>"+
       "<details class=\"gia2-expand\"><summary>Read the WhatsApp message before sharing</summary><pre id=\"gia2Preview\">"+esc(referralText())+"</pre></details>"+
       "<p class=\"gia2-error\" id=\"gia2Validation\" role=\"status\"></p>"+
@@ -660,7 +672,7 @@
   function chooseService(id){
     const s=catalog.find(c=>c.id===id);
     if(!s)return;
-    state.selected=s;state.ready=new Set();state.destination=s.kind==="decision"?"":(s.agency||s.name);state.mapsProvided="";state.consent=false;state.tone="";
+    state.selected=s;state.ready=new Set();state.destination=s.kind==="decision"?"":(s.agency||s.name);state.mapsProvided="";state.consent=false;state.tone="";state.localOfficeUsed="";
     show("service");
   }
   function handleAsk(raw){
@@ -762,7 +774,10 @@
   function preserveInputs(){
     const get=id=>$("#"+id)?.value;
     if(get("gia2To")!==undefined)state.phone=get("gia2To");
-    if(get("gia2Parish")!==undefined)state.parish=get("gia2Parish");
+    if(get("gia2Parish")!==undefined && state.parish!==get("gia2Parish")){
+      state.parish=get("gia2Parish");
+      if(state.localOfficeUsed){state.destination=state.selected?.agency||"";state.localOfficeUsed="";state.mapsProvided="";}
+    }
     if(get("gia2Destination")!==undefined)state.destination=get("gia2Destination");
     if(get("gia2Map")!==undefined)state.mapsProvided=get("gia2Map");
     if($("#gia2Consent"))state.consent=$("#gia2Consent").checked;
@@ -784,6 +799,7 @@
     preserveInputs();
     const digits=phone(state.phone);
     if(!digits){message("Enter a valid phone number, including the area or country code.",true);$("#gia2To")?.focus();return;}
+    if(!parishKnown()){message("Please choose the destination parish first, so the referral does not point to the wrong place.",true);$("#gia2Parish")?.focus();return;}
     if(!state.destination.trim()){message("Enter the office or facility you want the recipient to find.",true);$("#gia2Destination")?.focus();return;}
     if(state.mapsProvided.trim()&&!validMapsLink(state.mapsProvided)){message("That is not a supported Google Maps link. Correct the link or leave it blank to use a Maps search.",true);$("#gia2Map")?.focus();return;}
     if(!state.consent){message("Please confirm the recipient agrees to receive this information and that you have reviewed its contents.",true);$("#gia2Consent")?.focus();return;}
