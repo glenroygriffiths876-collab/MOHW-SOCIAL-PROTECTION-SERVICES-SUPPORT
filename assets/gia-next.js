@@ -382,13 +382,28 @@
     return "<form id=\"gia2SearchForm\" class=\"gia2-inputbar\"><label class=\"gia2-visually-hidden\" for=\"gia2Question\">Ask GIA</label><input id=\"gia2Question\" name=\"question\" autocomplete=\"off\" maxlength=\"320\" placeholder=\"e.g. Help with transport to clinic\" value=\""+esc(state.question)+"\" required>"+voiceButton()+"<button class=\"gia2-send\" type=\"submit\" aria-label=\"Find support\">➜</button></form>";
   }
   function viewHome(){
-    const intro=state.selected?"I’m still here if you need anything else about "+esc(state.selected.name)+".":"Hi, I’m GIA. What would you like help with today?";
-    return say("<strong>"+intro+"</strong><p>Tell me what’s happening in everyday words. I’ll help you identify a service and prepare the next step—without making you go through a long questionnaire.</p>")+
+    const role=state.role;
+    const title=roleIsProvider()?"Hello, colleague. How can I help with this referral?":"Hello! I'm GIA. How can I help today?";
+    const intro=roleIsProvider()?
+      "Tell me what a patient or service user needs. I can identify possible programmes, point you to parish contacts, prepare a handover and help plan follow-up.":
+      "Tell me what you or someone you care for needs. I'll help you find a possible service, prepare what to bring and work out where to enquire.";
+    const choose=!role?
+      "<div class=\"gia2-role-choice\"><p>First, who is asking for help?</p><div class=\"gia2-actions\">"+
+      pill("role:client","I need help for myself or my family","gia2-primary")+
+      pill("role:provider","I work in health or social services")+"</div></div>":"";
+    const local=parishKnown()?
+      "<p class=\"gia2-context-hint\">📍 Starting with services in <strong>"+esc(state.parish)+"</strong>. You can change parish above.</p>":
+      "<p class=\"gia2-context-hint\">📍 Choose your parish above so I can show relevant local offices, not just national programmes.</p>";
+    return say("<strong>"+title+"</strong><p>"+intro+"</p>")+choose+local+
       "<div class=\"gia2-feature-grid\">"+
-      pill("ask","Find help for someone","gia2-feature")+pill("refer","Prepare a WhatsApp referral","gia2-feature")+
-      pill("documents","Check required documents","gia2-feature")+pill("follow","Follow up on a referral","gia2-feature")+
+      pill("ask",roleIsProvider()?"Find a referral option":"Find help near me","gia2-feature")+
+      pill("refer",roleIsProvider()?"Prepare a referral":"Get visit details","gia2-feature")+
+      pill("documents",roleIsProvider()?"Check referral documents":"What should I bring?","gia2-feature")+
+      pill("follow",roleIsProvider()?"Plan follow-up":"Check my next step","gia2-feature")+
       "</div>"+searchForm()+
-      "<p class=\"gia2-privacy\">For example: “My mum needs help with food and getting to clinic.” Please leave out names and medical details.</p>";
+      "<p class=\"gia2-privacy\">"+(roleIsProvider()?
+      "Use a non-identifying description. Please do not enter patient names, diagnoses, contact details or records into this chat.":
+      "For example: “I need help with food and getting to the clinic.” Please avoid sharing private medical or identifying details.")+"</p>";
   }
   function viewResults(){
     if(state.results.length===0){
@@ -397,10 +412,11 @@
       "<details class=\"gia2-expand\"><summary>More types of support</summary><div class=\"gia2-actions\">"+TOPICS.slice(5).map(t=>pill("topic:"+t.id,t.label)).join("")+"</div></details>"+options();
     }
     const multi=state.topicIds.length>1;
+    const introRole=roleIsProvider()?"Referral possibilities":"Support options";
     const shown=state.results.slice(0,state.page?9:3);
     const narrative=multi?
       "You mentioned "+sayNeeds(state.topicIds)+". These may involve different services, so we can work through them one at a time.":
-      "I found some possible starting points based on what you described.";
+      (roleIsProvider()?"I found possible referral routes for the need you described.":"I found some possible services to ask about.");
     const chips=multi?
       "<div class=\"gia2-focus\"><p>Which would you like to work on first?</p><div class=\"gia2-actions\">"+
       state.topicIds.map(id=>pill("focus:"+id,TOPICS.find(t=>t.id===id)?.label||id,state.focusTopic===id?"gia2-focus-active":"")).join("")+
@@ -408,9 +424,10 @@
     return "<div class=\"gia2-user-bubble\">"+esc(state.originalQuestion||state.question)+"</div>"+
       say("<strong>"+narrative+"</strong><p>These are options to explore, not a determination of eligibility. I’ll help you prepare once you choose one.</p>")+
       chips+
+      "<div class=\"gia2-parish-results\">"+(parishKnown()?"📍 Showing guidance for "+esc(state.parish)+". Check each service for local offices and contacts.":"📍 Choose a parish above to see relevant local office listings; the options below are national or guide-based.")+"</div>"+
       "<div class=\"gia2-service-list\">"+shown.map(({service:v})=>{
         const title=v.kind==="decision"?"Guide pathway":v.kind==="agency"?"Agency contact":"Possible service";
-        return "<article class=\"gia2-service\"><div><span class=\"gia2-tag\">"+title+"</span><h4>"+esc(v.name)+"</h4><p>"+esc(short(v.support,180))+"</p></div><button type=\"button\" class=\"gia2-choose\" data-service=\""+esc(v.id)+"\">See what to do next <span>→</span></button></article>";
+        return "<article class=\"gia2-service\"><div><span class=\"gia2-tag\">"+title+"</span><h4>"+esc(v.name)+"</h4><p>"+esc(short(v.support,180))+"</p></div><button type=\"button\" class=\"gia2-choose\" data-service=\""+esc(v.id)+"\">"+(roleIsProvider()?"View referral route":"See how to get help")+" <span>→</span></button></article>";
       }).join("")+"</div>"+
       (state.results.length>3&&!state.page?pill("more","Show more options"):"")+
       "<div class=\"gia2-subtools\">"+pill("ask","Explain a different need")+pill("refer","Prepare a referral")+"</div>"+guidesource();
@@ -434,14 +451,14 @@
     const guidance=state.tone==="cost"?"The guide does not establish every fee or eligibility rule. Please confirm current conditions with the receiving agency.":state.tone==="apply"?"Here are the application steps described in the guide. The agency should confirm the current process.":state.tone==="maps"?"I can help you search for the office, but I cannot confirm which local branch is operating.":null;
     return say("<strong>"+esc(s.name)+"</strong><p>"+(isPathway?
       "The guide suggests these possible providers. We should confirm which agency or programme can meet the person's need.":
-      (guidance||"This looks like a possible starting point. Here’s the practical information I can find in the guide."))+"</p>")+
+      (guidance||(roleIsProvider()?"Here is the relevant guide information and local referral route to verify.":"This may be a helpful place to start. Here is what the guide says and how to make enquiries locally.")))+"</p>")+
       "<div class=\"gia2-detail\">"+
       line("What support is described",s.support)+line("Who it may help",s.targets.join("; "))+line("Where to begin",s.where)+line("How it works in the guide",s.process)+
       (docs.length?"<div class=\"gia2-fact\"><b>Documents listed in the guide</b><p>"+esc(short(docs.join("; "),320))+"</p></div>":"")+
       (contact?"<details class=\"gia2-expand\"><summary>Contact details from the guide</summary><p>"+esc(contact.details)+"</p>"+contactActions(s)+"</details>":"")+
       (s.meta.officialUrl&&/^https:\/\//.test(s.meta.officialUrl)?"<a class=\"gia2-link\" href=\""+esc(s.meta.officialUrl)+"\" target=\"_blank\" rel=\"noopener noreferrer\">Open official agency website ↗</a>":"")+
-      "</div><div class=\"gia2-primary-actions\">"+
-      pill("refer","Prepare a referral","gia2-primary")+pill("checklist","Check documents")+pill("plan","Copy action plan")+pill("directions","Find office on Maps")+"</div>"+
+      "</div>"+parishHelp(s)+"<div class=\"gia2-primary-actions\">"+
+      pill("refer",roleIsProvider()?"Prepare referral":"Prepare visit details","gia2-primary")+pill("checklist",roleIsProvider()?"Check documents":"What to bring")+pill("plan",roleIsProvider()?"Copy action plan":"Copy next steps")+pill("directions","Find location on Maps")+"</div>"+
       "<details class=\"gia2-barriers\"><summary>Having trouble completing the referral?</summary><div class=\"gia2-actions\">"+BARRIERS.map(b=>pill("barrier:"+b.id,b.label)).join("")+"</div></details>"+
       "<div class=\"gia2-actions\">"+pill("follow","Follow up later")+pill("backResults","Other options")+pill("start","New request")+"</div>"+
       guidesource();
