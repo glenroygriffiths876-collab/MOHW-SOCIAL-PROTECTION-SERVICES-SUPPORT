@@ -307,52 +307,82 @@
   }
   function referralText(){
     const s=state.selected;
-    const name=state.destination.trim()||(s?.agency||"the receiving agency");
+    const name=state.destination.trim()||(s?.agency||"Receiving service to confirm");
     const map=mapsUrl(name,state.parish,state.mapsProvided);
-    const docs=composeDocs(s);
-    const checked=docs.map((d,i)=>(state.ready.has(i)?"☑ ":"☐ ")+d);
+    const base=guideDocs(s),extra=workerDocs();
+    const list=(arr,offset)=>arr.map((d,i)=>(state.ready.has(offset+i)?"☑ ":"☐ ")+d);
     return [
-      "SOCIAL SUPPORT REFERRAL INFORMATION",
-      "Hello. Here is information to help you prepare for your visit.",
+      "YOUR SOCIAL SUPPORT VISIT INFORMATION",
+      "Hello. Here is the information to help you prepare.",
       "",
-      "Service: "+(s?.kind==="custom" ? name : (s?.name||"Service to confirm")),
-      "Where to enquire: "+name,
+      "Service: "+(s?.kind==="custom"?name:(s?.name||"Service to confirm")),
+      "Office or destination: "+name,
       "Parish: "+(state.parish==="Not selected"?"Please confirm":state.parish),
-      "Google Maps: "+map,
+      (state.mapsProvided.trim()&&validMapsLink(state.mapsProvided)?"Confirmed Maps link (provided by worker): ":"Google Maps search (confirm exact destination): ")+map,
       "",
-      "Document preparation checklist (confirm with the receiving agency):",
-      ...(checked.length?checked:["Please confirm the required documents with the agency."]),
+      "DOCUMENT CHECKLIST",
+      ...(base.length?["Listed in the support guide (confirm current requirements):",...list(base,0)]:[]),
+      ...(extra.length?["Additional documents entered by the referring worker:",...list(extra,base.length)]:[]),
+      ...(!base.length&&!extra.length?["Contact the receiving office to confirm the documents required."]:[]),
       "",
-      "Before travelling, please confirm the exact office, opening hours, eligibility, appointment needs and any fees.",
+      "Before travelling, please confirm the correct office, opening hours, eligibility, appointment arrangements and any costs.",
       s?.meta?.officialUrl ? "Agency website: "+s.meta.officialUrl : "",
-      "Guide: https://glenroygriffiths876-collab.github.io/MOHW-SOCIAL-PROTECTION-SERVICES-SUPPORT/",
+      "MOHW Social Support guide: https://glenroygriffiths876-collab.github.io/MOHW-SOCIAL-PROTECTION-SERVICES-SUPPORT/",
       "",
-      "This message is preparation information, not confirmation of an appointment or approval."
-    ].filter(v=>v!==null && v!==undefined).join("\n");
+      "Information for preparation only; no appointment, eligibility or benefit has been confirmed."
+    ].filter(v=>v!=="").join("\n");
+  }
+  function actionPlanText(){
+    const s=state.selected;
+    if(!s)return "Choose a service before preparing an action plan.";
+    const base=guideDocs(s),extra=workerDocs();
+    return [
+      "SOCIAL SUPPORT ACTION PLAN — DRAFT",
+      "Need described (non-identifying): "+(state.originalQuestion||state.question||"Not recorded"),
+      "Service to confirm: "+s.name,
+      "Relevant agency: "+(s.agency||"Confirm with programme"),
+      "Parish: "+state.parish,
+      "Possible assistance described: "+(s.support||"See responsible agency"),
+      "Guide application process: "+(s.process||"Confirm process with agency"),
+      "Guide-listed documents: "+(base.length?base.join("; "):"Not specified"),
+      "Worker-entered additional documents: "+(extra.length?extra.join("; "):"None"),
+      "Next step: Confirm suitability, location, documentation, accessibility and service availability with the receiving agency.",
+      "Document actual contact, referral and outcome in your authorised clinical/social work record.",
+      "Source: November 2026 Social Protection Services Support Guide; current arrangements require confirmation."
+    ].join("\n\n");
   }
   function viewRefer(){
     const s=state.selected;
     if(!s){
-      return say("<strong>Absolutely. Which service are you referring someone to?</strong><p>Search for PATH, NHF, NIS, NHT, HEART, a clinic or another agency. I’ll help you prepare a clear message with the documents and a Maps link.</p>")+
-      searchForm()+"<div class=\"gia2-actions\">"+pill("custom","Use any other destination: hospital, clinic, police station or office","gia2-primary")+pill("topic:income","PATH or income")+pill("topic:health","NHF or treatment")+"</div>"+options();
+      return say("<strong>Who are we connecting the person with?</strong><p>Search a programme, or choose any destination—including a hospital, clinic, police station, PATH office, NHT or NHF service point.</p>")+
+      searchForm()+"<div class=\"gia2-actions\">"+pill("custom","Any other destination","gia2-primary")+
+      pill("topic:income","PATH / income")+pill("topic:health","NHF / health")+pill("topic:family","Child and family support")+"</div>"+options();
     }
-    const docs=composeDocs(s);
-    const name=state.destination||s.agency||s.name;
-    return say("<strong>Let’s prepare the referral for "+esc(s.name)+".</strong><p>Enter the recipient’s WhatsApp number and choose the specific office. I’ll prepare the message, but you decide whether to send it.</p>")+
+    const base=guideDocs(s),extras=workerDocs(),docs=[...base,...extras];
+    const displayName=s.kind==="custom"?(state.destination||"your destination"):s.name;
+    return say("<strong>Let’s prepare the message for "+esc(displayName)+".</strong><p>Just add the number, parish and correct office. The documents and Maps link can go into the same WhatsApp message.</p>")+
       "<div class=\"gia2-form\">"+
-      "<label for=\"gia2To\">Recipient’s WhatsApp number</label><input id=\"gia2To\" type=\"tel\" inputmode=\"tel\" autocomplete=\"off\" placeholder=\"e.g. 876 555 1234\" value=\""+esc(state.phone)+"\">"+
-      "<label for=\"gia2Parish\">Parish for the visit</label><select id=\"gia2Parish\">"+PARISHES.map(v=>"<option "+(v===state.parish?"selected":"")+">"+esc(v)+"</option>").join("")+"</select>"+
-      "<label for=\"gia2Destination\">Exact office, clinic or destination (edit as needed)</label><input id=\"gia2Destination\" maxlength=\"160\" value=\""+esc(name)+"\" placeholder=\"Enter the receiving office or facility\">"+
-      "<label for=\"gia2Map\">Confirmed Google Maps link (optional)</label><input id=\"gia2Map\" type=\"url\" maxlength=\"650\" placeholder=\"Paste a confirmed Google Maps link\" value=\""+esc(state.mapsProvided)+"\">"+
-      "<p class=\"gia2-muted\">Without a confirmed link, GIA generates a Google Maps search—not a verified office pin. Check the correct location before travelling.</p>"+
-      "<label for=\"gia2CustomDocs\">Other documents confirmed by the worker (optional; one per line)</label><textarea id=\"gia2CustomDocs\" rows=\"2\" maxlength=\"1200\" placeholder=\"Add agency-confirmed documents not listed above\">"+esc(state.customDocs)+"</textarea>"+pill("refreshDocs","Update document checklist")+
-      (docs.length?"<div class=\"gia2-form-label\">Document preparation <span class=\"gia2-muted\">("+state.ready.size+" of "+docs.length+" available)</span></div><div class=\"gia2-compact-checks\">"+docs.map((d,i)=>"<label><input type=\"checkbox\" data-doc=\""+i+"\" "+(state.ready.has(i)?"checked":"")+"> "+esc(d)+"</label>").join("")+"</div>":"")+
-      "<label class=\"gia2-consent\"><input id=\"gia2Consent\" type=\"checkbox\" "+(state.consent?"checked":"")+"> <span>The recipient agrees to receive this information through WhatsApp, and I have reviewed it for sensitive details.</span></label>"+
-      "<details class=\"gia2-expand\"><summary>Preview the WhatsApp message</summary><pre id=\"gia2Preview\">"+esc(referralText())+"</pre></details>"+
+      "<label for=\"gia2To\">Recipient’s WhatsApp number</label><input id=\"gia2To\" type=\"tel\" inputmode=\"tel\" autocomplete=\"off\" placeholder=\"876 555 1234\" value=\""+esc(state.phone)+"\">"+
+      "<label for=\"gia2Parish\">Where will they go? Choose the parish</label><select id=\"gia2Parish\">"+PARISHES.map(p=>"<option "+(p===state.parish?"selected":"")+">"+esc(p)+"</option>").join("")+"</select>"+
+      "<label for=\"gia2Destination\">Exact office, clinic or destination</label><input id=\"gia2Destination\" maxlength=\"160\" placeholder=\"e.g. Lucea PATH Office, Hanover\" value=\""+esc(state.destination||"")+"\">"+
+      "<details class=\"gia2-expand gia2-optional\"><summary>Location link and document options <span>optional</span></summary>"+
+      "<label for=\"gia2Map\">Paste a confirmed Google Maps pin (if you have one)</label><input id=\"gia2Map\" type=\"url\" maxlength=\"650\" placeholder=\"https://maps.app.goo.gl/...\" value=\""+esc(state.mapsProvided)+"\">"+
+      "<p class=\"gia2-muted\">Otherwise GIA includes a Google Maps search. It is not a verified office address.</p>"+
+      "<label for=\"gia2CustomDocs\">Additional documents confirmed by the agency (one per line)</label><textarea id=\"gia2CustomDocs\" rows=\"2\" maxlength=\"1200\" placeholder=\"e.g. Referral letter\">"+esc(state.customDocs)+"</textarea>"+
+      pill("refreshDocs","Update checklist")+
+      "</details>"+
+      (docs.length?
+        "<details class=\"gia2-expand gia2-optional\"><summary>Document checklist <span>"+state.ready.size+" of "+docs.length+" available</span></summary><div class=\"gia2-compact-checks\">"+
+        (base.length?"<div class=\"gia2-check-head\">Listed in the support guide</div>"+base.map((d,i)=>"<label><input type=\"checkbox\" data-doc=\""+i+"\" "+(state.ready.has(i)?"checked":"")+"> "+esc(d)+"</label>").join(""):"")+
+        (extras.length?"<div class=\"gia2-check-head\">Added by referring worker</div>"+extras.map((d,i)=>"<label><input type=\"checkbox\" data-doc=\""+(base.length+i)+"\" "+(state.ready.has(base.length+i)?"checked":"")+"> "+esc(d)+"</label>").join(""):"")+
+        "</div></details>"
+        :"<p class=\"gia2-muted\">No programme-specific checklist is available here; ask the receiving agency before travel.</p>")+
+      "<label class=\"gia2-consent\"><input id=\"gia2Consent\" type=\"checkbox\" "+(state.consent?"checked":"")+"><span>The recipient agrees to receive this information on WhatsApp, and I have reviewed it for confidential details.</span></label>"+
+      "<details class=\"gia2-expand\"><summary>Read the WhatsApp message before sharing</summary><pre id=\"gia2Preview\">"+esc(referralText())+"</pre></details>"+
       "<p class=\"gia2-error\" id=\"gia2Validation\" role=\"status\"></p>"+
-      "<div class=\"gia2-primary-actions\">"+pill("openWhatsApp","Open WhatsApp to review","gia2-primary")+pill("copyReferral","Copy referral details")+pill("map","Open Google Maps")+"</div>"+
-      "<p class=\"gia2-muted\">GIA does not send WhatsApp messages or collect the recipient’s number on a server. You review and send inside WhatsApp.</p>"+
-      "</div><div class=\"gia2-actions\">"+pill("checklist","Review documents")+(s.kind==="custom"?"":pill("service","Back to service"))+pill("start","Start again")+"</div>";
+      "<div class=\"gia2-primary-actions\">"+pill("openWhatsApp","Open WhatsApp to send","gia2-primary")+pill("copyReferral","Copy message")+pill("map","Check destination on Maps")+"</div>"+
+      "<p class=\"gia2-muted\">The message opens inside WhatsApp for you to review and send. GIA does not send it automatically.</p>"+
+      "</div><div class=\"gia2-actions\">"+pill("checklist","View full document guidance")+(s.kind==="custom"?"":pill("service","Back to service"))+pill("start","New request")+"</div>";
   }
   function followText(){
     return [
@@ -365,16 +395,27 @@
       "Note: Transfer relevant details to your approved record. This page does not save case records or set reminders."
     ].join("\n");
   }
+  function followAdvice(outcome){
+    return ({
+      "Received assistance":"Confirm the service was useful and record the outcome in your approved system. Further referral may not be necessary.",
+      "Appointment arranged":"Confirm the appointment details and whether the person needs help with transport or documents.",
+      "Awaiting response":"Check with the receiving agency, note the person contacted and agree when to follow up again.",
+      "Could not access service":"Ask whether documents, transport, eligibility, costs or availability prevented access; consider an alternative option.",
+      "Declined assistance":"Respect the person's choice. Explain available options without pressure and document appropriately.",
+      "Needs changed":"Reassess the current priorities, including any urgent health or safety issues, before redirecting."
+    })[outcome]||"Record what happened, the responsible role and the next contact date.";
+  }
   function viewFollow(){
-    return say("<strong>Let’s close the loop.</strong><p>What happened after the referral? We can prepare a concise follow-up note for your approved records.</p>")+
+    return say("<strong>Let’s see what happened next.</strong><p>Choose an outcome and I’ll suggest a sensible follow-up action. You can copy the note into your approved system.</p>")+
       "<div class=\"gia2-form\">"+
-      "<label for=\"gia2CaseRef\">Non-identifying reference (optional)</label><input id=\"gia2CaseRef\" maxlength=\"50\" placeholder=\"e.g. referral 014\" value=\""+esc(state.sessionRef)+"\">"+
+      "<label for=\"gia2CaseRef\">Reference without identifying details (optional)</label><input id=\"gia2CaseRef\" maxlength=\"50\" placeholder=\"e.g. Referral 014\" value=\""+esc(state.sessionRef)+"\">"+
       "<label for=\"gia2Outcome\">What happened?</label><select id=\"gia2Outcome\"><option value=\"\">Choose an outcome</option>"+["Received assistance","Appointment arranged","Awaiting response","Could not access service","Declined assistance","Needs changed"].map(v=>"<option "+(state.outcome===v?"selected":"")+">"+v+"</option>").join("")+"</select>"+
-      "<label for=\"gia2Next\">Next step and responsible role</label><textarea id=\"gia2Next\" maxlength=\"700\" rows=\"3\" placeholder=\"e.g. Referring worker to call the agency to confirm availability\">"+esc(state.next)+"</textarea>"+
+      "<div class=\"gia2-next-tip\" id=\"gia2FollowAdvice\">"+esc(followAdvice(state.outcome))+"</div>"+
+      "<label for=\"gia2Next\">Next step and responsible person/role</label><textarea id=\"gia2Next\" maxlength=\"700\" rows=\"3\" placeholder=\"e.g. Referring worker to confirm appointment\">"+esc(state.next)+"</textarea>"+
       "<label for=\"gia2Date\">Date to check again</label><input id=\"gia2Date\" type=\"date\" value=\""+esc(state.followDate)+"\">"+
-      "<details class=\"gia2-expand\"><summary>Preview the follow-up note</summary><pre id=\"gia2FollowPreview\">"+esc(followText())+"</pre></details>"+
+      "<details class=\"gia2-expand\"><summary>Preview your follow-up note</summary><pre id=\"gia2FollowPreview\">"+esc(followText())+"</pre></details>"+
       "<div class=\"gia2-primary-actions\">"+pill("copyFollow","Copy follow-up note","gia2-primary")+pill("printFollow","Print note")+"</div>"+
-      "<p class=\"gia2-muted\">Nothing is saved here. This is not a case-management record or a reminder.</p></div>"+
+      "<p class=\"gia2-muted\">GIA does not create a case record or set a reminder. Put the note in your approved record and schedule follow-up there.</p></div>"+
       "<div class=\"gia2-actions\">"+pill("service","Back to service")+pill("start","New request")+"</div>";
   }
   function viewUrgent(){
