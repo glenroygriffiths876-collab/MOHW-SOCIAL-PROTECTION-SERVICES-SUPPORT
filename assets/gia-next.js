@@ -45,7 +45,7 @@
     view:"home", question:"", tone:"", topicIds:[], results:[], page:0, selected:null,
     parish:"Not selected", destination:"", mapsProvided:"", phone:"", ready:new Set(),
     consent:false, outcome:"", next:"", followDate:"", sessionRef:"", lastSource:"",
-    recipientMode:"client"
+    recipientMode:"client", customDocs:""
   };
   const key = value => {
     const n=normal(value);return normal(ALIASES[n]||n).replace(/\s/g,"");
@@ -66,11 +66,12 @@
     }
     (data.programmes||[]).forEach(p=>add(p.name,p,"programme"));
     (data.categories||[]).forEach(p=>add(p.programme,{support:p.benefits,target:p.target,category:p.category},"category"));
+    (data.decision||[]).forEach(d=>{if(d.situation&&d.options)add("Guide: "+d.situation,{support:d.options,where:d.provider,process:"Contact the relevant provider to confirm the correct referral route."},"decision");});
     const services=Array.from(records.values());
     services.forEach(s=>{
       const metaEntry=Object.entries(data.serviceMetadata||{}).find(([name])=>key(name)===s.id);
       s.meta=metaEntry ? metaEntry[1] : {};
-      s.agency=s.meta.agency || s.name;
+      s.agency=s.meta.agency || (s.kind==="decision" ? (s.where||s.name) : s.name);
       const contactNames=(s.meta.contactAgencies||[]).map(normal);
       s.contacts=(data.contacts||[]).filter(c=>contactNames.some(n=>normal(c.agency).includes(n)||n.includes(normal(c.agency))));
     });
@@ -90,11 +91,12 @@
     const extra=topics.flatMap(id=>words(TOPICS.find(t=>t.id===id).terms));
     const scored=catalog.map(s=>{
       const title=normal(s.name+" "+s.aliases.join(" "));
+      const exactNames=[s.name,...s.aliases].map(normal);
       const agency=normal(s.agency);
       const categories=normal(s.categories.join(" "));
       const other=normal([s.support,s.where,s.process,s.bring,s.targets.join(" "),...s.contacts.map(c=>c.agency)].join(" "));
       let score=0, why=[];
-      if(q&&title===q){score+=110;why.push("Exact programme match");}
+      if(q&&exactNames.includes(q)){score+=110;why.push("Exact programme match");}
       if(q&&q.length>3&&(title.includes(q)||agency.includes(q))){score+=52;why.push("Name matches your request");}
       tokens.forEach(t=>{
         if(title.split(" ").includes(t)){score+=15;}
@@ -107,8 +109,20 @@
         else if(categories.includes(t))score+=3;
         else if(other.includes(t))score+=0.5;
       });
-      // Avoid listing contact-only records ahead of real programme profiles.
+      // Situational matching favours a specific route over generic mentions.
+      const n=normal(s.name);
+      if(topics.includes("transport") && n==="local government assistance")score+=48;
+      if(topics.includes("transport") && n==="mlss emergency assistance")score+=16;
+      if(topics.includes("food") && /elderly|older|senior/.test(q) && /meals on wheels/.test(n))score+=48;
+      if(topics.includes("food") && /student|school|child/.test(q) && n==="school feeding")score+=46;
+      if(topics.includes("food") && /elderly|older|senior/.test(q) && n==="school feeding")score-=25;
+      if(topics.includes("disability") && n==="economic empowerment grant")score+=45;
+      if(topics.includes("disability") && n==="local government assistance")score+=24;
+      if(topics.includes("disability") && topics.includes("family") && !topics.includes("safety") && n.includes("child protection"))score-=28;
+      if(topics.includes("wellbeing") && /substance|addict|drug use/.test(q) && /ncda/.test(n))score+=45;
+      if(topics.includes("wellbeing") && /mental|psycholog|depress|anxiet/.test(q) && s.kind==="decision" && /mental health/.test(n))score+=55;
       if(s.kind==="agency")score*=0.65;
+      if(s.kind==="decision")score*=0.90;
       return {service:s,score,why};
     }).filter(v=>v.score>1.5).sort((a,b)=>b.score-a.score);
     return scored.slice(0,14);
@@ -119,7 +133,8 @@
       const matching=guide?.programmes?.find(p=>key(p.name)===s?.id);
       list=cleanDocs(matching?.bring);
     }
-    return list;
+    const additions=String(state.customDocs||"").split(/\n|;/).map(x=>x.trim()).filter(Boolean);
+    return [...new Set([...list,...additions])].slice(0,24);
   }
   const heading = value => "<h3 class=\"gia2-title\">"+esc(value)+"</h3>";
   const caption = value => "<p class=\"gia2-muted\">"+esc(value)+"</p>";
@@ -184,7 +199,7 @@
     const s=state.selected;
     if(!s){
       return say("<strong>Let’s find the right documents.</strong><p>Which programme or application are you preparing for? You can search by name or by the person’s need.</p>")+searchForm()+
-      "<div class=\"gia2-document-directory\"><h4>How to obtain common documents</h4>"+(guide.documents||[]).map((d,i)=>"<details class=\"gia2-expand\"><summary>"+esc(d.document)+"</summary><p><b>Where:</b> "+esc(d.where)+"</p><p><b>What is needed:</b> "+esc(d.requirements)+"</p><p><b>Process:</b> "+esc(d.process)+"</p><p><b>Cost in guide:</b> "+esc(d.cost)+"</p></details>").join("")+"</div>"+options();
+      "<div class=\"gia2-document-directory\"><h4>How to obtain common documents</h4>"+(guide.documents||[]).map((d,i)=>"<details class=\"gia2-expand\" "+(normal(state.question).includes(normal(d.document))?"open":"")+"><summary>"+esc(d.document)+"</summary><p><b>Where:</b> "+esc(d.where)+"</p><p><b>What is needed:</b> "+esc(d.requirements)+"</p><p><b>Process:</b> "+esc(d.process)+"</p><p><b>Cost in guide:</b> "+esc(d.cost)+"</p></details>").join("")+"</div>"+options();
     }
     const docs=composeDocs(s);
     return say("<strong>Here is the document checklist for "+esc(s.name)+".</strong><p>Tick what the person already has. The requirements below come from the guide; the agency should confirm current requirements and alternatives.</p>")+
@@ -208,7 +223,7 @@
       "Parish: "+(state.parish==="Not selected"?"Please confirm":state.parish),
       "Google Maps: "+map,
       "",
-      "Documents mentioned in the guide:",
+      "Document preparation checklist (confirm with the receiving agency):",
       ...(checked.length?checked:["Please confirm the required documents with the agency."]),
       "",
       "Before travelling, please confirm the exact office, opening hours, eligibility, appointment needs and any fees.",
@@ -222,7 +237,7 @@
     const s=state.selected;
     if(!s){
       return say("<strong>Absolutely. Which service are you referring someone to?</strong><p>Search for PATH, NHF, NIS, NHT, HEART, a clinic or another agency. I’ll help you prepare a clear message with the documents and a Maps link.</p>")+
-      searchForm()+"<div class=\"gia2-actions\">"+pill("topic:income","PATH or income")+pill("topic:health","NHF or treatment")+pill("topic:family","Family services")+"</div>"+options();
+      searchForm()+"<div class=\"gia2-actions\">"+pill("custom","Use any other destination: hospital, clinic, police station or office","gia2-primary")+pill("topic:income","PATH or income")+pill("topic:health","NHF or treatment")+"</div>"+options();
     }
     const docs=composeDocs(s);
     const name=state.destination||s.agency||s.name;
@@ -233,13 +248,14 @@
       "<label for=\"gia2Destination\">Exact office, clinic or destination (edit as needed)</label><input id=\"gia2Destination\" maxlength=\"160\" value=\""+esc(name)+"\" placeholder=\"Enter the receiving office or facility\">"+
       "<label for=\"gia2Map\">Confirmed Google Maps link (optional)</label><input id=\"gia2Map\" type=\"url\" maxlength=\"650\" placeholder=\"Paste a confirmed Google Maps link\" value=\""+esc(state.mapsProvided)+"\">"+
       "<p class=\"gia2-muted\">Without a confirmed link, GIA generates a Google Maps search—not a verified office pin. Check the correct location before travelling.</p>"+
+      "<label for=\"gia2CustomDocs\">Other documents confirmed by the worker (optional; one per line)</label><textarea id=\"gia2CustomDocs\" rows=\"2\" maxlength=\"1200\" placeholder=\"Add agency-confirmed documents not listed above\">"+esc(state.customDocs)+"</textarea>"+pill("refreshDocs","Update document checklist")+
       (docs.length?"<div class=\"gia2-form-label\">Document preparation <span class=\"gia2-muted\">("+state.ready.size+" of "+docs.length+" available)</span></div><div class=\"gia2-compact-checks\">"+docs.map((d,i)=>"<label><input type=\"checkbox\" data-doc=\""+i+"\" "+(state.ready.has(i)?"checked":"")+"> "+esc(d)+"</label>").join("")+"</div>":"")+
       "<label class=\"gia2-consent\"><input id=\"gia2Consent\" type=\"checkbox\" "+(state.consent?"checked":"")+"> <span>The recipient agrees to receive this information through WhatsApp, and I have reviewed it for sensitive details.</span></label>"+
       "<details class=\"gia2-expand\"><summary>Preview the WhatsApp message</summary><pre id=\"gia2Preview\">"+esc(referralText())+"</pre></details>"+
       "<p class=\"gia2-error\" id=\"gia2Validation\" role=\"status\"></p>"+
       "<div class=\"gia2-primary-actions\">"+pill("openWhatsApp","Open WhatsApp to review","gia2-primary")+pill("copyReferral","Copy referral details")+pill("map","Open Google Maps")+"</div>"+
       "<p class=\"gia2-muted\">GIA does not send WhatsApp messages or collect the recipient’s number on a server. You review and send inside WhatsApp.</p>"+
-      "</div><div class=\"gia2-actions\">"+pill("checklist","Review documents")+pill("service","Back to service")+pill("start","Start again")+"</div>";
+      "</div><div class=\"gia2-actions\">"+pill("checklist","Review documents")+(s.kind==="custom"?"":pill("service","Back to service"))+pill("start","Start again")+"</div>";
   }
   function followText(){
     return [
@@ -307,6 +323,7 @@
     if(state.selected && /(?:where|location|map|directions|address|office)/i.test(question) && question.length<70){show("service");return;}
     if(/^(hi|hello|hey|good morning|good evening)[!. ]*$/.test(lower)){show("home");return;}
     if(/^(follow up|followup|check referral)$/.test(lower)){show("follow");return;}
+    if(/^(birth certificate|trn|nis card|passport|voters? id|national id|drivers? license)$/.test(lower)){state.selected=null;show("documents");return;}
     state.topicIds=topicMatches(question);
     state.results=scoreServices(question);
     state.page=0;state.selected=null;state.ready=new Set();state.destination="";
@@ -343,6 +360,7 @@
     if(get("gia2Next")!==undefined)state.next=get("gia2Next");
     if(get("gia2Date")!==undefined)state.followDate=get("gia2Date");
     if(get("gia2CaseRef")!==undefined)state.sessionRef=get("gia2CaseRef");
+    if(get("gia2CustomDocs")!==undefined)state.customDocs=get("gia2CustomDocs");
     if(get("gia2Question")!==undefined)state.question=get("gia2Question");
   }
   function updatePreview(){
@@ -367,8 +385,10 @@
   }
   function act(action){
     preserveInputs();
-    if(action==="start"){Object.assign(state,{view:"home",question:"",topicIds:[],results:[],page:0,selected:null,parish:"Not selected",destination:"",mapsProvided:"",phone:"",ready:new Set(),consent:false,outcome:"",next:"",followDate:"",sessionRef:""});show("home");return;}
+    if(action==="start"){Object.assign(state,{view:"home",question:"",topicIds:[],results:[],page:0,selected:null,parish:"Not selected",destination:"",mapsProvided:"",phone:"",ready:new Set(),consent:false,outcome:"",next:"",followDate:"",sessionRef:"",customDocs:""});show("home");return;}
     if(action==="ask"){state.question="";show("home");$("#gia2Question")?.focus();return;}
+    if(action==="custom"){state.selected={id:"custom",name:"Custom destination",kind:"custom",agency:"",support:"",where:"",bring:"",process:"",targets:[],categories:[],contacts:[],meta:{}};state.ready=new Set();state.destination="";state.customDocs="";show("refer");return;}
+    if(action==="refreshDocs"){state.ready=new Set();show("refer");return;}
     if(action==="services"){document.querySelector('[data-nav="services"]')?.click();$("#gia2Dialog").close();return;}
     if(action==="documents"){show("documents");return;}
     if(action==="checklist"){show("documents");return;}
