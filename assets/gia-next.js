@@ -304,7 +304,7 @@
     const chips=multi?
       "<div class=\"gia2-focus\"><p>Which would you like to work on first?</p><div class=\"gia2-actions\">"+
       state.topicIds.map(id=>pill("focus:"+id,TOPICS.find(t=>t.id===id)?.label||id,state.focusTopic===id?"gia2-focus-active":"")).join("")+
-      pill("focus:all","All needs",!state.focusTopic?"gia2-focus-active":"")+"</div></div>":"";
+      pill("focus:all","All needs",!state.focusTopic?"gia2-focus-active":"")+"</div><div class=\"gia2-plan-row\">"+pill("roadmap","Organise all needs into a plan","gia2-primary")+"</div></div>":"";
     return "<div class=\"gia2-user-bubble\">"+esc(state.originalQuestion||state.question)+"</div>"+
       say("<strong>"+narrative+"</strong><p>These are options to explore, not a determination of eligibility. I’ll help you prepare once you choose one.</p>")+
       chips+
@@ -342,6 +342,7 @@
       (s.meta.officialUrl&&/^https:\/\//.test(s.meta.officialUrl)?"<a class=\"gia2-link\" href=\""+esc(s.meta.officialUrl)+"\" target=\"_blank\" rel=\"noopener noreferrer\">Open official agency website ↗</a>":"")+
       "</div><div class=\"gia2-primary-actions\">"+
       pill("refer","Prepare a referral","gia2-primary")+pill("checklist","Check documents")+pill("plan","Copy action plan")+pill("directions","Find office on Maps")+"</div>"+
+      "<div class=\"gia2-barriers\"><h4>Something making the referral difficult?</h4><div class=\"gia2-actions\">"+BARRIERS.slice(0,5).map(b=>pill("barrier:"+b.id,b.label)).join("")+"</div></div>"+
       "<div class=\"gia2-actions\">"+pill("follow","Follow up later")+pill("backResults","Other options")+pill("start","New request")+"</div>"+
       guidesource();
   }
@@ -495,10 +496,10 @@
   function render(){
     const content=$("#gia2Content");
     if(!content)return;
-    const names={home:"Here to help",results:"Suggested support",service:"Service details",documents:"Document guidance",refer:"Prepare a referral",follow:"Follow-up",urgent:"Urgent support"};
+    const names={home:"Here to help",results:"Suggested support",service:"Service details",documents:"Document guidance",refer:"Prepare a referral",follow:"Follow-up",urgent:"Urgent support",barrier:"Solve a referral problem",roadmap:"Plan next steps"};
     $("#gia2Step").textContent=names[state.view]||"Here to help";
     content.innerHTML=state.view==="home"?viewHome():state.view==="results"?viewResults():state.view==="service"?viewService():
-      state.view==="documents"?viewDocs():state.view==="refer"?viewRefer():state.view==="follow"?viewFollow():state.view==="urgent"?viewUrgent():viewHome();
+      state.view==="documents"?viewDocs():state.view==="refer"?viewRefer():state.view==="follow"?viewFollow():state.view==="urgent"?viewUrgent():state.view==="barrier"?viewBarrier():state.view==="roadmap"?viewRoadmap():viewHome();
     if(["results","service"].includes(state.view)||(state.view==="documents"&&state.selected)){
       content.insertAdjacentHTML("beforeend","<div class=\"gia2-chat-follow\"><label for=\"gia2Question\">Another question? Just ask.</label><form id=\"gia2SearchForm\" class=\"gia2-inputbar\"><input id=\"gia2Question\" name=\"question\" autocomplete=\"off\" maxlength=\"320\" placeholder=\"e.g. What documents do I bring?\" value=\"\"><button type=\"submit\" class=\"gia2-send\" aria-label=\"Ask GIA\">➜</button></form></div>");
     }
@@ -535,6 +536,7 @@
     if(numberInText)state.phone=numberInText[0];
     const direct=explicitService(question);
     const wantsDocs=/\b(?:document|documents|paperwork|papers|bring|requirements|application form|birth certificate|trn|passport|national id|identification)\b/i.test(question);
+    const obstacle=barrierFor(question);
     const wantsReferral=/\b(?:whats\s?app|send (?:this|that|it|information|referral)|message (?:her|him|them|the client)|share (?:this|it|that)|refer(?:ral)?)\b/i.test(question);
     const wantsFollow=/\b(?:follow[- ]?up|followup|check (?:again|on the referral)|what happened next)\b/i.test(question);
     const wantsMaps=/\b(?:where is|address|directions|location|map|nearest office|closest office)\b/i.test(question);
@@ -552,6 +554,7 @@
       }
       state.question=question;
       if(!state.originalQuestion)state.originalQuestion=question;
+      if(obstacle){state.barrier=obstacle.id;show("barrier");return;}
       if(wantsReferral){show("refer");return;}
       if(wantsDocs){show("documents");return;}
       if(wantsFollow){show("follow");return;}
@@ -575,6 +578,7 @@
     if(knownDocument && !state.selected){
       state.question=knownDocument.document;show("documents");return;
     }
+    if(obstacle){state.question=question;state.barrier=obstacle.id;show("barrier");return;}
     if(wantsFollow && !/another service/.test(lower)){show("follow");return;}
     if(state.selected){
       state.question=question;
@@ -653,7 +657,7 @@
   function act(action){
     preserveInputs();
     if(action==="start"){
-      Object.assign(state,{view:"home",question:"",tone:"",topicIds:[],results:[],page:0,selected:null,parish:"Not selected",destination:"",mapsProvided:"",phone:"",ready:new Set(),consent:false,outcome:"",next:"",followDate:"",sessionRef:"",customDocs:"",focusTopic:"",originalQuestion:""});
+      Object.assign(state,{view:"home",question:"",tone:"",topicIds:[],results:[],page:0,selected:null,parish:"Not selected",destination:"",mapsProvided:"",phone:"",ready:new Set(),consent:false,outcome:"",next:"",followDate:"",sessionRef:"",customDocs:"",focusTopic:"",originalQuestion:"",barrier:"",recipientMode:"client"});
       show("home");return;
     }
     if(action==="ask"){state.question="";show("home");$("#gia2Question")?.focus();return;}
@@ -670,6 +674,10 @@
     if(action==="backResults"){show("results");return;}
     if(action==="more"){state.page=1;show("results");return;}
     if(action==="plan"){copy(actionPlanText());return;}
+    if(action==="roadmap"){show("roadmap");return;}
+    if(action==="copyRoadmap"){copy(roadmapText());return;}
+    if(action==="copyBarrier"){copy(barrierText());return;}
+    if(action.startsWith("barrier:")){state.barrier=action.slice(8);show("barrier");return;}
     if(action.startsWith("focus:")){
       const id=action.slice(6);
       if(id==="all"){state.focusTopic="";state.results=scoreServices(state.originalQuestion||state.question);state.page=0;show("results");}
