@@ -18,7 +18,7 @@
     {id:"wellbeing",label:"Emotional support",pattern:/mental|stress|counsel|anxiet|depress|substance|addict|drug use|psycholog/i,terms:"mental health NCDA counselling wellbeing"},
     {id:"safety",label:"Safety & protection",pattern:/abuse|violence|unsafe|neglect|victim|protection|crime|harass|gender.based|domestic|police/i,terms:"victim services child protection bureau gender safety"}
   ];
-  const DANGER = /(?:suicid|kill myself|hurt (?:myself|himself|herself)|harm (?:myself|himself|herself)|self[ -]?harm|take (?:my|his|her) life|overdos|immediate danger|life[ -]?threatening|unconscious|not breathing|severe bleeding|being attacked|right now.*(?:abuse|violence)|child.*(?:in danger|being abused)|abuse.*(?:happening now|right now))/i;
+  const DANGER = /(?:suicid|kill myself|hurt(?:ing)?\s+(?:myself|himself|herself|themselves)|harm(?:ing)?\s+(?:myself|himself|herself|themselves)|(?:want|planning)\s+to\s+die|(?:do not|don.t)\s+want\s+to\s+live|end\s+(?:my|his|her)\s+life|self[ -]?harm|take (?:my|his|her) life|overdos|immediate danger|life[ -]?threatening|unconscious|not breathing|severe bleeding|being attacked|right now.*(?:abuse|violence)|child.*(?:in danger|being abused)|abuse.*(?:happening now|right now))/i;
   const ALIASES = {"poor relief":"local government assistance","national health fund card":"nhf","heart nsta trust":"heart / nsta","nht home grant":"national housing trust (nht)","compassionate fund programme":"mohw compassionate fund programme","chase medical assistance":"chase / compassionate medical assistance"};
   const $ = (selector,root=document) => root.querySelector(selector);
   const $$ = (selector,root=document) => Array.from(root.querySelectorAll(selector));
@@ -493,7 +493,11 @@
     }
     if(wantsReferral && !direct && !state.selected){
       const target=question.match(/\b(?:to|for)\s+(.+?)(?:(?:\s+(?:at|in)\s+)(?:Hanover|St\.? James|Westmoreland|Trelawny|St\.? Elizabeth|Manchester|Clarendon|St\.? Ann|St\.? Mary|Portland|St\.? Thomas|St\.? Catherine|St\.? Andrew|Kingston))?\s*$/i);
-      const candidate=target?.[1]?.replace(/(?:\+?1[\s().-]*)?(?:876|658)[\s().-]*\d{3}[\s().-]*\d{4}/g,"").trim()||"";
+      const candidate=(target?.[1]||"")
+        .replace(/(?:\+?1[\s().-]*)?(?:876|658)[\s().-]*\d{3}[\s().-]*\d{4}/g,"")
+        .replace(/[,;]?\s*(?:and\s+)?(?:the\s+)?(?:phone\s+)?(?:number|telephone|contact)\s*(?:is|:)?\s*$/i,"")
+        .replace(/[,;]?\s+(?:in|at)\s+(?:Hanover|St\.?\s*James|Westmoreland|Trelawny|St\.?\s*Elizabeth|Manchester|Clarendon|St\.?\s*Ann|St\.?\s*Mary|Portland|St\.?\s*Thomas|St\.?\s*Catherine|St\.?\s*Andrew|Kingston)\s*$/i,"")
+        .trim();
       const useful=/(?:hospital|clinic|health centre|health center|police station|office|infirmary|laboratory|pharmacy|nht|nhf|path|nis)/i.test(candidate);
       if(useful){
         state.selected={id:"custom",name:"Custom destination",kind:"custom",agency:"",support:"",where:"",bring:"",process:"",targets:[],categories:[],contacts:[],meta:{}};
