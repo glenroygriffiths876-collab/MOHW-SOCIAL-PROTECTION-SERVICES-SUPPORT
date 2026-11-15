@@ -269,6 +269,7 @@ function renderMap(){
 }
 function selectParish(parish){
   selectedParish=parish;$('#parishFilter').value=parish;
+  if(parish!=='ALL')window.MOHWGIA?.setParish?.(parish);
   $$('[data-parish]').forEach(b=>b.classList.toggle('active',b.dataset.parish===parish));
   renderMapResults();
 }
