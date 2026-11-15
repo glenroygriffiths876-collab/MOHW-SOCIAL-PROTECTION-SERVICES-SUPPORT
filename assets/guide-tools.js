@@ -113,7 +113,7 @@
     for (const d of data.documents || []) entries.push({title:d.document,body:d.requirements,where:d.where,bring:d.requirements,process:d.process,section:'Document requirements',nav:'services',term:d.where});
     const aliases = {'Poor Relief':'Local Government Assistance','National Health Fund Card':'NHF','HEART/NSTA Trust':'HEART / NSTA','Compassionate Fund Programme':'MOHW Compassionate Fund Programme','CHASE Medical Assistance':'CHASE / Compassionate Medical Assistance'};
     for (const entry of entries) {
-      const canonical=aliases[entry.title] || entry.title;
+      const canonical=aliases[entry.title] || entry.title.replace(/ \(for children with disabilities\)$/, '');
       const profile=entries.find(e=>e.section==='Programme profiles' && e.title===canonical);
       if(profile && profile!==entry) {
         entry.where=profile.where;entry.bring=profile.bring;entry.process=profile.process;entry.term=profile.term;
