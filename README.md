@@ -65,3 +65,30 @@ Regression checks should cover direct programme questions (PATH/NHF/NIS), multi-
 - **Testing:** GitHub Actions runs an expanded smoke suite for contextual follow-ups, multiple-need planning, barriers, safety routing, WhatsApp preparation, document source labels, and Maps link validation.
 
 GIA remains a rule-guided, browser-based assistant and does not access a private patient database or provide live generative AI responses, programme eligibility decisions, confirmed office hours, or automatically sent communications. The parish selector is context; it does not confirm local office locations.
+
+
+## GIA 5 — geometric design, parish-aware and role-specific guidance
+
+**Theme:** GIA uses the site's existing navy background and geometric SVG (assets/geometry-bg.svg) with cyan, magenta, gold and high-contrast readable cards. The legacy dark-green assistant palette is overridden.
+
+**Onboarding:** GIA distinguishes individuals/caregivers and healthcare/social-service professionals. It adapts service explanations, action plans, referral guidance and follow-up. Only the non-case role and parish preferences are retained for the current browser session. Client details, phone numbers, free-text needs, records and messages are not stored there.
+
+**Parish directory:** data/gia-parishes.json includes all 14 Jamaican parishes, their health regions, officially listed MLSS/NIS parish offices and NHT branches/service centres, plus an illustrative NHF Drug Serv facility per parish. The relevant official listings were checked on November 15, 2026.
+
+- MLSS/NIS: https://www.mlss.gov.jm/parish-offices/
+- NHT offices: https://www-1.nht.gov.jm/index.php/contact
+- NHF Drug Serv: https://www.nhf.org.jm/drug-serv/
+- NHF providers: https://www.nhf.org.jm/providers/
+- HEART parish offices: https://www.heart-nsta.org/contact/
+- HEART programmes: https://programmes.heart-nsta.org/
+- Health regions: https://www.moh.gov.jm/about-us/
+
+**Routing distinctions:** An MLSS office listed as an NIS parish office is not automatically a verified PATH point of intake; clients must confirm the appropriate PATH route. A Drug Serv facility is not evidence that all NHF benefits can be accessed there. Officially published addresses do not guarantee live opening hours or verified GPS pins.
+
+**Other destinations:** For hospitals, clinics, police stations, poor relief and other agencies not locally verified, GIA names the parish and relevant health region where applicable, provides official directory links and labels Google Maps queries as searches rather than verified destinations.
+
+**Parish and message safety:** Destination parish is required for a prepared WhatsApp travel message. Switching parishes clears a previously selected office from a different parish. Client visit directions cannot treat a bare national agency name as an exact local address. A worker reviews and sends the generated message within WhatsApp; GIA does not transmit it automatically.
+
+**Integration:** The main directory parish selection is passed to GIA. A service profile can open GIA with that programme preselected. Local office data is precached for offline access.
+
+**Limits:** GIA remains a deterministic, guide-grounded assistant. It is not a live generative AI service, eligibility assessor, secure clinical record, automated reminder system or live appointment/office-hours verification service.
