@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "reviewed": "2026-11-15",
-  "coverage": "14 Jamaican parishes; MLSS/NIS offices and NHT branches or service centres transcribed from official public agency listings. These are not verified live operating hours or GPS pins. One illustrative public Drug Serv site per parish comes from the NHF Drug Serv official facility directory. These are not exhaustive lists.",
+  "coverage": "14 Jamaican parishes; MLSS/NIS offices and NHT branches or service centres transcribed from official public agency listings. These are not verified live operating hours or GPS pins. One illustrative public Drug Serv site per parish comes from the NHF Drug Serv official facility directory. These are not exhaustive lists. One listed parish health department contact per parish, using official MOHW or RHA sources. Kingston and St. Andrew share KSA Health Department.",
   "sources": {
     "mlss": "https://www.mlss.gov.jm/parish-offices/",
     "nht": "https://www-1.nht.gov.jm/index.php/contact",
@@ -9,7 +9,8 @@
     "heartProgrammes": "https://programmes.heart-nsta.org/",
     "nhf": "https://www.nhf.org.jm/providers/",
     "nhfDrugServ": "https://www.nhf.org.jm/drug-serv/",
-    "health": "https://www.moh.gov.jm/about-us/"
+    "health": "https://www.moh.gov.jm/about-us/",
+    "parishHealthDepartments": "https://www.moh.gov.jm/contact-us/"
   },
   "regions": {
     "WRHA": "Western Regional Health Authority",
@@ -54,7 +55,7 @@
       "region": "WRHA",
       "healthAuthority": {
         "name": "Western Regional Health Authority",
-        "source": "https://www.moh.gov.jm/about-us/"
+        "source": "https://www.wrha.gov.jm/health-facilities/hanover/"
       },
       "mlss": {
         "name": "MLSS / NIS Parish Office",
@@ -76,13 +77,20 @@
         "phone": "876-956-2733",
         "source": "https://www.nhf.org.jm/drug-serv/",
         "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
+      },
+      "healthDept": {
+        "name": "Hanover Health Department",
+        "address": "Fort Charlotte Drive, Lucea, Hanover, Jamaica",
+        "phone": "876-956-2633",
+        "source": "https://www.wrha.gov.jm/health-facilities/hanover/",
+        "scope": "Parish health department contact listed by MOHW or the regional authority. Confirm the relevant clinic, social-work service, hours and referral procedure."
       }
     },
     "St. James": {
       "region": "WRHA",
       "healthAuthority": {
         "name": "Western Regional Health Authority",
-        "source": "https://www.moh.gov.jm/about-us/"
+        "source": "https://www.wrha.gov.jm/health-facilities/st-james/"
       },
       "mlss": {
         "name": "MLSS / NIS Parish Office",
@@ -104,13 +112,20 @@
         "phone": "",
         "source": "https://www.nhf.org.jm/drug-serv/",
         "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
+      },
+      "healthDept": {
+        "name": "St. James Health Department",
+        "address": "Payne Street, Montego Bay, St. James, Jamaica",
+        "phone": "876-979-7820",
+        "source": "https://www.wrha.gov.jm/health-facilities/st-james/",
+        "scope": "Parish health department contact listed by MOHW or the regional authority. Confirm the relevant clinic, social-work service, hours and referral procedure."
       }
     },
     "Westmoreland": {
       "region": "WRHA",
       "healthAuthority": {
         "name": "Western Regional Health Authority",
-        "source": "https://www.moh.gov.jm/about-us/"
+        "source": "https://www.wrha.gov.jm/health-facilities/westmoreland/"
       },
       "mlss": {
         "name": "MLSS / NIS Parish Office",
@@ -132,13 +147,20 @@
         "phone": "876-955-9946",
         "source": "https://www.nhf.org.jm/drug-serv/",
         "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
+      },
+      "healthDept": {
+        "name": "Westmoreland Health Department",
+        "address": "Barracks Road, Savanna-la-Mar, Westmoreland, Jamaica",
+        "phone": "876-955-2533",
+        "source": "https://www.wrha.gov.jm/health-facilities/westmoreland/",
+        "scope": "Parish health department contact listed by MOHW or the regional authority. Confirm the relevant clinic, social-work service, hours and referral procedure."
       }
     },
     "Trelawny": {
       "region": "WRHA",
       "healthAuthority": {
         "name": "Western Regional Health Authority",
-        "source": "https://www.moh.gov.jm/about-us/"
+        "source": "https://www.wrha.gov.jm/health-facilities/trelawny/"
       },
       "mlss": {
         "name": "MLSS / NIS Parish Office",
@@ -160,13 +182,20 @@
         "phone": "876-954-3250",
         "source": "https://www.nhf.org.jm/drug-serv/",
         "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
+      },
+      "healthDept": {
+        "name": "Trelawny Health Department",
+        "address": "Rodney Street, Falmouth, Trelawny, Jamaica",
+        "phone": "876-954-3255",
+        "source": "https://www.wrha.gov.jm/health-facilities/trelawny/",
+        "scope": "Parish health department contact listed by MOHW or the regional authority. Confirm the relevant clinic, social-work service, hours and referral procedure."
       }
     },
     "St. Elizabeth": {
       "region": "SRHA",
       "healthAuthority": {
         "name": "Southern Regional Health Authority",
-        "source": "https://www.moh.gov.jm/about-us/"
+        "source": "https://srha.gov.jm/contact.php"
       },
       "mlss": {
         "name": "MLSS / NIS Parish Office",
@@ -188,13 +217,20 @@
         "phone": "876-634-3339",
         "source": "https://www.nhf.org.jm/drug-serv/",
         "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
+      },
+      "healthDept": {
+        "name": "St. Elizabeth Health Department",
+        "address": "High Street, Black River, St. Elizabeth, Jamaica",
+        "phone": "876-965-9174",
+        "source": "https://srha.gov.jm/contact.php",
+        "scope": "Parish health department contact listed by MOHW or the regional authority. Confirm the relevant clinic, social-work service, hours and referral procedure."
       }
     },
     "Manchester": {
       "region": "SRHA",
       "healthAuthority": {
         "name": "Southern Regional Health Authority",
-        "source": "https://www.moh.gov.jm/about-us/"
+        "source": "https://srha.gov.jm/contact.php"
       },
       "mlss": {
         "name": "MLSS / NIS Parish Office",
@@ -216,13 +252,20 @@
         "phone": "876-962-6479",
         "source": "https://www.nhf.org.jm/drug-serv/",
         "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
+      },
+      "healthDept": {
+        "name": "Manchester Health Department",
+        "address": "Ward Avenue, Mandeville, Manchester, Jamaica",
+        "phone": "876-962-2288",
+        "source": "https://srha.gov.jm/contact.php",
+        "scope": "Parish health department contact listed by MOHW or the regional authority. Confirm the relevant clinic, social-work service, hours and referral procedure."
       }
     },
     "Clarendon": {
       "region": "SRHA",
       "healthAuthority": {
         "name": "Southern Regional Health Authority",
-        "source": "https://www.moh.gov.jm/about-us/"
+        "source": "https://srha.gov.jm/contact.php"
       },
       "mlss": {
         "name": "MLSS / NIS Parish Office",
@@ -244,13 +287,20 @@
         "phone": "876-908-5471",
         "source": "https://www.nhf.org.jm/drug-serv/",
         "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
+      },
+      "healthDept": {
+        "name": "Clarendon Health Department",
+        "address": "1–3 Jackson Street, Denbigh, Clarendon, Jamaica",
+        "phone": "876-986-4548",
+        "source": "https://srha.gov.jm/contact.php",
+        "scope": "Parish health department contact listed by MOHW or the regional authority. Confirm the relevant clinic, social-work service, hours and referral procedure."
       }
     },
     "St. Ann": {
       "region": "NERHA",
       "healthAuthority": {
         "name": "North East Regional Health Authority",
-        "source": "https://www.moh.gov.jm/about-us/"
+        "source": "https://www.nerha.gov.jm/health-centres"
       },
       "mlss": {
         "name": "MLSS / NIS Parish Office",
@@ -272,13 +322,20 @@
         "phone": "876-972-2272",
         "source": "https://www.nhf.org.jm/drug-serv/",
         "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
+      },
+      "healthDept": {
+        "name": "St. Ann Health Department",
+        "address": "2 Owen Sound Drive, St. Ann's Bay, St. Ann, Jamaica",
+        "phone": "876-972-2215",
+        "source": "https://www.nerha.gov.jm/health-centres",
+        "scope": "Parish health department contact listed by MOHW or the regional authority. Confirm the relevant clinic, social-work service, hours and referral procedure."
       }
     },
     "St. Mary": {
       "region": "NERHA",
       "healthAuthority": {
         "name": "North East Regional Health Authority",
-        "source": "https://www.moh.gov.jm/about-us/"
+        "source": "https://www.nerha.gov.jm/health-centres"
       },
       "mlss": {
         "name": "MLSS / NIS Parish Office",
@@ -300,13 +357,20 @@
         "phone": "876-994-2228",
         "source": "https://www.nhf.org.jm/drug-serv/",
         "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
+      },
+      "healthDept": {
+        "name": "St. Mary Health Department",
+        "address": "Llanrumney Buccaneers, Port Maria, St. Mary, Jamaica",
+        "phone": "876-613-8500",
+        "source": "https://www.nerha.gov.jm/health-centres",
+        "scope": "Parish health department contact listed by MOHW or the regional authority. Confirm the relevant clinic, social-work service, hours and referral procedure."
       }
     },
     "Portland": {
       "region": "NERHA",
       "healthAuthority": {
         "name": "North East Regional Health Authority",
-        "source": "https://www.moh.gov.jm/about-us/"
+        "source": "https://www.nerha.gov.jm/health-centres"
       },
       "mlss": {
         "name": "MLSS / NIS Parish Office",
@@ -328,13 +392,20 @@
         "phone": "876-993-2646",
         "source": "https://www.nhf.org.jm/drug-serv/",
         "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
+      },
+      "healthDept": {
+        "name": "Portland Health Department",
+        "address": "Smatt Road, Port Antonio, Portland, Jamaica",
+        "phone": "876-676-7858",
+        "source": "https://www.nerha.gov.jm/health-centres",
+        "scope": "Parish health department contact listed by MOHW or the regional authority. Confirm the relevant clinic, social-work service, hours and referral procedure."
       }
     },
     "St. Thomas": {
       "region": "SERHA",
       "healthAuthority": {
         "name": "South East Regional Health Authority",
-        "source": "https://www.moh.gov.jm/about-us/"
+        "source": "https://www.moh.gov.jm/contact-us/"
       },
       "mlss": {
         "name": "MLSS / NIS Parish Office",
@@ -356,13 +427,20 @@
         "phone": "876-908-5468",
         "source": "https://www.nhf.org.jm/drug-serv/",
         "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
+      },
+      "healthDept": {
+        "name": "St. Thomas Health Department",
+        "address": "54 Lyssons Road, Morant Bay, St. Thomas, Jamaica",
+        "phone": "876-317-9547",
+        "source": "https://www.moh.gov.jm/contact-us/",
+        "scope": "Parish health department contact listed by MOHW or the regional authority. Confirm the relevant clinic, social-work service, hours and referral procedure."
       }
     },
     "St. Catherine": {
       "region": "SERHA",
       "healthAuthority": {
         "name": "South East Regional Health Authority",
-        "source": "https://www.moh.gov.jm/about-us/"
+        "source": "https://www.moh.gov.jm/contact-us/"
       },
       "mlss": {
         "name": "MLSS / NIS Parish Office",
@@ -384,13 +462,20 @@
         "phone": "",
         "source": "https://www.nhf.org.jm/drug-serv/",
         "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
+      },
+      "healthDept": {
+        "name": "St. Catherine Health Department",
+        "address": "Burke Road, Spanish Town, St. Catherine, Jamaica",
+        "phone": "876-749-0925",
+        "source": "https://www.moh.gov.jm/contact-us/",
+        "scope": "Parish health department contact listed by MOHW or the regional authority. Confirm the relevant clinic, social-work service, hours and referral procedure."
       }
     },
     "St. Andrew": {
       "region": "SERHA",
       "healthAuthority": {
         "name": "South East Regional Health Authority",
-        "source": "https://www.moh.gov.jm/about-us/"
+        "source": "https://www.moh.gov.jm/contact-us/"
       },
       "mlss": {
         "name": "MLSS / NIS Parish Office",
@@ -412,13 +497,20 @@
         "phone": "876-942-9677",
         "source": "https://www.nhf.org.jm/drug-serv/",
         "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
+      },
+      "healthDept": {
+        "name": "KSA Health Department (serves Kingston & St. Andrew)",
+        "address": "1A Caledonia Crescent, Cross Roads, Kingston 5, Jamaica",
+        "phone": "876-926-1550",
+        "source": "https://www.moh.gov.jm/contact-us/",
+        "scope": "Parish health department contact listed by MOHW or the regional authority. Confirm the relevant clinic, social-work service, hours and referral procedure."
       }
     },
     "Kingston": {
       "region": "SERHA",
       "healthAuthority": {
         "name": "South East Regional Health Authority",
-        "source": "https://www.moh.gov.jm/about-us/"
+        "source": "https://www.moh.gov.jm/contact-us/"
       },
       "mlss": {
         "name": "MLSS / NIS Parish Office",
@@ -440,6 +532,13 @@
         "phone": "876-908-5473",
         "source": "https://www.nhf.org.jm/drug-serv/",
         "scope": "Listed in the NHF Drug Serv facility directory. Confirm the particular service, public dispensing arrangements and current hours before visiting."
+      },
+      "healthDept": {
+        "name": "KSA Health Department (serves Kingston & St. Andrew)",
+        "address": "1A Caledonia Crescent, Cross Roads, Kingston 5, Jamaica",
+        "phone": "876-926-1550",
+        "source": "https://www.moh.gov.jm/contact-us/",
+        "scope": "Parish health department contact listed by MOHW or the regional authority. Confirm the relevant clinic, social-work service, hours and referral procedure."
       }
     }
   }
