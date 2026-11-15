@@ -1,4 +1,4 @@
-/* GIA 3.0: privacy-first guided social-support and referral companion.
+/* GIA 4.0: privacy-first guided social-support and referral companion.
  * Uses the November 2026 guide data. Does not determine eligibility, store case data,
  * authenticate users, contact agencies, send messages, or verify live availability.
  */
@@ -59,7 +59,7 @@
     view:"home", question:"", tone:"", topicIds:[], results:[], page:0, selected:null,
     parish:"Not selected", destination:"", mapsProvided:"", phone:"", ready:new Set(),
     consent:false, outcome:"", next:"", followDate:"", sessionRef:"", lastSource:"",
-    recipientMode:"client", customDocs:"", focusTopic:"", originalQuestion:"", guidePage:""
+    recipientMode:"client", customDocs:"", focusTopic:"", originalQuestion:"", guidePage:"", barrier:"", documentNotes:""
   };
   const key = value => {
     const n=normal(value);return normal(ALIASES[n]||n).replace(/\s/g,"");
@@ -135,10 +135,77 @@
   function topicFocus(id){
     state.focusTopic=id;
     const selected=TOPICS.find(t=>t.id===id);
-    state.results=scoreServices((state.originalQuestion||state.question)+" "+(selected?.terms||""));
+    const context=(state.originalQuestion||state.question).match(/\b(?:elderly|senior|older person|child|children|student|pregnant|wheelchair|autism|disabled)\b/ig)?.join(" ")||"";
+    state.results=scoreServices((selected?.terms||"")+" "+context);
     state.page=0;
     show("results");
   }
+
+  // These are safe process-navigation suggestions, not promises that an agency will accommodate them.
+  const BARRIERS = [
+    {id:"missing",label:"Missing documents",pattern:/(?:no|missing|lost|lack|without|don.t have|do not have|can.t find|cannot find|expired|stolen).{0,36}(?:id|identification|documents?|paperwork|trn|certificate|passport)|(?:documents?|id).{0,24}(?:missing|lost|expired|stolen)/i,
+      advice:"Ask the receiving agency which documents are essential, which alternatives may be accepted, and whether an initial assessment can start while replacements are being obtained.",
+      questions:["Which documents are essential for this particular service?","Are substitute documents accepted, and must originals be presented?","Can an initial enquiry or assessment begin before the replacement is ready?"]},
+    {id:"travel",label:"Cannot travel",pattern:/(?:can.t|cannot|unable to|no way to|cannot afford to|can.t afford to).{0,25}(?:travel|attend|come|visit|get there)|(?:no|lack of|cannot afford|can.t afford).{0,20}(?:transport|bus fare|taxi fare|wheelchair access)/i,
+      advice:"Ask about the nearest appropriate office, accessible appointments, telephone enquiries, authorised representatives, and any locally available transport support. Confirm what is actually offered.",
+      questions:["Is there a nearer or accessible point of service?","Is telephone intake or an authorised representative possible?","Does a social worker or community support service know of suitable assistance?"]},
+    {id:"cost",label:"Cannot afford costs",pattern:/(?:cannot|can.t|unable to).{0,20}(?:pay|afford)|(?:no money|too expensive|cost too much|fees? too high)/i,
+      advice:"Confirm every cost, any existing subsidy or fee-waiver arrangement, and whether the facility social worker can identify appropriate support. Do not promise funding.",
+      questions:["What are the actual application, travel, and service costs?","Is any subsidy or fee reduction available for this situation?","Who can assess hardship and suggest another referral route?"]},
+    {id:"response",label:"Agency not responding",pattern:/(?:no response|not answering|phone unanswered|phone keeps ringing|no one answered|nobody answers|can't reach|cannot reach|contact not working|office closed|never called back)/i,
+      advice:"Confirm the current phone number and hours through an official source. Document contact attempts in the approved record, try an alternative authorised channel, or ask the facility social worker to assist with escalation.",
+      questions:["What are the current contact details and hours?","Is there another authorised telephone or email contact?","Who is the appropriate supervisor or referral contact for escalation?"]},
+    {id:"unavailable",label:"Service unavailable",pattern:/(?:service unavailable|no space|no vacancies|not taking applicants|application refused|turned away|not eligible|rejected|not accepting|service not offered)/i,
+      advice:"Clarify whether the barrier is eligibility, capacity, catchment area or missing documents. Consider another guide-listed option and confirm its suitability before redirecting the person.",
+      questions:["Why could the application not proceed?","Is this a temporary capacity issue, catchment restriction or eligibility decision?","Is there another appropriate service or a formal review or appeal route?"]},
+    {id:"communication",label:"Communication or accessibility",pattern:/(?:cannot read|can.t read|can't hear|deaf|blind|needs an interpreter|communication difficulty|needs a caregiver|language barrier|cannot understand)/i,
+      advice:"Ask the person how they want information provided, whether they consent to caregiver involvement, and what accessibility or interpretation arrangements the receiving service can confirm.",
+      questions:["What communication format works best for the person?","May an authorised caregiver or supporter be involved?","Can the agency provide accessible communication or a reasonable accommodation?"]}
+  ];
+  const barrierFor = (query) => BARRIERS.find(b=>b.pattern.test(query));
+  const barrierById = id => BARRIERS.find(b=>b.id===id);
+  function viewBarrier(){
+    const b=barrierById(state.barrier);
+    if(!b) return viewService();
+    const name=state.selected?.name||"the service";
+    return say("<strong>We can work around this step by step.</strong><p>"+esc(b.advice)+"</p>")+
+      "<div class=\"gia2-barrier-panel\"><h4>"+esc(b.label)+" · "+esc(name)+"</h4><p>Questions to ask the receiving agency:</p><ol>"+b.questions.map(q=>"<li>"+esc(q)+"</li>").join("")+"</ol></div>"+
+      "<div class=\"gia2-primary-actions\">"+pill("copyBarrier","Copy questions for agency","gia2-primary")+
+      (state.selected?pill("refer","Prepare a referral"):pill("services","Browse services"))+
+      pill("follow","Record follow-up")+"</div>"+
+      "<div class=\"gia2-actions\">"+pill("service","Return to service")+pill("start","New request")+"</div>";
+  }
+  function barrierText(){
+    const b=barrierById(state.barrier);
+    return b?["REFERRAL BARRIER — QUESTIONS TO CONFIRM","Service: "+(state.selected?.name||"To be confirmed"),"Barrier: "+b.label,
+      "Suggested approach: "+b.advice,"Questions:",...b.questions.map((q,i)=>(i+1)+". "+q),
+      "Agency arrangements must be confirmed before making promises to a patient."].join("\n"):"No barrier chosen.";
+  }
+  const NEED_ORDER=["safety","health","food","housing","transport","disability","family","income","wellbeing","jobs"];
+  function roadmap(){
+    const ids=[...new Set(state.topicIds)].sort((a,b)=>NEED_ORDER.indexOf(a)-NEED_ORDER.indexOf(b));
+    return ids.map(id=>{
+      const t=TOPICS.find(x=>x.id===id);
+      const results=scoreServices(t?.terms||"").filter(x=>x.service.kind!=="decision").slice(0,2);
+      return {id,label:t?.label||id,results:results.map(x=>x.service)};
+    });
+  }
+  function roadmapText(){
+    const r=roadmap();
+    return [
+      "SOCIAL SUPPORT — MULTIPLE NEEDS PLAN (DRAFT)",
+      "Discuss priorities with the person. If anyone is in immediate danger follow emergency or safeguarding procedures first.",
+      ...r.flatMap((x,i)=>["\n"+(i+1)+". "+x.label,"Potential starting points: "+(x.results.map(p=>p.name).join(" / ")||"Seek a medical social work assessment"),"Action: Confirm the correct service, local point of contact, documents and availability with the receiving agency."]),
+      "\nThis plan suggests enquiries, not eligibility or acceptance. Record actual referrals in the approved system."
+    ].join("\n");
+  }
+  function viewRoadmap(){
+    const steps=roadmap();
+    return say("<strong>Here’s a simple way to organise the different needs.</strong><p>This is a draft starting sequence—not a clinical assessment or a decision about eligibility. Discuss the priorities with the person and confirm each referral.</p>")+
+      "<div class=\"gia2-roadmap\">"+steps.map((x,i)=>"<article><span>"+(i+1)+"</span><div><h4>"+esc(x.label)+"</h4><p>Possible starting points: "+esc(x.results.map(s=>s.name).join(" · ")||"Ask a medical social worker")+"</p><button class=\"gia2-choose\" type=\"button\" data-action=\"focus:"+esc(x.id)+"\">Explore this need →</button></div></article>").join("")+"</div>"+
+      "<div class=\"gia2-primary-actions\">"+pill("copyRoadmap","Copy the plan","gia2-primary")+pill("backResults","Back to options")+"</div>";
+  }
+
   function topicMatches(query){
     return TOPICS.filter(t=>t.pattern.test(query)).map(t=>t.id);
   }
