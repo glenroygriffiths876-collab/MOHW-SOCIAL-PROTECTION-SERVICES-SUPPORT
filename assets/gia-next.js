@@ -117,6 +117,7 @@
       if(topics.includes("food") && /student|school|child/.test(q) && n==="school feeding")score+=46;
       if(topics.includes("food") && /elderly|older|senior/.test(q) && n==="school feeding")score-=25;
       if(topics.includes("disability") && n==="economic empowerment grant")score+=45;
+      if(topics.includes("food") && /elderly|older|senior/.test(q) && n==="economic empowerment grant")score-=38;
       if(topics.includes("disability") && n==="local government assistance")score+=24;
       if(topics.includes("disability") && topics.includes("family") && !topics.includes("safety") && n.includes("child protection"))score-=28;
       if(topics.includes("wellbeing") && /substance|addict|drug use/.test(q) && /ncda/.test(n))score+=45;
@@ -174,7 +175,7 @@
     return "<div class=\"gia2-user-bubble\">"+esc(state.question)+"</div>"+say("<strong>"+intro+"</strong><p>You can review a service, check documents and prepare the next step without leaving GIA.</p>")+
       "<div class=\"gia2-service-list\">"+visible.map((r,i)=>{
         const s=r.service;
-        return "<article class=\"gia2-service\"><div><span class=\"gia2-tag\">"+esc(s.kind==="agency"?"Agency":"Possible support")+"</span><h4>"+esc(s.name)+"</h4><p>"+esc(short(s.support,180))+"</p></div><button type=\"button\" class=\"gia2-choose\" data-service=\""+esc(s.id)+"\">Explore this service <span>→</span></button></article>";
+        return "<article class=\"gia2-service\"><div><span class=\"gia2-tag\">"+esc(s.kind==="agency"?"Agency":s.kind==="decision"?"Guide recommendation":"Possible support")+"</span><h4>"+esc(s.name)+"</h4><p>"+esc(short(s.support,180))+"</p></div><button type=\"button\" class=\"gia2-choose\" data-service=\""+esc(s.id)+"\">Explore this service <span>→</span></button></article>";
       }).join("")+"</div>"+
       (state.results.length>3&&!state.page?pill("more","Show more options"):"")+
       "<div class=\"gia2-subtools\">"+pill("ask","Change the need")+pill("refer","Prepare a referral")+"</div>"+guidesource();
@@ -218,7 +219,7 @@
       "SOCIAL SUPPORT REFERRAL INFORMATION",
       "Hello. Here is information to help you prepare for your visit.",
       "",
-      "Service: "+(s?.name||"Service to confirm"),
+      "Service: "+(s?.kind==="custom" ? name : (s?.name||"Service to confirm")),
       "Where to enquire: "+name,
       "Parish: "+(state.parish==="Not selected"?"Please confirm":state.parish),
       "Google Maps: "+map,
