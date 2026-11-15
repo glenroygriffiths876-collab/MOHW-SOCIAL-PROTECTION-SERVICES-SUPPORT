@@ -18,13 +18,15 @@ const path=require("node:path");
 const root=path.join(__dirname,"..");
 const script=fs.readFileSync(path.join(root,"assets/gia-next.js"),"utf8");
 const guide=JSON.parse(fs.readFileSync(path.join(root,"data/guide-content.json"),"utf8"));
+const parishes=JSON.parse(fs.readFileSync(path.join(root,"data/gia-parishes.json"),"utf8"));
+const giaCss=fs.readFileSync(path.join(root,"assets/gia-next.css"),"utf8");
 const app=fs.readFileSync(path.join(root,"assets/app.js"),"utf8");
 const index=fs.readFileSync(path.join(root,"index.html"),"utf8");
 const worker=fs.readFileSync(path.join(root,"service-worker.js"),"utf8");
 
 const marker='  document.addEventListener("DOMContentLoaded",async()=>{';
 assert(script.includes(marker),"GIA bootstrap marker must exist");
-const hook='  window.__GIA_TEST__={load:d=>{guide=d;catalog=buildCatalog(d)},state,handleAsk,act,validMapsLink,scoreServices,referralText,actionPlanText,barrierFor,barrierText,roadmapText};\n';
+const hook='  window.__GIA_TEST__={load:d=>{guide=d;catalog=buildCatalog(d)},loadParishes:d=>{parishDirectory=d},state,handleAsk,act,validMapsLink,scoreServices,referralText,actionPlanText,barrierFor,barrierText,roadmapText,parishHelp};\n';
 const source=script.replace(marker,hook+marker);
 const status={textContent:"",classList:{toggle(){}}};
 const content={innerHTML:"",scrollTop:0,insertAdjacentHTML(_where,text){this.innerHTML+=text;}};
@@ -37,6 +39,7 @@ const navigator={clipboard:{writeText:async()=>{}}};
 vm.runInNewContext(source,{window,document,navigator,URL,console}, {filename:"assets/gia-next.js"});
 const gia=window.__GIA_TEST__;
 gia.load(guide);
+gia.loadParishes(parishes);
 const tests=[];
 function test(name,fn){
  try{assert(fn(),name);tests.push([name,true]);}
@@ -103,6 +106,36 @@ test("Agency WhatsApp enquiry is a separate template",()=>gia.referralText().inc
 gia.state.recipientMode="client";
 test("Client visit template is retained",()=>gia.referralText().includes("YOUR SOCIAL SUPPORT VISIT INFORMATION"));
 test("Browser-only voice affordance exists",()=>script.includes("window.SpeechRecognition")&&script.includes("recorder.onresult")&&script.includes("Review it"));
+
+
+test("Geometric navy styling matches site's assets",()=>giaCss.includes("geometry-bg.svg")&&giaCss.includes("#070735")&&giaCss.includes("#08d9eb")&&giaCss.includes("#e20c79")&&giaCss.includes("#ffc928"));
+test("Parish directory covers all 14 parishes",()=>Object.keys(parishes.parishes).length===14);
+gia.act("start");gia.act("role:provider");gia.handleAsk("Hello");
+test("Provider role uses a professional introduction",()=>gia.state.role==="provider"&&content.innerHTML.includes("colleague"));
+gia.act("role:client");gia.handleAsk("Hello");
+test("Client role uses simple wording",()=>gia.state.role==="client"&&content.innerHTML.includes("I'm GIA"));
+gia.act("start");gia.handleAsk("NHT in Hanover");
+test("Hanover NHT local office is displayed",()=>content.innerHTML.includes("Uptown Shopping Centre")&&content.innerHTML.includes("876-956-2982"));
+gia.act("useOffice:nht");
+test("Parish listing can populate a referral",()=>gia.state.view==="refer"&&gia.state.localOfficeUsed==="Hanover"&&gia.state.destination.includes("Lucea"));
+gia.handleAsk("NHT in St. James");
+test("Changing parish clears the previous local office",()=>gia.state.parish==="St. James"&&gia.state.localOfficeUsed===""&&!gia.state.destination.includes("Lucea"));
+test("St James NHT office changes address",()=>content.innerHTML.includes("42B Union Street")&&!content.innerHTML.includes("Uptown Shopping Centre"));
+gia.act("start");gia.handleAsk("PATH in Hanover");
+test("PATH local guidance does not assert NIS office is PATH intake",()=>content.innerHTML.includes("confirm which")&&content.innerHTML.includes("PATH enquiries"));
+gia.act("start");gia.handleAsk("NHF in Portland");
+test("NHF service route links to official provider directory",()=>content.innerHTML.includes("nhf.org.jm/providers")&&gia.state.parish==="Portland");
+gia.act("start");gia.handleAsk("NIS in Trelawny");
+test("MLSS NIS office offered in correct parish",()=>content.innerHTML.includes("King Street")&&content.innerHTML.includes("876-954-3312"));
+gia.act("role:provider");gia.handleAsk("NHT");
+test("Provider uses referral language",()=>content.innerHTML.includes("referral route"));
+gia.act("role:client");gia.handleAsk("NHT");
+test("Client uses plain-language guidance",()=>content.innerHTML.includes("helpful place to start"));
+gia.act("start");gia.state.parish="Not selected";gia.handleAsk("NHT");
+test("Missing parish displays clarification instead of invented local office",()=>content.innerHTML.includes("Choose a parish")&&!content.innerHTML.includes("Uptown Shopping Centre"));
+gia.act("start");gia.handleAsk("NHT in Hanover");gia.state.phone="8765551234";gia.state.consent=true;gia.state.parish="Not selected";gia.act("openWhatsApp");
+test("WhatsApp is blocked without destination parish",()=>opened.length===1);
+test("Parish-specific data source is included in loader",()=>script.includes('PARISH_URL = "./data/gia-parishes.json"'));
 
 test("Original guide records preserved",()=>guide.programmes.length===17&&guide.categories.length===26&&guide.decision.length===26&&guide.contacts.length===25);
 test("Directory-to-GIA deep link present",()=>app.includes("data-gia-referral")&&app.includes("window.MOHWGIA.openReferral"));
