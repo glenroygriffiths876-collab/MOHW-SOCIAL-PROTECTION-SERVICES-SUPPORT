@@ -269,3 +269,169 @@
 @media(prefers-reduced-motion:reduce){
   #guideActionDock .guide-action,#gia2Launcher.gia2-launcher{transition:none!important;}
 }
+
+
+/* Mobile fit correction (16 Nov 2026): the screenshot showed the original
+   four-high rail covering the two homepage CTAs. Compact to a 2x2 cluster
+   only on phones; keep all four independent buttons permanently accessible. */
+html,body {max-width:100%;overflow-x:clip}
+#guideActionDock.guide-action-dock {
+  background:none!important;
+  background-image:none!important;
+}
+#gia2Launcher.gia2-launcher {
+  inset-inline-start:auto!important;
+  inset-inline-end:max(16px,env(safe-area-inset-right))!important;
+  translate:none!important;
+  transform:none!important;
+}
+#gia2Launcher.gia2-launcher::after {
+  right:1px!important;
+  bottom:-5px!important;
+}
+@media(min-width:601px) and (max-width:900px){
+  :root {--bubble-diameter:48px;--bubble-gap:9px}
+  #guideActionDock.guide-action-dock {
+    left:max(10px,env(safe-area-inset-left))!important;
+    right:auto!important;
+  }
+  #gia2Launcher.gia2-launcher {
+    width:68px!important;min-width:68px!important;max-width:68px!important;
+    height:68px!important;min-height:68px!important;max-height:68px!important;
+    right:max(16px,env(safe-area-inset-right))!important;
+  }
+  #gia2Launcher.gia2-launcher img {
+    width:52px!important;height:52px!important;
+    min-width:52px!important;min-height:52px!important;
+    max-width:52px!important;max-height:52px!important;
+  }
+}
+@media(max-width:600px){
+  :root {--bubble-diameter:42px;--bubble-gap:7px}
+  /* Wide bottom bar and tall left column both replaced by a low-profile
+     four-circle 2x2 group near the left bottom corner. */
+  #guideActionDock.guide-action-dock {
+    position:fixed!important;
+    display:grid!important;
+    grid-template-columns:repeat(2,42px)!important;
+    grid-template-rows:repeat(2,42px)!important;
+    align-content:center!important;
+    align-items:center!important;
+    justify-content:center!important;
+    justify-items:center!important;
+    gap:7px!important;
+    left:max(9px,env(safe-area-inset-left))!important;
+    right:auto!important;
+    top:auto!important;
+    bottom:max(12px,env(safe-area-inset-bottom))!important;
+    width:91px!important;
+    min-width:91px!important;
+    max-width:91px!important;
+    height:91px!important;
+    min-height:91px!important;
+    max-height:91px!important;
+    padding:0!important;
+    background:none!important;
+    background-color:transparent!important;
+    background-image:none!important;
+    border:0!important;
+    box-shadow:none!important;
+    backdrop-filter:none!important;
+  }
+  #guideActionDock .guide-action {
+    position:relative!important;
+    display:grid!important;
+    place-items:center!important;
+    grid-column:auto!important;
+    grid-row:auto!important;
+    flex:none!important;
+    width:42px!important;min-width:42px!important;max-width:42px!important;
+    height:42px!important;min-height:42px!important;max-height:42px!important;
+    padding:7px!important;
+    margin:0!important;
+    aspect-ratio:1!important;
+    border:1.5px solid rgba(255,255,255,.94)!important;
+    border-radius:50%!important;
+  }
+  #guideActionDock .guide-action svg{
+    display:block!important;
+    width:22px!important;height:22px!important;
+    min-width:22px!important;min-height:22px!important;
+  }
+  #guideActionDock .guide-action:hover>span,
+  #guideActionDock .guide-action:focus-visible>span{
+    left:calc(100% + 9px)!important;
+    max-width:180px!important;
+    font-size:13px!important;
+  }
+  /* Contain the full GIA avatar and label within the visible viewport. */
+  #gia2Launcher.gia2-launcher {
+    position:fixed!important;
+    top:auto!important;
+    left:auto!important;
+    right:max(16px,env(safe-area-inset-right))!important;
+    inset-inline-start:auto!important;
+    inset-inline-end:max(16px,env(safe-area-inset-right))!important;
+    bottom:max(19px,env(safe-area-inset-bottom))!important;
+    transform:none!important;
+    translate:none!important;
+    width:64px!important;min-width:64px!important;max-width:64px!important;
+    height:64px!important;min-height:64px!important;max-height:64px!important;
+    padding:4px!important;
+    border:2px solid #fff!important;
+    border-radius:50%!important;
+    box-sizing:border-box!important;
+    overflow:visible!important;
+  }
+  #gia2Launcher.gia2-launcher img {
+    width:52px!important;min-width:52px!important;max-width:52px!important;
+    height:52px!important;min-height:52px!important;max-height:52px!important;
+    padding:0!important;margin:0!important;
+    object-fit:cover!important;border-radius:50%!important;
+  }
+  #gia2Launcher.gia2-launcher::after {
+    right:0!important;
+    bottom:-4px!important;
+    padding:3px 6px!important;
+    font-size:10px!important;
+  }
+  /* Preserve readability but keep full-width CTAs inside narrow screens. */
+  .hero-actions, .referral-hero-actions {max-width:100%;min-width:0}
+  .hero-actions .btn,.referral-hero-actions button {
+    box-sizing:border-box;
+    max-width:100%!important;
+    min-width:0!important;
+    overflow-wrap:anywhere;
+    white-space:normal!important;
+  }
+  .hero-copybox,.referral-hero-copy,.illustrated-hero-copy,
+  .hero-grid,.wrap,.view{max-width:100%;min-width:0}
+  /* Content can scroll above the floating tools when the user reaches
+     the end of the guide. */
+  body {padding-bottom:calc(118px + env(safe-area-inset-bottom))!important}
+}
+@media(max-width:340px){
+  :root {--bubble-diameter:39px;--bubble-gap:6px}
+  #guideActionDock.guide-action-dock{
+    width:84px!important;min-width:84px!important;max-width:84px!important;
+    height:84px!important;min-height:84px!important;max-height:84px!important;
+    grid-template-columns:repeat(2,39px)!important;
+    grid-template-rows:repeat(2,39px)!important;
+    gap:6px!important;
+  }
+  #guideActionDock .guide-action{
+    width:39px!important;min-width:39px!important;max-width:39px!important;
+    height:39px!important;min-height:39px!important;max-height:39px!important
+  }
+  #gia2Launcher.gia2-launcher{
+    right:max(12px,env(safe-area-inset-right))!important;
+    inset-inline-end:max(12px,env(safe-area-inset-right))!important;
+    width:59px!important;min-width:59px!important;max-width:59px!important;
+    height:59px!important;min-height:59px!important;max-height:59px!important;
+  }
+  #gia2Launcher.gia2-launcher img{
+    width:47px!important;height:47px!important;
+    min-width:47px!important;min-height:47px!important;
+    max-width:47px!important;max-height:47px!important
+  }
+}
