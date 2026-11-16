@@ -1,0 +1,445 @@
+/* Accessibility and header refinement — November 16, 2026. */
+/* These are pre-existing sub-16px text selectors, raised to a readable floor. */
+/* Small decorative map pins are excluded to prevent parish-marker overlaps. */
+#serviceFilters .chip{font-size:16px!important}
+#serviceModal .modal-body h3{font-size:16px!important}
+#serviceModal .modal-body p{font-size:16px!important}
+.about-story-art figcaption b{font-size:16px!important}
+.about-story-art figcaption span{font-size:16px!important}
+.about-story-copy>p{font-size:16px!important}
+.about-story-tags span{font-size:16px!important}
+.aside-kicker{font-size:16px!important}
+.aside-step{font-size:16px!important}
+.aside-step b{font-size:16px!important}
+.badge{font-size:16px!important}
+.brand-copy b{font-size:16px!important}
+.brand-copy small{font-size:16px!important}
+.brand-mark span{font-size:16px!important}
+.btn{font-size:16px!important}
+.card-action{font-size:16px!important}
+.care-copy>p,.followup-copy>p{font-size:16px!important}
+.care-illustration figcaption b{font-size:16px!important}
+.care-illustration figcaption span{font-size:16px!important}
+.care-link{font-size:16px!important}
+.care-principles i{font-size:16px!important}
+.care-principles span{font-size:16px!important}
+.category-card .category-programme{font-size:16px!important}
+.chapter-card .open{font-size:16px!important}
+.chapter-card p{font-size:16px!important}
+.chapter-no{font-size:16px!important}
+.chip{font-size:16px!important}
+.contact-card .contact-info{font-size:16px!important}
+.contact-card .verify-label{font-size:16px!important}
+.decision-card .provider{font-size:16px!important}
+.decision-controls .searchbox-light input{font-size:16px!important}
+.decision-finder-head p{font-size:16px!important}
+.decision-illustration-band .btn{font-size:16px!important}
+.decision-illustration-band figcaption{font-size:16px!important}
+.decision-illustration-band p{font-size:16px!important}
+.decision-profile-link,.decision-directory-link{font-size:16px!important}
+.decision-reset,.decision-clear{font-size:16px!important}
+.decision-results-heading p{font-size:16px!important}
+.decision-route-card .provider{font-size:16px!important}
+.decision-route-card .provider b{font-size:16px!important}
+.decision-route-copy h3{font-size:16px!important}
+.decision-route-empty b{font-size:16px!important}
+.decision-route-empty p{font-size:16px!important}
+.decision-route-label{font-size:16px!important}
+.decision-situation-copy b{font-size:16px!important}
+.decision-situation-copy small{font-size:16px!important}
+.decision-tally{font-size:16px!important}
+.directory-hotlines h3{font-size:16px!important}
+.directory-hotlines p{font-size:16px!important}
+.directory-title span{font-size:16px!important}
+.disclaimer,.notice{font-size:16px!important}
+.document-card dd{font-size:16px!important}
+.document-card dt{font-size:16px!important}
+.draft-pill{font-size:16px!important}
+.empty-state{font-size:16px!important}
+.eyebrow{font-size:16px!important}
+.finish-content>p{font-size:16px!important}
+.followup-grid figure figcaption{font-size:16px!important}
+.followup-orbit{font-size:16px!important}
+.footer-grid p{font-size:16px!important}
+.footer-label{font-size:16px!important}
+.gia-compose input{font-size:16px!important}
+.gia-head h2 span{font-size:16px!important}
+.gia-head p{font-size:16px!important}
+.gia-intro p{font-size:16px!important}
+.gia-launcher-copy b{font-size:16px!important}
+.gia-launcher-copy small{font-size:16px!important}
+.gia-message{font-size:16px!important}
+.gia-note{font-size:16px!important}
+.gia-presence{font-size:16px!important}
+.gia-reset button{font-size:16px!important}
+.gia-result-card button,.gia-inline-nav{font-size:16px!important}
+.gia-result-card h3{font-size:16px!important}
+.gia-result-card p{font-size:16px!important}
+.gia-result-kind{font-size:16px!important}
+.gia-shortcuts button{font-size:16px!important}
+.gia-start span{font-size:16px!important}
+.gia-tabs button{font-size:16px!important}
+.gia-workflow .gia-head p{font-size:16px!important}
+.gia-workflow .gia-note{font-size:16px!important}
+.gia-workspace .gia-checklist label{font-size:16px!important}
+.gia-workspace .gia-progress{font-size:16px!important}
+.gia-workspace .gia-result-card p{font-size:16px!important}
+.gia-workspace .gia-source{font-size:16px!important}
+.gia-workspace small{font-size:16px!important}
+.gia2-barrier-panel h4{font-size:16px!important}
+.gia2-barrier-panel li{font-size:16px!important}
+.gia2-barrier-panel p{font-size:16px!important}
+.gia2-barriers .gia2-pill{font-size:16px!important}
+.gia2-barriers h4{font-size:16px!important}
+.gia2-barriers summary{font-size:16px!important}
+.gia2-bubble{font-size:16px!important}
+.gia2-bubble p{font-size:16px!important}
+.gia2-bubble strong{font-size:16px!important}
+.gia2-chat-follow label{font-size:16px!important}
+.gia2-check-head{font-size:16px!important}
+.gia2-checkline{font-size:16px!important}
+.gia2-checklist label,.gia2-compact-checks label{font-size:16px!important}
+.gia2-compact-checks label{font-size:16px!important}
+.gia2-consent{font-size:16px!important}
+.gia2-context-field label{font-size:16px!important}
+.gia2-context-field select{font-size:16px!important}
+.gia2-document-directory h4{font-size:16px!important}
+.gia2-error{font-size:16px!important}
+.gia2-expand p{font-size:16px!important}
+.gia2-expand summary{font-size:16px!important}
+.gia2-fact b,.gia2-form-label{font-size:16px!important}
+.gia2-fact p{font-size:16px!important}
+.gia2-focus p{font-size:16px!important}
+.gia2-footer>span{font-size:16px!important}
+.gia2-form input:not([type="checkbox"]),.gia2-form textarea,.gia2-form select{font-size:16px!important}
+.gia2-form>label:not(.gia2-consent){font-size:16px!important}
+.gia2-heading h2 span{font-size:16px!important}
+.gia2-heading p{font-size:16px!important}
+.gia2-inputbar input{font-size:16px!important}
+.gia2-launcher b{font-size:16px!important}
+.gia2-launcher small{font-size:16px!important}
+.gia2-link{font-size:16px!important}
+.gia2-local-actions .gia2-pill{font-size:16px!important}
+.gia2-local-caution{font-size:16px!important}
+.gia2-local-heading h4,.gia2-local-panel h4{font-size:16px!important}
+.gia2-local-heading p{font-size:16px!important}
+.gia2-local-link{font-size:16px!important}
+.gia2-local-office p{font-size:16px!important}
+.gia2-local-office strong{font-size:16px!important}
+.gia2-local-panel small{font-size:16px!important}
+.gia2-local-panel>p,.gia2-local-caution{font-size:16px!important}
+.gia2-local-tag{font-size:16px!important}
+.gia2-mini-doc b{font-size:16px!important}
+.gia2-next-tip{font-size:16px!important}
+.gia2-optional label:not(.gia2-consent){font-size:16px!important}
+.gia2-optional select{font-size:16px!important}
+.gia2-optional summary span{font-size:16px!important}
+.gia2-parish-results{font-size:16px!important}
+.gia2-pill.gia2-feature{font-size:16px!important}
+.gia2-pill.gia2-primary{font-size:16px!important}
+.gia2-privacy,.gia2-context-hint{font-size:16px!important}
+.gia2-privacy,.gia2-muted{font-size:16px!important}
+.gia2-roadmap article>span{font-size:16px!important}
+.gia2-roadmap h4{font-size:16px!important}
+.gia2-roadmap p{font-size:16px!important}
+.gia2-role-choice p{font-size:16px!important}
+.gia2-service h4{font-size:16px!important}
+.gia2-service p{font-size:16px!important}
+.gia2-small-link{font-size:16px!important}
+.gia2-source{font-size:16px!important}
+.gia2-tag{font-size:16px!important}
+.gia2-urgent a{font-size:16px!important}
+.gia2-user-bubble{font-size:16px!important}
+.guide-action{font-size:16px!important}
+.guide-action i{font-size:16px!important}
+.guide-action:hover>span,.guide-action:focus-visible>span{font-size:16px!important}
+.guide-dialog-actions button{font-size:16px!important}
+.guide-field-label{font-size:16px!important}
+.guide-help-fab{font-size:16px!important}
+.guide-help-panel>p,.guide-message-intro{font-size:16px!important}
+.guide-install-card small{font-size:16px!important}
+.guide-message-dialog select,.guide-message-dialog textarea{font-size:16px!important}
+.guide-privacy-note{font-size:16px!important}
+.guide-qr-frame p{font-size:16px!important}
+.guide-share-options b{font-size:16px!important}
+.guide-share-options small{font-size:16px!important}
+.guide-share-qr p{font-size:16px!important}
+.guide-share-qr>p{font-size:16px!important}
+.guide-share-url span{font-size:16px!important}
+.guide-tool-foot{font-size:16px!important}
+.guide-tool-kicker{font-size:16px!important}
+.guide-tool-options b{font-size:16px!important}
+.guide-tool-options small{font-size:16px!important}
+.guide-tool-toast{font-size:16px!important}
+.hero-actions .btn{font-size:16px!important}
+.hero-copybox>p{font-size:16px!important}
+.hero-meta{font-size:16px!important}
+.home-art-caption b{font-size:16px!important}
+.home-art-caption span{font-size:16px!important}
+.home-art-label{font-size:16px!important}
+.home-card h3{font-size:16px!important}
+.home-card p{font-size:16px!important}
+.hotline-text{font-size:16px!important}
+.illustrated-hero-copy>p{font-size:16px!important}
+.illustrated-hero-note{font-size:16px!important}
+.illustrated-hero-visual figcaption{font-size:16px!important}
+.intro-side b{font-size:16px!important}
+.intro-side p{font-size:16px!important}
+.journey-aside .practice-note b{font-size:16px!important}
+.journey-aside .practice-note p{font-size:16px!important}
+.journey-card p{font-size:16px!important}
+.journey-card-top{font-size:16px!important}
+.journey-control{font-size:16px!important}
+.journey-control-hint{font-size:16px!important}
+.journey-feature-copy>p{font-size:16px!important}
+.journey-feature-meta{font-size:16px!important}
+.journey-intro>div>p{font-size:16px!important}
+.journey-marker b{font-size:16px!important}
+.journey-orbit b{font-size:16px!important}
+.journey-progress-copy{font-size:16px!important}
+.map-aside>p{font-size:16px!important}
+.map-caveat{font-size:16px!important}
+.map-meta{font-size:16px!important}
+.map-toolbar select{font-size:16px!important}
+.modal-body h3{font-size:16px!important}
+.modal-body p{font-size:16px!important}
+.modal-draft{font-size:16px!important}
+.modal-head small{font-size:16px!important}
+.nav button{font-size:16px!important}
+.page-hero p{font-size:16px!important}
+.pathway-heading>div>p{font-size:16px!important}
+.pathway-pill{font-size:16px!important}
+.practice-note b{font-size:16px!important}
+.practice-note p{font-size:16px!important}
+.prepare-copy>p{font-size:16px!important}
+.prepare-grid figure figcaption{font-size:16px!important}
+.prepare-note b{font-size:16px!important}
+.profile-actions .btn{font-size:16px!important}
+.profile-contact small{font-size:16px!important}
+.profile-contact>b{font-size:16px!important}
+.profile-fact>b{font-size:16px!important}
+.profile-socials>p{font-size:16px!important}
+.programme-card h3,.category-card h3,.decision-card h3,.contact-card h3,.document-card h3{font-size:16px!important}
+.programme-card p,.category-card p,.decision-card p,.contact-card p,.document-card p{font-size:16px!important}
+.proof-avatar{font-size:16px!important}
+.quick-contact b{font-size:16px!important}
+.quick-contact span{font-size:16px!important}
+.ref-btn{font-size:16px!important}
+.referral-aside-card p{font-size:16px!important}
+.referral-endcap p{font-size:16px!important}
+.referral-hero-art figcaption{font-size:16px!important}
+.referral-hero-art figcaption span{font-size:16px!important}
+.referral-hero-bottom{font-size:16px!important}
+.referral-hero-copy>p{font-size:16px!important}
+.referral-hero-note b{font-size:16px!important}
+.referral-hero-note small{font-size:16px!important}
+.referral-hero-proof b{font-size:16px!important}
+.referral-hero-proof small{font-size:16px!important}
+.referral-kicker{font-size:16px!important}
+.referral-note-mark{font-size:16px!important}
+.referral-overline{font-size:16px!important}
+.referral-section-intro>p{font-size:16px!important}
+.results-line{font-size:16px!important}
+.route-card-copy small{font-size:16px!important}
+.route-num{font-size:16px!important}
+.scene-ordinal{font-size:16px!important}
+.searchbox-light input{font-size:16px!important}
+.section-head>p{font-size:16px!important}
+.service-agency-line{font-size:16px!important}
+.service-card-actions>a,.map-link{font-size:16px!important}
+.service-card>p{font-size:16px!important}
+.service-community-art figcaption{font-size:16px!important}
+.service-item b{font-size:16px!important}
+.service-item p{font-size:16px!important}
+.service-item small{font-size:16px!important}
+.service-logo-fallback{font-size:16px!important}
+.service-open{font-size:16px!important}
+.service-open span{font-size:16px!important}
+.service-profile-intro p{font-size:16px!important}
+.service-profile-intro small{font-size:16px!important}
+.service-tag{font-size:16px!important}
+.site-header .brand-copy b{font-size:16px!important}
+.site-header .brand-copy small{font-size:16px!important}
+.social-link-list a{font-size:16px!important}
+.source-link{font-size:16px!important}
+.step-card h3{font-size:16px!important}
+.step-card p{font-size:16px!important}
+.step-num{font-size:16px!important}
+.step-scene figcaption{font-size:16px!important}
+.step-scene-graphic>b{font-size:16px!important}
+.step-scene-graphic>small{font-size:16px!important}
+.step-source-note{font-size:16px!important}
+.step-source-note span{font-size:16px!important}
+.tab-number{font-size:16px!important}
+.tab-title{font-size:16px!important}
+.tag{font-size:16px!important}
+.text-link{font-size:16px!important}
+.urgent-copy>p{font-size:16px!important}
+.urgent-label{font-size:16px!important}
+.urgent-side b{font-size:16px!important}
+.urgent-side span{font-size:16px!important}
+
+/* MOHW Social Support — legible type, 2.5x wordmark and always-visible navigation.
+   Last override stylesheet: load after styles.css, identity.css and GIA CSS.
+   Source logo is displayed with object-fit:contain (never stretched/cropped). */
+:root{font-size:18px}
+html{scroll-padding-top:16px}
+body{font-size:18px!important;line-height:1.6}
+button,input,textarea,select{font-family:inherit}
+main p,main li,main dt,main dd,main label,main summary,
+main input:not([type="checkbox"]),main select,main textarea{
+  font-size:17px!important;line-height:1.6
+}
+main .btn,main .chip,main .card-action,main .service-open,
+main .service-card-actions>a,main .map-link,main .source-link,
+main .text-link,main .open,main .decision-reset,main .decision-situation-card,
+main .service-item,main .profile-actions button{
+  font-size:17px!important;line-height:1.45
+}
+main h3{font-size:clamp(21px,2.1vw,27px)!important;line-height:1.3}
+main h4{font-size:19px!important;line-height:1.3}
+main small,main .eyebrow,main .badge,main .tag,main .hero-meta,
+main .results-line,main .draft-pill,main .map-meta,
+main .chapter-no,main .referral-overline,main .service-tag,
+main .modal-draft,main .verify-label,main .service-agency-line{
+  font-size:16px!important;line-height:1.5
+}
+main .section-head>p,main .intro-side p,main .home-card p,
+main .chapter-card p,main .step-card p,main .programme-card p,
+main .category-card p,main .decision-card p,main .contact-card p,
+main .service-card>p,main .map-caveat,main .journey-card p{
+  font-size:17px!important;line-height:1.6
+}
+footer p,footer small,footer li,footer a,.footer-grid p,.footer-label{
+  font-size:16px!important;line-height:1.5
+}
+/* Brand banner: desktop previous frame 146x58; new 365x145 = 2.5x.
+   Do not keep a 200px tall header permanently sticky over document content. */
+.site-header{position:relative!important;top:auto!important}
+.site-header .navbar{
+  display:flex!important;flex-wrap:wrap!important;justify-content:center;
+  align-items:center;gap:12px 20px;min-height:0!important;
+  padding:16px 0 13px!important
+}
+.site-header .brand{
+  width:100%;flex:0 0 100%!important;max-width:100%;min-width:0;
+  display:flex;align-items:center;justify-content:center;gap:24px;
+  margin:0;padding:0
+}
+.site-header .brand-mark{
+  width:365px!important;height:145px!important;
+  flex:0 0 365px!important;min-width:0;
+  padding:8px 12px!important;border-radius:16px!important;
+  display:grid!important;place-items:center!important;
+  background:#fff!important;overflow:hidden!important;
+  box-shadow:0 8px 28px rgba(0,0,0,.24)!important
+}
+.site-header .brand-mark img{
+  display:block!important;position:static!important;inset:auto!important;
+  width:100%!important;height:100%!important;
+  max-width:100%!important;max-height:100%!important;
+  object-fit:contain!important;object-position:center!important;
+  transform:none!important
+}
+.site-header .brand-copy{display:block;min-width:0;max-width:580px}
+.site-header .brand-copy b{
+  font-size:clamp(27px,3vw,38px)!important;
+  line-height:1.14!important;letter-spacing:-.02em
+}
+.site-header .brand-copy small{
+  font-size:clamp(17px,1.6vw,20px)!important;
+  line-height:1.4!important;margin-top:9px
+}
+/* No hamburger and no cascade/dropdown: every navigation choice is visible. */
+.site-header .menu-toggle,.site-header #menuToggle{display:none!important}
+.site-header #mainNav.nav,.site-header #mainNav.nav.open{
+  display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:10px!important;order:3;width:100%!important;
+  margin:0!important;padding:0!important;
+  overflow:visible!important;max-height:none!important;
+  visibility:visible!important;opacity:1!important;transform:none!important
+}
+.site-header #mainNav.nav button{
+  display:flex;align-items:center;justify-content:center;
+  min-width:0;min-height:54px;padding:12px 10px;
+  white-space:normal!important;overflow-wrap:break-word;
+  text-align:center;font-size:17px!important;font-weight:800;
+  line-height:1.32!important;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:12px
+}
+.site-header #mainNav.nav button:focus-visible{
+  outline:3px solid #ffc928;outline-offset:2px
+}
+.site-header #mainNav.nav button span{font-size:inherit!important}
+/* Tablet/phone: full-size identity, then a permanent two-column menu.
+   Previous phone frame 112x49; now 280x123 (at least 2.5x). */
+@media(max-width:850px){
+  .site-header .navbar{gap:12px!important;padding:14px 0!important}
+  .site-header .brand{flex-direction:column!important;gap:9px!important}
+  .site-header .brand-mark{
+    width:280px!important;height:123px!important;
+    flex:0 0 123px!important;max-width:100%
+  }
+  .site-header .brand-copy{text-align:center;max-width:100%}
+  .site-header .brand-copy b{font-size:26px!important}
+  .site-header .brand-copy small{font-size:16px!important;margin-top:5px!important}
+  .site-header #mainNav.nav,.site-header #mainNav.nav.open{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:9px!important
+  }
+  .site-header #mainNav.nav button{
+    font-size:16px!important;min-height:58px;padding:12px 9px
+  }
+}
+@media(max-width:390px){
+  /* Previous narrow-phone frame 96x44; now 240x110 = 2.5x. */
+  .site-header .brand-mark{
+    width:240px!important;height:110px!important;
+    flex:0 0 110px!important
+  }
+  .site-header .brand-copy b{font-size:24px!important}
+  .site-header #mainNav.nav button{font-size:16px!important}
+}
+/* GIA and practical tools use comfortably readable copy and controls. */
+.gia2-dialog,.gia-panel,.gia-workspace,.guide-help-panel,.guide-message-dialog,
+.guide-share-dialog{font-size:17px!important;line-height:1.55}
+.gia2-dialog p,.gia2-dialog li,.gia2-dialog small,.gia2-dialog label,
+.gia2-dialog summary,.gia2-dialog input:not([type="checkbox"]),
+.gia2-dialog select,.gia2-dialog textarea,.gia2-dialog .gia2-source,
+.gia2-dialog .gia2-tag,.gia2-dialog .gia2-context-hint,
+.gia2-dialog .gia2-local-tag,.gia2-dialog .gia2-privacy,
+.gia2-dialog .gia2-parish-results,.gia2-dialog .gia2-local-caution,
+.gia2-dialog .gia2-check-head,.gia2-dialog .gia2-checkline{
+  font-size:16px!important;line-height:1.55
+}
+.gia2-dialog button:not(.gia2-close):not(.gia2-send){
+  font-size:16px!important;line-height:1.4;min-height:44px
+}
+.gia2-dialog .gia2-bubble,.gia2-dialog .gia2-user-bubble,
+.gia2-dialog .gia2-bubble p,.gia2-dialog .gia2-fact p,
+.gia2-dialog .gia2-service p{font-size:17px!important;line-height:1.58}
+.gia2-heading h2 span,.gia2-heading p{font-size:16px!important}
+.gia2-launcher b{font-size:18px!important}
+.gia2-launcher small{font-size:15px!important}
+.gia2-close{font-size:27px!important}
+.gia2-send{font-size:24px!important}
+.guide-help-panel p,.guide-help-panel small,.guide-help-panel button,
+.guide-message-dialog p,.guide-message-dialog small,
+.guide-message-dialog label,.guide-message-dialog select,
+.guide-message-dialog textarea,.guide-message-dialog button,
+.guide-share-dialog p,.guide-share-dialog button,
+.gia-workspace p,.gia-workspace li,.gia-workspace label,
+.gia-workspace button,.gia-workspace input{
+  font-size:16px!important;line-height:1.55
+}
+.guide-help-fab,.gia-launcher-copy b{font-size:17px!important}
+.guide-tool-close{font-size:24px!important}
+@media(max-width:480px){
+  .gia2-dialog{width:min(460px,calc(100vw - 16px));max-width:calc(100vw - 16px)}
+  .gia2-feature-grid{gap:8px}
+  .gia2-dialog .gia2-pill{overflow-wrap:anywhere}
+}
+@media(prefers-reduced-motion:reduce){
+  .site-header #mainNav.nav button{transition:none}
+}
