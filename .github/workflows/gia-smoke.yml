@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]
     paths:
+      - 'assets/phase2*'
+      - 'assets/manual-reader.js'
+      - 'assets/guide-tools.js'
+      - 'tests/phase2-smoke.js'
       - 'assets/gia-next.js'
       - 'assets/gia-next.css'
       - 'assets/app.js'
@@ -33,3 +37,6 @@ jobs:
           node-version: '22'
       - name: Test GIA
         run: node tests/gia-smoke.js
+
+      - name: Test Phase II integration
+        run: node tests/phase2-smoke.js

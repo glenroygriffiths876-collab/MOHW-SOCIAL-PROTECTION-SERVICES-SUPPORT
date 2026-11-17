@@ -386,6 +386,7 @@
   const voiceAvailable=()=>!!(window.SpeechRecognition||window.webkitSpeechRecognition);
   const voiceButton=()=>voiceAvailable()?'<button type="button" class="gia2-voice" data-action="voice" aria-label="Dictate a question using your microphone" title="Speak your request">🎙</button>':"";
   function dictate(){
+    window.MOHWAudio?.stop();
     const Engine=window.SpeechRecognition||window.webkitSpeechRecognition;
     if(!Engine){message("Voice input is not supported by this browser. You can still type your request.");return;}
     const field=$("#gia2Question");

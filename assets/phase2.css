@@ -1,0 +1,43 @@
+/* Phase II: deliberately additive, loaded after legacy styles. */
+html,body{background:#fff!important;background-image:none!important;color:#233149}
+body::before,body::after,main::before,main::after{background-image:none!important}
+.view :is(.hero,.referral-hero,.illustrated-page-hero,.referral-journey,.referral-prepare-strip,.referral-finish){background-image:none!important;background-color:#142c48!important}
+.view :is(.hero,.referral-hero,.illustrated-page-hero,.referral-journey,.referral-prepare-strip,.referral-finish)::before,.view :is(.hero,.referral-hero,.illustrated-page-hero,.referral-journey,.referral-prepare-strip,.referral-finish)::after{display:none!important}
+.view :is(.about-story,.nav-section,.referral-start-section,.referral-care-section,.referral-followup-section,.decision-finder,.map-aside,.intro-side,.manual-intro,.page-content){background-image:none!important}
+.view :is(.about-story,.nav-section,.referral-start-section,.referral-care-section,.referral-followup-section,.decision-finder,.map-aside,.page-content){background-color:#fff!important}
+.view :is(.referral-shape,.home-art-label,.hero-art-sticker,.finish-doodle,.hero-wave,.followup-orbit,.prepare-note){display:none!important}
+.view :is(.hero-art,.referral-hero-art,.illustrated-hero-visual,.about-story-art){animation:none!important;transform:none!important}
+.view :is(.chapter-card,.home-card,.service-item,.decision-situation-card,.decision-route-card){box-shadow:none!important;border-width:1px}
+.site-header,.gia2-dialog,.gia2-header,.gia2-context,.gia2-footer{background-image:none!important;background-color:#142c48!important}
+.p2-skip{position:fixed;top:5px;left:5px;z-index:99999;background:#fff;color:#172b48;padding:12px;transform:translateY(-150%)}
+.p2-skip:focus{transform:none}
+.p2-welcome{margin-top:24px;margin-bottom:22px}
+.p2-welcome article{display:grid;grid-template-columns:104px minmax(0,1fr);gap:20px;align-items:center;border:1px solid #dce3e8;border-radius:18px;background:#f5f9fa;padding:20px;color:#17364a}
+.p2-welcome img,.p2-avatar{width:100%;max-width:110px;aspect-ratio:1;object-fit:cover;border-radius:50%;border:3px solid #fff}
+.p2-welcome h2{font-size:clamp(23px,3vw,31px);margin:4px 0;color:#142c48}
+.p2-welcome p{margin:0 0 12px;color:#31485b}
+.p2-kicker{font-size:14px;font-weight:800;letter-spacing:.07em;color:#196b65}
+.p2-actions,.p2-manual,.p2-audio-bar{display:flex;flex-wrap:wrap;align-items:center;gap:9px}
+.p2-actions button,.p2-manual button,.p2-dialog button,.p2-audio-bar button,.p2-access-trigger{font:700 16px/1.4 system-ui,sans-serif;min-height:46px;padding:9px 13px;border:1px solid #24716d;border-radius:10px;background:#fff;color:#17474b;cursor:pointer}
+.p2-actions button:first-child,.p2-access-trigger{background:#185c58;color:white}
+.p2-access-trigger{margin:12px auto;display:block}
+.p2-dialog{border:1px solid #cbd5df;border-radius:18px;width:min(620px,calc(100% - 24px));max-height:88dvh;overflow:auto;padding:22px;background:white;color:#183148;font:16px/1.6 system-ui,sans-serif;z-index:9999}
+.p2-dialog::backdrop{background:#0e203b99}.p2-dialog h2{font-size:26px;color:#142c48;margin:0 0 12px}
+.p2-dialog h3{font-size:20px;color:#142c48}.p2-dialog label{display:block;margin:8px 0}.p2-dialog input[type=checkbox]{width:20px;height:20px;vertical-align:middle}.p2-dialog select{max-width:100%;min-height:44px;font:inherit;padding:6px}.p2-dialog video{width:100%}
+.p2-manual{background:#f0f6f7;border:1px solid #d0e0e3;padding:12px;border-radius:12px;margin:12px 0;color:#142c48}
+.p2-manual p,.p2-manual #p2-manual-transcript{flex-basis:100%;white-space:pre-wrap;overflow-wrap:anywhere}
+.p2-manual #p2-manual-transcript{background:white;padding:16px;max-height:50vh;overflow:auto}
+.p2-audio-bar{position:sticky;bottom:0;z-index:100;background:#fff;border-top:1px solid #cbd5df;padding:9px 12px;color:#142c48;justify-content:center}
+.p2-audio-bar[hidden],#p2-manual-transcript[hidden]{display:none!important}
+:where(button,a,input,select,textarea,summary,[tabindex]):focus-visible{outline:3px solid #bd7200!important;outline-offset:3px!important}
+html.p2-motion *,html.p2-motion *::before,html.p2-motion *::after{animation-duration:.001s!important;transition-duration:.001s!important;scroll-behavior:auto!important}
+html.p2-links a{text-decoration:underline!important;text-underline-offset:3px}
+html.p2-spacing :is(p,li,dd,dt,label,button){letter-spacing:.06em!important;word-spacing:.12em!important;line-height:1.8!important}
+html.p2-large :is(main,dialog,footer) :is(p,li,dd,dt,label,input,textarea,select,button,small,a,summary){font-size:20px!important;line-height:1.55!important}
+html.p2-xlarge :is(main,dialog,footer) :is(p,li,dd,dt,label,input,textarea,select,button,small,a,summary){font-size:23px!important;line-height:1.55!important}
+html.p2-contrast :is(main,header,footer,dialog) :is(section,article,aside,figure,div,nav){background-image:none!important;background-color:#fff!important;color:#111!important;box-shadow:none!important;text-shadow:none!important}
+html.p2-contrast :is(main,header,footer,dialog) :is(h1,h2,h3,h4,p,li,small,span,b,strong,em,label,summary,dd,dt){color:#111!important;text-shadow:none!important;-webkit-text-fill-color:#111!important}
+html.p2-contrast :is(main,header,footer,dialog) :is(button,a,input,textarea,select){background:#fff!important;color:#07386a!important;border-color:#111!important;text-decoration:underline!important}
+html.p2-contrast :is(main,header,footer,dialog) button.active{outline:3px solid #07386a!important}
+@media(max-width:520px){.p2-welcome article{grid-template-columns:1fr;padding:15px;gap:10px}.p2-welcome img{max-width:76px}.p2-actions button{flex:1 1 120px}.p2-dialog{padding:15px}.p2-manual button{flex:1 1 130px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important;scroll-behavior:auto!important}}

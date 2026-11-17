@@ -104,3 +104,8 @@ The local guidance also incorporates a parish health department listing for each
 - NERHA health departments: https://www.nerha.gov.jm/health-centres
 
 For the website version, the asset URLs are revisioned and the service-worker cache is incremented to prevent an installed PWA from indefinitely displaying an older GIA colour palette or local directory. Actual on-device caching can still require reopening the app or refreshing once.
+
+
+## Phase II — accessible reading and simplified design
+
+The additive phase2 stylesheet reduces background noise while preserving existing illustrations, navigation, and GIA. The welcome card uses the existing illustrated virtual guide and on-demand browser speech with a written transcript. Accessibility preferences are local only; no user identity or case data is retained. PDF reading extracts the current page or continues through the document; image-only pages require an approved accessible text alternative. The browser speech engine and PDF.js availability vary by device. Jamaican Sign Language media must be supplied and professionally validated; no signing avatar is asserted to translate JSL. The optional media settings and canonical production share address live in assets/phase2-config.js. User-provided video must have captions and a transcript. The fallback canonical address is the current deployment directory. For formal Ministry deployment, configure the approved HTTPS URL and verify printed QR codes, guide content, referral workflow, accessibility and device behaviour. The existing guide remains a working draft, not an approved eligibility or referral system. No private client or meeting data should enter source control.

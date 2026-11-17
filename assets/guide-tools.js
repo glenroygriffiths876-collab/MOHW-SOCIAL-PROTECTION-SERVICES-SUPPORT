@@ -1,7 +1,7 @@
 (() => {
   'use strict';
   const WA_NUMBER = '18765029756';
-  const GUIDE_URL = 'https://glenroygriffiths876-collab.github.io/MOHW-SOCIAL-PROTECTION-SERVICES-SUPPORT/';
+  const GUIDE_URL = window.MOHW_CONFIG?.canonicalUrl || new URL('./',location.href).href;
   const GIA_IMAGE = './assets/gia-avatar.jpg';
   const q = (s, r=document) => r.querySelector(s);
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
