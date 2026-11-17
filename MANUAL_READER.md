@@ -1,0 +1,3 @@
+# Digital manual reader
+
+The new tab opens a local PDF without uploading it. Browser-side PDF.js is loaded on demand from the pinned cdnjs version; downloads and native PDF viewing are blob links to the selected original. For an approved release only, set data-approved-pdf on #manual-reader in index.html to the same-origin public PDF path. Do not place a stakeholder-confidential document in this public repository or a public branch. The static reader is not an authentication boundary. Sound is off by default and enabled by explicit interaction. No case data is collected.
