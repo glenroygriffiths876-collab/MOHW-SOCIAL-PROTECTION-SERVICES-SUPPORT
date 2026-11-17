@@ -41,3 +41,5 @@ html.p2-contrast :is(main,header,footer,dialog) :is(button,a,input,textarea,sele
 html.p2-contrast :is(main,header,footer,dialog) button.active{outline:3px solid #07386a!important}
 @media(max-width:520px){.p2-welcome article{grid-template-columns:1fr;padding:15px;gap:10px}.p2-welcome img{max-width:76px}.p2-actions button{flex:1 1 120px}.p2-dialog{padding:15px}.p2-manual button{flex:1 1 130px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important;scroll-behavior:auto!important}}
+
+.p2-audio-bar button:focus-visible,.p2-dialog button:focus-visible{outline:3px solid #a45e00!important;outline-offset:3px!important}
