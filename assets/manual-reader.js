@@ -9,8 +9,13 @@ function closeTools(focus=false){if(options?.open){options.open=false;if(focus)o
 $('close-options')?.addEventListener('click',()=>closeTools(true));
 function fullLabel(){const on=fullMode();fullButton.textContent=on?'Exit':'Full screen';fullButton.setAttribute('aria-label',on?'Exit full screen':'Enter full screen');fullButton.title=on?'Exit full screen':'Enter full screen';fullButton.setAttribute('aria-pressed',String(on))}
 
-let doc=null,loading=null,blobUrl=null,sourceName='',page=1,zoom=1,two=true,sound=false,audio=null,paperBuffer=null,epoch=0,renderEpoch=0,busy=false,libPromise=null,autoTried=false,activeJobs=[];
+let doc=null,loading=null,blobUrl=null,sourceName='',page=1,zoom=1,two=true,sound=true,audio=null,paperBuffer=null,epoch=0,renderEpoch=0,busy=false,libPromise=null,autoTried=false,activeJobs=[];
 const say=t=>status.textContent=t;
+/* Page turns are audible by default. Respect a saved opt-out on this device. */
+const soundKey='mohw-manual-page-sound-v1';try{sound=localStorage.getItem(soundKey)!=='off'}catch(_){}
+function syncSound(){const b=$('sound');b.textContent=sound?'Sound on':'Sound off';b.setAttribute('aria-pressed',String(sound));}
+function unlockPaperAudio(){if(!sound)return;try{const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;audio=audio||new AC();if(audio.state!=='running')audio.resume().catch(()=>{})}catch(_){}}
+syncSound();
 let spokenGeneration=0; const textBox=document.getElementById('p2-manual-transcript'),audioStatus=document.getElementById('p2-manual-status');
 function stopReading(){spokenGeneration++;window.MOHWAudio?.stop('manual')}
 async function pageText(n,source){const p=await source.getPage(n);const c=await p.getTextContent();return c.items.map(i=>i.str||'').join(' ').replace(/\s+/g,' ').trim()}
@@ -55,7 +60,7 @@ function rustle(direction){
   src.onended=()=>{for(const node of [src,hp,lp,gain,pan])node?.disconnect()};src.start(t);
  }catch(_){}
 }
-$('sound').onclick=async()=>{try{if(!sound){const AC=window.AudioContext||window.webkitAudioContext;if(!AC)throw Error();audio=audio||new AC();await audio.resume();sound=true}else sound=false;$('sound').textContent=sound?'Sound on':'Sound off';$('sound').setAttribute('aria-pressed',String(sound))}catch(_){say('Sound is unavailable on this browser.')}};
+$('sound').onclick=()=>{sound=!sound;try{localStorage.setItem(soundKey,sound?'on':'off')}catch(_){}syncSound();if(sound){if(!window.AudioContext&&!window.webkitAudioContext){say('Page-turn sound is unavailable on this browser.');return}unlockPaperAudio()}};
 /* The only readable PDF is the bundled programme guide. No local picker. */
 async function loadApproved(){
  release();const ticket=epoch;page=1;zoom=1;sourceName='MOHW_Social_Protection_Guide_Concept_Full.pdf';
@@ -82,7 +87,7 @@ function align(n){const max=doc.numPages;n=Math.max(1,Math.min(max,Math.trunc(n)
 function targets(){return two&&canSpread()&&page>1&&page<doc.numPages?[page,page+1]:[page]}
 async function paint(direction){if(!doc)return;const task=++renderEpoch,documentRef=doc;stopJobs();busy=true;controls();const old=direction?Array.from(book.querySelectorAll('.manual-page')).at(direction>0?-1:0):null;let overlay=null;if(old&&!reduced.matches&&!document.documentElement.classList.contains('p2-motion')){const orig=old.querySelector('canvas');if(orig){overlay=document.createElement('canvas');overlay.width=orig.width;overlay.height=orig.height;overlay.getContext('2d').drawImage(orig,0,0);overlay.className='manual-turn'+(direction<0?' back':'');overlay.style.width=old.offsetWidth+'px';overlay.style.height=old.offsetHeight+'px';overlay.style.left=old.offsetLeft+'px';overlay.style.transformOrigin=direction>0?'left center':'right center'}}
 try{const nums=targets(),css=getComputedStyle(scroll),px=k=>parseFloat(css[k])||0,available=Math.max(1,scroll.clientWidth-px('paddingLeft')-px('paddingRight')),availableHeight=Math.max(1,scroll.clientHeight-px('paddingTop')-px('paddingBottom'));const pages=await Promise.all(nums.map(n=>documentRef.getPage(n)));if(task!==renderEpoch)return;const ratios=pages.map(p=>{const v=p.getViewport({scale:1});return v.height/v.width});const byWidth=Math.max(1,(available-4*(nums.length-1))/nums.length);const base=fullMode()?Math.min(byWidth,availableHeight/Math.max(...ratios)):Math.min(850,byWidth);const w=Math.max(1,Math.floor(base*zoom));const boxes=await Promise.all(pages.map(async (pdfPage,i)=>{const n=nums[i];if(task!==renderEpoch)return null;const raw=pdfPage.getViewport({scale:1}),logical=w/raw.width,dpr=Math.min(2,devicePixelRatio||1),view=pdfPage.getViewport({scale:logical*dpr});const box=document.createElement('div'),canvas=document.createElement('canvas');box.className='manual-page';box.style.width=w+'px';box.setAttribute('role','img');box.setAttribute('aria-label','Manual page '+n);canvas.width=Math.ceil(view.width);canvas.height=Math.ceil(view.height);box.append(canvas);const job=pdfPage.render({canvasContext:canvas.getContext('2d',{alpha:false}),viewport:view});activeJobs.push(job);await job.promise;return box}));if(task!==renderEpoch)return;book.replaceChildren(...boxes.filter(Boolean));if(overlay){book.append(overlay);overlay.addEventListener('animationend',()=>overlay.remove(),{once:true});setTimeout(()=>overlay.remove(),800)}if(direction){scroll.scrollTop=0;scroll.scrollLeft=0;rustle(direction)}say('');updateTranscript();}catch(e){if(task===renderEpoch){console.warn('Page render:',e);say('This page could not be rendered. Open the searchable PDF instead.')}}finally{if(task===renderEpoch){busy=false;controls()}}}
-function go(n,dir=0){if(!doc||busy)return;const target=align(n);if(target===page)return;stopReading();if(sound&&audio?.state==='suspended')audio.resume().catch(()=>{});const direction=dir||Math.sign(target-page);page=target;paint(direction)}
+function go(n,dir=0){if(!doc||busy)return;const target=align(n);if(target===page)return;stopReading();unlockPaperAudio();const direction=dir||Math.sign(target-page);page=target;paint(direction)}
 function step(dir){if(!doc||busy)return;const spread=two&&canSpread();let next=page+dir;if(spread){next=dir>0?(page===1?2:page+2):(page<=2?1:page-2)}go(next,dir)}
 for(const id of ['prev','prev-bottom'])$(id).onclick=()=>step(-1);for(const id of ['next','next-bottom'])$(id).onclick=()=>step(1);
 function jump(){go(Number($('number').value));closeTools(true)}$('go').onclick=jump;$('number').onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();jump()}};
