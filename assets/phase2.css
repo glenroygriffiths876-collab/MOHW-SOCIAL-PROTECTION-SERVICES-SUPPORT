@@ -102,3 +102,56 @@ html:not(.p2-contrast) :is(.gia2-launcher,.guide-action.share,.guide-action-dock
 @media(max-width:700px){.p2-home-hero .hero-grid{grid-template-columns:1fr}.p2-home-hero .hero-art.home-hero-image{aspect-ratio:2.05!important;max-width:none!important;margin:0 auto!important}.p2-tile{min-height:166px;padding:13px 12px 30px}.p2-tile strong{font-size:17px}.p2-tile small{font-size:15px}}
 @media(max-width:350px){.p2-start-grid{gap:8px}.p2-tile{padding:10px 9px 30px}.p2-tile strong{overflow-wrap:anywhere}}
 html.p2-contrast .p2-tile{background:#fff!important;color:#07386a!important;border:2px solid #111!important}
+
+/* Revision 23: bounded original geometric identity; white functional surfaces. */
+html:not(.p2-contrast) .site-header{background:#182453 url('./geometry-bg.svg?v=navy-geometry-2') center 22%/cover no-repeat!important;color:#fff!important}
+html:not(.p2-contrast) .site-header .brand-copy b,html:not(.p2-contrast) .site-header .brand-copy small,html:not(.p2-contrast) .site-header .p2-release{color:#fff!important}
+html:not(.p2-contrast) .site-header .brand-copy{background:#182453ed;padding:9px 14px;border-radius:10px}
+html:not(.p2-contrast) .site-header #mainNav.nav button{background:#fff!important;color:#182453!important;border:0!important}
+html:not(.p2-contrast) .site-header #mainNav.nav button.active{background:#08d9eb!important;color:#092f47!important}
+html:not(.p2-contrast) .site-header #mainNav.nav button.find:not(.active){background:#fff2c7!important;color:#503609!important}
+html:not(.p2-contrast) .site-header .p2-access-trigger{background:#fff!important;color:#185c58!important;border:0}
+html:not(.p2-contrast) #main .view :is(.hero,.referral-hero,.illustrated-page-hero){background:#182453 url('./geometry-bg.svg?v=navy-geometry-2') center 35%/cover no-repeat!important;color:#fff!important;padding:24px 0!important}
+html:not(.p2-contrast) #main .view :is(.hero-copybox,.referral-hero-copy,.illustrated-hero-copy){background:#172453f2!important;border-radius:14px!important;padding:18px 20px!important}
+html:not(.p2-contrast) #main .view :is(.hero-copybox,.referral-hero-copy,.illustrated-hero-copy) :is(h1,p,.eyebrow,.referral-kicker,.p2-kicker){color:#fff!important}
+html:not(.p2-contrast) #main .view :is(.hero-copybox,.referral-hero-copy,.illustrated-hero-copy) h1 :is(span,em){color:#ffdd70!important;-webkit-text-fill-color:#ffdd70!important}
+#main .p2-home-hero .hero-grid,#main .referral-hero-grid,#main .illustrated-hero-grid{grid-template-columns:minmax(0,1.5fr) minmax(160px,.65fr);gap:20px}
+#main .view :is(.hero,.referral-hero,.illustrated-page-hero) h1{font-size:clamp(32px,4vw,52px)!important;line-height:1.12!important;letter-spacing:-.035em!important;margin:7px 0!important}
+#main .view :is(.hero,.referral-hero,.illustrated-page-hero) p{font-size:17px!important;margin:5px 0 0;line-height:1.45}
+#main .view :is(.hero-art.home-hero-image,.referral-hero-art,.illustrated-hero-visual){height:auto!important;min-height:0!important;max-height:210px!important;aspect-ratio:1.7!important;max-width:340px!important;margin:0 0 0 auto!important;padding:0!important;border-radius:12px!important;border:0!important;box-shadow:none!important;background:none!important;overflow:hidden!important}
+#main .view :is(.referral-hero-art,.illustrated-hero-visual) img{width:100%!important;height:100%!important;object-fit:cover!important;display:block!important;position:static!important;transform:none!important;border-radius:0!important}
+#main .view :is(.referral-hero-art,.illustrated-hero-visual) figcaption{display:none!important}
+#main .p2-start{padding-top:24px}
+.p3-about{margin:22px auto 26px}.p3-about h2{font-size:27px;color:#172b46;margin:0 0 12px}.p3-about-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.p3-note{position:relative;overflow:hidden;border:1px solid #dbe6ec;border-radius:14px;background:#f4f8fa;padding:16px;color:#21384c}
+.p3-note h3{font-size:19px;margin:0 0 5px}.p3-note p{margin:0;font-size:16px;line-height:1.5}
+html:not(.p2-contrast) .p3-note,html:not(.p2-contrast) .p2-welcome article{background-image:linear-gradient(110deg,#f4f8fa 72%,#f4f8faf5 83%,#f4f8fae0 100%),url('./geometry-bg.svg?v=navy-geometry-2');background-position:center,right top;background-size:auto,220px;background-repeat:no-repeat}
+html:not(.p2-contrast) .p2-tile{background-image:linear-gradient(135deg,transparent 55%,#ffffff65 56%,#ffffff65 72%,transparent 73%)}
+.p3-link{font:700 16px/1.4 system-ui,sans-serif;min-height:44px;background:#fff;border:1px solid #b7d4d0;color:#185c58;padding:8px 13px;border-radius:9px;cursor:pointer;text-align:left}
+.p3-about .p3-link{margin-top:12px}.p3-tail{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin:18px auto}.p3-tail h2{margin:0 0 5px;font-size:22px}
+.p3-urgent{margin:20px auto;border:1px solid #e1b9b5;border-left:5px solid #a7403d;border-radius:11px;background:#fff5f2;color:#712b29;padding:12px 16px}.p3-urgent h2{font-size:20px;margin:0 0 4px}.p3-urgent p{font-size:16px;margin:0;line-height:1.5}
+html:not(.p2-contrast) #main .referral-journey{background:#eef5f8!important;color:#18334f!important;padding:24px 0!important}
+html:not(.p2-contrast) #main .referral-journey .journey-intro :is(h2,p,.referral-overline){color:#18334f!important}
+#main .referral-journey .journey-intro{margin-bottom:12px}.journey-orbit{display:none!important}
+html:not(.p2-contrast) #main .referral-journey .journey-progress-copy{color:#354e65!important}
+html:not(.p2-contrast) #main .referral-journey .journey-progress-track{background:#cbdce5!important}
+html:not(.p2-contrast) #main .referral-journey .journey-step-tab{background:#fff!important;color:#233e56!important;border:1px solid #cbdce5!important;box-shadow:none!important}
+html:not(.p2-contrast) #main .referral-journey .journey-step-tab :is(span,b){color:#233e56!important}
+html:not(.p2-contrast) #main .referral-journey .journey-step-tab.is-current{background:#d7ece9!important;border-color:#176c67!important}
+html:not(.p2-contrast) #main .referral-journey .journey-control{background:#fff!important;color:#185c58!important;border:1px solid #b7d4d0!important}
+html:not(.p2-contrast) #main .referral-journey .journey-feature-card{background:white!important;box-shadow:none!important;border:1px solid #d6e3e8!important;color:#18334f!important}
+html:not(.p2-contrast) #main .referral-journey .journey-feature-card :is(h3,p){color:#18334f!important}
+.p3-step-detail{margin-top:12px;border-top:1px solid #d6e3e8;padding-top:8px}.p3-step-detail summary{color:#185c58;font-weight:700;cursor:pointer;min-height:36px}
+#main .service-layout{grid-template-columns:minmax(0,1fr)!important}.p3-directory-actions{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 16px}.p3-directory-actions button{flex:0 1 auto}
+#main .decision-finder{box-shadow:none!important;border-radius:14px;padding:clamp(13px,2.5vw,24px)}
+#main .decision-results-heading:empty,#main .decision-grid:empty{display:none}
+html:not(.p2-contrast) #main .manual-intro{background:#182453 url('./geometry-bg.svg?v=navy-geometry-2') center/cover no-repeat!important;color:#fff!important;padding:16px 20px!important;border-radius:14px;margin-top:18px!important}
+html:not(.p2-contrast) #main .manual-intro>div{background:#172453f2;padding:12px 15px;border-radius:10px}
+html:not(.p2-contrast) #main .manual-intro :is(h1,p,.eyebrow){color:#fff!important}
+html:not(.p2-contrast) #main .manual-intro h1 span{color:#ffdd70!important}
+#main .manual-intro img{max-height:130px!important;width:auto!important;object-fit:cover!important;border-radius:10px}
+.p3-audio-label{font-weight:750;color:#18334f;flex-basis:100%}.p3-manual-options{flex-basis:100%;color:#185c58}.p3-manual-options summary{cursor:pointer;min-height:32px;font-weight:650}.p3-manual-options[open] .p2-actions{margin-top:6px}
+html:not(.p2-contrast) .gia2-dialog .gia2-header{background:#182453 url('./geometry-bg.svg?v=navy-geometry-2') center/cover no-repeat!important}
+html:not(.p2-contrast) .gia2-dialog .gia2-heading{background:#172453ed;border-radius:8px;padding:4px 8px}
+@media(max-width:700px){#main .p2-home-hero .hero-grid,#main .referral-hero-grid,#main .illustrated-hero-grid{grid-template-columns:minmax(0,1fr) minmax(80px,.36fr)!important;gap:9px!important}#main .view :is(.hero-copybox,.referral-hero-copy,.illustrated-hero-copy){padding:12px!important}#main .view :is(.hero,.referral-hero,.illustrated-page-hero) h1{font-size:clamp(25px,6.5vw,38px)!important}#main .view :is(.hero,.referral-hero,.illustrated-page-hero) p{font-size:16px!important}#main .view :is(.hero-art.home-hero-image,.referral-hero-art,.illustrated-hero-visual){aspect-ratio:1!important;max-height:none!important}#main .p2-start{padding-top:18px}.p3-about-grid{grid-template-columns:1fr}.p3-tail{align-items:flex-start}#main .manual-intro img{max-width:28%;height:95px!important}#main .manual-intro{padding:10px!important}.p3-directory-actions button{flex:1 1 95px}.p3-note,.p3-urgent{padding:12px}}
+html.p2-contrast .p3-note,html.p2-contrast .p3-urgent{background:#fff!important;color:#111!important}
