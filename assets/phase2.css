@@ -243,3 +243,35 @@ html:not(.p2-contrast) #main .view :is(.hero-copybox,.referral-hero-copy,.illust
 /* Honour the existing user-selected text sizes in the more specific hero rules. */
 html.p2-large #main .view :is(.hero,.referral-hero,.illustrated-page-hero) p{font-size:20px!important}
 html.p2-xlarge #main .view :is(.hero,.referral-hero,.illustrated-page-hero) p{font-size:23px!important}
+
+/* Revision 26: responsive containment in the directories, dialogs and tools.
+   Keep legitimate scrolling within its own pane, not across the whole page. */
+#main :is(.page-content,.service-layout,.map-card,.map-heading,.map-mode,.map-toolbar,.decision-finder,.decision-controls,.service-results,.programme-grid,.category-grid,.contact-grid,.document-grid,.decision-grid){min-width:0;max-width:100%}
+#main :is(.service-results,.programme-grid,.category-grid,.contact-grid,.document-grid,.decision-grid)>*{min-width:0;overflow-wrap:anywhere}
+#main :is(.searchbox-light,.searchbox){min-width:0;max-width:100%}
+#main :is(.searchbox-light,.searchbox) input{min-width:0;max-width:100%;width:100%}
+#main :is(.service-card-actions,.profile-actions,.map-mode,.p3-directory-actions,.journey-controls){flex-wrap:wrap;min-width:0}
+#main :is(.service-card-actions,.profile-actions,.map-mode,.p3-directory-actions,.journey-controls)>*{min-width:0;max-width:100%;white-space:normal;overflow-wrap:anywhere}
+:is(#serviceModal,#programmeModal)[open]{box-sizing:border-box;max-width:calc(100% - 16px);max-height:calc(100dvh - 16px);display:flex;flex-direction:column;overflow:hidden}
+:is(#serviceModal,#programmeModal) .modal-head{flex:none;min-width:0;overflow-wrap:anywhere}
+:is(#serviceModal,#programmeModal) .modal-body{flex:1 1 auto;min-height:0;max-height:none!important;overflow:auto;overscroll-behavior:contain;overflow-wrap:anywhere}
+:is(.p2-dialog,.guide-message-dialog,.guide-share-dialog){box-sizing:border-box;max-width:calc(100% - 16px);max-height:calc(100dvh - 16px);overflow-y:auto;overflow-wrap:anywhere}
+.gia2-dialog :is(.gia2-content,.gia2-context,.gia2-footer){min-width:0;overflow-wrap:anywhere}
+.gia2-dialog .gia2-content{min-height:0;overflow:auto}
+.gia2-dialog :is(input,select,textarea){max-width:100%;min-width:0}
+@media(max-width:600px){
+ #main :is(.map-heading,.directory-title){flex-wrap:wrap;gap:8px}
+ #main .map-mode{width:100%}
+ #main .map-mode .chip{flex:1 1 120px}
+ #main .decision-controls{flex-wrap:wrap;margin-top:12px}
+ #main .decision-controls .searchbox-light{flex:1 1 160px}
+ #main .decision-controls .decision-reset{flex:0 1 auto}
+ #main :is(.service-results,.programme-grid,.category-grid,.contact-grid,.document-grid,.decision-grid){grid-template-columns:minmax(0,1fr)}
+ #main .journey-controls button{flex:1 1 120px}
+}
+@media(max-height:520px){
+ .gia2-dialog[open]{height:100dvh!important;max-height:100dvh!important}
+ .gia2-dialog .gia2-header{min-height:0!important;padding:7px 10px}
+ .gia2-dialog .gia2-context{padding:5px 9px;gap:5px}
+ .gia2-dialog .gia2-footer{padding:5px 9px;min-height:0}
+}
