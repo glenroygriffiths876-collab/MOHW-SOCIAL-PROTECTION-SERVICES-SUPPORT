@@ -1,0 +1,323 @@
+/* MOHW Social Support | premium UI correction 2026-11-20
+   LAST stylesheet: resolves old mobile overrides, never alters official data.
+   Keeps the exact 1448x1086 desktop artwork and original Gia MP4 intact. */
+:root{--polish-navy:#041e39;--polish-cyan:#0b5366;--polish-gold:#f8cf61;--polish-teal:#059a72;--polish-shadow:0 18px 43px rgba(1,40,57,.2)}
+/* One set of genuine controls on every page: hide the redundant screenshot-only dock.
+   The native dock owns sharing/reporting/message/manual actions and keyboard focus. */
+#exact-mobile-utilities{display:none!important}
+html.exact-home-visible body #guideActionDock.guide-action-dock{display:grid!important}
+@media(min-width:900px){html.exact-home-visible body #guideActionDock.guide-action-dock{display:none!important}}
+/* Narrow screens: 6 consistent, equally sized buttons, exactly 3 x 2.
+   All legacy width, grid span, last-child and yellow Services rules are neutralised. */
+@media(max-width:899px){
+ html:not(.p2-contrast) body .site-header{
+  background:radial-gradient(ellipse at 85% 5%,#156c7870,transparent 50%),linear-gradient(118deg,#061e38,#083c51 80%,#082c44)!important;
+  border-bottom:4px solid transparent!important;
+  border-image:linear-gradient(90deg,#14d4c7,#f8ca48,#f1288e,#119d75,#7449df) 1!important;
+  box-shadow:0 12px 24px #03233d52!important;
+ }
+ html:not(.p2-contrast) body .site-header .navbar.wrap{
+  display:flex!important;flex-flow:column nowrap!important;gap:10px!important;
+  align-items:stretch!important;width:calc(100% - 18px)!important;
+  max-width:900px!important;padding:13px 0 12px!important;min-height:0!important;
+ }
+ html:not(.p2-contrast) body .site-header .brand{
+  flex:0 0 auto!important;display:flex!important;flex-direction:row!important;
+  align-items:center!important;justify-content:center!important;gap:13px!important;
+  min-width:0!important;max-width:100%!important;margin:0 auto!important;
+  text-align:left!important;
+ }
+ html:not(.p2-contrast) body .site-header .brand-mark{
+  width:76px!important;height:69px!important;min-width:76px!important;flex:0 0 76px!important;
+  padding:3px!important;border:1px solid #ffffff94!important;border-radius:17px!important;
+  background:#fff!important;box-shadow:0 8px 21px #0006!important;
+ }
+ html:not(.p2-contrast) body .site-header .brand-mark img{width:100%!important;height:100%!important;object-fit:contain!important;padding:2px!important}
+ html:not(.p2-contrast) body .site-header .brand-copy{
+  flex:0 1 auto!important;min-width:0!important;max-width:255px!important;text-align:left!important;
+  background:transparent!important;padding:0!important;box-shadow:none!important;
+ }
+ html:not(.p2-contrast) body .site-header .brand-copy b{
+  display:block;font:850 clamp(20px,5.7vw,26px)/1.05 system-ui!important;
+  letter-spacing:-.045em;color:#fff!important;
+ }
+ html:not(.p2-contrast) body .site-header .brand-copy small{
+  display:block;font:600 clamp(11px,2.8vw,13px)/1.24 system-ui!important;
+  color:#d9f2eb!important;margin-top:4px!important;
+ }
+ html:not(.p2-contrast) body .site-header .p2-release{
+  display:block;font:650 11px/1.2 system-ui!important;color:#ffe5a1!important;margin-top:5px!important
+ }
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav,
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav.open{
+  display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  grid-template-rows:repeat(2,minmax(57px,auto))!important;grid-auto-flow:row!important;
+  column-gap:9px!important;row-gap:9px!important;
+  align-items:stretch!important;justify-items:stretch!important;
+  width:100%!important;max-width:none!important;min-width:0!important;
+  margin:0!important;padding:11px!important;
+  border-radius:24px!important;border:1px solid #4c87987c!important;
+  background:linear-gradient(148deg,#071e37 0%,#03283f 100%)!important;
+  box-shadow:inset 0 2px 1px #c6ffff31,0 11px 26px #001c3948!important;
+ }
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav > button,
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav > button:last-child,
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav > button.find:not(.active){
+  box-sizing:border-box!important;grid-column:auto!important;grid-row:auto!important;
+  grid-area:auto!important;place-self:stretch!important;
+  width:100%!important;max-width:100%!important;min-width:0!important;
+  min-height:57px!important;height:auto!important;flex:none!important;margin:0!important;
+  display:flex!important;flex-direction:row!important;align-items:center!important;
+  justify-content:center!important;gap:6px!important;
+  border-radius:16px!important;border:1px solid #64abb66d!important;
+  background:linear-gradient(135deg,#0a4c64,#06334e)!important;
+  box-shadow:inset 0 1px #f7ffff35,0 4px 10px #0002!important;
+  color:#fff!important;-webkit-text-fill-color:#fff!important;
+  padding:7px 4px!important;white-space:normal!important;
+  text-align:center!important;word-break:normal!important;
+  font:760 clamp(10px,2.85vw,13px)/1.13 system-ui!important;letter-spacing:-.02em!important;
+  text-shadow:0 1px 4px #001e3eaa!important;
+ }
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav > button:not(.active):hover,
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav > button.find:not(.active):hover{
+  background:linear-gradient(135deg,#0c6880,#07516a)!important;color:#fff!important;
+ }
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav > button.active{
+  background:linear-gradient(135deg,#03a77c,#006a53)!important;
+  border-color:#78e1c0!important;box-shadow:inset 0 1px #ffffff78,0 0 16px #0db78b5c!important;
+ }
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav > button.find:not(.active){
+  background:linear-gradient(135deg,#0a4c64,#06334e)!important;color:#fff!important
+ }
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav .premium-nav-original{display:none!important}
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav .premium-nav-short{
+  display:block!important;flex:0 1 auto!important;min-width:0!important;
+  white-space:normal!important;color:#fff!important;-webkit-text-fill-color:#fff!important;
+  font:750 clamp(10px,2.85vw,13px)/1.12 system-ui!important;
+ }
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav .premium-nav-icon{
+  display:grid!important;place-items:center!important;flex:0 0 19px!important;
+  width:19px!important;min-width:19px!important;color:#fbd36e!important;
+ }
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav .premium-nav-icon svg{
+  display:block!important;width:19px!important;height:19px!important;stroke:#fbd36e!important;
+ }
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav > button.premium-mobile-access{display:flex!important}
+ html:not(.p2-contrast) body .site-header .p2-access-trigger{display:none!important}
+ /* Same premium header already in the illustrated welcome view. */
+ html:not(.p2-contrast) #exact-mobile .em-navigation{
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  grid-template-rows:repeat(2,minmax(56px,auto))!important;
+  gap:8px!important;padding:11px!important;
+ }
+ html:not(.p2-contrast) #exact-mobile .em-nav-button{
+  min-width:0!important;width:100%!important;min-height:56px!important;
+  grid-column:auto!important;grid-row:auto!important;grid-area:auto!important;
+  font-size:clamp(10px,2.85vw,13px)!important;gap:6px!important;
+ }
+ html:not(.p2-contrast) #exact-mobile .em-nav-button .em-nav-label{font-size:inherit!important;color:#fff!important}
+ html:not(.p2-contrast) #exact-mobile .em-nav-button .em-nav-symbol svg{width:19px;height:19px}
+}
+/* Single four-action dock, consistent across the illustrated homepage AND all other
+   pages. No labels or backgrounds covering text; GIA remains bottom-right. */
+@media(max-width:899px){
+ html:not(.p2-contrast) body #guideActionDock.guide-action-dock,
+ html.exact-home-visible body #guideActionDock.guide-action-dock{
+  position:fixed!important;z-index:1140!important;
+  display:grid!important;grid-template-columns:repeat(2,48px)!important;
+  grid-template-rows:repeat(2,48px)!important;grid-auto-flow:row!important;
+  place-items:center!important;justify-content:center!important;
+  gap:9px!important;box-sizing:content-box!important;
+  width:105px!important;min-width:105px!important;max-width:105px!important;
+  height:105px!important;min-height:105px!important;max-height:105px!important;
+  left:auto!important;right:max(9px,env(safe-area-inset-right))!important;
+  top:auto!important;bottom:calc(98px + env(safe-area-inset-bottom))!important;
+  margin:0!important;padding:0!important;
+  transform:none!important;translate:none!important;
+  background:transparent!important;border:0!important;border-radius:0!important;
+  box-shadow:none!important;backdrop-filter:none!important;
+ }
+ html:not(.p2-contrast) body #guideActionDock.guide-action-dock .guide-action{
+  position:relative!important;display:grid!important;place-items:center!important;
+  flex:none!important;grid-column:auto!important;grid-row:auto!important;
+  width:48px!important;height:48px!important;
+  min-width:48px!important;min-height:48px!important;
+  max-width:48px!important;max-height:48px!important;
+  margin:0!important;padding:0!important;border:3px solid #fffc!important;
+  border-radius:50%!important;overflow:visible!important;
+  box-sizing:border-box!important;
+  box-shadow:inset 0 2px 6px #ffffff4a,0 6px 16px #072d5480!important;
+  background:radial-gradient(circle at 26% 18%,#21d9de,#0598af 65%,#086c8d)!important;
+  color:#fff!important;
+ }
+ html:not(.p2-contrast) body #guideActionDock .guide-action.issue{
+  background:radial-gradient(circle at 26% 18%,#ff83b5,#f02b83 66%,#a41662)!important;
+ }
+ html:not(.p2-contrast) body #guideActionDock .guide-action.feedback{
+  background:radial-gradient(circle at 26% 18%,#b49cff,#875bdd 65%,#5c35b0)!important;
+ }
+ html:not(.p2-contrast) body #guideActionDock .guide-action.download{
+  background:radial-gradient(circle at 26% 18%,#ffec8d,#ffd237 66%,#e7a007)!important;
+  color:#221c36!important;
+ }
+ html:not(.p2-contrast) body #guideActionDock .guide-action svg{
+  width:26px!important;height:26px!important;min-width:0!important;min-height:0!important;
+  max-width:none!important;max-height:none!important;
+  color:inherit!important;stroke:currentColor!important;
+ }
+ html:not(.p2-contrast) body #guideActionDock .guide-action:focus-visible{
+  outline:3px solid #ffdb72!important;outline-offset:3px!important;
+ }
+ html:not(.p2-contrast) body #guideActionDock .guide-action>span{
+  position:absolute!important;width:1px!important;height:1px!important;
+  overflow:hidden!important;clip:rect(0,0,0,0)!important;
+  padding:0!important;margin:-1px!important;white-space:nowrap!important;
+  opacity:0!important;pointer-events:none!important;
+ }
+ html:not(.p2-contrast) body #gia2Launcher.gia2-launcher{
+  position:fixed!important;right:max(12px,env(safe-area-inset-right))!important;
+  bottom:max(14px,env(safe-area-inset-bottom))!important;
+  z-index:1160!important;
+  box-shadow:0 9px 26px #06274394,0 0 0 3px #f6de79aa!important;
+ }
+ /* Ensure referral and guidance headings remain clear of fixed actions on
+    first appearance; the dock sits below the headline rather than over it. */
+ html:not(.p2-contrast) #view-referrals .referral-hero-copy{
+  padding-bottom:18px!important;
+ }
+ html:not(.p2-contrast) #view-referrals .referral-hero h1,
+ html:not(.p2-contrast) #view-decision .illustrated-page-hero h1,
+ html:not(.p2-contrast) #view-services .illustrated-page-hero h1{
+  font-size:clamp(30px,8vw,43px)!important;line-height:1.08!important;letter-spacing:-.045em!important;
+ }
+ /* Keep the full-width documents, maps and referrals readable on phone. */
+ #main .view{max-width:100%!important;overflow-x:clip!important}
+}
+@media(max-width:390px){
+ html:not(.p2-contrast) body #guideActionDock.guide-action-dock,
+ html.exact-home-visible body #guideActionDock.guide-action-dock{
+  grid-template-columns:repeat(2,44px)!important;grid-template-rows:repeat(2,44px)!important;
+  width:96px!important;min-width:96px!important;max-width:96px!important;
+  height:96px!important;min-height:96px!important;max-height:96px!important;
+  gap:8px!important;
+ }
+ html:not(.p2-contrast) body #guideActionDock.guide-action-dock .guide-action{
+  width:44px!important;min-width:44px!important;max-width:44px!important;
+  height:44px!important;min-height:44px!important;max-height:44px!important;
+ }
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav > button,
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav > button:last-child{
+  gap:4px!important;padding:6px 2px!important;
+ }
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav .premium-nav-icon{flex-basis:18px!important;width:18px!important;min-width:18px!important}
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav .premium-nav-icon svg{width:18px!important;height:18px!important}
+}
+/* Native desktop pages: premium 3-D navigation and publication-inspired hero.
+   Desktop homepage uses original video/image overlay and remains unchanged. */
+@media(min-width:900px){
+ html:not(.p2-contrast):not(.exact-home-visible) body .site-header{
+  background:radial-gradient(ellipse at 85% 2%,#12697788,transparent 45%),linear-gradient(112deg,#051d38,#073b50 65%,#052439)!important;
+  box-shadow:0 18px 35px #04243b36!important;border-bottom:3px solid #48c8b877!important;
+ }
+ html:not(.p2-contrast) body .site-header .navbar.wrap{
+  width:min(1450px,calc(100% - 56px))!important;min-height:0!important;
+  padding:15px 0 17px!important;gap:13px!important;
+ }
+ html:not(.p2-contrast) body .site-header .brand{
+  display:flex!important;align-items:center!important;gap:20px!important;
+  min-width:0!important;
+ }
+ html:not(.p2-contrast) body .site-header .brand-mark{
+  width:92px!important;height:76px!important;flex:0 0 92px!important;
+  padding:4px!important;border:1px solid #fff8!important;border-radius:18px!important;
+  background:#fff!important;box-shadow:0 9px 28px #001c2c69!important;
+ }
+ html:not(.p2-contrast) body .site-header .brand-copy{
+  background:transparent!important;padding:0!important;box-shadow:none!important;
+ }
+ html:not(.p2-contrast) body .site-header .brand-copy b{
+  color:white!important;font-size:clamp(25px,2.3vw,37px)!important;letter-spacing:-.045em!important;
+ }
+ html:not(.p2-contrast) body .site-header .brand-copy small{font-size:15px!important;color:#d6f3ed!important}
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav{
+  width:100%!important;min-width:0!important;
+  display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;
+  align-items:stretch!important;gap:9px!important;
+  padding:10px!important;border-radius:23px!important;
+  background:linear-gradient(145deg,#061b37,#052f4b)!important;
+  border:1px solid #4b94aa5d!important;
+  box-shadow:inset 0 2px #f3ffff2a,0 12px 24px #041f2e49!important;
+ }
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav > button{
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  gap:9px!important;min-width:0!important;min-height:61px!important;
+  grid-column:auto!important;grid-row:auto!important;
+  border:1px solid #4e9baf73!important;border-radius:17px!important;
+  background:linear-gradient(140deg,#0a4d67,#063249)!important;
+  color:#fff!important;-webkit-text-fill-color:#fff!important;
+  box-shadow:inset 0 1px #ffffff35,0 6px 11px #001c2a3a!important;
+  font:750 clamp(13px,1.05vw,16px)/1.1 system-ui!important;
+  transition:transform .2s,box-shadow .2s!important;
+  padding:8px!important;
+ }
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav > button.active{
+  background:linear-gradient(145deg,#039e78,#005d48)!important;
+  border-color:#77e7c3!important;
+  box-shadow:inset 0 1px #ffffff61,0 0 16px #1ac8a359!important;
+ }
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav > button:hover{
+  transform:translateY(-2px);box-shadow:0 10px 22px #001c2e80!important;
+ }
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav .premium-nav-original{display:none!important}
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav .premium-nav-short{
+  display:inline!important;min-width:0!important;color:#fff!important;
+  font:750 clamp(13px,1.05vw,16px)/1.1 system-ui!important;
+ }
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav .premium-nav-icon{
+  display:grid!important;place-items:center!important;color:#ffdb76!important;
+  width:23px!important;min-width:23px!important;flex:0 0 23px!important;
+ }
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav .premium-nav-icon svg{
+  display:block!important;width:23px!important;height:23px!important;stroke:#ffdb76!important;
+ }
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav .premium-mobile-access{display:flex!important}
+ html:not(.p2-contrast) body .site-header .p2-access-trigger{display:none!important}
+ html:not(.p2-contrast) #main .view :is(.hero,.referral-hero,.illustrated-page-hero){
+  background:radial-gradient(ellipse at 88% 12%,#0f82677a,transparent 45%),linear-gradient(116deg,#061f3d,#0b3a50 68%,#075b53)!important;
+  padding:39px 0!important;
+  border-bottom:2px solid #21bb9d6e!important;
+  box-shadow:inset 0 -26px 37px #001e3445!important;
+ }
+ html:not(.p2-contrast) #main .view :is(.referral-hero h1,.illustrated-page-hero h1){
+  font-size:clamp(43px,4.35vw,69px)!important;letter-spacing:-.055em!important;
+  line-height:1.05!important;text-wrap:balance;
+  color:#fafffd!important;
+ }
+ html:not(.p2-contrast) #main .view :is(.hero-copybox,.referral-hero-copy,.illustrated-hero-copy)>p{
+  color:#e1f4ed!important;font-size:clamp(17px,1.35vw,21px)!important;
+  line-height:1.55!important;
+ }
+ html:not(.p2-contrast) #main .view :is(.hero-art,.referral-hero-art,.illustrated-hero-visual){
+  border:4px solid #fff9!important;border-radius:26px!important;
+  box-shadow:0 28px 65px #001a2f9c,0 0 0 1px #62e9be5d!important;
+  overflow:hidden!important;
+ }
+ html:not(.p2-contrast) #main .view :is(.programme-card,.category-card,.contact-card,.service-card,.decision-situation-card,.decision-route-card,.journey-feature-card){
+  background:linear-gradient(160deg,#fff 18%,#eff9f5)!important;
+  border:1px solid #c9e6dc!important;border-radius:23px!important;
+  box-shadow:0 15px 35px #153b4723,inset 0 1px #fff!important;
+ }
+ html:not(.p2-contrast) #main .view :is(.programme-card,.category-card,.contact-card,.service-card,.decision-situation-card,.decision-route-card):hover{
+  transform:translateY(-3px);box-shadow:0 23px 45px #153b4735!important;
+ }
+ html:not(.p2-contrast) #main .view :is(.journey-step-tab,.manual-primary,.btn.primary):focus-visible{
+  outline:3px solid #f5c45a!important;outline-offset:3px!important;
+ }
+ html:not(.p2-contrast) #main .view .page-content{
+  background:radial-gradient(ellipse at 10% 0%,#d8f6e971,transparent 44%),#f6faf9!important;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ html:not(.p2-contrast) body .site-header nav#mainNav.nav > button{transition:none!important}
+ html:not(.p2-contrast) #main .view :is(.programme-card,.category-card,.contact-card,.service-card){transition:none!important}
+}
