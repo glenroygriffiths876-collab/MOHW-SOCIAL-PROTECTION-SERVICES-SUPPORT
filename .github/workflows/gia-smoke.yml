@@ -7,6 +7,8 @@ on:
       - 'assets/phase2*'
       - 'assets/premium-2026.css'
       - 'assets/premium-experience.js'
+      - 'assets/exact-home.css'
+      - 'assets/exact-home.js'
       - 'assets/manual-reader.js'
       - 'assets/guide-tools.js'
       - 'tests/phase2-smoke.js'
