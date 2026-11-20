@@ -141,6 +141,31 @@ async function run(){
    console.log('MOBILE',width,JSON.stringify({layout,home}));
    await page.close();
   }
+  // Shorter devices must still show all actions without clipped cards or scroll.
+  for(const size of [{width:360,height:640},{width:390,height:700}]){
+    const short=await browser.newPage({viewport:size,deviceScaleFactor:1,isMobile:true,hasTouch:true});
+    await short.goto(BASE,{waitUntil:'domcontentloaded'});
+    await short.waitForFunction(()=>!!document.querySelector('#mohw-mobile-image:not([hidden])'),null,{timeout:12000});
+    const fit=await short.evaluate(()=>{
+      const root=document.querySelector('#mohw-mobile-image');
+      const cards=[...root.querySelectorAll('.mv-card')];
+      const nav=[...root.querySelectorAll('.mv-navigation .mv-hotspot')];
+      return {
+        rootHeight:root.getBoundingClientRect().height,
+        visibleCards:cards.every(el=>el.getBoundingClientRect().bottom<=innerHeight+2),
+        visibleNav:nav.every(el=>el.getBoundingClientRect().top>=-2&&el.getBoundingClientRect().bottom<=innerHeight+2),
+        visibleFilm:root.querySelector('.mv-film-frame').getBoundingClientRect().bottom<=innerHeight+2,
+        htmlOverflow:getComputedStyle(document.documentElement).overflowY,
+        height:innerHeight
+      };
+    });
+    console.log('SHORT_PHONE',JSON.stringify(size),JSON.stringify(fit));
+    assert.equal(fit.visibleCards,true,'all cards visible on compact phone');
+    assert.equal(fit.visibleNav,true,'all navigation visible on compact phone');
+    assert.equal(fit.visibleFilm,true,'Gia video visible on compact phone');
+    assert.equal(fit.htmlOverflow,'hidden','compact home does not scroll');
+    await short.close();
+  }
   const page=await browser.newPage({viewport:{width:1440,height:900},deviceScaleFactor:1});
   await page.goto(BASE,{waitUntil:'domcontentloaded'});
   await page.waitForFunction(()=>document.querySelector('#mainNav')?.classList.contains('premium-nav-upgraded'));
