@@ -75,13 +75,13 @@ async function run(){
    assert.equal(home.cardCount,4,'four active image-backed cards');
    assert.equal(home.videoFirst,true,'Gia film should precede support headline');
    assert.notEqual(home.gia,'none');
-   assert.match(home.giaArtwork,/mobile-v3\\/gia\\.png/,'GIA artwork matches approved screenshot');
+   assert.equal(home.giaArtwork.includes('mobile-v3/gia.png'),true,'GIA artwork matches approved screenshot');
    assert.equal(home.overflow,false,'no horizontal overflow on home');
    if(width===390){
      await page.locator('#mohw-mobile-image .mv-play').click();
      await page.waitForFunction(()=>document.querySelector('#mohw-mobile-image .mv-film-frame')?.classList.contains('mv-playing'),null,{timeout:18000});
      const vid=await page.evaluate(()=>({time:document.querySelector('#mohw-mobile-image video').currentTime,src:document.querySelector('#mohw-mobile-image video').currentSrc}));
-     assert.match(vid.src,/gia-introduction\\.mp4/,'actual Gia MP4 must play');
+     assert.equal(vid.src.includes('gia-introduction.mp4'),true,'actual GIA MP4 must play');
      await page.screenshot({path:'/tmp/mobile-home-390.png',fullPage:true});
    }
    console.log('MOBILE',width,JSON.stringify({layout,home}));
