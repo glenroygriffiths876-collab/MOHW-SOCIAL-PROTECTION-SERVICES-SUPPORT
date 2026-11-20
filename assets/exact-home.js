@@ -254,17 +254,19 @@
     button.append(icon, el('span', '', label));
     utilities.append(button);
   });
-  mobile.append(utilities);
+  // The utility dock lives at body level so it stays fixed, even while the
+  // illustrated homepage scrolls. It is shown only on the mobile homepage.
+  utilities.id = 'exact-mobile-utilities';
+  utilities.hidden = true;
 
-  const gia = actionButton('Ask GIA virtual assistant', 'gia', '', 'em-gia-button');
-  const giaImg = el('img');
-  giaImg.src = 'assets/gia-avatar.jpg';
-  giaImg.alt = '';
-  gia.append(giaImg, el('span', 'em-gia-tooltip', 'Ask GIA'));
-  mobile.append(gia);
+  // Keep the original, full-featured #gia2Launcher floating bottom-right.
+  // No duplicate mini-avatar is created inside the illustrated mobile page.
   mobile.append(el('p', 'em-footer', 'MOHW Social Support · Jamaica'));
+  // GIA's introductory film is the FIRST feature directly under the MOHW banner.
+  mobile.insertBefore(meet, nav);
 
   view.prepend(desktop, mobile);
+  document.body.append(utilities);
   const allVideos = [[desktopFilm, desktopPlay, desktopFrame], [mobileFilm, mobilePlay, mobileFrame]];
   function playVideo(video, button, frame) {
     allVideos.forEach(([other]) => { if (other !== video) other.pause(); });
@@ -324,6 +326,7 @@
     const mode = !permitted ? '' : desktopQuery.matches ? 'desktop' : 'mobile';
     desktop.hidden = mode !== 'desktop';
     mobile.hidden = mode !== 'mobile';
+    utilities.hidden = !(mode === 'mobile' && homepageActive);
     view.classList.toggle('exact-home-enabled', !!mode);
     view.classList.toggle('exact-mode-desktop', mode === 'desktop');
     view.classList.toggle('exact-mode-mobile', mode === 'mobile');
