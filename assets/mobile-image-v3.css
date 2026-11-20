@@ -89,7 +89,7 @@
   min-height:0!important;
   height:auto!important;
  }
- html.mohw-mobile-image-active #view-about.exact-home-enabled > #mohw-mobile-image{
+ html.mohw-mobile-image-active #view-about.exact-home-enabled > #mohw-mobile-image:not(#exact-home):not(#exact-mobile){
   display:flex!important;
   flex-direction:column!important;
   box-sizing:border-box!important;
