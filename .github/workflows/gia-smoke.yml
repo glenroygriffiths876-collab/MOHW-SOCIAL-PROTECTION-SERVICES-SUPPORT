@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - 'assets/phase2*'
+      - 'assets/premium-2026.css'
+      - 'assets/premium-experience.js'
       - 'assets/manual-reader.js'
       - 'assets/guide-tools.js'
       - 'tests/phase2-smoke.js'
