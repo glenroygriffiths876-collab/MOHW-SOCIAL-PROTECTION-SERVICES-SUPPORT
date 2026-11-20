@@ -60,7 +60,7 @@ Review of changed files at this checkpoint: none of the original media assets we
 
 - The bundled original PDF is a 43-page document reconstructed in the browser from its unchanged `assets/manual/manifest.json` and `part-*.bin` files.
 - The separate manual redesign preview created during this session comes from the November 4, 2026 Version 8 Word document, which has a different rendered page count. It is **not** approved for replacement or claimed equivalent to the 43-page PDF.
-- The welcome player expects `assets/media/GIA_MOHW_Social_Support_QR_Fixed.mp4`. Its source MP4 binary is not yet present in GitHub. It must be copied to that exact path through an authenticated repository upload and tested for publicly accessible playback before merging.
+- The generated separate `assets/manual/premium-preview.pdf` is committed (44 pages: 1 cover + 43 original pages). The original source PDF chunks remain unchanged and downloadable. This design preview does **not** rewrite the content or replace original photographs.\n\nThe welcome player expects `assets/media/GIA_MOHW_Social_Support_QR_Fixed.mp4`. Its source MP4 binary is not yet present in GitHub. It must be copied to that exact path through an authenticated repository upload and tested for publicly accessible playback before merging.
 - No temporary signed Canva URL, personal Drive link or local ChatGPT sandbox link should be used as a permanent source.
 
 All functional and visual changes are preview-only pending tests and content sign-off.
