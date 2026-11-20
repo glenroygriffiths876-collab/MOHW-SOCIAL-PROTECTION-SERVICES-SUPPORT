@@ -60,10 +60,10 @@ for ix,pg in enumerate(source):
     # Framed edges add physical-book-like depth without obscuring source pages.
     dest.draw_line((17,h-35),(w-17,h-35),color=(.72,.85,.76),width=.9)
     dest.insert_text((22,h-19),'SOURCE PAGE '+str(ix+1)+' / '+str(source.page_count),fontsize=8,fontname='hebo',color=forest)
-    dest.insert_text((w-195,h-19),'VISUAL PREVIEW  •  NOT REVISED POLICY',fontsize=7,fontname='helv',color=ink)
+    dest.insert_text((w-195,h-19),'VISUAL PREVIEW  /  NOT REVISED POLICY',fontsize=7,fontname='helv',color=ink)
     if len(pg.get_text('text').strip())>40:
-        source_words=set(re.findall(r'\\w+',pg.get_text('text').lower()))
-        dest_words=set(re.findall(r'\\w+',dest.get_text('text').lower()))
+        source_words=set(re.findall(r'\w+',pg.get_text('text').lower()))
+        dest_words=set(re.findall(r'\w+',dest.get_text('text').lower()))
         # An unusually low overlap indicates a lost source page.
         overlap=len(source_words & dest_words)/max(1,len(source_words))
         assert overlap>.8, f'Content loss on page {ix+1}: {overlap:.2%}'
