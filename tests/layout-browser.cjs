@@ -70,7 +70,7 @@ async function run(){
    }));
    assert.equal(home.nativeDock,'grid','real four actions must remain floating');
    assert.equal(home.oldDock,'none','no duplicate guide dock');
-   assert.equal(home.visualVisible,'block','approved mobile design must show');
+   assert.equal(home.visualVisible,'flex','approved responsive mobile design must show');
    assert.equal(home.imageWidth,1024,'correct original mobile image must load');
    assert.equal(home.cardCount,4,'four active image-backed cards');
    assert.equal(home.videoFirst,true,'Gia film should precede support headline');
