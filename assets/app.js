@@ -1,7 +1,7 @@
 const PARISHES=[
  {name:'Hanover',short:'HAN',x:11.5,y:34},{name:'Westmoreland',short:'WML',x:13,y:55},{name:'St. James',short:'STJ',x:25.5,y:31},{name:'Trelawny',short:'TRE',x:37,y:29},{name:'St. Elizabeth',short:'STE',x:31,y:65},{name:'Manchester',short:'MAN',x:47,y:64},{name:'Clarendon',short:'CLA',x:58.5,y:63},{name:'St. Ann',short:'ANN',x:54,y:31},{name:'St. Catherine',short:'STC',x:68,y:55},{name:'St. Andrew',short:'STA',x:73,y:60},{name:'Kingston',short:'KIN',x:77,y:68},{name:'St. Mary',short:'STM',x:69,y:33},{name:'Portland',short:'POR',x:84,y:40},{name:'St. Thomas',short:'STT',x:87,y:64}
 ];
-const NAV=['about','referrals','decision','services','manual'];
+const NAV=['about','referrals','decision','services','manual','programmes','categories','contacts'];
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 let data=null, selectedParish='ALL', programFilter='all', categoryFilter='all', mapFilter='all', serviceCatalog=[];
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
