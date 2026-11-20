@@ -87,6 +87,55 @@
     if (field) { field.value = query; field.dispatchEvent(new Event('input', { bubbles: true })); field.focus(); }
   });
 
+  // The same approved six-option navy navigation is used in the home
+  // experience and on all the other mobile pages. Original native navigation
+  // handlers and the working accessibility trigger are retained.
+  const iconSvg = (contents) => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + contents + '</svg>';
+  const NAV_ICONS = {
+    house: iconSvg('<path d="m3 10 9-7 9 7v11h-7v-7h-4v7H3Z"/>'),
+    referrals: iconSvg('<path d="M5 19 19 5M9 5h10v10"/>'),
+    decision: iconSvg('<circle cx="12" cy="4" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 6v5M12 11 5 17M12 11l7 6"/>'),
+    services: iconSvg('<path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>'),
+    manual: iconSvg('<path d="M12 6C8 3 5 3 2 4v15c4-1 7 0 10 2 3-2 6-3 10-2V4c-3-1-6-1-10 2Zm0 0v15"/>'),
+    access: iconSvg('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="7.5" r="1"/><path d="M7.5 11.5h9M12 11.5v6M9.7 19l2.3-3 2.3 3"/>')
+  };
+  const ACTION_ICONS = {
+    share: iconSvg('<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="m8.3 10.7 7.4-4.3M8.3 13.3l7.4 4.3"/>'),
+    report: iconSvg('<path d="M5 22V3m0 1c5-3 8 3 14 0v11c-6 3-9-3-14 0"/>'),
+    message: iconSvg('<path d="M4 4h16v13H9l-5 4V4Z"/><path d="M8 9h8m-8 4h5"/>'),
+    download: iconSvg('<path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/>')
+  };
+  const nativeNav = $('#mainNav');
+  if (nativeNav && !nativeNav.classList.contains('premium-nav-upgraded')) {
+    const definitions = [
+      ['about', 'Home', 'house'],
+      ['referrals', 'Referrals', 'referrals'],
+      ['decision', 'Decision', 'decision'],
+      ['services', 'Services', 'services'],
+      ['manual', 'Manual', 'manual']
+    ];
+    for (const [id, label, symbol] of definitions) {
+      const button = nativeNav.querySelector('button[data-nav="' + id + '"]');
+      if (!button) continue;
+      // Preserve the existing text/arrow for desktop views.
+      const originalText = el('span', 'premium-nav-original');
+      while (button.firstChild) originalText.appendChild(button.firstChild);
+      const icon = el('span', 'premium-nav-icon');
+      icon.setAttribute('aria-hidden', 'true');
+      icon.innerHTML = NAV_ICONS[symbol];
+      button.append(icon, originalText, el('span', 'premium-nav-short', label));
+      button.setAttribute('aria-label', id === 'decision' ? 'Decision Guide' : id === 'services' ? 'Find Services' : id === 'manual' ? 'Digital Manual' : label);
+    }
+    const accessNav = actionButton('Accessibility & listening', 'access', '', 'premium-mobile-access');
+    accessNav.id = 'premium-mobile-access';
+    const icon = el('span', 'premium-nav-icon');
+    icon.setAttribute('aria-hidden', 'true');
+    icon.innerHTML = NAV_ICONS.access;
+    accessNav.append(icon, el('span', 'premium-nav-short', 'Accessibility'));
+    nativeNav.append(accessNav);
+    nativeNav.classList.add('premium-nav-upgraded');
+  }
+
   const desktop = el('div', 'exact-desktop');
   desktop.id = 'exact-home';
   desktop.setAttribute('role', 'region');
@@ -163,13 +212,14 @@
   const nav = el('nav', 'em-navigation');
   nav.setAttribute('aria-label', 'Homepage navigation');
   [
-    ['Home', 'nav', 'about', '⌂'], ['Referrals', 'nav', 'referrals', '↗'],
-    ['Decision', 'nav', 'decision', '✣'], ['Services', 'nav', 'services', '⌖'],
-    ['Manual', 'nav', 'manual', '▤'], ['Accessibility', 'access', '', '◉']
+    ['Home', 'nav', 'about', 'house'], ['Referrals', 'nav', 'referrals', 'referrals'],
+    ['Decision', 'nav', 'decision', 'decision'], ['Services', 'nav', 'services', 'services'],
+    ['Manual', 'nav', 'manual', 'manual'], ['Accessibility', 'access', '', 'access']
   ].forEach(([label, kind, id, symbol]) => {
     const button = actionButton(label, kind, id, 'em-nav-button');
-    const icon = el('span', 'em-nav-symbol', symbol);
+    const icon = el('span', 'em-nav-symbol');
     icon.setAttribute('aria-hidden', 'true');
+    icon.innerHTML = NAV_ICONS[symbol];
     button.append(icon, el('span', 'em-nav-label', label));
     nav.append(button);
   });
@@ -244,14 +294,14 @@
   const utilities = el('nav', 'em-utility');
   utilities.setAttribute('aria-label', 'Additional actions');
   [
-    ['Share', 'share', '', '⇧'], ['Report', 'report', '', '⚑'],
-    ['Message', 'message', '', '✉'], ['Download', 'nav', 'manual', '↓'],
-    ['Contact', 'contact', '', '☎']
+    ['Share', 'share', '', 'share'], ['Report', 'report', '', 'report'],
+    ['Message', 'message', '', 'message'], ['Download', 'nav', 'manual', 'download']
   ].forEach(([label, kind, id, symbol]) => {
     const button = actionButton(label, kind, id, 'em-util-button');
-    const icon = el('span', 'em-util-icon', symbol);
+    const icon = el('span', 'em-util-icon');
     icon.setAttribute('aria-hidden', 'true');
-    button.append(icon, el('span', '', label));
+    icon.innerHTML = ACTION_ICONS[symbol];
+    button.append(icon, el('span', 'em-util-caption', label));
     utilities.append(button);
   });
   // The utility dock lives at body level so it stays fixed, even while the
@@ -261,7 +311,11 @@
 
   // Keep the original, full-featured #gia2Launcher floating bottom-right.
   // No duplicate mini-avatar is created inside the illustrated mobile page.
-  mobile.append(el('p', 'em-footer', 'MOHW Social Support · Jamaica'));
+  const footerText = el('p', 'em-footer', 'MOHW Social Support · Jamaica · ');
+  const contactLink = actionButton('Contact agencies', 'contact', '', 'em-contact-link');
+  contactLink.textContent = 'Contact directory';
+  footerText.append(contactLink);
+  mobile.append(footerText);
   // GIA's introductory film is the FIRST feature directly under the MOHW banner.
   mobile.insertBefore(meet, nav);
 
