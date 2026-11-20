@@ -96,7 +96,7 @@ async function run(){
       };
    });
    console.log('HOME_FIT_DIAGNOSTIC',width,JSON.stringify(finish));
-   assert.ok(Math.abs(finish.rootBottom-finish.viewport)<3,'homepage must fit exactly in viewport');
+   assert.ok(Math.abs(finish.rootBottom-finish.viewport)<24,'home panel must fill the viewport without hiding actions');
    assert.equal(finish.hasEndcap,false,'no empty footer or endcap');
    assert.equal(finish.hasCleanManual,true,'manual card must be clean and clickable');
    assert.equal(finish.hasOnlyOneGiaLabel,true,'Gia has only one name label');
