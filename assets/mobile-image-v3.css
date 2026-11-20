@@ -1,0 +1,82 @@
+/* MOHW Social Support: approved 2026 mobile illustration as functional UI. */
+#mohw-mobile-image[hidden]{display:none!important}
+@media(max-width:899px){
+ html.mohw-mobile-image-active body{background:#083146!important;overflow-x:clip!important}
+ #view-about.exact-home-enabled > #mohw-mobile-image:not(#exact-home):not(#exact-mobile){
+  display:block!important;position:relative;z-index:2;
+  box-sizing:border-box;width:min(100%,560px);margin:0 auto!important;
+  padding:0!important;min-height:0;background:#c4eefa;
+  overflow:hidden;box-shadow:0 0 52px #001a3099;line-height:1.35;
+ }
+ html.mohw-mobile-image-active #view-about #exact-mobile,
+ html.mohw-mobile-image-active #view-about #exact-home{display:none!important}
+ #mohw-mobile-image .mv-art-region{position:relative;width:100%;overflow:hidden}
+ #mohw-mobile-image .mv-art{display:block;width:100%;height:auto;margin:0;pointer-events:none;user-select:none}
+ #mohw-mobile-image .mv-hotspot{position:absolute;display:block;appearance:none;z-index:3;
+  margin:0;padding:0;background:transparent!important;border:0;border-radius:13px;
+  cursor:pointer;touch-action:manipulation;color:transparent!important}
+ #mohw-mobile-image :is(.mv-hotspot,.mv-play,.mv-card):focus-visible{
+  outline:3px solid #ffe165!important;outline-offset:-2px;box-shadow:0 0 15px #ffd65fa1}
+ #mohw-mobile-image .mv-hotspot:active{background:#ffffff32!important}
+ #mohw-mobile-image .mv-sr{position:absolute!important;width:1px!important;height:1px!important;
+  overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;
+  margin:-1px!important;padding:0!important;border:0!important}
+ #mohw-mobile-image .mv-film-section{display:flex;align-items:flex-start;justify-content:flex-start;
+  padding:1.5% 23% 1% 3.2%;background:linear-gradient(120deg,#b7eafa,#bfeef7 55%,#b7e5f3);
+  min-height:0;box-sizing:border-box}
+ #mohw-mobile-image .mv-film-frame{position:relative;overflow:hidden;isolation:isolate;
+  width:100%;aspect-ratio:721/321;border-radius:clamp(8px,2vw,19px);
+  box-shadow:0 6px 17px #0235464d;line-height:0;background:transparent}
+ #mohw-mobile-image .mv-film-poster{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  border-radius:inherit;pointer-events:none}
+ #mohw-mobile-image .mv-play{position:absolute;z-index:4;inset:0;width:100%;height:100%;appearance:none;
+  border:0;border-radius:inherit;background:transparent;cursor:pointer}
+ #mohw-mobile-image .mv-film-video{display:none;position:absolute;z-index:5;inset:0;width:100%;height:100%;
+  object-fit:cover;background:#032c3b;pointer-events:auto}
+ #mohw-mobile-image .mv-film-frame.mv-playing .mv-film-video{display:block}
+ #mohw-mobile-image .mv-film-frame.mv-playing .mv-play{display:none}
+ #mohw-mobile-image .mv-hero{background:#c8edf3}
+ #mohw-mobile-image .mv-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:clamp(5px,1.2vw,12px);padding:1% 2.7% 2%;background:linear-gradient(#c4f1ef,#b8eaf0);
+  min-width:0;box-sizing:border-box}
+ #mohw-mobile-image .mv-card{position:relative;display:block;appearance:none;margin:0;padding:0;
+  min-width:0;width:100%;border:0;background:transparent;cursor:pointer;line-height:0;
+  border-radius:clamp(9px,2.2vw,20px);box-shadow:0 5px 11px #062d4750;
+  touch-action:manipulation;overflow:hidden}
+ #mohw-mobile-image .mv-card:active{transform:scale(.985)}
+ #mohw-mobile-image .mv-card-img{width:100%;height:auto;display:block;pointer-events:none;user-select:none}
+ #mohw-mobile-image .mv-ribbon{background:linear-gradient(133deg,#0aaf62,#fff1a3,#e9007b,#072957)}
+ #mohw-mobile-image .mv-ribbon img{height:clamp(30px,10vw,70px);object-fit:cover;object-position:left center}
+ /* Real four-action dock, NEVER baked into scrolling artwork. Position it beside
+    Gia's actual video poster on the initial screen, then keep it fixed. */
+ html.mohw-mobile-image-active body #guideActionDock.guide-action-dock{
+  display:grid!important;position:fixed!important;top:clamp(132px,17vh,185px)!important;
+  right:max(7px,env(safe-area-inset-right))!important;bottom:auto!important;
+  left:auto!important;z-index:1170!important;
+  grid-template-columns:repeat(2,42px)!important;grid-template-rows:repeat(2,42px)!important;
+  gap:7px!important;width:91px!important;min-width:91px!important;max-width:91px!important;
+  height:91px!important;min-height:91px!important;max-height:91px!important;
+  padding:0!important;margin:0!important;transform:none!important;box-shadow:none!important;
+  border:0!important;background:transparent!important}
+ html.mohw-mobile-image-active body #guideActionDock.guide-action-dock .guide-action{
+  width:42px!important;height:42px!important;min-width:42px!important;max-width:42px!important;
+  min-height:42px!important;max-height:42px!important;padding:0!important;margin:0!important}
+ html.mohw-mobile-image-active body #guideActionDock .guide-action svg{width:23px!important;height:23px!important}
+ /* Existing GIA 5.0 button remains the actual launcher, with the design's
+    illustrated bubble as its background, fixed above the navigation bar. */
+ html.mohw-mobile-image-active body #gia2Launcher.gia2-launcher{
+  display:block!important;position:fixed!important;z-index:1205!important;
+  right:max(10px,env(safe-area-inset-right))!important;
+  bottom:calc(13px + env(safe-area-inset-bottom))!important;
+  width:clamp(67px,20vw,84px)!important;height:clamp(69px,21vw,87px)!important;
+  min-width:0!important;min-height:0!important;max-width:none!important;max-height:none!important;
+  padding:0!important;border:0!important;border-radius:50%!important;
+  background: url('./mobile-v3/gia.png') center / contain no-repeat!important;
+  box-shadow:0 9px 21px #0439558e!important;overflow:visible!important;
+ }
+ html.mohw-mobile-image-active body #gia2Launcher.gia2-launcher img,
+ html.mohw-mobile-image-active body #gia2Launcher.gia2-launcher span{display:none!important}
+ html.mohw-mobile-image-active body #gia2Launcher.gia2-launcher:focus-visible{outline:3px solid #ffd66a!important}
+}
+@media(min-width:900px){#mohw-mobile-image{display:none!important}}
+@media(prefers-reduced-motion:reduce){#mohw-mobile-image .mv-card{transition:none!important}}

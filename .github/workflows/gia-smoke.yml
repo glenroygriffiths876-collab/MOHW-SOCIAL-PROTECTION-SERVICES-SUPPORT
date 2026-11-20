@@ -9,6 +9,10 @@ on:
       - 'assets/premium-experience.js'
       - 'assets/exact-home.css'
       - 'assets/exact-home.js'
+      - 'assets/mobile-image-v3.js'
+      - 'assets/mobile-image-v3.css'
+      - 'assets/mobile-v3/**'
+      - 'tests/mobile-v3-smoke.js'
       - 'assets/manual-reader.js'
       - 'assets/guide-tools.js'
       - 'tests/phase2-smoke.js'
@@ -47,3 +51,5 @@ jobs:
         run: node tests/phase2-smoke.js
       - name: Test exact artwork homepage
         run: node tests/exact-home-smoke.js
+      - name: Test premium mobile screenshot and real controls
+        run: node tests/mobile-v3-smoke.js

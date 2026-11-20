@@ -14,7 +14,8 @@ async function run(){
    await page.goto(BASE,{waitUntil:'domcontentloaded'});
    await page.waitForFunction(()=>document.querySelector('#mainNav')?.classList.contains('premium-nav-upgraded'),null,{timeout:12000});
    await page.waitForFunction(()=>document.querySelector('#guideActionDock'),null,{timeout:10000});
-   await page.locator('#exact-mobile .em-navigation button[aria-label="Referrals"]').click();
+   await page.waitForFunction(()=>!!document.querySelector('#mohw-mobile-image:not([hidden])'),null,{timeout:12000});
+   await page.locator('#mohw-mobile-image .mv-navigation .mv-hotspot[aria-label="Referrals"]').click();
    const layout=await page.evaluate(()=>{
     const nav=document.querySelector('#mainNav');
     const buttons=Array.from(nav.querySelectorAll(':scope>button'));
@@ -54,18 +55,35 @@ async function run(){
    await page.locator('#guideActionDock [data-action="download"]').click();
    await page.waitForFunction(()=>document.querySelector('#view-manual')?.classList.contains('active'),null,{timeout:7000});
    await page.locator('#mainNav button[data-nav="about"]').click();
-   await page.waitForFunction(()=>document.querySelector('#exact-mobile:not([hidden])'),null,{timeout:7000});
+   await page.waitForFunction(()=>document.querySelector('#mohw-mobile-image:not([hidden])'),null,{timeout:9000});
    const home=await page.evaluate(()=>({
     nativeDock:getComputedStyle(document.querySelector('#guideActionDock')).display,
     oldDock:getComputedStyle(document.querySelector('#exact-mobile-utilities')).display,
-    videoFirst:[...document.querySelector('#exact-mobile').children].findIndex(x=>x.classList.contains('em-video-section')) <
-         [...document.querySelector('#exact-mobile').children].findIndex(x=>x.classList.contains('em-navigation')),
-    gia:getComputedStyle(document.querySelector('#gia2Launcher')).display
+    visualVisible:getComputedStyle(document.querySelector('#mohw-mobile-image')).display,
+    imageWidth:document.querySelector('.mv-header img').naturalWidth,
+    cardCount:document.querySelectorAll('#mohw-mobile-image .mv-card').length,
+    videoFirst:[...document.querySelector('#mohw-mobile-image').children].findIndex(x=>x.classList.contains('mv-film-section')) <
+      [...document.querySelector('#mohw-mobile-image').children].findIndex(x=>x.classList.contains('mv-hero')),
+    gia:getComputedStyle(document.querySelector('#gia2Launcher')).display,
+    giaArtwork:getComputedStyle(document.querySelector('#gia2Launcher')).backgroundImage,
+    overflow:document.documentElement.scrollWidth>window.innerWidth+2
    }));
-   assert.equal(home.nativeDock,'grid','home must use same native guide dock');
-   assert.equal(home.oldDock,'none','home must not have duplicate guide dock');
-   assert.equal(home.videoFirst,true,'Gia introduction must remain immediately after header');
+   assert.equal(home.nativeDock,'grid','real four actions must remain floating');
+   assert.equal(home.oldDock,'none','no duplicate guide dock');
+   assert.equal(home.visualVisible,'block','approved mobile design must show');
+   assert.equal(home.imageWidth,1024,'correct original mobile image must load');
+   assert.equal(home.cardCount,4,'four active image-backed cards');
+   assert.equal(home.videoFirst,true,'Gia film should precede support headline');
    assert.notEqual(home.gia,'none');
+   assert.equal(home.giaArtwork.includes('mobile-v3/gia.png'),true,'GIA artwork matches approved screenshot');
+   assert.equal(home.overflow,false,'no horizontal overflow on home');
+   if(width===390){
+     await page.locator('#mohw-mobile-image .mv-play').click();
+     await page.waitForFunction(()=>document.querySelector('#mohw-mobile-image .mv-film-frame')?.classList.contains('mv-playing'),null,{timeout:18000});
+     const vid=await page.evaluate(()=>({time:document.querySelector('#mohw-mobile-image video').currentTime,src:document.querySelector('#mohw-mobile-image video').currentSrc}));
+     assert.equal(vid.src.includes('gia-introduction.mp4'),true,'actual GIA MP4 must play');
+     await page.screenshot({path:'/tmp/mobile-home-390.png',fullPage:true});
+   }
    console.log('MOBILE',width,JSON.stringify({layout,home}));
    await page.close();
   }
