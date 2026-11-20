@@ -95,6 +95,7 @@ async function run(){
         cardCount:root.querySelectorAll('.mv-card').length,
       };
    });
+   console.log('HOME_FIT_DIAGNOSTIC',width,JSON.stringify(finish));
    assert.ok(Math.abs(finish.rootBottom-finish.viewport)<3,'homepage must fit exactly in viewport');
    assert.equal(finish.hasEndcap,false,'no empty footer or endcap');
    assert.equal(finish.hasCleanManual,true,'manual card must be clean and clickable');
