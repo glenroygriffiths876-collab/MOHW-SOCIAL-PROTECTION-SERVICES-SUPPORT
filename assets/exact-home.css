@@ -254,3 +254,29 @@ html.exact-home-visible #view-about {position:relative;isolation:isolate;min-hei
 @media(max-width:899px){#view-about #exact-home{display:none!important} html.exact-home-visible #view-about{background:#082d46!important}}
 @media(max-width:360px){#exact-mobile .em-nav-button{font-size:10.5px}#exact-mobile .em-nav-symbol{font-size:14px}#exact-mobile .em-brand-copy strong{font-size:17px}#exact-mobile .em-logo{width:57px;height:53px;flex-basis:57px}}
 @media(prefers-reduced-motion:reduce){#view-about .em-card{transition:none!important}}
+
+/* Final cascade safety: prevent old responsive rules from shrinking the new
+   content clearance and colour only the selected native navigation tab. */
+@media(max-width:899px){
+ html:not(.p2-contrast) .site-header #mainNav.nav button[data-nav="about"]:not(.active){
+  background:linear-gradient(145deg,#0c4f65,#042e4d)!important;
+  border-color:#9cdae155!important;
+  box-shadow:inset 0 1px #e2ffff27!important;
+ }
+ html:not(.p2-contrast) .site-header #mainNav.nav button.active{
+  background:linear-gradient(145deg,#009a70,#006d54)!important;
+  border-color:#7bdbb4!important;
+ }
+ #exact-mobile .em-intro{padding-right:127px!important}
+ #exact-mobile .em-family{width:calc(100% - 135px)!important}
+ #exact-mobile .em-card-grid{max-width:calc(100% - 136px)!important}
+ #exact-mobile .em-card-heading{max-width:calc(100% - 136px)!important}
+ #exact-mobile .em-footer{max-width:calc(100% - 126px)!important}
+ #exact-mobile-utilities{max-width:calc(100vw - 12px)}
+}
+@media(max-width:380px){
+ #exact-mobile .em-intro{padding-right:111px!important}
+ #exact-mobile .em-family{width:calc(100% - 120px)!important}
+ #exact-mobile .em-card-grid{max-width:calc(100% - 121px)!important}
+ #exact-mobile .em-card-heading{max-width:calc(100% - 122px)!important}
+}
