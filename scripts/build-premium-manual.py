@@ -39,7 +39,10 @@ cover.draw_rect(fitz.Rect(42,305,140,311),color=None,fill=gold)
 cover.insert_text((42,341),'Original content. A more engaging way to explore it.',fontsize=12,fontname='helv',color=forest)
 image=ROOT/'assets/about-community.webp'
 if image.exists():
-    cover.insert_image(fitz.Rect(42,370,553,695),filename=str(image),keep_proportion=True)
+    from PIL import Image
+    preview_buffer=io.BytesIO()
+    Image.open(image).convert('RGB').save(preview_buffer,format='PNG',optimize=True)
+    cover.insert_image(fitz.Rect(42,370,553,695),stream=preview_buffer.getvalue(),keep_proportion=True)
 cover.draw_rect(fitz.Rect(42,720,553,787),color=None,fill=forest)
 cover.insert_text((59,743),'ILLUSTRATED DIGITAL EDITION  |  DESIGN PREVIEW',fontsize=11,fontname='hebo',color=white)
 cover.insert_text((59,762),'Original 43 pages follow without alteration.',fontsize=10,fontname='helv',color=white)
