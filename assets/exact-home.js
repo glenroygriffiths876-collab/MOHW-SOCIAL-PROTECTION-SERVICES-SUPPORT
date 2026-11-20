@@ -267,16 +267,27 @@
   view.prepend(desktop, mobile);
   const allVideos = [[desktopFilm, desktopPlay, desktopFrame], [mobileFilm, mobilePlay, mobileFrame]];
   function playVideo(video, button, frame) {
-    allVideos.forEach(([other, trigger]) => { if (other !== video) { other.pause(); } });
+    allVideos.forEach(([other]) => { if (other !== video) other.pause(); });
     $('.exact-media-error', frame)?.remove();
+    // Keep the approved Gia illustration unobstructed while the video buffers.
+    // The real player appears only after the browser renders moving video.
+    if (!video.getAttribute('src')) video.src = FILM;
+    video.classList.add('exact-video-pending');
+    frame.classList.add('video-loading');
     video.hidden = false;
-    button.hidden = true;
-    if (!video.src) video.src = FILM;
-    video.play().catch(() => { if (video.error) videoError(video, button, frame); });
+    button.disabled = true;
+    button.setAttribute('aria-busy', 'true');
+    const requested = video.play();
+    if (requested && typeof requested.catch === 'function')
+      requested.catch(() => videoError(video, button, frame));
   }
   function videoError(video, button, frame) {
     video.pause();
     video.hidden = true;
+    video.classList.remove('exact-video-pending');
+    frame.classList.remove('video-loading');
+    button.disabled = false;
+    button.removeAttribute('aria-busy');
     button.hidden = false;
     video.removeAttribute('src');
     video.load();
@@ -289,8 +300,22 @@
   }
   allVideos.forEach(([video, button, frame]) => {
     button.addEventListener('click', () => playVideo(video, button, frame));
+    video.addEventListener('playing', () => {
+      video.classList.remove('exact-video-pending');
+      frame.classList.remove('video-loading');
+      button.disabled = false;
+      button.removeAttribute('aria-busy');
+      button.hidden = true;
+    });
     video.addEventListener('error', () => { if (video.getAttribute('src')) videoError(video, button, frame); });
-    video.addEventListener('ended', () => { video.hidden = true; button.hidden = false; });
+    video.addEventListener('ended', () => {
+      video.hidden = true;
+      video.classList.remove('exact-video-pending');
+      frame.classList.remove('video-loading');
+      button.disabled = false;
+      button.removeAttribute('aria-busy');
+      button.hidden = false;
+    });
   });
 
   function sync() {

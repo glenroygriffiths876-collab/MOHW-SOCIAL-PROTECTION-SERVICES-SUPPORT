@@ -14,10 +14,13 @@ html.exact-home-visible #view-about {position:relative;isolation:isolate;min-hei
 #view-about .exact-hit,#view-about .exact-play {position:absolute;z-index:5;appearance:none;display:block;padding:0;margin:0;border:0;background:transparent!important;color:transparent!important;cursor:pointer;touch-action:manipulation}
 #view-about .exact-hit:hover,#view-about .exact-play:hover{box-shadow:inset 0 0 0 2px #fbdf7273;border-radius:11px}
 #view-about .exact-hit:focus-visible,#view-about .exact-play:focus-visible{outline:3px solid #ffdf69!important;outline-offset:-3px;border-radius:11px}
-#view-about .exact-player {position:absolute;z-index:6;isolation:isolate;overflow:hidden;border-radius:19px;pointer-events:none;border:3px solid #efffffe0;box-shadow:0 3px 15px #031e387a;background:#06253b}
+#view-about .exact-player {position:absolute;z-index:6;isolation:isolate;overflow:hidden;border-radius:19px;pointer-events:none;border:0;box-shadow:none;background:transparent}
 #view-about .exact-player .exact-play {inset:0!important;width:100%!important;height:100%!important;z-index:7;pointer-events:auto;border-radius:13px}
 #view-about .exact-play[hidden],#view-about .exact-video[hidden],#view-about .em-video[hidden],#view-about .em-play-video[hidden],#view-about .em-poster-crop[hidden]{display:none!important}
-#view-about .exact-video{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;background:#06253b;pointer-events:auto;z-index:6}
+#view-about .exact-video{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;background:transparent;pointer-events:auto;z-index:6}
+/* Until real footage is playing, show the original Gia poster THROUGH the player. */
+#view-about .exact-video.exact-video-pending,#view-about .em-video.exact-video-pending{opacity:0!important;pointer-events:none!important}
+#view-about .exact-player.video-loading{background:transparent!important}
 .exact-media-error{position:absolute;z-index:9;inset:auto 4% 14%;display:flex;flex-wrap:wrap;gap:9px;align-items:center;justify-content:center;background:#061e39ed;color:white;padding:9px;border:1px solid #9be4d0;border-radius:12px;font:650 13px/1.4 system-ui;pointer-events:auto}
 .exact-ask-fallback{font:750 13px system-ui;border-radius:10px;border:1px solid #72e2c0;background:#0d856c;color:white;padding:8px 12px;cursor:pointer}
 /* Shared genuine search modal for both illustrated layouts. */
