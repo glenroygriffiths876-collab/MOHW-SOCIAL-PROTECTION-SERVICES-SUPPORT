@@ -115,6 +115,14 @@ async function run(){
    assert.equal(finish.allVisible,true,'all homepage sections must be visible');
    assert.equal(finish.manualVisible,true,'manual card must be visible');
    assert.equal(finish.overflowY,'hidden','homepage scrolling should be disabled');
+   const screenState=await page.evaluate(()=>({
+     bodyScrollTop:document.body.scrollTop,
+     viewTransform:getComputedStyle(document.querySelector('#view-about')).transform,
+     viewAnimation:getComputedStyle(document.querySelector('#view-about')).animationName
+   }));
+   assert.equal(screenState.bodyScrollTop,0,'homepage must clear saved body scroll position');
+   assert.equal(screenState.viewTransform,'none','home must not retain the old fadeUp transform');
+   assert.equal(screenState.viewAnimation,'none','home entry animation must be disabled');
    assert.equal(finish.cardCount,4,'all four service cards retained');
    await page.evaluate(()=>window.scrollTo(0,400));
    await page.waitForTimeout(100);

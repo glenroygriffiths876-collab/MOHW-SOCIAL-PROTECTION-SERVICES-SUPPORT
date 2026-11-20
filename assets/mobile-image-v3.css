@@ -90,6 +90,11 @@
    height:100%!important;max-height:100dvh!important;
    overflow:hidden!important;overscroll-behavior:none!important;
  }
+ /* The legacy .view.active fadeUp animation transforms #view-about.
+    A transformed parent makes its fixed child scroll with the old body offset. */
+ html.mohw-mobile-image-active #view-about.exact-home-enabled.active{
+   animation:none!important;transform:none!important;translate:none!important;
+ }
  html.mohw-mobile-image-active #main,
  html.mohw-mobile-image-active #view-about,
  html.mohw-mobile-image-active #view-about.exact-home-enabled{
