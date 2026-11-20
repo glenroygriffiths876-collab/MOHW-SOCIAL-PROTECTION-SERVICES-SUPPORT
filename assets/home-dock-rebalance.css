@@ -1,140 +1,79 @@
-/* MOHW Social Support | 20 November 2026
-   A clear, unobstructed utility row. Source artwork, navigation and GIA film retained. */
-
-/* The original desktop illustration is kept intact apart from the obsolete
-   painted-on utility rail. Its original video bezel and portrait remain exact. */
+/* Fluid, artwork-preserving final responsive presentation. */
 @media (min-width:900px) {
-  #view-about #exact-home .exact-side-matte {
-    position:absolute;left:.55%;top:20.5%;width:7.8%;height:46.2%;z-index:5;
-    pointer-events:none;border-radius:0 19px 19px 0;
-    background:linear-gradient(135deg,#092c44 0%,#0b3b51 52%,#072e49 100%);
-    border-right:1px solid #a0e5d52b;
-    box-shadow:9px 0 25px #04263a35,inset -3px 0 15px #67d5c414;
-  }
-  #view-about #exact-home .exact-bottom-actions {
-    position:absolute;z-index:8;left:47.5%;right:17.7%;bottom:1.1%;height:8%;
-    display:flex;align-items:center;justify-content:space-around;
-    gap:1.2%;padding:.45% 1.1%;
-    box-sizing:border-box;border:1px solid #aaf3e67a;border-radius:999px;
-    background:linear-gradient(135deg,#053450e8,#0b645fdf);
-    box-shadow:0 8px 22px #001c3166,inset 0 1px 1px #f9ffff55;
-    backdrop-filter:blur(8px);
-  }
-  #view-about #exact-home .exact-bottom-action {
-    appearance:none;min-width:0;width:22%;height:100%;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    gap:3%;padding:2px 0;border:0;border-radius:14px;background:transparent;
-    color:#f7fffb;cursor:pointer;font:750 clamp(9px,.86vw,12px)/1.12 system-ui;
-    letter-spacing:.015em;transition:transform .17s ease,background .17s ease;
-  }
-  #view-about #exact-home .exact-bottom-action svg {
-    display:block;flex:0 0 auto;width:clamp(22px,2.35vw,34px);
-    height:clamp(22px,2.35vw,34px);padding:7px;border:2px solid #fff8;
-    border-radius:50%;box-sizing:content-box;
-    background:radial-gradient(circle at 25% 18%,#29d8e1,#077c9f 68%,#045270);
-    box-shadow:0 3px 11px #001d3869,inset 0 2px 3px #fff5;
-  }
-  #view-about #exact-home .exact-bottom-action:nth-child(2) svg {
-    background:radial-gradient(circle at 25% 18%,#ff8db4,#d92d78 65%,#92184d);
-  }
-  #view-about #exact-home .exact-bottom-action:nth-child(3) svg {
-    background:radial-gradient(circle at 25% 18%,#b99cff,#784bd0 65%,#4b2d98);
-  }
-  #view-about #exact-home .exact-bottom-action:nth-child(4) svg {
-    color:#30243d;background:radial-gradient(circle at 25% 18%,#ffe99a,#ffc52f 65%,#d59000);
-  }
-  #view-about #exact-home .exact-bottom-action span {display:block;white-space:nowrap}
-  #view-about #exact-home .exact-bottom-action:hover {background:#ffffff17;transform:translateY(-2px)}
-  #view-about #exact-home .exact-bottom-action:focus-visible {
-    outline:3px solid #ffe078!important;outline-offset:-1px;
-  }
+ html.exact-home-visible,html.exact-home-visible body {
+   max-height:none!important;overflow-x:clip!important;overflow-y:auto!important;
+ }
+ html.exact-home-visible #view-about.exact-mode-desktop {
+   min-height:100dvh!important;overflow:visible!important;
+   background:radial-gradient(ellipse at 50% 25%,#148273,#092f49 70%,#041b31 100%)!important;
+ }
+ #view-about.exact-mode-desktop::before{
+   inset:0!important;filter:blur(20px) brightness(.84) saturate(1.4)!important;
+   opacity:1!important;background-position:center top!important;
+ }
+ #view-about #exact-home{width:min(100vw,1920px)!important;max-width:100%!important}
+ /* Reintegrate the painted, unused left rail in the original image. */
+ #view-about #exact-home .exact-side-matte {
+   position:absolute;left:0;top:20.5%;width:8.15%;height:46.4%;z-index:5;
+   pointer-events:none;border:0;border-radius:0 17px 17px 0;
+   background:radial-gradient(ellipse at 95% 65%,#b5f4c36b,transparent 65%),
+              linear-gradient(110deg,#246a50,#388e72 53%,#72b49c);
+   box-shadow:inset -9px 0 22px #296a5277;
+ }
+ #view-about #exact-home .exact-side-matte::after {
+   content:"JAMAICA · SOCIAL SUPPORT";position:absolute;left:50%;top:50%;
+   transform:translate(-50%,-50%) rotate(-90deg);white-space:nowrap;
+   color:#f0ffecd9;text-shadow:0 2px 6px #002b3880;
+   font:750 clamp(8px,.84vw,13px)/1.2 system-ui;letter-spacing:.25em;
+ }
+ #view-about #exact-home .exact-bottom-actions {
+   position:absolute;z-index:8;left:47.5%;right:17.7%;bottom:1.1%;height:8%;
+   display:flex;align-items:center;justify-content:space-around;gap:1.2%;
+   padding:.45% 1.1%;box-sizing:border-box;
+   border:1px solid #aaf3e67a;border-radius:999px;
+   background:linear-gradient(135deg,#053450e8,#0b645fdf);
+   box-shadow:0 8px 22px #001c3166,inset 0 1px 1px #f9ffff55;
+   backdrop-filter:blur(8px);
+ }
+ #view-about #exact-home .exact-bottom-action {
+   appearance:none;min-width:0;width:22%;height:100%;
+   display:flex;flex-direction:column;align-items:center;justify-content:center;
+   gap:3%;padding:2px 0;border:0;border-radius:14px;background:transparent;
+   color:#f7fffb;cursor:pointer;font:750 clamp(9px,.86vw,13px)/1.12 system-ui;
+   letter-spacing:.015em;transition:transform .17s ease,background .17s ease;
+ }
+ #view-about #exact-home .exact-bottom-action svg {
+   display:block;flex:0 0 auto;width:clamp(21px,2.35vw,34px);
+   height:clamp(21px,2.35vw,34px);padding:clamp(4px,.6vw,8px);
+   border:2px solid #fff8;border-radius:50%;box-sizing:content-box;
+   background:radial-gradient(circle at 25% 18%,#29d8e1,#077c9f 68%,#045270);
+   box-shadow:0 3px 11px #001d3869,inset 0 2px 3px #fff5;
+ }
+ #view-about #exact-home .exact-bottom-action:nth-child(2) svg {
+   background:radial-gradient(circle at 25% 18%,#ff8db4,#d92d78 65%,#92184d);
+ }
+ #view-about #exact-home .exact-bottom-action:nth-child(3) svg {
+   background:radial-gradient(circle at 25% 18%,#b99cff,#784bd0 65%,#4b2d98);
+ }
+ #view-about #exact-home .exact-bottom-action:nth-child(4) svg {
+   color:#30243d;background:radial-gradient(circle at 25% 18%,#ffe99a,#ffc52f 65%,#d59000);
+ }
+ #view-about #exact-home .exact-bottom-action span {display:block;white-space:nowrap}
+ #view-about #exact-home .exact-bottom-action:hover {background:#ffffff17;transform:translateY(-2px)}
+ #view-about #exact-home .exact-bottom-action:focus-visible {
+   outline:3px solid #ffe078!important;outline-offset:-1px;
+ }
 }
-/* The phone version previously had a 23% empty margin to accommodate
-   floating controls beside the film. The film now sits dead centre. */
-@media (max-width:899px) {
-  html.mohw-mobile-image-active #mohw-mobile-image .mv-film-section {
-    justify-content:center!important;align-items:center!important;
-    padding:1.4% 3.6% 1%!important;
-  }
-  html.mohw-mobile-image-active #mohw-mobile-image .mv-film-frame {
-    width:min(100%,721px)!important;
-    margin-inline:auto!important;
-  }
-  /* In-flow reserved area: the actions never cover the film or service cards. */
-  html.mohw-mobile-image-active #mohw-mobile-image .mv-bottom-action-space {
-    flex:0 0 clamp(84px,11.8dvh,102px)!important;
-    min-height:0!important;width:100%;display:block!important;
-    position:relative;z-index:1;
-    background:radial-gradient(ellipse at 60% -20%,#167e89,#052b4b 78%);
-    border-top:2px solid #7fe8d48c;
-    box-shadow:inset 0 7px 17px #001b3659;
-  }
-  /* One horizontal row, ending immediately before the right-hand GIA button.
-     The working native buttons and all existing event handlers are reused. */
-  html.mohw-mobile-image-active body #guideActionDock.guide-action-dock {
-    position:fixed!important;z-index:1190!important;display:flex!important;
-    flex-flow:row nowrap!important;align-items:center!important;
-    justify-content:flex-end!important;grid-template-columns:none!important;
-    grid-template-rows:none!important;
-    top:auto!important;left:auto!important;
-    right:max(91px,calc((100vw - 560px)/2 + 103px))!important;
-    bottom:calc(25px + env(safe-area-inset-bottom))!important;
-    gap:clamp(3px,1.25vw,8px)!important;
-    width:max-content!important;max-width:none!important;min-width:0!important;
-    height:auto!important;min-height:0!important;max-height:none!important;
-    margin:0!important;padding:0!important;
-    border:0!important;background:transparent!important;box-shadow:none!important;
-    transform:none!important;translate:none!important;
-    isolation:isolate!important;
-  }
-  html.mohw-mobile-image-active body #guideActionDock.guide-action-dock .guide-action {
-    position:relative!important;display:flex!important;align-items:center!important;
-    justify-content:center!important;flex:0 0 auto!important;
-    width:clamp(36px,11.25vw,49px)!important;
-    min-width:clamp(36px,11.25vw,49px)!important;
-    max-width:clamp(36px,11.25vw,49px)!important;
-    height:clamp(36px,11.25vw,49px)!important;
-    min-height:clamp(36px,11.25vw,49px)!important;
-    max-height:clamp(36px,11.25vw,49px)!important;
-    margin:0!important;padding:0!important;border-width:2px!important;
-    overflow:visible!important;
-  }
-  html.mohw-mobile-image-active body #guideActionDock.guide-action-dock .guide-action svg {
-    width:clamp(19px,5.5vw,25px)!important;
-    height:clamp(19px,5.5vw,25px)!important;
-  }
-  html.mohw-mobile-image-active body #guideActionDock.guide-action-dock .guide-action > span {
-    position:absolute!important;left:50%!important;bottom:-17px!important;
-    transform:translateX(-50%)!important;
-    width:max-content!important;height:auto!important;
-    max-width:65px!important;min-width:0!important;
-    overflow:visible!important;clip:auto!important;clip-path:none!important;
-    opacity:1!important;display:block!important;visibility:visible!important;
-    margin:0!important;padding:0!important;
-    white-space:nowrap!important;pointer-events:none!important;
-    font:760 clamp(8px,2.25vw,11px)/1.1 system-ui!important;
-    color:#eaffff!important;text-shadow:0 1px 4px #001c35!important;
-  }
-  html.mohw-mobile-image-active body #gia2Launcher.gia2-launcher {
-    position:fixed!important;z-index:1205!important;
-    top:auto!important;left:auto!important;
-    right:max(10px,calc((100vw - 560px)/2 + 10px))!important;
-    bottom:calc(7px + env(safe-area-inset-bottom))!important;
-  }
+@media(max-width:899px){
+ html.mohw-mobile-image-active #mohw-mobile-image .mv-bottom-action-space{margin-top:auto!important}
 }
-@media(max-width:899px) and (max-height:650px) {
-  html.mohw-mobile-image-active #mohw-mobile-image .mv-bottom-action-space {
-    flex-basis:72px!important;
-  }
-  html.mohw-mobile-image-active body #guideActionDock.guide-action-dock {
-    bottom:calc(21px + env(safe-area-inset-bottom))!important;
-  }
-  html.mohw-mobile-image-active body #gia2Launcher.gia2-launcher {
-    bottom:calc(3px + env(safe-area-inset-bottom))!important;
-    width:clamp(61px,17vw,74px)!important;
-    height:clamp(63px,18vw,76px)!important;
-  }
+@media(max-width:360px){
+ html.mohw-mobile-image-active #mohw-mobile-image .mv-bottom-action-space{gap:7px!important;padding-left:7px!important;padding-right:7px!important}
+ html.mohw-mobile-image-active body #mohw-mobile-image .mv-bottom-action-space #guideActionDock.guide-action-dock{gap:3px!important}
+ html.mohw-mobile-image-active body #mohw-mobile-image .mv-bottom-action-space #guideActionDock .guide-action {
+   width:40px!important;height:40px!important;min-width:40px!important;max-width:40px!important;
+   min-height:40px!important;max-height:40px!important;
+ }
+ html.mohw-mobile-image-active body #mohw-mobile-image .mv-bottom-action-space #gia2Launcher.gia2-launcher{width:65px!important;height:68px!important}
 }
-@media(prefers-reduced-motion:reduce) {
-  #view-about #exact-home .exact-bottom-action{transition:none!important}
-}
+@media(prefers-reduced-motion:reduce){#view-about #exact-home .exact-bottom-action{transition:none!important}}

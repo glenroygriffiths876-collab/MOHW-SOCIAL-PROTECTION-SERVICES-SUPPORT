@@ -4,14 +4,14 @@ html.exact-home-visible :is(.site-header, footer, #guideActionDock, .p2-access-t
 @media(min-width:900px){html.exact-home-visible #gia2Launcher.gia2-launcher{display:none!important}}
 @media(max-width:899px){html.exact-home-visible #gia2Launcher.gia2-launcher{display:flex!important;z-index:1202!important;bottom:max(16px,env(safe-area-inset-bottom))!important;right:max(12px,env(safe-area-inset-right))!important;box-shadow:0 13px 30px #012f447c,0 0 0 3px #ffe8a355!important}}
 html.exact-home-visible #main {padding:0!important;margin:0!important;max-width:none!important;min-height:100dvh;overflow:visible!important}
-html.exact-home-visible #view-about {position:relative;isolation:isolate;min-height:100dvh;margin:0!important;padding:0!important;overflow:hidden;background:#0b3247!important}
+html.exact-home-visible #view-about {position:relative;isolation:isolate;min-height:100dvh;margin:0!important;padding:0!important;overflow:visible!important;background:#0b3247!important}
 #view-about.exact-home-enabled>:not(#exact-home):not(#exact-mobile){display:none!important}
 #view-about #exact-home[hidden],#view-about #exact-mobile[hidden]{display:none!important}
 #view-about .exact-sr {position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;margin:-1px!important;padding:0!important;border:0!important}
 /* Fill spare widescreen space with a soft, aspect-preserving BLEED from the SAME artwork. */
 #view-about.exact-mode-desktop::before {content:"";position:absolute;inset:-75px;z-index:0;background:url('./mohw-homepage-exact.png') center center / cover no-repeat;filter:blur(47px) brightness(.66) saturate(1.2);opacity:.9;pointer-events:none}
 #view-about.exact-mode-desktop::after {content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,#08314622,transparent 23% 77%,#08314622);pointer-events:none}
-#view-about #exact-home {position:relative;z-index:1;width:min(100vw, calc(100dvh * 1.333333333));max-width:100%;aspect-ratio:1448 / 1086;margin:0 auto;line-height:0;box-shadow:0 0 85px #001d2d73}
+#view-about #exact-home {position:relative;z-index:1;width:min(100vw,1920px);max-width:100%;aspect-ratio:1448 / 1086;margin:0 auto;line-height:0;box-shadow:0 0 85px #001d2d73}
 #view-about #exact-home .exact-art {display:block;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none}
 #view-about .exact-hit,#view-about .exact-play {position:absolute;z-index:5;appearance:none;display:block;padding:0;margin:0;border:0;background:transparent!important;color:transparent!important;cursor:pointer;touch-action:manipulation}
 #view-about .exact-hit:hover,#view-about .exact-play:hover{box-shadow:inset 0 0 0 2px #fbdf7273;border-radius:11px}

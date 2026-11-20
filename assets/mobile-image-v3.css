@@ -47,84 +47,95 @@
  #mohw-mobile-image .mv-card-img{width:100%;height:auto;display:block;pointer-events:none;user-select:none}
  #mohw-mobile-image .mv-ribbon{background:linear-gradient(133deg,#0aaf62,#fff1a3,#e9007b,#072957)}
  #mohw-mobile-image .mv-ribbon img{height:clamp(30px,10vw,70px);object-fit:cover;object-position:left center}
- /* Real four-action dock, NEVER baked into scrolling artwork. Position it beside
-    Gia's actual video poster on the initial screen, then keep it fixed. */
- html.mohw-mobile-image-active body #guideActionDock.guide-action-dock{
-  display:grid!important;position:fixed!important;top:clamp(132px,17vh,185px)!important;
-  right:max(7px,env(safe-area-inset-right))!important;bottom:auto!important;
-  left:auto!important;z-index:1170!important;
-  grid-template-columns:repeat(2,42px)!important;grid-template-rows:repeat(2,42px)!important;
-  gap:7px!important;width:91px!important;min-width:91px!important;max-width:91px!important;
-  height:91px!important;min-height:91px!important;max-height:91px!important;
-  padding:0!important;margin:0!important;transform:none!important;box-shadow:none!important;
-  border:0!important;background:transparent!important}
- html.mohw-mobile-image-active body #guideActionDock.guide-action-dock .guide-action{
-  width:42px!important;height:42px!important;min-width:42px!important;max-width:42px!important;
-  min-height:42px!important;max-height:42px!important;padding:0!important;margin:0!important}
- html.mohw-mobile-image-active body #guideActionDock .guide-action svg{width:23px!important;height:23px!important}
- /* Existing GIA 5.0 button remains the actual launcher, with the design's
-    illustrated bubble as its background, fixed above the navigation bar. */
- html.mohw-mobile-image-active body #gia2Launcher.gia2-launcher{
-  display:block!important;position:fixed!important;z-index:1205!important;
-  right:max(10px,env(safe-area-inset-right))!important;
-  bottom:calc(13px + env(safe-area-inset-bottom))!important;
-  width:clamp(67px,20vw,84px)!important;height:clamp(69px,21vw,87px)!important;
-  min-width:0!important;min-height:0!important;max-width:none!important;max-height:none!important;
-  padding:0!important;border:0!important;border-radius:50%!important;
-  background: url('./mobile-v3/gia.png') center / contain no-repeat!important;
-  box-shadow:0 9px 21px #0439558e!important;overflow:visible!important;
+ /* Native live controls are moved into the footer by mobile-image-v3.js. */
+ #mohw-mobile-image .mv-bottom-action-space {
+   display:flex;align-items:center;justify-content:center;flex-wrap:nowrap;
+   width:100%;min-height:111px;box-sizing:border-box;
+   gap:clamp(7px,2.2vw,20px);
+   padding:12px max(10px,env(safe-area-inset-right))
+     calc(22px + env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left));
+   background:radial-gradient(ellipse at 40% -15%,#167b88,#052a47 76%);
+   border-top:2px solid #82e7ce9c;box-shadow:inset 0 6px 21px #001b3557;
  }
- html.mohw-mobile-image-active body #gia2Launcher.gia2-launcher img,
- html.mohw-mobile-image-active body #gia2Launcher.gia2-launcher span{display:none!important}
- html.mohw-mobile-image-active body #gia2Launcher.gia2-launcher:focus-visible{outline:3px solid #ffd66a!important}
+ html.mohw-mobile-image-active body #mohw-mobile-image .mv-bottom-action-space #guideActionDock.guide-action-dock{
+   display:flex!important;position:relative!important;flex:0 1 auto!important;
+   flex-flow:row nowrap!important;align-items:center!important;justify-content:center!important;
+   grid-template-columns:none!important;grid-template-rows:none!important;
+   left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;
+   width:auto!important;min-width:0!important;max-width:none!important;
+   height:auto!important;min-height:0!important;max-height:none!important;
+   margin:0!important;padding:0!important;gap:clamp(3px,1.45vw,12px)!important;
+   transform:none!important;translate:none!important;background:transparent!important;
+   border:0!important;box-shadow:none!important;
+ }
+ html.mohw-mobile-image-active body #mohw-mobile-image .mv-bottom-action-space #guideActionDock .guide-action {
+   position:relative!important;flex:0 0 auto!important;
+   width:clamp(40px,8vw,57px)!important;height:clamp(40px,8vw,57px)!important;
+   min-width:clamp(40px,8vw,57px)!important;max-width:clamp(40px,8vw,57px)!important;
+   min-height:clamp(40px,8vw,57px)!important;max-height:clamp(40px,8vw,57px)!important;
+   margin:0!important;padding:0!important;border-width:2px!important;
+ }
+ html.mohw-mobile-image-active body #mohw-mobile-image .mv-bottom-action-space #guideActionDock .guide-action svg {
+   width:clamp(20px,4.5vw,28px)!important;height:clamp(20px,4.5vw,28px)!important;
+ }
+ html.mohw-mobile-image-active body #mohw-mobile-image .mv-bottom-action-space #guideActionDock .guide-action>span {
+   position:absolute!important;left:50%!important;bottom:-15px!important;
+   transform:translateX(-50%)!important;
+   display:block!important;visibility:visible!important;opacity:1!important;
+   clip:auto!important;clip-path:none!important;overflow:visible!important;
+   width:max-content!important;max-width:none!important;height:auto!important;
+   padding:0!important;margin:0!important;pointer-events:none!important;
+   white-space:nowrap!important;color:#f6ffff!important;
+   font:700 clamp(8px,1.8vw,11px)/1.1 system-ui!important;
+   text-shadow:0 1px 4px #001c36!important;
+ }
+ html.mohw-mobile-image-active body #mohw-mobile-image .mv-bottom-action-space #gia2Launcher.gia2-launcher {
+   display:block!important;position:relative!important;flex:0 0 auto!important;
+   left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;
+   width:clamp(66px,13vw,94px)!important;height:clamp(69px,14vw,97px)!important;
+   min-width:0!important;min-height:0!important;max-width:none!important;max-height:none!important;
+   margin:0!important;padding:0!important;border:0!important;border-radius:50%!important;
+   background:url('./mobile-v3/gia.png') center / contain no-repeat!important;
+   box-shadow:0 8px 20px #00283f91!important;
+ }
+ html.mohw-mobile-image-active body #mohw-mobile-image .mv-bottom-action-space #gia2Launcher :is(img,span){display:none!important}
+ html.mohw-mobile-image-active body #mohw-mobile-image .mv-bottom-action-space #gia2Launcher::after{display:none!important;content:none!important}
+ #mohw-mobile-image .mv-film-section{align-items:center!important;justify-content:center!important;padding:clamp(9px,2.4vw,22px) clamp(12px,3vw,29px)!important}
+ #mohw-mobile-image .mv-film-frame{width:100%!important;max-width:100%!important;margin-inline:auto!important}
+
 }
 @media(min-width:900px){#mohw-mobile-image{display:none!important}}
 @media(prefers-reduced-motion:reduce){#mohw-mobile-image .mv-card{transition:none!important}}
 
 
-/* Final home layout: only this view is locked to the phone screen.
-   Other pages retain ordinary document scrolling. */
+/* Natural home scrolling: never compress the approved cards or video to fit.
+   Section transitions do not leave old fixed-position or viewport locks. */
 @media(max-width:899px){
- html.mohw-mobile-image-active,
- html.mohw-mobile-image-active body{
-   height:100%!important;max-height:100dvh!important;
-   overflow:hidden!important;overscroll-behavior:none!important;
+ html.mohw-mobile-image-active,html.mohw-mobile-image-active body{
+   height:auto!important;max-height:none!important;overflow-x:clip!important;
+   overflow-y:auto!important;overscroll-behavior-y:auto!important;
  }
- /* The legacy .view.active fadeUp animation transforms #view-about.
-    A transformed parent makes its fixed child scroll with the old body offset. */
  html.mohw-mobile-image-active #view-about.exact-home-enabled.active{
    animation:none!important;transform:none!important;translate:none!important;
  }
- html.mohw-mobile-image-active #main,
- html.mohw-mobile-image-active #view-about,
+ html.mohw-mobile-image-active #main,html.mohw-mobile-image-active #view-about,
  html.mohw-mobile-image-active #view-about.exact-home-enabled{
-   height:100dvh!important;min-height:0!important;max-height:100dvh!important;
-   margin:0!important;padding:0!important;overflow:hidden!important;
+   height:auto!important;max-height:none!important;min-height:100dvh!important;
+   padding:0!important;margin:0!important;overflow:visible!important;
  }
  html.mohw-mobile-image-active #view-about.exact-home-enabled > #mohw-mobile-image:not(#exact-home):not(#exact-mobile){
-   /* Pin ONLY the homepage to the visual viewport; this also eliminates
-      old negative ancestor offsets when returning from a scrolled page. */
-   position:fixed!important;inset:0!important;
-   width:min(100vw,560px)!important;max-width:100vw!important;
-   margin:0 auto!important;transform:none!important;
-   display:flex!important;flex-direction:column!important;
-   justify-content:space-evenly!important;
-   min-height:0!important;height:100dvh!important;max-height:100dvh!important;
-   overflow:hidden!important;box-sizing:border-box!important;
-   background:radial-gradient(ellipse at 52% 58%,#c8faf0 0%,#c0eef6 65%,#0a5269 120%)!important;
+   position:relative!important;inset:auto!important;transform:none!important;
+   display:flex!important;flex-direction:column!important;justify-content:flex-start!important;
+   width:min(100%,860px)!important;max-width:100%!important;
+   height:auto!important;min-height:100dvh!important;max-height:none!important;
+   padding:0!important;margin:0 auto!important;overflow:visible!important;
+   box-sizing:border-box!important;background:#c4eefa!important;
  }
  #mohw-mobile-image .mv-header,#mohw-mobile-image .mv-navigation,
  #mohw-mobile-image .mv-film-section,#mohw-mobile-image .mv-hero,
- #mohw-mobile-image .mv-cards,#mohw-mobile-image .mv-ribbon{
-   flex:0 1 auto!important;min-height:0!important;
- }
- #mohw-mobile-image .mv-ribbon img{height:clamp(26px,5.2dvh,40px)!important}
+ #mohw-mobile-image .mv-cards,#mohw-mobile-image .mv-ribbon,
+ #mohw-mobile-image .mv-bottom-action-space{flex-shrink:0!important;min-height:0!important}
  #mohw-mobile-image .mv-endcap{display:none!important}
- /* GIA is already named once in the approved launcher artwork.
-    Disable the second, CSS-generated floating-bubbles badge. */
- html.mohw-mobile-image-active body #gia2Launcher.gia2-launcher::after{
-   content:none!important;display:none!important;
- }
  /* Restyle only the manual card. The original manual icon is retained
     from its leftmost clean image area, while all wording becomes live text. */
  #mohw-mobile-image .mv-manual-clean{
@@ -160,8 +171,4 @@
    color:#951364;font:800 23px/18px system-ui;text-shadow:none;pointer-events:none;
  }
 }
-@media(max-width:899px) and (max-height:640px){
- #mohw-mobile-image .mv-ribbon{display:none!important}
- #mohw-mobile-image .mv-film-section{padding-top:0!important;padding-bottom:0!important}
- #mohw-mobile-image .mv-cards{padding-bottom:0!important}
-}
+/* Short screens retain every section and scroll naturally. */

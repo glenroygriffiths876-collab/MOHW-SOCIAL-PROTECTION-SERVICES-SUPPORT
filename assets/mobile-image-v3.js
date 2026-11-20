@@ -184,38 +184,41 @@
   // and Download sit in one row, leading to GIA, without covering content.
   const actionSpace = document.createElement('div');
   actionSpace.className = 'mv-bottom-action-space';
-  actionSpace.setAttribute('aria-hidden', 'true');
+  actionSpace.setAttribute('role','group');
+  actionSpace.setAttribute('aria-label','Share, report, feedback, manual and GIA');
   root.append(actionSpace);
-  // Home is a self-contained, no-scroll dashboard. No artificial footer.
+  // Home footer is in normal flow and scrollable on shorter phones.
   root.append(status);
   view.prepend(root);
 
   // If a file is missing, leave the established native mobile layout available.
   const headerImage = $('.mv-header img', root);
+  const moveActions = enabled => {
+    for (const selector of ['#guideActionDock','#gia2Launcher']) {
+      const node=$(selector);
+      if (!node) continue; // GIA can be created asynchronously.
+      const target=enabled?actionSpace:document.body;
+      if(node.parentElement!==target) target.append(node);
+    }
+  };
   const sync = () => {
-    const enabled = artworkLoaded && mobile.matches &&
+    const enabled=artworkLoaded && mobile.matches &&
       view.classList.contains('active') &&
       !document.documentElement.classList.contains('p2-contrast');
-    // When returning from the manual/referral pages, clear their old scroll
-    // offset BEFORE locking the homepage to the visible screen. Otherwise the
-    // whole single-screen dashboard is shifted upward by the old scrollY.
-    if (enabled && !document.documentElement.classList.contains('mohw-mobile-image-active')) {
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-      window.scrollTo(0, 0);
-    }
-    root.hidden = !enabled;
-    document.documentElement.classList.toggle('mohw-mobile-image-active', enabled);
-    if (enabled) {
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-      if (window.scrollY !== 0) window.scrollTo(0, 0);
-    }
+    if (enabled && !document.documentElement.classList.contains('mohw-mobile-image-active'))
+      window.scrollTo(0,0); // Only reset old section scroll when entering.
+    root.hidden=!enabled;
+    document.documentElement.classList.toggle('mohw-mobile-image-active',enabled);
+    moveActions(enabled);
     if (!enabled && !video.paused) video.pause();
   };
   const mo = new MutationObserver(sync);
   mo.observe(view, {attributes: true, attributeFilter: ['class']});
   mo.observe(document.documentElement, {attributes: true, attributeFilter: ['class']});
+  // The guide dock and GIA are mounted by earlier scripts after DOM readiness.
+  const buttonObserver=new MutationObserver(sync);
+  buttonObserver.observe(document.body,{childList:true});
+  document.addEventListener('DOMContentLoaded',sync);
   mobile.addEventListener?.('change', sync);
   headerImage.addEventListener('load', () => { artworkLoaded = headerImage.naturalWidth === 1024; sync(); });
   headerImage.addEventListener('error', () => { artworkLoaded = false; sync(); });
