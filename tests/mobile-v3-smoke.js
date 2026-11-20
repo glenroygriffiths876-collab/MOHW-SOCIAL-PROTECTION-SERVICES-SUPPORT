@@ -4,9 +4,9 @@ const fs=require('node:fs'),assert=require('node:assert/strict'),vm=require('nod
 const read=f=>fs.readFileSync(f,'utf8');
 const html=read('index.html'),sw=read('service-worker.js'),js=read('assets/mobile-image-v3.js'),css=read('assets/mobile-image-v3.css');
 new vm.Script(js,{filename:'assets/mobile-image-v3.js'});
-assert(html.includes('assets/mobile-image-v3.css?v=2'),'mobile stylesheet loaded');
-assert(html.includes('assets/mobile-image-v3.js?v=2'),'mobile script loaded');
-assert(sw.includes('mohw-social-support-mobile-art-v8'),'cache bumped');
+assert(html.includes('assets/mobile-image-v3.css?v=3'),'mobile stylesheet loaded');
+assert(html.includes('assets/mobile-image-v3.js?v=3'),'mobile script loaded');
+assert(sw.includes('mohw-social-support-mobile-art-v9'),'cache bumped');
 for(const asset of ['header','nav','video','hero','green','gold','cyan','pink','ribbon']){
  assert(fs.existsSync(`assets/mobile-v3/${asset}.webp`),`${asset} image bundled`);
  assert(sw.includes(`assets/mobile-v3/${asset}.webp`),`${asset} image cached`);
@@ -20,8 +20,10 @@ assert(js.includes('root.hidden = !enabled'),'mobile mode tied to actual view');
 assert(css.includes('html.mohw-mobile-image-active body #guideActionDock'),'actual four floating controls remain');
 assert(css.includes('html.mohw-mobile-image-active body #gia2Launcher'),'native Gia launcher remains interactive');
 assert(!js.includes('createElement(\'iframe\')'),'no fake iframe interaction');
-assert(js.includes("endcap.className = 'mv-endcap'"),'branded mobile endcap must exist');
-assert(css.includes('#mohw-mobile-image .mv-endcap{'),'endcap CSS must exist');
-assert(css.includes('min-height:100dvh!important;'),'mobile must fill tall phone viewports');
-assert(css.includes('html.mohw-mobile-image-active #view-about'),'legacy height must be overridden');
-console.log('Mobile artwork, responsive endcap, navigation, Gia, video and floating controls verified.');
+assert(!js.includes("endcap.className = 'mv-endcap'"),'unneeded bottom endcap removed');
+assert(js.includes("button.classList.add('mv-manual-clean')"),'clean manual card uses live typography');
+assert(css.includes('#mohw-mobile-image .mv-manual-book'),'retains only original book art');
+assert(css.includes('#gia2Launcher.gia2-launcher::after'),'duplicate GIA label is suppressed');
+assert(css.includes('max-height:100dvh!important'),'homepage constrained to phone viewport');
+assert(css.includes('overflow:hidden!important'),'homepage prevents scrolling');
+console.log('Single-screen mobile home, no cropped Gia, single label, video and navigation verified.');
