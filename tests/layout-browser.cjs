@@ -70,13 +70,29 @@ async function run(){
    }));
    assert.equal(home.nativeDock,'grid','real four actions must remain floating');
    assert.equal(home.oldDock,'none','no duplicate guide dock');
-   assert.equal(home.visualVisible,'block','approved mobile design must show');
+   assert.equal(home.visualVisible,'flex','approved responsive mobile design must show');
    assert.equal(home.imageWidth,1024,'correct original mobile image must load');
    assert.equal(home.cardCount,4,'four active image-backed cards');
    assert.equal(home.videoFirst,true,'Gia film should precede support headline');
    assert.notEqual(home.gia,'none');
    assert.equal(home.giaArtwork.includes('mobile-v3/gia.png'),true,'GIA artwork matches approved screenshot');
    assert.equal(home.overflow,false,'no horizontal overflow on home');
+   const finish=await page.evaluate(()=>{
+     const root=document.querySelector('#mohw-mobile-image');
+     const endcap=root.querySelector('.mv-endcap');
+     const ribbon=root.querySelector('.mv-ribbon');
+     const a=root.getBoundingClientRect(),e=endcap.getBoundingClientRect(),r=ribbon.getBoundingClientRect();
+     return {viewport:innerHeight,rootBottom:a.bottom,rootHeight:a.height,
+       endcapHeight:e.height,endcapBottom:e.bottom,ribbonBottom:r.bottom,
+       backdrop:getComputedStyle(endcap).backgroundImage,
+       hasText:endcap.textContent.includes('MOHW')};
+   });
+   assert.ok(finish.rootBottom>=finish.viewport-2,'mobile artwork must fill available phone height');
+   assert.ok(finish.endcapHeight>=64,'branded endcap should cover the former navy void');
+   assert.ok(Math.abs(finish.endcapBottom-finish.rootBottom)<3,'endcap must finish flush with mobile artwork');
+   assert.ok(Math.abs(finish.ribbonBottom-(finish.endcapBottom-finish.endcapHeight))<3,'endcap must follow ribbon immediately');
+   assert.equal(finish.hasText,true);
+   assert.match(finish.backdrop,/linear-gradient/,'endcap must have premium colour treatment');
    if(width===390){
      await page.locator('#mohw-mobile-image .mv-play').click();
      await page.waitForFunction(()=>document.querySelector('#mohw-mobile-image .mv-film-frame')?.classList.contains('mv-playing'),null,{timeout:18000});

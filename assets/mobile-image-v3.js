@@ -161,7 +161,16 @@
   });
   root.append(cards);
   const ribbon = regionImage('ribbon', 'mv-ribbon mv-art-region', false);
-  root.append(ribbon, status);
+  root.append(ribbon);
+  // A responsive brand ending replaces the unstyled navy block on tall phones.
+  // The existing screenshot and ribbon remain unchanged and non-distorted.
+  const endcap = document.createElement('div');
+  endcap.className = 'mv-endcap';
+  endcap.setAttribute('role', 'contentinfo');
+  endcap.innerHTML =
+    '<div class="mv-endcap-copy"><strong>MOHW <span>Social Support</span></strong>' +
+    '<small>Services Support Guide · Jamaica</small></div>';
+  root.append(endcap, status);
   view.prepend(root);
 
   // If a file is missing, leave the established native mobile layout available.
