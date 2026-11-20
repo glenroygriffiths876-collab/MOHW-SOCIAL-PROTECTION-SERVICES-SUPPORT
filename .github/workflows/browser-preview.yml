@@ -1,0 +1,46 @@
+name: Responsive visual preview checks
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - index.html
+      - assets/premium-video-design.css
+      - assets/premium-video-design.js
+      - assets/manual-reader.js
+      - tests/browser-visual-smoke.mjs
+      - .github/workflows/browser-preview.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browser-visual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Set up browser tests
+        run: |
+          npm install --no-save playwright
+          npx playwright install chromium --with-deps
+      - name: Run responsive browser checks
+        run: |
+          mkdir -p visual-preview
+          python -m http.server 8765 --bind 127.0.0.1 &
+          sleep 2
+          node tests/browser-visual-smoke.mjs
+      - name: Keep visual comparison screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mohw-social-support-preview-screenshots
+          path: visual-preview/*.png
+          if-no-files-found: warn
