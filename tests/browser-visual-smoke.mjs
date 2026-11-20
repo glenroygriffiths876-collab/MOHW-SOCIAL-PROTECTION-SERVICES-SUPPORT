@@ -7,7 +7,8 @@ const base='http://127.0.0.1:8765/';
 const errors=[];
 try{
  for(const w of widths){
-  const page=await context.newPage({viewport:{width:w,height:w<700?800:850}});
+  const page=await context.newPage();
+  await page.setViewportSize({width:w,height:w<700?800:850});
   const consoleErrors=[];
   page.on('pageerror',e=>consoleErrors.push(e.message));
   await page.goto(base,{waitUntil:'domcontentloaded'});
