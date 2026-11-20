@@ -4,9 +4,9 @@ const fs=require('node:fs'),assert=require('node:assert/strict'),vm=require('nod
 const read=f=>fs.readFileSync(f,'utf8');
 const html=read('index.html'),sw=read('service-worker.js'),js=read('assets/mobile-image-v3.js'),css=read('assets/mobile-image-v3.css');
 new vm.Script(js,{filename:'assets/mobile-image-v3.js'});
-assert(html.includes('assets/mobile-image-v3.css?v=3'),'mobile stylesheet loaded');
-assert(html.includes('assets/mobile-image-v3.js?v=4-bottom-actions'),'mobile script loaded');
-assert(sw.includes('mohw-social-support-mobile-art-v10'),'cache bumped');
+assert(html.includes('assets/mobile-image-v3.css?v=4-natural-scroll'),'mobile stylesheet loaded');
+assert(html.includes('assets/mobile-image-v3.js?v=5-footer-actions'),'mobile script loaded');
+assert(sw.includes('mohw-social-support-responsive-v11'),'cache bumped');
 for(const asset of ['header','nav','video','hero','green','gold','cyan','pink','ribbon']){
  assert(fs.existsSync(`assets/mobile-v3/${asset}.webp`),`${asset} image bundled`);
  assert(sw.includes(`assets/mobile-v3/${asset}.webp`),`${asset} image cached`);
@@ -24,8 +24,9 @@ assert(!js.includes("endcap.className = 'mv-endcap'"),'unneeded bottom endcap re
 assert(js.includes("button.classList.add('mv-manual-clean')"),'clean manual card uses live typography');
 assert(css.includes('#mohw-mobile-image .mv-manual-book'),'retains only original book art');
 assert(css.includes('#gia2Launcher.gia2-launcher::after'),'duplicate GIA label is suppressed');
-assert(css.includes('max-height:100dvh!important'),'homepage constrained to phone viewport');
-assert(css.includes('overflow:hidden!important'),'homepage prevents scrolling');
+assert(css.includes('max-height:none!important'),'mobile homepage must not be trapped at a single viewport');
+assert(css.includes('overflow-y:auto!important'),'short mobile screens must scroll naturally');
+assert(js.includes('moveActions(enabled)'),'native guide controls must move into the in-flow footer');
 
 const balanceCss=read('assets/home-dock-rebalance.css');
 assert(balanceCss.includes('justify-content:center!important'),'Gia film should be centered on mobile');

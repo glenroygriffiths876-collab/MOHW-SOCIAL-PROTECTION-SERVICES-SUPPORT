@@ -64,7 +64,10 @@
    outline:3px solid #ffe078!important;outline-offset:-1px;
  }
 }
+/* Remove inherited fixed-dock bottom padding and 5px top strip. */
+html.exact-home-visible .topline{display:none!important}
 @media(max-width:899px){
+ html.mohw-mobile-image-active body{padding-bottom:0!important}
  html.mohw-mobile-image-active #mohw-mobile-image .mv-bottom-action-space{margin-top:auto!important}
 }
 @media(max-width:360px){
