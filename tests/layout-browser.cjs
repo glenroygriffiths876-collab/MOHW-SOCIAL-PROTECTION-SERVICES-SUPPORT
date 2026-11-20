@@ -14,7 +14,7 @@ async function run(){
    await page.goto(BASE,{waitUntil:'domcontentloaded'});
    await page.waitForFunction(()=>document.querySelector('#mainNav')?.classList.contains('premium-nav-upgraded'),null,{timeout:12000});
    await page.waitForFunction(()=>document.querySelector('#guideActionDock'),null,{timeout:10000});
-   await page.locator('#mainNav button[data-nav="referrals"]').click();
+   await page.locator('#exact-mobile .em-navigation button[aria-label="Referrals"]').click();
    const layout=await page.evaluate(()=>{
     const nav=document.querySelector('#mainNav');
     const buttons=Array.from(nav.querySelectorAll(':scope>button'));
@@ -72,7 +72,7 @@ async function run(){
   const page=await browser.newPage({viewport:{width:1440,height:900},deviceScaleFactor:1});
   await page.goto(BASE,{waitUntil:'domcontentloaded'});
   await page.waitForFunction(()=>document.querySelector('#mainNav')?.classList.contains('premium-nav-upgraded'));
-  await page.locator('#mainNav button[data-nav="referrals"]').click();
+  await page.locator('#exact-home .exact-hit[aria-label="Referrals"]').click();
   const desktop=await page.evaluate(()=>{
    const nav=document.querySelector('#mainNav'),buttons=[...nav.querySelectorAll(':scope>button')];
    return {cols:getComputedStyle(nav).gridTemplateColumns.split(' ').length,count:buttons.length,
