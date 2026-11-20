@@ -1,0 +1,42 @@
+name: Premium navigation browser layout
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'assets/premium-ui-fix.css'
+      - 'assets/exact-home.css'
+      - 'assets/exact-home.js'
+      - 'assets/guide-tools.js'
+      - 'index.html'
+      - 'tests/layout-browser.cjs'
+      - '.github/workflows/premium-layout.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browser-layout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install browser driver
+        run: npm install --no-save --no-package-lock playwright-core
+      - name: Detect installed Chrome
+        shell: bash
+        run: |
+          set -eu
+          CHROME="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          if [ -z "$CHROME" ]; then
+            npx --yes playwright install chromium
+          else
+            echo "CHROME_BIN=$CHROME" >> "$GITHUB_ENV"
+          fi
+      - name: Start static preview
+        shell: bash
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/mohw-preview.log 2>&1 &
+          for i in $(seq 1 35); do curl -fsS http://127.0.0.1:8765/index.html >/dev/null && break; sleep 1; done
+      - name: Check actual desktop and mobile layout
+        run: node tests/layout-browser.cjs
