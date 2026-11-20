@@ -1,0 +1,58 @@
+name: Assemble approved MOHW homepage media
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/.media-stage/**'
+      - '.github/workflows/assemble-mohw-media.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  assemble:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Reconstruct and verify exact user-approved binary media
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import base64
+          import hashlib
+          files = [
+            ('assets/.media-stage/image', 'assets/mohw-homepage-exact.png', '6f10eae961c2b02594f9b9367bb6dda4dafdee529a9fc98178820d8e9177cafd', 16, 2360620),
+            ('assets/.media-stage/video', 'assets/gia-introduction.mp4', 'ffad9497ab1b0ca79525bc0c60a56805c62676f374d734f5f7975b483dc86c0d', 42, 6156150),
+          ]
+          for source, target, expected_sha, count, size in files:
+            paths = sorted(Path(source).glob('chunk-*.b64'))
+            if len(paths) != count:
+              raise SystemExit(f'Expected {count} parts for {source}; found {len(paths)}')
+            encoded = b''.join(p.read_bytes() for p in paths)
+            data = base64.b64decode(encoded, validate=True)
+            digest = hashlib.sha256(data).hexdigest()
+            if digest != expected_sha or len(data) != size:
+              raise SystemExit(f'SHA-256 or byte size mismatch for {target}: {digest}, {len(data)}')
+            output = Path(target)
+            output.parent.mkdir(parents=True, exist_ok=True)
+            output.write_bytes(data)
+            print(f'Verified {target}: {len(data)} bytes, SHA-256 {digest}')
+          PY
+      - name: Commit approved original artwork and playable Gia MP4
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/mohw-homepage-exact.png assets/gia-introduction.mp4
+          git rm -r assets/.media-stage
+          git commit -m "Publish original premium MOHW homepage and Gia video"
+          git push origin HEAD:main
