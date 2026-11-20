@@ -1,32 +1,86 @@
-/* 1448x1086 exact screenshot layer; all other pages remain native. */
-html.exact-home-visible,html.exact-home-visible body{background:#092f44!important;background-image:none!important;}
-html.exact-home-visible .site-header,html.exact-home-visible footer,
-html.exact-home-visible #guideActionDock,html.exact-home-visible #gia2Launcher,
-html.exact-home-visible .p2-access-trigger{display:none!important}
-html.exact-home-visible #main{padding:0!important;margin:0!important;max-width:none!important;min-height:100dvh}
-html.exact-home-visible #view-about{padding:0!important;margin:0!important;background:radial-gradient(ellipse,#217f72,#092941 72%)!important}
-#view-about.exact-home-enabled>:not(#exact-home){display:none!important}
-#view-about #exact-home[hidden]{display:none!important}
-#view-about #exact-home{position:relative;isolation:isolate;width:min(100vw,calc(100dvh * 1.333333));margin:auto;line-height:0;box-shadow:0 0 100px #0008}
-#view-about #exact-home .exact-art{width:100%;height:auto;display:block;pointer-events:none}
-#view-about .exact-sr{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important}
-#view-about .exact-hit,#view-about .exact-play{position:absolute;z-index:5;appearance:none;border:0;background:transparent!important;color:transparent!important;cursor:pointer;margin:0;padding:0;border-radius:12px;line-height:1}
-#view-about .exact-hit:hover,#view-about .exact-play:hover{box-shadow:inset 0 0 0 2px #f6d76e88}
-#view-about .exact-hit:focus-visible,#view-about .exact-play:focus-visible{outline:3px solid #f8d664!important;outline-offset:-2px}
-#view-about .exact-player{position:absolute;z-index:6;isolation:isolate;overflow:hidden;border-radius:1.5%;pointer-events:none}
-#view-about .exact-play{inset:0!important;width:100%!important;height:100%!important;pointer-events:auto;z-index:7}
-#view-about .exact-play[hidden],#view-about .exact-video[hidden]{display:none!important}
-#view-about .exact-video{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;background:#041c2a;pointer-events:auto;z-index:6}
-#view-about .exact-media-error{position:absolute;z-index:8;bottom:17%;left:3%;right:3%;pointer-events:auto;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:7px;padding:10px;border-radius:10px;background:#05253bdd;border:1px solid #9de3d2;color:white;font:700 clamp(11px,1.2vw,15px)/1.3 system-ui}
-#view-about .exact-media-error button{background:#058c70;border:1px solid #5ed5b4;color:white;font-weight:bold;border-radius:9px;padding:6px 12px;cursor:pointer}
-#exact-search{width:min(500px,calc(100vw - 32px));max-width:100%;border:1px solid #86cfc2;border-radius:22px;background:#f3fffb;color:#123744;padding:24px;box-shadow:0 25px 100px #0008}
-#exact-search::backdrop{background:#061d30d9;backdrop-filter:blur(5px)}
-#exact-search .exact-dialog-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
-#exact-search h2{font:750 24px/1.2 system-ui;color:#123744;letter-spacing:-.03em;margin:0 0 18px}
-#exact-search label{display:block;font:700 15px/1.4 system-ui;margin-bottom:8px}
-#exact-search input{width:100%;min-height:50px;border:1px solid #7ab6a7;border-radius:12px;background:#fff;color:#123744;padding:10px;font:500 16px system-ui}
-#exact-search button{cursor:pointer}
-#exact-search .exact-close{border:0;background:transparent;color:#123744;font-size:30px}
-#exact-search .exact-submit{margin-top:15px;min-height:46px;padding:11px 20px;background:#08765e;color:#fff;border:1px solid #31b494;border-radius:12px;font:700 16px system-ui}
-#exact-search :is(button,input):focus-visible{outline:3px solid #ce9d34;outline-offset:3px}
-@media(max-width:899px){#view-about #exact-home{display:none!important}}
+/* Premium exact-artwork homepage: native proportions, precise video, mobile art crops. */
+html.exact-home-visible, html.exact-home-visible body {background:#092e44!important;background-image:none!important;overflow-x:clip!important}
+html.exact-home-visible :is(.site-header, footer, #guideActionDock, #gia2Launcher, .p2-access-trigger) {display:none!important}
+html.exact-home-visible #main {padding:0!important;margin:0!important;max-width:none!important;min-height:100dvh;overflow:visible!important}
+html.exact-home-visible #view-about {position:relative;isolation:isolate;min-height:100dvh;margin:0!important;padding:0!important;overflow:hidden;background:#0b3247!important}
+#view-about.exact-home-enabled>:not(#exact-home):not(#exact-mobile){display:none!important}
+#view-about #exact-home[hidden],#view-about #exact-mobile[hidden]{display:none!important}
+#view-about .exact-sr {position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;margin:-1px!important;padding:0!important;border:0!important}
+/* Fill spare widescreen space with a soft, aspect-preserving BLEED from the SAME artwork. */
+#view-about.exact-mode-desktop::before {content:"";position:absolute;inset:-75px;z-index:0;background:url('./mohw-homepage-exact.png') center center / cover no-repeat;filter:blur(47px) brightness(.66) saturate(1.2);opacity:.9;pointer-events:none}
+#view-about.exact-mode-desktop::after {content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,#08314622,transparent 23% 77%,#08314622);pointer-events:none}
+#view-about #exact-home {position:relative;z-index:1;width:min(100vw, calc(100dvh * 1.333333333));max-width:100%;aspect-ratio:1448 / 1086;margin:0 auto;line-height:0;box-shadow:0 0 85px #001d2d73}
+#view-about #exact-home .exact-art {display:block;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none}
+#view-about .exact-hit,#view-about .exact-play {position:absolute;z-index:5;appearance:none;display:block;padding:0;margin:0;border:0;background:transparent!important;color:transparent!important;cursor:pointer;touch-action:manipulation}
+#view-about .exact-hit:hover,#view-about .exact-play:hover{box-shadow:inset 0 0 0 2px #fbdf7273;border-radius:11px}
+#view-about .exact-hit:focus-visible,#view-about .exact-play:focus-visible{outline:3px solid #ffdf69!important;outline-offset:-3px;border-radius:11px}
+#view-about .exact-player {position:absolute;z-index:6;isolation:isolate;overflow:hidden;border-radius:19px;pointer-events:none;border:3px solid #efffffe0;box-shadow:0 3px 15px #031e387a;background:#06253b}
+#view-about .exact-player .exact-play {inset:0!important;width:100%!important;height:100%!important;z-index:7;pointer-events:auto;border-radius:13px}
+#view-about .exact-play[hidden],#view-about .exact-video[hidden],#view-about .em-video[hidden],#view-about .em-play-video[hidden],#view-about .em-poster-crop[hidden]{display:none!important}
+#view-about .exact-video{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;background:#06253b;pointer-events:auto;z-index:6}
+.exact-media-error{position:absolute;z-index:9;inset:auto 4% 14%;display:flex;flex-wrap:wrap;gap:9px;align-items:center;justify-content:center;background:#061e39ed;color:white;padding:9px;border:1px solid #9be4d0;border-radius:12px;font:650 13px/1.4 system-ui;pointer-events:auto}
+.exact-ask-fallback{font:750 13px system-ui;border-radius:10px;border:1px solid #72e2c0;background:#0d856c;color:white;padding:8px 12px;cursor:pointer}
+/* Shared genuine search modal for both illustrated layouts. */
+#exact-search{width:min(510px,calc(100vw - 28px));max-width:100%;border:1px solid #79d5c0;border-radius:22px;background:linear-gradient(140deg,#fafffd,#e4f8f0);color:#102f3b;padding:26px;box-shadow:0 28px 95px #0008}
+#exact-search::backdrop{background:#041e32d9;backdrop-filter:blur(6px)}
+#exact-search .exact-dialog-top{display:flex;justify-content:space-between;align-items:start;gap:10px}
+#exact-search h2{font:800 24px/1.2 system-ui;letter-spacing:-.035em;margin:0 0 18px;color:#0b3b43}
+#exact-search label{display:block;font:700 15px/1.4 system-ui;margin:12px 0 8px}
+#exact-search input{width:100%;min-height:52px;border:1px solid #8bbfb1;background:#fff;color:#123743;border-radius:12px;padding:12px;font:500 16px system-ui}
+#exact-search .exact-close{border:0;background:transparent;color:#123743;font-size:30px;cursor:pointer}
+#exact-search .exact-submit{border:1px solid #2fc4a0;border-radius:12px;background:linear-gradient(140deg,#0b9271,#00634d);color:#fff;margin-top:17px;min-height:50px;padding:11px 22px;font:750 16px system-ui;cursor:pointer}
+#exact-search :is(button,input):focus-visible{outline:3px solid #bd8b12;outline-offset:3px}
+/* Mobile art-first page: original image crops, real large tap controls, no horizontal scrolling. */
+#view-about #exact-mobile{display:block;position:relative;z-index:1;width:100%;max-width:900px;min-height:100dvh;margin:0 auto;padding:0 0 24px;background:#edf7f6;box-shadow:0 0 55px #001f3161;line-height:1.4;color:#0c343e;overflow:hidden}
+#exact-mobile .em-header{display:flex;align-items:center;justify-content:space-between;gap:10px;background:linear-gradient(112deg,#071f3b,#0a4b50);padding:13px 15px 15px;position:relative;border-bottom:5px solid #ebcb44}
+#exact-mobile .em-header::after{content:"";position:absolute;inset:auto 0 -5px 35%;height:5px;background:linear-gradient(90deg,#16a062,#f5c635 45%,#e91683 85%)}
+#exact-mobile .em-brand{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
+#exact-mobile .em-logo{display:block;width:68px;height:60px;object-fit:contain;border-radius:10px;background:#fff;padding:3px;flex:0 0 68px;box-shadow:0 4px 14px #0004}
+#exact-mobile .em-brand-copy{min-width:0}
+#exact-mobile .em-brand-copy strong{display:block;font:900 clamp(18px,5vw,23px)/1.08 system-ui;letter-spacing:-.04em;color:#fff}
+#exact-mobile .em-brand-copy strong span{color:#ffdc64}
+#exact-mobile .em-brand-copy small{display:block;font:600 11px/1.3 system-ui;color:#dcefeb;margin-top:4px}
+#exact-mobile .em-search{width:46px;height:46px;flex:0 0 46px;display:grid;place-items:center;border-radius:15px;border:1px solid #e7fdff91;background:linear-gradient(135deg,#2f6179,#142b4c);box-shadow:0 5px 11px #0004;color:white;font:38px/1 system-ui;cursor:pointer}
+#exact-mobile .em-navigation{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;padding:11px 12px;background:linear-gradient(130deg,#0b2743,#08203e)}
+#exact-mobile .em-nav-button{min-width:0;min-height:45px;display:flex;align-items:center;justify-content:center;gap:6px;border-radius:11px;border:1px solid #b8dad25e;background:linear-gradient(135deg,#225264,#0c304a);color:#fff;padding:7px 4px;font:700 clamp(11px,2.8vw,13px)/1.2 system-ui;box-shadow:inset 0 1px #ffffff3e;cursor:pointer}
+#exact-mobile .em-nav-button:first-child{background:linear-gradient(125deg,#11996a,#075e46);border-color:#80e4c1}
+#exact-mobile .em-nav-symbol{font-size:17px;line-height:1;flex:0 0 auto;color:#ffd568}
+#exact-mobile .em-intro{padding:21px 20px 17px;background:radial-gradient(circle at 85% 0%,#dbf5e8,transparent 54%),linear-gradient(130deg,#fcffff,#edf9f2)}
+#exact-mobile .em-eyebrow{display:block;color:#0c8577;font:850 11px/1.4 system-ui;letter-spacing:.12em;margin-bottom:6px}
+#exact-mobile .em-intro h1{font:900 clamp(34px,9vw,52px)/1.03 system-ui;letter-spacing:-.055em;color:#052f2a;margin:0 0 9px;text-wrap:balance}
+#exact-mobile .em-intro h1 span{color:#087d5d}
+#exact-mobile .em-intro p{font:500 clamp(15px,3.7vw,17px)/1.45 system-ui;color:#183c50;margin:0;max-width:580px}
+#exact-mobile .em-family{position:relative;width:calc(100% - 24px);aspect-ratio:775 / 540;overflow:hidden;margin:12px auto 18px;border-radius:22px;border:3px solid #fff;box-shadow:0 14px 26px #0e464c42,0 0 0 1px #c9eadb}
+#exact-mobile .em-crop-image{position:absolute;max-width:none!important;height:auto!important;object-fit:unset!important;pointer-events:none;user-select:none;display:block}
+#exact-mobile .em-family .em-crop-image{display:block}
+#exact-mobile .em-video-section{margin:0 12px 15px;background:linear-gradient(145deg,#092a4a,#086250);border:1px solid #90e7d188;border-radius:23px;padding:15px;box-shadow:0 15px 28px #083e4a3c}
+#exact-mobile .em-section-title{padding:0 3px 12px}
+#exact-mobile .em-section-title h2{font:900 28px/1.1 system-ui;color:white;letter-spacing:-.035em;margin:0 0 4px}
+#exact-mobile .em-section-title h2 em{font-style:normal;color:#ffd449}
+#exact-mobile .em-section-title p{font:500 14px/1.35 system-ui;color:#d6f1ea;margin:0}
+#exact-mobile .em-video-frame{position:relative;width:100%;aspect-ratio:492 / 257;overflow:hidden;border:3px solid #dcfffa;border-radius:17px;background:#041f34;box-shadow:0 11px 23px #001f2c70;isolation:isolate}
+#exact-mobile .em-poster-crop{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+#exact-mobile .em-play-video{position:absolute;inset:0;display:grid;place-items:center;width:100%;height:100%;z-index:2;border:0;background:transparent;cursor:pointer}
+#exact-mobile .em-play-video>span:first-child{width:60px;height:60px;border-radius:50%;display:grid;place-items:center;border:3px solid #fff;background:#093d53b8;color:white;font:27px/1 system-ui;text-shadow:0 3px 7px #0006;box-shadow:0 6px 20px #0008}
+#exact-mobile .em-video{display:block;position:absolute;inset:0;width:100%;height:100%;z-index:3;object-fit:cover;background:#061d32}
+#exact-mobile .em-card-heading{margin:20px 15px 12px;font:850 26px/1.13 system-ui;color:#073b42;letter-spacing:-.03em}
+#exact-mobile .em-card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin:0 12px 16px}
+#exact-mobile .em-card{position:relative;width:100%;min-width:0;overflow:hidden;display:block;padding:0;border:3px solid #fff;border-radius:21px;box-shadow:0 12px 18px #093f4740;cursor:pointer;background:#045e54}
+#exact-mobile .em-card .em-crop-image{display:block}
+#exact-mobile .em-card:active{transform:scale(.98)}
+#exact-mobile .em-utility{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;padding:12px 8px;margin:0 10px;background:#ffffffdc;border:1px solid #d1e6e0;border-radius:20px;box-shadow:0 10px 21px #0d465021}
+#exact-mobile .em-util-button{display:flex;flex-direction:column;align-items:center;gap:5px;min-height:63px;min-width:0;padding:6px 1px;border:0;background:none;color:#18474a;font:700 clamp(10px,2.6vw,12px)/1.2 system-ui;cursor:pointer}
+#exact-mobile .em-util-icon{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#008d70,#00574e);color:#fff;font:700 22px/1 system-ui;box-shadow:0 6px 13px #0837423e}
+#exact-mobile .em-util-button:nth-child(2) .em-util-icon{background:linear-gradient(135deg,#aa3881,#65135d)}
+#exact-mobile .em-util-button:nth-child(3) .em-util-icon{background:linear-gradient(135deg,#11afbb,#06677f)}
+#exact-mobile .em-util-button:nth-child(4) .em-util-icon{background:linear-gradient(135deg,#f0bf13,#ab7b03)}
+#exact-mobile .em-gia-button{position:fixed;right:13px;bottom:max(13px,env(safe-area-inset-bottom));z-index:110;display:flex;align-items:center;justify-content:center;gap:0;width:59px;height:59px;padding:4px;border:2px solid #ffe18a;border-radius:50%;background:linear-gradient(140deg,#073e52,#051f3a);box-shadow:0 8px 24px #002b3666;color:#fff;font:800 13px/1.2 system-ui;cursor:pointer}
+#exact-mobile .em-gia-button img{width:47px;height:47px;border:2px solid #fff;border-radius:50%;object-fit:cover}
+#exact-mobile .em-gia-tooltip{position:absolute;right:66px;bottom:12px;display:none;white-space:nowrap;border-radius:11px;background:#0b3144;color:white;padding:9px 12px;box-shadow:0 5px 11px #0004}
+#exact-mobile .em-gia-button:is(:hover,:focus-visible) .em-gia-tooltip{display:block}
+#exact-mobile .em-footer{text-align:center;color:#42636d;margin:18px 10px 0;font:600 11px/1.3 system-ui}
+#exact-mobile :is(button,input):focus-visible{outline:3px solid #ffca42!important;outline-offset:3px}
+@media(min-width:900px){#view-about #exact-mobile{display:none!important}}
+@media(max-width:899px){#view-about #exact-home{display:none!important} html.exact-home-visible #view-about{background:#082d46!important}}
+@media(max-width:360px){#exact-mobile .em-nav-button{font-size:10.5px}#exact-mobile .em-nav-symbol{font-size:14px}#exact-mobile .em-brand-copy strong{font-size:17px}#exact-mobile .em-logo{width:57px;height:53px;flex-basis:57px}}
+@media(prefers-reduced-motion:reduce){#view-about .em-card{transition:none!important}}
