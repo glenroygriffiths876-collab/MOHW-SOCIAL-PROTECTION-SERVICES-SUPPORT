@@ -80,3 +80,56 @@
 }
 @media(min-width:900px){#mohw-mobile-image{display:none!important}}
 @media(prefers-reduced-motion:reduce){#mohw-mobile-image .mv-card{transition:none!important}}
+
+/* Fill tall mobile viewports with an intentional branded finishing band,
+   not the old empty navy space. All image assets retain natural proportions. */
+@media(max-width:899px){
+ html.mohw-mobile-image-active #main,
+ html.mohw-mobile-image-active #view-about{
+  min-height:0!important;
+  height:auto!important;
+ }
+ html.mohw-mobile-image-active #view-about.exact-home-enabled > #mohw-mobile-image{
+  display:flex!important;
+  flex-direction:column!important;
+  box-sizing:border-box!important;
+  min-height:100dvh!important;
+  height:auto!important;
+ }
+ #mohw-mobile-image .mv-header,
+ #mohw-mobile-image .mv-navigation,
+ #mohw-mobile-image .mv-film-section,
+ #mohw-mobile-image .mv-hero,
+ #mohw-mobile-image .mv-cards,
+ #mohw-mobile-image .mv-ribbon{flex:0 0 auto}
+ #mohw-mobile-image .mv-endcap{
+  display:flex;
+  flex:1 0 64px;
+  align-items:center;
+  box-sizing:border-box;
+  min-height:64px;
+  width:100%;
+  padding:18px 112px 20px 20px;
+  border-top:1px solid #ffffff80;
+  color:#effffb;
+  background:
+    radial-gradient(circle at 95% 0%,#06a88d60,transparent 40%),
+    radial-gradient(circle at 4% 98%,#f8d75026,transparent 43%),
+    linear-gradient(117deg,#064555,#07324b 75%,#04283e);
+  box-shadow:inset 0 9px 30px #04233b3b;
+ }
+ #mohw-mobile-image .mv-endcap-copy{max-width:100%}
+ #mohw-mobile-image .mv-endcap strong{
+  display:block;
+  font:850 clamp(15px,4.1vw,21px)/1.18 system-ui;
+  letter-spacing:-.035em;
+  color:#fff;
+ }
+ #mohw-mobile-image .mv-endcap strong span{color:#f9d25c}
+ #mohw-mobile-image .mv-endcap small{
+  display:block;
+  margin-top:5px;
+  font:600 clamp(11px,2.8vw,13px)/1.4 system-ui;
+  color:#d4f7ee;
+ }
+}
