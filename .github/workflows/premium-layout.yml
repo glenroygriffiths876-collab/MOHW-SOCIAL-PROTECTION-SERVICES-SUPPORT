@@ -1,5 +1,19 @@
 name: Premium navigation browser layout
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/premium-ui-fix.css'
+      - 'assets/exact-home.css'
+      - 'assets/exact-home.js'
+      - 'assets/mobile-image-v3.js'
+      - 'assets/mobile-image-v3.css'
+      - 'assets/home-dock-rebalance.css'
+      - 'assets/mobile-v3/**'
+      - 'assets/guide-tools.js'
+      - 'index.html'
+      - 'tests/layout-browser.cjs'
+      - '.github/workflows/premium-layout.yml'
   pull_request:
     branches: [main]
     paths:
@@ -8,6 +22,7 @@ on:
       - 'assets/exact-home.js'
       - 'assets/mobile-image-v3.js'
       - 'assets/mobile-image-v3.css'
+      - 'assets/home-dock-rebalance.css'
       - 'assets/mobile-v3/**'
       - 'assets/guide-tools.js'
       - 'index.html'

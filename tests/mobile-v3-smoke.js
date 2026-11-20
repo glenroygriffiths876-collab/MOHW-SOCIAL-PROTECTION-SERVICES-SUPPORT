@@ -5,8 +5,8 @@ const read=f=>fs.readFileSync(f,'utf8');
 const html=read('index.html'),sw=read('service-worker.js'),js=read('assets/mobile-image-v3.js'),css=read('assets/mobile-image-v3.css');
 new vm.Script(js,{filename:'assets/mobile-image-v3.js'});
 assert(html.includes('assets/mobile-image-v3.css?v=3'),'mobile stylesheet loaded');
-assert(html.includes('assets/mobile-image-v3.js?v=3'),'mobile script loaded');
-assert(sw.includes('mohw-social-support-mobile-art-v9'),'cache bumped');
+assert(html.includes('assets/mobile-image-v3.js?v=4-bottom-actions'),'mobile script loaded');
+assert(sw.includes('mohw-social-support-mobile-art-v10'),'cache bumped');
 for(const asset of ['header','nav','video','hero','green','gold','cyan','pink','ribbon']){
  assert(fs.existsSync(`assets/mobile-v3/${asset}.webp`),`${asset} image bundled`);
  assert(sw.includes(`assets/mobile-v3/${asset}.webp`),`${asset} image cached`);
@@ -26,4 +26,9 @@ assert(css.includes('#mohw-mobile-image .mv-manual-book'),'retains only original
 assert(css.includes('#gia2Launcher.gia2-launcher::after'),'duplicate GIA label is suppressed');
 assert(css.includes('max-height:100dvh!important'),'homepage constrained to phone viewport');
 assert(css.includes('overflow:hidden!important'),'homepage prevents scrolling');
+
+const balanceCss=read('assets/home-dock-rebalance.css');
+assert(balanceCss.includes('justify-content:center!important'),'Gia film should be centered on mobile');
+assert(balanceCss.includes('grid-template-columns:none!important'),'Home utilities should use one horizontal row');
+assert(js.includes("root.append(actionSpace)"),'Homepage reserves real space for the action row');
 console.log('Single-screen mobile home, no cropped Gia, single label, video and navigation verified.');

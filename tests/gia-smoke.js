@@ -33,7 +33,7 @@ const content={innerHTML:"",scrollTop:0,insertAdjacentHTML(_where,text){this.inn
 const step={textContent:""};
 const nodes={"#gia2Content":content,"#gia2Step":step,"#gia2Validation":status,"#gia2Status":status};
 const opened=[];
-const window={open:url=>{opened.push(url);return{};}};
+const window={open:url=>{opened.push(url);return{};},location:{href:"https://socialsupport.beginningconcepts.org/"},MOHW_CONFIG:{canonicalUrl:"https://socialsupport.beginningconcepts.org/"}};
 const document={addEventListener(){},querySelector:key=>nodes[key]||null};
 const navigator={clipboard:{writeText:async()=>{}}};
 vm.runInNewContext(source,{window,document,navigator,URL,console}, {filename:"assets/gia-next.js"});

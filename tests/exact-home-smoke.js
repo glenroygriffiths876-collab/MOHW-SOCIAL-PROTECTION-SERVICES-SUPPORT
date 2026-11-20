@@ -10,8 +10,8 @@ const css = read('assets/exact-home.css');
 const worker = read('service-worker.js');
 new vm.Script(js, { filename: 'assets/exact-home.js' });
 assert(html.includes('assets/exact-home.css?v=5'));
-assert(html.includes('assets/exact-home.js?v=5'));
-assert(worker.includes('mohw-social-support-mobile-art-v9'));
+assert(html.includes('assets/exact-home.js?v=6-bottom-actions'));
+assert(worker.includes('mohw-social-support-mobile-art-v10'));
 assert(worker.includes('assets/exact-home.css'));
 assert(worker.includes('assets/exact-home.js'));
 assert(js.includes('VIEW_W = 1448, VIEW_H = 1086'), 'Must use verified image dimensions');
@@ -61,4 +61,7 @@ assert(polish.includes('html.exact-home-visible body #guideActionDock'), 'The na
 assert(polish.includes('grid-template-columns:repeat(6,minmax(0,1fr))!important'), 'Desktop nav should show six premium actions');
 assert(tools.includes('data-action="download"'), 'Fourth button must open manual download, not app install');
 assert(tools.includes('data-action="feedback"'), 'Feedback must remain functional');
+
+assert(html.includes('assets/home-dock-rebalance.css?v=1'),'Rebalanced home layout stylesheet loaded');
+assert(js.includes('exact-bottom-actions'),'Desktop actions are real buttons in bottom bar');
 console.log('Premium mobile navigation, four-action dock, preserved Gia, and desktop polish checks passed');

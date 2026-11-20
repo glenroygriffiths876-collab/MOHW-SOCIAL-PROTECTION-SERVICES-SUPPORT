@@ -66,9 +66,16 @@ async function run(){
       [...document.querySelector('#mohw-mobile-image').children].findIndex(x=>x.classList.contains('mv-hero')),
     gia:getComputedStyle(document.querySelector('#gia2Launcher')).display,
     giaArtwork:getComputedStyle(document.querySelector('#gia2Launcher')).backgroundImage,
+    dockBounds:document.querySelector('#guideActionDock').getBoundingClientRect().toJSON(),
+    giaBounds:document.querySelector('#gia2Launcher').getBoundingClientRect().toJSON(),
+    filmCenter:(()=>{const r=document.querySelector('#mohw-mobile-image .mv-film-frame').getBoundingClientRect();return r.left+r.width/2;})(),
+    rootCenter:(()=>{const r=document.querySelector('#mohw-mobile-image').getBoundingClientRect();return r.left+r.width/2;})(),
     overflow:document.documentElement.scrollWidth>window.innerWidth+2
    }));
-   assert.equal(home.nativeDock,'grid','real four actions must remain floating');
+   assert.equal(home.nativeDock,'flex','home utility actions should be a single bottom row');
+    assert.ok(Math.abs(home.filmCenter-home.rootCenter)<3,'the Gia video should be visually centered');
+    assert.ok(home.dockBounds.right <= home.giaBounds.left+3,'four utility actions must lead into Gia without overlapping');
+    assert.ok(home.dockBounds.top>620,'bottom home action row must not float beside the video');
    assert.equal(home.oldDock,'none','no duplicate guide dock');
    assert.equal(home.visualVisible,'flex','approved responsive mobile design must show');
    assert.equal(home.imageWidth,1024,'correct original mobile image must load');
