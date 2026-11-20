@@ -84,7 +84,7 @@ async function run(){
       const manualTitle=manual.querySelector('.mv-manual-copy strong');
       const panels=[...root.querySelectorAll('.mv-header,.mv-navigation,.mv-film-section,.mv-hero,.mv-cards')];
       return {
-        viewport:innerHeight,rootBottom:root.getBoundingClientRect().bottom,
+        viewport:innerHeight,rootTop:root.getBoundingClientRect().top,rootBottom:root.getBoundingClientRect().bottom,scrollY:window.scrollY,
         hasEndcap:!!root.querySelector('.mv-endcap'),
         hasCleanManual:manual.classList.contains('mv-manual-clean')&&manualTitle?.textContent==='Read the manual',
         hasOnlyOneGiaLabel:['none','normal','""'].includes(getComputedStyle(gia,'::after').content),

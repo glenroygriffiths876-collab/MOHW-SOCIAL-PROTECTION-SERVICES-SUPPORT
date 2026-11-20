@@ -190,8 +190,15 @@
     const enabled = artworkLoaded && mobile.matches &&
       view.classList.contains('active') &&
       !document.documentElement.classList.contains('p2-contrast');
+    // When returning from the manual/referral pages, clear their old scroll
+    // offset BEFORE locking the homepage to the visible screen. Otherwise the
+    // whole single-screen dashboard is shifted upward by the old scrollY.
+    if (enabled && !document.documentElement.classList.contains('mohw-mobile-image-active')) {
+      window.scrollTo(0, 0);
+    }
     root.hidden = !enabled;
     document.documentElement.classList.toggle('mohw-mobile-image-active', enabled);
+    if (enabled && window.scrollY !== 0) window.scrollTo(0, 0);
     if (!enabled && !video.paused) video.pause();
   };
   const mo = new MutationObserver(sync);
