@@ -579,7 +579,7 @@
       "",
       "Before travelling, please confirm the correct office, opening hours, eligibility, appointment arrangements and any costs.",
       s?.meta?.officialUrl ? "Agency website: "+s.meta.officialUrl : "",
-      "MOHW Social Support guide: " + new URL("./", window.location.href).href,
+      "MOHW Social Support guide: " + (window.MOHW_CONFIG?.canonicalUrl || new URL("./", window.location.href).href),
       "",
       "Information for preparation only; no appointment, eligibility or benefit has been confirmed."
     ].filter(v=>v!=="").join("\n");

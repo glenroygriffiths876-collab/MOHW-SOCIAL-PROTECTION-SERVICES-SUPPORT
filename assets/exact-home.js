@@ -157,11 +157,6 @@
     ['Digital Manual', 'nav', 'manual', 866, 111, 215, 60],
     ['Accessibility & listening', 'access', '', 1090, 111, 271, 60],
     ['Search the site', 'search', '', 1001, 23, 293, 59],
-    ['Share guide', 'share', '', 16, 239, 100, 90],
-    ['Report an issue', 'report', '', 16, 332, 100, 91],
-    ['Send feedback', 'message', '', 16, 430, 100, 91],
-    ['Download manual', 'nav', 'manual', 16, 528, 100, 91],
-    ['Contact agencies', 'contact', '', 16, 623, 100, 91],
     ['Find services', 'nav', 'services', 110, 737, 269, 215],
     ['Make a referral', 'nav', 'referrals', 384, 737, 259, 215],
     ['Get help choosing', 'nav', 'decision', 650, 737, 270, 215],
@@ -174,6 +169,28 @@
     position(button, x, y, width, height);
     desktop.append(button);
   });
+
+  // The source screenshot has utility icons painted into its left rail. Mask
+  // only that strip so no obsolete, unclickable controls remain visible.
+  const sideMatte = el('div', 'exact-side-matte');
+  sideMatte.setAttribute('aria-hidden', 'true');
+  desktop.append(sideMatte);
+
+  // Live, keyboard-accessible controls occupy the previously unused bottom
+  // margin, in a horizontal row leading towards the existing GIA illustration.
+  const bottomActions = el('nav', 'exact-bottom-actions');
+  bottomActions.setAttribute('aria-label', 'Share and guide utilities');
+  [
+    ['Share', 'share', '', 'share'],
+    ['Report', 'report', '', 'report'],
+    ['Feedback', 'message', '', 'message'],
+    ['Manual', 'nav', 'manual', 'download']
+  ].forEach(([label, kind, id, symbol]) => {
+    const button = actionButton(label, kind, id, 'exact-bottom-action');
+    button.innerHTML = ACTION_ICONS[symbol] + '<span>' + label + '</span>';
+    bottomActions.append(button);
+  });
+  desktop.append(bottomActions);
 
   // Fit the playable footage precisely INSIDE the artwork's white rounded video bezel.
   // The source artwork is 1448 x 1086. These are source-image coordinates, not viewport pixels.

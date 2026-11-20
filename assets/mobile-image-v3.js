@@ -180,6 +180,12 @@
   root.append(cards);
   const ribbon = regionImage('ribbon', 'mv-ribbon mv-art-region', false);
   root.append(ribbon);
+  // Reserve a dedicated bottom home-action area so Share, Report, Message
+  // and Download sit in one row, leading to GIA, without covering content.
+  const actionSpace = document.createElement('div');
+  actionSpace.className = 'mv-bottom-action-space';
+  actionSpace.setAttribute('aria-hidden', 'true');
+  root.append(actionSpace);
   // Home is a self-contained, no-scroll dashboard. No artificial footer.
   root.append(status);
   view.prepend(root);

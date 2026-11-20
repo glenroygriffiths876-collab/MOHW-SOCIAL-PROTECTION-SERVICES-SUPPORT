@@ -1,2 +1,2 @@
-/* Set canonicalUrl only after MOHW confirms its production address. */
-window.MOHW_CONFIG=Object.freeze({canonicalUrl:"",welcomeVideo:"",welcomeCaptions:"",jslVideos:[]});
+/* Canonical public sharing address for the Beginning Concepts-hosted MOHW working guide. */
+window.MOHW_CONFIG=Object.freeze({canonicalUrl:"https://socialsupport.beginningconcepts.org/",welcomeVideo:"",welcomeCaptions:"",jslVideos:[]});
