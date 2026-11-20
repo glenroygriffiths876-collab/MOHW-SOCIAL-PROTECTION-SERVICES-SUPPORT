@@ -7,6 +7,8 @@ on:
       - 'assets/phase2*'
       - 'assets/premium-2026.css'
       - 'assets/premium-experience.js'
+      - 'assets/exact-home.css'
+      - 'assets/exact-home.js'
       - 'assets/manual-reader.js'
       - 'assets/guide-tools.js'
       - 'tests/phase2-smoke.js'
@@ -17,6 +19,7 @@ on:
       - 'index.html'
       - 'service-worker.js'
       - 'tests/gia-smoke.js'
+      - 'tests/exact-home-smoke.js'
       - '.github/workflows/gia-smoke.yml'
   pull_request:
     branches: [main]
@@ -42,3 +45,5 @@ jobs:
 
       - name: Test Phase II integration
         run: node tests/phase2-smoke.js
+      - name: Test exact artwork homepage
+        run: node tests/exact-home-smoke.js
