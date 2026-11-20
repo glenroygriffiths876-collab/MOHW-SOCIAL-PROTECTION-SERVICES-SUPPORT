@@ -36,6 +36,25 @@ try{
    await page.locator('#mainNav button[data-nav="services"]').click({force:true});
    await page.waitForSelector('#view-services.active');
    await page.screenshot({path:'visual-preview/services-'+w+'.png',fullPage:true});
+   // Capture the remaining real application pages, not invented design mockups.
+   await page.locator('#mainNav button[data-nav="decision"]').click({force:true});
+   await page.waitForSelector('#view-decision.active');
+   await page.waitForSelector('#decisionSituations button',{timeout:15000}).catch(()=>{});
+   await page.screenshot({path:'visual-preview/decision-'+w+'.png',fullPage:true});
+   await page.locator('#mainNav button[data-nav="manual"]').click({force:true});
+   await page.waitForSelector('#view-manual.active');
+   await page.waitForSelector('#manual-book .manual-page canvas',{timeout:30000}).catch(()=>{});
+   await page.screenshot({path:'visual-preview/manual-'+w+'.png',fullPage:true});
+   // Three supplementary directory views already present in the repository.
+   for(const extra of ['programmes','categories','contacts']){
+    await page.evaluate(name=>{
+      document.querySelectorAll('.view').forEach(view=>view.classList.toggle('active',view.id==='view-'+name));
+      window.scrollTo(0,0);
+    },extra);
+    await page.waitForTimeout(250);
+    await page.screenshot({path:'visual-preview/'+extra+'-'+w+'.png',fullPage:true});
+   }
+
   }
   if(consoleErrors.length)errors.push(w+'px page errors: '+consoleErrors.join('; '));
   await page.close();
