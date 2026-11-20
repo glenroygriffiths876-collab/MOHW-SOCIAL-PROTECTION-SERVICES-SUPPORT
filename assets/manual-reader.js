@@ -10,6 +10,7 @@ $('close-options')?.addEventListener('click',()=>closeTools(true));
 function fullLabel(){const on=fullMode();fullButton.textContent=on?'Exit':'Full screen';fullButton.setAttribute('aria-label',on?'Exit full screen':'Enter full screen');fullButton.title=on?'Exit full screen':'Enter full screen';fullButton.setAttribute('aria-pressed',String(on))}
 
 let doc=null,loading=null,blobUrl=null,sourceName='',page=1,zoom=1,two=true,sound=true,audio=null,paperBuffer=null,epoch=0,renderEpoch=0,busy=false,libPromise=null,autoTried=false,activeJobs=[];
+let edition='original';
 const say=t=>status.textContent=t;
 /* Page turns are audible by default. Respect a saved opt-out on this device. */
 const soundKey='mohw-manual-page-sound-v1';try{sound=localStorage.getItem(soundKey)!=='off'}catch(_){}
@@ -63,26 +64,46 @@ function rustle(direction){
 $('sound').onclick=()=>{sound=!sound;try{localStorage.setItem(soundKey,sound?'on':'off')}catch(_){}syncSound();if(sound){if(!window.AudioContext&&!window.webkitAudioContext){say('Page-turn sound is unavailable on this browser.');return}unlockPaperAudio()}};
 /* The only readable PDF is the bundled programme guide. No local picker. */
 async function loadApproved(){
- release();const ticket=epoch;page=1;zoom=1;sourceName='MOHW_Social_Protection_Guide_Concept_Full.pdf';
+ release();const ticket=epoch;page=1;zoom=1;sourceName=edition==='premium'?'MOHW_Social_Support_Visual_Preview_43_Source_Pages.pdf':'MOHW_Social_Protection_Guide_Concept_Full.pdf';
  welcome.hidden=false;stage.hidden=true;retry.hidden=true;retry.disabled=true;loadNote.hidden=false;loadNote.lastChild.textContent=' Opening the guide automatically…';say('Loading the illustrated guide…');
  try{
-  const manifestPath=root.dataset.approvedPdf;
-  if(manifestPath!=='assets/manual/manifest.json')throw Error('Approved guide unavailable');
-  const response=await fetch(manifestPath,{cache:'no-store'});if(!response.ok)throw Error('Guide unavailable');
-  const m=await response.json();if(!Array.isArray(m.parts)||!m.parts.length||!m.parts.every(p=>/^assets\/manual\/part-\d{2}\.bin$/.test(p)))throw Error('Guide parts unavailable');
-  const chunks=await Promise.all(m.parts.map(async p=>{const r=await fetch(p);if(!r.ok)throw Error('Guide unavailable');return r.arrayBuffer()}));
-  const blob=new Blob(chunks,{type:'application/pdf'});if(ticket!==epoch)return;
-  if(blob.size!==m.byteLength||blob.size>100*1024*1024)throw Error('Guide file incomplete');
-  const signature=await blob.slice(0,1024).text();if(!signature.includes('%PDF-'))throw Error('Invalid guide');
+  let blob;
+   if(edition==='premium'){
+     const response=await fetch('assets/manual/premium-preview.pdf',{cache:'no-store'});
+     if(!response.ok)throw Error('Visual preview is not yet available');
+     blob=await response.blob();
+     if(blob.size<20000||blob.size>100*1024*1024)throw Error('Visual preview file invalid');
+   }else{
+     const manifestPath=root.dataset.approvedPdf;
+     if(manifestPath!=='assets/manual/manifest.json')throw Error('Approved guide unavailable');
+     const response=await fetch(manifestPath,{cache:'no-store'});if(!response.ok)throw Error('Guide unavailable');
+     const m=await response.json();if(!Array.isArray(m.parts)||!m.parts.length||!m.parts.every(p=>/^assets\/manual\/part-\d{2}\.bin$/.test(p)))throw Error('Guide parts unavailable');
+     const chunks=await Promise.all(m.parts.map(async p=>{const r=await fetch(p);if(!r.ok)throw Error('Guide unavailable');return r.arrayBuffer()}));
+     blob=new Blob(chunks,{type:'application/pdf'});if(ticket!==epoch)return;
+     if(blob.size!==m.byteLength||blob.size>100*1024*1024)throw Error('Guide file incomplete');
+   }
+   const signature=await blob.slice(0,1024).text();if(!signature.includes('%PDF-'))throw Error('Invalid guide');
   if(ticket!==epoch)return;
   blobUrl=URL.createObjectURL(blob);download.href=blobUrl;download.download=sourceName;native.href=blobUrl;welcome.hidden=true;stage.hidden=false;controls();say('Opening the manual…');
-  const lib=await library();if(ticket!==epoch)return;const bytes=new Uint8Array(await blob.arrayBuffer());if(ticket!==epoch)return;loading=lib.getDocument({data:bytes,isEvalSupported:false,enableXfa:false});doc=await loading.promise;if(ticket!==epoch)return;await paint(0);
+  const lib=await library();if(ticket!==epoch)return;const bytes=new Uint8Array(await blob.arrayBuffer());if(ticket!==epoch)return;loading=lib.getDocument({data:bytes,isEvalSupported:false,enableXfa:false});doc=await loading.promise;if(ticket!==epoch)return;if(edition==='premium'&&doc.numPages!==44)throw Error('Visual preview page count does not match the 43-page source');await paint(0);
  }catch(e){
   if(ticket!==epoch)return;console.warn('Manual reader:',e);busy=false;controls();
   if(blobUrl){say('Flipbook unavailable. Use Open searchable PDF or Download PDF below.')}
   else{release();stage.hidden=true;welcome.hidden=false;loadNote.hidden=true;retry.hidden=false;retry.disabled=false;say('The guide could not be loaded. Check your connection and retry.')}
  }
 }
+const originalButton=document.getElementById('manual-edition-original');
+const premiumButton=document.getElementById('manual-edition-preview');
+function chooseEdition(value){
+ if(value!=='original'&&value!=='premium')return;
+ if(edition===value)return;
+ edition=value;
+ originalButton?.setAttribute('aria-pressed',String(edition==='original'));
+ premiumButton?.setAttribute('aria-pressed',String(edition==='premium'));
+ closeTools();autoTried=true;loadApproved();
+}
+originalButton?.addEventListener('click',()=>chooseEdition('original'));
+premiumButton?.addEventListener('click',()=>chooseEdition('premium'));
 function align(n){const max=doc.numPages;n=Math.max(1,Math.min(max,Math.trunc(n)||1));return two&&canSpread()&&n>1?n-n%2:n}
 function targets(){return two&&canSpread()&&page>1&&page<doc.numPages?[page,page+1]:[page]}
 async function paint(direction){if(!doc)return;const task=++renderEpoch,documentRef=doc;stopJobs();busy=true;controls();const old=direction?Array.from(book.querySelectorAll('.manual-page')).at(direction>0?-1:0):null;let overlay=null;if(old&&!reduced.matches&&!document.documentElement.classList.contains('p2-motion')){const orig=old.querySelector('canvas');if(orig){overlay=document.createElement('canvas');overlay.width=orig.width;overlay.height=orig.height;overlay.getContext('2d').drawImage(orig,0,0);overlay.className='manual-turn'+(direction<0?' back':'');overlay.style.width=old.offsetWidth+'px';overlay.style.height=old.offsetHeight+'px';overlay.style.left=old.offsetLeft+'px';overlay.style.transformOrigin=direction>0?'left center':'right center'}}
