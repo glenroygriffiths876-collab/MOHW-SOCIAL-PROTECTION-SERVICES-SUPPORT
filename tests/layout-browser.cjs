@@ -78,21 +78,59 @@ async function run(){
    assert.equal(home.giaArtwork.includes('mobile-v3/gia.png'),true,'GIA artwork matches approved screenshot');
    assert.equal(home.overflow,false,'no horizontal overflow on home');
    const finish=await page.evaluate(()=>{
-     const root=document.querySelector('#mohw-mobile-image');
-     const endcap=root.querySelector('.mv-endcap');
-     const ribbon=root.querySelector('.mv-ribbon');
-     const a=root.getBoundingClientRect(),e=endcap.getBoundingClientRect(),r=ribbon.getBoundingClientRect();
-     return {viewport:innerHeight,rootBottom:a.bottom,rootHeight:a.height,
-       endcapHeight:e.height,endcapBottom:e.bottom,ribbonBottom:r.bottom,
-       backdrop:getComputedStyle(endcap).backgroundImage,
-       hasText:endcap.textContent.includes('MOHW')};
+      const root=document.querySelector('#mohw-mobile-image');
+      const gia=document.querySelector('#gia2Launcher');
+      const manual=root.querySelector('.mv-card-pink');
+      const manualTitle=manual.querySelector('.mv-manual-copy strong');
+      const panels=[...root.querySelectorAll('.mv-header,.mv-navigation,.mv-film-section,.mv-hero,.mv-cards')];
+      return {
+        viewport:innerHeight,rootTop:root.getBoundingClientRect().top,rootBottom:root.getBoundingClientRect().bottom,scrollY:window.scrollY,
+        hasEndcap:!!root.querySelector('.mv-endcap'),
+        hasCleanManual:manual.classList.contains('mv-manual-clean')&&manualTitle?.textContent==='Read the manual',
+        hasOnlyOneGiaLabel:['none','normal','""'].includes(getComputedStyle(gia,'::after').content),
+        allVisible:panels.every(p=>p.getBoundingClientRect().bottom<=innerHeight+2),
+        manualVisible:manual.getBoundingClientRect().bottom<=innerHeight+2,
+        overflowY:getComputedStyle(document.documentElement).overflowY,
+        scrollHeight:document.documentElement.scrollHeight,
+        cardCount:root.querySelectorAll('.mv-card').length,
+      };
    });
-   assert.ok(finish.rootBottom>=finish.viewport-2,'mobile artwork must fill available phone height');
-   assert.ok(finish.endcapHeight>=64,'branded endcap should cover the former navy void');
-   assert.ok(Math.abs(finish.endcapBottom-finish.rootBottom)<3,'endcap must finish flush with mobile artwork');
-   assert.ok(Math.abs(finish.ribbonBottom-(finish.endcapBottom-finish.endcapHeight))<3,'endcap must follow ribbon immediately');
-   assert.equal(finish.hasText,true);
-   assert.match(finish.backdrop,/linear-gradient/,'endcap must have premium colour treatment');
+   console.log('HOME_FIT_DIAGNOSTIC',width,JSON.stringify(finish));
+   const ancestors=await page.evaluate(()=>{
+     const a=[];for(let e=document.querySelector('#mohw-mobile-image');e;e=e.parentElement){
+       const c=getComputedStyle(e),r=e.getBoundingClientRect();
+       a.push({tag:e.tagName,id:e.id,classes:e.className,top:r.top,bottom:r.bottom,height:r.height,
+         position:c.position,topCSS:c.top,display:c.display,transform:c.transform,translate:c.translate,
+         animation:c.animationName,contain:c.contain,filter:c.filter,perspective:c.perspective,
+         scrollTop:e.scrollTop,scrollHeight:e.scrollHeight,clientHeight:e.clientHeight,
+         alignItems:c.alignItems,justifyContent:c.justifyContent});
+     }
+     return a;
+   });
+   console.log('HOME_ANCESTORS',width,JSON.stringify(ancestors));
+   assert.ok(Math.abs(finish.rootBottom-finish.viewport)<24,'home panel must fill the viewport without hiding actions');
+   assert.equal(finish.hasEndcap,false,'no empty footer or endcap');
+   assert.equal(finish.hasCleanManual,true,'manual card must be clean and clickable');
+   assert.equal(finish.hasOnlyOneGiaLabel,true,'Gia has only one name label');
+   assert.equal(finish.allVisible,true,'all homepage sections must be visible');
+   assert.equal(finish.manualVisible,true,'manual card must be visible');
+   assert.equal(finish.overflowY,'hidden','homepage scrolling should be disabled');
+   const screenState=await page.evaluate(()=>({
+     bodyScrollTop:document.body.scrollTop,
+     viewTransform:getComputedStyle(document.querySelector('#view-about')).transform,
+     viewAnimation:getComputedStyle(document.querySelector('#view-about')).animationName
+   }));
+   assert.equal(screenState.bodyScrollTop,0,'homepage must clear saved body scroll position');
+   assert.equal(screenState.viewTransform,'none','home must not retain the old fadeUp transform');
+   assert.equal(screenState.viewAnimation,'none','home entry animation must be disabled');
+   assert.equal(finish.cardCount,4,'all four service cards retained');
+   await page.evaluate(()=>window.scrollTo(0,400));
+   await page.waitForTimeout(100);
+   assert.equal(await page.evaluate(()=>window.scrollY),0,'homepage must not scroll');
+   await page.locator('.mv-card-pink').click();
+   await page.waitForFunction(()=>document.querySelector('#view-manual')?.classList.contains('active'),null,{timeout:7000});
+   await page.locator('#mainNav button[data-nav="about"]').click();
+   await page.waitForFunction(()=>document.querySelector('#mohw-mobile-image:not([hidden])'),null,{timeout:7000});
    if(width===390){
      await page.locator('#mohw-mobile-image .mv-play').click();
      await page.waitForFunction(()=>document.querySelector('#mohw-mobile-image .mv-film-frame')?.classList.contains('mv-playing'),null,{timeout:18000});
@@ -102,6 +140,31 @@ async function run(){
    }
    console.log('MOBILE',width,JSON.stringify({layout,home}));
    await page.close();
+  }
+  // Shorter devices must still show all actions without clipped cards or scroll.
+  for(const size of [{width:360,height:640},{width:390,height:700}]){
+    const short=await browser.newPage({viewport:size,deviceScaleFactor:1,isMobile:true,hasTouch:true});
+    await short.goto(BASE,{waitUntil:'domcontentloaded'});
+    await short.waitForFunction(()=>!!document.querySelector('#mohw-mobile-image:not([hidden])'),null,{timeout:12000});
+    const fit=await short.evaluate(()=>{
+      const root=document.querySelector('#mohw-mobile-image');
+      const cards=[...root.querySelectorAll('.mv-card')];
+      const nav=[...root.querySelectorAll('.mv-navigation .mv-hotspot')];
+      return {
+        rootHeight:root.getBoundingClientRect().height,
+        visibleCards:cards.every(el=>el.getBoundingClientRect().bottom<=innerHeight+2),
+        visibleNav:nav.every(el=>el.getBoundingClientRect().top>=-2&&el.getBoundingClientRect().bottom<=innerHeight+2),
+        visibleFilm:root.querySelector('.mv-film-frame').getBoundingClientRect().bottom<=innerHeight+2,
+        htmlOverflow:getComputedStyle(document.documentElement).overflowY,
+        height:innerHeight
+      };
+    });
+    console.log('SHORT_PHONE',JSON.stringify(size),JSON.stringify(fit));
+    assert.equal(fit.visibleCards,true,'all cards visible on compact phone');
+    assert.equal(fit.visibleNav,true,'all navigation visible on compact phone');
+    assert.equal(fit.visibleFilm,true,'Gia video visible on compact phone');
+    assert.equal(fit.htmlOverflow,'hidden','compact home does not scroll');
+    await short.close();
   }
   const page=await browser.newPage({viewport:{width:1440,height:900},deviceScaleFactor:1});
   await page.goto(BASE,{waitUntil:'domcontentloaded'});

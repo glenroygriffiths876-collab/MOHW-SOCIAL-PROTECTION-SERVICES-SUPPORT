@@ -81,55 +81,87 @@
 @media(min-width:900px){#mohw-mobile-image{display:none!important}}
 @media(prefers-reduced-motion:reduce){#mohw-mobile-image .mv-card{transition:none!important}}
 
-/* Fill tall mobile viewports with an intentional branded finishing band,
-   not the old empty navy space. All image assets retain natural proportions. */
+
+/* Final home layout: only this view is locked to the phone screen.
+   Other pages retain ordinary document scrolling. */
 @media(max-width:899px){
+ html.mohw-mobile-image-active,
+ html.mohw-mobile-image-active body{
+   height:100%!important;max-height:100dvh!important;
+   overflow:hidden!important;overscroll-behavior:none!important;
+ }
+ /* The legacy .view.active fadeUp animation transforms #view-about.
+    A transformed parent makes its fixed child scroll with the old body offset. */
+ html.mohw-mobile-image-active #view-about.exact-home-enabled.active{
+   animation:none!important;transform:none!important;translate:none!important;
+ }
  html.mohw-mobile-image-active #main,
- html.mohw-mobile-image-active #view-about{
-  min-height:0!important;
-  height:auto!important;
+ html.mohw-mobile-image-active #view-about,
+ html.mohw-mobile-image-active #view-about.exact-home-enabled{
+   height:100dvh!important;min-height:0!important;max-height:100dvh!important;
+   margin:0!important;padding:0!important;overflow:hidden!important;
  }
  html.mohw-mobile-image-active #view-about.exact-home-enabled > #mohw-mobile-image:not(#exact-home):not(#exact-mobile){
-  display:flex!important;
-  flex-direction:column!important;
-  box-sizing:border-box!important;
-  min-height:100dvh!important;
-  height:auto!important;
+   /* Pin ONLY the homepage to the visual viewport; this also eliminates
+      old negative ancestor offsets when returning from a scrolled page. */
+   position:fixed!important;inset:0!important;
+   width:min(100vw,560px)!important;max-width:100vw!important;
+   margin:0 auto!important;transform:none!important;
+   display:flex!important;flex-direction:column!important;
+   justify-content:space-evenly!important;
+   min-height:0!important;height:100dvh!important;max-height:100dvh!important;
+   overflow:hidden!important;box-sizing:border-box!important;
+   background:radial-gradient(ellipse at 52% 58%,#c8faf0 0%,#c0eef6 65%,#0a5269 120%)!important;
  }
- #mohw-mobile-image .mv-header,
- #mohw-mobile-image .mv-navigation,
- #mohw-mobile-image .mv-film-section,
- #mohw-mobile-image .mv-hero,
- #mohw-mobile-image .mv-cards,
- #mohw-mobile-image .mv-ribbon{flex:0 0 auto}
- #mohw-mobile-image .mv-endcap{
-  display:flex;
-  flex:1 0 64px;
-  align-items:center;
-  box-sizing:border-box;
-  min-height:64px;
-  width:100%;
-  padding:18px 112px 20px 20px;
-  border-top:1px solid #ffffff80;
-  color:#effffb;
-  background:
-    radial-gradient(circle at 95% 0%,#06a88d60,transparent 40%),
-    radial-gradient(circle at 4% 98%,#f8d75026,transparent 43%),
-    linear-gradient(117deg,#064555,#07324b 75%,#04283e);
-  box-shadow:inset 0 9px 30px #04233b3b;
+ #mohw-mobile-image .mv-header,#mohw-mobile-image .mv-navigation,
+ #mohw-mobile-image .mv-film-section,#mohw-mobile-image .mv-hero,
+ #mohw-mobile-image .mv-cards,#mohw-mobile-image .mv-ribbon{
+   flex:0 1 auto!important;min-height:0!important;
  }
- #mohw-mobile-image .mv-endcap-copy{max-width:100%}
- #mohw-mobile-image .mv-endcap strong{
-  display:block;
-  font:850 clamp(15px,4.1vw,21px)/1.18 system-ui;
-  letter-spacing:-.035em;
-  color:#fff;
+ #mohw-mobile-image .mv-ribbon img{height:clamp(26px,5.2dvh,40px)!important}
+ #mohw-mobile-image .mv-endcap{display:none!important}
+ /* GIA is already named once in the approved launcher artwork.
+    Disable the second, CSS-generated floating-bubbles badge. */
+ html.mohw-mobile-image-active body #gia2Launcher.gia2-launcher::after{
+   content:none!important;display:none!important;
  }
- #mohw-mobile-image .mv-endcap strong span{color:#f9d25c}
- #mohw-mobile-image .mv-endcap small{
-  display:block;
-  margin-top:5px;
-  font:600 clamp(11px,2.8vw,13px)/1.4 system-ui;
-  color:#d4f7ee;
+ /* Restyle only the manual card. The original manual icon is retained
+    from its leftmost clean image area, while all wording becomes live text. */
+ #mohw-mobile-image .mv-manual-clean{
+  display:flex!important;align-items:center!important;position:relative!important;
+  box-sizing:border-box!important;padding:3px 23px 3px 0!important;
+  gap:0!important;min-height:0!important;height:auto!important;
+  aspect-ratio:500/178!important;overflow:hidden!important;
+  border:2px solid #ffe6f5!important;border-radius:clamp(9px,2.2vw,20px)!important;
+  background:radial-gradient(ellipse at 30% -15%,#ff69ce9c,transparent 65%),linear-gradient(120deg,#dd1587,#c5006b 60%,#97004f)!important;
+  box-shadow:inset 0 1px 4px #ffffff65,inset 0 -7px 17px #67003982,0 5px 12px #45204473!important;
+  line-height:1.1!important;text-align:left!important;
  }
+ #mohw-mobile-image .mv-manual-book{
+   display:block;flex:0 0 29%;align-self:stretch;
+   background:url('./mobile-v3/pink.webp') left center / 345% 100% no-repeat;
+   filter:drop-shadow(0 3px 4px #40002b66);pointer-events:none;
+ }
+ #mohw-mobile-image .mv-manual-copy{
+   display:flex;flex:1 1 auto;min-width:0;flex-direction:column;gap:2px;
+   color:#fff;text-shadow:0 1px 4px #6200348a;
+ }
+ #mohw-mobile-image .mv-manual-copy strong{
+   font:800 clamp(12px,3.6vw,20px)/1.04 system-ui!important;letter-spacing:-.045em;
+ }
+ #mohw-mobile-image .mv-manual-copy small{
+   font:600 clamp(8px,2.18vw,12px)/1.16 system-ui!important;letter-spacing:-.012em;
+ }
+ #mohw-mobile-image .mv-manual-arrow{
+   position:absolute;right:4px;top:50%;transform:translateY(-50%);
+   width:20px;height:20px;display:grid;place-items:center;
+   border:1px solid #fff9;border-radius:50%;
+   background:linear-gradient(#fff,#f2e6ee);box-shadow:0 2px 5px #3900236b;
+   color:#951364;font:800 23px/18px system-ui;text-shadow:none;pointer-events:none;
+ }
+}
+@media(max-width:899px) and (max-height:640px){
+ #mohw-mobile-image .mv-ribbon{display:none!important}
+ #mohw-mobile-image .mv-film-section{padding-top:0!important;padding-bottom:0!important}
+ #mohw-mobile-image .mv-cards{padding-bottom:0!important}
 }

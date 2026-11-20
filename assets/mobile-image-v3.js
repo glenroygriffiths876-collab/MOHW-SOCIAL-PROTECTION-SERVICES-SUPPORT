@@ -156,21 +156,32 @@
     ['pink', 'Read the manual', 'manual']
   ].forEach(([asset, label, target]) => {
     const button = clickable(label, () => page(target), 'mv-card mv-card-' + asset);
-    button.append(image(asset, 'mv-card-img', true));
+    if (asset === 'pink') {
+      // Render a real, clean card: no GIA artwork can intrude on the manual.
+      button.classList.add('mv-manual-clean');
+      const book = document.createElement('span');
+      book.className = 'mv-manual-book';
+      book.setAttribute('aria-hidden','true');
+      const copy = document.createElement('span');
+      copy.className = 'mv-manual-copy';
+      const title = document.createElement('strong');
+      title.textContent = 'Read the manual';
+      const desc = document.createElement('small');
+      desc.textContent = 'Access the Social Protection Services Support Guide.';
+      copy.append(title, desc);
+      const arrow = document.createElement('span');
+      arrow.className = 'mv-manual-arrow';
+      arrow.textContent = '›';
+      arrow.setAttribute('aria-hidden','true');
+      button.append(book,copy,arrow);
+    } else button.append(image(asset,'mv-card-img',true));
     cards.append(button);
   });
   root.append(cards);
   const ribbon = regionImage('ribbon', 'mv-ribbon mv-art-region', false);
   root.append(ribbon);
-  // A responsive brand ending replaces the unstyled navy block on tall phones.
-  // The existing screenshot and ribbon remain unchanged and non-distorted.
-  const endcap = document.createElement('div');
-  endcap.className = 'mv-endcap';
-  endcap.setAttribute('role', 'contentinfo');
-  endcap.innerHTML =
-    '<div class="mv-endcap-copy"><strong>MOHW <span>Social Support</span></strong>' +
-    '<small>Services Support Guide · Jamaica</small></div>';
-  root.append(endcap, status);
+  // Home is a self-contained, no-scroll dashboard. No artificial footer.
+  root.append(status);
   view.prepend(root);
 
   // If a file is missing, leave the established native mobile layout available.
@@ -179,8 +190,21 @@
     const enabled = artworkLoaded && mobile.matches &&
       view.classList.contains('active') &&
       !document.documentElement.classList.contains('p2-contrast');
+    // When returning from the manual/referral pages, clear their old scroll
+    // offset BEFORE locking the homepage to the visible screen. Otherwise the
+    // whole single-screen dashboard is shifted upward by the old scrollY.
+    if (enabled && !document.documentElement.classList.contains('mohw-mobile-image-active')) {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+      window.scrollTo(0, 0);
+    }
     root.hidden = !enabled;
     document.documentElement.classList.toggle('mohw-mobile-image-active', enabled);
+    if (enabled) {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+      if (window.scrollY !== 0) window.scrollTo(0, 0);
+    }
     if (!enabled && !video.paused) video.pause();
   };
   const mo = new MutationObserver(sync);
