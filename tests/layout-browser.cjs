@@ -96,6 +96,18 @@ async function run(){
       };
    });
    console.log('HOME_FIT_DIAGNOSTIC',width,JSON.stringify(finish));
+   const ancestors=await page.evaluate(()=>{
+     const a=[];for(let e=document.querySelector('#mohw-mobile-image');e;e=e.parentElement){
+       const c=getComputedStyle(e),r=e.getBoundingClientRect();
+       a.push({tag:e.tagName,id:e.id,classes:e.className,top:r.top,bottom:r.bottom,height:r.height,
+         position:c.position,topCSS:c.top,display:c.display,transform:c.transform,translate:c.translate,
+         animation:c.animationName,contain:c.contain,filter:c.filter,perspective:c.perspective,
+         scrollTop:e.scrollTop,scrollHeight:e.scrollHeight,clientHeight:e.clientHeight,
+         alignItems:c.alignItems,justifyContent:c.justifyContent});
+     }
+     return a;
+   });
+   console.log('HOME_ANCESTORS',width,JSON.stringify(ancestors));
    assert.ok(Math.abs(finish.rootBottom-finish.viewport)<24,'home panel must fill the viewport without hiding actions');
    assert.equal(finish.hasEndcap,false,'no empty footer or endcap');
    assert.equal(finish.hasCleanManual,true,'manual card must be clean and clickable');
