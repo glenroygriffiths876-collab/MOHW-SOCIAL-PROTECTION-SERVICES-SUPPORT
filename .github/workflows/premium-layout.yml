@@ -56,5 +56,12 @@ jobs:
         run: |
           python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/mohw-preview.log 2>&1 &
           for i in $(seq 1 35); do curl -fsS http://127.0.0.1:8765/index.html >/dev/null && break; sleep 1; done
-      - name: Check actual desktop and mobile layout
+      - name: Check actual desktop, tablet, phone, rotation and functionality
         run: node tests/layout-browser.cjs
+      - name: Publish viewport screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mohw-responsive-screenshots
+          path: /tmp/mohw-responsive-shots/*.png
+          if-no-files-found: warn

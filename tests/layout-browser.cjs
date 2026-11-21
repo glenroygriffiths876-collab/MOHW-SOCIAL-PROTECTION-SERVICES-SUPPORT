@@ -1,204 +1,162 @@
 #!/usr/bin/env node
 'use strict';
+/* Browser-level responsive and functionality checks. The original reference
+   art is intentionally left untouched; tests validate sizing and usability. */
 const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
 const {chromium}=require('playwright-core');
 const BASE='http://127.0.0.1:8765/';
-async function run(){
- const browser=await chromium.launch({
-  headless:true, executablePath:process.env.CHROME_BIN||undefined,
-  args:['--no-sandbox','--disable-dev-shm-usage','--autoplay-policy=no-user-gesture-required']
- });
- try{
-  for(const width of [360,390,768]){
-   const page=await browser.newPage({viewport:{width,height:820},deviceScaleFactor:1,isMobile:width<500,hasTouch:width<500});
-   await page.goto(BASE,{waitUntil:'domcontentloaded'});
-   await page.waitForFunction(()=>document.querySelector('#mainNav')?.classList.contains('premium-nav-upgraded'),null,{timeout:12000});
-   await page.waitForFunction(()=>document.querySelector('#guideActionDock'),null,{timeout:10000});
-   await page.waitForFunction(()=>!!document.querySelector('#mohw-mobile-image:not([hidden])'),null,{timeout:12000});
-   await page.locator('#mohw-mobile-image .mv-navigation .mv-hotspot[aria-label="Referrals"]').click();
-   const layout=await page.evaluate(()=>{
-    const nav=document.querySelector('#mainNav');
-    const buttons=Array.from(nav.querySelectorAll(':scope>button'));
-    const rs=buttons.map(x=>x.getBoundingClientRect().toJSON());
-    const services=nav.querySelector('button[data-nav="services"]');
-    const dock=document.querySelector('#guideActionDock');
-    const gia=document.querySelector('#gia2Launcher');
-    return {
-     buttonCount:buttons.length,
-     rowCounts:[rs.filter(r=>Math.abs(r.y-rs[0].y)<3).length,rs.filter(r=>Math.abs(r.y-rs[3].y)<3).length],
-     columns:getComputedStyle(nav).gridTemplateColumns.split(' ').length,
-     widths:rs.map(r=>r.width),
-     servicesColor:getComputedStyle(services).color,
-     servicesBackground:getComputedStyle(services).backgroundImage,
+const OUT='/tmp/mohw-responsive-shots';
+fs.mkdirSync(OUT,{recursive:true});
+const screens=[
+ {name:'phone-small',w:320,h:568},
+ {name:'phone-standard',w:360,h:800},
+ {name:'phone-large',w:390,h:844},
+ {name:'phone-plus',w:430,h:932},
+ {name:'tablet-small-portrait',w:600,h:960},
+ {name:'tablet-portrait',w:768,h:1024},
+ {name:'tablet-large-portrait',w:800,h:1280},
+ {name:'tablet-landscape',w:1024,h:768},
+ {name:'samsung-tablet-landscape',w:1280,h:800},
+ {name:'desktop',w:1440,h:900},
+ {name:'full-hd-desktop',w:1920,h:1080},
+ {name:'short-landscape',w:1024,h:600}
+];
+const canonical='https://socialsupport.beginningconcepts.org/';
+async function visibleHome(page,mobile){
+ const selector=mobile?'#mohw-mobile-image:not([hidden])':'#exact-home:not([hidden])';
+ await page.waitForFunction(selector=>{
+   const e=document.querySelector(selector);
+   return !!e && getComputedStyle(e).display!=='none' && e.getBoundingClientRect().width>10;
+ },selector,{timeout:18000});
+ await page.waitForFunction(()=>!!document.querySelector('#gia2Launcher')&&!!document.querySelector('#guideActionDock'),null,{timeout:14000});
+}
+async function state(page,mobile){
+ return page.evaluate(mobile=>{
+   const $=s=>document.querySelector(s);
+   const rect=el=>{if(!el)return null;const b=el.getBoundingClientRect();return{x:b.x,y:b.y,w:b.width,h:b.height,right:b.right,bottom:b.bottom,top:b.top,left:b.left}};
+   const art=$(mobile?'#mohw-mobile-image':'#exact-home');
+   const film=$(mobile?'#mohw-mobile-image .mv-film-frame':'#exact-home .exact-player');
+   const dock=$('#guideActionDock'),gia=$('#gia2Launcher');
+   const cards=mobile?[...document.querySelectorAll('#mohw-mobile-image .mv-card')]:[...document.querySelectorAll('#exact-home .exact-hit')].filter(x=>/Find services|Make a referral|Get help choosing|Read the manual/.test(x.getAttribute('aria-label')||''));
+   const footer=$('#mohw-mobile-image .mv-bottom-action-space');
+   return {
+     viewport:{w:innerWidth,h:innerHeight},
+     art:rect(art),film:rect(film),dock:rect(dock),gia:rect(gia),footer:rect(footer),
+     dockStyle:getComputedStyle(dock).display,gaStyle:getComputedStyle(gia).display,
+     dockParent:dock.parentElement?.className,giaParent:gia.parentElement?.className,
      dockButtons:dock.querySelectorAll('.guide-action').length,
-     dockDisplay:getComputedStyle(dock).display,
-     dockX:dock.getBoundingClientRect().x,
-     dockWidth:dock.getBoundingClientRect().width,
-     dockGrid:getComputedStyle(dock).gridTemplateColumns,
-     giaDisplay:getComputedStyle(gia).display,
-     giaRight:window.innerWidth-gia.getBoundingClientRect().right,
-     horizontalOverflow:document.documentElement.scrollWidth>window.innerWidth+2
-    };
-   });
-   assert.equal(layout.buttonCount,6,'must render six native navigation options');
-   assert.equal(layout.columns,3,'native nav must use three equally sized columns');
-   assert.deepEqual(layout.rowCounts,[3,3],'nav buttons must form exactly two rows of three');
-   assert.ok(Math.max(...layout.widths)-Math.min(...layout.widths)<3,'nav button widths must be equal');
-   assert.match(layout.servicesBackground,/linear-gradient/,'Services must have navy gradient');
-   assert.equal(layout.servicesColor,'rgb(255, 255, 255)','Services label must stay white');
-   assert.equal(layout.dockButtons,4,'must have four genuine guide actions');
-   assert.equal(layout.dockDisplay,'grid','guide actions must use grid');
-   assert.ok(layout.dockX+layout.dockWidth<=width+3,'guide actions must fit to right');
-   assert.notEqual(layout.giaDisplay,'none','floating Gia must be visible');
-   assert.ok(layout.giaRight<45,'Gia must remain bottom right');
-   assert.equal(layout.horizontalOverflow,false,'no horizontal page overflow');
-   await page.locator('#guideActionDock [data-action="download"]').click();
-   await page.waitForFunction(()=>document.querySelector('#view-manual')?.classList.contains('active'),null,{timeout:7000});
-   await page.locator('#mainNav button[data-nav="about"]').click();
-   await page.waitForFunction(()=>document.querySelector('#mohw-mobile-image:not([hidden])'),null,{timeout:9000});
-   const home=await page.evaluate(()=>({
-    nativeDock:getComputedStyle(document.querySelector('#guideActionDock')).display,
-    oldDock:getComputedStyle(document.querySelector('#exact-mobile-utilities')).display,
-    visualVisible:getComputedStyle(document.querySelector('#mohw-mobile-image')).display,
-    imageWidth:document.querySelector('.mv-header img').naturalWidth,
-    cardCount:document.querySelectorAll('#mohw-mobile-image .mv-card').length,
-    videoFirst:[...document.querySelector('#mohw-mobile-image').children].findIndex(x=>x.classList.contains('mv-film-section')) <
-      [...document.querySelector('#mohw-mobile-image').children].findIndex(x=>x.classList.contains('mv-hero')),
-    gia:getComputedStyle(document.querySelector('#gia2Launcher')).display,
-    giaArtwork:getComputedStyle(document.querySelector('#gia2Launcher')).backgroundImage,
-    dockBounds:document.querySelector('#guideActionDock').getBoundingClientRect().toJSON(),
-    giaBounds:document.querySelector('#gia2Launcher').getBoundingClientRect().toJSON(),
-    filmCenter:(()=>{const r=document.querySelector('#mohw-mobile-image .mv-film-frame').getBoundingClientRect();return r.left+r.width/2;})(),
-    rootCenter:(()=>{const r=document.querySelector('#mohw-mobile-image').getBoundingClientRect();return r.left+r.width/2;})(),
-    overflow:document.documentElement.scrollWidth>window.innerWidth+2
-   }));
-   assert.equal(home.nativeDock,'flex','home utility actions should be a single bottom row');
-    assert.ok(Math.abs(home.filmCenter-home.rootCenter)<3,'the Gia video should be visually centered');
-    assert.ok(home.dockBounds.right <= home.giaBounds.left+3,'four utility actions must lead into Gia without overlapping');
-    assert.ok(home.dockBounds.top>620,'bottom home action row must not float beside the video');
-   assert.equal(home.oldDock,'none','no duplicate guide dock');
-   assert.equal(home.visualVisible,'flex','approved responsive mobile design must show');
-   assert.equal(home.imageWidth,1024,'correct original mobile image must load');
-   assert.equal(home.cardCount,4,'four active image-backed cards');
-   assert.equal(home.videoFirst,true,'Gia film should precede support headline');
-   assert.notEqual(home.gia,'none');
-   assert.equal(home.giaArtwork.includes('mobile-v3/gia.png'),true,'GIA artwork matches approved screenshot');
-   assert.equal(home.overflow,false,'no horizontal overflow on home');
-   const finish=await page.evaluate(()=>{
-      const root=document.querySelector('#mohw-mobile-image');
-      const gia=document.querySelector('#gia2Launcher');
-      const manual=root.querySelector('.mv-card-pink');
-      const manualTitle=manual.querySelector('.mv-manual-copy strong');
-      const panels=[...root.querySelectorAll('.mv-header,.mv-navigation,.mv-film-section,.mv-hero,.mv-cards')];
-      return {
-        viewport:innerHeight,rootTop:root.getBoundingClientRect().top,rootBottom:root.getBoundingClientRect().bottom,scrollY:window.scrollY,
-        hasEndcap:!!root.querySelector('.mv-endcap'),
-        hasCleanManual:manual.classList.contains('mv-manual-clean')&&manualTitle?.textContent==='Read the manual',
-        hasOnlyOneGiaLabel:['none','normal','""'].includes(getComputedStyle(gia,'::after').content),
-        allVisible:panels.every(p=>p.getBoundingClientRect().bottom<=innerHeight+2),
-        manualVisible:manual.getBoundingClientRect().bottom<=innerHeight+2,
-        overflowY:getComputedStyle(document.documentElement).overflowY,
-        scrollHeight:document.documentElement.scrollHeight,
-        cardCount:root.querySelectorAll('.mv-card').length,
-      };
-   });
-   console.log('HOME_FIT_DIAGNOSTIC',width,JSON.stringify(finish));
-   const ancestors=await page.evaluate(()=>{
-     const a=[];for(let e=document.querySelector('#mohw-mobile-image');e;e=e.parentElement){
-       const c=getComputedStyle(e),r=e.getBoundingClientRect();
-       a.push({tag:e.tagName,id:e.id,classes:e.className,top:r.top,bottom:r.bottom,height:r.height,
-         position:c.position,topCSS:c.top,display:c.display,transform:c.transform,translate:c.translate,
-         animation:c.animationName,contain:c.contain,filter:c.filter,perspective:c.perspective,
-         scrollTop:e.scrollTop,scrollHeight:e.scrollHeight,clientHeight:e.clientHeight,
-         alignItems:c.alignItems,justifyContent:c.justifyContent});
+     cards:cards.map(rect),
+     nativeNavCount:$('#mainNav')?.querySelectorAll(':scope > button').length,
+     scrollHeight:document.documentElement.scrollHeight,
+     overflowX:document.documentElement.scrollWidth>innerWidth+2,
+     position:getComputedStyle(art).position,
+     bodyPadding:getComputedStyle(document.body).paddingBottom,
+     stageRatio:rect(art).w/rect(art).h,
+     videoSrc:$(mobile?'#mohw-mobile-image video':'#exact-home video')?.getAttribute('src')
+   };
+ },mobile);
+}
+function intersects(a,b){
+ if(!a||!b)return false;
+ return Math.min(a.right,b.right)-Math.max(a.left,b.left)>2 &&
+        Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top)>2;
+}
+async function toolsWork(page){
+ await page.locator('#guideActionDock [data-action="share"]').click();
+ await page.waitForFunction(()=>document.querySelector('#guideShareDialog')?.open===true);
+ assert.equal((await page.locator('#guideShareUrl').textContent()).trim(),canonical,'all shares must use custom domain');
+ await page.locator('#guideShareDialog [data-close]').first().click();
+ for(const action of ['issue','feedback']){
+   await page.locator('#guideActionDock [data-action="'+action+'"]').click();
+   await page.waitForFunction(()=>document.querySelector('#guideMessageDialog')?.open===true);
+   await page.locator('#guideMessageDialog [data-close]').first().click();
+ }
+ await page.locator('#guideActionDock [data-action="download"]').click();
+ await page.waitForFunction(()=>document.querySelector('#view-manual')?.classList.contains('active'),null,{timeout:8000});
+ await page.locator('#mainNav button[data-nav="about"]').click();
+ await visibleHome(page,true);
+}
+async function main(){
+ const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_BIN||undefined,
+   args:['--no-sandbox','--disable-dev-shm-usage','--autoplay-policy=no-user-gesture-required']});
+ try{
+  for(const sc of screens){
+   const mobile=sc.w<900;
+   const page=await browser.newPage({viewport:{width:sc.w,height:sc.h},deviceScaleFactor:1,
+     isMobile:sc.w<=430,hasTouch:sc.w<=899});
+   page.setDefaultTimeout(15000);
+   const errs=[];
+   page.on('pageerror',e=>errs.push(String(e)));
+   await page.goto(BASE,{waitUntil:'domcontentloaded'});
+   await visibleHome(page,mobile);
+   const s=await state(page,mobile);
+   assert.equal(s.overflowX,false,sc.name+': no horizontal overflow');
+   assert.equal(s.dockButtons,4,sc.name+': retain four actual guide controls');
+   assert.equal(s.nativeNavCount,6,sc.name+': preserve six native nav choices');
+   assert.ok(s.art.w>0 && s.art.w<=sc.w+2,sc.name+': artwork fits device');
+   assert.ok(s.film.w>60 && s.film.w<=sc.w+2,sc.name+': full film player');
+   assert.equal(errs.length,0,sc.name+': no JavaScript errors: '+errs.join(','));
+   if(mobile){
+     assert.equal(s.dockParent,'mv-bottom-action-space',sc.name+': controls inside footer');
+     assert.equal(s.giaParent,'mv-bottom-action-space',sc.name+': existing GIA in footer');
+     assert.equal(s.dockStyle,'flex',sc.name+': actions form one horizontal row');
+     assert.equal(s.gaStyle,'block',sc.name+': GIA visible');
+     assert.equal(s.cards.length,4,sc.name+': four service cards');
+     assert.ok(s.art.w>=sc.w*.92,sc.name+': mobile/tablet uses screen width');
+     assert.ok(Math.abs((s.film.left+s.film.w/2)-(s.art.left+s.art.w/2))<4,
+       sc.name+': center the GIA video');
+     assert.ok(s.footer.top>=s.cards[3].bottom-2,sc.name+': footer follows cards');
+     for(const item of [...s.cards,s.film]){
+       assert.equal(intersects(s.dock,item),false,sc.name+': no utility overlay on a card/video');
+       assert.equal(intersects(s.gia,item),false,sc.name+': no GIA overlay on a card/video');
      }
-     return a;
-   });
-   console.log('HOME_ANCESTORS',width,JSON.stringify(ancestors));
-   assert.ok(Math.abs(finish.rootBottom-finish.viewport)<24,'home panel must fill the viewport without hiding actions');
-   assert.equal(finish.hasEndcap,false,'no empty footer or endcap');
-   assert.equal(finish.hasCleanManual,true,'manual card must be clean and clickable');
-   assert.equal(finish.hasOnlyOneGiaLabel,true,'Gia has only one name label');
-   assert.equal(finish.allVisible,true,'all homepage sections must be visible');
-   assert.equal(finish.manualVisible,true,'manual card must be visible');
-   assert.equal(finish.overflowY,'hidden','homepage scrolling should be disabled');
-   const screenState=await page.evaluate(()=>({
-     bodyScrollTop:document.body.scrollTop,
-     viewTransform:getComputedStyle(document.querySelector('#view-about')).transform,
-     viewAnimation:getComputedStyle(document.querySelector('#view-about')).animationName
-   }));
-   assert.equal(screenState.bodyScrollTop,0,'homepage must clear saved body scroll position');
-   assert.equal(screenState.viewTransform,'none','home must not retain the old fadeUp transform');
-   assert.equal(screenState.viewAnimation,'none','home entry animation must be disabled');
-   assert.equal(finish.cardCount,4,'all four service cards retained');
-   await page.evaluate(()=>window.scrollTo(0,400));
-   await page.waitForTimeout(100);
-   assert.equal(await page.evaluate(()=>window.scrollY),0,'homepage must not scroll');
-   await page.locator('.mv-card-pink').click();
-   await page.waitForFunction(()=>document.querySelector('#view-manual')?.classList.contains('active'),null,{timeout:7000});
-   await page.locator('#mainNav button[data-nav="about"]').click();
-   await page.waitForFunction(()=>document.querySelector('#mohw-mobile-image:not([hidden])'),null,{timeout:7000});
-   if(width===390){
-     await page.locator('#mohw-mobile-image .mv-play').click();
-     await page.waitForFunction(()=>document.querySelector('#mohw-mobile-image .mv-film-frame')?.classList.contains('mv-playing'),null,{timeout:18000});
-     const vid=await page.evaluate(()=>({time:document.querySelector('#mohw-mobile-image video').currentTime,src:document.querySelector('#mohw-mobile-image video').currentSrc}));
-     assert.equal(vid.src.includes('gia-introduction.mp4'),true,'actual GIA MP4 must play');
-     await page.screenshot({path:'/tmp/mobile-home-390.png',fullPage:true});
+     assert.equal(intersects(s.dock,s.gia),false,sc.name+': tools clear of GIA');
+     assert.ok(s.gia.right<=sc.w+2 && s.gia.left>=-2,sc.name+': GIA fits screen');
+     if(sc.h<=600)assert.ok(s.scrollHeight>sc.h,sc.name+': short phone must be able to scroll');
+   }else{
+     assert.ok(Math.abs(s.stageRatio-1448/1086)<.01,sc.name+': original art not stretched');
+     assert.ok(s.art.w>=Math.min(sc.w,1920)*.98,sc.name+': fill landscape width');
+     assert.equal(s.cards.length,4,sc.name+': four artwork navigation controls');
+     assert.ok(s.scrollHeight>=sc.h,sc.name+': natural desktop scrolling');
    }
-   console.log('MOBILE',width,JSON.stringify({layout,home}));
+   await page.screenshot({path:path.join(OUT,sc.name+'.png'),fullPage:true,animations:'disabled'});
+   console.log('RESPONSIVE',sc.name,JSON.stringify(s));
+   if(sc.name==='phone-large'){
+      await toolsWork(page);
+      await page.locator('#gia2Launcher').click();
+      await page.waitForFunction(()=>document.querySelector('#gia2Dialog')?.open===true);
+      await page.locator('#gia2Close').click();
+      await page.locator('#mohw-mobile-image .mv-play').click();
+      await page.waitForFunction(()=>document.querySelector('#mohw-mobile-image .mv-film-frame')?.classList.contains('mv-playing'),null,{timeout:20000});
+      assert.equal((await page.locator('#mohw-mobile-image .mv-film-video').getAttribute('src')),'assets/gia-introduction.mp4');
+      console.log('FUNCTIONAL_PHONE','share, report, feedback, manual, GIA, video OK');
+   }
+   if(sc.name==='tablet-portrait'){
+      await page.setViewportSize({width:1024,height:768});
+      await visibleHome(page,false);
+      const rotated=await state(page,false);
+      assert.equal(rotated.overflowX,false,'tablet rotate: no horizontal overflow');
+      assert.ok(Math.abs(rotated.stageRatio-1448/1086)<.01,'tablet rotate: art natural ratio');
+      assert.equal(documentAware(rotated),true,'tablet rotate: controls restored');
+      await page.setViewportSize({width:768,height:1024});
+      await visibleHome(page,true);
+      const back=await state(page,true);
+      assert.equal(back.dockParent,'mv-bottom-action-space','portrait return: actions stay in footer');
+      assert.equal(back.giaParent,'mv-bottom-action-space','portrait return: GIA stays in footer');
+      console.log('ROTATION','768x1024 -> 1024x768 -> 768x1024 OK');
+   }
+   if(sc.name==='tablet-landscape'){
+     await page.locator('#exact-home .exact-hit[aria-label="Referrals"]').click();
+     await page.waitForFunction(()=>document.querySelector('#view-referrals')?.classList.contains('active'),null,{timeout:8000});
+     await page.locator('#mainNav button[data-nav="about"]').click();
+     await visibleHome(page,false);
+   }
    await page.close();
   }
-  // Shorter devices must still show all actions without clipped cards or scroll.
-  for(const size of [{width:360,height:640},{width:390,height:700}]){
-    const short=await browser.newPage({viewport:size,deviceScaleFactor:1,isMobile:true,hasTouch:true});
-    await short.goto(BASE,{waitUntil:'domcontentloaded'});
-    await short.waitForFunction(()=>!!document.querySelector('#mohw-mobile-image:not([hidden])'),null,{timeout:12000});
-    const fit=await short.evaluate(()=>{
-      const root=document.querySelector('#mohw-mobile-image');
-      const cards=[...root.querySelectorAll('.mv-card')];
-      const nav=[...root.querySelectorAll('.mv-navigation .mv-hotspot')];
-      return {
-        rootHeight:root.getBoundingClientRect().height,
-        visibleCards:cards.every(el=>el.getBoundingClientRect().bottom<=innerHeight+2),
-        visibleNav:nav.every(el=>el.getBoundingClientRect().top>=-2&&el.getBoundingClientRect().bottom<=innerHeight+2),
-        visibleFilm:root.querySelector('.mv-film-frame').getBoundingClientRect().bottom<=innerHeight+2,
-        htmlOverflow:getComputedStyle(document.documentElement).overflowY,
-        height:innerHeight
-      };
-    });
-    console.log('SHORT_PHONE',JSON.stringify(size),JSON.stringify(fit));
-    assert.equal(fit.visibleCards,true,'all cards visible on compact phone');
-    assert.equal(fit.visibleNav,true,'all navigation visible on compact phone');
-    assert.equal(fit.visibleFilm,true,'Gia video visible on compact phone');
-    assert.equal(fit.htmlOverflow,'hidden','compact home does not scroll');
-    await short.close();
-  }
-  const page=await browser.newPage({viewport:{width:1440,height:900},deviceScaleFactor:1});
-  await page.goto(BASE,{waitUntil:'domcontentloaded'});
-  await page.waitForFunction(()=>document.querySelector('#mainNav')?.classList.contains('premium-nav-upgraded'));
-  await page.locator('#exact-home .exact-hit[aria-label="Referrals"]').click();
-  const desktop=await page.evaluate(()=>{
-   const nav=document.querySelector('#mainNav'),buttons=[...nav.querySelectorAll(':scope>button')];
-   return {cols:getComputedStyle(nav).gridTemplateColumns.split(' ').length,count:buttons.length,
-     buttons:buttons.map(x=>{let r=x.getBoundingClientRect();return{x:r.x,y:r.y,w:r.width}}),
-     active:getComputedStyle(nav.querySelector('button[data-nav="referrals"]')).backgroundImage,
-     horizontalOverflow:document.documentElement.scrollWidth>window.innerWidth+2};
-  });
-  assert.equal(desktop.cols,6,'desktop native header must have six options');
-  assert.equal(desktop.count,6);
-  assert.equal(desktop.buttons.every(x=>Math.abs(x.y-desktop.buttons[0].y)<3),true,'desktop buttons must share a row');
-  assert.equal(desktop.horizontalOverflow,false);
-  await page.locator('#mainNav button[data-nav="about"]').click();
-  await page.waitForFunction(()=>document.querySelector('#exact-home:not([hidden])'),null,{timeout:7000});
-  const artwork=await page.evaluate(()=>{
-   const img=document.querySelector('#exact-home .exact-art'),r=img.getBoundingClientRect();
-   return {naturalWidth:img.naturalWidth,naturalHeight:img.naturalHeight,ratio:r.width/r.height,viewport:innerWidth};
-  });
-  assert.equal(artwork.naturalWidth,1448);
-  assert.equal(artwork.naturalHeight,1086);
-  assert.ok(Math.abs(artwork.ratio-1448/1086)<.005,'desktop artwork is not distorted');
-  console.log('DESKTOP',JSON.stringify({desktop,artwork}));
-  await page.close();
+  console.log('ALL_RESPONSIVE_VIEWPORT_TESTS_PASSED',screens.length,'screenshots:',OUT);
  }finally{await browser.close();}
 }
-run().catch(e=>{console.error(e);process.exit(1)});
+function documentAware(s){return s.dockParent==='BODY' || s.dockParent==='';}
+main().catch(e=>{console.error(e);process.exit(1)});

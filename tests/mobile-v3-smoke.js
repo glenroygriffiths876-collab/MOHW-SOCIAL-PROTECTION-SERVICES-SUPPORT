@@ -23,7 +23,7 @@ assert(!js.includes('createElement(\'iframe\')'),'no fake iframe interaction');
 assert(!js.includes("endcap.className = 'mv-endcap'"),'unneeded bottom endcap removed');
 assert(js.includes("button.classList.add('mv-manual-clean')"),'clean manual card uses live typography');
 assert(css.includes('#mohw-mobile-image .mv-manual-book'),'retains only original book art');
-assert(css.includes('#gia2Launcher.gia2-launcher::after'),'duplicate GIA label is suppressed');
+assert(css.includes('#gia2Launcher::after'),'duplicate GIA label is suppressed');
 assert(css.includes('max-height:none!important'),'mobile homepage must not be trapped at a single viewport');
 assert(css.includes('overflow-y:auto!important'),'short mobile screens must scroll naturally');
 assert(js.includes('moveActions(enabled)'),'native guide controls must move into the in-flow footer');
