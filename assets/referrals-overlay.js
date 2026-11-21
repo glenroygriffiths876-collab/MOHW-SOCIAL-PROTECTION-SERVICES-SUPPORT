@@ -148,6 +148,31 @@ hotspot(mobHero,'Start Referral Guide','guide','',43,372,372,75,M.w,455);
 const mbounds=[[26,21,302,89],[26,112,302,95],[26,209,302,92],[26,310,302,92],[26,410,302,97],[26,511,302,105]];
 const mobileFrame=document.createElement('div');mobileFrame.className='rlo-selected-frame';mobSteps.append(mobileFrame);
 mbounds.forEach((v,i)=>hotspot(mobSteps,'Step '+(i+1)+': '+labels[i],'step',i,...v,335,620));
+/* Actual approved screenshot supplies the imagery for each compact phone tile.
+   No changes to the original image pane used by tablets and desktops. */
+const phoneSteps=document.createElement('section');
+phoneSteps.className='rlo-m-compact';
+phoneSteps.setAttribute('aria-label','Six referral steps');
+phoneSteps.innerHTML='<div class="rlo-compact-heading"><strong>YOUR REFERRAL PATHWAY</strong><span class="rlo-compact-count">Step 1 of 6</span></div>';
+const compactGrid=document.createElement('nav');
+compactGrid.className='rlo-compact-grid';
+compactGrid.setAttribute('aria-label','Choose a referral step');
+mbounds.forEach((v,i)=>{
+ const tile=document.createElement('button');tile.type='button';
+ tile.className='rlo-compact-tile rlo-compact-tile-'+(i+1);tile.dataset.compactStep=String(i);
+ tile.setAttribute('aria-label','Step '+(i+1)+': '+labels[i]);
+ const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+ svg.classList.add('rlo-compact-tile-image');svg.setAttribute('aria-hidden','true');
+ svg.setAttribute('viewBox','0 '+(455+v[1]-5)+' 227 '+(v[3]+10));
+ svg.setAttribute('preserveAspectRatio','xMinYMid slice');
+ const img=document.createElementNS('http://www.w3.org/2000/svg','image');
+ img.setAttribute('href','assets/referrals-overlay-mobile.webp');
+ img.setAttribute('width','896');img.setAttribute('height','1412');svg.append(img);
+ const label=document.createElement('span');label.className='rlo-compact-label';label.textContent=labels[i];
+ tile.append(svg,label);tile.addEventListener('click',()=>select(i));compactGrid.append(tile);
+});
+phoneSteps.append(compactGrid);mobile.insertBefore(phoneSteps,mobDetail);
+
 hotspot(mobDetail,'Full wording from the guide','full','',24,484,523,48,571,620);
 hotspot(mobFooter,'Urgent safety guidance','safety','',12,0,867,144,M.w,337);
 hotspot(mobDetail,'Previous referral step','prev','',24,543,256,66,571,620);
@@ -198,6 +223,11 @@ function refresh(){
  const mRect=mbounds[active];
  Object.assign(mobileFrame.style,{left:pct(mRect[0],335),top:pct(mRect[1],620),width:pct(mRect[2],335),height:pct(mRect[3],620)});
  [...progress.children].forEach((b,i)=>{if(i===active)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current')});
+ [...compactGrid.children].forEach((tile,i)=>{
+  tile.classList.toggle('is-active',i===active);
+  tile.setAttribute('aria-current',i===active?'step':'false');
+ });
+ copy($('.rlo-compact-count',phoneSteps),'Step '+(active+1)+' of 6');
 }
 new MutationObserver(refresh).observe($('#referralStepPanel'),{childList:true});
 function syncVisibility(){
