@@ -15,22 +15,47 @@ function drawReferrals(){
  const nav=$('#referralStepNav'),panel=$('#referralStepPanel'),counter=$('#referralStepCounter'),fill=$('#referralProgressFill'),meter=$('.journey-progress-track'),previous=$('#referralPrev'),next=$('#referralNext');
  if(!nav||!panel||!data.referralSteps?.length)return;
  const steps=data.referralSteps;let active=0;
- const concise=[["Ask what is affecting the person's care or wellbeing.","Listen without judgement and respect the person's priorities."],["Check for immediate danger or serious health and safeguarding concerns.","Follow emergency and safeguarding procedures before continuing."],["Use the decision guide or service directory to identify a suitable starting point.","Prioritise safety, health and basic needs when needs overlap."],["Explain the referral and check which documents the agency requires.","Requirements vary. Do not promise eligibility."],["With consent, help make direct contact or prepare a referral note.","Confirm contact details and protect confidentiality."],["Record the referral and check whether the person received support, where appropriate.","Follow facility policy and use approved record systems."]];
- const scenes={
-  0:{kind:'listening',image:'assets/referral-listening.webp',alt:'An older Jamaican woman sharing her concern with a community health worker who listens attentively',caption:'Begin by understanding what matters to the person.'},
-  1:{kind:'safety',image:'assets/referral-safety.webp',alt:'A community health worker checks on a woman’s safety and wellbeing in a private, welcoming room',caption:'Check immediate safety and wellbeing first.'},
-  2:{kind:'matching',image:'assets/referral-match.webp',alt:'A Jamaican community navigator and client compare support options and a parish map together',caption:'Choose a service that fits the person’s needs.'},
-  3:{kind:'preparing',image:'assets/referral-preparing.webp',alt:'A Jamaican community worker helps a father and child organize papers together at a service desk',caption:'Prepare together, one step at a time.'},
-  4:{kind:'handoff',image:'assets/referral-warmhandoff.webp',alt:'A Jamaican social worker and client make a supportive agency phone call together',caption:'Connect the person directly wherever possible.'},
-  5:{kind:'followup',image:'assets/referral-followup.webp',alt:'A Jamaican support worker and senior client sharing a follow-up call and reviewing a checklist together',caption:'Keep the person involved in what happens next.'}
- };
+ const concise=[
+  ["Ask what is affecting the person's care or wellbeing.","Listen without judgement and respect the person's priorities."],
+  ["Check for immediate danger or serious health and safeguarding concerns.","Follow emergency and safeguarding procedures before continuing."],
+  ["Use the decision guide or service directory to identify a suitable starting point.","Prioritise safety, health and basic needs when needs overlap."],
+  ["Explain the referral and check which documents the agency requires.","Requirements vary. Do not promise eligibility."],
+  ["With consent, help make direct contact or prepare a referral note.","Confirm contact details and protect confidentiality."],
+  ["Record the referral and check whether the person received support, where appropriate.","Follow facility policy and use approved record systems."]
+ ];
+ const scenes=[
+  {kind:'listening',image:'assets/referral-listening.webp',alt:'An older Jamaican woman sharing her concern with a community health worker who listens attentively',caption:'Begin by understanding what matters to the person.'},
+  {kind:'safety',image:'assets/referral-safety.webp',alt:'A community health worker checks on a woman’s safety and wellbeing in a private, welcoming room',caption:'Check immediate safety and wellbeing first.'},
+  {kind:'matching',image:'assets/referral-match.webp',alt:'A Jamaican community navigator and client compare support options and a parish map together',caption:'Choose a service that fits the person’s needs.'},
+  {kind:'preparing',image:'assets/referral-preparing.webp',alt:'A Jamaican community worker helps a father and child organise papers together at a service desk',caption:'Prepare together, one step at a time.'},
+  {kind:'handoff',image:'assets/referral-warmhandoff.webp',alt:'A Jamaican social worker and client make a supportive agency phone call together',caption:'Connect the person directly wherever possible.'},
+  {kind:'followup',image:'assets/referral-followup.webp',alt:'A Jamaican support worker and senior client sharing a follow-up call and reviewing a checklist together',caption:'Keep the person involved in what happens next.'}
+ ];
+ // Six distinct professional outline icons supplement six unique photographic illustrations.
+ const icons=[
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H8l-4 2v-5.5A7.5 7.5 0 1 1 20 11.5Z"/><path d="M8 11.5h.01M12 11.5h.01M16 11.5h.01"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 8.5 4v5.6c0 5.3-3.5 8.4-8.5 10.4-5-2-8.5-5.1-8.5-10.4V6L12 2Z"/><path d="m8.5 12 2.3 2.3 4.8-4.8"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="10.2" cy="10.2" r="6.8"/><path d="m15.3 15.3 6 6M7.2 10.2h6"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="18" rx="2"/><path d="M9 4V2h6v2M9 10h6m-6 4h6m-6 4h3"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 8 5-4 5 4 2 0 3-3 5 4-5 9-4-1-4 2-7-7V8Z"/><path d="m9 12 3 3m-1-5 5 5m-9-7 2 2"/></svg>',
+  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="19" rx="2"/><path d="M8 7h8m-8 4h7m-7 4h5m1 3 2 2 4-4"/></svg>'
+ ];
  function showStep(index){
   active=(index+steps.length)%steps.length;
   const [title,copy]=steps[active],scene=scenes[active];
-  const chosenScene=scene||{kind:'default',image:'assets/referral-match.webp',alt:'A client and community navigator explore a possible support option together',caption:'Explore a possible next step together.'};
-  const visual='<figure class="step-scene step-scene-'+chosenScene.kind+'"><img src="'+chosenScene.image+'" alt="'+chosenScene.alt+'"><figcaption>'+chosenScene.caption+'</figcaption></figure>';
-  panel.innerHTML='<article class="journey-feature-card"><div class="journey-feature-copy"><div class="journey-feature-meta"><span>STEP '+String(active+1).padStart(2,'0')+'</span><span>OF '+String(steps.length).padStart(2,'0')+'</span></div><h3 id="activeReferralStepTitle">'+esc(title)+'</h3><p>'+esc(concise[active]?.[0]||copy)+'</p><div class="step-source-note"><strong>Remember:</strong> '+esc(concise[active]?.[1]||'Confirm details with the agency.')+'</div><details class="p3-step-detail"><summary>Full wording from the guide</summary><p>'+esc(copy)+'</p></details></div>'+visual+'</article>';
-  nav.innerHTML=steps.map((s,i)=>'<button type="button" class="journey-step-tab '+(i===active?'is-current':'')+'" data-ref-step="'+i+'" aria-current="'+(i===active?'step':'false')+'" aria-controls="referralStepPanel" aria-label="Step '+(i+1)+': '+esc(s[0])+'"><span class="tab-number">'+String(i+1).padStart(2,'0')+'</span><span class="tab-title">'+esc(s[0])+'</span><i aria-hidden="true"></i></button>').join('');
+  if(!scene)return;
+  // Full exact wording is taken from the guide. Summaries and notes are the
+  // already-approved text, not invented eligibility or referral requirements.
+  panel.innerHTML='<article class="journey-feature-card rpx-feature" data-rpx-active-step="'+(active+1)+'">'+
+   '<figure class="step-scene rpx-step-scene"><img src="'+scene.image+'" alt="'+esc(scene.alt)+'" loading="eager" decoding="async"><figcaption>'+esc(scene.caption)+'</figcaption></figure>'+
+   '<div class="journey-feature-copy rpx-feature-copy">'+
+   '<div class="journey-feature-meta rpx-step-meta"><span>STEP '+String(active+1).padStart(2,'0')+'</span><span>OF '+String(steps.length).padStart(2,'0')+'</span></div>'+
+   '<h3 id="activeReferralStepTitle">'+esc(title)+'</h3>'+
+   '<p class="rpx-step-lead">'+esc(concise[active]?.[0]||copy)+'</p>'+
+   '<div class="step-source-note rpx-remember"><span class="rpx-remember-icon" aria-hidden="true">✦</span><div><strong>Remember</strong><p>'+esc(concise[active]?.[1]||'Confirm details with the agency.')+'</p></div></div>'+
+   '<details class="p3-step-detail rpx-full-guide"><summary><span aria-hidden="true">▤</span> Full wording from the guide</summary><p>'+esc(copy)+'</p></details>'+
+   '</div></article>';
+  nav.innerHTML=steps.map((s,i)=>'<button type="button" class="journey-step-tab rpx-step-tab rpx-step-'+(i+1)+' '+(i===active?'is-current':'')+'" data-ref-step="'+i+'" aria-current="'+(i===active?'step':'false')+'" aria-controls="referralStepPanel" aria-label="Step '+(i+1)+': '+esc(s[0])+'"><span class="tab-number">'+(i+1)+'</span><span class="rpx-step-icon">'+icons[i]+'</span><span class="tab-title">'+esc(s[0])+'</span><span class="rpx-step-arrow" aria-hidden="true">↗</span></button>').join('');
   $$('.journey-step-tab',nav).forEach(button=>button.addEventListener('click',()=>showStep(Number(button.dataset.refStep))));
   if(counter)counter.textContent='STEP '+String(active+1).padStart(2,'0')+' / '+String(steps.length).padStart(2,'0');
   if(fill)fill.style.width=((active+1)/steps.length*100)+'%';
@@ -42,8 +67,9 @@ function drawReferrals(){
  if(next)next.addEventListener('click',()=>showStep(active===steps.length-1?0:active+1));
  $$('[data-ref-scroll]').forEach(button=>button.addEventListener('click',()=>document.getElementById(button.dataset.refScroll)?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})));
  $$('[data-ref-step-jump]').forEach(button=>button.addEventListener('click',()=>{showStep(Number(button.dataset.refStepJump));document.getElementById('referralJourney')?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})}));
- showStep(0)
+ showStep(0);
 }
+
 function categoryOf(programme){const n=norm(programme);if(n==='path'||n==='local government assistance'||n==='nis')return 'Cash Assistance';if(n.includes('nhf')||n.includes('compassionate')||n.includes('diagnostic')||n.includes('chase'))return 'Health Support';if(n.includes('heart')||n.includes('skills'))return 'Skill Building';if(n.includes('housing')||n.includes('nht')||n.includes('nshp'))return 'Housing Support';if(n.includes('child protection')||n.includes('women')||n.includes('senior citizen'))return 'Family & Children Youth Support';if(n.includes('victim services')||n.includes('gender affairs'))return 'Justice & Safety Support';if(n.includes('ncda'))return 'Psychosocial Support';const m=data.categories.find(c=>norm(c.programme)===n);return m?.category||'Other support'}
 function drawProgramFilters(){const cats=['All','Health Support','Cash Assistance','Skill Building','Housing Support','Family & Children Youth Support','Other'];$('#programmeFilters').innerHTML=cats.map((c,i)=>`<button class="chip ${i===0?'active':''}" data-prog-filter="${esc(i===0?'all':c)}">${esc(i===0?'All programmes':c)}</button>`).join('');$$('[data-prog-filter]').forEach(b=>b.addEventListener('click',()=>{programFilter=b.dataset.progFilter;$$('[data-prog-filter]').forEach(x=>x.classList.toggle('active',x===b));renderProgrammes()}))}
 function renderProgrammes(){const q=norm($('#programmeSearch').value);const list=data.programmes.filter(p=>(programFilter==='all'||categoryOf(p.name)===programFilter)&&(!q||norm(Object.values(p).join(' ')).includes(q)));$('#programmeCount').textContent=`${list.length} programme profiles · Draft content transcribed from the guide`;$('#programmeCards').innerHTML=list.length?list.map((p,i)=>`<article class="programme-card"><div class="card-top"><span class="card-icon">${['◉','✚','⌂','♡','↗','▤'][i%6]}</span><span class="tag">${esc(categoryOf(p.name))}</span></div><h3>${esc(p.name)}</h3><p>${esc(p.support)}</p><button class="card-action" data-open-program="${data.programmes.indexOf(p)}">View full profile →</button></article>`).join(''):'<div class="empty-state">No programme matches this search. Try a broader term.</div>';$$('[data-open-program]').forEach(b=>b.addEventListener('click',()=>openProgramme(Number(b.dataset.openProgram))))}

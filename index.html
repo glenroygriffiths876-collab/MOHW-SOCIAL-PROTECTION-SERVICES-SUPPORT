@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="assets/manual-reader.css?v=3-responsive">
 <link rel="stylesheet" href="assets/phase2.css?v=5-responsive">
 <link rel="stylesheet" href="assets/premium-2026.css?v=1"><link rel="stylesheet" href="assets/exact-home.css?v=6-fluid"><link rel="stylesheet" href="assets/premium-ui-fix.css?v=1"><link rel="stylesheet" href="assets/mobile-image-v3.css?v=4-natural-scroll">
-<link rel="stylesheet" href="assets/home-dock-rebalance.css?v=2-fluid"></head>
+<link rel="stylesheet" href="assets/home-dock-rebalance.css?v=2-fluid"><link rel="stylesheet" href="assets/referrals-premium-v2.css?v=1"></head>
 <body>
 <div id="mohw-startup" role="status" aria-label="Loading MOHW Social Support"><img src="assets/mohw-official-logo.png" alt="Ministry of Health and Wellness"><strong>MOHW Social Support</strong><span>Jamaica · Services Support Guide</span></div>
 <script>const dismissStartup=()=>document.getElementById('mohw-startup')?.remove();window.addEventListener('load',dismissStartup,{once:true});setTimeout(dismissStartup,2500);</script>
@@ -35,8 +35,58 @@
 <button type="button" class="p2-tile p2-tile-rose" data-nav="manual"><span aria-hidden="true" class="p2-tile-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 6C8 3 5 3 2 4v15c4-1 7 0 10 2 3-2 6-3 10-2V4c-3-1-6-1-10 2Zm0 0v15"/></svg></span><strong>Read the manual</strong><small>Read, listen or download</small><span class="p2-tile-arrow" aria-hidden="true">→</span></button></div></section><div class="wrap p2-welcome"><article><img src="assets/gia-avatar.jpg" alt="GIA, the illustrated virtual guide"><div><span class="p2-kicker">YOUR VIRTUAL GUIDE</span><h2>Meet GIA</h2><p>Your virtual guide can help you find services and plan your next step.</p><div class="p2-actions"><button type="button" data-p2="welcome">Listen to introduction</button><button type="button" data-p2="access">Accessibility</button><button type="button" data-p2="gia">Ask GIA</button></div></div></article></div><section class="wrap p3-about" aria-labelledby="about-summary-title"><h2 id="about-summary-title">About this guide</h2><div class="p3-about-grid"><article class="p3-note"><h3>Who it is for</h3><p>Patients, families, caregivers, healthcare and social service workers.</p></article><article class="p3-note"><h3>Need more detail?</h3><p>The manual explains programmes, documents and referrals.</p><button type="button" class="p3-link" data-nav="manual">Open the manual →</button></article></div></section><div class="wrap disclaimer"><span class="notice-icon">i</span><div><b>Use this guide as a starting point.</b><p id="disclaimer"></p></div><span class="draft-pill">WORKING DRAFT</span></div>
 </section>
 <section class="view" id="view-referrals" aria-labelledby="referrals-title">
-<div class="referral-hero"><div class="wrap referral-hero-grid"><div class="referral-hero-copy"><div class="referral-kicker">REFERRAL PROCEDURES</div><h1 id="referrals-title">Make a <em>referral.</em></h1><p>Follow six steps to connect someone with the help they need.</p></div><figure class="referral-hero-art"><img src="assets/referral-support-journey.webp" alt="Jamaican social worker listening to a person seeking assistance"></figure></div></div><section class="wrap p3-urgent" id="urgentSupport" aria-labelledby="urgent-heading"><h2 id="urgent-heading">Urgent safety comes first</h2><p>For immediate danger, serious medical distress, suspected abuse, suicidal thoughts, severe neglect or child-protection concerns, follow emergency and safeguarding procedures first.</p></section><section class="referral-journey" id="referralJourney"><div class="wrap"><div class="journey-intro"><div><span class="referral-overline light-overline"><i></i> Step-by-step guide</span><h2>Six referral steps</h2><p>Choose a step or use Next.</p></div><div class="journey-orbit" aria-hidden="true"><span>6</span><i class="orbit-dot dot-one"></i><i class="orbit-dot dot-two"></i><i class="orbit-dot dot-three"></i><b>STEPS</b></div></div><div class="journey-progress-wrap"><div class="journey-progress-copy"><span id="referralStepCounter" aria-live="polite">STEP 01 / 06</span><span>PROGRESS</span></div><div class="journey-progress-track" role="progressbar" aria-label="Referral pathway progress" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1"><span id="referralProgressFill"></span></div></div><nav class="journey-step-nav" id="referralStepNav" aria-label="Choose a referral step"></nav><div class="journey-feature" id="referralStepPanel" aria-live="polite" aria-atomic="true"></div><div class="journey-controls"><button type="button" class="journey-control journey-prev" id="referralPrev">← <span>Previous step</span></button><button type="button" class="journey-control journey-next" id="referralNext"><span>Next step</span> →</button></div></div></section>
-<section class="wrap p3-tail p3-note"><div><h2>Ready for the next step?</h2><p>Confirm requirements with the relevant agency.</p></div><div class="p2-actions"><button type="button" data-nav="services">Find services</button><button type="button" data-p2="gia">Ask GIA</button><button type="button" data-nav="manual">Full manual</button></div></section>
+  <div class="referral-hero rpx-hero">
+    <div class="rpx-hero-glow" aria-hidden="true"></div>
+    <div class="wrap referral-hero-grid rpx-hero-grid">
+      <div class="referral-hero-copy rpx-hero-copy">
+        <div class="rpx-ministry-identity"><img src="assets/mohw-official-logo.png" alt="Ministry of Health &amp; Wellness official logo" loading="eager" decoding="async"><span>JAMAICA · SOCIAL PROTECTION SERVICES</span></div>
+        <div class="referral-kicker rpx-kicker">GUIDED REFERRAL PATHWAY <span aria-hidden="true">✦</span> SIX STEPS</div>
+        <h1 id="referrals-title">Make a <em>referral.</em></h1>
+        <p>Follow six steps to connect someone with the help they need.</p>
+        <div class="rpx-hero-actions"><button type="button" class="rpx-start" data-ref-scroll="referralJourney">Start Referral Guide <span aria-hidden="true">→</span></button><span class="rpx-hero-help">A respectful, person-centred approach</span></div>
+      </div>
+      <figure class="referral-hero-art rpx-hero-art">
+        <img src="assets/referral-support-journey.webp" alt="Jamaican support worker listening to an older woman, with another community member alongside" loading="eager" decoding="async">
+        <figcaption>Support starts with listening.</figcaption>
+      </figure>
+    </div>
+    <div class="rpx-hero-ribbon" aria-hidden="true"></div>
+  </div>
+
+  <section class="referral-journey rpx-journey" id="referralJourney" aria-labelledby="referral-journey-heading">
+    <div class="wrap rpx-journey-wrap">
+      <div class="journey-intro rpx-journey-intro">
+        <div><span class="referral-overline light-overline rpx-overline"><i aria-hidden="true"></i> EXPLORE THE PATHWAY</span><h2 id="referral-journey-heading">Six steps. <em>One caring connection.</em></h2><p>Choose any step or use Next to move through the guide.</p></div>
+        <span class="rpx-counter-medallion" aria-hidden="true"><b>06</b><small>STEPS</small></span>
+      </div>
+      <div class="journey-progress-wrap rpx-progress">
+        <div class="journey-progress-copy"><span id="referralStepCounter" aria-live="polite">STEP 01 / 06</span><span>YOUR PROGRESS</span></div>
+        <div class="journey-progress-track" role="progressbar" aria-label="Referral pathway progress" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1"><span id="referralProgressFill"></span></div>
+      </div>
+      <nav class="journey-step-nav rpx-step-nav" id="referralStepNav" aria-label="Choose one of six referral steps"></nav>
+      <div class="journey-feature rpx-step-panel" id="referralStepPanel" aria-live="polite" aria-atomic="true"></div>
+      <div class="journey-controls rpx-controls">
+        <button type="button" class="journey-control journey-prev" id="referralPrev">← <span>Previous step</span></button>
+        <span class="rpx-controls-caption">Guidance from the Social Protection Services Support Guide</span>
+        <button type="button" class="journey-control journey-next" id="referralNext"><span>Next step</span> →</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap p3-urgent rpx-urgent" id="urgentSupport" aria-labelledby="urgent-heading">
+    <span class="rpx-alert-icon" aria-hidden="true">!</span>
+    <div class="rpx-urgent-copy"><h2 id="urgent-heading">Urgent safety comes first</h2><p>For immediate danger, serious medical distress, suspected abuse, suicidal thoughts, severe neglect or child-protection concerns, follow emergency and safeguarding procedures first.</p></div>
+    <span class="rpx-alert-side" aria-hidden="true">PROTECT · RESPOND · REFER</span>
+  </section>
+
+  <section class="wrap p3-tail p3-note rpx-tail" aria-labelledby="rpx-next-heading">
+    <div class="rpx-tail-copy"><span class="rpx-overline">CONTINUE WITH CONFIDENCE</span><h2 id="rpx-next-heading">Ready for the next step?</h2><p>Confirm requirements with the relevant agency. GIA can help you explore a possible starting point.</p></div>
+    <div class="p2-actions rpx-tail-actions">
+      <button type="button" class="rpx-tail-btn rpx-tail-services" data-nav="services"><span aria-hidden="true">⌖</span> Find Services <b aria-hidden="true">↗</b></button>
+      <button type="button" class="rpx-tail-btn rpx-tail-gia" data-p2="gia"><img src="assets/gia-avatar.jpg" alt="" aria-hidden="true"> Ask GIA <b aria-hidden="true">↗</b></button>
+      <button type="button" class="rpx-tail-btn rpx-tail-manual" data-nav="manual"><span aria-hidden="true">▤</span> Full Manual <b aria-hidden="true">↗</b></button>
+    </div>
+  </section>
 </section>
 <section class="view" id="view-programmes" aria-labelledby="programmes-title"><div class="page-hero illustrated-page-hero programmes-page-hero"><div class="wrap illustrated-hero-grid"><div class="illustrated-hero-copy"><div class="eyebrow"><i></i> Chapter Three</div><h1 id="programmes-title">Programme <span class="accent">Directory.</span></h1><p>Find out where to go, what to bring and how to apply.</p><div class="illustrated-hero-note"><span>✳</span> Explore a support option that fits</div></div><figure class="illustrated-hero-visual"><img src="assets/programmes-directory.webp" alt="A Jamaican family and community navigator explore support options represented by colourful cards"><figcaption>Explore programmes and find a place to start.</figcaption></figure></div></div><div class="wrap page-content"><div class="toolbar"><label class="searchbox-light"><span>⌕</span><input id="programmeSearch" type="search" placeholder="Search programme, agency or support" aria-label="Search programme directory"></label><div class="chips" id="programmeFilters"></div></div><div class="results-line" id="programmeCount"></div><div class="programme-grid" id="programmeCards"></div></div></section>
 <section class="view" id="view-categories" aria-labelledby="categories-title"><div class="page-hero illustrated-page-hero categories-page-hero"><div class="wrap illustrated-hero-grid"><div class="illustrated-hero-copy"><div class="eyebrow"><i></i> Chapter Four</div><h1 id="categories-title">Browse by <span class="accent">category.</span></h1><p>Choose the type of help you need and explore available programmes.</p><div class="illustrated-hero-note"><span>✳</span> Find support by what matters now</div></div><figure class="illustrated-hero-visual"><img src="assets/categories-directory.webp" alt="A Jamaican navigator and young adult sort colourful cards for different kinds of community support"><figcaption>Find a category that matches the need.</figcaption></figure></div></div><div class="wrap page-content"><div class="toolbar"><label class="searchbox-light"><span>⌕</span><input id="categorySearch" type="search" placeholder="Search category, programme or group" aria-label="Search by category"></label><div class="chips" id="categoryFilters"></div></div><div class="results-line" id="categoryCount"></div><div class="category-grid" id="categoryCards"></div></div></section>
@@ -63,7 +113,7 @@
 <dialog id="serviceModal" aria-labelledby="serviceModalTitle"><div class="modal-head"><div><small id="serviceModalEyebrow">Service profile</small><h2 id="serviceModalTitle"></h2></div><button id="serviceModalClose" class="modal-close" aria-label="Close service details">×</button></div><div class="modal-body" id="serviceModalBody"></div></dialog>
 <footer><div class="wrap footer-grid"><div><b>Social Protection Services Support Guide · Jamaica</b><p>Public working draft based on the November 2026 guide. Programme and contact details require agency verification. This site does not collect personal information or determine eligibility.</p></div><span class="footer-label">DRAFT FOR REVIEW · NOT AN OFFICIAL SERVICE</span></div></footer>
 <dialog id="programmeModal"><div class="modal-head"><div><small id="modalEyebrow">Programme profile</small><h2 id="modalTitle"></h2></div><button id="modalClose" class="modal-close" aria-label="Close programme profile">×</button></div><div class="modal-body" id="modalBody"></div></dialog>
-<script src="assets/phase2-config.js?v=2-custom-domain" defer></script><script src="assets/phase2.js?v=1" defer></script><script src="assets/app.js?v=compact-23" defer></script><script src="assets/guide-tools.js?v=share-tools-8-custom-domain" defer></script><script src="assets/gia-next.js?v=gia-v5-parish-role-4-custom-domain" defer></script>
+<script src="assets/phase2-config.js?v=2-custom-domain" defer></script><script src="assets/phase2.js?v=1" defer></script><script src="assets/app.js?v=referrals-2026-premium-2" defer></script><script src="assets/guide-tools.js?v=share-tools-8-custom-domain" defer></script><script src="assets/gia-next.js?v=gia-v5-parish-role-4-custom-domain" defer></script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js").catch(()=>{}));}</script>
 <script src="assets/manual-reader.js?v=6-sound-default" defer></script><script src="assets/premium-experience.js?v=1" defer></script><script src="assets/exact-home.js?v=6-bottom-actions" defer></script><script src="assets/mobile-image-v3.js?v=5-footer-actions" defer></script>
 </body></html>
