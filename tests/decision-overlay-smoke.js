@@ -20,7 +20,7 @@ for(const f of ['assets/decision-overlay-desktop.webp','assets/decision-overlay-
  'assets/referral-photo-2-safety.webp','assets/referral-preparing.webp'])
  assert(fs.existsSync(f),'image missing '+f);
 assert(html.includes('assets/decision-image-overlay.css?v=4-referral-ribbon'),'must load image-layer CSS');
-assert(html.includes('assets/decision-image-overlay.js?v=3-referral-ribbon'),'must load image-layer JS');
+assert(html.includes('assets/decision-image-overlay.js?v=4-premium-no-scroll'),'must load image-layer JS');
 assert(sw.includes('decision-overlay-desktop.webp')&&sw.includes('decision-overlay-mobile.webp'),'cache artwork');
 assert(js.includes("fetch('data/guide-content.json"),'render exact data, not invented labels');
 assert(js.includes('state.more.append(b)'),'render all option buttons from source');

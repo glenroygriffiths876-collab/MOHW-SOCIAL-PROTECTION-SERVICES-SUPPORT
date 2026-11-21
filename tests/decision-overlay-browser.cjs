@@ -28,7 +28,7 @@ return{visible:getComputedStyle(a).display!=='none',src:a.querySelector('.dgo-ba
  oldHidden:getComputedStyle(document.querySelector('#view-decision .page-hero')).display==='none',
  logo:logo.getAttribute('src'),logoLoaded:logo.complete&&logo.naturalWidth>50,
  nativeHeaderHidden:getComputedStyle(document.querySelector('.site-header')).display==='none',
- mobileHeight:document.documentElement.scrollHeight,screenHeight:innerHeight};
+ mobileHeight:document.documentElement.scrollHeight,screenHeight:innerHeight,artTop:r.top,artBottom:r.bottom};
 },mobile);
 assert.equal(basics.visible,true,name+': premium screenshot visible');
 assert.equal(basics.noOverflow,true,name+': no horizontal overflow');
@@ -54,15 +54,15 @@ assert.equal(ribbon.inside,true,name+': navigation remains inside viewport');
 assert.match(ribbon.background,/gradient/,name+': glossy navy ribbon');
 assert.equal(basics.logo,'assets/mohw-official-logo.png',name+': official MOHW logo');
 assert.equal(basics.logoLoaded,true,name+': MOHW logo image decoded');
-assert.ok(basics.width>Math.min(900,w)*.96 && basics.width<=w+2,name+': artwork fills viewport');
+assert.ok(basics.width>0&&basics.width<=w+2,name+': artwork fits landscape/portrait viewport without clipping');
 if(mobile) assert.equal(basics.src,'assets/decision-overlay-mobile.webp');
 else assert.equal(basics.src,'assets/decision-overlay-desktop.webp');
-if(name==='standard-phone'||name==='large-phone') assert.ok(basics.mobileHeight<=basics.screenHeight+5,name+': fits single screen');
+assert.ok(basics.mobileHeight<=basics.screenHeight+5,name+': page fits without scrolling');
+assert.ok(basics.artTop>=-2&&basics.artBottom<=basics.screenHeight+2,name+': image stays vertically within viewport');
 const all=[];
 for(let i=0;i<scenarios.length;i++){
   const s=scenarios[i];
-  if(mobile){await page.locator('#decision-image-overlay .dgo-mobile select').selectOption(s)}
-  else{await page.locator('#decision-image-overlay .dgo-desktop .dgo-situation').filter({hasText:s}).first().click()}
+  await page.evaluate(s=>window.MOHWDecisionOverlay.select(s),s)
   await page.waitForFunction(s=>document.querySelector('.dgo-'+(innerWidth<900?'mobile':'desktop')+' .dgo-results h2')?.getAttribute('aria-label')===s,s);
   const info=await page.evaluate(mobile=>{
     const root=document.querySelector('#decision-image-overlay '+(mobile?'.dgo-mobile':'.dgo-desktop'));
@@ -77,7 +77,7 @@ for(let i=0;i<scenarios.length;i++){
   if(!info.photoLoaded)await page.waitForFunction(mobile=>{const im=document.querySelector('.dgo-'+(mobile?'mobile':'desktop')+' .dgo-photo img');return im.complete&&im.naturalWidth>100},mobile);
   assert.equal(info.fullLabel,s,name+': complete source title remains accessible '+i);
   assert.ok(info.label.length>0,name+': mobile-friendly display label '+i);
-  assert.ok(info.routes>=1,name+': options displayed for situation '+i);
+  assert.ok(info.routes>=1&&info.routes<=2,name+': options paginated without scrolling for situation '+i);
   assert.equal(info.overflow,false,name+': no overflow scenario '+i);
   all.push(info.photo);
   if((i===0||i===8||i===12)&&['standard-phone','samsung-tablet','desktop'].includes(name))
@@ -85,7 +85,7 @@ for(let i=0;i<scenarios.length;i++){
 }
 assert.equal(new Set(all).size,13,name+': all 13 illustrated situation scenes are distinct');
 if(mobile){
-  await page.locator('#decision-image-overlay .dgo-mobile select').selectOption(scenarios[1]);
+  await page.evaluate(s=>window.MOHWDecisionOverlay.select(s),scenarios[1]);
   const modalButton=page.locator('#decision-image-overlay .dgo-mobile .dgo-more .dgo-route').first();
   await modalButton.click();await page.waitForFunction(()=>document.querySelector('.dgo-dialog')?.open);
   const text=await page.locator('.dgo-dialog #dgo-dialog-options').textContent();
@@ -98,7 +98,14 @@ if(mobile){
   await page.locator('.dgo-dialog [data-close]').click();
   assert.equal(await page.locator('#decision-image-overlay .dgo-mobile .dgo-search input').count(),0,name+': search removed');
   assert.equal(await page.locator('#decision-image-overlay .dgo-mobile .dgo-reset').count(),0,name+': reset removed');
-  assert.equal(await page.locator('.dgo-mobile select option').count(),14,name+': all situations remain in the selector');
+  const deck=page.locator('.dgo-mobile .dgo-deck-inner');
+   assert.equal(await deck.isVisible(),true,name+': 3D activity deck is visible');
+   await deck.locator('.dgo-deck-all').click();
+   assert.equal(await page.locator('.dgo-picker-dialog').evaluate(el=>el.open),true,name+': paged situation gallery opens');
+   assert.equal(await page.locator('.dgo-picker-grid .dgo-picker-item').count(),4,name+': four choices, no long dropdown');
+   await page.locator('.dgo-picker-foot [data-pager="1"]').click();
+   assert.equal(await page.locator('.dgo-picker-page').textContent(),'2 / 4',name+': gallery changes pages');
+   await page.locator('.dgo-picker-close').click();
   await page.locator('#decision-image-overlay .dgo-mobile .dgo-gia .dgo-hit').click();
   await page.waitForFunction(()=>document.querySelector('#gia2Dialog')?.open===true);
   await page.locator('#gia2Close').click();

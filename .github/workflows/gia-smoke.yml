@@ -61,6 +61,8 @@ jobs:
 
       - name: Test Phase II integration
         run: node tests/phase2-smoke.js
+      - name: Test premium accessibility settings
+        run: node tests/accessibility-premium-smoke.js
       - name: Test exact artwork homepage
         run: node tests/exact-home-smoke.js
       - name: Test premium mobile screenshot and real controls

@@ -10,7 +10,7 @@ const sw=fs.readFileSync('service-worker.js','utf8');
 new vm.Script(app,{filename:'assets/app.js'});
 assert.equal(source.referralSteps.length,6,'six verified source referral stages');
 assert(html.includes('assets/referrals-premium-v2.css?v=1'),'premium stylesheet must load last');
-assert(html.includes('assets/app.js?v=referrals-2026-premium-2'),'updated interactive code must load');
+assert(html.includes('assets/app.js?v=referrals-decision-premium-3'),'updated interactive code must load');
 assert(sw.includes('assets/referrals-overlay.css'),'approved artwork-layer CSS must be cached');
 assert(sw.includes('assets/referrals-overlay-desktop.webp'),'desktop image cache entry');
 assert(sw.includes('assets/referrals-overlay-mobile.webp'),'mobile image cache entry');
