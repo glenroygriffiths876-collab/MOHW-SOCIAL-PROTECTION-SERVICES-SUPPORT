@@ -17,15 +17,18 @@ assert(sw.includes('assets/referrals-overlay-mobile.webp'),'mobile image cache e
 const overlay=fs.readFileSync('assets/referrals-overlay.js','utf8');
 new vm.Script(overlay,{filename:'assets/referrals-overlay.js'});
 const overlayCSS=fs.readFileSync('assets/referrals-overlay.css','utf8');
-assert(html.includes('assets/referrals-overlay.js?v=2-clean-image-layer'),'overlay script loaded');
-assert(html.includes('assets/referrals-overlay.css?v=4-clean-guidance'),'approved artwork CSS loaded');
+assert(html.includes('assets/referrals-overlay.js?v=3-compact-phone'),'overlay script loaded');
+assert(html.includes('assets/referrals-overlay.css?v=5-compact-phone'),'approved artwork CSS loaded');
 for(const f of ['assets/referrals-overlay-desktop.webp','assets/referrals-overlay-mobile.webp',
 'assets/referral-photo-1-listen.webp','assets/referral-photo-2-safety.webp',
 'assets/referral-photo-3-match.webp','assets/referral-photo-4-prepare.webp',
 'assets/referral-photo-5-connect.webp','assets/referral-photo-6-followup.webp'])
  assert(fs.existsSync(f),'missing actual artwork/photo: '+f);
 assert(overlay.includes('assets/mohw-official-logo.png'),'correct MOHW logo over generated crest');
-assert(overlay.includes('rlo-m-steps') && overlay.includes('rlo-m-detail'),'mobile has legible artwork splits');
+assert(overlay.includes('rlo-m-steps') && overlay.includes('rlo-m-detail'),'tablet retains artwork splits');
+assert(overlay.includes('rlo-m-compact') && overlay.includes('rlo-compact-grid'),'phone has compact illustrated steps');
+assert(overlayCSS.includes('grid-template-columns:repeat(2,minmax(0,1fr))'),'phone grid is 2-column');
+assert(overlayCSS.includes('@media(max-width:599px)'),'only phone widths get compact layout');
 assert(overlayCSS.includes('rlo-base') && overlayCSS.includes('rlo-hot'),'image plus hotspot design retained');
 assert(!overlayCSS.includes('inset:-70px'),'no blur pseudo-element that expands screenshot beyond the screen');
 assert(!overlayCSS.includes('#fff0bdf7'),'stage guidance overlay is fully opaque');

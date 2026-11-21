@@ -73,9 +73,36 @@ async function main(){
    assert.ok(info.artW<=w+2&&info.artW>w*.95,name+': artwork fits width');
    if(mobile)assert.equal(info.mobileSlices,4,name+': mobile reference artwork in four readable images');
    else assert.equal(info.imageSrc,'assets/referrals-overlay-desktop.webp',name+': actual approved design is native artwork');
+   if(w<600){
+      const compact=await page.evaluate(()=>{
+        const section=document.querySelector('.rlo-m-compact');
+        const grid=document.querySelector('.rlo-compact-grid');
+        const buttons=[...grid.querySelectorAll('.rlo-compact-tile')];
+        return {
+          visible:getComputedStyle(section).display!=='none',
+          oldHidden:getComputedStyle(document.querySelector('.rlo-m-steps')).display==='none',
+          columns:getComputedStyle(grid).gridTemplateColumns.split(' ').length,
+          count:buttons.length,
+          minHeight:Math.min(...buttons.map(b=>b.getBoundingClientRect().height)),
+          height:section.getBoundingClientRect().height,
+          formerHeight:innerWidth/335*620,
+          originalArt:buttons.every(b=>!!b.querySelector('svg image[href="assets/referrals-overlay-mobile.webp"]'))
+        };
+      });
+      assert.equal(compact.visible,true,name+' mobile selector visible');
+      assert.equal(compact.oldHidden,true,name+' tall list is hidden on phones');
+      assert.equal(compact.columns,2,name+' mobile two-column grid');
+      assert.equal(compact.count,6,name+' six step buttons');
+      assert.ok(compact.minHeight>=48,name+' touch targets');
+      assert.ok(compact.height<compact.formerHeight*.56,name+' at least 44% shorter step section');
+      assert.equal(compact.originalArt,true,name+' real original illustrated step crops');
+      console.log('COMPACT_PHONE',name,JSON.stringify(compact));
+   }
    const seen=[];
    for(let i=0;i<6;i++){
-     await page.locator('#referral-artwork-overlay '+art+' .rlo-hot[aria-label="'+('Step '+(i+1)+': '+expected[i][0])+'"]').click();
+     await page.locator(w<600
+       ? '#referral-artwork-overlay .rlo-compact-tile[data-compact-step="'+i+'"]'
+       : '#referral-artwork-overlay '+art+' .rlo-hot[aria-label="'+('Step '+(i+1)+': '+expected[i][0])+'"]').click();
      await page.waitForFunction(i=>{
        const a=document.querySelector('#referral-artwork-overlay');
        const src=document.querySelector('#referral-artwork-overlay .rlo-desktop .rlo-photo')?.getAttribute('src');
@@ -103,6 +130,12 @@ async function main(){
      },mobile);
      assert.ok(stage.src.endsWith(expected[i][1]),name+' photo '+(i+1)+' distinct');
      assert.equal(stage.title,expected[i][0],name+' accurate title '+(i+1));
+     if(w<600){
+       const selected=page.locator('.rlo-compact-tile.is-active');
+       assert.equal(await selected.count(),1,name+' one selected tile');
+       assert.equal(await selected.getAttribute('data-compact-step'),String(i),name+' selected matches image');
+       assert.equal(await selected.getAttribute('aria-current'),'step',name+' aria-current');
+     }
      assert.ok(stage.loaded&&stage.photoW>60,name+' stage graphic '+(i+1)+' fully rendered');
      assert.equal(stage.textFit,true,name+' step '+(i+1)+' overlay text must not clip');
      assert.ok(stage.source>70,name+' source wording '+(i+1)+' preserved');
