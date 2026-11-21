@@ -17,8 +17,8 @@ assert(sw.includes('assets/referrals-overlay-mobile.webp'),'mobile image cache e
 const overlay=fs.readFileSync('assets/referrals-overlay.js','utf8');
 new vm.Script(overlay,{filename:'assets/referrals-overlay.js'});
 const overlayCSS=fs.readFileSync('assets/referrals-overlay.css','utf8');
-assert(html.includes('assets/referrals-overlay.js?v=1-image-layer'),'overlay script loaded');
-assert(html.includes('assets/referrals-overlay.css?v=1-image-layer'),'approved artwork CSS loaded');
+assert(html.includes('assets/referrals-overlay.js?v=2-clean-image-layer'),'overlay script loaded');
+assert(html.includes('assets/referrals-overlay.css?v=2-clean-image-layer'),'approved artwork CSS loaded');
 for(const f of ['assets/referrals-overlay-desktop.webp','assets/referrals-overlay-mobile.webp',
 'assets/referral-photo-1-listen.webp','assets/referral-photo-2-safety.webp',
 'assets/referral-photo-3-match.webp','assets/referral-photo-4-prepare.webp',
