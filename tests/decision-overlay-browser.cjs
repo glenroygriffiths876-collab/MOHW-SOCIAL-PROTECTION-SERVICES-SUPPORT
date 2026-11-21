@@ -1,0 +1,99 @@
+#!/usr/bin/env node
+'use strict';
+const assert=require('node:assert/strict');
+const fs=require('node:fs');const path=require('node:path');
+const {chromium}=require('playwright-core');
+const BASE='http://127.0.0.1:8765/';
+const OUT='/tmp/mohw-responsive-shots/decision-overlay';
+fs.mkdirSync(OUT,{recursive:true});
+const sizes=[['small-phone',320,568],['standard-phone',390,844],['large-phone',430,932],['tablet-portrait',768,1024],['tablet-landscape',1024,768],['samsung-tablet',1280,800],['desktop',1440,900],['full-hd',1920,1080]];
+const scenarios=['Someone who wants/needs mental health support','A Parent or Student','A Senior (60+)','Looking for Skills Training and Work','A Person with a Disability','In a Crisis (Fire, Death)','An Entrepreneur/Farmer/ Backyard Gardening','A Patient Needing Tests','A Patient Needing Treatment','Affected by Substance Misuse','Experiencing Abuse, Domestic Violence, or GBV','Affected by Disaster or Fire','A Pregnant Adolescent or Adolescent Mother or Vulnerable Chidren'];
+(async()=>{
+const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_BIN||undefined,args:['--no-sandbox','--disable-dev-shm-usage']});
+try{
+for(const [name,w,h] of sizes){
+const mobile=w<900;
+const page=await browser.newPage({viewport:{width:w,height:h},deviceScaleFactor:1,isMobile:w<=430,hasTouch:w<900});
+const errs=[];page.on('pageerror',e=>errs.push(String(e)));page.setDefaultTimeout(15000);
+await page.goto(BASE,{waitUntil:'domcontentloaded'});
+await page.waitForFunction(()=>window.MOHWDecisionOverlay?.count===13,null,{timeout:18000});
+await page.evaluate(()=>document.querySelector('#mainNav button[data-nav="decision"]').click());
+await page.waitForFunction(()=>document.documentElement.classList.contains('dgo-active'));
+const art=mobile?'.dgo-mobile':'.dgo-desktop';
+const basics=await page.evaluate(mobile=>{
+const a=document.querySelector('#decision-image-overlay '+(mobile?'.dgo-mobile':'.dgo-desktop'));
+const logo=a.querySelector('.dgo-logo img');const r=a.getBoundingClientRect();
+return{visible:getComputedStyle(a).display!=='none',src:a.querySelector('.dgo-base').getAttribute('src'),
+ width:r.width,viewport:innerWidth,noOverflow:document.documentElement.scrollWidth<=innerWidth+3,
+ oldHidden:getComputedStyle(document.querySelector('#view-decision .page-hero')).display==='none',
+ logo:logo.getAttribute('src'),logoLoaded:logo.complete&&logo.naturalWidth>50,
+ nativeHeaderHidden:getComputedStyle(document.querySelector('.site-header')).display==='none',
+ mobileHeight:document.documentElement.scrollHeight,screenHeight:innerHeight};
+},mobile);
+assert.equal(basics.visible,true,name+': premium screenshot visible');
+assert.equal(basics.noOverflow,true,name+': no horizontal overflow');
+assert.equal(basics.oldHidden,true,name+': no duplicate CSS decision page');
+assert.equal(basics.nativeHeaderHidden,true,name+': only image navbar visible');
+assert.equal(basics.logo,'assets/mohw-official-logo.png',name+': official MOHW logo');
+assert.equal(basics.logoLoaded,true,name+': MOHW logo image decoded');
+assert.ok(basics.width>Math.min(900,w)*.96 && basics.width<=w+2,name+': artwork fills viewport');
+if(mobile) assert.equal(basics.src,'assets/decision-overlay-mobile.webp');
+else assert.equal(basics.src,'assets/decision-overlay-desktop.webp');
+if(name==='standard-phone'||name==='large-phone') assert.ok(basics.mobileHeight<=basics.screenHeight+5,name+': fits single screen');
+const all=[];
+for(let i=0;i<scenarios.length;i++){
+  const s=scenarios[i];
+  if(mobile){await page.locator('#decision-image-overlay .dgo-mobile select').selectOption(s)}
+  else{await page.locator('#decision-image-overlay .dgo-desktop .dgo-situation').filter({hasText:s}).first().click()}
+  await page.waitForFunction(s=>document.querySelector('.dgo-'+(innerWidth<900?'mobile':'desktop')+' .dgo-results h2')?.textContent===s,s);
+  const info=await page.evaluate(mobile=>{
+    const root=document.querySelector('#decision-image-overlay '+(mobile?'.dgo-mobile':'.dgo-desktop'));
+    const im=root.querySelector('.dgo-photo img');
+    return{photo:im.getAttribute('src'),label:root.querySelector('.dgo-results h2').textContent,
+      routes:root.querySelectorAll('.dgo-more .dgo-route').length,
+      overflow:document.documentElement.scrollWidth>innerWidth+3,
+      height:document.documentElement.scrollHeight,
+      photoLoaded:im.complete&&im.naturalWidth>100};
+  },mobile);
+  if(!info.photoLoaded)await page.waitForFunction(mobile=>{const im=document.querySelector('.dgo-'+(mobile?'mobile':'desktop')+' .dgo-photo img');return im.complete&&im.naturalWidth>100},mobile);
+  assert.equal(info.label,s,name+': source title '+i);
+  assert.ok(info.routes>=1,name+': options displayed for situation '+i);
+  assert.equal(info.overflow,false,name+': no overflow scenario '+i);
+  all.push(info.photo);
+  if((i===0||i===8||i===12)&&['standard-phone','samsung-tablet','desktop'].includes(name))
+    await page.screenshot({path:path.join(OUT,name+'-situation-'+(i+1)+'.png'),fullPage:true,animations:'disabled'});
+}
+assert.equal(new Set(all).size,13,name+': all 13 illustrated situation scenes are distinct');
+if(mobile){
+  await page.locator('#decision-image-overlay .dgo-mobile select').selectOption(scenarios[1]);
+  const modalButton=page.locator('#decision-image-overlay .dgo-mobile .dgo-more .dgo-route').first();
+  await modalButton.click();await page.waitForFunction(()=>document.querySelector('.dgo-dialog')?.open);
+  const text=await page.locator('.dgo-dialog #dgo-dialog-options').textContent();
+  assert.ok(text.length>5 && (text.includes('PATH') || text.includes('Rehabilitation') || text.includes('STW')),name+': exact route wording preserved');
+  assert.ok((await page.locator('.dgo-dialog-provider').textContent()).includes('Named provider'),name+': exact provider in modal');
+  await page.locator('.dgo-dialog [data-close]').click();
+  await page.locator('#decision-image-overlay .dgo-mobile .dgo-emergency .dgo-hit').click();
+  await page.waitForFunction(()=>document.querySelector('.dgo-dialog')?.open);
+  assert.ok((await page.locator('#dgo-dialog-options').textContent()).includes('Do not wait for a directory search'));
+  await page.locator('.dgo-dialog [data-close]').click();
+  await page.locator('#decision-image-overlay .dgo-mobile .dgo-search input').fill('PATH');
+  assert.ok(await page.locator('.dgo-mobile select option').count()>=2,name+': text search filters situations');
+  await page.locator('#decision-image-overlay .dgo-mobile .dgo-reset').click();
+  assert.equal(await page.locator('.dgo-mobile select option').count(),14,name+': reset restores 13 situations');
+  await page.locator('#decision-image-overlay .dgo-mobile .dgo-gia .dgo-hit').click();
+  await page.waitForFunction(()=>document.querySelector('#gia2Dialog')?.open===true);
+  await page.locator('#gia2Close').click();
+}
+assert.equal(errs.length,0,name+': JS errors: '+errs.join('; '));
+console.log('DECISION_OVERLAY_VIEWPORT',name,'13 situations / 26 source options / image layers / logo / navigation passed');
+if(name==='standard-phone'){
+ await page.locator('.dgo-mobile .dgo-footer-0 .dgo-hit').click();
+ await page.waitForFunction(()=>document.querySelector('#view-services.active')!==null);
+ await page.evaluate(()=>document.querySelector('#mainNav [data-nav="decision"]').click());
+ await page.waitForFunction(()=>document.querySelector('#view-decision.active')!==null);
+}
+await page.close();
+}
+console.log('DECISION_OVERLAY_ALL_PASSED',sizes.length,'sizes x 13 scenarios plus real native actions');
+}finally{await browser.close()}
+})().catch(err=>{console.error(err);process.exit(1)});

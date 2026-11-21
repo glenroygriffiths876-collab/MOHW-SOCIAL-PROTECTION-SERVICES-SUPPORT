@@ -11,6 +11,11 @@ on:
       - 'assets/home-dock-rebalance.css'
       - 'assets/referrals-overlay.css'
       - 'assets/referrals-overlay.js'
+      - 'assets/decision-image-overlay.js'
+      - 'assets/decision-image-overlay.css'
+      - 'assets/decision-overlay-desktop.webp'
+      - 'assets/decision-overlay-mobile.webp'
+      - 'tests/decision-overlay-browser.cjs'
       - 'assets/referrals-overlay-desktop.webp'
       - 'assets/referrals-overlay-mobile.webp'
       - 'assets/referral-photo-*.webp'
@@ -71,6 +76,8 @@ jobs:
         run: node tests/layout-browser.cjs
       - name: Verify all 6 referral scenes on phones, tablets and desktops
         run: node tests/referrals-premium-browser.cjs
+      - name: Verify all 13 decision situations, native service actions and image layovers
+        run: node tests/decision-overlay-browser.cjs
       - name: Publish viewport screenshots
         if: always()
         uses: actions/upload-artifact@v4

@@ -27,6 +27,11 @@ on:
       - 'tests/referrals-premium-smoke.js'
       - 'assets/referrals-overlay.css'
       - 'assets/referrals-overlay.js'
+      - 'assets/decision-image-overlay.js'
+      - 'assets/decision-image-overlay.css'
+      - 'assets/decision-overlay-desktop.webp'
+      - 'assets/decision-overlay-mobile.webp'
+      - 'tests/decision-overlay-smoke.js'
       - 'assets/referrals-overlay-desktop.webp'
       - 'assets/referrals-overlay-mobile.webp'
       - 'assets/referral-photo-*.webp'
@@ -62,3 +67,5 @@ jobs:
         run: node tests/mobile-v3-smoke.js
       - name: Verify official MOHW referral rebuild, source content and all six graphics
         run: node tests/referrals-premium-smoke.js
+      - name: Check 13 authentic decision situations and exact premium artwork
+        run: node tests/decision-overlay-smoke.js

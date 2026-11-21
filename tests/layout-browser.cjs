@@ -200,7 +200,7 @@ async function main(){
       assert.ok(r.viewWidth<=sc.w+3,sc.name+' '+target+': section fits viewport');
       assert.equal(r.dockOnBody,true,sc.name+' '+target+': tools restored to document');
       assert.equal(r.giaOnBody,true,sc.name+' '+target+': GIA restored to document');
-      if(target==='referrals'){
+      if(target==='referrals'||target==='decision'){
         assert.equal(r.dockVisible,false,sc.name+': no duplicate floating dock above the approved artwork');
         assert.equal(r.giaVisible,false,sc.name+': only one illustrated GIA launcher');
       }else{
