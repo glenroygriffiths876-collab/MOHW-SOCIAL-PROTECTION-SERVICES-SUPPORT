@@ -58,6 +58,7 @@ assert.ok(basics.width>0&&basics.width<=w+2,name+': artwork fits landscape/portr
 if(mobile) assert.equal(basics.src,'assets/decision-overlay-mobile.webp');
 else assert.equal(basics.src,'assets/decision-overlay-desktop.webp');
 assert.ok(basics.mobileHeight<=basics.screenHeight+5,name+': page fits without scrolling');
+console.log('DECISION_FRAME_FIT',name,JSON.stringify({top:basics.artTop,bottom:basics.artBottom,screen:basics.screenHeight,width:basics.width}));
 assert.ok(basics.artTop>=-2&&basics.artBottom<=basics.screenHeight+2,name+': image stays vertically within viewport');
 const all=[];
 for(let i=0;i<scenarios.length;i++){

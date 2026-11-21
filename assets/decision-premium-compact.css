@@ -61,3 +61,17 @@ html.dgo-active body #main #view-decision.decision-overlay-enabled #decision-ima
 }
 @media(max-width:899px) and (orientation:landscape){#decision-image-overlay .dgo-mobile{display:none!important}#decision-image-overlay .dgo-art.dgo-desktop{display:block!important;width:min(100vw,150dvh)!important;aspect-ratio:1536/1024!important}}
 @media(prefers-reduced-motion:reduce){#decision-image-overlay .dgo-deck-inner *,#decision-image-overlay .dgo-picker-dialog *{transition:none!important;animation:none!important}}
+
+/* Fix the original .view.active entry animation's transformed ancestor.
+   Fixed single-screen art must be anchored to the actual viewport. */
+html.dgo-active body #main,
+html.dgo-active body #main #view-decision.decision-overlay-enabled.active {
+ animation:none!important;transform:none!important;translate:none!important;
+ perspective:none!important;filter:none!important;
+}
+html.dgo-active body #main #view-decision #decision-image-overlay {
+ transform:none!important;translate:none!important;animation:none!important;
+}
+html.dgo-active #decision-image-overlay .dgo-art {
+ margin:0 auto!important;transform:none!important;translate:none!important;
+}
