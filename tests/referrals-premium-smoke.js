@@ -18,7 +18,7 @@ const overlay=fs.readFileSync('assets/referrals-overlay.js','utf8');
 new vm.Script(overlay,{filename:'assets/referrals-overlay.js'});
 const overlayCSS=fs.readFileSync('assets/referrals-overlay.css','utf8');
 assert(html.includes('assets/referrals-overlay.js?v=4-inline-steps'),'overlay script loaded');
-assert(html.includes('assets/referrals-overlay.css?v=6-one-row'),'approved artwork CSS loaded');
+assert(html.includes('assets/referrals-overlay.css?v=7-clean-jewels'),'approved artwork CSS loaded');
 for(const f of ['assets/referrals-overlay-desktop.webp','assets/referrals-overlay-mobile.webp',
 'assets/referral-photo-1-listen.webp','assets/referral-photo-2-safety.webp',
 'assets/referral-photo-3-match.webp','assets/referral-photo-4-prepare.webp',

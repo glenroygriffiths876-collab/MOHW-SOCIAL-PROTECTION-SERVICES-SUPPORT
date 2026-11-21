@@ -392,7 +392,7 @@ html.rlo-active .skip,html.rlo-active .p2-skip{display:none!important}
    box-shadow:inset 0 2px #fff8,0 2px 5px #02354e4d!important;
  }
  #referral-artwork-overlay .rlo-m-detail .rlo-compact-tile-image{
-   opacity:.24!important;filter:saturate(1.2);border-radius:inherit!important;
+   opacity:.055!important;filter:saturate(1.15);border-radius:inherit!important;
  }
  #referral-artwork-overlay .rlo-m-detail .rlo-compact-tile::after{
    display:none!important;content:none!important;
@@ -410,5 +410,13 @@ html.rlo-active .skip,html.rlo-active .p2-skip{display:none!important}
  }
  #referral-artwork-overlay .rlo-m-detail .rlo-compact-tile:focus-visible{
    outline:2px solid #064969!important;outline-offset:2px!important;
+ }
+}
+
+
+/* Visually finish the unused lower viewport without adding scroll or controls. */
+@media(max-width:599px){
+ html.rlo-active #referral-artwork-overlay{
+   background:radial-gradient(ellipse at 50% 105%,#0b6777 0%,#064357 60%,#052e43 100%)!important;
  }
 }
