@@ -42,6 +42,11 @@ async function run(){
   for(let i=0;i<6;i++){
     await page.locator('#view-referrals .rpx-step-tab[data-ref-step="'+i+'"]').click();
     await page.waitForFunction(i=>document.querySelector('#view-referrals .rpx-step-tab.is-current')?.dataset.refStep===String(i),i);
+    // Images change dynamically; wait until the actual bitmap has decoded.
+    await page.waitForFunction(()=>{
+      const el=document.querySelector('#view-referrals .rpx-step-scene img');
+      return Boolean(el && el.complete && el.naturalWidth>600);
+    },null,{timeout:12000});
     const info=await page.evaluate(()=>{
       const img=document.querySelector('#view-referrals .rpx-step-scene img');
       const r=img.getBoundingClientRect();
