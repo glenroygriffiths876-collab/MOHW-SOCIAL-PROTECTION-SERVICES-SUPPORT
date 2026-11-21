@@ -290,3 +290,25 @@ html.dgo-active body #main #view-decision.decision-overlay-enabled>:not(#decisio
   letter-spacing:.10em;text-shadow:0 1px 6px #002d41;
  }
 }
+
+/* Final phone selector alignment: fit label and native dropdown into the
+   fixed painted slot rather than allowing the selected text to clip. */
+@media(max-width:599px){
+ #decision-image-overlay .dgo-mobile .dgo-choices{
+   justify-content:center!important;
+   gap:2px!important;
+   padding:0 2%!important;
+ }
+ #decision-image-overlay .dgo-mobile .dgo-choices label{
+   display:block!important;flex:0 0 auto!important;
+   font:850 clamp(10px,2.55vw,12px)/1.03 system-ui!important;
+   margin:0!important;padding:0!important;
+ }
+ #decision-image-overlay .dgo-mobile .dgo-choices select{
+   display:block!important;flex:0 0 auto!important;
+   height:61%!important;max-height:61%!important;min-height:0!important;
+   line-height:1.05!important;font-size:clamp(12px,3vw,15px)!important;
+   padding:0 12px!important;vertical-align:middle;
+   text-overflow:ellipsis;white-space:nowrap;overflow:hidden;
+ }
+}
