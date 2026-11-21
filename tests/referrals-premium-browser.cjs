@@ -1,111 +1,133 @@
 #!/usr/bin/env node
 'use strict';
-const {chromium}=require('playwright-core');
+/* Confirm the approved generated art is the page, every native hotspot works,
+   the official logo is visible, and ONLY the six photographic stages swap.
+   Screen sizes include Samsung landscape and small Android portrait. */
 const assert=require('node:assert/strict');
-const fs=require('node:fs');
 const path=require('node:path');
-const ROOT='http://127.0.0.1:8765/';
-const DIR='/tmp/mohw-responsive-shots/referrals-v2';
-fs.mkdirSync(DIR,{recursive:true});
-const expectedImages=[
- 'referral-listening.webp','referral-safety.webp','referral-match.webp',
- 'referral-preparing.webp','referral-warmhandoff.webp','referral-followup.webp'
+const fs=require('node:fs');
+const {chromium}=require('playwright-core');
+const S='http://127.0.0.1:8765/';
+const OUT='/tmp/mohw-responsive-shots/referral-overlay';
+fs.mkdirSync(OUT,{recursive:true});
+const expected=[
+ ['Identify the need','referral-photo-1-listen.webp'],
+ ['Check urgency and safety','referral-photo-2-safety.webp'],
+ ['Match the person to a service','referral-photo-3-match.webp'],
+ ['Prepare for the referral','referral-photo-4-prepare.webp'],
+ ['Make a warm referral where possible','referral-photo-5-connect.webp'],
+ ['Document and follow up','referral-photo-6-followup.webp']
 ];
-const expectedTitles=[
- 'Identify the need','Check urgency and safety','Match the person to a service',
- 'Prepare for the referral','Make a warm referral where possible','Document and follow up'
-];
-const sizes=[
+const screens=[
  ['small-phone',320,568],['phone',390,844],['large-phone',430,932],
  ['tablet-portrait',768,1024],['tablet-landscape',1024,768],
  ['samsung-tablet-landscape',1280,800],['desktop',1440,900],['full-hd',1920,1080]
 ];
-async function run(){
+const bp=async (page,desc,fn)=>{
+ await page.waitForFunction(fn,null,{timeout:14000});
+};
+async function main(){
  const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_BIN||undefined,
    args:['--no-sandbox','--disable-dev-shm-usage']});
- try{
- for(const [name,w,h] of sizes){
-  const page=await browser.newPage({viewport:{width:w,height:h},deviceScaleFactor:1,hasTouch:w<900,isMobile:w<500});
-  const errors=[];page.on('pageerror',e=>errors.push(e.message));page.setDefaultTimeout(12000);
-  await page.goto(ROOT,{waitUntil:'domcontentloaded'});
-  await page.waitForFunction(()=>document.querySelector('#mainNav [data-nav="referrals"]')&&window.MOHWGIA, null,{timeout:18000});
-  await page.evaluate(()=>document.querySelector('#mainNav [data-nav="referrals"]').click());
-  await page.waitForFunction(()=>document.querySelector('#view-referrals.active .rpx-step-tab.is-current')?.getAttribute('data-ref-step')==='0',{timeout:12000});
-  const brand=await page.locator('#view-referrals .rpx-ministry-identity img').evaluate(img=>({
-    path:img.getAttribute('src'),width:img.naturalWidth,height:img.naturalHeight
-  }));
-  assert.equal(brand.path,'assets/mohw-official-logo.png',name+' must show correct MOHW mark');
-  assert.ok(brand.width>600,name+' high quality official logo should load');
-  assert.equal(await page.locator('#view-referrals .rpx-step-tab').count(),6,name+' 6 live buttons');
-  assert.equal(await page.locator('#view-referrals .rpx-step-tab .rpx-step-icon svg').count(),6,name+' six distinct icons');
-  const checked=[];
-  for(let i=0;i<6;i++){
-    await page.locator('#view-referrals .rpx-step-tab[data-ref-step="'+i+'"]').click();
-    await page.waitForFunction(i=>document.querySelector('#view-referrals .rpx-step-tab.is-current')?.dataset.refStep===String(i),i);
-    // Images change dynamically; wait until the actual bitmap has decoded.
-    await page.waitForFunction(()=>{
-      const el=document.querySelector('#view-referrals .rpx-step-scene img');
-      return Boolean(el && el.complete && el.naturalWidth>600);
-    },null,{timeout:12000});
-    const info=await page.evaluate(()=>{
-      const img=document.querySelector('#view-referrals .rpx-step-scene img');
-      const r=img.getBoundingClientRect();
-      const nav=[...document.querySelectorAll('#view-referrals .rpx-step-tab')].map(e=>e.getBoundingClientRect());
-      const panel=document.querySelector('#view-referrals .rpx-feature').getBoundingClientRect();
-      return {
-       img:img.getAttribute('src'),loaded:img.complete&&img.naturalWidth>600,
-       title:document.querySelector('#activeReferralStepTitle').textContent.trim(),
-       stage:document.querySelector('#referralStepCounter').textContent.trim(),
-       progress:document.querySelector('.journey-progress-track').getAttribute('aria-valuenow'),
-       navAligned:nav.every(n=>n.left>=-2&&n.right<=innerWidth+2&&n.width>70),
-       noHorizOverflow:document.documentElement.scrollWidth<=innerWidth+3,
-       panelWidth:panel.width, imageWidth:r.width,
-       sourceLength:document.querySelector('.rpx-full-guide p').textContent.trim().length
-      };
-    });
-    assert.ok(info.img.endsWith(expectedImages[i]),name+' step '+(i+1)+' unique scene matches');
-    assert.equal(info.title,expectedTitles[i],name+' step '+(i+1)+' exact title');
-    assert.ok(info.loaded,name+' step '+(i+1)+' actual graphic loads');
-    assert.equal(info.progress,String(i+1),name+' step '+(i+1)+' progress correct');
-    assert.ok(info.sourceLength>80,name+' step '+(i+1)+' full guide is preserved');
-    assert.equal(info.noHorizOverflow,true,name+' step '+(i+1)+' no overflow');
-    assert.equal(info.navAligned,true,name+' step '+(i+1)+' navigation stays on screen');
-    assert.ok(info.imageWidth>100,name+' step '+(i+1)+' image is visible');
-    checked.push(info.img);
-    if(['phone','samsung-tablet-landscape','desktop'].includes(name)){
-      await page.screenshot({path:path.join(DIR,name+'-step-'+(i+1)+'.png'),fullPage:true,animations:'disabled'});
-    }
-  }
-  assert.equal(new Set(checked).size,6,name+' unique scene graphic for each of six steps');
-  await page.locator('#referralPrev').click();
-  assert.equal(await page.locator('.rpx-step-tab.is-current').getAttribute('data-ref-step'),'4',name+' Previous works');
-  await page.locator('#referralNext').click();
-  assert.equal(await page.locator('.rpx-step-tab.is-current').getAttribute('data-ref-step'),'5',name+' Next works');
-  await page.locator('#referralNext').click();
-  assert.equal(await page.locator('.rpx-step-tab.is-current').getAttribute('data-ref-step'),'0',name+' Restart works');
-  await page.locator('#view-referrals .rpx-full-guide summary').click();
-  assert.equal(await page.locator('#view-referrals .rpx-full-guide').evaluate(el=>el.open),true,name+' full guide expandable');
-  const safety=(await page.locator('#urgentSupport').innerText());
-  assert.ok(safety.includes('Urgent safety comes first') && safety.includes('emergency and safeguarding'),name+' safety content');
-  const actions=await page.locator('#view-referrals .rpx-tail-actions button').count();
-  assert.equal(actions,3,name+' 3 closing functional controls');
-  assert.equal(errors.length,0,name+' uncaught JS errors '+errors.join(','));
-  console.log('REFERRALS_VIEWPORT',name,'6 unique scenes; source, buttons, logo, progress, overflow verified');
-  if(name==='phone'){
-    await page.locator('#view-referrals .rpx-tail-actions [data-p2="gia"]').click();
+ try {
+  for(const [name,w,h] of screens){
+   const mobile=w<900;
+   const page=await browser.newPage({viewport:{width:w,height:h},deviceScaleFactor:1,
+     isMobile:w<=430,hasTouch:w<900});
+   page.setDefaultTimeout(13000);
+   const pageErrors=[];page.on('pageerror',e=>pageErrors.push(String(e)));
+   await page.goto(S,{waitUntil:'domcontentloaded'});
+   await page.waitForFunction(()=>document.querySelector('#referral-artwork-overlay')&&document.querySelector('#referralStepPanel .rpx-feature'),null,{timeout:18000});
+   await page.evaluate(()=>document.querySelector('#mainNav [data-nav="referrals"]').click());
+   await page.waitForFunction(()=>document.documentElement.classList.contains('rlo-active'),null,{timeout:14000});
+   const art=mobile?'.rlo-mobile':'.rlo-desktop';
+   const info=await page.evaluate(mobile=>{
+     const art=document.querySelector('#referral-artwork-overlay '+(mobile?'.rlo-mobile':'.rlo-desktop'));
+     const svg=art.querySelector('svg.rlo-mobile-image');
+     const img=art.querySelector('img.rlo-base');
+     const logo=art.querySelector('.rlo-official-logo');
+     const parent=art.getBoundingClientRect(),lr=logo.getBoundingClientRect();
+     return {visible:getComputedStyle(art).display!=='none',imageSrc:img?.getAttribute('src'),
+       mobileSlices:art.querySelectorAll('svg.rlo-mobile-image').length,
+       logoSrc:logo?.getAttribute('src'),logoLoaded:logo?.naturalWidth>1000,
+       logoVisible:lr.width>0&&lr.height>0&&lr.right<=innerWidth+2,
+       artW:parent.width,viewport:innerWidth,
+       overflow:document.documentElement.scrollWidth>innerWidth+3,
+       nativeHeaderHidden:getComputedStyle(document.querySelector('.site-header')).display==='none',
+       oldCardsHidden:getComputedStyle(document.querySelector('#view-referrals .rpx-journey')).display==='none'
+     };
+   },mobile);
+   assert.equal(info.visible,true,name+': approved image artwork visible');
+   assert.equal(info.overflow,false,name+': no horizontal overflow');
+   assert.equal(info.nativeHeaderHidden,true,name+': no duplicate website header');
+   assert.equal(info.oldCardsHidden,true,name+': hide rejected CSS card rebuild');
+   assert.equal(info.logoSrc,'assets/mohw-official-logo.png',name+': verified official identity');
+   assert.equal(info.logoLoaded,true,name+': official MOHW logo loaded');
+   assert.equal(info.logoVisible,true,name+': real logo visibly replaces generated emblem');
+   assert.ok(info.artW<=w+2&&info.artW>w*.95,name+': artwork fits width');
+   if(mobile)assert.equal(info.mobileSlices,4,name+': mobile reference artwork in four readable images');
+   else assert.equal(info.imageSrc,'assets/referrals-overlay-desktop.webp',name+': actual approved design is native artwork');
+   const seen=[];
+   for(let i=0;i<6;i++){
+     await page.locator('#referral-artwork-overlay '+art+' .rlo-hot[aria-label="'+('Step '+(i+1)+': '+expected[i][0])+'"]').click();
+     await page.waitForFunction(i=>{
+       const a=document.querySelector('#referral-artwork-overlay');
+       const src=document.querySelector('#referral-artwork-overlay .rlo-desktop .rlo-photo')?.getAttribute('src');
+       return !!src&&src.endsWith(['referral-photo-1-listen.webp','referral-photo-2-safety.webp','referral-photo-3-match.webp','referral-photo-4-prepare.webp','referral-photo-5-connect.webp','referral-photo-6-followup.webp'][i])
+        && document.querySelector('#referralStepPanel .rpx-feature')?.dataset.rpxActiveStep===String(i+1);
+     },i,{timeout:14000});
+     await page.waitForFunction(()=>{
+       const a=document.querySelector('.rlo-desktop .rlo-photo'),b=document.querySelector('.rlo-mobile .rlo-photo');
+       return a?.complete&&a.naturalWidth>200&&b?.complete&&b.naturalWidth>200;
+     },null,{timeout:14000});
+     const stage=await page.evaluate(mobile=>{
+       const art=document.querySelector('.rlo-'+(mobile?'mobile':'desktop'));
+       const photo=art.querySelector('.rlo-photo'),title=art.querySelector(mobile?'.rlo-m-title':'.rlo-d-title');
+       return {src:photo.getAttribute('src'),title:title.textContent.trim(),loaded:photo.naturalWidth>200,
+         source:document.querySelector('#referralStepPanel .rpx-full-guide p')?.textContent?.trim().length,
+         overflow:document.documentElement.scrollWidth>innerWidth+3,
+         artSrc:document.querySelector('.rlo-desktop .rlo-base').getAttribute('src'),
+         photoW:photo.getBoundingClientRect().width};
+     },mobile);
+     assert.ok(stage.src.endsWith(expected[i][1]),name+' photo '+(i+1)+' distinct');
+     assert.equal(stage.title,expected[i][0],name+' accurate title '+(i+1));
+     assert.ok(stage.loaded&&stage.photoW>60,name+' stage graphic '+(i+1)+' fully rendered');
+     assert.ok(stage.source>70,name+' source wording '+(i+1)+' preserved');
+     assert.equal(stage.artSrc,'assets/referrals-overlay-desktop.webp',name+' no background swapping');
+     assert.equal(stage.overflow,false,name+' no horizontal overflow at step '+(i+1));
+     seen.push(stage.src);
+     if(['phone','samsung-tablet-landscape','desktop'].includes(name))
+       await page.screenshot({path:path.join(OUT,name+'-step-'+(i+1)+'.png'),fullPage:true,animations:'disabled'});
+   }
+   assert.equal(new Set(seen).size,6,name+' all six scenes different');
+   await page.locator('#referral-artwork-overlay '+art+' .rlo-hot[aria-label="Previous referral step"]').click();
+   await page.waitForFunction(()=>document.querySelector('#referralStepPanel .rpx-feature')?.dataset.rpxActiveStep==='5');
+   await page.locator('#referral-artwork-overlay '+art+' .rlo-hot[aria-label="Next referral step"]').click();
+   await page.waitForFunction(()=>document.querySelector('#referralStepPanel .rpx-feature')?.dataset.rpxActiveStep==='6');
+   await page.locator('#referral-artwork-overlay '+art+' .rlo-hot[aria-label="Next referral step"]').click();
+   await page.waitForFunction(()=>document.querySelector('#referralStepPanel .rpx-feature')?.dataset.rpxActiveStep==='1');
+   await page.locator('#referral-artwork-overlay '+art+' .rlo-hot[aria-label="Full wording from the guide"]').click();
+   await page.waitForFunction(()=>document.querySelector('.rlo-dialog')?.open);
+   const full=await page.locator('#rlo-dialog-text').textContent();
+   assert.ok(full.length>80,name+' exact full text in dialog');
+   await page.locator('#rlo-dialog-close').click();
+   assert.equal(pageErrors.length,0,name+' no uncaught errors '+pageErrors.join('|'));
+   console.log('REFERRAL_OVERLAY',name,'approved image, logo, 6 photographic states, hotspots, real source, viewport OK');
+   if(name==='phone'){
+    await page.locator('#referral-artwork-overlay '+art+' .rlo-hot[aria-label="Ask GIA"]').click();
     await page.waitForFunction(()=>document.querySelector('#gia2Dialog')?.open===true);
     await page.locator('#gia2Close').click();
-    await page.locator('#view-referrals .rpx-tail-actions [data-nav="services"]').click();
+    await page.locator('#referral-artwork-overlay '+art+' .rlo-hot[aria-label="Find Services"]').last().click();
     await page.waitForFunction(()=>document.querySelector('#view-services.active')!==null);
     await page.evaluate(()=>document.querySelector('#mainNav [data-nav="referrals"]').click());
     await page.waitForFunction(()=>document.querySelector('#view-referrals.active')!==null);
-    await page.locator('#view-referrals .rpx-tail-actions [data-nav="manual"]').click();
+    await page.locator('#referral-artwork-overlay '+art+' .rlo-hot[aria-label="Digital Manual"]').last().click();
     await page.waitForFunction(()=>document.querySelector('#view-manual.active')!==null);
-    console.log('REFERRAL_ACTIONS','GIA, Find Services, Digital Manual working');
+    console.log('REFERRAL_OVERLAY_ACTIONS','GIA, services, manual working');
+   }
+   await page.close();
   }
-  await page.close();
- }
- console.log('REFERRALS_PREMIUM_ALL_CHECKS_PASSED',sizes.length,'responsive sizes x 6 distinct illustrated stages');
+  console.log('REFERRAL_OVERLAY_ALL_TESTS_PASSED 8 viewports × 6 photographic step states');
  }finally{await browser.close();}
 }
-run().catch(e=>{console.error(e);process.exit(1)});
+main().catch(e=>{console.error(e);process.exit(1)});

@@ -199,8 +199,13 @@ async function main(){
       assert.ok(r.viewWidth<=sc.w+3,sc.name+' '+target+': section fits viewport');
       assert.equal(r.dockOnBody,true,sc.name+' '+target+': tools restored to document');
       assert.equal(r.giaOnBody,true,sc.name+' '+target+': GIA restored to document');
-      assert.ok(r.dockVisible && r.giaVisible && r.dockInside && r.giaInside,
-        sc.name+' '+target+': action tools and GIA visible and within viewport');
+      if(target==='referrals'){
+        assert.equal(r.dockVisible,false,sc.name+': no duplicate floating dock above the approved artwork');
+        assert.equal(r.giaVisible,false,sc.name+': only one illustrated GIA launcher');
+      }else{
+        assert.ok(r.dockVisible && r.giaVisible && r.dockInside && r.giaInside,
+          sc.name+' '+target+': action tools and GIA visible and within viewport');
+      }
       if(target==='referrals' || target==='manual')
         await page.screenshot({path:path.join(OUT,'inner-'+sc.name+'-'+target+'.png'),fullPage:false,animations:'disabled'});
       console.log('INNER_PAGE',sc.name,target,JSON.stringify(r));

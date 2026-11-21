@@ -25,6 +25,11 @@ on:
       - 'tests/gia-smoke.js'
       - 'tests/exact-home-smoke.js'
       - 'tests/referrals-premium-smoke.js'
+      - 'assets/referrals-overlay.css'
+      - 'assets/referrals-overlay.js'
+      - 'assets/referrals-overlay-desktop.webp'
+      - 'assets/referrals-overlay-mobile.webp'
+      - 'assets/referral-photo-*.webp'
       - 'assets/referrals-premium-v2.css'
       - '.github/workflows/gia-smoke.yml'
   pull_request:
