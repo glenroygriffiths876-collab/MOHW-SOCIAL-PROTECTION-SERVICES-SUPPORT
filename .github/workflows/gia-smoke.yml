@@ -24,6 +24,8 @@ on:
       - 'service-worker.js'
       - 'tests/gia-smoke.js'
       - 'tests/exact-home-smoke.js'
+      - 'tests/referrals-premium-smoke.js'
+      - 'assets/referrals-premium-v2.css'
       - '.github/workflows/gia-smoke.yml'
   pull_request:
     branches: [main]
@@ -53,3 +55,5 @@ jobs:
         run: node tests/exact-home-smoke.js
       - name: Test premium mobile screenshot and real controls
         run: node tests/mobile-v3-smoke.js
+      - name: Verify official MOHW referral rebuild, source content and all six graphics
+        run: node tests/referrals-premium-smoke.js

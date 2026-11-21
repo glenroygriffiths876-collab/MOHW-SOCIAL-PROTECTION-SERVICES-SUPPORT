@@ -9,6 +9,9 @@ on:
       - 'assets/mobile-image-v3.js'
       - 'assets/mobile-image-v3.css'
       - 'assets/home-dock-rebalance.css'
+      - 'assets/referrals-premium-v2.css'
+      - 'assets/app.js'
+      - 'tests/referrals-premium-browser.cjs'
       - 'assets/mobile-v3/**'
       - 'assets/guide-tools.js'
       - 'index.html'
@@ -23,6 +26,9 @@ on:
       - 'assets/mobile-image-v3.js'
       - 'assets/mobile-image-v3.css'
       - 'assets/home-dock-rebalance.css'
+      - 'assets/referrals-premium-v2.css'
+      - 'assets/app.js'
+      - 'tests/referrals-premium-browser.cjs'
       - 'assets/mobile-v3/**'
       - 'assets/guide-tools.js'
       - 'index.html'
@@ -58,6 +64,8 @@ jobs:
           for i in $(seq 1 35); do curl -fsS http://127.0.0.1:8765/index.html >/dev/null && break; sleep 1; done
       - name: Check actual desktop, tablet, phone, rotation and functionality
         run: node tests/layout-browser.cjs
+      - name: Verify all 6 referral scenes on phones, tablets and desktops
+        run: node tests/referrals-premium-browser.cjs
       - name: Publish viewport screenshots
         if: always()
         uses: actions/upload-artifact@v4
