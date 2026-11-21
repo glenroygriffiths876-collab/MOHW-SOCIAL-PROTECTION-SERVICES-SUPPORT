@@ -22,6 +22,7 @@ const BASE='http://127.0.0.1:8765/';
       visibleCards:p.querySelectorAll('button').length};
    });
    let g=await geometry();
+   assert.equal(await page.locator('#p2-access-dialog .ax-footer').isVisible(),true,name+': footer Reset and Done stay visible');
    assert(g.inside&&g.noScroll&&g.tabCount===3&&g.panel==='display',name+': accessible, no-scroll display');
    await page.locator('#p2-access-dialog [data-ax-pref="size"][data-ax-value="large"]').click();
    assert.equal(await page.evaluate(()=>document.documentElement.classList.contains('p2-large')),true,name+': text-size action retained');
