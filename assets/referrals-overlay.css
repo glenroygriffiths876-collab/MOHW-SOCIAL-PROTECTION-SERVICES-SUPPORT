@@ -221,3 +221,37 @@ html.rlo-active .skip,html.rlo-active .p2-skip{display:none!important}
    margin:0!important;padding:0!important;letter-spacing:0!important;
  }
 }
+
+
+/* Force predictable typesetting inside the fixed landscape screenshot.
+   At 1024px tablet landscape legacy global h2/p !important settings were
+   making the reminder scrollHeight exceed its painted boundary. */
+@media(min-width:900px){
+ #referral-artwork-overlay .rlo-d-copy{
+   padding:clamp(7px,.95vw,16px) clamp(8px,1.1vw,19px)!important;
+ }
+ #referral-artwork-overlay .rlo-d-copy .rlo-d-label{
+   font:850 clamp(10px,1vw,16px)/1.1 system-ui!important;
+   margin:0!important;
+ }
+ #referral-artwork-overlay .rlo-d-copy .rlo-d-title{
+   font:900 clamp(19px,2.48vw,39px)/1.05 system-ui!important;
+   margin:clamp(4px,.48vw,8px) 0 clamp(4px,.48vw,8px)!important;
+   letter-spacing:-.04em!important;
+ }
+ #referral-artwork-overlay .rlo-d-copy .rlo-d-lead{
+   font:640 clamp(11px,1.13vw,18px)/1.22 system-ui!important;
+   margin:0!important;letter-spacing:0!important;
+ }
+ #referral-artwork-overlay .rlo-d-copy .rlo-d-remember{
+   padding:clamp(6px,.65vw,11px)!important;
+ }
+ #referral-artwork-overlay .rlo-d-copy .rlo-d-remember strong{
+   display:block!important;font:900 clamp(11px,1.06vw,18px)/1.1 system-ui!important;
+   margin:0 0 4px!important;
+ }
+ #referral-artwork-overlay .rlo-d-copy .rlo-d-remember p{
+   font:600 clamp(10px,1.0vw,15px)/1.19 system-ui!important;
+   margin:0!important;letter-spacing:0!important;
+ }
+}
