@@ -75,3 +75,9 @@ html.dgo-active body #main #view-decision #decision-image-overlay {
 html.dgo-active #decision-image-overlay .dgo-art {
  margin:0 auto!important;transform:none!important;translate:none!important;
 }
+
+/* Stop the legacy fadeUp transform from shifting this fixed, one-screen guide
+   beneath the visible viewport during navigation on compact devices. */
+html.dgo-active #view-decision.decision-overlay-enabled.active{
+ animation:none!important;transform:none!important;translate:none!important;
+}
