@@ -155,7 +155,69 @@ async function main(){
    }
    await page.close();
   }
-  console.log('ALL_RESPONSIVE_VIEWPORT_TESTS_PASSED',screens.length,'screenshots:',OUT);
+
+  // Exercise the actual non-home pages too. Their scroll behaviour, native
+  // navigation, GIA dialog and four guide actions must survive the new home.
+  const routeScreens=[
+    {name:'phone-small',w:320,h:568},
+    {name:'phone-large',w:390,h:844},
+    {name:'tablet-portrait',w:768,h:1024},
+    {name:'tablet-landscape',w:1024,h:768},
+    {name:'desktop',w:1440,h:900}
+  ];
+  for(const sc of routeScreens){
+    const page=await browser.newPage({viewport:{width:sc.w,height:sc.h},deviceScaleFactor:1,
+      isMobile:sc.w<=430,hasTouch:sc.w<900});
+    page.setDefaultTimeout(16000);
+    await page.goto(BASE,{waitUntil:'domcontentloaded'});
+    await visibleHome(page,sc.w<900);
+    for(const target of ['referrals','decision','services','manual']){
+      await page.evaluate(id=>{
+        const nav=document.querySelector('#mainNav button[data-nav="'+id+'"]');
+        if(!nav)throw Error('Missing page '+id);
+        nav.click();
+      },target);
+      await page.waitForFunction(id=>document.querySelector('#view-'+id)?.classList.contains('active'),target,{timeout:9000});
+      const r=await page.evaluate(()=>{
+        const dock=document.querySelector('#guideActionDock');
+        const gia=document.querySelector('#gia2Launcher');
+        const a=document.querySelector('#main .view.active');
+        const dr=dock.getBoundingClientRect(),gr=gia.getBoundingClientRect();
+        return {
+          innerWidth,innerHeight,
+          overflow:document.documentElement.scrollWidth>innerWidth+2,
+          viewWidth:a.getBoundingClientRect().width,
+          dockVisible:getComputedStyle(dock).display!=='none',
+          giaVisible:getComputedStyle(gia).display!=='none',
+          dockOnBody:dock.parentElement===document.body,
+          giaOnBody:gia.parentElement===document.body,
+          dockInside:dr.left>=-3 && dr.right<=innerWidth+3,
+          giaInside:gr.left>=-3 && gr.right<=innerWidth+3
+        };
+      });
+      assert.equal(r.overflow,false,sc.name+' '+target+': no horizontal overflow');
+      assert.ok(r.viewWidth<=sc.w+3,sc.name+' '+target+': section fits viewport');
+      assert.equal(r.dockOnBody,true,sc.name+' '+target+': tools restored to document');
+      assert.equal(r.giaOnBody,true,sc.name+' '+target+': GIA restored to document');
+      assert.ok(r.dockVisible && r.giaVisible && r.dockInside && r.giaInside,
+        sc.name+' '+target+': action tools and GIA visible and within viewport');
+      if(target==='referrals' || target==='manual')
+        await page.screenshot({path:path.join(OUT,'inner-'+sc.name+'-'+target+'.png'),fullPage:false,animations:'disabled'});
+      console.log('INNER_PAGE',sc.name,target,JSON.stringify(r));
+    }
+    await page.locator('#gia2Launcher').click();
+    await page.waitForFunction(()=>document.querySelector('#gia2Dialog')?.open===true);
+    const dialog=await page.evaluate(()=>{
+      const r=document.querySelector('#gia2Dialog').getBoundingClientRect();
+      return {left:r.left,top:r.top,right:r.right,bottom:r.bottom,w:innerWidth,h:innerHeight};
+    });
+    assert.ok(dialog.left>=-2 && dialog.top>=-2 && dialog.right<=dialog.w+2 &&
+      dialog.bottom<=dialog.h+2,sc.name+': GIA chat fits inside the screen');
+    await page.locator('#gia2Close').click();
+    console.log('GIA_DIALOG',sc.name,JSON.stringify(dialog));
+    await page.close();
+  }
+  console.log('ALL_RESPONSIVE_VIEWPORT_TESTS_PASSED',screens.length,'home viewports and',routeScreens.length*4,'interior page viewports; screenshots:',OUT);
  }finally{await browser.close();}
 }
 function documentAware(s){return s.dockParent==='BODY' || s.dockParent==='';}
