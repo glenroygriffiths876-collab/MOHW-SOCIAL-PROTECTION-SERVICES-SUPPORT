@@ -45,18 +45,20 @@ for(let i=0;i<scenarios.length;i++){
   const s=scenarios[i];
   if(mobile){await page.locator('#decision-image-overlay .dgo-mobile select').selectOption(s)}
   else{await page.locator('#decision-image-overlay .dgo-desktop .dgo-situation').filter({hasText:s}).first().click()}
-  await page.waitForFunction(s=>document.querySelector('.dgo-'+(innerWidth<900?'mobile':'desktop')+' .dgo-results h2')?.textContent===s,s);
+  await page.waitForFunction(s=>document.querySelector('.dgo-'+(innerWidth<900?'mobile':'desktop')+' .dgo-results h2')?.getAttribute('aria-label')===s,s);
   const info=await page.evaluate(mobile=>{
     const root=document.querySelector('#decision-image-overlay '+(mobile?'.dgo-mobile':'.dgo-desktop'));
     const im=root.querySelector('.dgo-photo img');
     return{photo:im.getAttribute('src'),label:root.querySelector('.dgo-results h2').textContent,
+      fullLabel:root.querySelector('.dgo-results h2').getAttribute('aria-label'),
       routes:root.querySelectorAll('.dgo-more .dgo-route').length,
       overflow:document.documentElement.scrollWidth>innerWidth+3,
       height:document.documentElement.scrollHeight,
       photoLoaded:im.complete&&im.naturalWidth>100};
   },mobile);
   if(!info.photoLoaded)await page.waitForFunction(mobile=>{const im=document.querySelector('.dgo-'+(mobile?'mobile':'desktop')+' .dgo-photo img');return im.complete&&im.naturalWidth>100},mobile);
-  assert.equal(info.label,s,name+': source title '+i);
+  assert.equal(info.fullLabel,s,name+': complete source title remains accessible '+i);
+  assert.ok(info.label.length>0,name+': mobile-friendly display label '+i);
   assert.ok(info.routes>=1,name+': options displayed for situation '+i);
   assert.equal(info.overflow,false,name+': no overflow scenario '+i);
   all.push(info.photo);
