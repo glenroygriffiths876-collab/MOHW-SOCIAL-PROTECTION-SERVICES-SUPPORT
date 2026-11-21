@@ -15,7 +15,15 @@ html.rlo-active body #guideActionDock#guideActionDock,
 html.rlo-active body #gia2Launcher#gia2Launcher{display:none!important;visibility:hidden!important;pointer-events:none!important}
 html.rlo-active #main{max-width:none!important;width:100%!important;padding:0!important;margin:0!important;overflow:visible!important}
 html.rlo-active #view-referrals.referral-overlay-enabled{display:block!important;min-height:100dvh!important;overflow:visible!important;padding:0!important;margin:0!important;background:#062c41!important;isolation:isolate}
-#view-referrals.referral-overlay-enabled > :not(#referral-artwork-overlay){display:none!important}
+/* The previous CSS rebuild used high-specificity display:grid !important.
+   Hide it with greater specificity so no old panel precedes the artwork. */
+html.rlo-active body #main #view-referrals.referral-overlay-enabled > :not(#referral-artwork-overlay){
+ display:none!important;visibility:hidden!important;position:static!important;
+ margin:0!important;padding:0!important;height:0!important;min-height:0!important;
+}
+html.rlo-active body>.skip,html.rlo-active body>.p2-skip,
+html.rlo-active .skip,html.rlo-active .p2-skip{display:none!important}
+
 #view-referrals.referral-overlay-enabled #referral-artwork-overlay{display:block!important;position:relative;width:100%;min-height:100dvh;background:#0b4b58;overflow:hidden;color:#062b47}
 #referral-artwork-overlay .rlo-art{position:relative;z-index:1;width:min(100%,1920px);margin:0 auto;overflow:hidden;isolation:isolate;box-shadow:0 20px 70px #001d3ab5}
 #referral-artwork-overlay::before{content:"";position:fixed;inset:-70px;pointer-events:none;opacity:.75;filter:blur(46px) brightness(.7);background:url('./referrals-overlay-desktop.webp') center/cover no-repeat}
