@@ -255,3 +255,39 @@ html.rlo-active .skip,html.rlo-active .p2-skip{display:none!important}
    margin:0!important;letter-spacing:0!important;
  }
 }
+
+
+/* Landscape tablet image geometry is shorter than desktop: keep both the
+   verified source-derived summary and the reminder inside their art panels. */
+@media(min-width:900px) and (max-width:1399px){
+ #referral-artwork-overlay .rlo-d-copy{
+   top:43.55%!important;height:19.92%!important;
+   padding:clamp(5px,.64vw,9px) clamp(6px,.8vw,11px)!important;
+   grid-template-columns:minmax(0,2.0fr) minmax(0,.9fr)!important;
+   gap:2%!important;align-items:start!important;
+ }
+ #referral-artwork-overlay .rlo-d-copy .rlo-d-title{
+   font:900 clamp(16px,1.55vw,22px)/1.02 system-ui!important;
+   margin:3px 0 4px!important;letter-spacing:-.035em!important;
+ }
+ #referral-artwork-overlay .rlo-d-copy .rlo-d-label{
+   min-height:0!important;padding:2px 7px!important;
+   font:850 clamp(10px,.95vw,13px)/1.08 system-ui!important;
+ }
+ #referral-artwork-overlay .rlo-d-copy .rlo-d-lead{
+   font:630 clamp(10px,.94vw,13px)/1.17 system-ui!important;
+   margin:0!important;letter-spacing:0!important;
+ }
+ #referral-artwork-overlay .rlo-d-copy .rlo-d-remember{
+   align-self:start!important;padding:clamp(5px,.6vw,8px)!important;
+   border-radius:12px!important;min-height:0!important;
+ }
+ #referral-artwork-overlay .rlo-d-copy .rlo-d-remember strong{
+   font:900 clamp(11px,1.05vw,14px)/1.07 system-ui!important;
+   margin:0 0 3px!important;
+ }
+ #referral-artwork-overlay .rlo-d-copy .rlo-d-remember p{
+   font:610 clamp(9.5px,.89vw,12px)/1.16 system-ui!important;
+   margin:0!important;letter-spacing:0!important;
+ }
+}
