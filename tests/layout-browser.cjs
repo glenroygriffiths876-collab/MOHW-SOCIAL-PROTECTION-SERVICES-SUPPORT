@@ -150,7 +150,8 @@ async function main(){
    if(sc.name==='tablet-landscape'){
      await page.locator('#exact-home .exact-hit[aria-label="Referrals"]').click();
      await page.waitForFunction(()=>document.querySelector('#view-referrals')?.classList.contains('active'),null,{timeout:8000});
-     await page.locator('#mainNav button[data-nav="about"]').click();
+     // Exact artwork intentionally hides the native nav; route via its original handler.
+     await page.evaluate(()=>document.querySelector('#mainNav button[data-nav="about"]').click());
      await visibleHome(page,false);
    }
    await page.close();
