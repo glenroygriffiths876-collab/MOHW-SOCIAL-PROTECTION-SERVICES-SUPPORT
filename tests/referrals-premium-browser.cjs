@@ -93,11 +93,18 @@ async function main(){
          source:document.querySelector('#referralStepPanel .rpx-full-guide p')?.textContent?.trim().length,
          overflow:document.documentElement.scrollWidth>innerWidth+3,
          artSrc:document.querySelector('.rlo-desktop .rlo-base').getAttribute('src'),
-         photoW:photo.getBoundingClientRect().width};
+         photoW:photo.getBoundingClientRect().width,
+         textFit:(()=>{
+           const boxes=mobile
+             ?[art.querySelector('.rlo-m-copy'),art.querySelector('.rlo-m-remember')]
+             :[art.querySelector('.rlo-d-text'),art.querySelector('.rlo-d-remember')];
+           return boxes.every(b=>b && b.scrollHeight<=b.clientHeight+3);
+         })()};
      },mobile);
      assert.ok(stage.src.endsWith(expected[i][1]),name+' photo '+(i+1)+' distinct');
      assert.equal(stage.title,expected[i][0],name+' accurate title '+(i+1));
      assert.ok(stage.loaded&&stage.photoW>60,name+' stage graphic '+(i+1)+' fully rendered');
+     assert.equal(stage.textFit,true,name+' step '+(i+1)+' overlay text must not clip');
      assert.ok(stage.source>70,name+' source wording '+(i+1)+' preserved');
      assert.equal(stage.artSrc,'assets/referrals-overlay-desktop.webp',name+' no background swapping');
      assert.equal(stage.overflow,false,name+' no horizontal overflow at step '+(i+1));

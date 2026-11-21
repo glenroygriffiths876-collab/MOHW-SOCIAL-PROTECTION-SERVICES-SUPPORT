@@ -177,3 +177,47 @@ html.rlo-active .skip,html.rlo-active .p2-skip{display:none!important}
 @media(prefers-reduced-motion:reduce){
  #referral-artwork-overlay *{scroll-behavior:auto!important;transition:none!important;animation:none!important}
 }
+
+
+/* Clipping protection: global legacy typography is !important on .view p.
+   Give the image overlay its own fixed-fit type sizes so Step 4/5 and the
+   'Remember' guidance never overflow the painted panel. */
+@media(max-width:899px){
+ #referral-artwork-overlay .rlo-m-copy{
+   top:2.1%!important;height:27.3%!important;padding:2.0% 3.0%!important;
+   align-items:stretch!important;justify-content:flex-start!important;
+ }
+ #referral-artwork-overlay .rlo-m-copy .rlo-m-step{
+   display:block!important;flex:0 0 auto!important;
+   font:850 clamp(10px,2.65vw,14px)/1.1 system-ui!important;
+   margin:0 0 3px!important;padding:0!important;
+   text-shadow:none!important;
+ }
+ #referral-artwork-overlay .rlo-m-copy .rlo-m-title{
+   display:block!important;flex:0 0 auto!important;
+   font:900 clamp(17px,4.15vw,28px)/1.03 system-ui!important;
+   letter-spacing:-.037em!important;
+   margin:0 0 4px!important;padding:0!important;
+   text-shadow:none!important;
+ }
+ #referral-artwork-overlay .rlo-m-copy .rlo-m-lead{
+   display:block!important;flex:0 0 auto!important;
+   font:650 clamp(10.5px,2.77vw,17px)/1.23 system-ui!important;
+   margin:0!important;padding:0!important;
+   letter-spacing:0!important;text-shadow:none!important;
+ }
+ #referral-artwork-overlay .rlo-m-remember{
+   top:60.4%!important;height:16.9%!important;
+   padding:1.8% 2.7%!important;justify-content:flex-start!important;
+ }
+ #referral-artwork-overlay .rlo-m-remember strong{
+   display:block!important;flex:0 0 auto!important;
+   font:900 clamp(10.5px,2.7vw,15px)/1.07 system-ui!important;
+   margin:0 0 3px!important;
+ }
+ #referral-artwork-overlay .rlo-m-remember p{
+   display:block!important;flex:0 0 auto!important;
+   font:680 clamp(10px,2.55vw,15px)/1.16 system-ui!important;
+   margin:0!important;padding:0!important;letter-spacing:0!important;
+ }
+}
