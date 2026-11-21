@@ -1,0 +1,159 @@
+/* MOHW SOCIAL SUPPORT — EXACT REFERRAL ARTWORK OVERLAY
+ * Unlike the previous restyle, the generated premium images are the page;
+ * genuine HTML hotspots sit over their painted controls and one photo slot
+ * changes between six original stages. No redesign, carousel or moving cards.
+ */
+html.rlo-active,html.rlo-active body{background:#052e43!important;overflow-x:clip!important;overflow-y:auto!important}
+html.rlo-active .site-header,html.rlo-active .topline,
+html.rlo-active body>footer,html.rlo-active .p2-access-trigger,
+html.rlo-active #guideActionDock,html.rlo-active #gia2Launcher{display:none!important}
+html.rlo-active #main{max-width:none!important;width:100%!important;padding:0!important;margin:0!important;overflow:visible!important}
+html.rlo-active #view-referrals.referral-overlay-enabled{display:block!important;min-height:100dvh!important;overflow:visible!important;padding:0!important;margin:0!important;background:#062c41!important;isolation:isolate}
+#view-referrals.referral-overlay-enabled > :not(#referral-artwork-overlay){display:none!important}
+#view-referrals.referral-overlay-enabled #referral-artwork-overlay{display:block!important;position:relative;width:100%;min-height:100dvh;background:#0b4b58;overflow:hidden;color:#062b47}
+#referral-artwork-overlay .rlo-art{position:relative;z-index:1;width:min(100%,1920px);margin:0 auto;overflow:hidden;isolation:isolate;box-shadow:0 20px 70px #001d3ab5}
+#referral-artwork-overlay::before{content:"";position:fixed;inset:-70px;pointer-events:none;opacity:.75;filter:blur(46px) brightness(.7);background:url('./referrals-overlay-desktop.webp') center/cover no-repeat}
+#referral-artwork-overlay .rlo-desktop{aspect-ratio:1536/1024;background:#d5f5e8;line-height:0}
+#referral-artwork-overlay .rlo-base{display:block;width:100%;height:100%;object-fit:contain;pointer-events:none;user-select:none}
+#referral-artwork-overlay .rlo-hot{
+ position:absolute;z-index:9;border:0;background:transparent!important;
+ color:transparent!important;font-size:0;line-height:0;margin:0;padding:0;
+ cursor:pointer;touch-action:manipulation;appearance:none;border-radius:12px;
+}
+#referral-artwork-overlay .rlo-hot:hover{box-shadow:inset 0 0 0 2px #ffe489a1}
+#referral-artwork-overlay .rlo-hot:focus-visible{outline:4px solid #ffe26b!important;outline-offset:-3px!important;box-shadow:0 0 0 3px #00233b}
+#referral-artwork-overlay .rlo-official-logo{
+ position:absolute;z-index:8;object-fit:contain;padding:0;
+ background:#fffffff5;border:1px solid #eef7f2;border-radius:7px;
+ box-shadow:0 3px 12px #093e5238;box-sizing:border-box;
+}
+#referral-artwork-overlay .rlo-desktop .rlo-official-logo{left:4.25%;top:.2%;width:18.1%;height:6.05%}
+#referral-artwork-overlay .rlo-screen{position:absolute;pointer-events:none;z-index:5;box-sizing:border-box}
+#referral-artwork-overlay .rlo-photo{
+ position:absolute;z-index:5;object-fit:cover;object-position:center;border-radius:18px;
+ border:3px solid #ffffffdc;box-shadow:0 8px 22px #001e3b7c;
+ display:block;background:#c0e8d6;pointer-events:none;box-sizing:border-box;
+}
+#referral-artwork-overlay .rlo-desktop .rlo-photo{left:5.4%;top:43.8%;width:32.8%;height:30.0%}
+#referral-artwork-overlay .rlo-d-copy{
+ left:39.45%;top:44.0%;width:55.5%;height:19.2%;
+ padding:clamp(10px,1.3vw,21px) clamp(12px,1.5vw,23px);
+ border-radius:16px;background:linear-gradient(120deg,#feffff 8%,#f9fffdfc 65%,#f7fbfff9 100%);
+ display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,.94fr);gap:3%;
+ line-height:1.25;align-items:stretch;
+}
+#referral-artwork-overlay .rlo-d-text{min-width:0;overflow:hidden}
+#referral-artwork-overlay .rlo-d-label{
+ display:inline-flex;align-items:center;min-height:22px;
+ padding:3px 12px;border-radius:999px;background:linear-gradient(#048f4b,#046b3e);
+ color:#fff;font:850 clamp(10px,1.0vw,17px)/1.1 system-ui;
+}
+#referral-artwork-overlay .rlo-d-title{
+ margin:clamp(5px,.7vw,11px) 0 clamp(5px,.65vw,10px);
+ color:#062948;font:900 clamp(21px,2.65vw,43px)/1.07 system-ui;letter-spacing:-.045em;
+}
+#referral-artwork-overlay .rlo-d-lead{
+ margin:0;color:#133550;
+ font:650 clamp(12px,1.18vw,19px)/1.34 system-ui;
+}
+#referral-artwork-overlay .rlo-d-remember{
+ min-width:0;align-self:center;padding:clamp(9px,1.1vw,17px);
+ border:1.5px solid #f9cc4a;border-radius:17px;
+ background:linear-gradient(135deg,#fff5c6,#ffebaa);box-shadow:inset 0 2px #fff8;
+ color:#233344;font:580 clamp(11px,1.02vw,16px)/1.3 system-ui;
+}
+#referral-artwork-overlay .rlo-d-remember strong{display:block;margin-bottom:6px;color:#ad1453;font:900 clamp(13px,1.4vw,22px)/1 system-ui}
+#referral-artwork-overlay .rlo-d-remember p{margin:0}
+#referral-artwork-overlay .rlo-d-safety{
+ left:15.0%;top:79.7%;width:53.7%;height:5.55%;
+ display:flex;align-items:center;padding:5px 8px;
+ border-radius:8px;background:linear-gradient(90deg,#ffe0e9 97%,transparent);
+ color:#482c3b;font:680 clamp(9px,1.03vw,16px)/1.24 system-ui;
+ overflow:hidden;
+}
+#referral-artwork-overlay .rlo-progress{
+ left:48.8%;top:69.15%;width:21.9%;height:4.65%;
+ display:flex;align-items:center;justify-content:space-evenly;gap:5px;
+ border-radius:999px;background:#e4eff0f4;padding:4px 5px;
+}
+#referral-artwork-overlay .rlo-progress button{
+ flex:0 0 auto;min-width:0;width:16.4%;aspect-ratio:1;
+ display:grid;place-items:center;border-radius:50%;cursor:pointer;
+ border:2px solid #fff;box-shadow:0 2px 5px #34586b4f;
+ color:#43627b;background:linear-gradient(#e9f3fc,#b8c8dd);
+ font:800 clamp(10px,1.04vw,17px)/1 system-ui;
+}
+#referral-artwork-overlay .rlo-progress button[aria-current="step"]{
+ color:#fff;background:linear-gradient(#12f27c,#008951);
+ box-shadow:0 0 0 2px #8bffd0,0 4px 13px #0066476b;
+}
+#referral-artwork-overlay .rlo-progress button:focus-visible{outline:3px solid #da1265}
+#referral-artwork-overlay .rlo-d-dim-first{
+ left:4.1%;top:33.2%;width:15.1%;height:8.3%;
+ background:#001e364d;border-radius:23px;pointer-events:none;z-index:7;
+}
+#referral-artwork-overlay .rlo-selected-frame{z-index:8;position:absolute;pointer-events:none;border:3px solid #fff9a4;border-radius:20px;box-shadow:0 0 0 2px #40ffe3,0 0 17px #f7da65}
+#referral-artwork-overlay .rlo-dialog{
+ position:fixed;z-index:19000;inset:50% auto auto 50%;transform:translate(-50%,-50%);
+ margin:0;box-sizing:border-box;width:min(640px,calc(100vw - 24px));max-width:calc(100vw - 24px);
+ max-height:calc(100dvh - 30px);padding:clamp(18px,3vw,30px);
+ border:2px solid #83dfce;border-radius:21px;overflow:auto;
+ box-shadow:0 25px 90px #00152c8f;background:#f8fffd;color:#15364d;
+ font:550 17px/1.55 system-ui;
+}
+#referral-artwork-overlay .rlo-dialog::backdrop{background:#061d3fc7}
+#referral-artwork-overlay .rlo-dialog h2{font:900 clamp(22px,4vw,34px)/1.12 system-ui;color:#005f4c;margin:0 0 14px}
+#referral-artwork-overlay .rlo-dialog p{font:550 16px/1.7 system-ui;margin:10px 0 22px}
+#referral-artwork-overlay .rlo-dialog button{
+ cursor:pointer;border:0;border-radius:999px;padding:12px 23px;
+ color:#fff;background:linear-gradient(145deg,#0bba87,#075b4d);font:800 15px system-ui;
+}
+#referral-artwork-overlay .rlo-mobile{display:none}
+@media(max-width:899px){
+ html.rlo-active #main{height:auto!important;min-height:100dvh!important;overflow:visible!important}
+ html.rlo-active #referral-artwork-overlay{height:auto!important;min-height:100dvh!important;overflow:visible!important}
+ #referral-artwork-overlay .rlo-desktop{display:none}
+ #referral-artwork-overlay .rlo-mobile{
+  display:block;width:min(100%,720px);max-width:100%;background:#d9f5f2;line-height:0;
+ }
+ #referral-artwork-overlay .rlo-pane{position:relative;line-height:0;overflow:hidden;width:100%;isolation:isolate}
+ #referral-artwork-overlay .rlo-pane svg.rlo-mobile-image{display:block;width:100%;height:auto;pointer-events:none;user-select:none}
+ #referral-artwork-overlay .rlo-mobile .rlo-official-logo{left:3.8%;top:0;width:35%;height:13.5%;padding:2px;border-radius:6px}
+ #referral-artwork-overlay .rlo-mobile .rlo-photo{
+  left:4.3%;top:29.75%;width:89.8%;height:29.55%;
+  border-radius:17px;box-shadow:0 2px 9px #00344a67;
+  border:2px solid #fff;
+ }
+ #referral-artwork-overlay .rlo-m-copy{
+  left:3.8%;top:2.4%;width:92.3%;height:25.8%;
+  padding:2.3% 3.4%;display:flex;flex-direction:column;justify-content:center;
+  overflow:hidden;background:linear-gradient(#fdffff 15%,#f9ffff 80%,#fafffe);
+  border-radius:12px;line-height:1.2;
+ }
+ #referral-artwork-overlay .rlo-m-step{
+  display:inline-block;color:#075d4b;font:900 clamp(11px,3.1vw,20px)/1 system-ui;
+  margin:0 0 2.6%;padding:0;
+ }
+ #referral-artwork-overlay .rlo-m-title{
+  margin:0 0 2.8%;color:#06374d;font:900 clamp(16px,5.1vw,34px)/1.07 system-ui;letter-spacing:-.04em;
+ }
+ #referral-artwork-overlay .rlo-m-lead{
+  margin:0;color:#183a4b;font:620 clamp(11px,2.95vw,21px)/1.35 system-ui;
+ }
+ #referral-artwork-overlay .rlo-m-remember{
+  left:4.3%;top:61.6%;width:90.4%;height:14.8%;padding:2.8% 3.6%;
+  border-radius:13px;background:#fff0bdf7;border:1px solid #ffd45a;
+  color:#25394b;font:560 clamp(10px,2.65vw,18px)/1.3 system-ui;
+  display:flex;flex-direction:column;justify-content:center;overflow:hidden;
+ }
+ #referral-artwork-overlay .rlo-m-remember strong{
+  margin-bottom:2px;color:#0d603d;font:900 clamp(11px,3.2vw,21px)/1.2 system-ui;
+ }
+ #referral-artwork-overlay .rlo-m-remember p{margin:0}
+ #referral-artwork-overlay .rlo-mobile .rlo-selected-frame{border-width:3px;border-radius:15px;box-shadow:0 0 0 2px #73ffe7,0 0 16px #ffc928}
+ #referral-artwork-overlay .rlo-mobile .rlo-hot:hover{box-shadow:inset 0 0 0 2px #fee692aa}
+ #referral-artwork-overlay .rlo-dialog{font-size:16px}
+}
+@media(prefers-reduced-motion:reduce){
+ #referral-artwork-overlay *{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+}
