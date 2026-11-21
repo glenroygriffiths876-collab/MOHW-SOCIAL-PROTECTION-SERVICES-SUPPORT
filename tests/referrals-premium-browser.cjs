@@ -78,25 +78,34 @@ async function main(){
         const section=document.querySelector('.rlo-m-compact');
         const grid=document.querySelector('.rlo-compact-grid');
         const buttons=[...grid.querySelectorAll('.rlo-compact-tile')];
+        const detail=document.querySelector('.rlo-m-detail');
+        const r=section.getBoundingClientRect(), d=detail.getBoundingClientRect();
+        const photo=detail.querySelector('.rlo-photo').getBoundingClientRect();
         return {
           visible:getComputedStyle(section).display!=='none',
           oldHidden:getComputedStyle(document.querySelector('.rlo-m-steps')).display==='none',
+          insideDetail:section.parentElement===detail,
           columns:getComputedStyle(grid).gridTemplateColumns.split(' ').length,
           count:buttons.length,
-          minHeight:Math.min(...buttons.map(b=>b.getBoundingClientRect().height)),
           height:section.getBoundingClientRect().height,
-          formerHeight:innerWidth/335*620,
-          originalArt:buttons.every(b=>!!b.querySelector('svg image[href="assets/referrals-overlay-mobile.webp"]'))
+          fitsGap:r.top>=d.top && r.bottom<=photo.top+2,
+          beforeHeight:innerWidth/335*620,
+          viewport:innerHeight,
+          scrollHeight:document.documentElement.scrollHeight,
+          art:buttons.every(btn=>!!btn.querySelector('svg image[href="assets/referrals-overlay-mobile.webp"]'))
         };
       });
-      assert.equal(compact.visible,true,name+' mobile selector visible');
-      assert.equal(compact.oldHidden,true,name+' tall list is hidden on phones');
-      assert.equal(compact.columns,2,name+' mobile two-column grid');
-      assert.equal(compact.count,6,name+' six step buttons');
-      assert.ok(compact.minHeight>=48,name+' touch targets');
-      assert.ok(compact.height<compact.formerHeight*.56,name+' at least 44% shorter step section');
-      assert.equal(compact.originalArt,true,name+' real original illustrated step crops');
-      console.log('COMPACT_PHONE',name,JSON.stringify(compact));
+      assert.equal(compact.visible,true,name+' compact navigation visible');
+      assert.equal(compact.oldHidden,true,name+' tall stacked buttons hidden');
+      assert.equal(compact.insideDetail,true,name+' six steps repositioned inside existing photo panel');
+      assert.equal(compact.columns,6,name+' all six in one row');
+      assert.equal(compact.count,6,name+' all six buttons retained');
+      assert.ok(compact.height<=44,name+' navigation is small and elegant');
+      assert.ok(compact.fitsGap,name+' navigation does not cover selected photograph');
+      assert.equal(compact.art,true,name+' illustrated artwork remains present');
+      if(w>=390)assert.ok(compact.scrollHeight<=compact.viewport+4,
+        name+' typical phone layout fits on one screen');
+      console.log('ONE_ROW_PHONE',name,JSON.stringify(compact));
    }
    const seen=[];
    for(let i=0;i<6;i++){

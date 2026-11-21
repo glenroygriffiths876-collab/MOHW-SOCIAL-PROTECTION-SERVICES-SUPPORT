@@ -6,7 +6,7 @@ const html=read('index.html'),sw=read('service-worker.js'),js=read('assets/mobil
 new vm.Script(js,{filename:'assets/mobile-image-v3.js'});
 assert(html.includes('assets/mobile-image-v3.css?v=4-natural-scroll'),'mobile stylesheet loaded');
 assert(html.includes('assets/mobile-image-v3.js?v=5-footer-actions'),'mobile script loaded');
-assert(sw.includes('mohw-social-support-image-overlay-v17'),'cache bumped');
+assert(sw.includes('mohw-social-support-image-overlay-v18'),'cache bumped');
 for(const asset of ['header','nav','video','hero','green','gold','cyan','pink','ribbon']){
  assert(fs.existsSync(`assets/mobile-v3/${asset}.webp`),`${asset} image bundled`);
  assert(sw.includes(`assets/mobile-v3/${asset}.webp`),`${asset} image cached`);

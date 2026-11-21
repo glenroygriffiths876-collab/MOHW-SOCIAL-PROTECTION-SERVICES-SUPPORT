@@ -168,10 +168,10 @@ mbounds.forEach((v,i)=>{
  const img=document.createElementNS('http://www.w3.org/2000/svg','image');
  img.setAttribute('href','assets/referrals-overlay-mobile.webp');
  img.setAttribute('width','896');img.setAttribute('height','1412');svg.append(img);
- const label=document.createElement('span');label.className='rlo-compact-label';label.textContent=labels[i];
+ const label=document.createElement('span');label.className='rlo-compact-label';label.textContent=String(i+1);
  tile.append(svg,label);tile.addEventListener('click',()=>select(i));compactGrid.append(tile);
 });
-phoneSteps.append(compactGrid);mobile.insertBefore(phoneSteps,mobDetail);
+phoneSteps.append(compactGrid);mobDetail.append(phoneSteps); // The six numbered buttons occupy empty space WITHIN the selected scene, eliminating the tall standalone section.
 
 hotspot(mobDetail,'Full wording from the guide','full','',24,484,523,48,571,620);
 hotspot(mobFooter,'Urgent safety guidance','safety','',12,0,867,144,M.w,337);
