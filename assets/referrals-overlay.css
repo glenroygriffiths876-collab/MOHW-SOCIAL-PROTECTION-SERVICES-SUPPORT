@@ -120,7 +120,7 @@ html.rlo-active #view-referrals.referral-overlay-enabled{display:block!important
  html.rlo-active #referral-artwork-overlay{height:auto!important;min-height:100dvh!important;overflow:visible!important}
  #referral-artwork-overlay .rlo-desktop{display:none}
  #referral-artwork-overlay .rlo-mobile{
-  display:block;width:min(100%,720px);max-width:100%;background:#d9f5f2;line-height:0;
+  display:block;width:100%!important;max-width:100%!important;background:#d9f5f2;line-height:0;
  }
  #referral-artwork-overlay .rlo-pane{position:relative;line-height:0;overflow:hidden;width:100%;isolation:isolate}
  #referral-artwork-overlay .rlo-pane svg.rlo-mobile-image{display:block;width:100%;height:auto;pointer-events:none;user-select:none}
