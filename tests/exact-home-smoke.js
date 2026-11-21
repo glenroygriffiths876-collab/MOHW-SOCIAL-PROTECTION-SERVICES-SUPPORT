@@ -11,7 +11,7 @@ const worker = read('service-worker.js');
 new vm.Script(js, { filename: 'assets/exact-home.js' });
 assert(html.includes('assets/exact-home.css?v=6-fluid'));
 assert(html.includes('assets/exact-home.js?v=6-bottom-actions'));
-assert(worker.includes('mohw-social-support-decision-overlay-v22'));
+assert(worker.includes('mohw-social-support-decision-overlay-v23'));
 assert(worker.includes('assets/exact-home.css'));
 assert(worker.includes('assets/exact-home.js'));
 assert(js.includes('VIEW_W = 1448, VIEW_H = 1086'), 'Must use verified image dimensions');
