@@ -18,7 +18,7 @@ const overlay=fs.readFileSync('assets/referrals-overlay.js','utf8');
 new vm.Script(overlay,{filename:'assets/referrals-overlay.js'});
 const overlayCSS=fs.readFileSync('assets/referrals-overlay.css','utf8');
 assert(html.includes('assets/referrals-overlay.js?v=2-clean-image-layer'),'overlay script loaded');
-assert(html.includes('assets/referrals-overlay.css?v=2-clean-image-layer'),'approved artwork CSS loaded');
+assert(html.includes('assets/referrals-overlay.css?v=3-fullbleed-image'),'approved artwork CSS loaded');
 for(const f of ['assets/referrals-overlay-desktop.webp','assets/referrals-overlay-mobile.webp',
 'assets/referral-photo-1-listen.webp','assets/referral-photo-2-safety.webp',
 'assets/referral-photo-3-match.webp','assets/referral-photo-4-prepare.webp',
@@ -27,6 +27,7 @@ for(const f of ['assets/referrals-overlay-desktop.webp','assets/referrals-overla
 assert(overlay.includes('assets/mohw-official-logo.png'),'correct MOHW logo over generated crest');
 assert(overlay.includes('rlo-m-steps') && overlay.includes('rlo-m-detail'),'mobile has legible artwork splits');
 assert(overlayCSS.includes('rlo-base') && overlayCSS.includes('rlo-hot'),'image plus hotspot design retained');
+assert(!overlayCSS.includes('inset:-70px'),'no blur pseudo-element that expands screenshot beyond the screen');
 assert(html.includes('rpx-ministry-identity'),'actual Ministry logo displayed on referrals');
 assert(html.includes('src="assets/mohw-official-logo.png" alt="Ministry of Health &amp; Wellness official logo"'),
  'use existing, genuine MOHW heart/heartbeat identity, not AI-created crest');
