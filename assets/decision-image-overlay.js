@@ -23,7 +23,7 @@ const displayNames=[
  'Disaster or fire','Adolescent mother or vulnerable children'
 ];
 const safety='For immediate danger or a medical emergency, use approved emergency procedures and contact emergency services. Do not wait for a directory search.';
-let source=[],situations=[],selected='',activeOption=0;
+let source=[],situations=[],selected='',activeOption=0,routePage=0,pickerPage=0;
 const root=document.createElement('div');root.id='decision-image-overlay';root.hidden=true;
 root.setAttribute('role','region');root.setAttribute('aria-label','Decision Guide interactive illustration');
 const screens={};
@@ -89,7 +89,7 @@ function makeControls(frame,layout){
  // The remaining 13-situation selector is the single clear way to navigate.
  const matte=appendArea(frame,'dgo-search-matte',layout==='desktop'?[45,345,489,87]:[0,521,896,114]);
  matte.setAttribute('aria-hidden','true');
- const choices=appendArea(frame,'dgo-choices',layout==='desktop'?[49,433,480,411]:[57,635,780,93]);state.choices=choices;
+ const choices=appendArea(frame,'dgo-choices dgo-deck',layout==='desktop'?[49,433,480,411]:[57,630,780,117]);state.choices=choices;
  if(layout==='desktop'){
  const head=document.createElement('div');head.className='dgo-choices-label';head.textContent='CHOOSE A SITUATION';choices.append(head);
  const list=document.createElement('div');list.className='dgo-situation-list';list.setAttribute('role','group');list.setAttribute('aria-label','Choose a situation');choices.append(list);state.list=list;
@@ -98,6 +98,13 @@ function makeControls(frame,layout){
   const select=document.createElement('select');select.id='dgo-mobile-select';select.setAttribute('aria-label','Choose one of 13 situations');
   select.addEventListener('change',()=>choose(select.value));choices.append(select);state.select=select;
  }
+ const deck=document.createElement('div');deck.className='dgo-deck-inner';
+ deck.innerHTML='<div class="dgo-deck-kicker">YOUR SUPPORT EXPLORER</div><div class="dgo-deck-row"><button type="button" class="dgo-deck-prev" aria-label="Previous situation">‹</button><button type="button" class="dgo-deck-choice" aria-label="Choose a situation"><span class="dgo-deck-icon" aria-hidden="true">✦</span><span class="dgo-deck-copy"><strong>Choose a situation</strong><small>Explore 13 support categories</small></span></button><button type="button" class="dgo-deck-next" aria-label="Next situation">›</button></div><div class="dgo-deck-foot"><span class="dgo-deck-count">13 situations</span><button type="button" class="dgo-deck-all">View all ▦</button></div>';
+ choices.append(deck);state.deck=deck;
+ deck.querySelector('.dgo-deck-prev').addEventListener('click',()=>cycle(-1));
+ deck.querySelector('.dgo-deck-next').addEventListener('click',()=>cycle(1));
+ deck.querySelector('.dgo-deck-choice').addEventListener('click',openPicker);
+ deck.querySelector('.dgo-deck-all').addEventListener('click',openPicker);
  const photo=appendArea(frame,'dgo-photo',layout==='desktop'?[588,448,390,335]:[60,754,345,246]);
  photo.innerHTML='<img src="assets/decision-pathway.webp" alt="Jamaican community-support guidance scene">';state.photo=photo.querySelector('img');
  const section=appendArea(frame,'dgo-results',layout==='desktop'?[994,430,471,139]:[426,745,407,257]);
@@ -127,6 +134,33 @@ for(const [device,coords] of [['desktop',[1311,847,140,145]],['mobile',[720,1530
  const frame=screens[device].frame;const portrait=appendArea(frame,'dgo-real-gia',coords);
  portrait.innerHTML='<img src="assets/mobile-v3/gia.png" alt="" aria-hidden="true">';
 }
+
+const activityIcons=[
+ '🫶','🎓','👵','💼','♿','🤝','🌱','🩻','❤️','🌿','🛡️','⛈️','👶'
+];
+function cycle(delta){if(!situations.length)return;const i=situations.indexOf(selected);choose(situations[(i<0?(delta<0?0:-1):i+delta+situations.length)%situations.length]);}
+function renderPicker(){
+ const total=Math.max(1,Math.ceil(situations.length/4));pickerPage=Math.max(0,Math.min(total-1,pickerPage));
+ const grid=picker.querySelector('.dgo-picker-grid');grid.replaceChildren();
+ situations.slice(pickerPage*4,pickerPage*4+4).forEach(s=>{
+  const i=situations.indexOf(s),b=document.createElement('button');b.type='button';b.className='dgo-picker-item';
+  const mark=document.createElement('span');mark.className='dgo-picker-icon';mark.textContent=activityIcons[i]||'✦';mark.setAttribute('aria-hidden','true');
+  const label=document.createElement('strong');label.textContent=displayNames[i]||s;
+  b.append(mark,label);b.setAttribute('aria-label',s);b.addEventListener('click',()=>{picker.close();choose(s)});
+  grid.append(b);
+ });
+ picker.querySelector('.dgo-picker-page').textContent=(pickerPage+1)+' / '+total;
+ picker.querySelector('[data-pager="-1"]').disabled=pickerPage===0;
+ picker.querySelector('[data-pager="1"]').disabled=pickerPage===total-1;
+}
+function openPicker(){if(!situations.length)return;const i=situations.indexOf(selected);pickerPage=i<0?0:Math.floor(i/4);renderPicker();if(!picker.open)picker.showModal();}
+const picker=document.createElement('dialog');picker.className='dgo-picker-dialog';picker.setAttribute('aria-labelledby','dgo-picker-title');
+picker.innerHTML='<div class="dgo-picker-header"><div><small>MOHW · JAMAICA</small><h2 id="dgo-picker-title">Choose a situation</h2></div><button type="button" class="dgo-picker-close" aria-label="Close">×</button></div><div class="dgo-picker-grid" aria-label="Situations"></div><div class="dgo-picker-foot"><button type="button" data-pager="-1">‹ Back</button><span class="dgo-picker-page" aria-live="polite"></span><button type="button" data-pager="1">Next ›</button></div>';
+root.append(picker);
+picker.querySelector('.dgo-picker-close').addEventListener('click',()=>picker.close());
+picker.addEventListener('click',e=>{if(e.target===picker)picker.close()});
+picker.querySelectorAll('[data-pager]').forEach(b=>b.addEventListener('click',()=>{pickerPage+=Number(b.dataset.pager);renderPicker()}));
+
 const dialog=document.createElement('dialog');dialog.className='dgo-dialog';dialog.setAttribute('aria-labelledby','dgo-dialog-title');
 dialog.innerHTML='<div class="dgo-dialog-top"><span>MOHW SOCIAL SUPPORT · JAMAICA</span><button type="button" data-close aria-label="Close guidance">×</button></div><h2 id="dgo-dialog-title"></h2><p id="dgo-dialog-options"></p><div class="dgo-dialog-provider"></div><div class="dgo-dialog-actions"><button type="button" data-directory>Browse agency listings</button><button type="button" data-service hidden>View service details</button><button type="button" data-manual>Read the manual</button></div><p class="dgo-dialog-note">Guide content is a starting point. The responsible agency confirms eligibility, availability and current requirements.</p>';
 root.append(dialog);
@@ -155,7 +189,7 @@ dialog.querySelector('[data-directory]').addEventListener('click',()=>{
  if(native?.querySelector('[data-decision-directory]'))native.querySelector('[data-decision-directory]').click();
  else{navAction('services');const search=$('#serviceSearch');if(search){search.value=provider;search.dispatchEvent(new Event('input',{bubbles:true}))}}
 });
-function choose(value){selected=value;for(const state of Object.values(screens))if(state.select)state.select.value=value;syncNative();render();}
+function choose(value){selected=value;routePage=0;for(const state of Object.values(screens))if(state.select)state.select.value=value;syncNative();render();}
 function syncNative(){
  const nativeSearch=$('#decisionSearch');if(nativeSearch){nativeSearch.value='';nativeSearch.dispatchEvent(new Event('input',{bubbles:true}));}
  if(selected){const existing=[...document.querySelectorAll('#decisionSituations [data-decision-situation]')].find(b=>b.dataset.decisionSituation===selected);
@@ -182,6 +216,10 @@ function render(){
    state.select.value=groups.includes(selected)?selected:'';
   }
   const position=selected?situations.indexOf(selected):-1;
+  state.deck.querySelector('.dgo-deck-icon').textContent=activityIcons[Math.max(0,position)]||'✦';
+  state.deck.querySelector('.dgo-deck-copy strong').textContent=position<0?'Choose a situation':displayNames[position]||selected;
+  state.deck.querySelector('.dgo-deck-copy small').textContent=position<0?'Find the right starting point':source.filter(d=>d.situation===selected).length+' guide options';
+  state.deck.querySelector('.dgo-deck-count').textContent=position<0?situations.length+' situations':(position+1)+' / '+situations.length+' situations';
   state.photo.src=images[position]||'assets/decision-pathway.webp';state.photo.alt=selected?'Illustration for '+selected:'Community support worker exploring possible options';
   const rows=selected?source.filter(r=>r.situation===selected):[];
   const summary=state.summary;
@@ -194,14 +232,23 @@ function render(){
   state.more.replaceChildren();
   if(!selected){const hint=document.createElement('p');hint.className='dgo-empty-hint';hint.textContent='The guide lists 26 possible routes across 13 situations. Select one to explore; eligibility is always confirmed by the agency.';state.more.append(hint);}
   else if(!rows.length){const hint=document.createElement('p');hint.className='dgo-empty-hint';hint.textContent='Choose a different situation to see other guide options.';state.more.append(hint);}
-  rows.forEach((row,i)=>{
+  const maxPage=Math.max(0,Math.ceil(rows.length/2)-1);routePage=Math.min(routePage,maxPage);
+  rows.slice(routePage*2,routePage*2+2).forEach((row,i)=>{
    const b=document.createElement('button');b.type='button';b.className='dgo-route';
-   b.innerHTML='<span class="dgo-route-count">'+String(i+1).padStart(2,'0')+'</span><span class="dgo-route-text"></span><span class="dgo-route-arrow" aria-hidden="true">↗</span>';
+   b.innerHTML='<span class="dgo-route-count">'+String(routePage*2+i+1).padStart(2,'0')+'</span><span class="dgo-route-text"></span><span class="dgo-route-arrow" aria-hidden="true">↗</span>';
    b.querySelector('.dgo-route-text').textContent=row.options;
-   b.setAttribute('aria-label','Guide option '+(i+1)+': '+row.options);
+   b.setAttribute('aria-label','Guide option '+(routePage*2+i+1)+': '+row.options);
    b.addEventListener('click',()=>{syncNative();showDialog(selected,row.options,row.provider,row)});
    state.more.append(b);
   });
+  if(rows.length>2){
+   const pager=document.createElement('div');pager.className='dgo-route-pager';
+   pager.innerHTML='<button type="button" aria-label="Previous guide options">‹</button><span></span><button type="button" aria-label="Next guide options">›</button>';
+   pager.querySelector('span').textContent=(routePage*2+1)+'–'+Math.min(routePage*2+2,rows.length)+' of '+rows.length;
+   const buttons=pager.querySelectorAll('button');buttons[0].disabled=routePage===0;buttons[1].disabled=routePage===maxPage;
+   buttons[0].addEventListener('click',()=>{routePage--;render()});buttons[1].addEventListener('click',()=>{routePage++;render()});
+   state.more.append(pager);
+  }
  }
 }
 fetch('data/guide-content.json?v=directory-8',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Decision Guide content unavailable');return r.json()}).then(json=>{

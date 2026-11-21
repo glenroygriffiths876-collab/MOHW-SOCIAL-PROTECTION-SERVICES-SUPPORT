@@ -166,7 +166,7 @@ function renderDecision(){
  }).join('');
 }
 $('#decisionSearch').addEventListener('input',renderDecision);
-$('#decisionSituations').addEventListener('click',e=>{const b=e.target.closest('[data-decision-situation]');if(!b)return;selectedDecisionSituation=b.dataset.decisionSituation;renderDecision();$('#decisionResultsHeading').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'})});
+$('#decisionSituations').addEventListener('click',e=>{const b=e.target.closest('[data-decision-situation]');if(!b)return;selectedDecisionSituation=b.dataset.decisionSituation;renderDecision();(!document.documentElement.classList.contains('dgo-active')&&$('#decisionResultsHeading').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'}))});
 $('#decisionReset').addEventListener('click',()=>{selectedDecisionSituation='';$('#decisionSearch').value='';renderDecision()});
 $('#decisionResultsHeading').addEventListener('click',e=>{if(e.target.closest('[data-decision-clear-selection]')){selectedDecisionSituation='';renderDecision()}else if(e.target.closest('[data-decision-clear-search]')){$('#decisionSearch').value='';renderDecision()}});
 $('#decisionCards').addEventListener('click',e=>{
