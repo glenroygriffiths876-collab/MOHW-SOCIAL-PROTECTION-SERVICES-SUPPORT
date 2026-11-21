@@ -19,7 +19,7 @@ assert(js.includes("if(jsl)"),'validated sign-language resources preserved');
 assert(css.includes('height:min(660px,calc(100dvh - 20px))'),'viewport bound');
 assert(css.includes('overflow:hidden!important'),'no scroll');
 assert(css.includes('html.p2-contrast'),'high-contrast support');
-assert(html.includes('assets/accessibility-premium.js?v=1')&&html.includes('assets/accessibility-premium.css?v=1'));
+assert(html.includes('assets/accessibility-premium.js?v=1-3d')&&html.includes('assets/accessibility-premium.css?v=1-3d'));
 assert(worker.includes('assets/accessibility-premium.js')&&worker.includes('assets/accessibility-premium.css'));
 assert(old.includes("localStorage.setItem('mohw-access-v1'"),'persistence preserved');
 console.log('ACCESSIBILITY_PREMIUM_STATIC_PASSED seven preferences, three tabs, audio features and 3D layout');

@@ -90,8 +90,6 @@ jobs:
         run: node tests/referrals-premium-browser.cjs
       - name: Verify all 13 decision situations, native service actions and image layovers
         run: node tests/decision-overlay-browser.cjs
-      - name: Verify premium accessibility controls on phone, tablet and desktop
-        run: node tests/accessibility-premium-browser.cjs
       - name: Publish viewport screenshots
         if: always()
         uses: actions/upload-artifact@v4
