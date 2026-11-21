@@ -7,6 +7,12 @@ html.rlo-active,html.rlo-active body{background:#052e43!important;overflow-x:cli
 html.rlo-active .site-header,html.rlo-active .topline,
 html.rlo-active body>footer,html.rlo-active .p2-access-trigger,
 html.rlo-active #guideActionDock,html.rlo-active #gia2Launcher{display:none!important}
+/* Override the mobile homepage's highly specific native floating button rules.
+   The referral image already includes GIA and utility controls as live hotspots. */
+html.rlo-active body #guideActionDock.guide-action-dock,
+html.rlo-active body #gia2Launcher.gia2-launcher,
+html.rlo-active body #guideActionDock#guideActionDock,
+html.rlo-active body #gia2Launcher#gia2Launcher{display:none!important;visibility:hidden!important;pointer-events:none!important}
 html.rlo-active #main{max-width:none!important;width:100%!important;padding:0!important;margin:0!important;overflow:visible!important}
 html.rlo-active #view-referrals.referral-overlay-enabled{display:block!important;min-height:100dvh!important;overflow:visible!important;padding:0!important;margin:0!important;background:#062c41!important;isolation:isolate}
 #view-referrals.referral-overlay-enabled > :not(#referral-artwork-overlay){display:none!important}
