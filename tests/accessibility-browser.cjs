@@ -34,6 +34,11 @@ const BASE='http://127.0.0.1:8765/';
    assert.equal(await page.locator('#p2-access-dialog [data-pref="rate"]').inputValue(),'0.75',name+': native voice speed updated');
    await page.locator('#p2-access-dialog [data-ax-tab="support"]').click();
    g=await geometry();assert(g.noScroll&&g.panel==='support',name+': support panel fits without scroll');
+   console.log('ACCESSIBILITY_RESET_GEOMETRY',name,await page.evaluate(()=>{
+     const d=document.querySelector('#p2-access-dialog'),f=d.querySelector('.ax-footer'),b=f.querySelector('[data-p2="reset"]');
+     const rect=el=>{const a=el.getBoundingClientRect(),s=getComputedStyle(el);return {top:a.top,bottom:a.bottom,left:a.left,right:a.right,width:a.width,height:a.height,display:s.display,visibility:s.visibility,overflow:s.overflow}};
+     return {open:d.open,dialog:rect(d),shell:rect(d.querySelector('.ax-shell')),footer:rect(f),reset:rect(b),active:d.querySelector('.ax-panel:not([hidden])')?.dataset.axPanel};
+   }));
    await page.locator('#p2-access-dialog [data-p2="reset"]').click();
    assert.equal(await page.evaluate(()=>document.documentElement.classList.contains('p2-large')),false,name+': reset size');
    assert.equal(await page.evaluate(()=>document.documentElement.classList.contains('p2-links')),false,name+': reset links');
