@@ -107,6 +107,7 @@ function act(kind,arg){
  if(kind==='prev')return select(Math.max(0,active-1));
  if(kind==='guide')return select(0);
  if(kind==='full')return fullGuide();
+ if(kind==='safety')return openSafety();
  if(kind==='nav')return route(arg);
  if(kind==='gia')return gia();
  if(kind==='access')return access();
@@ -129,6 +130,7 @@ const progress=document.createElement('div');progress.className='rlo-screen rlo-
 for(let i=0;i<6;i++){const b=document.createElement('button');b.type='button';b.textContent=i+1;b.setAttribute('aria-label','Go to step '+(i+1));b.addEventListener('click',()=>select(i));progress.append(b);}
 desktop.append(progress);
 hotspot(desktop,'Full wording from the guide','full','',610,650,845,54,DX,DY);
+hotspot(desktop,'Urgent safety guidance','safety','',80,784,1390,92,DX,DY);
 hotspot(desktop,'Previous referral step','prev','',1160,701,144,60,DX,DY);
 hotspot(desktop,'Next referral step','next','',1314,701,156,60,DX,DY);
 hotspot(desktop,'Find services','nav','services',114,893,339,100,DX,DY);
@@ -147,6 +149,7 @@ const mbounds=[[26,21,302,89],[26,112,302,95],[26,209,302,92],[26,310,302,92],[2
 const mobileFrame=document.createElement('div');mobileFrame.className='rlo-selected-frame';mobSteps.append(mobileFrame);
 mbounds.forEach((v,i)=>hotspot(mobSteps,'Step '+(i+1)+': '+labels[i],'step',i,...v,335,620));
 hotspot(mobDetail,'Full wording from the guide','full','',24,484,523,48,571,620);
+hotspot(mobFooter,'Urgent safety guidance','safety','',12,0,867,144,M.w,337);
 hotspot(mobDetail,'Previous referral step','prev','',24,543,256,66,571,620);
 hotspot(mobDetail,'Next referral step','next','',312,543,241,66,571,620);
 hotspot(mobFooter,'Find Services','nav','services',20,153,215,115,M.w,337);
@@ -159,6 +162,11 @@ dialog.innerHTML='<h2 id="rlo-dialog-title">Full wording from the guide</h2><p i
 root.append(dialog);
 $('#rlo-dialog-close',dialog).addEventListener('click',()=>dialog.close());
 dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
+function openSafety(){
+ $('#rlo-dialog-title',dialog).textContent='Urgent safety comes first';
+ $('#rlo-dialog-text',dialog).textContent=alertText;
+ if(!dialog.open)dialog.showModal();
+}
 function fullGuide(){
  const source=$('#referralStepPanel .rpx-full-guide p')?.textContent?.trim();
  $('#rlo-dialog-title',dialog).textContent=labels[active];

@@ -54,13 +54,19 @@ async function main(){
        artW:parent.width,viewport:innerWidth,
        overflow:document.documentElement.scrollWidth>innerWidth+3,
        nativeHeaderHidden:getComputedStyle(document.querySelector('.site-header')).display==='none',
-       oldCardsHidden:getComputedStyle(document.querySelector('#view-referrals .rpx-journey')).display==='none'
+       oldCardsHidden:getComputedStyle(document.querySelector('#view-referrals .rpx-journey')).display==='none',
+       oldSafetyHidden:getComputedStyle(document.querySelector('#view-referrals #urgentSupport')).display==='none',
+       oldTailHidden:getComputedStyle(document.querySelector('#view-referrals .rpx-tail')).display==='none',
+       skipHidden:getComputedStyle(document.querySelector('.skip')).display==='none'
      };
    },mobile);
    assert.equal(info.visible,true,name+': approved image artwork visible');
    assert.equal(info.overflow,false,name+': no horizontal overflow');
    assert.equal(info.nativeHeaderHidden,true,name+': no duplicate website header');
    assert.equal(info.oldCardsHidden,true,name+': hide rejected CSS card rebuild');
+   assert.equal(info.oldSafetyHidden,true,name+': hide old duplicate safety section');
+   assert.equal(info.oldTailHidden,true,name+': hide old duplicate action footer');
+   assert.equal(info.skipHidden,true,name+': no stray skip link above premium image');
    assert.equal(info.logoSrc,'assets/mohw-official-logo.png',name+': verified official identity');
    assert.equal(info.logoLoaded,true,name+': official MOHW logo loaded');
    assert.equal(info.logoVisible,true,name+': real logo visibly replaces generated emblem');
@@ -106,6 +112,11 @@ async function main(){
    await page.waitForFunction(()=>document.querySelector('#referralStepPanel .rpx-feature')?.dataset.rpxActiveStep==='6');
    await page.locator('#referral-artwork-overlay '+art+' .rlo-hot[aria-label="Next referral step"]').click();
    await page.waitForFunction(()=>document.querySelector('#referralStepPanel .rpx-feature')?.dataset.rpxActiveStep==='1');
+   await page.locator('#referral-artwork-overlay '+art+' .rlo-hot[aria-label="Urgent safety guidance"]').click();
+   await page.waitForFunction(()=>document.querySelector('.rlo-dialog')?.open);
+   const safetyText=await page.locator('#rlo-dialog-text').textContent();
+   assert.ok(safetyText.includes('child-protection concerns') && safetyText.includes('emergency and safeguarding'),name+' exact safeguarding warning');
+   await page.locator('#rlo-dialog-close').click();
    await page.locator('#referral-artwork-overlay '+art+' .rlo-hot[aria-label="Full wording from the guide"]').click();
    await page.waitForFunction(()=>document.querySelector('.rlo-dialog')?.open);
    const full=await page.locator('#rlo-dialog-text').textContent();
