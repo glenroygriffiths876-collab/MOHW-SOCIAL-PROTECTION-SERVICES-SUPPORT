@@ -62,6 +62,6 @@ assert(polish.includes('grid-template-columns:repeat(6,minmax(0,1fr))!important'
 assert(tools.includes('data-action="download"'), 'Fourth button must open manual download, not app install');
 assert(tools.includes('data-action="feedback"'), 'Feedback must remain functional');
 
-assert(html.includes('assets/home-dock-rebalance.css?v=1'),'Rebalanced home layout stylesheet loaded');
+assert(html.includes('assets/home-dock-rebalance.css?v=2-fluid'),'Rebalanced home layout stylesheet loaded');
 assert(js.includes('exact-bottom-actions'),'Desktop actions are real buttons in bottom bar');
 console.log('Premium mobile navigation, four-action dock, preserved Gia, and desktop polish checks passed');

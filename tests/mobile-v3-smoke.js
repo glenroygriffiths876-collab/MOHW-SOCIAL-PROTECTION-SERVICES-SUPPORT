@@ -15,10 +15,10 @@ assert(fs.existsSync('assets/mobile-v3/gia.png'),'floating Gia artwork bundled')
 for(const id of ['about','referrals','decision','services','manual'])assert(js.includes(`page('${id}')`),`linked ${id} navigation`);
 assert(js.includes('video.play()'),'HTML5 video uses real playback');
 assert(js.includes('assets/gia-introduction.mp4'),'original Gia film used');
-assert(js.includes('const enabled = artworkLoaded && mobile.matches'),'desktop remains unaffected');
-assert(js.includes('root.hidden = !enabled'),'mobile mode tied to actual view');
-assert(css.includes('html.mohw-mobile-image-active body #guideActionDock'),'actual four floating controls remain');
-assert(css.includes('html.mohw-mobile-image-active body #gia2Launcher'),'native Gia launcher remains interactive');
+assert(js.includes('const enabled=artworkLoaded && mobile.matches'),'desktop remains unaffected');
+assert(js.includes('root.hidden=!enabled'),'mobile mode tied to actual view');
+assert(css.includes('.mv-bottom-action-space #guideActionDock'),'native guide tools sit inside the footer');
+assert(css.includes('.mv-bottom-action-space #gia2Launcher'),'native Gia launcher sits inside footer');
 assert(!js.includes('createElement(\'iframe\')'),'no fake iframe interaction');
 assert(!js.includes("endcap.className = 'mv-endcap'"),'unneeded bottom endcap removed');
 assert(js.includes("button.classList.add('mv-manual-clean')"),'clean manual card uses live typography');
@@ -29,7 +29,7 @@ assert(css.includes('overflow-y:auto!important'),'short mobile screens must scro
 assert(js.includes('moveActions(enabled)'),'native guide controls must move into the in-flow footer');
 
 const balanceCss=read('assets/home-dock-rebalance.css');
-assert(balanceCss.includes('justify-content:center!important'),'Gia film should be centered on mobile');
-assert(balanceCss.includes('grid-template-columns:none!important'),'Home utilities should use one horizontal row');
+assert(css.includes('justify-content:center!important'),'Gia film should be centered on mobile');
+assert(css.includes('grid-template-columns:none!important'),'Home utilities should use one horizontal row');
 assert(js.includes("root.append(actionSpace)"),'Homepage reserves real space for the action row');
 console.log('Single-screen mobile home, no cropped Gia, single label, video and navigation verified.');
