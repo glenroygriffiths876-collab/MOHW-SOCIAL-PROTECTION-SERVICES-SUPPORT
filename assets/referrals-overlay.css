@@ -58,7 +58,7 @@ html.rlo-active .skip,html.rlo-active .p2-skip{display:none!important}
 #referral-artwork-overlay .rlo-d-copy{
  left:39.45%;top:44.0%;width:55.5%;height:19.2%;
  padding:clamp(10px,1.3vw,21px) clamp(12px,1.5vw,23px);
- border-radius:16px;background:linear-gradient(120deg,#feffff 8%,#f9fffdfc 65%,#f7fbfff9 100%);
+ border-radius:16px;background:linear-gradient(120deg,#ffffff 8%,#f8fffd 65%,#f5faff 100%);
  display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,.94fr);gap:3%;
  line-height:1.25;align-items:stretch;
 }
@@ -162,7 +162,7 @@ html.rlo-active .skip,html.rlo-active .p2-skip{display:none!important}
  }
  #referral-artwork-overlay .rlo-m-remember{
   left:4.3%;top:60.9%;width:90.4%;height:16.0%;padding:1.7% 3.1%;
-  border-radius:13px;background:#fff0bdf7;border:1px solid #ffd45a;
+  border-radius:13px;background:#fff0bd;border:1px solid #ffd45a;
   color:#25394b;font:580 clamp(10px,2.4vw,16px)/1.22 system-ui;
   display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden;
  }
