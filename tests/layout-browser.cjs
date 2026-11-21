@@ -207,10 +207,13 @@ async function main(){
     }
     await page.locator('#gia2Launcher').click();
     await page.waitForFunction(()=>document.querySelector('#gia2Dialog')?.open===true);
+    // Wait for GIA's 180ms entrance animation before checking final geometry.
+    await page.waitForTimeout(350);
     const dialog=await page.evaluate(()=>{
       const r=document.querySelector('#gia2Dialog').getBoundingClientRect();
       return {left:r.left,top:r.top,right:r.right,bottom:r.bottom,w:innerWidth,h:innerHeight};
     });
+    console.log('GIA_DIALOG_GEOMETRY',sc.name,JSON.stringify(dialog));
     assert.ok(dialog.left>=-2 && dialog.top>=-2 && dialog.right<=dialog.w+2 &&
       dialog.bottom<=dialog.h+2,sc.name+': GIA chat fits inside the screen');
     await page.locator('#gia2Close').click();
