@@ -5,6 +5,9 @@ on:
     branches: [main]
     paths:
       - 'assets/phase2*'
+      - 'assets/accessibility-premium.js'
+      - 'assets/accessibility-premium.css'
+      - 'tests/accessibility-premium-smoke.js'
       - 'assets/premium-2026.css'
       - 'assets/premium-experience.js'
       - 'assets/exact-home.css'
@@ -59,6 +62,8 @@ jobs:
       - name: Test GIA
         run: node tests/gia-smoke.js
 
+      - name: Verify premium accessibility and preserved original controls
+        run: node tests/accessibility-premium-smoke.js
       - name: Test Phase II integration
         run: node tests/phase2-smoke.js
       - name: Test premium accessibility settings

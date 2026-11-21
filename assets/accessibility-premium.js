@@ -1,123 +1,75 @@
-/* MOHW Social Support: premium accessibility settings, preserving Phase II actions. */
-(()=>{
-'use strict';
+/* Premium MOHW accessibility dashboard; retains the original Phase II event handlers. */
+(()=>{'use strict';
+function install(){
+const d=document.getElementById('p2-access-dialog');if(!d||d.dataset.premium==='yes')return;
+const pref=k=>d.querySelector('[data-pref="'+k+'"]');
+const controls=Object.fromEntries(['size','rate','voice','contrast','motion','spacing','links'].map(k=>[k,pref(k)]));
+if(Object.values(controls).some(v=>!v))return;
+const jsl=d.querySelector('#p2-jsl');
 const paths={
-listen:'<path d="M3 13v-2a9 9 0 0 1 18 0v2M3 12H1v8h5v-8H3Zm18 0h2v8h-5v-8h3Z"/>',
-display:'<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/>',
-comfort:'<path d="M4 6h16M7 12h10M10 18h4"/><circle cx="4" cy="6" r="1"/><circle cx="7" cy="12" r="1"/>',
-communicate:'<path d="M4 4h16v13H9l-5 4V4Z"/><path d="M8 9h8m-8 4h6"/>',
-page:'<path d="M5 3h10l5 5v13H5V3Z"/><path d="M14 3v6h6M8 13h8m-8 4h6"/>',
-book:'<path d="M12 6C8 3 5 3 2 4v15c4-1 7 0 10 2 3-2 6-3 10-2V4c-3-1-6-1-10 2Zm0 0v15"/>',
-pause:'<path d="M7 4v16M17 4v16"/>',
-play:'<path d="m6 3 15 9-15 9V3Z"/>',
-stop:'<rect x="5" y="5" width="14" height="14" rx="2"/>',
+access:'<circle cx="12" cy="4" r="2"/><path d="M4 9h16m-8-3v7m0 0-5 8m5-8 5 8"/>',
+display:'<rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 22h8m-4-4v4M9 14l3-6 3 6m-5-2h4"/>',
+listen:'<path d="M4 13v-2a8 8 0 0 1 16 0v2M4 12H2v7a3 3 0 0 0 3 3h2v-9H4Zm16 0h2v7a3 3 0 0 1-3 3h-2v-9h3Z"/>',
+support:'<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/>',
 contrast:'<circle cx="12" cy="12" r="9"/><path d="M12 3v18a9 9 0 0 0 0-18Z"/>',
-links:'<path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-2 2M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l2-2"/>',
-motion:'<path d="M4 12h16M8 7l-5 5 5 5M16 7l5 5-5 5"/>',
-spacing:'<path d="M4 6h16M4 12h16M4 18h16"/>',
-text:'<path d="M4 5h16M12 5v15M7 20h10"/>',
-speed:'<path d="M4 17a9 9 0 1 1 16 0M12 15l5-7"/>',
-voice:'<rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5M8 22h8"/>',
-keyboard:'<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 9h1m3 0h1m3 0h1m3 0h1M6 12h1m3 0h1m3 0h1M7 16h10"/>',
-reset:'<path d="M3 12a9 9 0 1 0 3-7M3 4v5h5"/>'
-};
-const ico=k=>'<svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+paths[k]+'</svg>';
-const feature=(action,k,title,desc)=>'<button class="a3-feature" type="button" data-p2="'+action+'"><span class="a3-feature-icon">'+ico(k)+'</span><strong>'+title+'</strong><small>'+desc+'</small></button>';
-const toggle=(pref,k,title,desc)=>'<label class="a3-toggle"><span class="a3-toggle-icon">'+ico(k)+'</span><span class="a3-toggle-words"><strong>'+title+'</strong><small>'+desc+'</small></span><input type="checkbox" data-pref="'+pref+'" role="switch"><span class="a3-switch" aria-hidden="true"></span></label>';
-function mount(){
- const d=document.getElementById('p2-access-dialog');
- if(!d||d.classList.contains('a3-accessibility'))return;
- const controls={};d.querySelectorAll('[data-pref]').forEach(el=>controls[el.dataset.pref]=el);
- const jsl=d.querySelector('#p2-jsl');
- if(!controls.size||!controls.rate||!controls.voice||!jsl)return;
- const tabs=[['listen','Listen'],['display','Text'],['comfort','Comfort'],['communicate','Communicate']];
- d.classList.add('a3-accessibility');
- d.innerHTML=[
- '<div class="a3-shell"><header class="a3-header">',
- '<span class="a3-brand-icon">'+ico('listen')+'</span><div class="a3-brand"><small>MOHW SOCIAL SUPPORT · JAMAICA</small><h2 id="p2-access-title">Accessibility <em>& Listening</em></h2></div>',
- '<button type="button" data-p2="close" class="a3-close" aria-label="Close accessibility settings">×</button></header>',
- '<nav class="a3-tabs" role="tablist" aria-label="Accessibility sections">',
- tabs.map((v,i)=>'<button type="button" role="tab" id="a3-tab-'+v[0]+'" data-a3-tab="'+v[0]+'" aria-controls="a3-panel-'+v[0]+'" aria-selected="'+(i===0)+'" tabindex="'+(i===0?0:-1)+'"><span>'+ico(v[0])+'</span>'+v[1]+'</button>').join(''),
- '</nav><div class="a3-content">',
- '<section class="a3-panel" role="tabpanel" id="a3-panel-listen" aria-labelledby="a3-tab-listen" data-a3-panel="listen">',
- '<div class="a3-intro"><strong>Listen your way</strong><small>Audio guidance, whenever you need it</small></div>',
- '<div class="a3-features">',feature('read-page','page','Read this page','Listen to this screen'),feature('read-guide','book','Read the guide','Hear the guide content'),'</div>',
- '<div class="a3-playback" role="group" aria-label="Audio playback">',
- '<button data-p2="pause" type="button">'+ico('pause')+' Pause</button>',
- '<button data-p2="resume" type="button">'+ico('play')+' Resume</button>',
- '<button data-p2="stop" type="button">'+ico('stop')+' Stop</button></div>',
- '<div class="a3-audio-controls">',
- '<div class="a3-speed"><span class="a3-label">'+ico('speed')+' Reading speed</span>',
- '<div class="a3-chips" role="group" aria-label="Reading speed">',
- '<button type="button" data-a3-choice="rate" data-value="0.75">Slow</button><button type="button" data-a3-choice="rate" data-value="1">Normal</button><button type="button" data-a3-choice="rate" data-value="1.25">Fast</button>',
- '</div><span class="a3-native" data-a3-slot="rate"></span></div>',
- '<label class="a3-voice"><span class="a3-label">'+ico('voice')+' Voice</span><span data-a3-slot="voice"></span></label></div></section>',
- '<section class="a3-panel" role="tabpanel" id="a3-panel-display" aria-labelledby="a3-tab-display" data-a3-panel="display" hidden>',
- '<div class="a3-intro"><strong>Make words clearer</strong><small>Comfortable reading on any screen</small></div>',
- '<div class="a3-size"><span class="a3-label">'+ico('text')+' Text size</span>',
- '<div class="a3-chips a3-size-chips" role="group" aria-label="Text size">',
- '<button type="button" data-a3-choice="size" data-value="normal">Standard</button><button type="button" data-a3-choice="size" data-value="large">Large</button><button type="button" data-a3-choice="size" data-value="xlarge">Extra large</button>',
- '</div><span class="a3-native" data-a3-slot="size"></span></div>',
- '<div class="a3-toggles">',
- toggle('contrast','contrast','High contrast','Stronger text and outlines'),
- toggle('links','links','Underline links','Make links easy to spot'),
- '</div></section>',
- '<section class="a3-panel" role="tabpanel" id="a3-panel-comfort" aria-labelledby="a3-tab-comfort" data-a3-panel="comfort" hidden>',
- '<div class="a3-intro"><strong>A calmer experience</strong><small>Change motion and spacing to suit you</small></div>',
- '<div class="a3-toggles">',
- toggle('motion','motion','Reduce motion','Minimise animations'),
- toggle('spacing','spacing','Text spacing','More space between words and lines'),
- '</div><p class="a3-tip">Your preferences are saved on this device and apply throughout the guide.</p></section>',
- '<section class="a3-panel" role="tabpanel" id="a3-panel-communicate" aria-labelledby="a3-tab-communicate" data-a3-panel="communicate" hidden>',
- '<div class="a3-intro"><strong>Communication choices</strong><small>Get help without relying on sound</small></div>',
- '<div class="a3-features">',
- feature('gia','communicate','Type to GIA','Written support and guidance'),
- feature('welcome','keyboard','Introduction','Read the written welcome'),
- '</div><p class="a3-tip">Written guidance is available throughout the platform. Jamaican Sign Language resources are published only after qualified review.</p>',
- '<div data-a3-slot="jsl" class="a3-jsl"></div></section>',
- '</div><footer class="a3-footer"><span>YOUR EXPERIENCE · YOUR CHOICE</span>',
- '<button type="button" class="a3-reset" data-p2="reset">'+ico('reset')+' Reset</button>',
- '<button type="button" class="a3-done" data-p2="close">Done ✓</button></footer></div>'
- ].join('');
- for(const k of ['size','rate','voice'])d.querySelector('[data-a3-slot="'+k+'"]').append(controls[k]);
- d.querySelector('[data-a3-slot="jsl"]').append(jsl);
- for(const k of ['contrast','links','motion','spacing'])d.querySelector('[data-pref="'+k+'"]').checked=!!controls[k]?.checked;
- let currentTab='listen';
- const tabButtons=[...d.querySelectorAll('[data-a3-tab]')];
- const sync=()=>{
-  for(const b of d.querySelectorAll('[data-a3-choice]')){
-   const sel=d.querySelector('[data-pref="'+b.dataset.a3Choice+'"]');
-   b.setAttribute('aria-pressed',String(sel?.value===b.dataset.value));
-  }
-  for(const el of d.querySelectorAll('.a3-toggle'))el.classList.toggle('is-on',el.querySelector('input').checked);
- };
- function show(key){
-  currentTab=key;
-  d.querySelectorAll('[data-a3-panel]').forEach(p=>p.hidden=p.dataset.a3Panel!==key);
-  tabButtons.forEach(b=>{const on=b.dataset.a3Tab===key;b.setAttribute('aria-selected',String(on));b.tabIndex=on?0:-1});
- }
- tabButtons.forEach((b,i)=>{
-  b.addEventListener('click',()=>show(b.dataset.a3Tab));
-  b.addEventListener('keydown',e=>{
-   if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;
-   e.preventDefault();
-   const n=e.key==='Home'?0:e.key==='End'?tabButtons.length-1:(i+(e.key==='ArrowRight'?1:-1)+tabButtons.length)%tabButtons.length;
-   tabButtons[n].click();tabButtons[n].focus();
-  });
- });
- d.querySelectorAll('[data-a3-choice]').forEach(b=>b.addEventListener('click',()=>{
-  const el=d.querySelector('[data-pref="'+b.dataset.a3Choice+'"]');
-  el.value=b.dataset.value;el.dispatchEvent(new Event('change',{bubbles:true}));sync();
- }));
- d.addEventListener('change',e=>{if(e.target.matches('[data-pref]'))sync()});
- d.addEventListener('click',e=>{
-  const action=e.target.closest('[data-p2]')?.dataset.p2;
-  if(action==='reset')queueMicrotask(sync);
-  if(action==='gia'||action==='welcome')d.close();
- });
- new MutationObserver(()=>{if(d.open){sync();show(currentTab)}}).observe(d,{attributes:true,attributeFilter:['open']});
- show(currentTab);sync();
- window.MOHWAccessibilityPremium={dialog:d,openTab:key=>{show(key);if(!d.open)d.showModal()}};
+motion:'<path d="M3 12h12M7 7h12M7 17h12m-4-8 3 3-3 3"/>',
+spacing:'<path d="M4 5h16M4 19h16M8 9h8m-8 6h8M5 8l-2 4 2 4m14-8 2 4-2 4"/>',
+links:'<path d="M10 13a5 5 0 0 0 7.1 0l2.5-2.5a5 5 0 0 0-7.1-7.1L11 5M14 11a5 5 0 0 0-7.1 0l-2.5 2.5a5 5 0 0 0 7.1 7.1L13 19"/>',
+page:'<path d="M5 4h11l4 4v12H5Zm11 0v5h4M8 13h8m-8 4h8"/>',
+book:'<path d="M12 6C8 3 5 3 2 4v15c4-1 7 0 10 2 3-2 6-3 10-2V4c-3-1-6-1-10 2Zm0 0v15"/>',
+voice:'<rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 11a7 7 0 0 0 14 0m-7 7v4m-5 0h10"/>',
+stop:'<rect x="5" y="5" width="14" height="14" rx="2"/>',
+chat:'<path d="M4 4h16v13H9l-5 4V4Zm4 5h8m-8 4h5"/>',
+close:'<path d="M5 5 19 19M19 5 5 19"/>',
+reset:'<path d="M4 11a8 8 0 1 1 2 7M4 5v6h6"/>',
+check:'<path d="m5 12 4 4 10-10"/>'};
+const icon=k=>'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+paths[k]+'</svg>';
+const toggle=(key,name,detail,k)=>'<label class="ax-toggle" data-ax-toggle="'+key+'"><span class="ax-icon">'+icon(k)+'</span><span class="ax-toggle-copy"><strong>'+name+'</strong><small>'+detail+'</small></span><span class="ax-track" aria-hidden="true"><i></i></span><span data-ax-slot="'+key+'"></span></label>';
+const segment=(key,val,head,desc='')=>'<button type="button" data-ax-pref="'+key+'" data-ax-value="'+val+'" aria-pressed="false"><span>'+head+'</span>'+(desc?'<b>'+desc+'</b>':'')+'</button>';
+d.innerHTML='<div class="ax-shell">'+
+'<header class="ax-head"><span class="ax-feature">'+icon('access')+'</span><div class="ax-head-copy"><small>MOHW · JAMAICA</small><h2 id="p2-access-title">Accessibility <em>& Listening</em></h2><p>Make the guide work for you</p></div><button type="button" class="ax-close" data-p2="close" aria-label="Close accessibility settings">'+icon('close')+'</button></header>'+
+'<nav class="ax-tabs" role="tablist" aria-label="Accessibility options">'+
+[['display','Display'],['listen','Listen'],['support','Support']].map(([id,name])=>'<button type="button" role="tab" id="ax-tab-'+id+'" aria-controls="ax-panel-'+id+'" aria-selected="'+(id==='display')+'" tabindex="'+(id==='display'?'0':'-1')+'" data-ax-tab="'+id+'">'+icon(id)+'<span>'+name+'</span></button>').join('')+'</nav>'+
+'<div class="ax-panels">'+
+'<section class="ax-panel" data-ax-panel="display" id="ax-panel-display" role="tabpanel" aria-labelledby="ax-tab-display"><div class="ax-label"><strong>TEXT SIZE</strong><small>Choose your preferred size</small></div><div class="ax-segments ax-size" role="group" aria-label="Text size">'+segment('size','normal','A','Standard')+segment('size','large','A+','Large')+segment('size','xlarge','A++','Extra large')+'</div><div class="ax-label"><strong>VISUAL COMFORT</strong><small>Tap to adjust</small></div><div class="ax-switches">'+toggle('contrast','High contrast','Clearer colours','contrast')+toggle('motion','Reduce motion','Less animation','motion')+toggle('spacing','Text spacing','More breathing room','spacing')+toggle('links','Underline links','Spot links easily','links')+'</div><span class="ax-proxy-slot" data-ax-slot="size"></span></section>'+
+'<section class="ax-panel" data-ax-panel="listen" id="ax-panel-listen" role="tabpanel" aria-labelledby="ax-tab-listen" hidden><div class="ax-label"><strong>READ ALOUD</strong><small>Start listening at any time</small></div><div class="ax-reading-actions"><button type="button" data-p2="read-page"><span class="ax-icon">'+icon('page')+'</span><span><strong>Read this page</strong><small>Listen from here</small></span></button><button type="button" data-p2="read-guide"><span class="ax-icon">'+icon('book')+'</span><span><strong>Read the guide</strong><small>Listen to the content</small></span></button></div><div class="ax-label"><strong>READING SPEED</strong><small>Set the pace</small></div><div class="ax-segments ax-speed" role="group" aria-label="Reading speed">'+segment('rate','0.75','Slower')+segment('rate','1','Normal')+segment('rate','1.25','Faster')+'</div><label class="ax-voice-label" for="ax-voice-select"><span>'+icon('voice')+' Reading voice</span><span data-ax-slot="voice"></span></label><button type="button" class="ax-stop" data-p2="stop">'+icon('stop')+' Stop audio</button><span class="ax-proxy-slot" data-ax-slot="rate"></span></section>'+
+'<section class="ax-panel" data-ax-panel="support" id="ax-panel-support" role="tabpanel" aria-labelledby="ax-tab-support" hidden><div class="ax-label"><strong>COMMUNICATION</strong><small>Choose how to get help</small></div><div class="ax-support-cards"><article><span class="ax-icon">'+icon('chat')+'</span><strong>Type to GIA</strong><small>Ask questions without speaking</small><button type="button" data-ax-action="gia">Open GIA</button></article><article><span class="ax-icon">'+icon('book')+'</span><strong>Written guide</strong><small>Read instructions at your pace</small><button type="button" data-ax-action="manual">Read manual</button></article></div><p class="ax-support-note"><b>Deaf and hard-of-hearing access:</b> Typed questions and written information are available. Jamaican Sign Language media requires interpreter and community review before publication.</p><div class="ax-jsl" data-ax-slot="jsl"></div></section>'+
+'</div><footer class="ax-footer"><button type="button" class="ax-reset" data-p2="reset">'+icon('reset')+' Reset</button><small>'+icon('check')+' Saved on this device</small><button type="button" class="ax-done" data-p2="close">Done</button></footer></div>';
+for(const [key,control] of Object.entries(controls)){
+ const marker=d.querySelector('[data-ax-slot="'+key+'"]');if(!marker)throw Error('Accessibility slot missing: '+key);
+ control.classList.add(key==='voice'?'ax-voice-select':'ax-hidden-pref');
+ if(key==='voice')control.id='ax-voice-select';marker.replaceWith(control);
 }
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
+if(jsl)d.querySelector('[data-ax-slot="jsl"]')?.append(jsl);
+d.dataset.premium='yes';
+function tab(name,focus=false){
+ d.querySelectorAll('[data-ax-tab]').forEach(b=>{const active=b.dataset.axTab===name;b.setAttribute('aria-selected',String(active));b.tabIndex=active?0:-1;if(active&&focus)b.focus();});
+ d.querySelectorAll('[data-ax-panel]').forEach(panel=>panel.hidden=panel.dataset.axPanel!==name);
+}
+function update(){
+ d.querySelectorAll('[data-ax-pref]').forEach(b=>{
+ const active=String(controls[b.dataset.axPref].value)===b.dataset.axValue;
+ b.setAttribute('aria-pressed',String(active));
+ });
+ for(const key of ['contrast','motion','spacing','links'])d.querySelector('[data-ax-toggle="'+key+'"]')?.classList.toggle('is-on',controls[key].checked);
+}
+d.addEventListener('click',e=>{
+ const t=e.target.closest('[data-ax-tab]');
+ if(t){tab(t.dataset.axTab);return}
+ const s=e.target.closest('[data-ax-pref]');
+ if(s){const input=controls[s.dataset.axPref];input.value=s.dataset.axValue;input.dispatchEvent(new Event('change',{bubbles:true}));update();return}
+ const action=e.target.closest('[data-ax-action]')?.dataset.axAction;
+ if(action==='gia'){d.close();if(window.MOHWGIA?.open)window.MOHWGIA.open();else document.getElementById('gia2Launcher')?.click();}
+ if(action==='manual'){d.close();document.querySelector('#mainNav [data-nav="manual"]')?.click();}
+});
+d.querySelector('.ax-tabs').addEventListener('keydown',e=>{
+ if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();
+ const tabs=[...d.querySelectorAll('[data-ax-tab]')],idx=tabs.findIndex(x=>x.getAttribute('aria-selected')==='true');
+ const next=e.key==='Home'?0:e.key==='End'?tabs.length-1:(idx+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length;tab(tabs[next].dataset.axTab,true);
+});
+d.addEventListener('change',update);
+document.addEventListener('click',e=>{if(e.target.closest('[data-p2="access"],[data-p2="reset"]'))queueMicrotask(update)});
+update();
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
 })();

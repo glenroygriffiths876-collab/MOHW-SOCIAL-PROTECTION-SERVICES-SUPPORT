@@ -4,6 +4,9 @@ on:
     branches: [main]
     paths:
       - 'assets/premium-ui-fix.css'
+      - 'assets/accessibility-premium.css'
+      - 'assets/accessibility-premium.js'
+      - 'tests/accessibility-browser.cjs'
       - 'assets/exact-home.css'
       - 'assets/exact-home.js'
       - 'assets/mobile-image-v3.js'
@@ -35,6 +38,9 @@ on:
     branches: [main]
     paths:
       - 'assets/premium-ui-fix.css'
+      - 'assets/accessibility-premium.css'
+      - 'assets/accessibility-premium.js'
+      - 'tests/accessibility-browser.cjs'
       - 'assets/exact-home.css'
       - 'assets/exact-home.js'
       - 'assets/mobile-image-v3.js'
@@ -78,6 +84,8 @@ jobs:
           for i in $(seq 1 35); do curl -fsS http://127.0.0.1:8765/index.html >/dev/null && break; sleep 1; done
       - name: Check actual desktop, tablet, phone, rotation and functionality
         run: node tests/layout-browser.cjs
+      - name: Verify premium accessible settings on mobile, tablet and desktop
+        run: node tests/accessibility-browser.cjs
       - name: Verify all 6 referral scenes on phones, tablets and desktops
         run: node tests/referrals-premium-browser.cjs
       - name: Verify all 13 decision situations, native service actions and image layovers
