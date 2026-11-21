@@ -33,7 +33,25 @@ return{visible:getComputedStyle(a).display!=='none',src:a.querySelector('.dgo-ba
 assert.equal(basics.visible,true,name+': premium screenshot visible');
 assert.equal(basics.noOverflow,true,name+': no horizontal overflow');
 assert.equal(basics.oldHidden,true,name+': no duplicate CSS decision page');
-assert.equal(basics.nativeHeaderHidden,true,name+': only image navbar visible');
+assert.equal(basics.nativeHeaderHidden,true,name+': only the new image-matched navbar is visible');
+const ribbon=await page.evaluate(mobile=>{
+ const frame=document.querySelector('#decision-image-overlay '+(mobile?'.dgo-mobile':'.dgo-desktop'));
+ const nav=frame.querySelector('.dgo-nav-ribbon');
+ const buttons=[...nav.querySelectorAll('.dgo-nav-button')];
+ const search=frame.querySelector('.dgo-search-matte');
+ const base=frame.getBoundingClientRect(),r=nav.getBoundingClientRect();
+ return {count:buttons.length,icons:buttons.filter(b=>!!b.querySelector('svg')).length,
+  labels:buttons.map(b=>b.getAttribute('aria-label')),active:buttons.find(b=>b.classList.contains('is-active'))?.getAttribute('aria-label'),
+  searchHidden:!!search&&getComputedStyle(search).display!=='none',
+  inside:r.left>=base.left-2&&r.right<=base.right+2,
+  background:getComputedStyle(nav).backgroundImage};
+},mobile);
+assert.equal(ribbon.count,6,name+': all six referral-matched navigation buttons');
+assert.equal(ribbon.icons,6,name+': all navigation icons visible');
+assert.equal(ribbon.active,'Decision Guide',name+': correct page highlighted');
+assert.equal(ribbon.searchHidden,true,name+': painted search band replaced');
+assert.equal(ribbon.inside,true,name+': navigation remains inside viewport');
+assert.match(ribbon.background,/gradient/,name+': glossy navy ribbon');
 assert.equal(basics.logo,'assets/mohw-official-logo.png',name+': official MOHW logo');
 assert.equal(basics.logoLoaded,true,name+': MOHW logo image decoded');
 assert.ok(basics.width>Math.min(900,w)*.96 && basics.width<=w+2,name+': artwork fills viewport');
@@ -78,10 +96,9 @@ if(mobile){
   await page.waitForFunction(()=>document.querySelector('.dgo-dialog')?.open);
   assert.ok((await page.locator('#dgo-dialog-options').textContent()).includes('Do not wait for a directory search'));
   await page.locator('.dgo-dialog [data-close]').click();
-  await page.locator('#decision-image-overlay .dgo-mobile .dgo-search input').fill('PATH');
-  assert.ok(await page.locator('.dgo-mobile select option').count()>=2,name+': text search filters situations');
-  await page.locator('#decision-image-overlay .dgo-mobile .dgo-reset').click();
-  assert.equal(await page.locator('.dgo-mobile select option').count(),14,name+': reset restores 13 situations');
+  assert.equal(await page.locator('#decision-image-overlay .dgo-mobile .dgo-search input').count(),0,name+': search removed');
+  assert.equal(await page.locator('#decision-image-overlay .dgo-mobile .dgo-reset').count(),0,name+': reset removed');
+  assert.equal(await page.locator('.dgo-mobile select option').count(),14,name+': all situations remain in the selector');
   await page.locator('#decision-image-overlay .dgo-mobile .dgo-gia .dgo-hit').click();
   await page.waitForFunction(()=>document.querySelector('#gia2Dialog')?.open===true);
   await page.locator('#gia2Close').click();

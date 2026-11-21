@@ -8,7 +8,7 @@ if(!view||document.getElementById('decision-image-overlay'))return;
 const $=(s,r=document)=>r.querySelector(s);
 const pct=(x,n)=>(100*x/n).toFixed(5)+'%';
 const art={desktop:{w:1536,h:1024,src:'assets/decision-overlay-desktop.webp'},mobile:{w:896,h:1728,src:'assets/decision-overlay-mobile.webp'}};
-const nav=[['Home','about'],['Referrals','referrals'],['Decision Guide','decision'],['Find Services','services'],['Digital Manual','manual'],['Accessibility','access']];
+const nav=[['Home','about','home'],['Referrals','referrals','referrals'],['Decision Guide','decision','decision'],['Find Services','services','services'],['Digital Manual','manual','manual'],['Accessibility & Listening','access','access']];
 const images=[
  'assets/referral-listening.webp','assets/about-community.webp','assets/referral-followup.webp',
  'assets/decision-options.webp','assets/referral-match.webp','assets/referral-safety.webp',
@@ -23,7 +23,7 @@ const displayNames=[
  'Disaster or fire','Adolescent mother or vulnerable children'
 ];
 const safety='For immediate danger or a medical emergency, use approved emergency procedures and contact emergency services. Do not wait for a directory search.';
-let source=[],situations=[],selected='',query='',activeOption=0;
+let source=[],situations=[],selected='',activeOption=0;
 const root=document.createElement('div');root.id='decision-image-overlay';root.hidden=true;
 root.setAttribute('role','region');root.setAttribute('aria-label','Decision Guide interactive illustration');
 const screens={};
@@ -49,22 +49,46 @@ function buttonArea(frame,cls,rect,title,action){
  b.addEventListener('click',action);box.append(b);return b;
 }
 function brandedLogo(frame,coords){const holder=appendArea(frame,'dgo-logo',coords);const image=document.createElement('img');image.src='assets/mohw-official-logo.png';image.alt='Ministry of Health & Wellness Jamaica official logo';holder.append(image)}
-function buildNav(frame,positions){positions.forEach((coords,i)=>buttonArea(frame,'dgo-nav dgo-nav-'+i,coords,nav[i][0],()=>navAction(nav[i][1])))}
+// The Referrals-inspired ribbon is a real interactive navigation element,
+// rather than tiny text areas sitting over an outdated painted navbar.
+const navIcons={
+ home:'<path d="m3 10 9-7 9 7v11h-6v-7H9v7H3V10Z"/>',
+ referrals:'<circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2.5 21v-2c0-4 3-6 6.5-6s6.5 2 6.5 6v2M16 14c3 0 5.5 2 5.5 5v2"/>',
+ decision:'<circle cx="12" cy="4" r="2"/><circle cx="4" cy="20" r="2"/><circle cx="20" cy="20" r="2"/><path d="M12 6v6M12 12 4 18M12 12l8 6"/>',
+ services:'<path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/>',
+ manual:'<path d="M12 6C8.5 3 5 3 2 4v15c4-1 7 0 10 2 3-2 6-3 10-2V4c-3-1-6-1-10 2Zm0 0v15"/>',
+ access:'<path d="M4 13v-2a8 8 0 0 1 16 0v2M4 12H2v7a3 3 0 0 0 3 3h2v-9H4Zm16 0h2v7a3 3 0 0 1-3 3h-2v-9h3Z"/>'
+};
+function buildNav(frame){
+ const isMobile=frame.dataset.device==='mobile';
+ const bounds=isMobile?[5,3,886,102]:[176,19,1230,101];
+ const holder=appendArea(frame,'dgo-premium-nav',bounds);
+ const bar=document.createElement('nav');
+ bar.className='dgo-nav-ribbon';
+ bar.setAttribute('aria-label','MOHW Social Support main navigation');
+ nav.forEach(([label,target,symbol],index)=>{
+  const control=document.createElement('button');control.type='button';
+  control.className='dgo-nav-button'+(target==='decision'?' is-active':'');
+  control.setAttribute('aria-label',label);
+  if(target==='decision')control.setAttribute('aria-current','page');
+  const icon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+navIcons[symbol]+'</svg>';
+  const text=document.createElement('span');text.textContent=label;
+  control.innerHTML=icon;control.append(text);
+  control.addEventListener('click',()=>navAction(target));
+  bar.append(control);
+ });
+ holder.append(bar);
+}
 function intro(frame,coords,small){
  const region=appendArea(frame,'dgo-hero-copy',coords);
  region.innerHTML='<h1>Decision <span>Guide</span></h1><p>Choose a situation to explore possible support and referral options.</p>';
 }
 function makeControls(frame,layout){
  const state=screens[layout];
- const search=appendArea(frame,'dgo-search',layout==='desktop'?[60,366,462,52]:[59,546,774,82]);
- const input=document.createElement('input');input.type='search';input.placeholder='Search a situation or service';input.autocomplete='off';input.setAttribute('aria-label','Search situations, programmes and agencies');
- input.addEventListener('input',()=>{query=input.value.trim();screens[layout==='desktop'?'mobile':'desktop'].searchInput.value=input.value;render()});
- if(layout==='mobile')input.placeholder='Search needs or agencies';
- search.append(input);state.searchInput=input;
- const clear=document.createElement('button');clear.type='button';clear.className='dgo-reset';
- clear.textContent='Reset';clear.setAttribute('aria-label','Reset decision search and situation');
- clear.addEventListener('click',()=>{query='';selected='';screens.desktop.searchInput.value='';screens.mobile.searchInput.value='';syncNative();render()});
- search.append(clear);
+ // Remove the entire Search needs/agencies field AND its painted illustration.
+ // The remaining 13-situation selector is the single clear way to navigate.
+ const matte=appendArea(frame,'dgo-search-matte',layout==='desktop'?[45,345,489,87]:[0,521,896,114]);
+ matte.setAttribute('aria-hidden','true');
  const choices=appendArea(frame,'dgo-choices',layout==='desktop'?[49,433,480,411]:[57,635,780,93]);state.choices=choices;
  if(layout==='desktop'){
  const head=document.createElement('div');head.className='dgo-choices-label';head.textContent='CHOOSE A SITUATION';choices.append(head);
@@ -86,8 +110,8 @@ function makeControls(frame,layout){
  const emergency=buttonArea(frame,'dgo-emergency',layout==='desktop'?[1171,817,291,35]:[55,1303,780,70],'! Urgent safety guidance',()=>showDialog('Urgent safety comes first',safety));
  state.emergency=emergency;
 }
-buildNav(desktop,[[180,34,183,50],[385,34,182,50],[589,34,182,50],[797,34,182,50],[1006,34,181,50],[1210,34,186,50]]);
-buildNav(mobile,[[11,5,143,91],[158,5,143,91],[305,5,143,91],[452,5,143,91],[598,5,143,91],[746,5,143,91]]);
+buildNav(desktop);
+buildNav(mobile);
 brandedLogo(desktop,[16,9,155,81]);brandedLogo(mobile,[18,115,269,75]);
 intro(desktop,[83,151,591,155],false);intro(mobile,[69,383,749,119],true);
 makeControls(desktop,'desktop');makeControls(mobile,'mobile');
@@ -133,15 +157,15 @@ dialog.querySelector('[data-directory]').addEventListener('click',()=>{
 });
 function choose(value){selected=value;for(const state of Object.values(screens))if(state.select)state.select.value=value;syncNative();render();}
 function syncNative(){
- const nativeSearch=$('#decisionSearch');if(nativeSearch){nativeSearch.value=query;nativeSearch.dispatchEvent(new Event('input',{bubbles:true}));}
+ const nativeSearch=$('#decisionSearch');if(nativeSearch){nativeSearch.value='';nativeSearch.dispatchEvent(new Event('input',{bubbles:true}));}
  if(selected){const existing=[...document.querySelectorAll('#decisionSituations [data-decision-situation]')].find(b=>b.dataset.decisionSituation===selected);
   // Selection drives the original referral and agency-match engine.
   if(existing){existing.click();}}
  else $('#decisionReset')?.click();
 }
 function render(){
- const normalize=s=>String(s||'').toLocaleLowerCase('en');const q=normalize(query);
- const groups=situations.filter(s=>!q||normalize(s).includes(q)||source.some(r=>r.situation===s&&normalize(r.options+' '+r.provider).includes(q)));
+ // No search filter: every authentic situation remains available in the selector.
+ const groups=situations;
  for(const [device,state] of Object.entries(screens)){
   if(state.list){state.list.replaceChildren();groups.forEach((name,i)=>{
    const b=document.createElement('button');b.type='button';b.className='dgo-situation';b.textContent=name;b.title=name;b.setAttribute('aria-pressed',String(selected===name));
@@ -159,17 +183,17 @@ function render(){
   }
   const position=selected?situations.indexOf(selected):-1;
   state.photo.src=images[position]||'assets/decision-pathway.webp';state.photo.alt=selected?'Illustration for '+selected:'Community support worker exploring possible options';
-  const rows=selected?source.filter(r=>r.situation===selected && (!q||normalize(r.situation+' '+r.options+' '+r.provider).includes(q))):[];
+  const rows=selected?source.filter(r=>r.situation===selected):[];
   const summary=state.summary;
   summary.querySelector('.dgo-state').textContent=selected?rows.length+' guide '+(rows.length===1?'option':'options')+' · Situation '+(position+1)+' of '+situations.length:situations.length+' situations · '+source.length+' guide options';
   summary.querySelector('h2').textContent=selected?(device==='mobile'?displayNames[position]||selected:selected):'Find a starting point';
   summary.querySelector('h2').setAttribute('aria-label',selected||'Find a starting point');
   summary.querySelector('h2').title=selected||'Find a starting point';
-  summary.querySelector('.dgo-intro').textContent=selected?(rows.length?'Select an option below to see its full wording and named provider.':'No option matches the current search for this situation.'):'Choose a situation or search for a service, need or agency.';
+  summary.querySelector('.dgo-intro').textContent=selected?(rows.length?'Select an option below to see its full wording and named provider.':'No option matches the current search for this situation.'):'Choose one of the situations to see the possible guide options.';
   summary.querySelector('.dgo-options').textContent='';
   state.more.replaceChildren();
   if(!selected){const hint=document.createElement('p');hint.className='dgo-empty-hint';hint.textContent='The guide lists 26 possible routes across 13 situations. Select one to explore; eligibility is always confirmed by the agency.';state.more.append(hint);}
-  else if(!rows.length){const hint=document.createElement('p');hint.className='dgo-empty-hint';hint.textContent='Clear the search or choose another situation.';state.more.append(hint);}
+  else if(!rows.length){const hint=document.createElement('p');hint.className='dgo-empty-hint';hint.textContent='Choose a different situation to see other guide options.';state.more.append(hint);}
   rows.forEach((row,i)=>{
    const b=document.createElement('button');b.type='button';b.className='dgo-route';
    b.innerHTML='<span class="dgo-route-count">'+String(i+1).padStart(2,'0')+'</span><span class="dgo-route-text"></span><span class="dgo-route-arrow" aria-hidden="true">↗</span>';

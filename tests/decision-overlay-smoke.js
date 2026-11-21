@@ -19,8 +19,8 @@ for(const f of ['assets/decision-overlay-desktop.webp','assets/decision-overlay-
  'assets/decision-pathway.webp','assets/referral-warmhandoff.webp',
  'assets/referral-photo-2-safety.webp','assets/referral-preparing.webp'])
  assert(fs.existsSync(f),'image missing '+f);
-assert(html.includes('assets/decision-image-overlay.css?v=3-select-fit'),'must load image-layer CSS');
-assert(html.includes('assets/decision-image-overlay.js?v=2-mobile-polish'),'must load image-layer JS');
+assert(html.includes('assets/decision-image-overlay.css?v=4-referral-ribbon'),'must load image-layer CSS');
+assert(html.includes('assets/decision-image-overlay.js?v=3-referral-ribbon'),'must load image-layer JS');
 assert(sw.includes('decision-overlay-desktop.webp')&&sw.includes('decision-overlay-mobile.webp'),'cache artwork');
 assert(js.includes("fetch('data/guide-content.json"),'render exact data, not invented labels');
 assert(js.includes('state.more.append(b)'),'render all option buttons from source');
@@ -28,4 +28,7 @@ assert(js.includes('nativeBtn.click()'),'preserve original service modal action'
 assert(js.includes('data-decision-directory'),'preserve source-linked agency directory action');
 assert(js.includes('assets/mohw-official-logo.png'),'use actual MOHW image');
 assert(css.includes('html.dgo-active'),'isolate new artwork to the Decision Guide');
+assert(js.includes('dgo-premium-nav')&&css.includes('dgo-nav-button.is-active'),'Decision Guide uses Referrals-inspired icon-led active navigation');
+assert(js.includes('dgo-search-matte')&&!js.includes('Search needs or agencies'),'Remove mobile search bar instead of leaving a decorative fake');
+assert(!js.includes('state.searchInput')&&!js.includes('dgo-reset'),'Remove unused search and reset controls from illustrated guide');
 console.log('DECISION_OVERLAY_STATIC_PASSED 13 situations, 26 options, two original artworks, official MOHW logo, real providers');
