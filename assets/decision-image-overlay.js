@@ -16,6 +16,12 @@ const images=[
  'assets/decision-pathway.webp','assets/referral-warmhandoff.webp','assets/referral-photo-2-safety.webp',
  'assets/referral-preparing.webp'
 ];
+const displayNames=[
+ 'Mental health support','Parent or student','Senior (60+)','Skills training & work',
+ 'Disability support','Fire or bereavement','Enterprise, farming or gardening',
+ 'Medical tests','Medical treatment','Substance misuse','Abuse or domestic violence',
+ 'Disaster or fire','Adolescent mother or vulnerable children'
+];
 const safety='For immediate danger or a medical emergency, use approved emergency procedures and contact emergency services. Do not wait for a directory search.';
 let source=[],situations=[],selected='',query='',activeOption=0;
 const root=document.createElement('div');root.id='decision-image-overlay';root.hidden=true;
@@ -51,8 +57,9 @@ function intro(frame,coords,small){
 function makeControls(frame,layout){
  const state=screens[layout];
  const search=appendArea(frame,'dgo-search',layout==='desktop'?[60,366,462,52]:[59,546,774,82]);
- const input=document.createElement('input');input.type='search';input.placeholder='Search situations, options, agencies';input.autocomplete='off';input.setAttribute('aria-label','Search situations, programmes and agencies');
+ const input=document.createElement('input');input.type='search';input.placeholder='Search a situation or service';input.autocomplete='off';input.setAttribute('aria-label','Search situations, programmes and agencies');
  input.addEventListener('input',()=>{query=input.value.trim();screens[layout==='desktop'?'mobile':'desktop'].searchInput.value=input.value;render()});
+ if(layout==='mobile')input.placeholder='Search needs or agencies';
  search.append(input);state.searchInput=input;
  const clear=document.createElement('button');clear.type='button';clear.className='dgo-reset';
  clear.textContent='Reset';clear.setAttribute('aria-label','Reset decision search and situation');
@@ -74,7 +81,7 @@ function makeControls(frame,layout){
  state.summary=section;
  const resultList=appendArea(frame,'dgo-more',layout==='desktop'?[994,570,471,222]:[58,1010,778,270]);
  resultList.setAttribute('aria-label','Options and named providers from the guide');resultList.setAttribute('role','region');state.more=resultList;
- const footer=appendArea(frame,'dgo-caveat',layout==='desktop'?[585,846,865,30]:[55,1318,780,65]);
+ const footer=appendArea(frame,'dgo-caveat',layout==='desktop'?[588,797,571,52]:[55,1210,780,65]);
  footer.textContent='Possible starting points only. Confirm services, eligibility and requirements with the responsible agency.';
  const emergency=buttonArea(frame,'dgo-emergency',layout==='desktop'?[1171,817,291,35]:[55,1303,780,70],'! Urgent safety guidance',()=>showDialog('Urgent safety comes first',safety));
  state.emergency=emergency;
@@ -143,7 +150,11 @@ function render(){
   }
   if(state.select){const old=state.select.value;state.select.replaceChildren();
    const opt=document.createElement('option');opt.value='';opt.textContent='Choose one of '+situations.length+' situations';state.select.append(opt);
-   groups.forEach(s=>{const item=document.createElement('option');item.value=s;item.textContent=s;state.select.append(item)});
+   groups.forEach(s=>{
+    const item=document.createElement('option');item.value=s;
+    item.textContent=displayNames[situations.indexOf(s)]||s;
+    item.setAttribute('aria-label',s);item.title=s;state.select.append(item);
+   });
    state.select.value=groups.includes(selected)?selected:'';
   }
   const position=selected?situations.indexOf(selected):-1;
@@ -151,7 +162,9 @@ function render(){
   const rows=selected?source.filter(r=>r.situation===selected && (!q||normalize(r.situation+' '+r.options+' '+r.provider).includes(q))):[];
   const summary=state.summary;
   summary.querySelector('.dgo-state').textContent=selected?rows.length+' guide '+(rows.length===1?'option':'options')+' · Situation '+(position+1)+' of '+situations.length:situations.length+' situations · '+source.length+' guide options';
-  summary.querySelector('h2').textContent=selected||'Find a starting point';
+  summary.querySelector('h2').textContent=selected?(device==='mobile'?displayNames[position]||selected:selected):'Find a starting point';
+  summary.querySelector('h2').setAttribute('aria-label',selected||'Find a starting point');
+  summary.querySelector('h2').title=selected||'Find a starting point';
   summary.querySelector('.dgo-intro').textContent=selected?(rows.length?'Select an option below to see its full wording and named provider.':'No option matches the current search for this situation.'):'Choose a situation or search for a service, need or agency.';
   summary.querySelector('.dgo-options').textContent='';
   state.more.replaceChildren();

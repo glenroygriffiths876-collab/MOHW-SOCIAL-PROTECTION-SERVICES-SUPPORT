@@ -19,8 +19,8 @@ for(const f of ['assets/decision-overlay-desktop.webp','assets/decision-overlay-
  'assets/decision-pathway.webp','assets/referral-warmhandoff.webp',
  'assets/referral-photo-2-safety.webp','assets/referral-preparing.webp'])
  assert(fs.existsSync(f),'image missing '+f);
-assert(html.includes('assets/decision-image-overlay.css?v=1-artwork'),'must load image-layer CSS');
-assert(html.includes('assets/decision-image-overlay.js?v=1-artwork'),'must load image-layer JS');
+assert(html.includes('assets/decision-image-overlay.css?v=2-mobile-polish'),'must load image-layer CSS');
+assert(html.includes('assets/decision-image-overlay.js?v=2-mobile-polish'),'must load image-layer JS');
 assert(sw.includes('decision-overlay-desktop.webp')&&sw.includes('decision-overlay-mobile.webp'),'cache artwork');
 assert(js.includes("fetch('data/guide-content.json"),'render exact data, not invented labels');
 assert(js.includes('state.more.append(b)'),'render all option buttons from source');
