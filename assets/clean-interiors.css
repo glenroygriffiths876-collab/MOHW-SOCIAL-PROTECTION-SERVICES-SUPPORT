@@ -221,3 +221,31 @@ html.ad-preview body>footer .footer-label{font-size:10px!important;padding:8px 1
 @media(prefers-reduced-motion:reduce){
  html.ad-preview .cr-page *{animation:none!important;scroll-behavior:auto!important;transition:none!important}
 }
+/* Final visual pass: remove the duplicate draft footer (the guide contains its own notice)
+   and restore high contrast on the original manual cover. */
+html.ad-preview body>footer{display:none!important}
+html.ad-preview #view-manual .manual-welcome .manual-book-cover strong,
+html.ad-preview #view-manual .manual-welcome .manual-book-cover small,
+html.ad-preview #view-manual .manual-welcome .manual-book-cover span,
+html.ad-preview #view-manual .manual-welcome .manual-book-cover div,
+html.ad-preview #view-manual .manual-welcome .manual-book-cover p{
+ color:#ffffff!important;opacity:1!important;-webkit-text-fill-color:#ffffff!important;
+ text-shadow:none!important;
+}
+html.ad-preview #view-manual .manual-welcome .manual-book-cover small{
+ color:#83f1f9!important;-webkit-text-fill-color:#83f1f9!important;
+}
+html.ad-preview #view-manual .manual-welcome .manual-book-cover span{
+ color:#ffdc32!important;-webkit-text-fill-color:#ffdc32!important;
+}
+html.ad-preview #view-manual .manual-welcome .manual-loading-note,
+html.ad-preview #view-manual #manual-load-note,
+html.ad-preview #view-manual .manual-welcome #manual-privacy{
+ color:#515c7f!important;opacity:1!important;-webkit-text-fill-color:#515c7f!important;
+}
+html.ad-preview #view-manual .manual-welcome .manual-kicker{
+ color:#2a2488!important;-webkit-text-fill-color:#2a2488!important;
+}
+html.ad-preview #cr-panel-locations .ad-map-heading>h2{display:none!important}
+html.ad-preview #cr-panel-locations .ad-map-heading{margin:0 0 14px!important}
+html.ad-preview #cr-panel-locations .ad-map-heading p{margin:0!important}
