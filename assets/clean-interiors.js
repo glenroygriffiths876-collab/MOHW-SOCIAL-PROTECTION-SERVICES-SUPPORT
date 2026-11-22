@@ -102,13 +102,13 @@ function buildDecision(){
  '<div class="cr-decision-body"><div id="cr-decision-choice"><h2>What support is needed?</h2>'+
  '<label class="cr-decision-search">'+icon('search')+'<input id="cr-decision-query" type="search" placeholder="Search situations" aria-label="Search situations"></label>'+
  '<div id="cr-decision-list" class="cr-choice-list"></div></div>'+
- '<div id="cr-decision-results" hidden><button type="button" id="cr-decision-back" class="cr-back">‹ All situations</button><p class="cr-eyebrow">POSSIBLE STARTING POINTS</p><h2 id="cr-decision-title"></h2><p class="cr-description">Options transcribed from the guide. The responsible agency confirms services and eligibility.</p><div id="cr-decision-cards"></div><button type="button" id="cr-decision-services" class="cr-primary">Explore services '+icon('arrow')+'</button></div>'+
+ '<div id="cr-decision-results" hidden><button type="button" id="cr-decision-back" class="cr-back">‹ All situations</button><p class="cr-eyebrow">POSSIBLE STARTING POINTS</p><h2 id="cr-decision-title"></h2><p class="cr-description">Options transcribed from the guide. The responsible agency confirms services and eligibility.</p><div id="cr-decision-cards"></div><button type="button" id="cr-decision-services" class="cr-primary">Continue to referrals '+icon('arrow')+'</button></div>'+
  '<aside class="cr-danger"><span>'+icon('alert')+'</span><div><strong>Immediate danger or medical emergency?</strong><p>Use approved emergency procedures. Do not wait for a directory search.</p></div></aside></div>';
  v.prepend(host);v.classList.add('cr-ready');
  host.addEventListener('click',e=>{
   const option=e.target.closest('[data-cr-situation]');if(option){activeDecision=option.dataset.crSituation;paintDecisionResults();return;}
   if(e.target.closest('#cr-decision-back')){activeDecision=null;paintDecisionResults();return;}
-  if(e.target.closest('#cr-decision-services'))goServices('programmes','programmes');
+  if(e.target.closest('#cr-decision-services'))openNative('referrals');
  });
  $('#cr-decision-query').addEventListener('input',paintDecisionList);
  paintDecisionList();
