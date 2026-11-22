@@ -29,7 +29,7 @@ const sizes=[{name:'phone320',width:320,height:720},{name:'phone390',width:390,h
   await page.waitForSelector('#ad-video-dialog[open]',{timeout:4000});
   assert.equal(await page.locator('#ad-video source').getAttribute('src'),'assets/gia-introduction.mp4','real existing Gia video');
   await page.locator('[data-ad-video-close]').click();
-  await page.waitForSelector('#ad-video-dialog:not([open])');
+  await page.waitForSelector('#ad-video-dialog:not([open])',{state:'hidden'});
   await page.locator('#ad-home [data-ad-nav="services"]').click();
   await page.waitForSelector('#view-services.active',{timeout:8000});
   await page.waitForFunction(()=>document.querySelector('#ad-office-count')?.textContent?.includes('56'),null,{timeout:14000});
