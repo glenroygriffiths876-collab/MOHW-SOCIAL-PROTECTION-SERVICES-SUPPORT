@@ -40,6 +40,7 @@ const screens=[
       });
       console.log('GEOMETRY '+s.name+' '+JSON.stringify(doc));
       assert.ok(doc.sw<=doc.vw+3,'horizontal overflow on '+s.name+': '+JSON.stringify(doc));
+      assert.ok(doc.bw<=doc.vw+3,'body extends beyond viewport on '+s.name+': '+JSON.stringify(doc));
       await page.screenshot({path:OUT+'/'+s.name+'-home.png',fullPage:true});
       // Clicking the home tile must change the native routed view.
       await page.locator('#pv-home [data-pv-go="services"]').first().click();
@@ -58,6 +59,7 @@ const screens=[
       await page.locator('#pv-view-map').click();
       assert.equal(await page.locator('#pv-map-wrapper').isHidden(),false,'map toggle shows map');
       assert.ok(await page.evaluate(()=>typeof L==='object'&&!!document.querySelector('.leaflet-container')),'real Leaflet map must initialise');
+      await page.waitForTimeout(850); // Let the map pan finish so pins and tiles are aligned before capture.
       await page.screenshot({path:OUT+'/'+s.name+'-map.png',fullPage:true});
       await page.locator('#mainNav button[data-nav="referrals"]').click();
       await page.waitForSelector('#view-referrals.active');
