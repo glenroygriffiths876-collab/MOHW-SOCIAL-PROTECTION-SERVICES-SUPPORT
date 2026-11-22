@@ -108,8 +108,8 @@ const mapUrl=o=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComp
 function renderOffices(){
  const list=filtered();$('#ad-office-count').textContent=list.length+' '+(list.length===1?'office':'offices');
  $('#ad-offices-title').textContent=parish==='all'?'Offices across Jamaica':parish+' office listings';
- $('#ad-office-list').innerHTML=list.length?list.slice(0,expanded?list.length:8).map(o=>'<article class="ad-office"><span class="ad-office-type">'+esc(o.parish)+' • '+esc(kindNames[o.kind])+'</span><h4>'+esc(o.name)+'</h4><p>'+svg('pin')+esc(o.address)+'</p><div class="ad-office-buttons">'+(o.phone?'<a href="tel:'+esc(o.phone.replace(/[^\d+]/g,''))+'">'+esc(o.phone)+'</a>':'')+'<a target="_blank" rel="noopener noreferrer" href="'+esc(mapUrl(o))+'">Directions ↗</a><button type="button" data-ad-zoom="'+esc(o.parish)+'">View parish</button></div><small>Confirm office services and hours directly.</small></article>').join(''):'<p class="ad-empty">No matching offices. Clear a filter or search another parish.</p>';
- $('#ad-more-offices').hidden=expanded||list.length<=8;$('#ad-more-offices').textContent='Show all '+list.length+' offices ↓';
+ $('#ad-office-list').innerHTML=list.length?list.slice(0,expanded?list.length:4).map(o=>'<article class="ad-office"><span class="ad-office-type">'+esc(o.parish)+' • '+esc(kindNames[o.kind])+'</span><h4>'+esc(o.name)+'</h4><p>'+svg('pin')+esc(o.address)+'</p><div class="ad-office-buttons">'+(o.phone?'<a href="tel:'+esc(o.phone.replace(/[^\d+]/g,''))+'">'+esc(o.phone)+'</a>':'')+'<a target="_blank" rel="noopener noreferrer" href="'+esc(mapUrl(o))+'">Directions ↗</a><button type="button" data-ad-zoom="'+esc(o.parish)+'">View parish</button></div><small>Confirm office services and hours directly.</small></article>').join(''):'<p class="ad-empty">No matching offices. Clear a filter or search another parish.</p>';
+ $('#ad-more-offices').hidden=expanded||list.length<=4;$('#ad-more-offices').textContent='Show all '+list.length+' offices ↓';
  refreshPins(list);
 }
 function refreshPins(list){
