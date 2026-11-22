@@ -30,7 +30,15 @@ const screens=[
       assert.equal(await page.locator('#pv-gia-video source').getAttribute('src'),'assets/gia-introduction.mp4');
       const links=await page.locator('#guideShareUrl').textContent();
       assert.ok(links.startsWith(BASE),'share/QR must point to the preview, not production: '+links);
-      const doc=await page.evaluate(()=>({vw:innerWidth,sw:document.documentElement.scrollWidth}));
+      const doc=await page.evaluate(()=>{
+        const all=[...document.querySelectorAll('body *')].filter(e=>{
+          const st=getComputedStyle(e),r=e.getBoundingClientRect();
+          return st.display!=='none'&&st.visibility!=='hidden'&&r.width>0&&r.height>0&&r.right>innerWidth+4;
+        }).map(e=>({tag:e.tagName,id:e.id,cl:String(e.className).slice(0,80),r:Math.round(e.getBoundingClientRect().right),w:Math.round(e.getBoundingClientRect().width)}));
+        return {vw:innerWidth,sw:document.documentElement.scrollWidth,bw:document.body.scrollWidth,
+          root:document.querySelector('#pv-home')?.getBoundingClientRect().toJSON(),overs:all.sort((a,b)=>b.r-a.r).slice(0,12)};
+      });
+      console.log('GEOMETRY '+s.name+' '+JSON.stringify(doc));
       assert.ok(doc.sw<=doc.vw+3,'horizontal overflow on '+s.name+': '+JSON.stringify(doc));
       await page.screenshot({path:OUT+'/'+s.name+'-home.png',fullPage:true});
       // Clicking the home tile must change the native routed view.
