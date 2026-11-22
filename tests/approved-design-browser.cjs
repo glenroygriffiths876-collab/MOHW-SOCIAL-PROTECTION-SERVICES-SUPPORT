@@ -98,6 +98,9 @@ const sizes=[{name:'phone320',width:320,height:720},{name:'phone390',width:390,h
   assert.ok(await page.locator('#manual-reader').count(),'existing original manual reader retained');
   const manualOpened=await page.waitForFunction(()=>!!document.querySelector('#manual-stage:not([hidden])'),null,{timeout:12000}).then(()=>true).catch(()=>false);
   console.log('MANUAL '+s.name+' stage='+manualOpened+' '+JSON.stringify(await page.locator('#manual-status').textContent()));
+  const pagesLoaded=await page.waitForFunction(()=>{const m=document.querySelector('#manual-count')?.textContent||'';return /\\/\\s*43$/.test(m)&&document.querySelector('#manual-book canvas');},null,{timeout:19000}).then(()=>true).catch(()=>false);
+  console.log('MANUAL_RENDER '+s.name+' '+pagesLoaded+' '+JSON.stringify({count:await page.locator('#manual-count').textContent(),status:await page.locator('#manual-status').textContent()}));
+  assert.equal(pagesLoaded,true,'real illustrated 43-page flipbook must render, not merely show loading controls');
   await page.screenshot({path:OUT+'/'+s.name+'-manual.png',fullPage:true,animations:'disabled'});
   await page.locator('#ad-action-dock [data-ad-action="share"]').click();
   await page.waitForSelector('#guideShareDialog[open]',{timeout:5000});
