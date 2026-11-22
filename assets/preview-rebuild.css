@@ -425,3 +425,46 @@ html.premium-preview body>a.p2-skip:focus{
     font-size:11px!important;
   }
 }
+
+/* Final screenshot review: both skip-link variants are focus-only, not visual page content. */
+html.premium-preview body>a.skip:not(:focus),
+html.premium-preview body>a.p2-skip:not(:focus){
+  position:fixed!important;left:-200vw!important;top:-200vh!important;
+  width:1px!important;height:1px!important;padding:0!important;margin:0!important;
+  border:0!important;overflow:hidden!important;opacity:0!important;
+  pointer-events:none!important;clip-path:inset(50%)!important;
+}
+html.premium-preview body>a.skip:focus,
+html.premium-preview body>a.p2-skip:focus{
+  position:fixed!important;top:12px!important;left:12px!important;
+  width:auto!important;height:auto!important;opacity:1!important;clip-path:none!important;
+  color:#082f4f!important;background:white!important;border:3px solid #f9c309!important;
+  border-radius:12px!important;padding:12px 16px!important;z-index:10000!important;
+  pointer-events:auto!important;
+}
+@media(max-width:730px){
+  html.premium-preview #view-about .pv-family-panel{
+    min-height:345px!important;
+  }
+  html.premium-preview #view-about .pv-family-copy{
+    max-width:90%!important;justify-content:flex-start!important;
+    padding:20px 16px 16px!important;
+  }
+  html.premium-preview #view-about .pv-family-copy h1{
+    font-size:clamp(30px,8.2vw,45px)!important;line-height:1.02!important;
+    margin:10px 0 12px!important;
+  }
+  html.premium-preview #view-about .pv-family-copy p{
+    font-size:12px!important;line-height:1.42!important;
+    max-width:240px!important;margin-bottom:14px!important;
+  }
+  html.premium-preview #view-about .pv-family-copy button{
+    position:relative!important;min-height:43px!important;
+    padding:9px 13px!important;flex-shrink:0!important;
+    white-space:nowrap!important;font-size:12px!important;
+  }
+}
+@media(max-width:360px){
+  html.premium-preview #view-about .pv-family-panel{min-height:350px!important}
+  html.premium-preview #view-about .pv-family-copy{padding:18px 13px!important}
+}
