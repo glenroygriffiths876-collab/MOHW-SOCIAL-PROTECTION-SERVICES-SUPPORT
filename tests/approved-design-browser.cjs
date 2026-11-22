@@ -39,7 +39,7 @@ const sizes=[{name:'phone320',width:320,height:720},{name:'phone390',width:390,h
   assert.equal(await page.locator('#ad-action-dock').evaluate(el=>{const a=el.getBoundingClientRect();const filters=document.querySelector('.ad-filters').getBoundingClientRect();return a.top>=filters.bottom-1;}),true,'action bar does not hide map filters');
   await page.waitForFunction(()=>document.querySelector('#ad-office-count')?.textContent?.includes('56'),null,{timeout:14000});
   assert.equal(await page.locator('#ad-parish option').count(),15,'all 14 parishes');
-  assert.ok(await page.locator('#ad-office-list .ad-office').count()>=8,'agency listings populated');
+  assert.equal(await page.locator('#ad-office-list .ad-office').count(),4,'four concise default office cards');
   await page.locator('#ad-parish').selectOption('Hanover');
   assert.ok((await page.locator('#ad-office-count').textContent()).includes('4 offices'),'parish filter');
   await page.locator('#ad-search').fill('Noel Holmes');
@@ -96,11 +96,17 @@ const sizes=[{name:'phone320',width:320,height:720},{name:'phone390',width:390,h
   await page.locator('#ad-home [data-ad-nav="manual"]').click();
   await page.waitForSelector('#view-manual.active');
   assert.ok(await page.locator('#manual-reader').count(),'existing original manual reader retained');
+  const manualOpened=await page.waitForFunction(()=>!!document.querySelector('#manual-stage:not([hidden])'),null,{timeout:12000}).then(()=>true).catch(()=>false);
+  console.log('MANUAL '+s.name+' stage='+manualOpened+' '+JSON.stringify(await page.locator('#manual-status').textContent()));
   await page.screenshot({path:OUT+'/'+s.name+'-manual.png',fullPage:true,animations:'disabled'});
   await page.locator('#ad-action-dock [data-ad-action="share"]').click();
   await page.waitForSelector('#guideShareDialog[open]',{timeout:5000});
   assert.ok((await page.locator('#guideShareUrl').textContent()).startsWith(BASE),'preview QR/share link not production');
   await page.locator('#guideShareDialog [data-close]').first().click();
+  await page.locator('#ad-action-dock [data-ad-action="gia"]').click();
+  await page.waitForSelector('#gia2Dialog[open]',{timeout:6500});
+  await page.locator('#gia2Dialog [aria-label="Close GIA"]').first().click().catch(()=>page.keyboard.press('Escape'));
+  assert.equal(await page.locator('#ad-menu>button').count(),5,'menu remains concise on every page');
   assert.deepEqual(errors,[],'unexpected browser script errors');
   console.log('PASS '+s.name+': clean menu, map, benefits, categories, contacts, referral, decision, manual, share');
   await page.close();
