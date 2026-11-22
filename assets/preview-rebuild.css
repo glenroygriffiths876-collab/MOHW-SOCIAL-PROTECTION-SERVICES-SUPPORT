@@ -380,3 +380,48 @@ html.premium-preview body>footer .footer-label{
     font-size:10px!important;line-height:1.28!important;
   }
 }
+
+/* Prevent a decorative shortcut from obscuring the functional directory filters.
+   All five actions remain available in the in-page quick-action toolbar. */
+html.premium-preview:has(#view-services.active) body #guideActionDock,
+html.premium-preview:has(#view-services.active) body #gia2Launcher{
+  display:none!important;visibility:hidden!important;pointer-events:none!important;
+}
+html.premium-preview body #view-services .pv-dir-utilities{
+  display:flex;gap:8px;align-items:center;justify-content:flex-start;
+  flex-wrap:wrap;border-top:1px solid #c4e0eb;margin-top:14px;padding-top:13px;
+}
+html.premium-preview body #view-services .pv-dir-utilities button{
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  background:linear-gradient(145deg,#075f8a,#06365e)!important;
+  color:#fff!important;-webkit-text-fill-color:#fff!important;
+  border:1px solid #73cbdb!important;border-radius:11px!important;
+  text-decoration:none!important;padding:10px 13px!important;
+  font-size:12px!important;font-weight:900!important;
+  min-height:43px!important;box-shadow:inset 0 1px 3px #ffffff59,0 4px 8px #03466a24!important;
+}
+html.premium-preview body #view-services .pv-dir-utilities button:hover{
+  filter:brightness(1.1);transform:translateY(-1px);
+}
+html.premium-preview body>a.p2-skip:not(:focus){
+  position:fixed!important;left:-200vw!important;top:-200vh!important;
+  width:1px!important;height:1px!important;overflow:hidden!important;
+  opacity:0!important;pointer-events:none!important;
+}
+html.premium-preview body>a.p2-skip:focus{
+  position:fixed!important;left:12px!important;top:12px!important;
+  width:auto!important;height:auto!important;opacity:1!important;
+  z-index:10000!important;pointer-events:auto!important;
+  padding:12px 17px!important;background:#fff!important;color:#053859!important;
+  border:3px solid #f7ba00!important;border-radius:12px!important;
+}
+@media(max-width:730px){
+  html.premium-preview body #view-services .pv-dir-utilities{
+    display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    gap:6px!important;
+  }
+  html.premium-preview body #view-services .pv-dir-utilities button{
+    padding:9px 4px!important;min-width:0!important;
+    font-size:11px!important;
+  }
+}
