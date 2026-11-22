@@ -418,28 +418,23 @@
     return "<form id=\"gia2SearchForm\" class=\"gia2-inputbar\"><label class=\"gia2-visually-hidden\" for=\"gia2Question\">Ask GIA</label><input id=\"gia2Question\" name=\"question\" autocomplete=\"off\" maxlength=\"320\" placeholder=\"e.g. Help with transport to clinic\" value=\""+esc(state.question)+"\" required>"+voiceButton()+"<button class=\"gia2-send\" type=\"submit\" aria-label=\"Find support\">➜</button></form>";
   }
   function viewHome(){
-    const role=state.role;
-    const title=roleIsProvider()?"Hello, colleague. How can I help with this referral?":"Hello! I'm GIA. How can I help today?";
-    const intro=roleIsProvider()?
-      "Tell me what a patient or service user needs. I can identify possible programmes, point you to parish contacts, prepare a handover and help plan follow-up.":
-      "Tell me what you or someone you care for needs. I'll help you find a possible service, prepare what to bring and work out where to enquire.";
-    const choose=!role?
-      "<div class=\"gia2-role-choice\"><p>First, who is asking for help?</p><div class=\"gia2-actions\">"+
-      pill("role:client","I need help for myself or my family","gia2-primary")+
-      pill("role:provider","I work in health or social services")+"</div></div>":"";
-    const local=parishChosen()?
-      "<p class=\"gia2-context-hint\">📍 Starting with services in <strong>"+esc(state.parish)+"</strong>. You can change parish above.</p>":
-      "<p class=\"gia2-context-hint\">📍 Choose your parish above so I can show relevant local offices, not just national programmes.</p>";
-    return say("<strong>"+title+"</strong><p>"+intro+"</p>")+choose+local+
-      "<div class=\"gia2-feature-grid\">"+
-      pill("ask",roleIsProvider()?"Find a referral option":"Find help near me","gia2-feature")+
-      pill("refer",roleIsProvider()?"Prepare a referral":"Get visit details","gia2-feature")+
-      pill("documents",roleIsProvider()?"Check referral documents":"What should I bring?","gia2-feature")+
-      pill("follow",roleIsProvider()?"Plan follow-up":"Check my next step","gia2-feature")+
-      "</div>"+searchForm()+
-      "<p class=\"gia2-privacy\">"+(roleIsProvider()?
-      "Use a non-identifying description. Please do not enter patient names, diagnoses, contact details or records into this chat.":
-      "For example: “I need help with food and getting to the clinic.” Please avoid sharing private medical or identifying details.")+"</p>";
+    const worker=roleIsProvider();
+    const intro=worker?"Describe the support needed. I'll help you find a referral route.":"Describe what you need. I'll help you find a place to start.";
+    const parish=parishChosen()?"Guidance for "+esc(state.parish):"Choose a parish above for local office information";
+    return "<div class=\"gia2-simple-welcome\"><span class=\"gia2-simple-eyebrow\">YOUR GUIDE TO SUPPORT</span><h3>Hi, I'm GIA.</h3><p>"+intro+"</p></div>"+
+      searchForm()+
+      "<p class=\"gia2-simple-privacy\">Please don't include names, contact details or private medical information.</p>"+
+      "<div class=\"gia2-simple-label\">Common needs</div><div class=\"gia2-simple-topics\">"+
+      [["food","Food & essentials"],["health","Medication & care"],["income","Financial support"],["housing","Housing"],["family","Family support"],["jobs","Jobs & skills"]].map(([id,label])=>pill("topic:"+id,label,"gia2-simple-topic")).join("")+
+      "</div>"+
+      "<div class=\"gia2-simple-secondary\"><span>"+parish+"</span><div>"+
+      pill("role:"+(worker?"client":"provider"),worker?"Switch to personal support":"I'm a health or social-service worker")+
+      "</div></div>"+
+      "<details class=\"gia2-simple-more\"><summary>More ways GIA can help</summary><div class=\"gia2-simple-tools\">"+
+      pill("refer",worker?"Prepare a referral":"Prepare visit details")+
+      pill("documents","What documents are needed?")+
+      pill("follow","Plan the next step")+
+      "</div></details>";
   }
   function viewResults(){
     if(state.results.length===0){
