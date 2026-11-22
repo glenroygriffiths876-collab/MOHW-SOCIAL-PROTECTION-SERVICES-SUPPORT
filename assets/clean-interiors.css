@@ -11,7 +11,7 @@ html.ad-preview .cr-page{width:min(100% - 36px,1010px);margin:18px auto 30px;col
 html.ad-preview .cr-page *,html.ad-preview .cr-page *::before,html.ad-preview .cr-page *::after{box-sizing:border-box}
 html.ad-preview .cr-page button{cursor:pointer}
 html.ad-preview .cr-page [hidden]{display:none!important}
-html.ad-preview #view-referrals.cr-ready>:not(#cr-referral):not(#ad-action-dock),
+html.ad-preview #view-referrals.cr-ready>:not(#cr-referral):not(#refgen):not(#ad-action-dock),
 html.ad-preview #view-decision.cr-ready>:not(#cr-decision):not(#ad-action-dock){display:none!important}
 html.ad-preview #view-services.cr-ready>.page-hero{display:none!important}
 html.ad-preview #view-manual.cr-ready>.manual-intro{display:none!important}
