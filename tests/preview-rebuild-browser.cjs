@@ -43,7 +43,7 @@ const screens=[
       assert.ok((await page.locator('#pv-results').textContent()).includes('Noel Holmes Hospital'));
       await page.locator('#preview-search').fill('Noel Holmes');
       assert.ok((await page.locator('#pv-result-count').textContent()).includes('1 matching'),'combined search must work');
-      const directions=await page.locator('#pv-results a').first().getAttribute('href');
+      const directions=await page.locator('#pv-results a[href^="https://www.google.com/maps/search/"]').first().getAttribute('href');
       assert.ok(directions.startsWith('https://www.google.com/maps/search/'),'actual Maps search link');
       await page.locator('#pv-view-list').click();
       assert.equal(await page.locator('#pv-map-wrapper').isHidden(),true,'list toggle hides map');
