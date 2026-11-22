@@ -77,6 +77,9 @@ function mountDock(){
 function state(){
  const id=location.hash.slice(1)||'about';const active=views.includes(id)?id:'about';
  document.documentElement.dataset.adPage=active;
+ const dock=$('#ad-action-dock');
+ const dockParent=active==='about'?$('#ad-home .ad-home-wrap'):$('#view-'+active);
+ if(dock&&dockParent&&dock.parentNode!==dockParent)dockParent.append(dock);
  if($('#ad-backbar')){$('#ad-backbar').hidden=active==='about';$('#ad-page-name').textContent=names[active];}
  $$('[data-ad-nav]').forEach(b=>b.classList.toggle('active',b.dataset.adNav===active));
  if(active==='services')setTimeout(loadMap,150);
