@@ -249,3 +249,8 @@ html.ad-preview #view-manual .manual-welcome .manual-kicker{
 html.ad-preview #cr-panel-locations .ad-map-heading>h2{display:none!important}
 html.ad-preview #cr-panel-locations .ad-map-heading{margin:0 0 14px!important}
 html.ad-preview #cr-panel-locations .ad-map-heading p{margin:0!important}
+
+/* Only one three-bar menu: the primary header. Back navigation stays simple. */
+html.ad-preview #ad-backbar [data-ad-menu]{display:none!important}
+html.ad-preview #ad-backbar::after{content:"";display:block;flex:0 0 75px;width:75px;height:1px;pointer-events:none}
+@media(max-width:400px){html.ad-preview #ad-backbar::after{flex-basis:71px;width:71px}}
