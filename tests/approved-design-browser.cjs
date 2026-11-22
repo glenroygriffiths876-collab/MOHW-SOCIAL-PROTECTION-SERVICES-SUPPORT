@@ -101,6 +101,7 @@ const sizes=[{name:'phone320',width:320,height:720},{name:'phone390',width:390,h
   const pagesLoaded=await page.waitForFunction(()=>{const m=document.querySelector('#manual-count')?.textContent||'';return m.includes('/ 43')&&!!document.querySelector('#manual-book canvas');},null,{timeout:19000}).then(()=>true).catch(()=>false);
   console.log('MANUAL_RENDER '+s.name+' '+pagesLoaded+' '+JSON.stringify({count:await page.locator('#manual-count').textContent(),status:await page.locator('#manual-status').textContent()}));
   assert.equal(pagesLoaded,true,'real illustrated 43-page flipbook must render, not merely show loading controls');
+  assert.equal(await page.locator('#manual-welcome').isVisible(),false,'loading cover must disappear when real PDF canvas is ready');
   await page.screenshot({path:OUT+'/'+s.name+'-manual.png',fullPage:true,animations:'disabled'});
   await page.locator('#ad-action-dock [data-ad-action="share"]').click();
   await page.waitForSelector('#guideShareDialog[open]',{timeout:5000});
