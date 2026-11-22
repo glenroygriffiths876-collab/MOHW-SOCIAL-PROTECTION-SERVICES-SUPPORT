@@ -54,7 +54,8 @@ const screens=[
       await page.locator('#mainNav button[data-nav="referrals"]').click();
       await page.waitForSelector('#view-referrals.active');
       assert.equal(await page.locator('#referralStepNav button').count(),6,'six original referral steps retained');
-      await page.locator('#mainNav button[data-nav="manual"]').click();
+      // The native top navigation is intentionally hidden on the full-bleed approved referral artwork; use its visible real hotspot.
+      await page.locator('#referral-artwork-overlay .rlo-hot[aria-label="Digital Manual"]:visible').first().click();
       await page.waitForSelector('#view-manual.active');
       assert.ok(await page.locator('#manual-reader').count(),'original manual reader retained');
       for(const id of ['programmes','categories','contacts']){
