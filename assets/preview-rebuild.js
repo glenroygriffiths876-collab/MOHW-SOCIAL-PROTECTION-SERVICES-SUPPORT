@@ -117,7 +117,7 @@
       '<div class="pv-dir-results-heading"><div><span>PARISH OFFICE DIRECTORY</span><h3 id="pv-results-title">Available directory listings</h3></div><span id="pv-result-count" role="status" aria-live="polite"></span></div>',
       '<div id="pv-results" class="pv-results"><p>Loading published office listings…</p></div>',
       '<button id="pv-show-more" class="pv-show-more" type="button" hidden>Show more listings ↓</button>',
-      '<div class="pv-dir-endnote"><strong>Accuracy & safety</strong><p>Office details come from the source-linked November 2026 directory. The guide does not establish verified GPS coordinates, opening hours, eligibility or availability. Confirm before travelling.</p><button data-pv-go="programmes">View all programmes ↗</button><button data-pv-go="contacts">Agency contacts ↗</button><button data-pv-tool="gia">Ask GIA ↗</button></div>'
+      '<div class="pv-dir-endnote"><strong>Accuracy & safety</strong><p>Office details come from the source-linked November 2026 directory. The guide does not establish verified GPS coordinates, opening hours, eligibility or availability. Confirm before travelling.</p><button data-pv-go="programmes">View all programmes ↗</button><button data-pv-go="contacts">Agency contacts ↗</button><button data-pv-tool="gia">Ask GIA ↗</button><nav class="pv-dir-utilities" aria-label="Directory quick actions"><button type="button" data-pv-tool="share">↗ Share</button><button type="button" data-pv-tool="report">⚑ Report</button><button type="button" data-pv-tool="feedback">✉ Feedback</button><button type="button" data-pv-tool="download">↓ Manual</button><button type="button" data-pv-tool="gia">✦ GIA</button></nav></div>'
     ].join('');
     page.insertBefore(section,page.firstChild);
   }
