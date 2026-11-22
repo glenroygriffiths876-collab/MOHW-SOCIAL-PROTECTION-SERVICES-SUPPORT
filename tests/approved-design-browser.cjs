@@ -105,7 +105,7 @@ const sizes=[{name:'phone320',width:320,height:720},{name:'phone390',width:390,h
   await page.locator('#guideShareDialog [data-close]').first().click();
   await page.locator('#ad-action-dock [data-ad-action="gia"]').click();
   await page.waitForSelector('#gia2Dialog[open]',{timeout:6500});
-  await page.locator('#gia2Dialog [aria-label="Close GIA"]').first().click().catch(()=>page.keyboard.press('Escape'));
+  await page.keyboard.press('Escape');
   assert.equal(await page.locator('#ad-menu>button').count(),5,'menu remains concise on every page');
   assert.deepEqual(errors,[],'unexpected browser script errors');
   console.log('PASS '+s.name+': clean menu, map, benefits, categories, contacts, referral, decision, manual, share');
