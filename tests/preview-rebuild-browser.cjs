@@ -41,6 +41,8 @@ const screens=[
       console.log('GEOMETRY '+s.name+' '+JSON.stringify(doc));
       assert.ok(doc.sw<=doc.vw+3,'horizontal overflow on '+s.name+': '+JSON.stringify(doc));
       assert.ok(doc.bw<=doc.vw+3,'body extends beyond viewport on '+s.name+': '+JSON.stringify(doc));
+      assert.equal(await page.locator('body>a.skip').evaluate(el=>{const b=el.getBoundingClientRect();return b.right<0 && getComputedStyle(el).opacity==='0';}),true,'primary skip link should only appear on keyboard focus');
+      if(s.width<=390){assert.equal(await page.locator('#pv-home .pv-family-copy button').evaluate(b=>{const outer=b.closest('.pv-family-panel').getBoundingClientRect(),button=b.getBoundingClientRect();return button.top>=outer.top&&button.bottom<=outer.bottom+2;}),true,'the family Explore Services button must be wholly inside its artwork card');}
       await page.screenshot({path:OUT+'/'+s.name+'-home.png',fullPage:true});
       // Clicking the home tile must change the native routed view.
       await page.locator('#pv-home [data-pv-go="services"]').first().click();
