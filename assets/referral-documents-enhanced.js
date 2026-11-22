@@ -13,8 +13,8 @@ const directory={programmes:[],parishes:{}};const initDirectory=async()=>{try{co
 const mapSearch=(address)=>'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(address);
 const officeOptions=(parish)=>{const x=directory.parishes[parish]||{};return ['mlss','nht','drugServ','healthDept'].filter(k=>x[k]?.address).map(k=>({key:k,name:x[k].name,address:x[k].address,phone:x[k].phone,scope:x[k].scope}))};
 const fields=(kind,d)=>kind==='summary'?[
-['Client',d.client],['Parish',d.parish],['What we discussed',d.discussed],['Next step',d.nextstep],['Where to go',d.agency],['Office address / contact',d.location],['When to attend',d.appointment],['What to bring',d.bring],['Directions',maps(d.maplink)||'Ask the worker to confirm the exact office'],['Worker / contact',d.officer],['Additional notes',d.support]
-]:[['Client',d.client],['Parish',d.parish],['Support area',d.category],['Receiving organisation',d.agency],['Verified office details',d.location],['Reason for referral',d.reason],['Assistance requested',d.support],['Referring worker',d.officer],['Directions',maps(d.maplink)]];
+['Client',d.client],['Parish',d.parish],['What we discussed',d.discussed],['Next step',d.nextstep],['Where to go',d.agency],['Office address / contact',d.location],['When to attend',d.appointment],['What to bring',d.bring],['Directions',maps(d.maplink)||'Ask the worker to confirm the exact office'],['Referring officer',d.officer],['Organisation',d.organisation],['Telephone',d.officerPhone],['Date of referral',d.referralDate],['Additional notes',d.support]
+]:[['Client',d.client],['Parish',d.parish],['Support area',d.category],['Receiving organisation',d.agency],['Verified office details',d.location],['Reason for referral',d.reason],['Assistance requested',d.support],['Referring officer',d.officer],['Organisation',d.organisation],['Telephone',d.officerPhone],['Date of referral',d.referralDate],['Directions',maps(d.maplink)]];
 const titles={referral:'Client Support Referral',summary:'Your Visit Summary & Next Steps'};
 const notice='DEMONSTRATION DRAFT — NOT AN OFFICIAL REFERRAL. Confirm office details, required documents and appointments with the receiving organisation.';
 const download=(blob,name)=>{const a=document.createElement('a'),url=URL.createObjectURL(blob);a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),5000)};
@@ -22,7 +22,7 @@ const status=t=>{const n=$('#refgen-status');if(n)n.textContent=t};
 const readImage=async()=>{const response=await fetch(LOGO);if(!response.ok)throw Error('Logo unavailable');return await response.arrayBuffer()};
 const logoData=async()=>{const data=await readImage();return 'data:image/png;base64,'+btoa([...new Uint8Array(data)].map(c=>String.fromCharCode(c)).join(''))};
 const qrData=()=>new Promise((resolve)=>{if(typeof QRCode==='undefined'){resolve('');return;}const host=document.createElement('div');host.style.cssText='position:fixed;left:-9999px;top:-9999px';document.body.append(host);try{new QRCode(host,{text:SITE,width:128,height:128,colorDark:'#15365f',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M});setTimeout(()=>{const c=host.querySelector('canvas'),img=host.querySelector('img');let src='';try{src=c?.toDataURL('image/png')||img?.src||''}catch{}host.remove();resolve(src)},60)}catch{host.remove();resolve('')}});
-const pageText=(kind,d)=>[titles[kind],notice,'Prepared: '+date(),...fields(kind,d).filter(x=>clean(x[1])).map(([k,v])=>k.toUpperCase()+'\n'+clean(v)),'Guide: '+SITE].join('\n\n');
+const pageText=(kind,d)=>[titles[kind],notice,'Date of referral: '+(d.referralDate||date()),...fields(kind,d).filter(x=>clean(x[1])).map(([k,v])=>k.toUpperCase()+'\n'+clean(v)),'Guide: '+SITE].join('\n\n');
 async function pdf(kind,d){
 if(!window.jspdf?.jsPDF)throw Error('PDF export library unavailable. Check connection and retry.');
 const pdf=new window.jspdf.jsPDF({unit:'mm',format:'a4'}),w=210,m=18,max=277;let y=18;
@@ -30,7 +30,7 @@ pdf.setFillColor(22,49,99);pdf.rect(0,0,w,37,'F');pdf.setDrawColor(231,183,69);p
 try{const logo=await logoData();pdf.addImage(logo,'PNG',m,7,39,22)}catch{}
 pdf.setTextColor(255,255,255);pdf.setFont('helvetica','bold');pdf.setFontSize(15);pdf.text(titles[kind],66,17);pdf.setFontSize(8);pdf.setFont('helvetica','normal');pdf.text('JAMAICA  |  SOCIAL PROTECTION SERVICES SUPPORT',66,24);
 y=47;pdf.setTextColor(138,70,27);pdf.setFont('helvetica','bold');pdf.setFontSize(8);pdf.text('DEMONSTRATION DRAFT  -  NOT AN OFFICIAL REFERRAL',m,y);y+=7;
-pdf.setTextColor(70,89,113);pdf.setFont('helvetica','normal');pdf.text('Prepared '+date(),m,y);y+=10;
+pdf.setTextColor(70,89,113);pdf.setFont('helvetica','normal');pdf.text('Date of referral: '+(d.referralDate||date()),m,y);y+=10;
 const newPage=()=>{pdf.addPage();y=19};
 for(const [label,value] of fields(kind,d)){if(!clean(value))continue;const lines=pdf.splitTextToSize(clean(value),w-2*m-5);const h=9+lines.length*5.3;if(y+h>max)newPage();pdf.setFillColor(241,246,252);pdf.roundedRect(m,y-4,w-2*m,7,1.5,1.5,'F');pdf.setTextColor(25,73,126);pdf.setFont('helvetica','bold');pdf.setFontSize(9);pdf.text(label.toUpperCase(),m+3,y+1);y+=9;pdf.setFont('helvetica','normal');pdf.setFontSize(10);pdf.setTextColor(28,47,76);pdf.text(lines,m+3,y);if(label==='Directions'&&maps(value))pdf.link(m+3,y-4,w-2*m,Math.max(6,lines.length*5),{url:maps(value)});y+=lines.length*5.3+7}
 if(y>236)newPage();y=Math.max(y+4,240);
@@ -49,7 +49,7 @@ try{children.push(new X.Paragraph({children:[new X.ImageRun({data:new Uint8Array
 children.push(p('MINISTRY OF HEALTH & WELLNESS  |  JAMAICA',{bold:true,color:'225B97',size:19}));
 children.push(p(titles[kind],{heading:X.HeadingLevel.HEADING_1,spacing:{after:200}}));
 children.push(p('DEMONSTRATION DRAFT — NOT AN OFFICIAL REFERRAL',{color:'A65B2C',bold:true,size:18}));
-children.push(p('Prepared '+date(),{color:'64758B'}));
+children.push(p('Date of referral: '+(d.referralDate||date()),{color:'64758B'}));
 for(const [label,value] of fields(kind,d)){if(!clean(value))continue;children.push(p(label.toUpperCase(),{bold:true,color:'1A5B9A',spacing:{before:180,after:80}}));if(label==='Directions'&&maps(value)){children.push(new X.Paragraph({children:[new X.ExternalHyperlink({link:maps(value),children:[new X.TextRun({text:'Open verified map directions',style:'Hyperlink'})]})]}))}else children.push(p(value))}
 try{const q=await qrData();if(q){const bytes=Uint8Array.from(atob(q.split(',')[1]),c=>c.charCodeAt(0));children.push(new X.Paragraph({children:[new X.ImageRun({data:bytes,transformation:{width:86,height:86}})]}))}}catch{}
 children.push(new X.Paragraph({children:[new X.ExternalHyperlink({link:SITE,children:[new X.TextRun({text:'Open the public Social Support Guide',style:'Hyperlink'})]})]}));
