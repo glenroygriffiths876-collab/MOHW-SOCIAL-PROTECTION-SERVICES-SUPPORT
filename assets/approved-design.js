@@ -53,6 +53,7 @@ function mountHome(){
  '<div class="ad-hero-shade"></div><div class="ad-hero-copy"><span>Meet</span><strong>GIA</strong><button type="button" data-ad-action="video" class="ad-watch">'+svg('play')+' Watch welcome video</button></div>'+
  '<img class="ad-gia-portrait" src="assets/gia-avatar.jpg" alt="GIA, virtual guide">'+
  '<div class="ad-hero-ribbon" aria-hidden="true"><i></i><i></i><i></i></div></section>'+
+ '<figure class="ad-home-community"><img src="assets/about-community.webp" alt="Community members connecting with social support in Jamaica" loading="lazy"></figure>'+ 
  '<div class="ad-home-intro"><h1>Find the support you need.</h1><span class="ad-underline" aria-hidden="true"></span></div>'+
  '<div class="ad-home-tiles" role="navigation" aria-label="Choose what to do">'+
  '<button type="button" class="ad-home-tile ad-lavender" data-ad-nav="services">'+threeD.pin+'<strong>Find a service</strong></button>'+
