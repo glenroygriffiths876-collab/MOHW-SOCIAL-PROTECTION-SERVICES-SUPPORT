@@ -45,6 +45,10 @@ const screens=[
       // Clicking the home tile must change the native routed view.
       await page.locator('#pv-home [data-pv-go="services"]').first().click();
       await page.waitForSelector('#view-services.active',{timeout:8000});
+      assert.equal(await page.locator('#view-services .pv-dir-utilities button').count(),5,'five inline utility actions are retained');
+      assert.equal(await page.locator('#guideActionDock').isVisible(),false,'floating tools must not overlap the map filters');
+      assert.equal(await page.locator('#gia2Launcher').isVisible(),false,'GIA launcher must not cover parish/service filters');
+      assert.equal(await page.locator('body>a.p2-skip').isVisible(),false,'skip link must be visually hidden until keyboard focus');
       assert.equal(await page.locator('#pv-parish option').count(),15,'14 parishes + all');
       assert.ok((await page.locator('#pv-dir-count').textContent()).includes('56 listings'),'source-linked office count');
       await page.locator('#pv-parish').selectOption('Hanover');
