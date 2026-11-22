@@ -19,6 +19,8 @@ const sizes=[{name:'phone320',width:320,height:720},{name:'phone390',width:390,h
   await page.waitForFunction(()=>window.MOHWGIA && document.querySelector('#guideActionDock [data-action="share"]'),null,{timeout:15000});
   assert.equal(await page.locator('#ad-home .ad-home-tile').count(),4,'four approved 3D navigation tiles');
   assert.equal(await page.locator('#ad-action-dock button').count(),4,'four unobstructed quick actions');
+  assert.equal(await page.locator('#ad-home .ad-home-wrap>#ad-action-dock').count(),1,'actions are integrated beneath homepage tiles');
+  assert.equal(await page.locator('#ad-action-dock').evaluate(el=>{const a=el.getBoundingClientRect();const cards=document.querySelector('.ad-home-tiles').getBoundingClientRect();return a.top>=cards.bottom-1;}),true,'actions must not cover service cards');
   assert.ok(await page.locator('#ad-header .ad-logo').isVisible(),'MOHW header visible');
   const geometry=await page.evaluate(()=>({vw:innerWidth,sw:document.documentElement.scrollWidth,bw:document.body.scrollWidth,dock:document.querySelector('#ad-action-dock')?.getBoundingClientRect().toJSON(),hero:document.querySelector('#ad-home .ad-hero')?.getBoundingClientRect().toJSON(),tile:document.querySelector('.ad-home-tile')?.getBoundingClientRect().toJSON()}));
   console.log('GEOMETRY '+s.name+' '+JSON.stringify(geometry));
@@ -32,6 +34,8 @@ const sizes=[{name:'phone320',width:320,height:720},{name:'phone390',width:390,h
   await page.waitForSelector('#ad-video-dialog:not([open])',{state:'hidden'});
   await page.locator('#ad-home [data-ad-nav="services"]').click();
   await page.waitForSelector('#view-services.active',{timeout:8000});
+  assert.equal(await page.locator('#view-services>#ad-action-dock').count(),1,'actions appear in active map page flow');
+  assert.equal(await page.locator('#ad-action-dock').evaluate(el=>{const a=el.getBoundingClientRect();const filters=document.querySelector('.ad-filters').getBoundingClientRect();return a.top>=filters.bottom-1;}),true,'action bar does not hide map filters');
   await page.waitForFunction(()=>document.querySelector('#ad-office-count')?.textContent?.includes('56'),null,{timeout:14000});
   assert.equal(await page.locator('#ad-parish option').count(),15,'all 14 parishes');
   assert.ok(await page.locator('#ad-office-list .ad-office').count()>=8,'agency listings populated');
