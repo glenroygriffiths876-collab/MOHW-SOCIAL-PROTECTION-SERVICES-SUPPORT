@@ -325,3 +325,36 @@ html.ad-preview .p2-dialog,html.ad-preview .guide-message-dialog{z-index:1200!im
 @media(prefers-reduced-motion:reduce){
  html.ad-preview *,html.ad-preview *::before,html.ad-preview *::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
 }
+/* Final visual QA: quick actions belong below each active page, never over the content. */
+html.ad-preview body{padding-bottom:0!important}
+html.ad-preview .ad-action-dock{
+ position:relative!important;left:auto!important;right:auto!important;bottom:auto!important;
+ top:auto!important;transform:none!important;inset:auto!important;z-index:50!important;
+ width:min(100% - 28px,740px)!important;height:88px!important;
+ margin:22px auto 20px!important;box-shadow:0 4px 15px rgba(24,16,70,.12)!important;
+ border-radius:23px!important;
+}
+html.ad-preview[data-ad-page="about"] .ad-home-wrap>.ad-action-dock{
+ width:100%!important;max-width:740px!important;margin:17px auto 8px!important;
+}
+html.ad-preview[data-ad-page="about"] body>footer{display:none!important}
+html.ad-preview .ad-hero-ribbon{height:19%!important}
+html.ad-preview .ad-hero-ribbon i:nth-child(1){bottom:-64%!important}
+html.ad-preview .ad-hero-ribbon i:nth-child(2){bottom:-77%!important}
+html.ad-preview .ad-hero-ribbon i:nth-child(3){bottom:-90%!important}
+html.ad-preview .ad-gia-portrait{
+ mask-image:radial-gradient(ellipse 64% 74% at 50% 43%,#000 40%,rgba(0,0,0,.98) 57%,transparent 90%);
+ -webkit-mask-image:radial-gradient(ellipse 64% 74% at 50% 43%,#000 40%,rgba(0,0,0,.98) 57%,transparent 90%);
+}
+@media(max-width:780px){
+ html.ad-preview .ad-action-dock{
+   bottom:auto!important;left:auto!important;right:auto!important;top:auto!important;
+   width:calc(100% - 24px)!important;height:79px!important;
+   padding:8px 5px!important;border-radius:20px!important;margin:18px auto!important;
+ }
+ html.ad-preview[data-ad-page="about"] .ad-home-wrap>.ad-action-dock{
+   width:100%!important;margin:15px auto 12px!important;
+ }
+ html.ad-preview .ad-hero-ribbon{height:15%!important}
+}
+@media(prefers-reduced-motion:reduce){html.ad-preview .ad-action-dock{transition:none!important}}
