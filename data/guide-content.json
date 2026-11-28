@@ -1103,6 +1103,209 @@
       "bring": "Confirm required documents with the provider.",
       "process": "Contact provider to confirm eligibility, fees, appointment requirements and current availability.",
       "support": "Youth-friendly clinical, educational and social support"
+    },
+    {
+      "name": "Parish Poor Relief Department – Monthly monetary assistance",
+      "where": "Contact Parish Poor Relief Department through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "Monthly monetary assistance documented by the cited government source; confirm individual eligibility and current access."
+    },
+    {
+      "name": "Parish Poor Relief Department – School and examination expense assistance",
+      "where": "Contact Parish Poor Relief Department through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "School and examination expense assistance documented by the cited government source; confirm individual eligibility and current access."
+    },
+    {
+      "name": "Parish Poor Relief Department – School transport assistance",
+      "where": "Contact Parish Poor Relief Department through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "School transport assistance documented by the cited government source; confirm individual eligibility and current access."
+    },
+    {
+      "name": "Parish Poor Relief Department – School uniform and book assistance",
+      "where": "Contact Parish Poor Relief Department through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "School uniform and book assistance documented by the cited government source; confirm individual eligibility and current access."
+    },
+    {
+      "name": "Parish Poor Relief Department – Food and special needs assistance",
+      "where": "Contact Parish Poor Relief Department through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "Food and special needs assistance documented by the cited government source; confirm individual eligibility and current access."
+    },
+    {
+      "name": "Parish Poor Relief Department – Medical transport assistance",
+      "where": "Contact Parish Poor Relief Department through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "Medical transport assistance documented by the cited government source; confirm individual eligibility and current access."
+    },
+    {
+      "name": "Parish Poor Relief Department – Bedding and clothing assistance",
+      "where": "Contact Parish Poor Relief Department through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "Bedding and clothing assistance documented by the cited government source; confirm individual eligibility and current access."
+    },
+    {
+      "name": "Parish Poor Relief Department – Medication and hospital fee assistance",
+      "where": "Contact Parish Poor Relief Department through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "Medication and hospital fee assistance documented by the cited government source; confirm individual eligibility and current access."
+    },
+    {
+      "name": "Parish Poor Relief Department – Optical and dental assistance",
+      "where": "Contact Parish Poor Relief Department through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "Optical and dental assistance documented by the cited government source; confirm individual eligibility and current access."
+    },
+    {
+      "name": "Parish Poor Relief Department – Rental assistance",
+      "where": "Contact Parish Poor Relief Department through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "Rental assistance documented by the cited government source; confirm individual eligibility and current access."
+    },
+    {
+      "name": "Parish Poor Relief Department – Burial assistance",
+      "where": "Contact Parish Poor Relief Department through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "Burial assistance documented by the cited government source; confirm individual eligibility and current access."
+    },
+    {
+      "name": "Parish Poor Relief Department – Counselling",
+      "where": "Contact Parish Poor Relief Department through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "Counselling documented by the cited government source; confirm individual eligibility and current access."
+    },
+    {
+      "name": "Victim Services Unit – Confidential counselling",
+      "where": "Contact Victim Services Unit through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "Confidential counselling documented by the cited government source; confirm individual eligibility and current access."
+    },
+    {
+      "name": "Victim Services Unit – Crisis intervention",
+      "where": "Contact Victim Services Unit through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "Crisis intervention documented by the cited government source; confirm individual eligibility and current access."
+    },
+    {
+      "name": "Victim Services Unit – Court preparation and support",
+      "where": "Contact Victim Services Unit through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "Court preparation and support documented by the cited government source; confirm individual eligibility and current access."
+    },
+    {
+      "name": "Victim Services Unit – Victim rights advocacy",
+      "where": "Contact Victim Services Unit through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "Victim rights advocacy documented by the cited government source; confirm individual eligibility and current access."
+    },
+    {
+      "name": "Victim Services Unit – Children-in-Court support",
+      "where": "Contact Victim Services Unit through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "Children-in-Court support documented by the cited government source; confirm individual eligibility and current access."
+    },
+    {
+      "name": "Victim Services Unit – Intimate partner violence counselling",
+      "where": "Contact Victim Services Unit through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "Intimate partner violence counselling documented by the cited government source; confirm individual eligibility and current access."
+    },
+    {
+      "name": "Government anti-trafficking referral network – Protected accommodation referral",
+      "where": "Contact Government anti-trafficking referral network through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "Protected accommodation referral documented by the cited government source; confirm individual eligibility and current access."
+    },
+    {
+      "name": "Government anti-trafficking referral network – Psychosocial recovery support",
+      "where": "Contact Government anti-trafficking referral network through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "Psychosocial recovery support documented by the cited government source; confirm individual eligibility and current access."
+    },
+    {
+      "name": "Government anti-trafficking referral network – Education and employment reintegration referral",
+      "where": "Contact Government anti-trafficking referral network through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "Education and employment reintegration referral documented by the cited government source; confirm individual eligibility and current access."
+    },
+    {
+      "name": "Government anti-trafficking referral network – Immigration and safe repatriation assistance",
+      "where": "Contact Government anti-trafficking referral network through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "Immigration and safe repatriation assistance documented by the cited government source; confirm individual eligibility and current access."
+    },
+    {
+      "name": "Government anti-trafficking referral network – Legal and court support",
+      "where": "Contact Government anti-trafficking referral network through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "Legal and court support documented by the cited government source; confirm individual eligibility and current access."
+    },
+    {
+      "name": "Bureau of Gender Affairs – Gender-based violence helpline referral",
+      "where": "Contact Bureau of Gender Affairs through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "Gender-based violence helpline referral documented by the cited government source; confirm individual eligibility and current access."
+    },
+    {
+      "name": "Bureau of Gender Affairs – National Shelter Unit referral",
+      "where": "Contact Bureau of Gender Affairs through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "National Shelter Unit referral documented by the cited government source; confirm individual eligibility and current access."
+    },
+    {
+      "name": "Bureau of Gender Affairs – Shelter-linked psychosocial and legal support",
+      "where": "Contact Bureau of Gender Affairs through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "Shelter-linked psychosocial and legal support documented by the cited government source; confirm individual eligibility and current access."
+    },
+    {
+      "name": "Department of Correctional Services – Government Documents Initiative – identification support",
+      "where": "Contact Department of Correctional Services through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "Government Documents Initiative – identification support documented by the cited government source; confirm individual eligibility and current access."
+    },
+    {
+      "name": "Planning Institute of Jamaica – Returned migrant reintegration guide",
+      "where": "Contact Planning Institute of Jamaica through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "Published information resource for navigating reintegration services; not a direct benefit."
+    },
+    {
+      "name": "Planning Institute of Jamaica – Former offender reintegration guide",
+      "where": "Contact Planning Institute of Jamaica through the cited official source. Protected accommodation locations are not published.",
+      "bring": "Confirm requirements directly with the responsible provider.",
+      "process": "Request an assessment or information through the responsible agency; availability and approval are not guaranteed.",
+      "support": "Published information resource for navigating reintegration services; not a direct benefit."
     }
   ],
   "categories": [
@@ -2071,6 +2274,180 @@
       "programme": "Teen Hub Half Way Tree",
       "benefits": "Youth-friendly clinical, educational and social support",
       "target": "Adolescents"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "Parish Poor Relief Department – Monthly monetary assistance",
+      "benefits": "Monthly monetary assistance documented by the cited government source; confirm individual eligibility and current access.",
+      "target": "Registered poor and/or temporarily needy persons, subject to assessment"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "Parish Poor Relief Department – School and examination expense assistance",
+      "benefits": "School and examination expense assistance documented by the cited government source; confirm individual eligibility and current access.",
+      "target": "Registered poor and/or temporarily needy persons, subject to assessment"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "Parish Poor Relief Department – School transport assistance",
+      "benefits": "School transport assistance documented by the cited government source; confirm individual eligibility and current access.",
+      "target": "Registered poor and/or temporarily needy persons, subject to assessment"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "Parish Poor Relief Department – School uniform and book assistance",
+      "benefits": "School uniform and book assistance documented by the cited government source; confirm individual eligibility and current access.",
+      "target": "Registered poor and/or temporarily needy persons, subject to assessment"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "Parish Poor Relief Department – Food and special needs assistance",
+      "benefits": "Food and special needs assistance documented by the cited government source; confirm individual eligibility and current access.",
+      "target": "Registered poor and/or temporarily needy persons, subject to assessment"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "Parish Poor Relief Department – Medical transport assistance",
+      "benefits": "Medical transport assistance documented by the cited government source; confirm individual eligibility and current access.",
+      "target": "Registered poor and/or temporarily needy persons, subject to assessment"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "Parish Poor Relief Department – Bedding and clothing assistance",
+      "benefits": "Bedding and clothing assistance documented by the cited government source; confirm individual eligibility and current access.",
+      "target": "Registered poor and/or temporarily needy persons, subject to assessment"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "Parish Poor Relief Department – Medication and hospital fee assistance",
+      "benefits": "Medication and hospital fee assistance documented by the cited government source; confirm individual eligibility and current access.",
+      "target": "Registered poor and/or temporarily needy persons, subject to assessment"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "Parish Poor Relief Department – Optical and dental assistance",
+      "benefits": "Optical and dental assistance documented by the cited government source; confirm individual eligibility and current access.",
+      "target": "Registered poor and/or temporarily needy persons, subject to assessment"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "Parish Poor Relief Department – Rental assistance",
+      "benefits": "Rental assistance documented by the cited government source; confirm individual eligibility and current access.",
+      "target": "Registered poor and/or temporarily needy persons, subject to assessment"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "Parish Poor Relief Department – Burial assistance",
+      "benefits": "Burial assistance documented by the cited government source; confirm individual eligibility and current access.",
+      "target": "Registered poor and/or temporarily needy persons, subject to assessment"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "Parish Poor Relief Department – Counselling",
+      "benefits": "Counselling documented by the cited government source; confirm individual eligibility and current access.",
+      "target": "Registered poor and/or temporarily needy persons, subject to assessment"
+    },
+    {
+      "category": "Justice & Safety Support",
+      "programme": "Victim Services Unit – Confidential counselling",
+      "benefits": "Confidential counselling documented by the cited government source; confirm individual eligibility and current access.",
+      "target": "Victims of crime"
+    },
+    {
+      "category": "Justice & Safety Support",
+      "programme": "Victim Services Unit – Crisis intervention",
+      "benefits": "Crisis intervention documented by the cited government source; confirm individual eligibility and current access.",
+      "target": "Victims of crime"
+    },
+    {
+      "category": "Justice & Safety Support",
+      "programme": "Victim Services Unit – Court preparation and support",
+      "benefits": "Court preparation and support documented by the cited government source; confirm individual eligibility and current access.",
+      "target": "Victims of crime"
+    },
+    {
+      "category": "Justice & Safety Support",
+      "programme": "Victim Services Unit – Victim rights advocacy",
+      "benefits": "Victim rights advocacy documented by the cited government source; confirm individual eligibility and current access.",
+      "target": "Victims of crime"
+    },
+    {
+      "category": "Justice & Safety Support",
+      "programme": "Victim Services Unit – Children-in-Court support",
+      "benefits": "Children-in-Court support documented by the cited government source; confirm individual eligibility and current access.",
+      "target": "Victims of crime"
+    },
+    {
+      "category": "Justice & Safety Support",
+      "programme": "Victim Services Unit – Intimate partner violence counselling",
+      "benefits": "Intimate partner violence counselling documented by the cited government source; confirm individual eligibility and current access.",
+      "target": "Victims of crime"
+    },
+    {
+      "category": "Justice & Safety Support",
+      "programme": "Government anti-trafficking referral network – Protected accommodation referral",
+      "benefits": "Protected accommodation referral documented by the cited government source; confirm individual eligibility and current access.",
+      "target": "Survivors of trafficking, subject to individual assessment"
+    },
+    {
+      "category": "Justice & Safety Support",
+      "programme": "Government anti-trafficking referral network – Psychosocial recovery support",
+      "benefits": "Psychosocial recovery support documented by the cited government source; confirm individual eligibility and current access.",
+      "target": "Survivors of trafficking, subject to individual assessment"
+    },
+    {
+      "category": "Justice & Safety Support",
+      "programme": "Government anti-trafficking referral network – Education and employment reintegration referral",
+      "benefits": "Education and employment reintegration referral documented by the cited government source; confirm individual eligibility and current access.",
+      "target": "Survivors of trafficking, subject to individual assessment"
+    },
+    {
+      "category": "Justice & Safety Support",
+      "programme": "Government anti-trafficking referral network – Immigration and safe repatriation assistance",
+      "benefits": "Immigration and safe repatriation assistance documented by the cited government source; confirm individual eligibility and current access.",
+      "target": "Survivors of trafficking, subject to individual assessment"
+    },
+    {
+      "category": "Justice & Safety Support",
+      "programme": "Government anti-trafficking referral network – Legal and court support",
+      "benefits": "Legal and court support documented by the cited government source; confirm individual eligibility and current access.",
+      "target": "Survivors of trafficking, subject to individual assessment"
+    },
+    {
+      "category": "Gender-Based Violence & Safety",
+      "programme": "Bureau of Gender Affairs – Gender-based violence helpline referral",
+      "benefits": "Gender-based violence helpline referral documented by the cited government source; confirm individual eligibility and current access.",
+      "target": "Persons affected by gender-based violence; shelter admission assessed"
+    },
+    {
+      "category": "Gender-Based Violence & Safety",
+      "programme": "Bureau of Gender Affairs – National Shelter Unit referral",
+      "benefits": "National Shelter Unit referral documented by the cited government source; confirm individual eligibility and current access.",
+      "target": "Persons affected by gender-based violence; shelter admission assessed"
+    },
+    {
+      "category": "Gender-Based Violence & Safety",
+      "programme": "Bureau of Gender Affairs – Shelter-linked psychosocial and legal support",
+      "benefits": "Shelter-linked psychosocial and legal support documented by the cited government source; confirm individual eligibility and current access.",
+      "target": "Persons affected by gender-based violence; shelter admission assessed"
+    },
+    {
+      "category": "Justice & Safety Support",
+      "programme": "Department of Correctional Services – Government Documents Initiative – identification support",
+      "benefits": "Government Documents Initiative – identification support documented by the cited government source; confirm individual eligibility and current access.",
+      "target": "Eligible offender clients"
+    },
+    {
+      "category": "Justice & Safety Support",
+      "programme": "Planning Institute of Jamaica – Returned migrant reintegration guide",
+      "benefits": "Published information resource for navigating reintegration services; not a direct benefit.",
+      "target": "Involuntarily returned migrants and persons formerly in conflict with the law"
+    },
+    {
+      "category": "Justice & Safety Support",
+      "programme": "Planning Institute of Jamaica – Former offender reintegration guide",
+      "benefits": "Published information resource for navigating reintegration services; not a direct benefit.",
+      "target": "Involuntarily returned migrants and persons formerly in conflict with the law"
     }
   ],
   "documents": [
@@ -6330,6 +6707,557 @@
         "lastVerified": null,
         "definitiveEligibilityAllowed": false
       }
+    },
+    "Parish Poor Relief Department – Monthly monetary assistance": {
+      "agency": "Parish Poor Relief Department",
+      "officialUrl": "https://localauthorities.gov.jm/administration/poor-relief-department",
+      "recordType": "service-pathway",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://localauthorities.gov.jm/administration/poor-relief-department",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Parish Poor Relief Department – School and examination expense assistance": {
+      "agency": "Parish Poor Relief Department",
+      "officialUrl": "https://localauthorities.gov.jm/administration/poor-relief-department",
+      "recordType": "service-pathway",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://localauthorities.gov.jm/administration/poor-relief-department",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Parish Poor Relief Department – School transport assistance": {
+      "agency": "Parish Poor Relief Department",
+      "officialUrl": "https://localauthorities.gov.jm/administration/poor-relief-department",
+      "recordType": "service-pathway",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://localauthorities.gov.jm/administration/poor-relief-department",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Parish Poor Relief Department – School uniform and book assistance": {
+      "agency": "Parish Poor Relief Department",
+      "officialUrl": "https://localauthorities.gov.jm/administration/poor-relief-department",
+      "recordType": "service-pathway",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://localauthorities.gov.jm/administration/poor-relief-department",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Parish Poor Relief Department – Food and special needs assistance": {
+      "agency": "Parish Poor Relief Department",
+      "officialUrl": "https://localauthorities.gov.jm/administration/poor-relief-department",
+      "recordType": "service-pathway",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://localauthorities.gov.jm/administration/poor-relief-department",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Parish Poor Relief Department – Medical transport assistance": {
+      "agency": "Parish Poor Relief Department",
+      "officialUrl": "https://localauthorities.gov.jm/administration/poor-relief-department",
+      "recordType": "service-pathway",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://localauthorities.gov.jm/administration/poor-relief-department",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Parish Poor Relief Department – Bedding and clothing assistance": {
+      "agency": "Parish Poor Relief Department",
+      "officialUrl": "https://localauthorities.gov.jm/administration/poor-relief-department",
+      "recordType": "service-pathway",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://localauthorities.gov.jm/administration/poor-relief-department",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Parish Poor Relief Department – Medication and hospital fee assistance": {
+      "agency": "Parish Poor Relief Department",
+      "officialUrl": "https://localauthorities.gov.jm/administration/poor-relief-department",
+      "recordType": "service-pathway",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://localauthorities.gov.jm/administration/poor-relief-department",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Parish Poor Relief Department – Optical and dental assistance": {
+      "agency": "Parish Poor Relief Department",
+      "officialUrl": "https://localauthorities.gov.jm/administration/poor-relief-department",
+      "recordType": "service-pathway",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://localauthorities.gov.jm/administration/poor-relief-department",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Parish Poor Relief Department – Rental assistance": {
+      "agency": "Parish Poor Relief Department",
+      "officialUrl": "https://localauthorities.gov.jm/administration/poor-relief-department",
+      "recordType": "service-pathway",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://localauthorities.gov.jm/administration/poor-relief-department",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Parish Poor Relief Department – Burial assistance": {
+      "agency": "Parish Poor Relief Department",
+      "officialUrl": "https://localauthorities.gov.jm/administration/poor-relief-department",
+      "recordType": "service-pathway",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://localauthorities.gov.jm/administration/poor-relief-department",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Parish Poor Relief Department – Counselling": {
+      "agency": "Parish Poor Relief Department",
+      "officialUrl": "https://localauthorities.gov.jm/administration/poor-relief-department",
+      "recordType": "service-pathway",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://localauthorities.gov.jm/administration/poor-relief-department",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Victim Services Unit – Confidential counselling": {
+      "agency": "Victim Services Unit",
+      "officialUrl": "https://moj.gov.jm/victim-services-division",
+      "recordType": "service-pathway",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://moj.gov.jm/victim-services-division",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Victim Services Unit – Crisis intervention": {
+      "agency": "Victim Services Unit",
+      "officialUrl": "https://moj.gov.jm/victim-services-division",
+      "recordType": "service-pathway",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://moj.gov.jm/victim-services-division",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Victim Services Unit – Court preparation and support": {
+      "agency": "Victim Services Unit",
+      "officialUrl": "https://moj.gov.jm/victim-services-division",
+      "recordType": "service-pathway",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://moj.gov.jm/victim-services-division",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Victim Services Unit – Victim rights advocacy": {
+      "agency": "Victim Services Unit",
+      "officialUrl": "https://moj.gov.jm/victim-services-division",
+      "recordType": "service-pathway",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://moj.gov.jm/victim-services-division",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Victim Services Unit – Children-in-Court support": {
+      "agency": "Victim Services Unit",
+      "officialUrl": "https://moj.gov.jm/victim-services-division",
+      "recordType": "service-pathway",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://moj.gov.jm/victim-services-division",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Victim Services Unit – Intimate partner violence counselling": {
+      "agency": "Victim Services Unit",
+      "officialUrl": "https://moj.gov.jm/victim-services-division",
+      "recordType": "service-pathway",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://moj.gov.jm/victim-services-division",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Government anti-trafficking referral network – Protected accommodation referral": {
+      "agency": "Government anti-trafficking referral network",
+      "officialUrl": "https://jis.gov.jm/features/rescue-is-only-the-beginning-for-victims-of-human-trafficking/",
+      "recordType": "service-pathway",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://jis.gov.jm/features/rescue-is-only-the-beginning-for-victims-of-human-trafficking/",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Government anti-trafficking referral network – Psychosocial recovery support": {
+      "agency": "Government anti-trafficking referral network",
+      "officialUrl": "https://jis.gov.jm/features/rescue-is-only-the-beginning-for-victims-of-human-trafficking/",
+      "recordType": "service-pathway",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://jis.gov.jm/features/rescue-is-only-the-beginning-for-victims-of-human-trafficking/",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Government anti-trafficking referral network – Education and employment reintegration referral": {
+      "agency": "Government anti-trafficking referral network",
+      "officialUrl": "https://jis.gov.jm/features/rescue-is-only-the-beginning-for-victims-of-human-trafficking/",
+      "recordType": "service-pathway",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://jis.gov.jm/features/rescue-is-only-the-beginning-for-victims-of-human-trafficking/",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Government anti-trafficking referral network – Immigration and safe repatriation assistance": {
+      "agency": "Government anti-trafficking referral network",
+      "officialUrl": "https://jis.gov.jm/features/rescue-is-only-the-beginning-for-victims-of-human-trafficking/",
+      "recordType": "service-pathway",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://jis.gov.jm/features/rescue-is-only-the-beginning-for-victims-of-human-trafficking/",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Government anti-trafficking referral network – Legal and court support": {
+      "agency": "Government anti-trafficking referral network",
+      "officialUrl": "https://jis.gov.jm/features/rescue-is-only-the-beginning-for-victims-of-human-trafficking/",
+      "recordType": "service-pathway",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://jis.gov.jm/features/rescue-is-only-the-beginning-for-victims-of-human-trafficking/",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Bureau of Gender Affairs – Gender-based violence helpline referral": {
+      "agency": "Bureau of Gender Affairs",
+      "officialUrl": "https://jis.gov.jm/western-regional-shelter-to-support-gender-based-violence-victims-with-transitional-care/",
+      "recordType": "service-pathway",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://jis.gov.jm/western-regional-shelter-to-support-gender-based-violence-victims-with-transitional-care/",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Bureau of Gender Affairs – National Shelter Unit referral": {
+      "agency": "Bureau of Gender Affairs",
+      "officialUrl": "https://jis.gov.jm/western-regional-shelter-to-support-gender-based-violence-victims-with-transitional-care/",
+      "recordType": "service-pathway",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://jis.gov.jm/western-regional-shelter-to-support-gender-based-violence-victims-with-transitional-care/",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Bureau of Gender Affairs – Shelter-linked psychosocial and legal support": {
+      "agency": "Bureau of Gender Affairs",
+      "officialUrl": "https://jis.gov.jm/western-regional-shelter-to-support-gender-based-violence-victims-with-transitional-care/",
+      "recordType": "service-pathway",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://jis.gov.jm/western-regional-shelter-to-support-gender-based-violence-victims-with-transitional-care/",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Department of Correctional Services – Government Documents Initiative – identification support": {
+      "agency": "Department of Correctional Services",
+      "officialUrl": "https://dcs.gov.jm/learn-about-correcti/government-documents-initiative/",
+      "recordType": "service-pathway",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://dcs.gov.jm/learn-about-correcti/government-documents-initiative/",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Planning Institute of Jamaica – Returned migrant reintegration guide": {
+      "agency": "Planning Institute of Jamaica",
+      "officialUrl": "https://www.pioj.gov.jm/product/living-in-jamaica-a-guide-to-services-and-support/",
+      "recordType": "information-resource",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.pioj.gov.jm/product/living-in-jamaica-a-guide-to-services-and-support/",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Planning Institute of Jamaica – Former offender reintegration guide": {
+      "agency": "Planning Institute of Jamaica",
+      "officialUrl": "https://www.pioj.gov.jm/product/living-in-jamaica-a-guide-to-services-and-support/",
+      "recordType": "information-resource",
+      "sourceType": "Supplementary government publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Government-documented pathway; current individual access unconfirmed",
+      "verification": {
+        "existence": "documented in cited source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.pioj.gov.jm/product/living-in-jamaica-a-guide-to-services-and-support/",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     }
   },
   "quickContacts": [
@@ -6741,9 +7669,9 @@
       "Keep community-level interventions distinct from individual benefits."
     ],
     "coverage": {
-      "profiles": 152,
+      "profiles": 181,
       "manual": 17,
-      "supplementary": 135
+      "supplementary": 164
     }
   }
 }
