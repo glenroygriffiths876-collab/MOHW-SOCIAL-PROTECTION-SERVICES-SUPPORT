@@ -1,6 +1,6 @@
 {
   "edition": "November 2026 Edition",
-  "status": "Working draft · based on supplied guide · not independently verified",
+  "status": "Working directory · original guide and supplementary research · current eligibility, contacts and availability require agency confirmation",
   "about": {
     "intro": "The Social Protection Services Support Guide is a practical resource for healthcare workers, patients, caregivers, and families seeking information on social protection services in Jamaica. It brings together programmes, agencies, referral points, and contact information to help people identify a possible service and take the next step.",
     "why": "Health outcomes can be affected by income, food security, housing, disability, family stability, education, safety, and access to community support. This guide is intended to help connect clinical care with relevant social protection services.",
@@ -2215,14 +2215,40 @@
       ],
       "officialUrl": "https://mlss.gov.jm/departments/path/",
       "logoUrl": "https://pbs.twimg.com/profile_images/2008182207198687232/fyI2kJx5.jpg",
-      "logoSourceUrl": "https://x.com/JamaicaMlss"
+      "logoSourceUrl": "https://x.com/JamaicaMlss",
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://mlss.gov.jm/departments/path/",
+        "sourceType": "Supplied guide",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Local Government Assistance": {
       "agency": "Ministry of Local Government and Community Development · Parish Poor Relief",
       "contactAgencies": [
         "Board of Supervision Parish Poor Relief Department"
       ],
-      "officialUrl": "https://www.localgovjamaica.gov.jm/"
+      "officialUrl": "https://www.localgovjamaica.gov.jm/",
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.localgovjamaica.gov.jm/",
+        "sourceType": "Supplied guide",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "HEART / NSTA": {
       "agency": "HEART/NSTA Trust",
@@ -2231,7 +2257,20 @@
       ],
       "officialUrl": "https://apply.heart-nta.org/",
       "logoUrl": "https://apply.heart-nta.org/images/heartnsta-logo-500.png",
-      "logoSourceUrl": "https://apply.heart-nta.org/"
+      "logoSourceUrl": "https://apply.heart-nta.org/",
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://apply.heart-nta.org/",
+        "sourceType": "Supplied guide",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "NHF": {
       "agency": "National Health Fund (NHF)",
@@ -2240,14 +2279,40 @@
       ],
       "officialUrl": "https://www.nhf.org.jm/",
       "logoUrl": "https://www.nhf.org.jm/wp-content/uploads/2024/03/I2243727422162013.png",
-      "logoSourceUrl": "https://www.nhf.org.jm/"
+      "logoSourceUrl": "https://www.nhf.org.jm/",
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.nhf.org.jm/",
+        "sourceType": "Supplied guide",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "NIS": {
       "agency": "National Insurance Scheme · MLSS",
       "contactAgencies": [
         "Ministry of Labour and Social Security"
       ],
-      "officialUrl": "https://mlss.gov.jm/"
+      "officialUrl": "https://mlss.gov.jm/",
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://mlss.gov.jm/",
+        "sourceType": "Supplied guide",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "National Housing Trust (NHT)": {
       "agency": "National Housing Trust (NHT)",
@@ -2256,7 +2321,20 @@
       ],
       "officialUrl": "https://www.nht.gov.jm/",
       "logoUrl": "https://jis.gov.jm/media/2025/09/NHT-Logo-e1756835690206-1200x825.jpeg",
-      "logoSourceUrl": "https://jis.gov.jm/features/positive-feedback-to-expanded-national-housing-trust-benefits/"
+      "logoSourceUrl": "https://jis.gov.jm/features/positive-feedback-to-expanded-national-housing-trust-benefits/",
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.nht.gov.jm/",
+        "sourceType": "Supplied guide",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "New Social Housing Programme (NSHP)": {
       "agency": "New Social Housing Programme · local and parish referral routes",
@@ -2264,7 +2342,20 @@
         "Ministry of Local Government and Community Development",
         "Board of Supervision Parish Poor Relief Department"
       ],
-      "officialUrl": "https://www.localgovjamaica.gov.jm/"
+      "officialUrl": "https://www.localgovjamaica.gov.jm/",
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.localgovjamaica.gov.jm/",
+        "sourceType": "Supplied guide",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Grants (RADA / JBDC)": {
       "agency": "Rural Agricultural Development Authority (RADA) · Jamaica Business Development Corporation (JBDC)",
@@ -2272,14 +2363,40 @@
         "Rural Agricultural Development Authority",
         "Jamaica Business Development Corporation"
       ],
-      "officialUrl": "https://rada.gov.jm/"
+      "officialUrl": "https://rada.gov.jm/",
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://rada.gov.jm/",
+        "sourceType": "Supplied guide",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "CHASE / Compassionate Medical Assistance": {
       "agency": "Culture, Health, Arts, Sports and Education (CHASE) Fund",
       "contactAgencies": [
         "Culture, Health, Arts, Sports, and Education Fund"
       ],
-      "officialUrl": "https://chase.org.jm/"
+      "officialUrl": "https://chase.org.jm/",
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://chase.org.jm/",
+        "sourceType": "Supplied guide",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "MOHW Compassionate Fund Programme": {
       "agency": "Ministry of Health and Wellness (MOHW)",
@@ -2303,20 +2420,59 @@
           "label": "X",
           "url": "https://x.com/themohwgovjm"
         }
-      ]
+      ],
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.moh.gov.jm/",
+        "sourceType": "Supplied guide",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "RHA Diagnostic Support": {
       "agency": "Regional Health Authorities (RHAs)",
       "contactAgencies": [
         "Regional Health Authority"
-      ]
+      ],
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": null,
+        "sourceType": "Supplied guide",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "NCDA Support": {
       "agency": "National Council on Drug Abuse (NCDA)",
       "contactAgencies": [
         "National Council on Drug Abuse"
       ],
-      "officialUrl": "https://ncda.org.jm/"
+      "officialUrl": "https://ncda.org.jm/",
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://ncda.org.jm/",
+        "sourceType": "Supplied guide",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Child Protection and Family Services Agency (CPFSA)": {
       "agency": "Child Protection and Family Services Agency (CPFSA)",
@@ -2325,33 +2481,98 @@
       ],
       "officialUrl": "https://childprotection.gov.jm/",
       "logoUrl": "https://jis.gov.jm/media/2021/04/CPFSA-Logo-670x450-2.jpg",
-      "logoSourceUrl": "https://jis.gov.jm/cpfsa-says-persons-have-a-responsibility-to-report-cases-of-child-abuse/"
+      "logoSourceUrl": "https://jis.gov.jm/cpfsa-says-persons-have-a-responsibility-to-report-cases-of-child-abuse/",
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://childprotection.gov.jm/",
+        "sourceType": "Supplied guide",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Victim Services Branch": {
       "agency": "Victim Services Branch · Ministry of Justice",
       "contactAgencies": [
         "Victim Services Branch"
-      ]
+      ],
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": null,
+        "sourceType": "Supplied guide",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Women's Centre Programme for Adolescent Mothers": {
       "agency": "Women's Centre of Jamaica Foundation",
       "contactAgencies": [
         "Women's Centre of Jamaica Foundation"
       ],
-      "officialUrl": "https://womenscentreja.com/"
+      "officialUrl": "https://womenscentreja.com/",
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://womenscentreja.com/",
+        "sourceType": "Supplied guide",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Senior Citizen Services / Meals on Wheels": {
       "agency": "National Council for Senior Citizens",
       "contactAgencies": [
         "National Council for Senior Citizens"
-      ]
+      ],
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": null,
+        "sourceType": "Supplied guide",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Bureau of Gender Affairs Services": {
       "agency": "Bureau of Gender Affairs",
       "contactAgencies": [
         "Bureau of Gender Affairs"
       ],
-      "officialUrl": "https://mcges.gov.jm/"
+      "officialUrl": "https://mcges.gov.jm/",
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://mcges.gov.jm/",
+        "sourceType": "Supplied guide",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Rehabilitation Grants": {
       "agency": "Ministry of Labour and Social Security (MLSS)",
@@ -2397,8 +2618,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.mlss.gov.jm/departments/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Economic Empowerment Grant": {
       "agency": "Ministry of Labour and Social Security (MLSS)",
@@ -2438,7 +2671,20 @@
       ],
       "sourceType": "Supplementary agency research",
       "lastReviewed": "2026-11-28",
-      "approvalStatus": "Not Ministry-approved manual content"
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.mlss.gov.jm/departments/rehabilitation/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Compassionate Assistance Grant": {
       "agency": "MLSS",
@@ -2448,7 +2694,20 @@
       ],
       "sourceType": "Supplementary agency research",
       "lastReviewed": "2026-11-28",
-      "approvalStatus": "Not Ministry-approved manual content"
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.mlss.gov.jm/departments/rehabilitation/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Emergency Assistance Grant": {
       "agency": "MLSS",
@@ -2458,7 +2717,20 @@
       ],
       "sourceType": "Supplementary agency research",
       "lastReviewed": "2026-11-28",
-      "approvalStatus": "Not Ministry-approved manual content"
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.mlss.gov.jm/departments/rehabilitation/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Education and Social Intervention Grant": {
       "agency": "MLSS",
@@ -2468,7 +2740,20 @@
       ],
       "sourceType": "Supplementary agency research",
       "lastReviewed": "2026-11-28",
-      "approvalStatus": "Not Ministry-approved manual content"
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.mlss.gov.jm/departments/rehabilitation/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "JCPD Assistive Aid Grant": {
       "agency": "JCPD",
@@ -2478,7 +2763,20 @@
       ],
       "sourceType": "Supplementary agency research",
       "lastReviewed": "2026-11-28",
-      "approvalStatus": "Not Ministry-approved manual content"
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://my.jcpd.gov.jm/grants",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "JCPD Economic Empowerment Grant": {
       "agency": "JCPD",
@@ -2488,7 +2786,20 @@
       ],
       "sourceType": "Supplementary agency research",
       "lastReviewed": "2026-11-28",
-      "approvalStatus": "Not Ministry-approved manual content"
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://my.jcpd.gov.jm/grants",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "JADEP": {
       "agency": "NHF",
@@ -2498,7 +2809,20 @@
       ],
       "sourceType": "Supplementary agency research",
       "lastReviewed": "2026-11-28",
-      "approvalStatus": "Not Ministry-approved manual content"
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.nhf.org.jm/jadep-programme/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "NHF ECG subsidy": {
       "agency": "NHF",
@@ -2508,7 +2832,20 @@
       ],
       "sourceType": "Supplementary agency research",
       "lastReviewed": "2026-11-28",
-      "approvalStatus": "Not Ministry-approved manual content"
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.nhf.org.jm/benefits-search/?category=diagnostic",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "NHF Echocardiogram subsidy": {
       "agency": "NHF",
@@ -2518,7 +2855,20 @@
       ],
       "sourceType": "Supplementary agency research",
       "lastReviewed": "2026-11-28",
-      "approvalStatus": "Not Ministry-approved manual content"
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.nhf.org.jm/benefits-search/?category=diagnostic",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "NHF Mammogram subsidy": {
       "agency": "NHF",
@@ -2528,7 +2878,20 @@
       ],
       "sourceType": "Supplementary agency research",
       "lastReviewed": "2026-11-28",
-      "approvalStatus": "Not Ministry-approved manual content"
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.nhf.org.jm/benefits-search/?category=diagnostic",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "NHF Pap smear subsidy": {
       "agency": "NHF",
@@ -2538,7 +2901,20 @@
       ],
       "sourceType": "Supplementary agency research",
       "lastReviewed": "2026-11-28",
-      "approvalStatus": "Not Ministry-approved manual content"
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.nhf.org.jm/benefits-search/?category=diagnostic",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "NHF PSA subsidy": {
       "agency": "NHF",
@@ -2548,7 +2924,20 @@
       ],
       "sourceType": "Supplementary agency research",
       "lastReviewed": "2026-11-28",
-      "approvalStatus": "Not Ministry-approved manual content"
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.nhf.org.jm/benefits-search/?category=diagnostic",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "NHF HbA1c subsidy": {
       "agency": "NHF",
@@ -2558,7 +2947,20 @@
       ],
       "sourceType": "Supplementary agency research",
       "lastReviewed": "2026-11-28",
-      "approvalStatus": "Not Ministry-approved manual content"
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.nhf.org.jm/benefits-search/?category=diagnostic",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "NHF Breast receptor studies subsidy": {
       "agency": "NHF",
@@ -2568,7 +2970,20 @@
       ],
       "sourceType": "Supplementary agency research",
       "lastReviewed": "2026-11-28",
-      "approvalStatus": "Not Ministry-approved manual content"
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Awaiting independent field-level verification",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.nhf.org.jm/benefits-search/?category=diagnostic",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Social Pension Programme": {
       "agency": "MLSS",
@@ -2578,8 +2993,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.mlss.gov.jm/departments/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "PATH Appeals": {
       "agency": "MLSS",
@@ -2589,8 +3016,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.mlss.gov.jm/departments/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "PATH Tertiary Grants": {
       "agency": "MLSS",
@@ -2600,8 +3039,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.mlss.gov.jm/departments/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Social Intervention Programme": {
       "agency": "MLSS",
@@ -2611,8 +3062,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.mlss.gov.jm/departments/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "NIS Retirement Pension": {
       "agency": "MLSS",
@@ -2622,8 +3085,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.issa.int/sites/default/files/documents/2024-10/Jamaica.pdf",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "NIS Invalidity Benefit": {
       "agency": "MLSS",
@@ -2633,8 +3108,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.issa.int/sites/default/files/documents/2024-10/Jamaica.pdf",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "NIS Survivors Benefit": {
       "agency": "MLSS",
@@ -2644,8 +3131,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.issa.int/sites/default/files/documents/2024-10/Jamaica.pdf",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "NIS Funeral Grant": {
       "agency": "MLSS",
@@ -2655,8 +3154,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.issa.int/sites/default/files/documents/2024-10/Jamaica.pdf",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "NIS Maternity Allowance": {
       "agency": "MLSS",
@@ -2666,8 +3177,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.issa.int/sites/default/files/documents/2024-10/Jamaica.pdf",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "NIS Employment Injury Benefit": {
       "agency": "MLSS",
@@ -2677,8 +3200,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.issa.int/sites/default/files/documents/2024-10/Jamaica.pdf",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "NIS Orphan Benefit": {
       "agency": "MLSS",
@@ -2688,8 +3223,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.issa.int/sites/default/files/documents/2024-10/Jamaica.pdf",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "NIS Special Child Benefit": {
       "agency": "MLSS",
@@ -2699,8 +3246,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.issa.int/sites/default/files/documents/2024-10/Jamaica.pdf",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "NI Gold": {
       "agency": "MLSS",
@@ -2710,8 +3269,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.issa.int/sites/default/files/documents/2024-10/Jamaica.pdf",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Homeless drop-in services": {
       "agency": "Municipal corporations",
@@ -2721,8 +3292,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Homeless shelter services": {
       "agency": "Municipal corporations",
@@ -2732,8 +3315,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Transitional housing support": {
       "agency": "Municipal corporations",
@@ -2743,8 +3338,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Poor Relief Programme": {
       "agency": "Municipal corporations",
@@ -2754,8 +3361,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Food Supply Programme": {
       "agency": "Food For The Poor",
@@ -2765,8 +3384,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Fishing livelihood support": {
       "agency": "Food For The Poor",
@@ -2776,8 +3407,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Charitable housing assistance": {
       "agency": "Food For The Poor",
@@ -2787,8 +3430,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Salvation Army welfare assistance": {
       "agency": "Salvation Army",
@@ -2798,8 +3453,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "School Feeding Programme": {
       "agency": "Ministry of Education",
@@ -2809,8 +3476,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Career Advancement Programme": {
       "agency": "Ministry of Education",
@@ -2820,8 +3499,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Early Stimulation Programme": {
       "agency": "MLSS",
@@ -2831,8 +3522,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Child labour prevention services": {
       "agency": "MLSS",
@@ -2842,8 +3545,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "High School Diploma Equivalency": {
       "agency": "HEART/NSTA",
@@ -2853,8 +3568,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "NVQJ Certification": {
       "agency": "HEART/NSTA",
@@ -2864,8 +3591,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Labour Market Information System": {
       "agency": "MLSS",
@@ -2875,8 +3614,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Overseas Employment Programme": {
       "agency": "MLSS",
@@ -2886,8 +3637,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Labour Relations services": {
       "agency": "MLSS",
@@ -2897,8 +3660,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "MSME business advisory support": {
       "agency": "JBDC",
@@ -2908,8 +3683,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "MSME financing pathways": {
       "agency": "DBJ",
@@ -2919,8 +3706,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Agricultural extension services": {
       "agency": "RADA",
@@ -2930,8 +3729,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Local Economic Development support": {
       "agency": "SDC",
@@ -2941,8 +3752,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Land tenure assistance pathway": {
       "agency": "National Land Agency",
@@ -2952,8 +3775,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Legal Aid Council": {
       "agency": "Ministry of Justice",
@@ -2963,8 +3798,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://moj.gov.jm/services",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Restorative Justice": {
       "agency": "Ministry of Justice",
@@ -2974,8 +3821,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://moj.gov.jm/services",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "National Child Diversion Programme": {
       "agency": "Ministry of Justice",
@@ -2985,8 +3844,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://moj.gov.jm/services",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Expungement services": {
       "agency": "Ministry of Justice",
@@ -2996,8 +3867,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://moj.gov.jm/services",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Access to Information": {
       "agency": "Ministry of Justice",
@@ -3007,8 +3890,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://moj.gov.jm/services",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Child abuse and neglect response": {
       "agency": "CPFSA",
@@ -3018,8 +3913,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://childprotection.gov.jm/mission-vision-core-values/clients/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Foster care": {
       "agency": "CPFSA",
@@ -3029,8 +3936,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://childprotection.gov.jm/mission-vision-core-values/clients/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Adoption services": {
       "agency": "CPFSA",
@@ -3040,8 +3959,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://childprotection.gov.jm/mission-vision-core-values/clients/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Family support services": {
       "agency": "CPFSA",
@@ -3051,8 +3982,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://childprotection.gov.jm/mission-vision-core-values/clients/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Child and family services directory": {
       "agency": "Early Childhood Commission / UNICEF",
@@ -3062,8 +4005,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.unicef.org/jamaica/documents/directory-services-children-families-1",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "NHF Disability Double Subsidy": {
       "agency": "NHF",
@@ -3073,8 +4028,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Agency publication; current intake not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.nhf.org.jm/persons-living-with-disabilities/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "JCPD Scholarships": {
       "agency": "JCPD",
@@ -3084,8 +4051,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Agency publication; current intake not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://my.jcpd.gov.jm/benefits",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "JCPD Verified Official Letters": {
       "agency": "JCPD",
@@ -3095,8 +4074,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Agency publication; current intake not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://my.jcpd.gov.jm/benefits",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "JCPD Disability Sticker and Registration ID": {
       "agency": "JCPD",
@@ -3106,8 +4097,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Agency publication; current intake not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://my.jcpd.gov.jm/benefits",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "NHT Special Grant for Persons with Disabilities": {
       "agency": "NHT",
@@ -3117,8 +4120,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Agency publication; current intake not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.nht.gov.jm/sites/default/files/documents/NHT%20Policy%20Booklet%20E-Mail_1.pdf",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Disability Income Tax Exemption": {
       "agency": "JCPD / TAJ",
@@ -3128,8 +4143,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Agency publication; current intake not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://jis.gov.jm/jcpd-to-strengthen-public-education-programme/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Municipal Social Assistance Programme": {
       "agency": "Municipal corporations",
@@ -3139,8 +4166,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://digitallibrary.un.org/record/4094554/files/A_HRC_WG.6_50_JAM_1-EN.pdf",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Short-Term Poverty Alleviation": {
       "agency": "Local government",
@@ -3150,8 +4189,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://digitallibrary.un.org/record/4094554/files/A_HRC_WG.6_50_JAM_1-EN.pdf",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Special Employment Programme": {
       "agency": "MLSS",
@@ -3161,8 +4212,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://digitallibrary.un.org/record/4094554/files/A_HRC_WG.6_50_JAM_1-EN.pdf",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "School Fee Assistance": {
       "agency": "Ministry of Education",
@@ -3172,8 +4235,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://digitallibrary.un.org/record/4094554/files/A_HRC_WG.6_50_JAM_1-EN.pdf",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Early Childhood Education Programme": {
       "agency": "ECC",
@@ -3183,8 +4258,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Child Find Project": {
       "agency": "Ministry of Education",
@@ -3194,8 +4281,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Abilities Foundation Vocational Training": {
       "agency": "Abilities Foundation",
@@ -3205,8 +4304,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Parenting Support Initiatives": {
       "agency": "NPSC",
@@ -3216,8 +4327,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Students Loan and Grant Programme": {
       "agency": "SLB",
@@ -3227,8 +4350,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "RADA Social Services and Home Economics": {
       "agency": "RADA",
@@ -3238,8 +4373,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Banana Farmer Support": {
       "agency": "Banana Board",
@@ -3249,8 +4396,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Social Enterprise Support": {
       "agency": "JN Foundation",
@@ -3260,8 +4419,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Canadian Farm Work Programme": {
       "agency": "MLSS",
@@ -3271,8 +4442,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "US Farm Work Programme": {
       "agency": "MLSS",
@@ -3282,8 +4465,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Overseas Hotel Work Programme": {
       "agency": "MLSS",
@@ -3293,8 +4488,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Sexual and Reproductive Health Services": {
       "agency": "MOHW",
@@ -3304,8 +4511,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Teenage Pregnancy Clinic": {
       "agency": "MOHW",
@@ -3315,8 +4534,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "School Suspension Intervention": {
       "agency": "Dispute Resolution Foundation",
@@ -3326,8 +4557,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Youth Mentorship Programmes": {
       "agency": "International Youth Fellowship",
@@ -3337,8 +4580,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Informal Settlements Regularisation": {
       "agency": "HAJ",
@@ -3348,8 +4603,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Primary Health Care Services": {
       "agency": "MOHW / RHAs",
@@ -3359,8 +4626,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Community Renewal Programme": {
       "agency": "PIOJ",
@@ -3370,8 +4649,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     },
     "Basic Needs Trust Fund": {
       "agency": "JSIF",
@@ -3381,8 +4672,20 @@
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
-      "verificationStatus": "Source-listed; current operations not confirmed",
-      "lastReviewed": "2026-11-28"
+      "verificationStatus": "Awaiting independent field-level verification",
+      "lastReviewed": "2026-11-28",
+      "verification": {
+        "existence": "not independently revalidated",
+        "eligibility": "unverified",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+        "sourceType": "Supplementary research",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     }
   },
   "quickContacts": [
@@ -3770,5 +5073,33 @@
     "police": "119",
     "fireAndAmbulance": "110",
     "note": "Official emergency number correction to working guide data, 15 November 2026; other guide contact details remain subject to agency verification."
+  },
+  "verificationPolicy": {
+    "version": 1,
+    "auditDate": "2026-11-28",
+    "fullyVerifiedCount": 0,
+    "reviewIntervalDays": 90,
+    "requiredFields": [
+      "existence",
+      "eligibility",
+      "availability",
+      "contacts",
+      "parishAccess",
+      "applicationRequirements",
+      "benefits",
+      "source"
+    ],
+    "rules": [
+      "Never infer eligibility or guarantee approval.",
+      "Do not present registry-listed services as currently accepting applications.",
+      "Do not claim Ministry endorsement of supplementary records.",
+      "Require current programme-specific agency evidence before marking fully verified.",
+      "Keep community-level interventions distinct from individual benefits."
+    ],
+    "coverage": {
+      "profiles": 106,
+      "manual": 17,
+      "supplementary": 89
+    }
   }
 }
