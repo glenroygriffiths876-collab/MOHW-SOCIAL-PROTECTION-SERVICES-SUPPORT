@@ -98,40 +98,39 @@ function paintReferral(){
 function buildDecision(){
  const v=$('#view-decision');if(!v)return;
  const host=document.createElement('div');host.id='cr-decision';host.className='cr-page cr-decision';
- host.innerHTML=hero('Decision Guide','assets/decision-options.webp','Jamaican community members exploring support options','')+
- '<div class="cr-decision-body flagship-workspace"><div class="flagship-kicker">DECISION WORKSPACE · EXPLORE SUPPORT</div><div class="flagship-flow"><button type="button" data-flow="need">Identify need</button><button type="button" data-flow="routes" disabled>Explore routes</button><button type="button" data-flow="refer" disabled>Refer</button></div><div id="cr-decision-choice"><h2>What support is needed?</h2>'+
- '<label class="cr-decision-search">'+icon('search')+'<input id="cr-decision-query" type="search" placeholder="Search situations" aria-label="Search situations"></label>'+
- '<div id="cr-decision-list" class="cr-choice-list"></div></div>'+
- '<div id="cr-decision-results" hidden><button type="button" id="cr-decision-back" class="cr-back">‹ All situations</button><p class="cr-eyebrow">POSSIBLE STARTING POINTS</p><h2 id="cr-decision-title"></h2><p class="cr-description">Options transcribed from the guide. The responsible agency confirms services and eligibility.</p><div id="cr-decision-cards"></div><button type="button" id="cr-decision-services" class="cr-primary">Continue to referrals '+icon('arrow')+'</button></div>'+
- '<aside class="cr-danger"><span>'+icon('alert')+'</span><div><strong>Immediate danger or medical emergency?</strong><p>Use approved emergency procedures. Do not wait for a directory search.</p></div></aside></div>';
+ host.innerHTML=hero('Help me choose','assets/decision-options.webp','Community members exploring support options','')+
+ '<div class="cr-decision-body dc-workspace"><div class="dc-top"><small>GUIDED DECISION SUPPORT</small><h2>Find the right starting point.</h2><p>Explore the guide without entering personal client information.</p></div><nav class="dc-progress" aria-label="Decision stages"><button data-dc-stage="1" type="button">1 · Situation</button><button data-dc-stage="2" type="button" disabled>2 · Support</button><button data-dc-stage="3" type="button" disabled>3 · Next steps</button></nav><div id="dc-content" aria-live="polite"><p>Loading guide…</p></div><aside class="cr-danger"><span>'+icon('alert')+'</span><div><strong>Immediate danger or medical emergency?</strong><p>Follow approved emergency and safeguarding procedures first.</p></div></aside></div>';
  v.prepend(host);v.classList.add('cr-ready');
  host.addEventListener('click',e=>{
-  const flow=e.target.closest('[data-flow]');if(flow){if(flow.dataset.flow==='need'){activeDecision=null;paintDecisionResults();}else if(flow.dataset.flow==='routes'&&activeDecision){paintDecisionResults();}else if(flow.dataset.flow==='refer'&&activeDecision){openNative('referrals');}return;}const option=e.target.closest('[data-cr-situation]');if(option){activeDecision=option.dataset.crSituation;paintDecisionResults();return;}
-  if(e.target.closest('#cr-decision-back')){activeDecision=null;paintDecisionResults();return;}
-  if(e.target.closest('#cr-decision-services'))openNative('referrals');
+ const b=e.target.closest('button');if(!b)return;
+ if(b.dataset.dcStage){dcStage=Number(b.dataset.dcStage);paintDecisionResults();return;}
+ if(b.dataset.dcSituation!==undefined){activeDecision=b.dataset.dcSituation;dcRoute=null;dcStage=2;paintDecisionResults();return;}
+ if(b.dataset.dcRoute!==undefined){dcRoute=Number(b.dataset.dcRoute);dcStage=3;paintDecisionResults();return;}
+ if(b.id==='dc-referral'){openNative('referrals');return;}
+ if(b.id==='dc-services'){goServices('locations');return;}
+ if(b.id==='dc-reset'){activeDecision=null;dcRoute=null;dcStage=1;dcQuery='';paintDecisionResults();}
+ if(b.id==='dc-retry')location.reload();
  });
- $('#cr-decision-query').addEventListener('input',paintDecisionList);
- paintDecisionList();paintDecisionResults();
+ host.addEventListener('input',e=>{if(e.target.id==='dc-query'){dcQuery=e.target.value;paintDecisionList();}});
 }
+let dcStage=1,dcRoute=null,dcQuery='';
+const dcIcons=['♡','⌂','☀','↗','♿','!','✿','✚','✚','♡','!','⌂','♡'];
+function dcRoutes(){return (guide?.decision||[]).filter(r=>r.situation===activeDecision);}
 function paintDecisionList(){
- if(!guide?.decision)return;
- const group=[...new Set(guide.decision.map(x=>x.situation))];
- const q=$('#cr-decision-query')?.value.toLowerCase().trim()||'';
- const matches=group.filter(x=>!q||(decisionLabels[x]||x).toLowerCase().includes(q)||x.toLowerCase().includes(q));
- $('#cr-decision-list').innerHTML=matches.length?matches.map(s=>{
-  const count=guide.decision.filter(x=>x.situation===s).length;
-  return '<button type="button" data-cr-situation="'+E(s)+'"><span><strong>'+E(decisionLabels[s]||s.replace('Chidren','Children'))+'</strong><small>'+count+' possible '+(count===1?'route':'routes')+'</small></span>'+icon('chevron')+'</button>';
- }).join(''):'<p class="cr-no-results">No situations matched your search.</p>';
+ const list=$('#dc-list');if(!list)return;
+ const all=guide?.decision||[],groups=[...new Set(all.map(r=>r.situation))];
+ const q=dcQuery.toLowerCase().trim().split(/\s+/).filter(Boolean);
+ const matches=groups.filter(s=>{const hay=[s,decisionLabels[s],...all.filter(r=>r.situation===s).flatMap(r=>[r.options,r.provider]),/Disability/.test(s)?'blind blindness deaf hearing vision wheelchair impairment':''].join(' ').toLowerCase();return q.every(t=>hay.includes(t));});
+ list.innerHTML=matches.length?matches.map(s=>'<button type="button" data-dc-situation="'+E(s)+'"><i aria-hidden="true">'+dcIcons[groups.indexOf(s)%dcIcons.length]+'</i><strong>'+E(decisionLabels[s]||s)+'</strong><small>'+all.filter(r=>r.situation===s).length+' support options →</small></button>').join(''):'<p>No matching situations. Try another term or browse the full directory.</p>';
 }
 function paintDecisionResults(){
- if(!guide?.decision)return;
- const selected=Boolean(activeDecision);$$('#cr-decision [data-flow]').forEach(b=>{b.disabled=b.dataset.flow!=='need'&&!selected;b.setAttribute('aria-current',b.dataset.flow===(selected?'routes':'need')?'step':'false')});
- $('#cr-decision-choice').hidden=selected;$('#cr-decision-results').hidden=!selected;
- if(!selected)return;
- const routes=guide.decision.filter(x=>x.situation===activeDecision);
- $('#cr-decision-title').textContent=decisionLabels[activeDecision]||activeDecision;
- $('#cr-decision-cards').innerHTML=routes.map((r,i)=>'<article class="cr-route"><span>OPTION '+(i+1)+'</span><h3>'+E(r.options)+'</h3><p><strong>Provider:</strong> '+E(r.provider)+'</p></article>').join('');
- $('#cr-decision-results').scrollIntoView({behavior:reduce()?'auto':'smooth',block:'start'});
+ const root=$('#dc-content');if(!root||!guide)return;
+ $$('#cr-decision [data-dc-stage]').forEach(b=>{const n=Number(b.dataset.dcStage);b.disabled=n===2&&!activeDecision||n===3&&dcRoute===null;b.setAttribute('aria-current',n===dcStage?'step':'false');});
+ if(dcStage===1){root.innerHTML='<h3>What is the main situation?</h3><label class="cr-decision-search">'+icon('search')+'<input id="dc-query" type="search" placeholder="Search needs, services or agencies" value="'+E(dcQuery)+'"></label><div id="dc-list"></div>';paintDecisionList();return;}
+ const routes=dcRoutes(),label=decisionLabels[activeDecision]||activeDecision;
+ if(dcStage===2){root.innerHTML='<h3>'+E(label)+'</h3><p>Which support option best matches the person’s needs? Select one to explore the next step.</p><div class="dc-routes">'+routes.map((r,i)=>'<button type="button" data-dc-route="'+i+'"><small>OPTION '+(i+1)+'</small><strong>'+E(r.options)+'</strong><span>'+E(r.provider)+'</span><b>Explore this option →</b></button>').join('')+'</div>';return;}
+ const r=routes[dcRoute];if(!r){dcStage=2;paintDecisionResults();return;}
+ root.innerHTML='<h3>Your selected pathway</h3><div class="dc-summary"><small>'+E(label)+'</small><h3>'+E(r.options)+'</h3><p><strong>Provider:</strong> '+E(r.provider)+'</p><p>Confirm eligibility, documents and availability directly with the provider. Obtain consent before making a referral.</p></div><div class="dc-actions"><button id="dc-services" type="button">Find agency contacts</button><button id="dc-referral" type="button">Open referral guide →</button><button id="dc-reset" type="button">Start again</button></div><p>Selected pathway is displayed here for reference; no client data is saved or transferred.</p>';
 }
 function moveNode(selector,where){
  const src=$(selector),target=$(where);if(src&&target)target.append(src);
@@ -224,8 +223,8 @@ function boot(){
  trimMenu();buildReferral();buildDecision();buildServices();buildManual();
  // All content comes from the same November guide used by the untouched live application.
  fetch('data/guide-content.json?v=clean-guide-20261122',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(new Error('source missing'))).then(j=>{
-  guide=j;paintReferral();paintDecisionList();
- }).catch(()=>{if($('#cr-ref-full'))$('#cr-ref-full').textContent='Guide details unavailable; please reload.';});
+  guide=j;paintDecisionResults();paintReferral();
+ }).catch(()=>{if($('#cr-ref-full'))$('#cr-ref-full').textContent='Guide details unavailable; please reload.';if($('#dc-content')&&!guide)$('#dc-content').innerHTML='<p>Guide unavailable.</p><button id="dc-retry" type="button">Retry</button>';});
  if(location.hash==='#programmes')goServices('programmes','programmes');
  if(location.hash==='#categories')goServices('programmes','categories');
  if(location.hash==='#contacts')goServices('contacts');
@@ -235,3 +234,4 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
 ;(()=>{const s=document.createElement('style');s.textContent=`html.ad-preview #cr-referral .flagship-workspace,html.ad-preview #cr-decision .flagship-workspace{background:linear-gradient(145deg,#10183e,#28336b)!important;color:white!important;padding:clamp(16px,4vw,36px)!important;border-radius:24px!important}.flagship-kicker{color:#f8d36b;font:800 11px system-ui;letter-spacing:.12em;margin-bottom:16px}.flagship-stage-map{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-bottom:18px}.flagship-stage-map button{display:grid;gap:6px;text-align:left;background:#303e71;color:white;border:1px solid #7786b4;border-radius:15px;padding:12px;font:700 12px system-ui;cursor:pointer}.flagship-stage-map button b{font-size:24px;color:#f8d36b}.flagship-stage-map button.selected{background:#f8d36b;color:#11183e;box-shadow:0 5px 0 #b58b26}.flagship-stage-map button.selected b{color:#11183e}.flagship-step-photo{width:100%;height:clamp(140px,28vw,300px);object-fit:cover;border-radius:18px;margin-bottom:16px}.flagship-workspace h2,.flagship-workspace .cr-lead,.flagship-workspace .cr-step-meta,.flagship-workspace .cr-description{color:white!important}.flagship-flow{display:flex;gap:6px;margin-bottom:20px}.flagship-flow span{flex:1;text-align:center;background:#354477;padding:12px 5px;border-radius:12px;font-size:12px}.flagship-flow span:first-child{background:#f8d36b;color:#11183e}html.ad-preview #cr-decision-list{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}html.ad-preview #cr-decision-list button{display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:space-between!important;min-height:120px!important;background:linear-gradient(145deg,#fff,#e5e9fa)!important;color:#10183e!important;border-radius:18px!important;padding:14px!important;box-shadow:0 5px 0 #8693c2!important}.flagship-workspace .cr-route,.flagship-workspace .cr-disclosure,.flagship-workspace .cr-ref-tip{color:#17234c!important;background:white!important}.flagship-workspace button{transition:transform .2s}.flagship-workspace button:hover{transform:translateY(-2px)}@media(prefers-reduced-motion:reduce){.flagship-workspace *{transition:none!important;animation:none!important}}`;document.head.append(s)})();
 ;(()=>{const s=document.createElement('style');s.textContent='html.ad-preview #cr-decision #cr-decision-choice h2,html.ad-preview #cr-decision #cr-decision-title{color:#fff!important}.flagship-flow button{flex:1;min-width:0;background:#354477;color:white;border:1px solid #8794bf;border-radius:12px;padding:12px 4px;font:inherit}.flagship-flow button[aria-current="step"]{background:#f8d36b;color:#11183e}.flagship-flow button:disabled{opacity:.65;cursor:not-allowed}';document.head.append(s)})();
+;(()=>{const s=document.createElement('style');s.textContent=`html.ad-preview #cr-decision .dc-workspace{background:#f4f6fc;border:1px solid #dce2f2;border-radius:26px;padding:clamp(14px,3vw,30px);color:#17234c}.dc-top{background:linear-gradient(125deg,#17234c,#51459a);color:white;padding:24px;border-radius:20px}.dc-top small{color:#ffe08a;font-weight:800;letter-spacing:.12em}.dc-top h2{color:white!important;margin:10px 0!important}.dc-progress{display:flex;gap:6px;margin:18px 0}.dc-progress button{flex:1;min-width:0;border:1px solid #c4cce3;border-radius:12px;padding:12px 4px;background:white;color:#17234c;font-weight:700}.dc-progress button[aria-current="step"]{background:#17234c;color:white}.dc-progress button:disabled{opacity:.5}#dc-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}#dc-list button,.dc-routes button{display:flex;flex-direction:column;align-items:flex-start;gap:10px;text-align:left;background:white;border:1px solid #d4dbef;border-radius:18px;padding:16px;color:#17234c;box-shadow:0 5px 0 #d4dbef;min-width:0;overflow-wrap:anywhere}#dc-list button i{font:700 27px system-ui;background:#e7e1fa;border-radius:14px;padding:9px 13px;color:#43378b}#dc-list button:nth-child(3n+2) i{background:#dceef8}#dc-list button:nth-child(3n) i{background:#fff0ce}#dc-list button small,.dc-routes button small{color:#53618a}.dc-routes{display:grid;gap:14px}.dc-routes button b{color:#51459a}.dc-summary{background:white;border-radius:18px;padding:20px;border:1px solid #d4dbef}.dc-actions{display:grid;gap:8px;margin:16px 0}.dc-actions button{background:#17234c;color:white;border:0;border-radius:12px;padding:14px;font-weight:700}#dc-content{padding-bottom:24px}#dc-content h3{color:#17234c!important}#dc-content button{cursor:pointer}#dc-content button:focus-visible{outline:3px solid #a77900;outline-offset:3px}@media(prefers-reduced-motion:no-preference){#dc-content button{transition:transform .2s}#dc-content button:hover{transform:translateY(-2px)}}`;document.head.append(s)})();
