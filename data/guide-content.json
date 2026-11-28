@@ -928,6 +928,181 @@
       "bring": "Ask facility or parish Poor Relief Department about admission and documentation.",
       "process": "Contact parish Poor Relief Department to confirm access and availability. Officially documented facility; current hours, admission, capacity and contact details are not independently confirmed. Contact Poor Relief before travel.",
       "support": "Residential care for people unable to care for themselves. Officially documented facility; current hours, admission, capacity and contact details are not independently confirmed. Contact Poor Relief before travel."
+    },
+    {
+      "name": "JAD Hearing Assessment",
+      "where": "Hope Estates, Papine, Kingston 6; confirm service location",
+      "bring": "Confirm required documents with the provider.",
+      "process": "Contact provider to confirm eligibility, fees, appointment requirements and current availability.",
+      "support": "Hearing assessment and screening"
+    },
+    {
+      "name": "JAD Hearing Aid Services",
+      "where": "Hope Estates, Papine, Kingston 6; confirm service location",
+      "bring": "Confirm required documents with the provider.",
+      "process": "Contact provider to confirm eligibility, fees, appointment requirements and current availability.",
+      "support": "Hearing device dispensing and repair"
+    },
+    {
+      "name": "JAD Jamaican Sign Language Interpreting",
+      "where": "Hope Estates, Papine, Kingston 6; confirm service location",
+      "bring": "Confirm required documents with the provider.",
+      "process": "Contact provider to confirm eligibility, fees, appointment requirements and current availability.",
+      "support": "Interpreting for medical and court visits on request"
+    },
+    {
+      "name": "JAD Educational Placement",
+      "where": "Hope Estates, Papine, Kingston 6; confirm service location",
+      "bring": "Confirm required documents with the provider.",
+      "process": "Contact provider to confirm eligibility, fees, appointment requirements and current availability.",
+      "support": "Support locating education for Deaf children"
+    },
+    {
+      "name": "JAD Family Counselling",
+      "where": "Hope Estates, Papine, Kingston 6; confirm service location",
+      "bring": "Confirm required documents with the provider.",
+      "process": "Contact provider to confirm eligibility, fees, appointment requirements and current availability.",
+      "support": "Counselling and guidance for families"
+    },
+    {
+      "name": "JAD Employment Support",
+      "where": "Hope Estates, Papine, Kingston 6; confirm service location",
+      "bring": "Confirm required documents with the provider.",
+      "process": "Contact provider to confirm eligibility, fees, appointment requirements and current availability.",
+      "support": "Job placement and workplace integration assistance"
+    },
+    {
+      "name": "JAD Student Sponsorship",
+      "where": "Hope Estates, Papine, Kingston 6; confirm service location",
+      "bring": "Confirm required documents with the provider.",
+      "process": "Contact provider to confirm eligibility, fees, appointment requirements and current availability.",
+      "support": "Student sponsorship enquiries"
+    },
+    {
+      "name": "JAD Small Business Financing",
+      "where": "Hope Estates, Papine, Kingston 6; confirm service location",
+      "bring": "Confirm required documents with the provider.",
+      "process": "Contact provider to confirm eligibility, fees, appointment requirements and current availability.",
+      "support": "Small business financing enquiries for Deaf persons"
+    },
+    {
+      "name": "JAD Sign Language Training",
+      "where": "Hope Estates, Papine, Kingston 6; confirm service location",
+      "bring": "Confirm required documents with the provider.",
+      "process": "Contact provider to confirm eligibility, fees, appointment requirements and current availability.",
+      "support": "Training for families and service providers"
+    },
+    {
+      "name": "JASL Clinical Care",
+      "where": "Contact the nearest JASL chapter",
+      "bring": "Confirm required documents with the provider.",
+      "process": "Contact provider to confirm eligibility, fees, appointment requirements and current availability.",
+      "support": "Clinical consultations and treatment support"
+    },
+    {
+      "name": "JASL Psychosocial Counselling",
+      "where": "Contact the nearest JASL chapter",
+      "bring": "Confirm required documents with the provider.",
+      "process": "Contact provider to confirm eligibility, fees, appointment requirements and current availability.",
+      "support": "Psychological and adherence counselling"
+    },
+    {
+      "name": "JASL Nutritional Support",
+      "where": "Contact the nearest JASL chapter",
+      "bring": "Confirm required documents with the provider.",
+      "process": "Contact provider to confirm eligibility, fees, appointment requirements and current availability.",
+      "support": "Nutrition counselling and care package enquiries"
+    },
+    {
+      "name": "JASL Travel and Basic Living Support",
+      "where": "Contact the nearest JASL chapter",
+      "bring": "Confirm required documents with the provider.",
+      "process": "Contact provider to confirm eligibility, fees, appointment requirements and current availability.",
+      "support": "Enquiries about transport stipends and basic living support"
+    },
+    {
+      "name": "JASL Peer Support Groups",
+      "where": "Contact the nearest JASL chapter",
+      "bring": "Confirm required documents with the provider.",
+      "process": "Contact provider to confirm eligibility, fees, appointment requirements and current availability.",
+      "support": "Peer support and treatment education"
+    },
+    {
+      "name": "JASL Kingston Chapter",
+      "where": "3 Hendon Drive, Kingston 20",
+      "bring": "Confirm required documents with the provider.",
+      "process": "Contact provider to confirm eligibility, fees, appointment requirements and current availability.",
+      "support": "Regional clinical and psychosocial access point"
+    },
+    {
+      "name": "JASL St. Ann's Bay Chapter",
+      "where": "14 King Street, St. Ann’s Bay",
+      "bring": "Confirm required documents with the provider.",
+      "process": "Contact provider to confirm eligibility, fees, appointment requirements and current availability.",
+      "support": "Regional clinical and psychosocial access point"
+    },
+    {
+      "name": "JASL Montego Bay Chapter",
+      "where": "Van Haze Building, 16 East Street, Montego Bay",
+      "bring": "Confirm required documents with the provider.",
+      "process": "Contact provider to confirm eligibility, fees, appointment requirements and current availability.",
+      "support": "Regional clinical and psychosocial access point"
+    },
+    {
+      "name": "NCDA Drug Counselling",
+      "where": "Contact NCDA to confirm local access",
+      "bring": "Confirm required documents with the provider.",
+      "process": "Contact provider to confirm eligibility, fees, appointment requirements and current availability.",
+      "support": "Individual, family and group counselling"
+    },
+    {
+      "name": "NCDA Prevention Programmes",
+      "where": "Contact NCDA to confirm local access",
+      "bring": "Confirm required documents with the provider.",
+      "process": "Contact provider to confirm eligibility, fees, appointment requirements and current availability.",
+      "support": "Prevention interventions for schools, families and communities"
+    },
+    {
+      "name": "NCDA Drug Testing",
+      "where": "Contact NCDA to confirm local access",
+      "bring": "Confirm required documents with the provider.",
+      "process": "Contact provider to confirm eligibility, fees, appointment requirements and current availability.",
+      "support": "Drug testing enquiries; confirm costs"
+    },
+    {
+      "name": "NCDA Employee Assistance",
+      "where": "Contact NCDA to confirm local access",
+      "bring": "Confirm required documents with the provider.",
+      "process": "Contact provider to confirm eligibility, fees, appointment requirements and current availability.",
+      "support": "Workplace assistance programme enquiries"
+    },
+    {
+      "name": "Community Mental Health Clinics",
+      "where": "Contact parish health department or regional health authority",
+      "bring": "Confirm required documents with the provider.",
+      "process": "Contact provider to confirm eligibility, fees, appointment requirements and current availability.",
+      "support": "Assessment and treatment through public mental health services"
+    },
+    {
+      "name": "Psychological First Aid Sessions",
+      "where": "Contact parish health department or regional health authority",
+      "bring": "Confirm required documents with the provider.",
+      "process": "Contact provider to confirm eligibility, fees, appointment requirements and current availability.",
+      "support": "Enquire about psychological first aid sessions"
+    },
+    {
+      "name": "Child and Adolescent Mental Health Services",
+      "where": "Contact parish health department or regional health authority",
+      "bring": "Confirm required documents with the provider.",
+      "process": "Contact provider to confirm eligibility, fees, appointment requirements and current availability.",
+      "support": "Child guidance and mental health assessment"
+    },
+    {
+      "name": "Teen Hub Half Way Tree",
+      "where": "Half Way Tree Transportation Centre, St. Andrew",
+      "bring": "Confirm required documents with the provider.",
+      "process": "Contact provider to confirm eligibility, fees, appointment requirements and current availability.",
+      "support": "Youth-friendly clinical, educational and social support"
     }
   ],
   "categories": [
@@ -1746,6 +1921,156 @@
       "programme": "St. Elizabeth Infirmary",
       "benefits": "Residential care for people unable to care for themselves. Officially documented facility; current hours, admission, capacity and contact details are not independently confirmed. Contact Poor Relief before travel.",
       "target": "People experiencing homelessness or requiring residential social care in St. Elizabeth"
+    },
+    {
+      "category": "Disability Support",
+      "programme": "JAD Hearing Assessment",
+      "benefits": "Hearing assessment and screening",
+      "target": "Deaf and hard-of-hearing people and families"
+    },
+    {
+      "category": "Disability Support",
+      "programme": "JAD Hearing Aid Services",
+      "benefits": "Hearing device dispensing and repair",
+      "target": "Deaf and hard-of-hearing people and families"
+    },
+    {
+      "category": "Disability Support",
+      "programme": "JAD Jamaican Sign Language Interpreting",
+      "benefits": "Interpreting for medical and court visits on request",
+      "target": "Deaf and hard-of-hearing people and families"
+    },
+    {
+      "category": "Disability Support",
+      "programme": "JAD Educational Placement",
+      "benefits": "Support locating education for Deaf children",
+      "target": "Deaf and hard-of-hearing people and families"
+    },
+    {
+      "category": "Disability Support",
+      "programme": "JAD Family Counselling",
+      "benefits": "Counselling and guidance for families",
+      "target": "Deaf and hard-of-hearing people and families"
+    },
+    {
+      "category": "Disability Support",
+      "programme": "JAD Employment Support",
+      "benefits": "Job placement and workplace integration assistance",
+      "target": "Deaf and hard-of-hearing people and families"
+    },
+    {
+      "category": "Disability Support",
+      "programme": "JAD Student Sponsorship",
+      "benefits": "Student sponsorship enquiries",
+      "target": "Deaf and hard-of-hearing people and families"
+    },
+    {
+      "category": "Disability Support",
+      "programme": "JAD Small Business Financing",
+      "benefits": "Small business financing enquiries for Deaf persons",
+      "target": "Deaf and hard-of-hearing people and families"
+    },
+    {
+      "category": "Disability Support",
+      "programme": "JAD Sign Language Training",
+      "benefits": "Training for families and service providers",
+      "target": "Deaf and hard-of-hearing people and families"
+    },
+    {
+      "category": "Health Support",
+      "programme": "JASL Clinical Care",
+      "benefits": "Clinical consultations and treatment support",
+      "target": "People living with HIV and other eligible clients"
+    },
+    {
+      "category": "Health Support",
+      "programme": "JASL Psychosocial Counselling",
+      "benefits": "Psychological and adherence counselling",
+      "target": "People living with HIV and other eligible clients"
+    },
+    {
+      "category": "Health Support",
+      "programme": "JASL Nutritional Support",
+      "benefits": "Nutrition counselling and care package enquiries",
+      "target": "People living with HIV and other eligible clients"
+    },
+    {
+      "category": "Health Support",
+      "programme": "JASL Travel and Basic Living Support",
+      "benefits": "Enquiries about transport stipends and basic living support",
+      "target": "People living with HIV and other eligible clients"
+    },
+    {
+      "category": "Health Support",
+      "programme": "JASL Peer Support Groups",
+      "benefits": "Peer support and treatment education",
+      "target": "People living with HIV and other eligible clients"
+    },
+    {
+      "category": "Health Support",
+      "programme": "JASL Kingston Chapter",
+      "benefits": "Regional clinical and psychosocial access point",
+      "target": "People living with HIV and other eligible clients"
+    },
+    {
+      "category": "Health Support",
+      "programme": "JASL St. Ann's Bay Chapter",
+      "benefits": "Regional clinical and psychosocial access point",
+      "target": "People living with HIV and other eligible clients"
+    },
+    {
+      "category": "Health Support",
+      "programme": "JASL Montego Bay Chapter",
+      "benefits": "Regional clinical and psychosocial access point",
+      "target": "People living with HIV and other eligible clients"
+    },
+    {
+      "category": "Psychosocial Support",
+      "programme": "NCDA Drug Counselling",
+      "benefits": "Individual, family and group counselling",
+      "target": "People affected by substance use, families and communities"
+    },
+    {
+      "category": "Psychosocial Support",
+      "programme": "NCDA Prevention Programmes",
+      "benefits": "Prevention interventions for schools, families and communities",
+      "target": "People affected by substance use, families and communities"
+    },
+    {
+      "category": "Psychosocial Support",
+      "programme": "NCDA Drug Testing",
+      "benefits": "Drug testing enquiries; confirm costs",
+      "target": "People affected by substance use, families and communities"
+    },
+    {
+      "category": "Psychosocial Support",
+      "programme": "NCDA Employee Assistance",
+      "benefits": "Workplace assistance programme enquiries",
+      "target": "People affected by substance use, families and communities"
+    },
+    {
+      "category": "Psychosocial Support",
+      "programme": "Community Mental Health Clinics",
+      "benefits": "Assessment and treatment through public mental health services",
+      "target": "People requiring mental health support"
+    },
+    {
+      "category": "Psychosocial Support",
+      "programme": "Psychological First Aid Sessions",
+      "benefits": "Enquire about psychological first aid sessions",
+      "target": "People requiring mental health support"
+    },
+    {
+      "category": "Psychosocial Support",
+      "programme": "Child and Adolescent Mental Health Services",
+      "benefits": "Child guidance and mental health assessment",
+      "target": "People requiring mental health support"
+    },
+    {
+      "category": "Family & Children Youth Support",
+      "programme": "Teen Hub Half Way Tree",
+      "benefits": "Youth-friendly clinical, educational and social support",
+      "target": "Adolescents"
     }
   ],
   "documents": [
@@ -5505,6 +5830,506 @@
         "sourceUrl": "https://jis.gov.jm/features/st-elizabeth-infirmary-providing-care-and-hope-for-jamaicas-vulnerable/",
         "definitiveEligibilityAllowed": false
       }
+    },
+    "JAD Hearing Assessment": {
+      "agency": "Jamaica Association for the Deaf",
+      "officialUrl": "https://jamdeaf.org.jm/services",
+      "recordType": "service",
+      "parish": null,
+      "sourceType": "Supplementary provider publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Provider-documented; current operational details unconfirmed",
+      "verification": {
+        "existence": "provider publication reviewed",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://jamdeaf.org.jm/services",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "JAD Hearing Aid Services": {
+      "agency": "Jamaica Association for the Deaf",
+      "officialUrl": "https://jamdeaf.org.jm/services",
+      "recordType": "service",
+      "parish": null,
+      "sourceType": "Supplementary provider publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Provider-documented; current operational details unconfirmed",
+      "verification": {
+        "existence": "provider publication reviewed",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://jamdeaf.org.jm/services",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "JAD Jamaican Sign Language Interpreting": {
+      "agency": "Jamaica Association for the Deaf",
+      "officialUrl": "https://jamdeaf.org.jm/services",
+      "recordType": "service",
+      "parish": null,
+      "sourceType": "Supplementary provider publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Provider-documented; current operational details unconfirmed",
+      "verification": {
+        "existence": "provider publication reviewed",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://jamdeaf.org.jm/services",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "JAD Educational Placement": {
+      "agency": "Jamaica Association for the Deaf",
+      "officialUrl": "https://jamdeaf.org.jm/services",
+      "recordType": "service",
+      "parish": null,
+      "sourceType": "Supplementary provider publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Provider-documented; current operational details unconfirmed",
+      "verification": {
+        "existence": "provider publication reviewed",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://jamdeaf.org.jm/services",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "JAD Family Counselling": {
+      "agency": "Jamaica Association for the Deaf",
+      "officialUrl": "https://jamdeaf.org.jm/services",
+      "recordType": "service",
+      "parish": null,
+      "sourceType": "Supplementary provider publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Provider-documented; current operational details unconfirmed",
+      "verification": {
+        "existence": "provider publication reviewed",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://jamdeaf.org.jm/services",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "JAD Employment Support": {
+      "agency": "Jamaica Association for the Deaf",
+      "officialUrl": "https://jamdeaf.org.jm/services",
+      "recordType": "service",
+      "parish": null,
+      "sourceType": "Supplementary provider publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Provider-documented; current operational details unconfirmed",
+      "verification": {
+        "existence": "provider publication reviewed",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://jamdeaf.org.jm/services",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "JAD Student Sponsorship": {
+      "agency": "Jamaica Association for the Deaf",
+      "officialUrl": "https://jamdeaf.org.jm/services",
+      "recordType": "service",
+      "parish": null,
+      "sourceType": "Supplementary provider publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Provider-documented; current operational details unconfirmed",
+      "verification": {
+        "existence": "provider publication reviewed",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://jamdeaf.org.jm/services",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "JAD Small Business Financing": {
+      "agency": "Jamaica Association for the Deaf",
+      "officialUrl": "https://jamdeaf.org.jm/services",
+      "recordType": "service",
+      "parish": null,
+      "sourceType": "Supplementary provider publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Provider-documented; current operational details unconfirmed",
+      "verification": {
+        "existence": "provider publication reviewed",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://jamdeaf.org.jm/services",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "JAD Sign Language Training": {
+      "agency": "Jamaica Association for the Deaf",
+      "officialUrl": "https://jamdeaf.org.jm/services",
+      "recordType": "service",
+      "parish": null,
+      "sourceType": "Supplementary provider publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Provider-documented; current operational details unconfirmed",
+      "verification": {
+        "existence": "provider publication reviewed",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://jamdeaf.org.jm/services",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "JASL Clinical Care": {
+      "agency": "Jamaica AIDS Support for Life",
+      "officialUrl": "https://jasforlife.org/what-we-do/treatment/",
+      "recordType": "service",
+      "parish": null,
+      "sourceType": "Supplementary provider publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Provider-documented; current operational details unconfirmed",
+      "verification": {
+        "existence": "provider publication reviewed",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://jasforlife.org/what-we-do/treatment/",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "JASL Psychosocial Counselling": {
+      "agency": "Jamaica AIDS Support for Life",
+      "officialUrl": "https://jasforlife.org/what-we-do/treatment/",
+      "recordType": "service",
+      "parish": null,
+      "sourceType": "Supplementary provider publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Provider-documented; current operational details unconfirmed",
+      "verification": {
+        "existence": "provider publication reviewed",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://jasforlife.org/what-we-do/treatment/",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "JASL Nutritional Support": {
+      "agency": "Jamaica AIDS Support for Life",
+      "officialUrl": "https://jasforlife.org/what-we-do/treatment/",
+      "recordType": "service",
+      "parish": null,
+      "sourceType": "Supplementary provider publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Provider-documented; current operational details unconfirmed",
+      "verification": {
+        "existence": "provider publication reviewed",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://jasforlife.org/what-we-do/treatment/",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "JASL Travel and Basic Living Support": {
+      "agency": "Jamaica AIDS Support for Life",
+      "officialUrl": "https://jasforlife.org/what-we-do/treatment/",
+      "recordType": "service",
+      "parish": null,
+      "sourceType": "Supplementary provider publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Provider-documented; current operational details unconfirmed",
+      "verification": {
+        "existence": "provider publication reviewed",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://jasforlife.org/what-we-do/treatment/",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "JASL Peer Support Groups": {
+      "agency": "Jamaica AIDS Support for Life",
+      "officialUrl": "https://jasforlife.org/what-we-do/treatment/",
+      "recordType": "service",
+      "parish": null,
+      "sourceType": "Supplementary provider publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Provider-documented; current operational details unconfirmed",
+      "verification": {
+        "existence": "provider publication reviewed",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://jasforlife.org/what-we-do/treatment/",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "JASL Kingston Chapter": {
+      "agency": "Jamaica AIDS Support for Life",
+      "officialUrl": "https://jasforlife.org/what-we-do/treatment/",
+      "recordType": "facility",
+      "parish": "Kingston",
+      "sourceType": "Supplementary provider publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Provider-documented; current operational details unconfirmed",
+      "verification": {
+        "existence": "provider publication reviewed",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://jasforlife.org/what-we-do/treatment/",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "JASL St. Ann's Bay Chapter": {
+      "agency": "Jamaica AIDS Support for Life",
+      "officialUrl": "https://jasforlife.org/what-we-do/treatment/",
+      "recordType": "facility",
+      "parish": "St. Ann",
+      "sourceType": "Supplementary provider publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Provider-documented; current operational details unconfirmed",
+      "verification": {
+        "existence": "provider publication reviewed",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://jasforlife.org/what-we-do/treatment/",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "JASL Montego Bay Chapter": {
+      "agency": "Jamaica AIDS Support for Life",
+      "officialUrl": "https://jasforlife.org/what-we-do/treatment/",
+      "recordType": "facility",
+      "parish": "St. James",
+      "sourceType": "Supplementary provider publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Provider-documented; current operational details unconfirmed",
+      "verification": {
+        "existence": "provider publication reviewed",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://jasforlife.org/what-we-do/treatment/",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "NCDA Drug Counselling": {
+      "agency": "National Council on Drug Abuse",
+      "officialUrl": "https://ncda.org.jm/services/",
+      "recordType": "service",
+      "parish": null,
+      "sourceType": "Supplementary provider publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Provider-documented; current operational details unconfirmed",
+      "verification": {
+        "existence": "provider publication reviewed",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://ncda.org.jm/services/",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "NCDA Prevention Programmes": {
+      "agency": "National Council on Drug Abuse",
+      "officialUrl": "https://ncda.org.jm/services/",
+      "recordType": "service",
+      "parish": null,
+      "sourceType": "Supplementary provider publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Provider-documented; current operational details unconfirmed",
+      "verification": {
+        "existence": "provider publication reviewed",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://ncda.org.jm/services/",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "NCDA Drug Testing": {
+      "agency": "National Council on Drug Abuse",
+      "officialUrl": "https://ncda.org.jm/services/",
+      "recordType": "service",
+      "parish": null,
+      "sourceType": "Supplementary provider publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Provider-documented; current operational details unconfirmed",
+      "verification": {
+        "existence": "provider publication reviewed",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://ncda.org.jm/services/",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "NCDA Employee Assistance": {
+      "agency": "National Council on Drug Abuse",
+      "officialUrl": "https://ncda.org.jm/services/",
+      "recordType": "service",
+      "parish": null,
+      "sourceType": "Supplementary provider publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Provider-documented; current operational details unconfirmed",
+      "verification": {
+        "existence": "provider publication reviewed",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://ncda.org.jm/services/",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Community Mental Health Clinics": {
+      "agency": "Ministry of Health and Wellness",
+      "officialUrl": "https://www.moh.gov.jm/mental-health-wellness/",
+      "recordType": "service",
+      "parish": null,
+      "sourceType": "Supplementary provider publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Provider-documented; current operational details unconfirmed",
+      "verification": {
+        "existence": "provider publication reviewed",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.moh.gov.jm/mental-health-wellness/",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Psychological First Aid Sessions": {
+      "agency": "Ministry of Health and Wellness",
+      "officialUrl": "https://www.moh.gov.jm/mental-health-wellness/",
+      "recordType": "service",
+      "parish": null,
+      "sourceType": "Supplementary provider publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Provider-documented; current operational details unconfirmed",
+      "verification": {
+        "existence": "provider publication reviewed",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.moh.gov.jm/mental-health-wellness/",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Child and Adolescent Mental Health Services": {
+      "agency": "Ministry of Health and Wellness",
+      "officialUrl": "https://www.moh.gov.jm/mental-health-unit/",
+      "recordType": "service",
+      "parish": null,
+      "sourceType": "Supplementary provider publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Provider-documented; current operational details unconfirmed",
+      "verification": {
+        "existence": "provider publication reviewed",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.moh.gov.jm/mental-health-unit/",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Teen Hub Half Way Tree": {
+      "agency": "Ministry of Health and Wellness",
+      "officialUrl": "https://www.moh.gov.jm/programmes-policies/adolescent-health-unit/",
+      "recordType": "facility",
+      "parish": "St. Andrew",
+      "sourceType": "Supplementary provider publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Provider-documented; current operational details unconfirmed",
+      "verification": {
+        "existence": "provider publication reviewed",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.moh.gov.jm/programmes-policies/adolescent-health-unit/",
+        "auditDate": "2026-11-28",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     }
   },
   "quickContacts": [
@@ -5916,9 +6741,9 @@
       "Keep community-level interventions distinct from individual benefits."
     ],
     "coverage": {
-      "profiles": 127,
+      "profiles": 152,
       "manual": 17,
-      "supplementary": 110
+      "supplementary": 135
     }
   }
 }
