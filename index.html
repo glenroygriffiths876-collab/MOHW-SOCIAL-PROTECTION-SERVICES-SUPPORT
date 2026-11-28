@@ -178,4 +178,30 @@ window.addEventListener('hashchange',()=>{if(!['','#about'].includes(location.ha
 }
 document.addEventListener('DOMContentLoaded',()=>{if(mount())return;const o=new MutationObserver(()=>{if(mount())o.disconnect()});o.observe(document.body,{childList:true,subtree:true})},{once:true});
 })();
-</script><style>html body #bc-site-credit{position:static!important;inset:auto!important;transform:none!important;display:flex!important;width:max-content!important;max-width:calc(100% - 32px)!important;margin:20px auto 24px!important;box-shadow:none!important;z-index:auto!important}#gia-floating-global{bottom:calc(24px + env(safe-area-inset-bottom,0px))!important}</style><div id="bc-final-footer" style="position:static;display:flex;justify-content:center;padding:20px 12px 100px"><a href="https://beginningconcepts.org/" style="display:flex;align-items:center;gap:7px;color:#3d536d;font:500 11px system-ui;text-decoration:none"><img src="https://beginningconcepts.org/assets/brand-logo.webp" width="22" height="22" alt="">Made by Beginning Concepts</a></div><style>html.ad-preview body>a#bc-site-credit,html body #bc-site-credit,#bc-home-credit,.bc-page-credit{display:none!important;visibility:hidden!important}</style></body></html>
+</script><style>html body #bc-site-credit{position:static!important;inset:auto!important;transform:none!important;display:flex!important;width:max-content!important;max-width:calc(100% - 32px)!important;margin:20px auto 24px!important;box-shadow:none!important;z-index:auto!important}#gia-floating-global{bottom:calc(24px + env(safe-area-inset-bottom,0px))!important}</style><div id="bc-final-footer" style="position:static;display:flex;justify-content:center;padding:20px 12px 100px"><a href="https://beginningconcepts.org/" style="display:flex;align-items:center;gap:7px;color:#3d536d;font:500 11px system-ui;text-decoration:none"><img src="https://beginningconcepts.org/assets/brand-logo.webp" width="22" height="22" alt="">Made by Beginning Concepts</a></div><style>html.ad-preview body>a#bc-site-credit,html body #bc-site-credit,#bc-home-credit,.bc-page-credit{display:none!important;visibility:hidden!important}</style><style>
+#view-referrals,#view-decision{--dash-ink:#111744;--dash-gold:#f6c746;--dash-violet:#5930a5}
+#view-referrals .rpx-journey-wrap,#view-decision .decision-finder{border-radius:28px;background:linear-gradient(145deg,#fff,#f1f4fc);box-shadow:0 18px 55px #17264c16;border:1px solid #dce3f3;padding:clamp(14px,3vw,32px)}
+#referralStepNav button,#decisionSituations button,#decisionCards article{transition:transform .22s,box-shadow .22s,background .22s;border-radius:18px}
+#referralStepNav button:hover,#decisionSituations button:hover{transform:translateY(-3px);box-shadow:0 9px 20px #24356b26}
+#referralStepNav button[aria-current="step"],#decisionSituations button[aria-pressed="true"]{box-shadow:0 0 0 3px #e9b82c,0 8px 24px #332d7940}
+#referralProgressFill{transition:width .55s cubic-bezier(.2,.8,.2,1)}
+.dash-path{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0 22px}
+.dash-path span{position:relative;padding:14px 8px;border-radius:16px;background:#e8edf8;color:#25365e;font-weight:750;text-align:center;font-size:clamp(11px,1.6vw,15px)}
+.dash-path span.active{background:linear-gradient(125deg,#172451,#5733a0);color:white;box-shadow:0 6px 18px #342c7850}
+.dash-path span.done{background:#d9eee7;color:#145b48}
+.dash-path span:not(:last-child):after{content:"›";position:absolute;right:-8px;top:50%;transform:translateY(-50%);z-index:1;color:#a77900;font-size:22px}
+.dash-workbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:14px 0;padding:14px;border-radius:18px;background:#e8edf8}
+.dash-workbar button{border:1px solid #c7d1e6;background:white;color:#182950;border-radius:12px;padding:12px 16px;font-weight:750;cursor:pointer}
+.dash-workbar button:last-child{background:#172451;color:white}
+.dash-workbar strong{flex:1 1 150px;color:#182950}
+.dash-enter{animation:dashReveal .42s cubic-bezier(.2,.8,.2,1) both}
+@keyframes dashReveal{from{opacity:.35;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){#view-referrals *,#view-decision *{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style><script>
+document.addEventListener('DOMContentLoaded',()=>{
+const make=(id,labels)=>{const el=document.createElement('div');el.className='dash-path';el.id=id;labels.forEach(t=>{const s=document.createElement('span');s.textContent=t;el.append(s)});return el};
+const nav=document.getElementById('referralStepNav'),panel=document.getElementById('referralStepPanel'),counter=document.getElementById('referralStepCounter');
+if(nav&&panel&&counter){const path=make('ref-dash-path',['01 · Understand','02 · Connect','03 · Follow through']);nav.before(path);const sync=()=>{const n=Number(counter.textContent.match(/\d+/)?.[0]||1);const stage=Math.min(2,Math.floor((n-1)/2));[...path.children].forEach((s,i)=>{s.className=i===stage?'active':i<stage?'done':'';if(i===stage)s.setAttribute('aria-current','step');else s.removeAttribute('aria-current')});panel.classList.remove('dash-enter');requestAnimationFrame(()=>panel.classList.add('dash-enter'))};new MutationObserver(sync).observe(counter,{childList:true,characterData:true,subtree:true});sync()}
+const situations=document.getElementById('decisionSituations'),cards=document.getElementById('decisionCards');if(situations&&cards){const path=make('decision-dash-path',['01 · Identify need','02 · Explore options','03 · Make a referral']);situations.before(path);path.children[0].className='active';const bar=document.createElement('div');bar.className='dash-workbar';bar.innerHTML='<strong>Continue with the right support</strong><button type="button" data-nav="services">Find services</button><button type="button" data-nav="referrals">Open referral guide →</button>';cards.after(bar);const sync=()=>{const has=!!cards.children.length;path.children[0].className=has?'done':'active';path.children[1].className=has?'active':'';cards.classList.remove('dash-enter');requestAnimationFrame(()=>cards.classList.add('dash-enter'))};new MutationObserver(sync).observe(cards,{childList:true});sync()}
+});
+</script></body></html>
