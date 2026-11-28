@@ -1670,6 +1670,111 @@
       "bring": "Confirm documentation with provider.",
       "process": "Contact provider for assessment and current access; do not travel without confirming availability.",
       "support": "Published assistance with mobility devices for assessed clients; confirm stock and eligibility."
+    },
+    {
+      "name": "MLSS relief coordination office – Kingston & St. Andrew",
+      "where": "108 Harbour Street, Kingston; published telephone: 876 967-0889/90",
+      "bring": "Confirm requirements directly.",
+      "process": "Contact provider to confirm current access.",
+      "support": "Official relief coordination contact listed 8 November 2025. Confirm current office and relief arrangements before travel."
+    },
+    {
+      "name": "MLSS relief coordination office – St. Thomas",
+      "where": "Shop 4-6 Morant Bay Plaza, Wharf Road; published telephone: 876 982-2208",
+      "bring": "Confirm requirements directly.",
+      "process": "Contact provider to confirm current access.",
+      "support": "Official relief coordination contact listed 8 November 2025. Confirm current office and relief arrangements before travel."
+    },
+    {
+      "name": "MLSS relief coordination office – Portland",
+      "where": "28 Harbour Street, Port Antonio; published telephone: 876 993-2259",
+      "bring": "Confirm requirements directly.",
+      "process": "Contact provider to confirm current access.",
+      "support": "Official relief coordination contact listed 8 November 2025. Confirm current office and relief arrangements before travel."
+    },
+    {
+      "name": "MLSS relief coordination office – St. Mary",
+      "where": "51 Stennett Street, Port Maria; published telephone: 876 994-2314",
+      "bring": "Confirm requirements directly.",
+      "process": "Contact provider to confirm current access.",
+      "support": "Official relief coordination contact listed 8 November 2025. Confirm current office and relief arrangements before travel."
+    },
+    {
+      "name": "MLSS relief coordination office – St. Ann",
+      "where": "4 Windsor Road, St. Ann’s Bay; published telephone: 876 972-0472",
+      "bring": "Confirm requirements directly.",
+      "process": "Contact provider to confirm current access.",
+      "support": "Official relief coordination contact listed 8 November 2025. Confirm current office and relief arrangements before travel."
+    },
+    {
+      "name": "MLSS relief coordination office – Trelawny",
+      "where": "4 King Street, Falmouth; published telephone: 876 954-3312",
+      "bring": "Confirm requirements directly.",
+      "process": "Contact provider to confirm current access.",
+      "support": "Official relief coordination contact listed 8 November 2025. Confirm current office and relief arrangements before travel."
+    },
+    {
+      "name": "MLSS relief coordination office – St. James",
+      "where": "4 Sam Sharpe Square, Montego Bay; published telephone: 876 971-4193",
+      "bring": "Confirm requirements directly.",
+      "process": "Contact provider to confirm current access.",
+      "support": "Official relief coordination contact listed 8 November 2025. Confirm current office and relief arrangements before travel."
+    },
+    {
+      "name": "MLSS relief coordination office – Hanover",
+      "where": "Shop 4, Uptown Shopping Centre, Mosely Drive, Lucea; published telephone: 876 956-2255",
+      "bring": "Confirm requirements directly.",
+      "process": "Contact provider to confirm current access.",
+      "support": "Official relief coordination contact listed 8 November 2025. Confirm current office and relief arrangements before travel."
+    },
+    {
+      "name": "MLSS relief coordination office – Westmoreland",
+      "where": "171/4 Lewis Street, Savanna-la-Mar; published telephone: 876 955-2532",
+      "bring": "Confirm requirements directly.",
+      "process": "Contact provider to confirm current access.",
+      "support": "Official relief coordination contact listed 8 November 2025. Confirm current office and relief arrangements before travel."
+    },
+    {
+      "name": "MLSS relief coordination office – Manchester",
+      "where": "Shop 24, Mandeville Plaza; published telephone: 876 962-2573",
+      "bring": "Confirm requirements directly.",
+      "process": "Contact provider to confirm current access.",
+      "support": "Official relief coordination contact listed 8 November 2025. Confirm current office and relief arrangements before travel."
+    },
+    {
+      "name": "MLSS relief coordination office – Clarendon",
+      "where": "6B Manchester Avenue, May Pen; published telephone: 876 986-2472",
+      "bring": "Confirm requirements directly.",
+      "process": "Contact provider to confirm current access.",
+      "support": "Official relief coordination contact listed 8 November 2025. Confirm current office and relief arrangements before travel."
+    },
+    {
+      "name": "MLSS relief coordination office – St. Catherine",
+      "where": "10 Hanover Street, Spanish Town; published telephone: 876 984-4161 / 618-0505",
+      "bring": "Confirm requirements directly.",
+      "process": "Contact provider to confirm current access.",
+      "support": "Official relief coordination contact listed 8 November 2025. Confirm current office and relief arrangements before travel."
+    },
+    {
+      "name": "St. Thomas Infirmary",
+      "where": "Morant Bay",
+      "bring": "Confirm requirements directly.",
+      "process": "Contact provider to confirm current access.",
+      "support": "Residential care for vulnerable persons; admission subject to assessment."
+    },
+    {
+      "name": "CAIHR Sickle Cell Unit",
+      "where": "University of the West Indies, Kingston; published telephone: 876 927-2471 / 977-6151 / 977-6152",
+      "bring": "Confirm requirements directly.",
+      "process": "Contact provider to confirm current access.",
+      "support": "Sickle cell clinical support; confirm appointments."
+    },
+    {
+      "name": "Sickle Cell Support Foundation of Jamaica",
+      "where": "University of the West Indies, Kingston; published telephone: 876 437-1214",
+      "bring": "Confirm requirements directly.",
+      "process": "Contact provider to confirm current access.",
+      "support": "Patient support contact listed by MOHW."
     }
   ],
   "categories": [
@@ -3124,6 +3229,96 @@
       "programme": "St. James Poor Relief – assistive devices",
       "benefits": "Published assistance with mobility devices for assessed clients; confirm stock and eligibility.",
       "target": "Persons needing this support, subject to provider assessment"
+    },
+    {
+      "category": "Disaster & Emergency Relief",
+      "programme": "MLSS relief coordination office – Kingston & St. Andrew",
+      "benefits": "Official relief coordination contact listed 8 November 2025. Confirm current office and relief arrangements before travel.",
+      "target": "Persons needing relevant support; confirm eligibility."
+    },
+    {
+      "category": "Disaster & Emergency Relief",
+      "programme": "MLSS relief coordination office – St. Thomas",
+      "benefits": "Official relief coordination contact listed 8 November 2025. Confirm current office and relief arrangements before travel.",
+      "target": "Persons needing relevant support; confirm eligibility."
+    },
+    {
+      "category": "Disaster & Emergency Relief",
+      "programme": "MLSS relief coordination office – Portland",
+      "benefits": "Official relief coordination contact listed 8 November 2025. Confirm current office and relief arrangements before travel.",
+      "target": "Persons needing relevant support; confirm eligibility."
+    },
+    {
+      "category": "Disaster & Emergency Relief",
+      "programme": "MLSS relief coordination office – St. Mary",
+      "benefits": "Official relief coordination contact listed 8 November 2025. Confirm current office and relief arrangements before travel.",
+      "target": "Persons needing relevant support; confirm eligibility."
+    },
+    {
+      "category": "Disaster & Emergency Relief",
+      "programme": "MLSS relief coordination office – St. Ann",
+      "benefits": "Official relief coordination contact listed 8 November 2025. Confirm current office and relief arrangements before travel.",
+      "target": "Persons needing relevant support; confirm eligibility."
+    },
+    {
+      "category": "Disaster & Emergency Relief",
+      "programme": "MLSS relief coordination office – Trelawny",
+      "benefits": "Official relief coordination contact listed 8 November 2025. Confirm current office and relief arrangements before travel.",
+      "target": "Persons needing relevant support; confirm eligibility."
+    },
+    {
+      "category": "Disaster & Emergency Relief",
+      "programme": "MLSS relief coordination office – St. James",
+      "benefits": "Official relief coordination contact listed 8 November 2025. Confirm current office and relief arrangements before travel.",
+      "target": "Persons needing relevant support; confirm eligibility."
+    },
+    {
+      "category": "Disaster & Emergency Relief",
+      "programme": "MLSS relief coordination office – Hanover",
+      "benefits": "Official relief coordination contact listed 8 November 2025. Confirm current office and relief arrangements before travel.",
+      "target": "Persons needing relevant support; confirm eligibility."
+    },
+    {
+      "category": "Disaster & Emergency Relief",
+      "programme": "MLSS relief coordination office – Westmoreland",
+      "benefits": "Official relief coordination contact listed 8 November 2025. Confirm current office and relief arrangements before travel.",
+      "target": "Persons needing relevant support; confirm eligibility."
+    },
+    {
+      "category": "Disaster & Emergency Relief",
+      "programme": "MLSS relief coordination office – Manchester",
+      "benefits": "Official relief coordination contact listed 8 November 2025. Confirm current office and relief arrangements before travel.",
+      "target": "Persons needing relevant support; confirm eligibility."
+    },
+    {
+      "category": "Disaster & Emergency Relief",
+      "programme": "MLSS relief coordination office – Clarendon",
+      "benefits": "Official relief coordination contact listed 8 November 2025. Confirm current office and relief arrangements before travel.",
+      "target": "Persons needing relevant support; confirm eligibility."
+    },
+    {
+      "category": "Disaster & Emergency Relief",
+      "programme": "MLSS relief coordination office – St. Catherine",
+      "benefits": "Official relief coordination contact listed 8 November 2025. Confirm current office and relief arrangements before travel.",
+      "target": "Persons needing relevant support; confirm eligibility."
+    },
+    {
+      "category": "Senior Support",
+      "programme": "St. Thomas Infirmary",
+      "benefits": "Residential care for vulnerable persons; admission subject to assessment.",
+      "target": "Persons needing relevant support; confirm eligibility."
+    },
+    {
+      "category": "Health Support",
+      "programme": "CAIHR Sickle Cell Unit",
+      "benefits": "Sickle cell clinical support; confirm appointments.",
+      "target": "Persons needing relevant support; confirm eligibility."
+    },
+    {
+      "category": "Health Support",
+      "programme": "Sickle Cell Support Foundation of Jamaica",
+      "benefits": "Patient support contact listed by MOHW.",
+      "target": "Persons needing relevant support; confirm eligibility."
     }
   ],
   "documents": [
@@ -8927,6 +9122,276 @@
         "lastVerified": null,
         "definitiveEligibilityAllowed": false
       }
+    },
+    "MLSS relief coordination office – Kingston & St. Andrew": {
+      "agency": "Ministry of Labour and Social Security",
+      "officialUrl": "https://supportjamaica.gov.jm/parish-manager",
+      "parish": "Kingston & St. Andrew",
+      "recordType": "facility",
+      "sourceType": "Supplementary official publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Official source checked; current operations not independently confirmed",
+      "verification": {
+        "existence": "official web source checked",
+        "contacts": "published only",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "sourceUrl": "https://supportjamaica.gov.jm/parish-manager",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "MLSS relief coordination office – St. Thomas": {
+      "agency": "Ministry of Labour and Social Security",
+      "officialUrl": "https://supportjamaica.gov.jm/parish-manager",
+      "parish": "St. Thomas",
+      "recordType": "facility",
+      "sourceType": "Supplementary official publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Official source checked; current operations not independently confirmed",
+      "verification": {
+        "existence": "official web source checked",
+        "contacts": "published only",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "sourceUrl": "https://supportjamaica.gov.jm/parish-manager",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "MLSS relief coordination office – Portland": {
+      "agency": "Ministry of Labour and Social Security",
+      "officialUrl": "https://supportjamaica.gov.jm/parish-manager",
+      "parish": "Portland",
+      "recordType": "facility",
+      "sourceType": "Supplementary official publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Official source checked; current operations not independently confirmed",
+      "verification": {
+        "existence": "official web source checked",
+        "contacts": "published only",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "sourceUrl": "https://supportjamaica.gov.jm/parish-manager",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "MLSS relief coordination office – St. Mary": {
+      "agency": "Ministry of Labour and Social Security",
+      "officialUrl": "https://supportjamaica.gov.jm/parish-manager",
+      "parish": "St. Mary",
+      "recordType": "facility",
+      "sourceType": "Supplementary official publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Official source checked; current operations not independently confirmed",
+      "verification": {
+        "existence": "official web source checked",
+        "contacts": "published only",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "sourceUrl": "https://supportjamaica.gov.jm/parish-manager",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "MLSS relief coordination office – St. Ann": {
+      "agency": "Ministry of Labour and Social Security",
+      "officialUrl": "https://supportjamaica.gov.jm/parish-manager",
+      "parish": "St. Ann",
+      "recordType": "facility",
+      "sourceType": "Supplementary official publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Official source checked; current operations not independently confirmed",
+      "verification": {
+        "existence": "official web source checked",
+        "contacts": "published only",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "sourceUrl": "https://supportjamaica.gov.jm/parish-manager",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "MLSS relief coordination office – Trelawny": {
+      "agency": "Ministry of Labour and Social Security",
+      "officialUrl": "https://supportjamaica.gov.jm/parish-manager",
+      "parish": "Trelawny",
+      "recordType": "facility",
+      "sourceType": "Supplementary official publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Official source checked; current operations not independently confirmed",
+      "verification": {
+        "existence": "official web source checked",
+        "contacts": "published only",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "sourceUrl": "https://supportjamaica.gov.jm/parish-manager",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "MLSS relief coordination office – St. James": {
+      "agency": "Ministry of Labour and Social Security",
+      "officialUrl": "https://supportjamaica.gov.jm/parish-manager",
+      "parish": "St. James",
+      "recordType": "facility",
+      "sourceType": "Supplementary official publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Official source checked; current operations not independently confirmed",
+      "verification": {
+        "existence": "official web source checked",
+        "contacts": "published only",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "sourceUrl": "https://supportjamaica.gov.jm/parish-manager",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "MLSS relief coordination office – Hanover": {
+      "agency": "Ministry of Labour and Social Security",
+      "officialUrl": "https://supportjamaica.gov.jm/parish-manager",
+      "parish": "Hanover",
+      "recordType": "facility",
+      "sourceType": "Supplementary official publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Official source checked; current operations not independently confirmed",
+      "verification": {
+        "existence": "official web source checked",
+        "contacts": "published only",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "sourceUrl": "https://supportjamaica.gov.jm/parish-manager",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "MLSS relief coordination office – Westmoreland": {
+      "agency": "Ministry of Labour and Social Security",
+      "officialUrl": "https://supportjamaica.gov.jm/parish-manager",
+      "parish": "Westmoreland",
+      "recordType": "facility",
+      "sourceType": "Supplementary official publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Official source checked; current operations not independently confirmed",
+      "verification": {
+        "existence": "official web source checked",
+        "contacts": "published only",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "sourceUrl": "https://supportjamaica.gov.jm/parish-manager",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "MLSS relief coordination office – Manchester": {
+      "agency": "Ministry of Labour and Social Security",
+      "officialUrl": "https://supportjamaica.gov.jm/parish-manager",
+      "parish": "Manchester",
+      "recordType": "facility",
+      "sourceType": "Supplementary official publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Official source checked; current operations not independently confirmed",
+      "verification": {
+        "existence": "official web source checked",
+        "contacts": "published only",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "sourceUrl": "https://supportjamaica.gov.jm/parish-manager",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "MLSS relief coordination office – Clarendon": {
+      "agency": "Ministry of Labour and Social Security",
+      "officialUrl": "https://supportjamaica.gov.jm/parish-manager",
+      "parish": "Clarendon",
+      "recordType": "facility",
+      "sourceType": "Supplementary official publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Official source checked; current operations not independently confirmed",
+      "verification": {
+        "existence": "official web source checked",
+        "contacts": "published only",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "sourceUrl": "https://supportjamaica.gov.jm/parish-manager",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "MLSS relief coordination office – St. Catherine": {
+      "agency": "Ministry of Labour and Social Security",
+      "officialUrl": "https://supportjamaica.gov.jm/parish-manager",
+      "parish": "St. Catherine",
+      "recordType": "facility",
+      "sourceType": "Supplementary official publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Official source checked; current operations not independently confirmed",
+      "verification": {
+        "existence": "official web source checked",
+        "contacts": "published only",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "sourceUrl": "https://supportjamaica.gov.jm/parish-manager",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "St. Thomas Infirmary": {
+      "agency": "Poor Relief",
+      "officialUrl": "https://portlandmc.gov.jm/st-thomas-infirmary",
+      "parish": "St. Thomas",
+      "recordType": "facility",
+      "sourceType": "Supplementary official publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Official source checked; current operations not independently confirmed",
+      "verification": {
+        "existence": "official web source checked",
+        "contacts": "published only",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "sourceUrl": "https://portlandmc.gov.jm/st-thomas-infirmary",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "CAIHR Sickle Cell Unit": {
+      "agency": "CAIHR",
+      "officialUrl": "https://ncdip.moh.gov.jm/non-communicable-disease/sickle-cell-disease/",
+      "parish": "Kingston",
+      "recordType": "facility",
+      "sourceType": "Supplementary official publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Official source checked; current operations not independently confirmed",
+      "verification": {
+        "existence": "official web source checked",
+        "contacts": "published only",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "sourceUrl": "https://ncdip.moh.gov.jm/non-communicable-disease/sickle-cell-disease/",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Sickle Cell Support Foundation of Jamaica": {
+      "agency": "Sickle Cell Support Foundation of Jamaica",
+      "officialUrl": "https://ncdip.moh.gov.jm/non-communicable-disease/sickle-cell-disease/",
+      "parish": "Kingston",
+      "recordType": "facility",
+      "sourceType": "Supplementary official publication",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Official source checked; current operations not independently confirmed",
+      "verification": {
+        "existence": "official web source checked",
+        "contacts": "published only",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "sourceUrl": "https://ncdip.moh.gov.jm/non-communicable-disease/sickle-cell-disease/",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     }
   },
   "quickContacts": [
@@ -9338,9 +9803,9 @@
       "Keep community-level interventions distinct from individual benefits."
     ],
     "coverage": {
-      "profiles": 233,
+      "profiles": 248,
       "manual": 17,
-      "supplementary": 216
+      "supplementary": 231
     }
   }
 }
