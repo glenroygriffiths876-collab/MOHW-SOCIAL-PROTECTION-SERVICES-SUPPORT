@@ -66,7 +66,7 @@ function buildReferral(){
  const v=$('#view-referrals');if(!v)return;
  const host=document.createElement('div');host.id='cr-referral';host.className='cr-page cr-referral';
  host.innerHTML=hero('Make a referral','assets/referral-listening.webp','Jamaican support worker listening attentively to an older woman','')+
- '<div class="cr-ref-body">'+
+ '<div class="cr-ref-body flagship-workspace"><div class="flagship-kicker">REFERRAL WORKSPACE · 06 STAGES</div><div class="flagship-stage-map">'+referralTips.map((_,i)=>'<button type="button" data-cr-step="'+i+'"><b>0'+(i+1)+'</b>'+['Listen','Assess safety','Match support','Prepare','Connect','Follow up'][i]+'</button>').join('')+'</div><img id="flagship-step-photo" src="'+referralPhotos[0]+'" alt="" class="flagship-step-photo">'+
  '<div class="cr-step-meta"><strong id="cr-ref-counter">Step 1 of 6</strong><span>Guided referral pathway</span></div>'+
  '<div class="cr-progress" id="cr-progress" role="group" aria-label="Six referral steps">'+Array.from({length:6},(_,i)=>'<button type="button" data-cr-step="'+i+'" aria-label="Go to step '+(i+1)+'" aria-current="'+(i===0?'step':'false')+'"></button>').join('')+'</div>'+
  '<h2 id="cr-ref-title">Identify the need</h2><p id="cr-ref-summary" class="cr-lead"></p>'+
@@ -87,7 +87,7 @@ function buildReferral(){
 function paintReferral(){
  const steps=guide?.referralSteps;if(!steps?.length)return;
  activeStep=Math.min(activeStep,steps.length-1);let step=steps[activeStep];
- $('#cr-ref-counter').textContent='Step '+(activeStep+1)+' of 6';
+ $('#flagship-step-photo').src=referralPhotos[activeStep];$('.flagship-stage-map button').forEach((b,i)=>{b.classList.toggle('selected',i===activeStep);b.setAttribute('aria-current',i===activeStep?'step':'false')});$('#cr-ref-counter').textContent='Step '+(activeStep+1)+' of 6';
  $('#cr-ref-title').textContent=step[0];
  $('#cr-ref-summary').textContent=referralTips[activeStep][0];
  $('#cr-ref-tip').textContent=referralTips[activeStep][1];
@@ -99,7 +99,7 @@ function buildDecision(){
  const v=$('#view-decision');if(!v)return;
  const host=document.createElement('div');host.id='cr-decision';host.className='cr-page cr-decision';
  host.innerHTML=hero('Decision Guide','assets/decision-options.webp','Jamaican community members exploring support options','')+
- '<div class="cr-decision-body"><div id="cr-decision-choice"><h2>What support is needed?</h2>'+
+ '<div class="cr-decision-body flagship-workspace"><div class="flagship-kicker">DECISION WORKSPACE · EXPLORE SUPPORT</div><div class="flagship-flow"><span>Identify need</span><span>Explore routes</span><span>Refer</span></div><div id="cr-decision-choice"><h2>What support is needed?</h2>'+
  '<label class="cr-decision-search">'+icon('search')+'<input id="cr-decision-query" type="search" placeholder="Search situations" aria-label="Search situations"></label>'+
  '<div id="cr-decision-list" class="cr-choice-list"></div></div>'+
  '<div id="cr-decision-results" hidden><button type="button" id="cr-decision-back" class="cr-back">‹ All situations</button><p class="cr-eyebrow">POSSIBLE STARTING POINTS</p><h2 id="cr-decision-title"></h2><p class="cr-description">Options transcribed from the guide. The responsible agency confirms services and eligibility.</p><div id="cr-decision-cards"></div><button type="button" id="cr-decision-services" class="cr-primary">Continue to referrals '+icon('arrow')+'</button></div>'+
@@ -232,3 +232,5 @@ function boot(){
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
+
+;(()=>{const s=document.createElement('style');s.textContent=`html.ad-preview #cr-referral .flagship-workspace,html.ad-preview #cr-decision .flagship-workspace{background:linear-gradient(145deg,#10183e,#28336b)!important;color:white!important;padding:clamp(16px,4vw,36px)!important;border-radius:24px!important}.flagship-kicker{color:#f8d36b;font:800 11px system-ui;letter-spacing:.12em;margin-bottom:16px}.flagship-stage-map{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-bottom:18px}.flagship-stage-map button{display:grid;gap:6px;text-align:left;background:#303e71;color:white;border:1px solid #7786b4;border-radius:15px;padding:12px;font:700 12px system-ui;cursor:pointer}.flagship-stage-map button b{font-size:24px;color:#f8d36b}.flagship-stage-map button.selected{background:#f8d36b;color:#11183e;box-shadow:0 5px 0 #b58b26}.flagship-stage-map button.selected b{color:#11183e}.flagship-step-photo{width:100%;height:clamp(140px,28vw,300px);object-fit:cover;border-radius:18px;margin-bottom:16px}.flagship-workspace h2,.flagship-workspace .cr-lead,.flagship-workspace .cr-step-meta,.flagship-workspace .cr-description{color:white!important}.flagship-flow{display:flex;gap:6px;margin-bottom:20px}.flagship-flow span{flex:1;text-align:center;background:#354477;padding:12px 5px;border-radius:12px;font-size:12px}.flagship-flow span:first-child{background:#f8d36b;color:#11183e}html.ad-preview #cr-decision-list{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}html.ad-preview #cr-decision-list button{display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:space-between!important;min-height:120px!important;background:linear-gradient(145deg,#fff,#e5e9fa)!important;color:#10183e!important;border-radius:18px!important;padding:14px!important;box-shadow:0 5px 0 #8693c2!important}.flagship-workspace .cr-route,.flagship-workspace .cr-disclosure,.flagship-workspace .cr-ref-tip{color:#17234c!important;background:white!important}.flagship-workspace button{transition:transform .2s}.flagship-workspace button:hover{transform:translateY(-2px)}@media(prefers-reduced-motion:reduce){.flagship-workspace *{transition:none!important;animation:none!important}}`;document.head.append(s)})();
