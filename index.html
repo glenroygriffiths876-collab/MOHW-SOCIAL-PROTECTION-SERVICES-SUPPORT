@@ -117,29 +117,29 @@
 <script src="assets/manual-reader.js?v=6-sound-default" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" defer></script><script src="assets/approved-design.js?v=community-photo-9" defer></script><script src="assets/clean-interiors.js?v=decision-to-referrals-5" defer></script><script src="assets/referral-generator-preview.js?v=officer-fields-4" defer></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js" defer></script><script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script><script src="assets/referral-documents-enhanced.js?v=deaf-referral-8" defer></script><script src="assets/deaf-access-preview.js?v=isolated-modal-11" defer></script><script src="assets/beginning-concepts-credit.js?v=visible-bc-13" defer></script><style>
 #ad-action-dock .ad-gia-action,#gia2Launcher{display:none!important}
-#gia-floating-global{position:fixed!important;right:18px!important;bottom:calc(24px + env(safe-area-inset-bottom,0px))!important;z-index:2147483000!important;width:82px;height:82px;padding:5px;border:2px solid white;border-radius:50%;background:linear-gradient(145deg,#fff,#b7a8f3);box-shadow:0 8px 30px #17104c66;cursor:pointer;box-sizing:border-box}
+#gia-floating-global{position:fixed!important;right:18px!important;bottom:calc(82px + env(safe-area-inset-bottom,0px))!important;z-index:2147483000!important;width:82px;height:82px;padding:5px;border:2px solid white;border-radius:50%;background:linear-gradient(145deg,#fff,#b7a8f3);box-shadow:0 8px 30px #17104c66;cursor:pointer;box-sizing:border-box}
 #gia-floating-global img{display:block;width:100%;height:100%;object-fit:cover;border-radius:50%}
 #gia-floating-global span{position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);background:#241b65;color:white;border-radius:20px;padding:4px 10px;white-space:nowrap;font:700 12px system-ui}
 #gia-floating-global:focus-visible{outline:3px solid #e5a900;outline-offset:4px}
-body{padding-bottom:100px}
+html.ad-preview .ad-hero.gia-inline-hero{display:block!important;height:auto!important;min-height:0!important;aspect-ratio:auto!important;padding:0!important;background:#101342!important;overflow:hidden!important}
+#gia-inline-video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#101342}
+#gia-inline-sound{position:absolute;bottom:52px;right:12px;background:white;color:#101342;border:0;border-radius:24px;padding:10px 16px;font-weight:700;z-index:4}
 @media(max-width:480px){#gia-floating-global{width:70px;height:70px;right:14px!important}}
 </style>
 <button id="gia-floating-global" type="button" aria-label="Ask Gia, your social support guide"><img src="assets/gia-avatar.jpg" alt=""><span>Ask Gia</span></button>
 <script>
 (function(){
 const b=document.getElementById('gia-floating-global');
-b.addEventListener('click',()=>{if(window.MOHWGIA?.open)window.MOHWGIA.open();else {const old=document.getElementById('gia2Launcher');if(old)old.click();else {b.setAttribute('aria-busy','true');let n=0;const t=setInterval(()=>{if(window.MOHWGIA?.open||++n>40){clearInterval(t);b.removeAttribute('aria-busy');window.MOHWGIA?.open?.();}},250);}}});
-function welcome(){
-const v=document.getElementById('ad-video'),d=document.getElementById('ad-video-dialog');if(!v||!d)return false;
-if(!['','#about'].includes(location.hash))return true;
-let seen=false;try{seen=sessionStorage.getItem('gia-welcome-v2')==='1'}catch(e){}if(seen)return true;
-try{sessionStorage.setItem('gia-welcome-v2','1')}catch(e){}
-v.loop=false;v.muted=false;if(!d.open)d.showModal();
-v.play().catch(()=>{v.muted=true;v.play().catch(()=>{});const s=document.createElement('button');s.type='button';s.textContent='Enable sound';s.onclick=()=>{v.muted=false;v.play().catch(()=>{});s.remove()};v.after(s);d.addEventListener('close',()=>s.remove(),{once:true});});
-v.addEventListener('ended',()=>{v.muted=true;if(d.open)d.close()},{once:true});
-d.addEventListener('close',()=>{v.pause();v.muted=true},{once:true});
-document.addEventListener('click',e=>{if(e.target.closest('[data-ad-action="video"]'))v.muted=false},true);return true;
+b.addEventListener('click',()=>{if(window.MOHWGIA?.open)window.MOHWGIA.open();else document.getElementById('gia2Launcher')?.click()});
+function mount(){
+const hero=document.querySelector('#ad-home .ad-hero');if(!hero)return false;
+hero.classList.add('gia-inline-hero');hero.replaceChildren();
+const v=document.createElement('video');v.id='gia-inline-video';v.src='assets/gia-introduction.mp4';v.poster='assets/mobile-v3/video.webp';v.controls=true;v.playsInline=true;v.preload='auto';v.loop=false;v.setAttribute('aria-label','Gia welcome video');hero.append(v);
+let seen=false;try{seen=sessionStorage.getItem('gia-inline-welcome-v3')==='1'}catch(e){}
+function playFirst(){if(seen||!['','#about'].includes(location.hash))return;seen=true;try{sessionStorage.setItem('gia-inline-welcome-v3','1')}catch(e){}v.muted=false;v.play().catch(()=>{v.muted=true;v.play().catch(()=>{});const s=document.createElement('button');s.id='gia-inline-sound';s.type='button';s.textContent='Enable sound';s.onclick=()=>{v.muted=false;v.play().catch(()=>{});s.remove()};hero.append(s)});}
+v.addEventListener('ended',()=>{v.muted=true;document.getElementById('gia-inline-sound')?.remove()});
+window.addEventListener('hashchange',()=>{if(!['','#about'].includes(location.hash))v.pause();else playFirst()});playFirst();return true;
 }
-window.addEventListener('load',()=>{if(welcome())return;let n=0;const t=setInterval(()=>{if(welcome()||++n>40)clearInterval(t)},250)},{once:true});
+document.addEventListener('DOMContentLoaded',()=>{if(mount())return;const o=new MutationObserver(()=>{if(mount())o.disconnect()});o.observe(document.body,{childList:true,subtree:true})},{once:true});
 })();
 </script></body></html>
