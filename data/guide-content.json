@@ -112,10 +112,10 @@
     },
     {
       "name": "RHA Diagnostic Support",
-      "where": "Public hospital or health facility under the relevant Regional Health Authority",
-      "bring": "Public hospital registration; Doctor's referral or diagnostic request; Patient ID and clinic/hospital information",
-      "process": "Public doctor issues request → hospital schedules in-house test or outsourcing referral → patient receives approved diagnostic service at no out-of-pocket cost where covered",
-      "support": "CT scans, MRIs, ultrasounds, and other approved diagnostic tests/services for public patients."
+      "where": "Relevant parish health department or medical social worker.",
+      "bring": "Confirm documentation with the provider.",
+      "process": "Contact provider to confirm current requirements and access.",
+      "support": "Enquire about diagnostic assistance through the relevant health authority; this source confirms contact routes only, not a subsidy or entitlement."
     },
     {
       "name": "NCDA Support",
@@ -133,10 +133,10 @@
     },
     {
       "name": "Victim Services Branch",
-      "where": "Ministry of Justice Victim Services office or helpline",
-      "bring": "Basic personal information; Police report or case reference if available; Court date or referral information if applicable",
-      "process": "Contact VSB → needs assessment → counselling, court support, referral or crisis response arranged → follow-up support provided",
-      "support": "Free confidential counselling, emotional support, court orientation, referral and victim-sensitive services."
+      "where": "47E Old Hope Road, Kingston 5; 876-946-0663; vsd@moj.gov.jm; parish offices nationwide.",
+      "bring": "Confirm documentation with the provider.",
+      "process": "Contact provider to confirm current requirements and access.",
+      "support": "Free confidential counselling, crisis intervention, court preparation and advocacy for victims of crime."
     },
     {
       "name": "Women's Centre Programme for Adolescent Mothers",
@@ -147,10 +147,10 @@
     },
     {
       "name": "Senior Citizen Services / Meals on Wheels",
-      "where": "National Council for Senior Citizens, MLSS parish office, health centre, or community referral point",
-      "bring": "Valid ID or birth certificate; TRN if available; Proof of address and need",
-      "process": "Referral or application → needs assessment → programme match or referral → follow-up by senior services or parish office",
-      "support": "Meals, referrals, social support, advocacy and senior-focused welfare assistance where available."
+      "where": "National Council for Senior Citizens; confirm access directly.",
+      "bring": "Confirm documentation with the provider.",
+      "process": "Contact provider to confirm current requirements and access.",
+      "support": "Meals for vulnerable housebound seniors in the Corporate Area; admission based on assessed need."
     },
     {
       "name": "Bureau of Gender Affairs Services",
@@ -1829,7 +1829,7 @@
     {
       "category": "Health Support",
       "programme": "RHA Diagnostic Support",
-      "benefits": "Free approved diagnostic services through public hospitals or outsourced private partners.",
+      "benefits": "Enquire about diagnostic assistance through the relevant health authority; this source confirms contact routes only, not a subsidy or entitlement.",
       "target": "Registered public hospital patients with a public doctor's referral."
     },
     {
@@ -1907,7 +1907,7 @@
     {
       "category": "Justice & Safety Support",
       "programme": "Victim Services Branch",
-      "benefits": "Counselling, emotional support, court orientation, referral, and victim-sensitive interventions.",
+      "benefits": "Free confidential counselling, crisis intervention, court preparation and advocacy for victims of crime.",
       "target": "Victims of crime, witnesses, families, and children needing court-related support."
     },
     {
@@ -4391,19 +4391,21 @@
       "contactAgencies": [
         "Regional Health Authority"
       ],
-      "verificationStatus": "Independent verification pending; confirm with provider",
+      "verificationStatus": "Official contact route checked; benefit not verified",
       "verification": {
-        "existence": "Not independently revalidated in this audit",
+        "existence": "Contact route only",
         "eligibility": "unverified",
         "availability": "unverified",
         "contacts": "unverified",
         "parishAccess": "unverified",
-        "sourceUrl": null,
+        "sourceUrl": "https://www.moh.gov.jm/contact-us/",
         "sourceType": "Supplied guide",
         "auditDate": "2026-11-28",
         "lastVerified": null,
-        "definitiveEligibilityAllowed": false
-      }
+        "definitiveEligibilityAllowed": false,
+        "sourceReviewedOn": "2026-11-28"
+      },
+      "officialUrl": "https://www.moh.gov.jm/contact-us/"
     },
     "NCDA Support": {
       "agency": "National Council on Drug Abuse (NCDA)",
@@ -4452,19 +4454,21 @@
       "contactAgencies": [
         "Victim Services Branch"
       ],
-      "verificationStatus": "Independent verification pending; confirm with provider",
+      "verificationStatus": "Official service description checked; individual access not confirmed",
       "verification": {
-        "existence": "Not independently revalidated in this audit",
+        "existence": "Confirmed in administering ministry publication",
         "eligibility": "unverified",
         "availability": "unverified",
         "contacts": "unverified",
         "parishAccess": "unverified",
-        "sourceUrl": null,
+        "sourceUrl": "https://moj.gov.jm/victim-services-division",
         "sourceType": "Supplied guide",
         "auditDate": "2026-11-28",
         "lastVerified": null,
-        "definitiveEligibilityAllowed": false
-      }
+        "definitiveEligibilityAllowed": false,
+        "sourceReviewedOn": "2026-11-28"
+      },
+      "officialUrl": "https://moj.gov.jm/victim-services-division"
     },
     "Women's Centre Programme for Adolescent Mothers": {
       "agency": "Women's Centre of Jamaica Foundation",
@@ -4491,19 +4495,21 @@
       "contactAgencies": [
         "National Council for Senior Citizens"
       ],
-      "verificationStatus": "Independent verification pending; confirm with provider",
+      "verificationStatus": "Official service description checked; individual access not confirmed",
       "verification": {
-        "existence": "Not independently revalidated in this audit",
+        "existence": "Confirmed in administering ministry publication",
         "eligibility": "unverified",
         "availability": "unverified",
         "contacts": "unverified",
         "parishAccess": "unverified",
-        "sourceUrl": null,
+        "sourceUrl": "https://www.mlss.gov.jm/departments/national-council-for-senior-citizens/",
         "sourceType": "Supplied guide",
         "auditDate": "2026-11-28",
         "lastVerified": null,
-        "definitiveEligibilityAllowed": false
-      }
+        "definitiveEligibilityAllowed": false,
+        "sourceReviewedOn": "2026-11-28"
+      },
+      "officialUrl": "https://www.mlss.gov.jm/departments/national-council-for-senior-citizens/"
     },
     "Bureau of Gender Affairs Services": {
       "agency": "Bureau of Gender Affairs",
