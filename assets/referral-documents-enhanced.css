@@ -1,0 +1,17 @@
+/* Two-document workflow: consistent with approved clean design. */
+html.ad-preview #refgen .refgen-modes{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:17px 0 20px;padding:5px;background:#f0f5fb;border:1px solid #dbe5f0;border-radius:14px}
+html.ad-preview #refgen .refgen-modes button{min-height:46px;padding:9px 11px;border:1px solid transparent;border-radius:10px;background:transparent;color:#31547b;font:750 13px/1.2 system-ui;cursor:pointer}
+html.ad-preview #refgen .refgen-modes button.selected{background:#fff;color:#123f75;border-color:#d6e4f1;box-shadow:0 2px 7px #12345a16}
+html.ad-preview #refgen .refgen-extra{margin-top:15px}
+html.ad-preview #refgen .refgen-summary-fields .refgen-grid{margin-top:4px}
+html.ad-preview #refgen .refgen-summary-fields[hidden],html.ad-preview #refgen label[hidden]{display:none!important}
+html.ad-preview #refgen .refgen-export-note{padding:11px 13px;border-radius:11px;background:#f0f6fc;color:#375778;font-size:12px;line-height:1.5;margin:10px 0 14px}
+html.ad-preview #refgen .refgen-actions button{box-shadow:none!important}
+@media(max-width:430px){html.ad-preview #refgen .refgen-modes button{font-size:12px;padding:9px 6px}}
+
+html.ad-preview #refgen .refgen-directory{padding:15px;margin:0 0 18px;border-radius:15px;background:#f5f9ff;border:1px solid #d7e5f2}
+html.ad-preview #refgen .refgen-directory-heading{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:5px;margin-bottom:13px}
+html.ad-preview #refgen .refgen-directory-heading strong{color:#163c6e;font-size:15px}
+html.ad-preview #refgen .refgen-directory-heading span{color:#6c7f95;font-size:11px}
+html.ad-preview #refgen #refgen-directory-note{font-size:11px;line-height:1.5;color:#586e85;margin:11px 0 0}
+@media print{body.refgen-printing #refgen-print-sheet{font-family:Arial,sans-serif!important}body.refgen-printing #refgen-print-sheet section{break-inside:avoid;margin:12px 0}body.refgen-printing #refgen-print-sheet section h2{font-size:11pt;color:#205a98;text-transform:uppercase;margin:0 0 5px}body.refgen-printing #refgen-print-sheet section p{margin:0;font-size:11pt;line-height:1.45}body.refgen-printing #refgen-print-sheet footer{border-top:1px solid #b8cce0;padding-top:12px;margin-top:25px;font-size:9pt}}

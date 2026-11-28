@@ -1,0 +1,43 @@
+name: Approved GIA design preview — browser QA
+on:
+  push:
+    branches: ['preview/approved-gia-design-clean-20261122']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  preview-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Playwright browser driver
+        run: npm install --no-save --no-package-lock playwright-core
+      - name: Find Chrome
+        shell: bash
+        run: |
+          set -eu
+          CHROME="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          if [ -z "$CHROME" ]; then
+            npx --yes playwright install chromium
+            echo "CHROME_BIN=$HOME/.cache/ms-playwright/$(ls "$HOME/.cache/ms-playwright" | grep 'chromium-' | head -1)/chrome-linux/chrome" >> "$GITHUB_ENV"
+          else
+            echo "CHROME_BIN=$CHROME" >> "$GITHUB_ENV"
+          fi
+      - name: Start isolated local test server
+        shell: bash
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/approved-gia-preview.log 2>&1 &
+          for i in $(seq 1 35); do curl -fsS http://127.0.0.1:8765/index.html >/dev/null && break; sleep 1; done
+      - name: Test all responsive viewports and preserved app functions
+        run: node tests/approved-design-browser.cjs
+      - name: Capture screenshots of preview pages
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: approved-gia-mobile-tablet-desktop-screenshots
+          path: /tmp/mohw-approved-design-shots/
+          if-no-files-found: warn

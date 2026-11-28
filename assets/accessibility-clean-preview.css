@@ -1,0 +1,55 @@
+/* Approved-preview accessibility redesign: compact, readable, premium navy and white. */
+html.ad-preview #p2-access-dialog.p2-dialog{width:min(570px,calc(100vw - 24px))!important;height:auto!important;max-height:calc(100dvh - 24px)!important;border:1px solid #dce5f3!important;border-radius:22px!important;background:#fff!important;color:#152e53!important;box-shadow:0 22px 65px #091d4070!important}
+html.ad-preview #p2-access-dialog::backdrop{background:#08172db8!important;backdrop-filter:blur(4px)}
+html.ad-preview #p2-access-dialog .ax-shell{height:auto!important;max-height:calc(100dvh - 26px)!important;overflow:auto!important;background:#fff!important}
+html.ad-preview #p2-access-dialog .ax-head{min-height:72px!important;padding:13px 17px!important;gap:12px!important;background:linear-gradient(115deg,#132d5d,#211c59)!important;border-bottom:3px solid #e7b844!important;box-shadow:none!important}
+html.ad-preview #p2-access-dialog .ax-feature{width:43px!important;height:43px!important;border-radius:13px!important;border:1px solid #cce6ff!important;background:linear-gradient(145deg,#fff,#cfeaff)!important;color:#1c4e88!important;box-shadow:0 3px 9px #07193635!important}
+html.ad-preview #p2-access-dialog .ax-feature svg{width:24px!important;height:24px!important}
+html.ad-preview #p2-access-dialog #p2-access-title{font:800 clamp(18px,4.2vw,24px)/1.1 system-ui!important;letter-spacing:-.025em!important;text-shadow:none!important}
+html.ad-preview #p2-access-dialog #p2-access-title em{color:#f6d57c!important}
+html.ad-preview #p2-access-dialog .ax-head-copy>small{color:#d8e7ff!important;font-size:9px!important}
+html.ad-preview #p2-access-dialog .ax-head-copy p{color:#e2e9f7!important;font-size:11px!important}
+html.ad-preview #p2-access-dialog .ax-close{background:#ffffff20!important;border:1px solid #ffffff70!important;box-shadow:none!important}
+html.ad-preview #p2-access-dialog .ax-tabs{padding:9px 12px!important;gap:7px!important;background:#f5f8fc!important;border-bottom:1px solid #e1e8f2!important}
+html.ad-preview #p2-access-dialog .ax-tabs button{min-height:41px!important;border-radius:11px!important;border:1px solid #d8e3ef!important;background:#fff!important;color:#234366!important;text-shadow:none!important;box-shadow:none!important;font:750 12px/1.15 system-ui!important}
+html.ad-preview #p2-access-dialog .ax-tabs button svg{width:17px!important;height:17px!important;color:#3d6c9e!important}
+html.ad-preview #p2-access-dialog .ax-tabs button[aria-selected=true]{background:#173b73!important;color:#fff!important;border:1px solid #173b73!important;box-shadow:0 2px 7px #183c7330!important}
+html.ad-preview #p2-access-dialog .ax-tabs button[aria-selected=true] svg{color:#fff!important}
+html.ad-preview #p2-access-dialog .ax-panels{padding:13px 15px!important;overflow:visible!important;flex:0 0 auto!important;background:#fff!important}
+html.ad-preview #p2-access-dialog .ax-panel{gap:10px!important;overflow:visible!important;color:#1b365c!important}
+html.ad-preview #p2-access-dialog .ax-label{min-height:16px!important}
+html.ad-preview #p2-access-dialog .ax-label strong{color:#1e477d!important;font:800 10px/1.2 system-ui!important;letter-spacing:.09em!important}
+html.ad-preview #p2-access-dialog .ax-label small{color:#64758a!important;font:550 10px/1.2 system-ui!important}
+html.ad-preview #p2-access-dialog .ax-segments{gap:7px!important}
+html.ad-preview #p2-access-dialog .ax-segments button{border:1px solid #d9e4ef!important;border-radius:12px!important;background:#f5f8fc!important;color:#1b3961!important;box-shadow:none!important}
+html.ad-preview #p2-access-dialog .ax-size button{height:58px!important;padding:6px!important}
+html.ad-preview #p2-access-dialog .ax-size button span{font:850 22px/1 system-ui!important;color:#204c84!important;text-shadow:none!important}
+html.ad-preview #p2-access-dialog .ax-size button b{font:700 10px/1.1 system-ui!important;color:#385678!important}
+html.ad-preview #p2-access-dialog .ax-segments button[aria-pressed=true]{border:2px solid #2b67ae!important;background:#e7f2ff!important;box-shadow:inset 0 0 0 1px #fff!important}
+html.ad-preview #p2-access-dialog .ax-switches{flex:none!important;grid-template-columns:1fr!important;grid-template-rows:none!important;gap:7px!important}
+html.ad-preview #p2-access-dialog .ax-toggle{min-height:53px!important;padding:9px 12px!important;gap:10px!important;border-radius:12px!important;border:1px solid #dce6f0!important;background:#fff!important;box-shadow:none!important}
+html.ad-preview #p2-access-dialog .ax-icon{width:32px!important;height:32px!important;border-radius:9px!important;background:#eaf3fc!important;border:1px solid #d8e8f7!important;color:#2b639b!important;box-shadow:none!important}
+html.ad-preview #p2-access-dialog .ax-icon svg{width:18px!important;height:18px!important}
+html.ad-preview #p2-access-dialog .ax-toggle-copy strong{color:#19385e!important;font:750 12px/1.15 system-ui!important}
+html.ad-preview #p2-access-dialog .ax-toggle-copy small{color:#62778e!important;font:500 10px/1.15 system-ui!important}
+html.ad-preview #p2-access-dialog .ax-track{width:35px!important;height:20px!important;background:#d4dfe9!important;border:0!important;box-shadow:none!important}
+html.ad-preview #p2-access-dialog .ax-track i{width:14px!important;height:14px!important;top:3px!important;left:3px!important}
+html.ad-preview #p2-access-dialog .ax-toggle.is-on{background:#f0f7ff!important;border-color:#8dbbe8!important;box-shadow:none!important}
+html.ad-preview #p2-access-dialog .ax-toggle.is-on .ax-track{background:#1e69b2!important}
+html.ad-preview #p2-access-dialog .ax-toggle.is-on .ax-track i{transform:translateX(15px)!important}
+html.ad-preview #p2-access-dialog .ax-footer{min-height:55px!important;padding:9px 15px!important;background:#f5f8fc!important;border-top:1px solid #e2eaf2!important}
+html.ad-preview #p2-access-dialog .ax-footer button{min-height:36px!important;border-radius:10px!important;box-shadow:none!important;font:750 12px/1 system-ui!important}
+html.ad-preview #p2-access-dialog .ax-reset{background:#fff!important;border:1px solid #cbdbe9!important;color:#24466d!important}
+html.ad-preview #p2-access-dialog .ax-done{background:#1d5da0!important;border:1px solid #1d5da0!important;color:#fff!important;padding-inline:18px!important}
+html.ad-preview #p2-access-dialog .ax-footer>small{color:#60758a!important;font-size:10px!important}
+html.ad-preview #p2-access-dialog .ax-reading-actions button,html.ad-preview #p2-access-dialog .ax-support-cards article{border:1px solid #dbe6f1!important;background:#f6f9fd!important;color:#1e3b63!important;box-shadow:none!important}
+html.ad-preview #p2-access-dialog .ax-reading-actions strong,html.ad-preview #p2-access-dialog .ax-support-cards strong{color:#19395f!important}
+html.ad-preview #p2-access-dialog .ax-reading-actions small,html.ad-preview #p2-access-dialog .ax-support-cards small{color:#5e728a!important}
+html.ad-preview #p2-access-dialog .ax-voice-label{color:#1d3e65!important}
+html.ad-preview #p2-access-dialog .ax-voice-select{background:#fff!important;color:#183c66!important;border:1px solid #cadbea!important;box-shadow:none!important}
+html.ad-preview #p2-access-dialog .ax-support-note{background:#f2f7fd!important;color:#315271!important;border:1px solid #dce6f0!important}
+html.ad-preview #p2-access-dialog .ax-support-note b{color:#1e426b!important}
+html.ad-preview #p2-access-dialog .ax-support-cards button{background:#1e5e9e!important;border:0!important;box-shadow:none!important}
+html.ad-preview #p2-access-dialog .ax-stop{box-shadow:none!important}
+@media(max-width:440px){html.ad-preview #p2-access-dialog.p2-dialog{width:calc(100vw - 18px)!important;max-height:calc(100dvh - 18px)!important;border-radius:17px!important}html.ad-preview #p2-access-dialog .ax-shell{max-height:calc(100dvh - 20px)!important}html.ad-preview #p2-access-dialog .ax-head{padding:11px 12px!important}html.ad-preview #p2-access-dialog .ax-panels{padding:10px 12px!important}html.ad-preview #p2-access-dialog .ax-tabs{padding:8px 10px!important}html.ad-preview #p2-access-dialog .ax-toggle{min-height:48px!important;padding:7px 9px!important}html.ad-preview #p2-access-dialog .ax-footer{padding:8px 10px!important}}
+@media(max-height:740px){html.ad-preview #p2-access-dialog .ax-head{min-height:62px!important}html.ad-preview #p2-access-dialog .ax-size button{height:49px!important}html.ad-preview #p2-access-dialog .ax-toggle{min-height:44px!important}html.ad-preview #p2-access-dialog .ax-panels{padding-block:8px!important;gap:6px!important}}
