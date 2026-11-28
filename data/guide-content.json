@@ -924,7 +924,7 @@
     },
     {
       "name": "St. Elizabeth Infirmary",
-      "where": "St. Elizabeth (confirm admission location), Jamaica",
+      "where": "Contact parish Poor Relief to confirm current location following hurricane restoration or relocation work.",
       "bring": "Ask facility or parish Poor Relief Department about admission and documentation.",
       "process": "Contact parish Poor Relief Department to confirm access and availability. Officially documented facility; current hours, admission, capacity and contact details are not independently confirmed. Contact Poor Relief before travel.",
       "support": "Residential care for people unable to care for themselves. Officially documented facility; current hours, admission, capacity and contact details are not independently confirmed. Contact Poor Relief before travel."
@@ -1509,6 +1509,167 @@
       "bring": "Confirm required documents and applicable fees directly.",
       "process": "Request information or assessment from the provider. No admission or benefit is guaranteed.",
       "support": "Addition of father's particulars; documented provider service. Confirm current access and requirements."
+    },
+    {
+      "name": "St. Mary Infirmary",
+      "where": "St. Mary — Contact Local Government / Poor Relief to confirm current service location.",
+      "bring": "Confirm documentation with provider.",
+      "process": "Contact provider for assessment and current access; do not travel without confirming availability.",
+      "support": "Residential institutional care; admission through Poor Relief assessment."
+    },
+    {
+      "name": "St. Ann Infirmary",
+      "where": "Contact parish Poor Relief to confirm current location following hurricane restoration or relocation work.",
+      "bring": "Confirm documentation with provider.",
+      "process": "Contact provider for assessment and current access; do not travel without confirming availability.",
+      "support": "Residential institutional care; admission through Poor Relief assessment. Ministry reported restoration or relocation work in June 2026; confirm current site before travel."
+    },
+    {
+      "name": "Trelawny Infirmary",
+      "where": "Contact parish Poor Relief to confirm current location following hurricane restoration or relocation work.",
+      "bring": "Confirm documentation with provider.",
+      "process": "Contact provider for assessment and current access; do not travel without confirming availability.",
+      "support": "Residential institutional care; admission through Poor Relief assessment. Ministry reported restoration or relocation work in June 2026; confirm current site before travel."
+    },
+    {
+      "name": "St. James Infirmary",
+      "where": "St. James — Contact Local Government / Poor Relief to confirm current service location.",
+      "bring": "Confirm documentation with provider.",
+      "process": "Contact provider for assessment and current access; do not travel without confirming availability.",
+      "support": "Residential institutional care; admission through Poor Relief assessment."
+    },
+    {
+      "name": "Hanover Infirmary",
+      "where": "Contact parish Poor Relief to confirm current location following hurricane restoration or relocation work.",
+      "bring": "Confirm documentation with provider.",
+      "process": "Contact provider for assessment and current access; do not travel without confirming availability.",
+      "support": "Residential institutional care; admission through Poor Relief assessment. Ministry reported restoration or relocation work in June 2026; confirm current site before travel."
+    },
+    {
+      "name": "Westmoreland Infirmary",
+      "where": "Contact parish Poor Relief to confirm current location following hurricane restoration or relocation work.",
+      "bring": "Confirm documentation with provider.",
+      "process": "Contact provider for assessment and current access; do not travel without confirming availability.",
+      "support": "Residential institutional care; admission through Poor Relief assessment. Ministry reported restoration or relocation work in June 2026; confirm current site before travel."
+    },
+    {
+      "name": "Manchester Infirmary",
+      "where": "Manchester — Contact Local Government / Poor Relief to confirm current service location.",
+      "bring": "Confirm documentation with provider.",
+      "process": "Contact provider for assessment and current access; do not travel without confirming availability.",
+      "support": "Residential institutional care; admission through Poor Relief assessment."
+    },
+    {
+      "name": "Clarendon Infirmary",
+      "where": "Clarendon — Contact Local Government / Poor Relief to confirm current service location.",
+      "bring": "Confirm documentation with provider.",
+      "process": "Contact provider for assessment and current access; do not travel without confirming availability.",
+      "support": "Residential institutional care; admission through Poor Relief assessment."
+    },
+    {
+      "name": "Spanish Town Infirmary",
+      "where": "St. Catherine — Contact Local Government / Poor Relief to confirm current service location.",
+      "bring": "Confirm documentation with provider.",
+      "process": "Contact provider for assessment and current access; do not travel without confirming availability.",
+      "support": "Residential institutional care; admission through Poor Relief assessment."
+    },
+    {
+      "name": "Vineyard Town Golden Age Home",
+      "where": "St. Andrew — Contact Local Government / Poor Relief to confirm current service location.",
+      "bring": "Confirm documentation with provider.",
+      "process": "Contact provider for assessment and current access; do not travel without confirming availability.",
+      "support": "Government-listed residential care facility; confirm admission and availability."
+    },
+    {
+      "name": "Denham Town Golden Age Home",
+      "where": "Kingston — Contact Local Government / Poor Relief to confirm current service location.",
+      "bring": "Confirm documentation with provider.",
+      "process": "Contact provider for assessment and current access; do not travel without confirming availability.",
+      "support": "Government-listed residential care facility; confirm admission and availability."
+    },
+    {
+      "name": "Food For The Poor – Mobility aid",
+      "where": "Contact Food For The Poor Jamaica to confirm current service location.",
+      "bring": "Confirm documentation with provider.",
+      "process": "Contact provider for assessment and current access; do not travel without confirming availability.",
+      "support": "Mobility aid is a published charitable activity, not a guaranteed individual entitlement."
+    },
+    {
+      "name": "Food For The Poor – Disaster relief",
+      "where": "Contact Food For The Poor Jamaica to confirm current service location.",
+      "bring": "Confirm documentation with provider.",
+      "process": "Contact provider for assessment and current access; do not travel without confirming availability.",
+      "support": "Disaster relief is a published charitable activity, not a guaranteed individual entitlement."
+    },
+    {
+      "name": "Food For The Poor – Poultry project",
+      "where": "Contact Food For The Poor Jamaica to confirm current service location.",
+      "bring": "Confirm documentation with provider.",
+      "process": "Contact provider for assessment and current access; do not travel without confirming availability.",
+      "support": "Poultry project is a published charitable activity, not a guaranteed individual entitlement."
+    },
+    {
+      "name": "Food For The Poor – Child education support",
+      "where": "Contact Food For The Poor Jamaica to confirm current service location.",
+      "bring": "Confirm documentation with provider.",
+      "process": "Contact provider for assessment and current access; do not travel without confirming availability.",
+      "support": "Child education support is a published charitable activity, not a guaranteed individual entitlement."
+    },
+    {
+      "name": "Food For The Poor – Prison ministry",
+      "where": "Contact Food For The Poor Jamaica to confirm current service location.",
+      "bring": "Confirm documentation with provider.",
+      "process": "Contact provider for assessment and current access; do not travel without confirming availability.",
+      "support": "Prison ministry is a published charitable activity, not a guaranteed individual entitlement."
+    },
+    {
+      "name": "JAID educational placement – Kingston and St. Andrew",
+      "where": "Kingston and St. Andrew — Contact Jamaican Association on Intellectual Disabilities to confirm current service location.",
+      "bring": "Confirm documentation with provider.",
+      "process": "Contact provider for assessment and current access; do not travel without confirming availability.",
+      "support": "Government directory lists special education provision for children with intellectual disabilities; confirm current placement, school and fees."
+    },
+    {
+      "name": "JAID educational placement – St. Catherine",
+      "where": "St. Catherine — Contact Jamaican Association on Intellectual Disabilities to confirm current service location.",
+      "bring": "Confirm documentation with provider.",
+      "process": "Contact provider for assessment and current access; do not travel without confirming availability.",
+      "support": "Government directory lists special education provision for children with intellectual disabilities; confirm current placement, school and fees."
+    },
+    {
+      "name": "JAID educational placement – St. Ann",
+      "where": "St. Ann — Contact Jamaican Association on Intellectual Disabilities to confirm current service location.",
+      "bring": "Confirm documentation with provider.",
+      "process": "Contact provider for assessment and current access; do not travel without confirming availability.",
+      "support": "Government directory lists special education provision for children with intellectual disabilities; confirm current placement, school and fees."
+    },
+    {
+      "name": "JAID educational placement – Westmoreland",
+      "where": "Westmoreland — Contact Jamaican Association on Intellectual Disabilities to confirm current service location.",
+      "bring": "Confirm documentation with provider.",
+      "process": "Contact provider for assessment and current access; do not travel without confirming availability.",
+      "support": "Government directory lists special education provision for children with intellectual disabilities; confirm current placement, school and fees."
+    },
+    {
+      "name": "JAID educational placement – Manchester",
+      "where": "Manchester — Contact Jamaican Association on Intellectual Disabilities to confirm current service location.",
+      "bring": "Confirm documentation with provider.",
+      "process": "Contact provider for assessment and current access; do not travel without confirming availability.",
+      "support": "Government directory lists special education provision for children with intellectual disabilities; confirm current placement, school and fees."
+    },
+    {
+      "name": "Jamaica Autism Support Association – family advocacy and workshops",
+      "where": "Contact Jamaica Autism Support Association to confirm current service location.",
+      "bring": "Confirm documentation with provider.",
+      "process": "Contact provider for assessment and current access; do not travel without confirming availability.",
+      "support": "Autism advocacy and parent/professional education; advocacy goals are not funded benefits."
+    },
+    {
+      "name": "St. James Poor Relief – assistive devices",
+      "where": "St. James — Contact St. James Municipal Corporation to confirm current service location.",
+      "bring": "Confirm documentation with provider.",
+      "process": "Contact provider for assessment and current access; do not travel without confirming availability.",
+      "support": "Published assistance with mobility devices for assessed clients; confirm stock and eligibility."
     }
   ],
   "categories": [
@@ -2825,6 +2986,144 @@
       "programme": "National Identification and Registration Authority – Addition of father's particulars",
       "benefits": "Addition of father's particulars; documented provider service. Confirm current access and requirements.",
       "target": "Persons requiring civil records or corrections"
+    },
+    {
+      "category": "Senior Support",
+      "programme": "St. Mary Infirmary",
+      "benefits": "Residential institutional care; admission through Poor Relief assessment.",
+      "target": "Persons needing this support, subject to provider assessment"
+    },
+    {
+      "category": "Senior Support",
+      "programme": "St. Ann Infirmary",
+      "benefits": "Residential institutional care; admission through Poor Relief assessment. Ministry reported restoration or relocation work in June 2026; confirm current site before travel.",
+      "target": "Persons needing this support, subject to provider assessment"
+    },
+    {
+      "category": "Senior Support",
+      "programme": "Trelawny Infirmary",
+      "benefits": "Residential institutional care; admission through Poor Relief assessment. Ministry reported restoration or relocation work in June 2026; confirm current site before travel.",
+      "target": "Persons needing this support, subject to provider assessment"
+    },
+    {
+      "category": "Senior Support",
+      "programme": "St. James Infirmary",
+      "benefits": "Residential institutional care; admission through Poor Relief assessment.",
+      "target": "Persons needing this support, subject to provider assessment"
+    },
+    {
+      "category": "Senior Support",
+      "programme": "Hanover Infirmary",
+      "benefits": "Residential institutional care; admission through Poor Relief assessment. Ministry reported restoration or relocation work in June 2026; confirm current site before travel.",
+      "target": "Persons needing this support, subject to provider assessment"
+    },
+    {
+      "category": "Senior Support",
+      "programme": "Westmoreland Infirmary",
+      "benefits": "Residential institutional care; admission through Poor Relief assessment. Ministry reported restoration or relocation work in June 2026; confirm current site before travel.",
+      "target": "Persons needing this support, subject to provider assessment"
+    },
+    {
+      "category": "Senior Support",
+      "programme": "Manchester Infirmary",
+      "benefits": "Residential institutional care; admission through Poor Relief assessment.",
+      "target": "Persons needing this support, subject to provider assessment"
+    },
+    {
+      "category": "Senior Support",
+      "programme": "Clarendon Infirmary",
+      "benefits": "Residential institutional care; admission through Poor Relief assessment.",
+      "target": "Persons needing this support, subject to provider assessment"
+    },
+    {
+      "category": "Senior Support",
+      "programme": "Spanish Town Infirmary",
+      "benefits": "Residential institutional care; admission through Poor Relief assessment.",
+      "target": "Persons needing this support, subject to provider assessment"
+    },
+    {
+      "category": "Senior Support",
+      "programme": "Vineyard Town Golden Age Home",
+      "benefits": "Government-listed residential care facility; confirm admission and availability.",
+      "target": "Persons needing this support, subject to provider assessment"
+    },
+    {
+      "category": "Senior Support",
+      "programme": "Denham Town Golden Age Home",
+      "benefits": "Government-listed residential care facility; confirm admission and availability.",
+      "target": "Persons needing this support, subject to provider assessment"
+    },
+    {
+      "category": "Disability Support",
+      "programme": "Food For The Poor – Mobility aid",
+      "benefits": "Mobility aid is a published charitable activity, not a guaranteed individual entitlement.",
+      "target": "Persons needing this support, subject to provider assessment"
+    },
+    {
+      "category": "Disaster & Emergency Relief",
+      "programme": "Food For The Poor – Disaster relief",
+      "benefits": "Disaster relief is a published charitable activity, not a guaranteed individual entitlement.",
+      "target": "Persons needing this support, subject to provider assessment"
+    },
+    {
+      "category": "Empowerment",
+      "programme": "Food For The Poor – Poultry project",
+      "benefits": "Poultry project is a published charitable activity, not a guaranteed individual entitlement.",
+      "target": "Persons needing this support, subject to provider assessment"
+    },
+    {
+      "category": "Education & Youth",
+      "programme": "Food For The Poor – Child education support",
+      "benefits": "Child education support is a published charitable activity, not a guaranteed individual entitlement.",
+      "target": "Persons needing this support, subject to provider assessment"
+    },
+    {
+      "category": "Justice & Safety Support",
+      "programme": "Food For The Poor – Prison ministry",
+      "benefits": "Prison ministry is a published charitable activity, not a guaranteed individual entitlement.",
+      "target": "Persons needing this support, subject to provider assessment"
+    },
+    {
+      "category": "Education & Youth",
+      "programme": "JAID educational placement – Kingston and St. Andrew",
+      "benefits": "Government directory lists special education provision for children with intellectual disabilities; confirm current placement, school and fees.",
+      "target": "Persons needing this support, subject to provider assessment"
+    },
+    {
+      "category": "Education & Youth",
+      "programme": "JAID educational placement – St. Catherine",
+      "benefits": "Government directory lists special education provision for children with intellectual disabilities; confirm current placement, school and fees.",
+      "target": "Persons needing this support, subject to provider assessment"
+    },
+    {
+      "category": "Education & Youth",
+      "programme": "JAID educational placement – St. Ann",
+      "benefits": "Government directory lists special education provision for children with intellectual disabilities; confirm current placement, school and fees.",
+      "target": "Persons needing this support, subject to provider assessment"
+    },
+    {
+      "category": "Education & Youth",
+      "programme": "JAID educational placement – Westmoreland",
+      "benefits": "Government directory lists special education provision for children with intellectual disabilities; confirm current placement, school and fees.",
+      "target": "Persons needing this support, subject to provider assessment"
+    },
+    {
+      "category": "Education & Youth",
+      "programme": "JAID educational placement – Manchester",
+      "benefits": "Government directory lists special education provision for children with intellectual disabilities; confirm current placement, school and fees.",
+      "target": "Persons needing this support, subject to provider assessment"
+    },
+    {
+      "category": "Disability Support",
+      "programme": "Jamaica Autism Support Association – family advocacy and workshops",
+      "benefits": "Autism advocacy and parent/professional education; advocacy goals are not funded benefits.",
+      "target": "Persons needing this support, subject to provider assessment"
+    },
+    {
+      "category": "Disability Support",
+      "programme": "St. James Poor Relief – assistive devices",
+      "benefits": "Published assistance with mobility devices for assessed clients; confirm stock and eligibility.",
+      "target": "Persons needing this support, subject to provider assessment"
     }
   ],
   "documents": [
@@ -6583,7 +6882,8 @@
         "lastVerified": null,
         "sourceUrl": "https://jis.gov.jm/features/st-elizabeth-infirmary-providing-care-and-hope-for-jamaicas-vulnerable/",
         "definitiveEligibilityAllowed": false
-      }
+      },
+      "operationalUpdateSource": "https://www.localgovjamaica.gov.jm/local-government-minister-announces-j600-million-programme-to-relocate-and-rebuild-infirmaries-damaged-by-hurricane-melissa/"
     },
     "JAD Hearing Assessment": {
       "agency": "Jamaica Association for the Deaf",
@@ -8186,6 +8486,447 @@
         "lastVerified": null,
         "definitiveEligibilityAllowed": false
       }
+    },
+    "St. Mary Infirmary": {
+      "agency": "Local Government / Poor Relief",
+      "officialUrl": "https://localauthorities.gov.jm/administration/%E2%80%8Binfirmary-0",
+      "recordType": "facility",
+      "parish": "St. Mary",
+      "sourceType": "Supplementary public source",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Source documented; current operations unconfirmed",
+      "verification": {
+        "existence": "documented in public source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://localauthorities.gov.jm/administration/%E2%80%8Binfirmary-0",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "St. Ann Infirmary": {
+      "agency": "Local Government / Poor Relief",
+      "officialUrl": "https://www.localgovjamaica.gov.jm/wp-content/uploads/2021/02/MLGD-Newsletter-Feb-2021.pdf",
+      "recordType": "facility",
+      "parish": "St. Ann",
+      "sourceType": "Supplementary public source",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Source documented; current operations unconfirmed",
+      "verification": {
+        "existence": "documented in public source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.localgovjamaica.gov.jm/wp-content/uploads/2021/02/MLGD-Newsletter-Feb-2021.pdf",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      },
+      "operationalUpdateSource": "https://www.localgovjamaica.gov.jm/local-government-minister-announces-j600-million-programme-to-relocate-and-rebuild-infirmaries-damaged-by-hurricane-melissa/"
+    },
+    "Trelawny Infirmary": {
+      "agency": "Local Government / Poor Relief",
+      "officialUrl": "https://www.localgovjamaica.gov.jm/wp-content/uploads/2021/02/MLGD-Newsletter-Feb-2021.pdf",
+      "recordType": "facility",
+      "parish": "Trelawny",
+      "sourceType": "Supplementary public source",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Source documented; current operations unconfirmed",
+      "verification": {
+        "existence": "documented in public source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.localgovjamaica.gov.jm/wp-content/uploads/2021/02/MLGD-Newsletter-Feb-2021.pdf",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      },
+      "operationalUpdateSource": "https://www.localgovjamaica.gov.jm/local-government-minister-announces-j600-million-programme-to-relocate-and-rebuild-infirmaries-damaged-by-hurricane-melissa/"
+    },
+    "St. James Infirmary": {
+      "agency": "Local Government / Poor Relief",
+      "officialUrl": "https://www.localgovjamaica.gov.jm/wp-content/uploads/2021/02/MLGD-Newsletter-Feb-2021.pdf",
+      "recordType": "facility",
+      "parish": "St. James",
+      "sourceType": "Supplementary public source",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Source documented; current operations unconfirmed",
+      "verification": {
+        "existence": "documented in public source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.localgovjamaica.gov.jm/wp-content/uploads/2021/02/MLGD-Newsletter-Feb-2021.pdf",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Hanover Infirmary": {
+      "agency": "Local Government / Poor Relief",
+      "officialUrl": "https://www.localgovjamaica.gov.jm/wp-content/uploads/2021/02/MLGD-Newsletter-Feb-2021.pdf",
+      "recordType": "facility",
+      "parish": "Hanover",
+      "sourceType": "Supplementary public source",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Source documented; current operations unconfirmed",
+      "verification": {
+        "existence": "documented in public source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.localgovjamaica.gov.jm/wp-content/uploads/2021/02/MLGD-Newsletter-Feb-2021.pdf",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      },
+      "operationalUpdateSource": "https://www.localgovjamaica.gov.jm/local-government-minister-announces-j600-million-programme-to-relocate-and-rebuild-infirmaries-damaged-by-hurricane-melissa/"
+    },
+    "Westmoreland Infirmary": {
+      "agency": "Local Government / Poor Relief",
+      "officialUrl": "https://www.localgovjamaica.gov.jm/wp-content/uploads/2021/02/MLGD-Newsletter-Feb-2021.pdf",
+      "recordType": "facility",
+      "parish": "Westmoreland",
+      "sourceType": "Supplementary public source",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Source documented; current operations unconfirmed",
+      "verification": {
+        "existence": "documented in public source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.localgovjamaica.gov.jm/wp-content/uploads/2021/02/MLGD-Newsletter-Feb-2021.pdf",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      },
+      "operationalUpdateSource": "https://www.localgovjamaica.gov.jm/local-government-minister-announces-j600-million-programme-to-relocate-and-rebuild-infirmaries-damaged-by-hurricane-melissa/"
+    },
+    "Manchester Infirmary": {
+      "agency": "Local Government / Poor Relief",
+      "officialUrl": "https://www.localgovjamaica.gov.jm/wp-content/uploads/2021/02/MLGD-Newsletter-Feb-2021.pdf",
+      "recordType": "facility",
+      "parish": "Manchester",
+      "sourceType": "Supplementary public source",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Source documented; current operations unconfirmed",
+      "verification": {
+        "existence": "documented in public source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.localgovjamaica.gov.jm/wp-content/uploads/2021/02/MLGD-Newsletter-Feb-2021.pdf",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Clarendon Infirmary": {
+      "agency": "Local Government / Poor Relief",
+      "officialUrl": "https://www.localgovjamaica.gov.jm/wp-content/uploads/2021/02/MLGD-Newsletter-Feb-2021.pdf",
+      "recordType": "facility",
+      "parish": "Clarendon",
+      "sourceType": "Supplementary public source",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Source documented; current operations unconfirmed",
+      "verification": {
+        "existence": "documented in public source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.localgovjamaica.gov.jm/wp-content/uploads/2021/02/MLGD-Newsletter-Feb-2021.pdf",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Spanish Town Infirmary": {
+      "agency": "Local Government / Poor Relief",
+      "officialUrl": "https://localauthorities.gov.jm/administration/%E2%80%8Binfirmary",
+      "recordType": "facility",
+      "parish": "St. Catherine",
+      "sourceType": "Supplementary public source",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Source documented; current operations unconfirmed",
+      "verification": {
+        "existence": "documented in public source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://localauthorities.gov.jm/administration/%E2%80%8Binfirmary",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Vineyard Town Golden Age Home": {
+      "agency": "Local Government / Poor Relief",
+      "officialUrl": "https://www.localgovjamaica.gov.jm/wp-content/uploads/2024/11/Citizens-Charter.pdf",
+      "recordType": "facility",
+      "parish": "St. Andrew",
+      "sourceType": "Supplementary public source",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Source documented; current operations unconfirmed",
+      "verification": {
+        "existence": "documented in public source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.localgovjamaica.gov.jm/wp-content/uploads/2024/11/Citizens-Charter.pdf",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Denham Town Golden Age Home": {
+      "agency": "Local Government / Poor Relief",
+      "officialUrl": "https://www.localgovjamaica.gov.jm/wp-content/uploads/2024/11/Citizens-Charter.pdf",
+      "recordType": "facility",
+      "parish": "Kingston",
+      "sourceType": "Supplementary public source",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Source documented; current operations unconfirmed",
+      "verification": {
+        "existence": "documented in public source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.localgovjamaica.gov.jm/wp-content/uploads/2024/11/Citizens-Charter.pdf",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Food For The Poor – Mobility aid": {
+      "agency": "Food For The Poor Jamaica",
+      "officialUrl": "https://foodforthepoorja.org/",
+      "recordType": "service-pathway",
+      "parish": null,
+      "sourceType": "Supplementary public source",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Source documented; current operations unconfirmed",
+      "verification": {
+        "existence": "documented in public source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://foodforthepoorja.org/",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Food For The Poor – Disaster relief": {
+      "agency": "Food For The Poor Jamaica",
+      "officialUrl": "https://foodforthepoorja.org/",
+      "recordType": "service-pathway",
+      "parish": null,
+      "sourceType": "Supplementary public source",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Source documented; current operations unconfirmed",
+      "verification": {
+        "existence": "documented in public source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://foodforthepoorja.org/",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Food For The Poor – Poultry project": {
+      "agency": "Food For The Poor Jamaica",
+      "officialUrl": "https://foodforthepoorja.org/",
+      "recordType": "service-pathway",
+      "parish": null,
+      "sourceType": "Supplementary public source",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Source documented; current operations unconfirmed",
+      "verification": {
+        "existence": "documented in public source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://foodforthepoorja.org/",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Food For The Poor – Child education support": {
+      "agency": "Food For The Poor Jamaica",
+      "officialUrl": "https://foodforthepoorja.org/",
+      "recordType": "service-pathway",
+      "parish": null,
+      "sourceType": "Supplementary public source",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Source documented; current operations unconfirmed",
+      "verification": {
+        "existence": "documented in public source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://foodforthepoorja.org/",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Food For The Poor – Prison ministry": {
+      "agency": "Food For The Poor Jamaica",
+      "officialUrl": "https://foodforthepoorja.org/",
+      "recordType": "service-pathway",
+      "parish": null,
+      "sourceType": "Supplementary public source",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Source documented; current operations unconfirmed",
+      "verification": {
+        "existence": "documented in public source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://foodforthepoorja.org/",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "JAID educational placement – Kingston and St. Andrew": {
+      "agency": "Jamaican Association on Intellectual Disabilities",
+      "officialUrl": "https://ecc.gov.jm/html/wp-content/uploads/2022/03/Directory-of-Services-for-Children-Families.pdf-.pdf",
+      "recordType": "service-pathway",
+      "parish": "Kingston and St. Andrew",
+      "sourceType": "Supplementary public source",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Source documented; current operations unconfirmed",
+      "verification": {
+        "existence": "documented in public source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://ecc.gov.jm/html/wp-content/uploads/2022/03/Directory-of-Services-for-Children-Families.pdf-.pdf",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "JAID educational placement – St. Catherine": {
+      "agency": "Jamaican Association on Intellectual Disabilities",
+      "officialUrl": "https://ecc.gov.jm/html/wp-content/uploads/2022/03/Directory-of-Services-for-Children-Families.pdf-.pdf",
+      "recordType": "service-pathway",
+      "parish": "St. Catherine",
+      "sourceType": "Supplementary public source",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Source documented; current operations unconfirmed",
+      "verification": {
+        "existence": "documented in public source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://ecc.gov.jm/html/wp-content/uploads/2022/03/Directory-of-Services-for-Children-Families.pdf-.pdf",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "JAID educational placement – St. Ann": {
+      "agency": "Jamaican Association on Intellectual Disabilities",
+      "officialUrl": "https://ecc.gov.jm/html/wp-content/uploads/2022/03/Directory-of-Services-for-Children-Families.pdf-.pdf",
+      "recordType": "service-pathway",
+      "parish": "St. Ann",
+      "sourceType": "Supplementary public source",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Source documented; current operations unconfirmed",
+      "verification": {
+        "existence": "documented in public source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://ecc.gov.jm/html/wp-content/uploads/2022/03/Directory-of-Services-for-Children-Families.pdf-.pdf",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "JAID educational placement – Westmoreland": {
+      "agency": "Jamaican Association on Intellectual Disabilities",
+      "officialUrl": "https://ecc.gov.jm/html/wp-content/uploads/2022/03/Directory-of-Services-for-Children-Families.pdf-.pdf",
+      "recordType": "service-pathway",
+      "parish": "Westmoreland",
+      "sourceType": "Supplementary public source",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Source documented; current operations unconfirmed",
+      "verification": {
+        "existence": "documented in public source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://ecc.gov.jm/html/wp-content/uploads/2022/03/Directory-of-Services-for-Children-Families.pdf-.pdf",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "JAID educational placement – Manchester": {
+      "agency": "Jamaican Association on Intellectual Disabilities",
+      "officialUrl": "https://ecc.gov.jm/html/wp-content/uploads/2022/03/Directory-of-Services-for-Children-Families.pdf-.pdf",
+      "recordType": "service-pathway",
+      "parish": "Manchester",
+      "sourceType": "Supplementary public source",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Source documented; current operations unconfirmed",
+      "verification": {
+        "existence": "documented in public source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://ecc.gov.jm/html/wp-content/uploads/2022/03/Directory-of-Services-for-Children-Families.pdf-.pdf",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "Jamaica Autism Support Association – family advocacy and workshops": {
+      "agency": "Jamaica Autism Support Association",
+      "officialUrl": "https://www.autismjamaica.org/about-us",
+      "recordType": "service-pathway",
+      "parish": null,
+      "sourceType": "Supplementary public source",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Source documented; current operations unconfirmed",
+      "verification": {
+        "existence": "documented in public source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://www.autismjamaica.org/about-us",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
+    },
+    "St. James Poor Relief – assistive devices": {
+      "agency": "St. James Municipal Corporation",
+      "officialUrl": "https://stjamesmc.gov.jm/outdoor-services",
+      "recordType": "service-pathway",
+      "parish": "St. James",
+      "sourceType": "Supplementary public source",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Source documented; current operations unconfirmed",
+      "verification": {
+        "existence": "documented in public source",
+        "availability": "unverified",
+        "eligibility": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "unverified",
+        "sourceUrl": "https://stjamesmc.gov.jm/outdoor-services",
+        "lastVerified": null,
+        "definitiveEligibilityAllowed": false
+      }
     }
   },
   "quickContacts": [
@@ -8597,9 +9338,9 @@
       "Keep community-level interventions distinct from individual benefits."
     ],
     "coverage": {
-      "profiles": 210,
+      "profiles": 233,
       "manual": 17,
-      "supplementary": 193
+      "supplementary": 216
     }
   }
 }
