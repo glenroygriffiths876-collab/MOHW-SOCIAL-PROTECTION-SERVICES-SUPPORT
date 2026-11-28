@@ -45,7 +45,7 @@ function goServices(tab,mode){
 }
 function trimMenu(){
  const menu=$('#ad-menu');
- if(menu){menu.innerHTML=[['about','Home'],['services','Find services'],['referrals','Make a referral'],['decision','Help me choose'],['manual','Read the manual']].map(([id,label])=>'<button type="button" data-ad-nav="'+id+'">'+label+icon('chevron')+'</button>').join('');}
+ if(menu){menu.innerHTML=[['about','Home'],['decision','Help me choose'],['services','Find services'],['referrals','Make a referral'],['manual','Read the manual']].map(([id,label])=>'<button type="button" data-ad-nav="'+id+'">'+label+icon('chevron')+'</button>').join('');}
  const hd=$('#ad-header .ad-desktop-nav');if(hd){hd.innerHTML=[['about','Home'],['services','Find services'],['referrals','Referrals'],['decision','Decision guide'],['manual','Manual']].map(([id,label])=>'<button type="button" data-ad-nav="'+id+'">'+label+'</button>').join('');}
  // Keep other source views accessible through Find Services but not as competing pages.
  const map={programmes:['programmes','programmes'],categories:['programmes','categories'],contacts:['contacts',null]};
