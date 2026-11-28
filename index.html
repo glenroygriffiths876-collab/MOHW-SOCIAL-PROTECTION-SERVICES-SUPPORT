@@ -135,8 +135,8 @@ function mount(){
 const hero=document.querySelector('#ad-home .ad-hero');if(!hero)return false;
 hero.classList.add('gia-inline-hero');hero.replaceChildren();
 const v=document.createElement('video');v.id='gia-inline-video';v.src='assets/gia-introduction.mp4';v.controls=true;v.playsInline=true;v.preload='auto';v.loop=false;v.setAttribute('aria-label','Gia welcome video');hero.append(v);const cover=document.createElement('button');cover.type='button';cover.className='gia-original-cover';cover.setAttribute('aria-label','Play Gia welcome video');cover.innerHTML='<img class="gia-cover-community" src="assets/about-community.webp" alt=""><img class="gia-cover-portrait" src="assets/gia-avatar.jpg" alt=""><span>Meet <strong>GIA</strong><small>▶ Watch welcome video</small></span>';hero.append(cover);cover.onclick=()=>{v.muted=false;v.currentTime=0;v.play().catch(()=>{});};v.addEventListener('playing',()=>cover.hidden=true);v.addEventListener('ended',()=>cover.hidden=false);
-let seen=false;try{seen=sessionStorage.getItem('gia-inline-welcome-v3')==='1'}catch(e){}
-function playFirst(){if(seen||!['','#about'].includes(location.hash))return;seen=true;try{sessionStorage.setItem('gia-inline-welcome-v3','1')}catch(e){}v.muted=false;v.play().catch(()=>{v.muted=true;v.play().catch(()=>{});const s=document.createElement('button');s.id='gia-inline-sound';s.type='button';s.textContent='Enable sound';s.onclick=()=>{v.muted=false;v.play().catch(()=>{});s.remove()};hero.append(s)});}
+let seen=false;
+function playFirst(){if(seen||!['','#about'].includes(location.hash))return;seen=true;v.muted=false;v.play().catch(()=>{v.muted=true;v.play().catch(()=>{});const s=document.createElement('button');s.id='gia-inline-sound';s.type='button';s.textContent='Enable sound';s.onclick=()=>{v.muted=false;v.play().catch(()=>{});s.remove()};hero.append(s)});}
 v.addEventListener('ended',()=>{v.muted=true;document.getElementById('gia-inline-sound')?.remove()});
 window.addEventListener('hashchange',()=>{if(!['','#about'].includes(location.hash))v.pause();else playFirst()});playFirst();return true;
 }
