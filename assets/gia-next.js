@@ -418,24 +418,9 @@
     return "<form id=\"gia2SearchForm\" class=\"gia2-inputbar\"><label class=\"gia2-visually-hidden\" for=\"gia2Question\">Ask GIA</label><input id=\"gia2Question\" name=\"question\" autocomplete=\"off\" maxlength=\"320\" placeholder=\"e.g. Help with transport to clinic\" value=\""+esc(state.question)+"\" required>"+voiceButton()+"<button class=\"gia2-send\" type=\"submit\" aria-label=\"Find support\">➜</button></form>";
   }
   function viewHome(){
-    const worker=roleIsProvider();
-    const intro=worker?"Describe the support needed. I'll help you find a referral route.":"Describe what you need. I'll help you find a place to start.";
-    const parish=parishChosen()?"Guidance for "+esc(state.parish):"Choose a parish above for local office information";
-    return "<div class=\"gia2-simple-welcome\"><span class=\"gia2-simple-eyebrow\">YOUR GUIDE TO SUPPORT</span><h3>Hi, I'm GIA.</h3><p>"+intro+"</p></div>"+
-      searchForm()+
-      "<p class=\"gia2-simple-privacy\">Please don't include names, contact details or private medical information.</p>"+
-      "<div class=\"gia2-simple-label\">Common needs</div><div class=\"gia2-simple-topics\">"+
-      [["food","Food & essentials"],["health","Medication & care"],["income","Financial support"],["housing","Housing"],["family","Family support"],["jobs","Jobs & skills"]].map(([id,label])=>pill("topic:"+id,label,"gia2-simple-topic")).join("")+
-      "</div>"+
-      "<div class=\"gia2-simple-secondary\"><span>"+parish+"</span><div>"+
-      pill("role:"+(worker?"client":"provider"),worker?"Switch to personal support":"I'm a health or social-service worker")+
-      "</div></div>"+
-      "<details class=\"gia2-simple-more\"><summary>More ways GIA can help</summary><div class=\"gia2-simple-tools\">"+
-      pill("refer",worker?"Prepare a referral":"Prepare visit details")+
-      pill("documents","What documents are needed?")+
-      pill("follow","Plan the next step")+
-      "</div></details>";
+    return '<div class="gia2-simple-welcome"><h3>Hi, I’m Gia.</h3><p>How can I help you today?</p></div><div id="giaConversation" aria-live="polite">'+aiHistory.map(m=>'<div class="'+(m.role==='user'?'gia2-user-bubble':'gia2-local-panel')+'" style="white-space:pre-wrap">'+esc(m.content)+'</div>').join('')+'</div>'+searchForm()+'<p class="gia2-simple-privacy">General questions are sent to Gia’s cloud AI when you enable it. Please do not share identifying or private medical information.</p><label><input type="checkbox" id="giaCloudConsent" '+(cloudConsent?'checked':'')+'> Enable AI conversation</label><details><summary>Directory and referral tools</summary>'+pill("refer","Prepare a referral")+pill("documents","Documents")+pill("follow","Next steps")+'</details>';
   }
+  let cloudConsent=false;
   function viewResults(){
     if(state.results.length===0){
       return say("<strong>I haven’t found a clear starting point yet.</strong><p>Could you describe the main need another way? I can also show you broad categories or help you contact a medical social worker.</p>")+
@@ -704,7 +689,7 @@
   function render(){
     const content=$("#gia2Content");
     if(!content)return;
-    const context=$("#gia2ContextMount");if(context)context.innerHTML=contextBar();
+    const context=$("#gia2ContextMount");if(context)context.innerHTML=state.view==="home"?"":contextBar();
     const names={home:"Here to help",results:"Suggested support",service:"Service details",documents:"Document guidance",refer:"Prepare a referral",follow:"Follow-up",urgent:"Urgent support",barrier:"Solve a referral problem",roadmap:"Plan next steps"};
     $("#gia2Step").textContent=names[state.view]||"Here to help";
     content.innerHTML=state.view==="home"?viewHome():state.view==="results"?viewResults():state.view==="service"?viewService():
@@ -741,7 +726,7 @@
     panel.className="gia2-local-panel";
     const heading=document.createElement("h4");heading.textContent="Gia · AI conversation";
     const answer=document.createElement("p");answer.setAttribute("role","status");answer.textContent="Thinking…";answer.style.whiteSpace="pre-wrap";
-    panel.append(heading,answer);mount.prepend(panel);
+    panel.append(heading,answer);const conversation=$("#giaConversation");if(conversation){const user=document.createElement("div");user.className="gia2-user-bubble";user.textContent=question;conversation.append(user,panel);}else mount.prepend(panel);
     try{
       const response=await fetch("https://universal-gia-staging.glenroygriffiths876.workers.dev/v1/social-protection",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:question,history:aiHistory.slice(-8)}),signal:AbortSignal.timeout(20000)});
       const data=await response.json();
@@ -749,7 +734,7 @@
       if(epoch!==aiEpoch||!panel.isConnected)return;
       answer.textContent=data.reply;
       aiHistory.push({role:"user",content:question},{role:"assistant",content:data.reply});if(aiHistory.length>8)aiHistory.splice(0,aiHistory.length-8);
-    }catch{if(panel.isConnected)answer.textContent="AI conversation is currently unavailable. You can still use the directory guidance below.";}
+    }catch{if(panel.isConnected){answer.textContent="AI conversation is currently unavailable. ";const fallback=document.createElement("button");fallback.type="button";fallback.textContent="Search the local guide";fallback.onclick=()=>handleAsk(question);panel.append(fallback);}}
   }
   function handleAsk(raw){
     const question=String(raw||"").trim();
@@ -985,11 +970,13 @@
       e.preventDefault();
       const question=$("#gia2Question")?.value.trim()||"";
       if(!question)return;
-      preserveInputs();handleAsk(question);
-      if(!DANGER.test(question)&&!/^(?:start again|reset|new request)$/i.test(question)&&!["refer","follow","urgent"].includes(state.view)){
-        const consent=window.confirm("Send this general question to Gia's cloud AI? Do not include names, phone numbers, addresses, TRN, medical records or other identifying information. Cancel to use the local guide only.");
-        if(consent&&!/\d{7,}|\b[\w.+-]+@[\w.-]+\.[a-z]{2,}\b|(?:\d[\s().-]*){9,}/i.test(question))askCloud(question);
-      }
+      preserveInputs();
+      if(DANGER.test(question)){handleAsk(question);return;}
+      if(/^(?:start again|reset|new request)$/i.test(question)){aiHistory.length=0;handleAsk(question);return;}
+      if(state.view==="home"&&$("#giaCloudConsent"))cloudConsent=$("#giaCloudConsent").checked;
+      if(!cloudConsent||/\d{7,}|\b[\w.+-]+@[\w.-]+\.[a-z]{2,}\b|(?:\d[\s().-]*){9,}/i.test(question)){handleAsk(question);return;}
+      state.view="home";render();askCloud(question);
+
     });
     dialog.addEventListener("click",e=>{
       const service=e.target.closest("[data-service]");
