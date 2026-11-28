@@ -305,7 +305,7 @@ function renderMapResults(){
   const q=norm($('#serviceSearch').value).trim();
   const list=serviceCatalog.filter(s=>{
     const cats=s.categories||[];
-    const categoryGroups={'Health':['Health Support'],'Cash & benefits':['Cash Assistance','Empowerment'],'Housing':['Housing Support'],'Skills & education':['Education & Youth','Skill Building'],'Family & youth':['Family & Children Youth Support','Senior Support','Child Protection and Family Support'],'Wellbeing & safety':['Psychosocial Support','Justice & Safety Support','Gender-Based Violence & Safety','Disaster & Emergency Relief'],'Community & other':['Other support']};
+    const categoryGroups={'Health':['Health Support','Healthcare','Disability Support'],'Cash & benefits':['Cash Assistance','Empowerment'],'Housing':['Housing Support'],'Skills & education':['Education & Youth','Skill Building','Education','Employment and Training'],'Family & youth':['Family & Children Youth Support','Senior Support','Child Protection and Family Support'],'Wellbeing & safety':['Psychosocial Support','Justice & Safety Support','Gender-Based Violence & Safety','Disaster & Emergency Relief','Disaster Relief'],'Community & other':['Other support']};
     const categoryOk=mapFilter==='all'||(mapFilter==='Agency contacts'?s.contacts.length>0:(categoryGroups[mapFilter]||[mapFilter]).some(c=>cats.includes(c)));
     const searchable=[s.name,s.support,s.where,s.bring,s.process,s.agency,...s.aliases,...cats,...s.categoryRows.flatMap(r=>[r.programme,r.benefits,r.target]),...s.contacts.flatMap(c=>[c.agency,c.details])].join(' ');
     return categoryOk&&(!q||norm(searchable).includes(q));
@@ -325,15 +325,16 @@ function openService(index){
   $('#serviceModalEyebrow').textContent=(s.kind==='agency'?'Agency contact':'Service profile')+' · '+(s.categories||[]).join(' · ');
   $('#serviceModalTitle').textContent=s.name;
   const parts=[];
+  parts.push('<section class="profile-note"><strong>Verification status:</strong> '+esc(meta.verificationStatus||'Not independently verified')+'<p>Confirm eligibility, availability and contact details with the agency before applying or referring. '+esc(meta.approvalStatus||'')+'</p></section>');
   parts.push('<div class="service-profile-intro"><div class="service-logo profile-logo">'+logoMarkup(s)+'</div><div><p>'+esc(s.support||'Contact this agency to ask which service fits your situation.')+'</p><small>'+esc(s.agency)+'</small></div></div>');
-  if(s.categoryRows.length){parts.push('<section><h3>Support and intended groups</h3>'+s.categoryRows.map(r=>'<div class="profile-fact"><b>'+esc(r.programme)+' · '+esc(r.category)+'</b><p>'+esc(r.benefits)+'</p><p><strong>Guide-listed target group:</strong> '+esc(r.target)+'</p></div>').join('')+'</section>')}
+  if(s.categoryRows.length){parts.push('<section><h3>Support and intended groups</h3>'+s.categoryRows.map(r=>'<div class="profile-fact"><b>'+esc(r.programme)+' · '+esc(r.category)+'</b><p>'+esc(r.benefits)+'</p><p><strong>Listed target group (not confirmed eligibility):</strong> '+esc(r.target)+'</p></div>').join('')+'</section>')}
   parts.push('<section class="profile-grid"><div><h3>Where to start</h3><p>'+esc(s.where||'The guide does not specify a starting location for this listing. Confirm the correct office with the responsible agency.')+'</p></div><div><h3>What to bring</h3><p>'+esc(s.bring||'The guide does not specify documents for this listing. Confirm requirements with the responsible agency.')+'</p></div><div><h3>Referral or application steps</h3><p>'+esc(s.process||'The guide does not list application steps for this entry. Contact the agency to confirm the current process.')+'</p></div></section>');
   const contacts=s.contacts||[];
   if(contacts.length){parts.push('<section><h3>Agency contacts from the guide</h3><div class="profile-contact-grid">'+contacts.map(c=>'<article class="profile-contact"><b>'+esc(c.agency)+'</b>'+contactMarkup(c)+'<a class="map-link" href="'+esc(mapsSearchUrl(c.agency))+'" target="_blank" rel="noopener noreferrer">Find this agency on Google Maps ↗</a><small>Contact details transcribed from the guide; confirm they are current.</small></article>').join('')+'</div></section>')}
   else parts.push('<section><h3>Agency contact</h3><p>No matching agency contact is listed in the guide for this entry. Use the official agency link or Google Maps search to confirm how to reach the service.</p></section>');
   const links=[];
   links.push('<button class="btn primary" type="button" data-gia-referral="'+esc(s.name)+'">Prepare referral with GIA ↗</button>');
-  if(meta.officialUrl)links.push('<a class="btn ghost" href="'+esc(meta.officialUrl)+'" target="_blank" rel="noopener noreferrer">Official agency website ↗</a>');
+  if(meta.officialUrl)links.push('<a class="btn ghost" href="'+esc(meta.officialUrl)+'" target="_blank" rel="noopener noreferrer">Source / agency website ↗</a>');
   if(meta.serviceUrl)links.push('<a class="btn ghost" href="'+esc(meta.serviceUrl)+'" target="_blank" rel="noopener noreferrer">'+esc(meta.serviceLinkLabel||'Related official page')+' ↗</a>');
   links.push('<a class="btn ghost" href="'+esc(mapsSearchUrl(s.agency==='Agency not specified in the guide'?s.name:s.agency))+'" target="_blank" rel="noopener noreferrer">Open Google Maps directory ↗</a>');
   if(logo?.source)links.push('<a class="source-link" href="'+esc(logo.source)+'" target="_blank" rel="noopener noreferrer">Logo source ↗</a>');
