@@ -13,7 +13,31 @@
 <link rel="stylesheet" href="assets/manual-reader.css?v=3-responsive">
 <link rel="stylesheet" href="assets/phase2.css?v=5-responsive">
 
-<link rel="stylesheet" href="assets/referrals-premium-v2.css?v=1"><link rel="stylesheet" href="assets/accessibility-premium.css?v=2-landscape-fit"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"><link rel="stylesheet" href="assets/approved-design.css?v=visible-bc-13"><link rel="stylesheet" href="assets/clean-interiors.css?v=compact-mobile-menu-3"><link rel="stylesheet" href="assets/referral-generator-preview.css?v=1"><link rel="stylesheet" href="assets/accessibility-clean-preview.css?v=1"><link rel="stylesheet" href="assets/gia-clean-preview.css?v=1"><link rel="stylesheet" href="assets/referral-documents-enhanced.css?v=service-picker-2"><link rel="stylesheet" href="assets/deaf-access-preview.css?v=isolated-modal-11"></head>
+<link rel="stylesheet" href="assets/referrals-premium-v2.css?v=1"><link rel="stylesheet" href="assets/accessibility-premium.css?v=2-landscape-fit"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"><link rel="stylesheet" href="assets/approved-design.css?v=visible-bc-13"><link rel="stylesheet" href="assets/clean-interiors.css?v=compact-mobile-menu-3"><link rel="stylesheet" href="assets/referral-generator-preview.css?v=1"><link rel="stylesheet" href="assets/accessibility-clean-preview.css?v=1"><link rel="stylesheet" href="assets/gia-clean-preview.css?v=1"><link rel="stylesheet" href="assets/referral-documents-enhanced.css?v=service-picker-2"><link rel="stylesheet" href="assets/deaf-access-preview.css?v=isolated-modal-11"><style id="accessibility-compact-final">
+html.ad-preview #p2-access-dialog.p2-dialog{inset:0!important;margin:auto!important;width:min(560px,calc(100vw - 24px))!important;height:fit-content!important;min-height:0!important;max-height:calc(100dvh - 24px)!important;overflow:hidden!important}
+html.ad-preview #p2-access-dialog .ax-shell{height:auto!important;min-height:0!important;max-height:calc(100dvh - 28px)!important;overflow:hidden!important}
+html.ad-preview #p2-access-dialog .ax-panels{flex:0 1 auto!important;min-height:0!important;overflow:auto!important;display:block!important;padding:12px 16px!important}
+html.ad-preview #p2-access-dialog .ax-panel[hidden]{display:none!important}
+html.ad-preview #p2-access-dialog .ax-panel:not([hidden]){display:flex!important;gap:8px!important}
+html.ad-preview #p2-access-dialog .ax-head-copy p,html.ad-preview #p2-access-dialog .ax-label small,html.ad-preview #p2-access-dialog .ax-toggle-copy small{display:none!important}
+html.ad-preview #p2-access-dialog .ax-head{min-height:64px!important;background:linear-gradient(125deg,#102650,#174b91)!important}
+html.ad-preview #p2-access-dialog .ax-tabs button,html.ad-preview #p2-access-dialog .ax-footer button,html.ad-preview #p2-access-dialog .ax-close{min-height:44px!important}
+html.ad-preview #p2-access-dialog .ax-switches{grid-template-columns:1fr!important;grid-template-rows:auto!important;gap:4px!important}
+html.ad-preview #p2-access-dialog .ax-toggle{min-height:46px!important;padding:6px 10px!important;border-radius:10px!important}
+html.ad-preview #p2-access-dialog .ax-toggle-copy strong{font-size:14px!important}
+html.ad-preview #p2-access-dialog .ax-size button{height:60px!important}
+html.ad-preview #p2-access-dialog .ax-footer{min-height:0!important;padding:8px 12px!important}
+html.ad-preview #p2-access-dialog .ax-done{background:#f5cc55!important;color:#102650!important;border-color:#d6a82e!important}
+html.ad-preview #p2-access-dialog .ax-support-cards{flex:none!important}
+html.ad-preview #p2-access-dialog .ax-support-cards button{min-height:44px!important}
+html.ad-preview #p2-access-dialog .ax-stop{min-height:44px!important}
+html.ad-preview #p2-access-dialog .ax-panel[data-ax-panel="support"] .deaf-access{margin:4px 0!important;padding:10px!important}
+html.ad-preview #p2-access-dialog .ax-toggle:focus-within,html.ad-preview #p2-access-dialog button:focus-visible{outline:3px solid #2364b0!important;outline-offset:2px!important}
+html.ad-preview.p2-contrast #p2-access-dialog :is(.ax-head,.ax-tabs,.ax-footer,.ax-toggle,button,select){background:#fff!important;color:#111!important;border-color:#111!important}
+html.ad-preview.p2-contrast #p2-access-dialog :is(h2,h2 em,small,strong,b,span){color:#111!important}
+html.ad-preview.p2-contrast #p2-access-dialog .ax-close{color:#111!important}
+@media(max-height:540px){html.ad-preview #p2-access-dialog .ax-switches{grid-template-columns:repeat(2,minmax(0,1fr))!important}html.ad-preview #p2-access-dialog .ax-head{min-height:50px!important}html.ad-preview #p2-access-dialog .ax-size button{height:44px!important}}
+</style></head>
 <body>
 <!-- Design preview starts immediately without a blocking loading screen. -->
 <a class="skip" href="#main">Skip to content</a>
