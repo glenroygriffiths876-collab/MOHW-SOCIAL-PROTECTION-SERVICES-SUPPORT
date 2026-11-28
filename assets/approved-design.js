@@ -35,7 +35,7 @@ const threeD={
 function nav(view){if(!views.includes(view))return;const b=$('#mainNav button[data-nav="'+view+'"]');if(b)b.click();else if(typeof window.showView==='function')window.showView(view);else{$('.view').forEach(x=>x.classList.toggle('active',x.id==='view-'+view));location.hash=view;}$('#ad-menu').hidden=true;window.scrollTo({top:0,behavior:'instant'});state();if(view==='services')setTimeout(loadMap,140);}
 function action(type){if(type==='gia'){if(window.MOHWGIA?.open)window.MOHWGIA.open();else $('#gia2Launcher')?.click();return;}
  if(type==='access'){$('[data-p2="access"]')?.click();return;}
- if(type==='video'){const d=$('#ad-video-dialog');if(!d.open)d.showModal();const v=$('#ad-video');v?.play()?.catch(()=>{});return;}
+ if(type==='video'){const v=$('#gia-inline-video');v?.scrollIntoView({block:'center'});v?.play()?.catch(()=>{});return;}
  if(type==='download'){nav('manual');return;}
  const native=$('#guideActionDock [data-action="'+(type==='report'?'issue':type)+'"]');native?.click();
 }
@@ -49,10 +49,7 @@ function mountHeader(){
 function mountHome(){
  const v=$('#view-about');const el=document.createElement('section');el.id='ad-home';el.className='ad-home';
  el.innerHTML='<div class="ad-home-wrap"><section class="ad-hero" aria-label="Meet GIA">'+
- '<img class="ad-hero-photo" src="assets/about-community.webp" alt="Jamaican family at a welcoming community support service">'+
- '<div class="ad-hero-shade"></div><div class="ad-hero-copy"><span>Meet</span><strong>GIA</strong><button type="button" data-ad-action="video" class="ad-watch">'+svg('play')+' Watch welcome video</button></div>'+
- '<img class="ad-gia-portrait" src="assets/gia-avatar.jpg" alt="GIA, virtual guide">'+
- '<div class="ad-hero-ribbon" aria-hidden="true"><i></i><i></i><i></i></div></section>'+
+ '<video id="gia-inline-video" src="assets/gia-introduction.mp4" playsinline controls preload="auto" aria-label="Gia welcome video" style="display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain"></video></section>'+ 
  '<figure class="ad-home-community"><img src="assets/about-community.webp" alt="Community members connecting with social support in Jamaica" loading="lazy"></figure>'+ 
  '<div class="ad-home-intro"><h1>Find the support you need.</h1><span class="ad-underline" aria-hidden="true"></span></div>'+
  '<div class="ad-home-tiles" role="navigation" aria-label="Choose what to do">'+
@@ -62,7 +59,7 @@ function mountHome(){
  '<button type="button" class="ad-home-tile ad-rose" data-ad-nav="manual">'+threeD.manual+'<strong>Read the manual</strong></button>'+
  '</div><div class="ad-more"><button type="button" data-ad-nav="programmes">Programme directory ↗</button><button type="button" data-ad-nav="categories">Categories ↗</button><button type="button" data-ad-nav="contacts">Agency contacts ↗</button></div>'+
  '<p class="ad-home-note">Stakeholder design preview. Agency information and eligibility requirements must be confirmed before use.</p></div>';
- v.prepend(el);
+ v.prepend(el);const hero=el.querySelector(".ad-hero");hero.style.cssText="display:block!important;height:auto!important;min-height:0!important;aspect-ratio:auto!important;padding:0!important";
 }
 function mountDock(){
  const d=document.createElement('nav');d.id='ad-action-dock';d.className='ad-action-dock';d.setAttribute('aria-label','Guide quick actions');
