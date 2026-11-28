@@ -578,6 +578,209 @@
       "bring": "Ask provider about required documents before travelling.",
       "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
       "support": "Service navigation for families seeking local child development, disability, counselling or family support providers. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "NHF Disability Double Subsidy",
+      "where": "NHF — https://www.nhf.org.jm/persons-living-with-disabilities/",
+      "bring": "JCPD ID or interim disability certificate; new applicants need NHF form with doctor certification except screening-only applications.",
+      "process": "Visit NHFCard centre to enrol or update existing card. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Double standard subsidy for registered persons with disabilities on covered drugs, supplies and tests. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "JCPD Scholarships",
+      "where": "JCPD — https://my.jcpd.gov.jm/benefits",
+      "bring": "Confirm scholarship cycle and documents.",
+      "process": "Use JCPD benefits portal. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Education scholarships from pre-primary through tertiary level. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "JCPD Verified Official Letters",
+      "where": "JCPD — https://my.jcpd.gov.jm/benefits",
+      "bring": "Confirm required supporting documents.",
+      "process": "Request through JCPD portal. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Official letters supporting applications to institutions including NHT and RGD. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "JCPD Disability Sticker and Registration ID",
+      "where": "JCPD — https://my.jcpd.gov.jm/benefits",
+      "bring": "Ask JCPD about registration and assessment.",
+      "process": "Apply through JCPD portal. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Disability identification and accessible parking recognition. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "NHT Special Grant for Persons with Disabilities",
+      "where": "NHT — https://www.nht.gov.jm/sites/default/files/documents/NHT%20Policy%20Booklet%20E-Mail_1.pdf",
+      "bring": "JCPD registration; confirm current mortgage and contribution requirements.",
+      "process": "Apply directly to NHT; confirm current grant terms. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Retrofitting a mortgaged dwelling to meet disability-related needs; not for purchasing mobility devices. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "Disability Income Tax Exemption",
+      "where": "JCPD / TAJ — https://jis.gov.jm/jcpd-to-strengthen-public-education-programme/",
+      "bring": "Confirm certification and tax requirements.",
+      "process": "Contact JCPD and TAJ. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Potential income tax relief for qualifying persons with disabilities. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "Municipal Social Assistance Programme",
+      "where": "Municipal corporations — https://digitallibrary.un.org/record/4094554/files/A_HRC_WG.6_50_JAM_1-EN.pdf",
+      "bring": "Confirm local intake.",
+      "process": "Ask municipal corporation whether assistance is currently available. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Social assistance reported by Jamaica in its 2025 human rights national report. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "Short-Term Poverty Alleviation",
+      "where": "Local government — https://digitallibrary.un.org/record/4094554/files/A_HRC_WG.6_50_JAM_1-EN.pdf",
+      "bring": "Confirm current requirements.",
+      "process": "Ask municipal corporation about current availability. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Short-term poverty intervention reported in national report. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "Special Employment Programme",
+      "where": "MLSS — https://digitallibrary.un.org/record/4094554/files/A_HRC_WG.6_50_JAM_1-EN.pdf",
+      "bring": "Confirm current intake.",
+      "process": "Ask MLSS about current placement opportunities. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Employment partnerships for young Jamaicans reported in national report. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "School Fee Assistance",
+      "where": "Ministry of Education — https://digitallibrary.un.org/record/4094554/files/A_HRC_WG.6_50_JAM_1-EN.pdf",
+      "bring": "Confirm school and ministry requirements.",
+      "process": "Ask school guidance counsellor or education ministry. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "School cost assistance identified in national report. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "Early Childhood Education Programme",
+      "where": "ECC — https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about requirements.",
+      "process": "Registry-listed pathway; confirm current operation and whether direct individual applications are accepted. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Child development support involving families and communities. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "Child Find Project",
+      "where": "Ministry of Education — https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about requirements.",
+      "process": "Registry-listed pathway; confirm current operation and whether direct individual applications are accepted. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Identification and referral for children with unmet special education needs. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "Abilities Foundation Vocational Training",
+      "where": "Abilities Foundation — https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about requirements.",
+      "process": "Registry-listed pathway; confirm current operation and whether direct individual applications are accepted. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Vocational training for persons with disabilities. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "Parenting Support Initiatives",
+      "where": "NPSC — https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about requirements.",
+      "process": "Registry-listed pathway; confirm current operation and whether direct individual applications are accepted. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Parent education and parenting skills support. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "Students Loan and Grant Programme",
+      "where": "SLB — https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about requirements.",
+      "process": "Registry-listed pathway; confirm current operation and whether direct individual applications are accepted. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Tuition financing and eligible student support. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "RADA Social Services and Home Economics",
+      "where": "RADA — https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about requirements.",
+      "process": "Registry-listed pathway; confirm current operation and whether direct individual applications are accepted. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Agro-processing and agricultural livelihood skills. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "Banana Farmer Support",
+      "where": "Banana Board — https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about requirements.",
+      "process": "Registry-listed pathway; confirm current operation and whether direct individual applications are accepted. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Productivity and resilience support for small banana farmers. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "Social Enterprise Support",
+      "where": "JN Foundation — https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about requirements.",
+      "process": "Registry-listed pathway; confirm current operation and whether direct individual applications are accepted. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Business development support for social enterprises. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "Canadian Farm Work Programme",
+      "where": "MLSS — https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about requirements.",
+      "process": "Registry-listed pathway; confirm current operation and whether direct individual applications are accepted. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Overseas agricultural employment pathway in Canada. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "US Farm Work Programme",
+      "where": "MLSS — https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about requirements.",
+      "process": "Registry-listed pathway; confirm current operation and whether direct individual applications are accepted. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Overseas agricultural employment pathway in the US. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "Overseas Hotel Work Programme",
+      "where": "MLSS — https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about requirements.",
+      "process": "Registry-listed pathway; confirm current operation and whether direct individual applications are accepted. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Overseas hospitality employment pathway. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "Sexual and Reproductive Health Services",
+      "where": "MOHW — https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about requirements.",
+      "process": "Registry-listed pathway; confirm current operation and whether direct individual applications are accepted. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Family planning and reproductive health access. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "Teenage Pregnancy Clinic",
+      "where": "MOHW — https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about requirements.",
+      "process": "Registry-listed pathway; confirm current operation and whether direct individual applications are accepted. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Support pathway historically listed for adolescent antenatal clients at Victoria Jubilee Hospital. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "School Suspension Intervention",
+      "where": "Dispute Resolution Foundation — https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about requirements.",
+      "process": "Registry-listed pathway; confirm current operation and whether direct individual applications are accepted. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Conflict resolution and anger management for suspended students. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "Youth Mentorship Programmes",
+      "where": "International Youth Fellowship — https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about requirements.",
+      "process": "Registry-listed pathway; confirm current operation and whether direct individual applications are accepted. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Youth mentoring and personal development. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "Informal Settlements Regularisation",
+      "where": "HAJ — https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about requirements.",
+      "process": "Registry-listed pathway; confirm current operation and whether direct individual applications are accepted. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Land titling and basic amenities pathways in informal settlements. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "Primary Health Care Services",
+      "where": "MOHW / RHAs — https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about requirements.",
+      "process": "Registry-listed pathway; confirm current operation and whether direct individual applications are accepted. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Public health centre and outpatient services. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "Community Renewal Programme",
+      "where": "PIOJ — https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about requirements.",
+      "process": "Registry-listed pathway; confirm current operation and whether direct individual applications are accepted. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Community capacity development and empowerment. Supplementary research, not Ministry-approved manual content; confirm current availability."
+    },
+    {
+      "name": "Basic Needs Trust Fund",
+      "where": "JSIF — https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about requirements.",
+      "process": "Registry-listed pathway; confirm current operation and whether direct individual applications are accepted. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "support": "Community infrastructure and human development interventions. Supplementary research, not Ministry-approved manual content; confirm current availability."
     }
   ],
   "categories": [
@@ -1096,6 +1299,180 @@
       "programme": "Child and family services directory",
       "benefits": "Service navigation for families seeking local child development, disability, counselling or family support providers. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
       "target": "Families seeking local child development, disability, counselling or family support providers"
+    },
+    {
+      "category": "Health Support",
+      "programme": "NHF Disability Double Subsidy",
+      "benefits": "Double standard subsidy for registered persons with disabilities on covered drugs, supplies and tests. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "JCPD-registered persons with disabilities"
+    },
+    {
+      "category": "Education & Youth",
+      "programme": "JCPD Scholarships",
+      "benefits": "Education scholarships from pre-primary through tertiary level. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "Students with disabilities"
+    },
+    {
+      "category": "Disability Support",
+      "programme": "JCPD Verified Official Letters",
+      "benefits": "Official letters supporting applications to institutions including NHT and RGD. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "Persons registered with JCPD"
+    },
+    {
+      "category": "Disability Support",
+      "programme": "JCPD Disability Sticker and Registration ID",
+      "benefits": "Disability identification and accessible parking recognition. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "Persons with disabilities"
+    },
+    {
+      "category": "Housing Support",
+      "programme": "NHT Special Grant for Persons with Disabilities",
+      "benefits": "Retrofitting a mortgaged dwelling to meet disability-related needs; not for purchasing mobility devices. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "Eligible NHT mortgagors with disability or qualifying household relative"
+    },
+    {
+      "category": "Disability Support",
+      "programme": "Disability Income Tax Exemption",
+      "benefits": "Potential income tax relief for qualifying persons with disabilities. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "Persons with disabilities earning taxable income"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "Municipal Social Assistance Programme",
+      "benefits": "Social assistance reported by Jamaica in its 2025 human rights national report. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "Vulnerable households"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "Short-Term Poverty Alleviation",
+      "benefits": "Short-term poverty intervention reported in national report. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "People experiencing hardship"
+    },
+    {
+      "category": "Skill Building",
+      "programme": "Special Employment Programme",
+      "benefits": "Employment partnerships for young Jamaicans reported in national report. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "Young jobseekers"
+    },
+    {
+      "category": "Education & Youth",
+      "programme": "School Fee Assistance",
+      "benefits": "School cost assistance identified in national report. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "Students facing financial barriers"
+    },
+    {
+      "category": "Family & Children Youth Support",
+      "programme": "Early Childhood Education Programme",
+      "benefits": "Child development support involving families and communities. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "People with relevant needs"
+    },
+    {
+      "category": "Disability Support",
+      "programme": "Child Find Project",
+      "benefits": "Identification and referral for children with unmet special education needs. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "People with relevant needs"
+    },
+    {
+      "category": "Skill Building",
+      "programme": "Abilities Foundation Vocational Training",
+      "benefits": "Vocational training for persons with disabilities. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "People with relevant needs"
+    },
+    {
+      "category": "Family & Children Youth Support",
+      "programme": "Parenting Support Initiatives",
+      "benefits": "Parent education and parenting skills support. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "People with relevant needs"
+    },
+    {
+      "category": "Education & Youth",
+      "programme": "Students Loan and Grant Programme",
+      "benefits": "Tuition financing and eligible student support. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "People with relevant needs"
+    },
+    {
+      "category": "Empowerment",
+      "programme": "RADA Social Services and Home Economics",
+      "benefits": "Agro-processing and agricultural livelihood skills. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "People with relevant needs"
+    },
+    {
+      "category": "Empowerment",
+      "programme": "Banana Farmer Support",
+      "benefits": "Productivity and resilience support for small banana farmers. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "People with relevant needs"
+    },
+    {
+      "category": "Empowerment",
+      "programme": "Social Enterprise Support",
+      "benefits": "Business development support for social enterprises. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "People with relevant needs"
+    },
+    {
+      "category": "Skill Building",
+      "programme": "Canadian Farm Work Programme",
+      "benefits": "Overseas agricultural employment pathway in Canada. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "People with relevant needs"
+    },
+    {
+      "category": "Skill Building",
+      "programme": "US Farm Work Programme",
+      "benefits": "Overseas agricultural employment pathway in the US. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "People with relevant needs"
+    },
+    {
+      "category": "Skill Building",
+      "programme": "Overseas Hotel Work Programme",
+      "benefits": "Overseas hospitality employment pathway. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "People with relevant needs"
+    },
+    {
+      "category": "Health Support",
+      "programme": "Sexual and Reproductive Health Services",
+      "benefits": "Family planning and reproductive health access. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "People with relevant needs"
+    },
+    {
+      "category": "Health Support",
+      "programme": "Teenage Pregnancy Clinic",
+      "benefits": "Support pathway historically listed for adolescent antenatal clients at Victoria Jubilee Hospital. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "People with relevant needs"
+    },
+    {
+      "category": "Psychosocial Support",
+      "programme": "School Suspension Intervention",
+      "benefits": "Conflict resolution and anger management for suspended students. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "People with relevant needs"
+    },
+    {
+      "category": "Education & Youth",
+      "programme": "Youth Mentorship Programmes",
+      "benefits": "Youth mentoring and personal development. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "People with relevant needs"
+    },
+    {
+      "category": "Housing Support",
+      "programme": "Informal Settlements Regularisation",
+      "benefits": "Land titling and basic amenities pathways in informal settlements. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "People with relevant needs"
+    },
+    {
+      "category": "Health Support",
+      "programme": "Primary Health Care Services",
+      "benefits": "Public health centre and outpatient services. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "People with relevant needs"
+    },
+    {
+      "category": "Empowerment",
+      "programme": "Community Renewal Programme",
+      "benefits": "Community capacity development and empowerment. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "People with relevant needs"
+    },
+    {
+      "category": "Empowerment",
+      "programme": "Basic Needs Trust Fund",
+      "benefits": "Community infrastructure and human development interventions. Supplementary research, not Ministry-approved manual content; confirm current availability.",
+      "target": "People with relevant needs"
     }
   ],
   "documents": [
@@ -1579,6 +1956,151 @@
       "situation": "Families seeking local child development, disability, counselling or family support providers",
       "options": "Child and family services directory",
       "provider": "Early Childhood Commission / UNICEF"
+    },
+    {
+      "situation": "JCPD-registered persons with disabilities",
+      "options": "NHF Disability Double Subsidy",
+      "provider": "NHF"
+    },
+    {
+      "situation": "Students with disabilities",
+      "options": "JCPD Scholarships",
+      "provider": "JCPD"
+    },
+    {
+      "situation": "Persons registered with JCPD",
+      "options": "JCPD Verified Official Letters",
+      "provider": "JCPD"
+    },
+    {
+      "situation": "Persons with disabilities",
+      "options": "JCPD Disability Sticker and Registration ID",
+      "provider": "JCPD"
+    },
+    {
+      "situation": "Eligible NHT mortgagors with disability or qualifying household relative",
+      "options": "NHT Special Grant for Persons with Disabilities",
+      "provider": "NHT"
+    },
+    {
+      "situation": "Persons with disabilities earning taxable income",
+      "options": "Disability Income Tax Exemption",
+      "provider": "JCPD / TAJ"
+    },
+    {
+      "situation": "Vulnerable households",
+      "options": "Municipal Social Assistance Programme",
+      "provider": "Municipal corporations"
+    },
+    {
+      "situation": "People experiencing hardship",
+      "options": "Short-Term Poverty Alleviation",
+      "provider": "Local government"
+    },
+    {
+      "situation": "Young jobseekers",
+      "options": "Special Employment Programme",
+      "provider": "MLSS"
+    },
+    {
+      "situation": "Students facing financial barriers",
+      "options": "School Fee Assistance",
+      "provider": "Ministry of Education"
+    },
+    {
+      "situation": "Child development support involving families and communities.",
+      "options": "Early Childhood Education Programme",
+      "provider": "ECC"
+    },
+    {
+      "situation": "Identification and referral for children with unmet special education needs.",
+      "options": "Child Find Project",
+      "provider": "Ministry of Education"
+    },
+    {
+      "situation": "Vocational training for persons with disabilities.",
+      "options": "Abilities Foundation Vocational Training",
+      "provider": "Abilities Foundation"
+    },
+    {
+      "situation": "Parent education and parenting skills support.",
+      "options": "Parenting Support Initiatives",
+      "provider": "NPSC"
+    },
+    {
+      "situation": "Tuition financing and eligible student support.",
+      "options": "Students Loan and Grant Programme",
+      "provider": "SLB"
+    },
+    {
+      "situation": "Agro-processing and agricultural livelihood skills.",
+      "options": "RADA Social Services and Home Economics",
+      "provider": "RADA"
+    },
+    {
+      "situation": "Productivity and resilience support for small banana farmers.",
+      "options": "Banana Farmer Support",
+      "provider": "Banana Board"
+    },
+    {
+      "situation": "Business development support for social enterprises.",
+      "options": "Social Enterprise Support",
+      "provider": "JN Foundation"
+    },
+    {
+      "situation": "Overseas agricultural employment pathway in Canada.",
+      "options": "Canadian Farm Work Programme",
+      "provider": "MLSS"
+    },
+    {
+      "situation": "Overseas agricultural employment pathway in the US.",
+      "options": "US Farm Work Programme",
+      "provider": "MLSS"
+    },
+    {
+      "situation": "Overseas hospitality employment pathway.",
+      "options": "Overseas Hotel Work Programme",
+      "provider": "MLSS"
+    },
+    {
+      "situation": "Family planning and reproductive health access.",
+      "options": "Sexual and Reproductive Health Services",
+      "provider": "MOHW"
+    },
+    {
+      "situation": "Support pathway historically listed for adolescent antenatal clients at Victoria Jubilee Hospital.",
+      "options": "Teenage Pregnancy Clinic",
+      "provider": "MOHW"
+    },
+    {
+      "situation": "Conflict resolution and anger management for suspended students.",
+      "options": "School Suspension Intervention",
+      "provider": "Dispute Resolution Foundation"
+    },
+    {
+      "situation": "Youth mentoring and personal development.",
+      "options": "Youth Mentorship Programmes",
+      "provider": "International Youth Fellowship"
+    },
+    {
+      "situation": "Land titling and basic amenities pathways in informal settlements.",
+      "options": "Informal Settlements Regularisation",
+      "provider": "HAJ"
+    },
+    {
+      "situation": "Public health centre and outpatient services.",
+      "options": "Primary Health Care Services",
+      "provider": "MOHW / RHAs"
+    },
+    {
+      "situation": "Community capacity development and empowerment.",
+      "options": "Community Renewal Programme",
+      "provider": "PIOJ"
+    },
+    {
+      "situation": "Community infrastructure and human development interventions.",
+      "options": "Basic Needs Trust Fund",
+      "provider": "JSIF"
     }
   ],
   "contacts": [
@@ -2537,6 +3059,325 @@
       "officialUrl": "https://www.unicef.org/jamaica/documents/directory-services-children-families-1",
       "contactAgencies": [
         "Early Childhood Commission / UNICEF"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "NHF Disability Double Subsidy": {
+      "agency": "NHF",
+      "officialUrl": "https://www.nhf.org.jm/persons-living-with-disabilities/",
+      "contactAgencies": [
+        "NHF"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Agency publication; current intake not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "JCPD Scholarships": {
+      "agency": "JCPD",
+      "officialUrl": "https://my.jcpd.gov.jm/benefits",
+      "contactAgencies": [
+        "JCPD"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Agency publication; current intake not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "JCPD Verified Official Letters": {
+      "agency": "JCPD",
+      "officialUrl": "https://my.jcpd.gov.jm/benefits",
+      "contactAgencies": [
+        "JCPD"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Agency publication; current intake not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "JCPD Disability Sticker and Registration ID": {
+      "agency": "JCPD",
+      "officialUrl": "https://my.jcpd.gov.jm/benefits",
+      "contactAgencies": [
+        "JCPD"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Agency publication; current intake not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "NHT Special Grant for Persons with Disabilities": {
+      "agency": "NHT",
+      "officialUrl": "https://www.nht.gov.jm/sites/default/files/documents/NHT%20Policy%20Booklet%20E-Mail_1.pdf",
+      "contactAgencies": [
+        "NHT"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Agency publication; current intake not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Disability Income Tax Exemption": {
+      "agency": "JCPD / TAJ",
+      "officialUrl": "https://jis.gov.jm/jcpd-to-strengthen-public-education-programme/",
+      "contactAgencies": [
+        "JCPD / TAJ"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Agency publication; current intake not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Municipal Social Assistance Programme": {
+      "agency": "Municipal corporations",
+      "officialUrl": "https://digitallibrary.un.org/record/4094554/files/A_HRC_WG.6_50_JAM_1-EN.pdf",
+      "contactAgencies": [
+        "Municipal corporations"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Short-Term Poverty Alleviation": {
+      "agency": "Local government",
+      "officialUrl": "https://digitallibrary.un.org/record/4094554/files/A_HRC_WG.6_50_JAM_1-EN.pdf",
+      "contactAgencies": [
+        "Local government"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Special Employment Programme": {
+      "agency": "MLSS",
+      "officialUrl": "https://digitallibrary.un.org/record/4094554/files/A_HRC_WG.6_50_JAM_1-EN.pdf",
+      "contactAgencies": [
+        "MLSS"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "School Fee Assistance": {
+      "agency": "Ministry of Education",
+      "officialUrl": "https://digitallibrary.un.org/record/4094554/files/A_HRC_WG.6_50_JAM_1-EN.pdf",
+      "contactAgencies": [
+        "Ministry of Education"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Early Childhood Education Programme": {
+      "agency": "ECC",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "ECC"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Child Find Project": {
+      "agency": "Ministry of Education",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "Ministry of Education"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Abilities Foundation Vocational Training": {
+      "agency": "Abilities Foundation",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "Abilities Foundation"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Parenting Support Initiatives": {
+      "agency": "NPSC",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "NPSC"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Students Loan and Grant Programme": {
+      "agency": "SLB",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "SLB"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "RADA Social Services and Home Economics": {
+      "agency": "RADA",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "RADA"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Banana Farmer Support": {
+      "agency": "Banana Board",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "Banana Board"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Social Enterprise Support": {
+      "agency": "JN Foundation",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "JN Foundation"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Canadian Farm Work Programme": {
+      "agency": "MLSS",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "MLSS"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "US Farm Work Programme": {
+      "agency": "MLSS",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "MLSS"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Overseas Hotel Work Programme": {
+      "agency": "MLSS",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "MLSS"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Sexual and Reproductive Health Services": {
+      "agency": "MOHW",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "MOHW"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Teenage Pregnancy Clinic": {
+      "agency": "MOHW",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "MOHW"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "School Suspension Intervention": {
+      "agency": "Dispute Resolution Foundation",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "Dispute Resolution Foundation"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Youth Mentorship Programmes": {
+      "agency": "International Youth Fellowship",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "International Youth Fellowship"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Informal Settlements Regularisation": {
+      "agency": "HAJ",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "HAJ"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Primary Health Care Services": {
+      "agency": "MOHW / RHAs",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "MOHW / RHAs"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Community Renewal Programme": {
+      "agency": "PIOJ",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "PIOJ"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Basic Needs Trust Fund": {
+      "agency": "JSIF",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "JSIF"
       ],
       "sourceType": "Supplementary research",
       "approvalStatus": "Not Ministry-approved",
