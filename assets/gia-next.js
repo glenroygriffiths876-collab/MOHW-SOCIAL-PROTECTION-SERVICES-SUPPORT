@@ -731,6 +731,26 @@
     state.selected=s;state.ready=new Set();state.destination=s.kind==="decision"?"":(s.agency||s.name);state.mapsProvided="";state.consent=false;state.tone="";state.localOfficeUsed="";
     show("service");
   }
+  const aiHistory=[];
+  let aiEpoch=0;
+  async function askCloud(question){
+    const epoch=++aiEpoch;
+    const mount=$("#gia2Content");
+    if(!mount||!$("#gia2Dialog")?.open)return;
+    const panel=document.createElement("section");
+    panel.className="gia2-local-panel";
+    const heading=document.createElement("h4");heading.textContent="Gia · AI conversation";
+    const answer=document.createElement("p");answer.setAttribute("role","status");answer.textContent="Thinking…";answer.style.whiteSpace="pre-wrap";
+    panel.append(heading,answer);mount.prepend(panel);
+    try{
+      const response=await fetch("https://universal-gia-staging.glenroygriffiths876.workers.dev/v1/social-protection",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:question,history:aiHistory.slice(-8)}),signal:AbortSignal.timeout(20000)});
+      const data=await response.json();
+      if(!response.ok||data.mode!=="generative-ai"||typeof data.reply!=="string")throw Error("AI unavailable");
+      if(epoch!==aiEpoch||!panel.isConnected)return;
+      answer.textContent=data.reply;
+      aiHistory.push({role:"user",content:question},{role:"assistant",content:data.reply});if(aiHistory.length>8)aiHistory.splice(0,aiHistory.length-8);
+    }catch{if(panel.isConnected)answer.textContent="AI conversation is currently unavailable. You can still use the directory guidance below.";}
+  }
   function handleAsk(raw){
     const question=String(raw||"").trim();
     if(!question)return;
@@ -881,6 +901,7 @@
   function act(action){
     preserveInputs();
     if(action==="start"){
+      aiHistory.length=0;aiEpoch++;
       Object.assign(state,{view:"home",question:"",tone:"",topicIds:[],results:[],page:0,selected:null,parish:state.parish,destination:"",mapsProvided:"",phone:"",ready:new Set(),consent:false,outcome:"",next:"",followDate:"",sessionRef:"",customDocs:"",focusTopic:"",originalQuestion:"",barrier:"",recipientMode:"client",localOfficeUsed:""});
       show("home");return;
     }
@@ -958,10 +979,17 @@
     document.body.append(button,dialog);
     button.addEventListener("click",()=>open());
     $("#gia2Close").addEventListener("click",()=>dialog.close());
-    dialog.addEventListener("close",()=>{document.body.classList.remove("gia2-open");button.setAttribute("aria-expanded","false");button.focus();});
+    dialog.addEventListener("close",()=>{aiHistory.length=0;aiEpoch++;document.body.classList.remove("gia2-open");button.setAttribute("aria-expanded","false");button.focus();});
     dialog.addEventListener("submit",e=>{
       if(e.target.id!=="gia2SearchForm")return;
-      e.preventDefault();preserveInputs();handleAsk(state.question);
+      e.preventDefault();
+      const question=$("#gia2Question")?.value.trim()||"";
+      if(!question)return;
+      preserveInputs();handleAsk(question);
+      if(!DANGER.test(question)&&!/^(?:start again|reset|new request)$/i.test(question)&&!["refer","follow","urgent"].includes(state.view)){
+        const consent=window.confirm("Send this general question to Gia's cloud AI? Do not include names, phone numbers, addresses, TRN, medical records or other identifying information. Cancel to use the local guide only.");
+        if(consent&&!/\d{7,}|\b[\w.+-]+@[\w.-]+\.[a-z]{2,}\b|(?:\d[\s().-]*){9,}/i.test(question))askCloud(question);
+      }
     });
     dialog.addEventListener("click",e=>{
       const service=e.target.closest("[data-service]");
