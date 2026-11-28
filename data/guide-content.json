@@ -164,28 +164,28 @@
       "where": "MLSS — https://www.mlss.gov.jm/departments/rehabilitation/",
       "bring": "Confirm documentation with the delivering agency.",
       "process": "Contact parish MLSS office for assessment. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
-      "support": "Small income-generating projects for households facing hardship. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability."
+      "support": "One-off grant for eligible applicants establishing or expanding income-generating activities."
     },
     {
       "name": "Compassionate Assistance Grant",
       "where": "MLSS — https://www.mlss.gov.jm/departments/rehabilitation/",
       "bring": "Confirm documentation with the delivering agency.",
       "process": "Contact parish MLSS office. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
-      "support": "One-off urgent support for uninsured applicants unable to obtain other assistance. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability."
+      "support": "One-off urgent assistance for uninsured applicants unable to access other schemes; may cover medical aids, essential items, repairs or burial."
     },
     {
       "name": "Emergency Assistance Grant",
       "where": "MLSS — https://www.mlss.gov.jm/departments/rehabilitation/",
       "bring": "Confirm documentation with the delivering agency.",
       "process": "Contact parish MLSS office. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
-      "support": "Basic relief for uninsured people affected by disasters. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability."
+      "support": "One-off disaster assistance for uninsured applicants; may cover essential personal items, food and toiletries."
     },
     {
       "name": "Education and Social Intervention Grant",
       "where": "MLSS — https://www.mlss.gov.jm/departments/rehabilitation/",
       "bring": "Confirm documentation with the delivering agency.",
       "process": "Contact parish MLSS office. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
-      "support": "Support for school attendance barriers including uniforms and books. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability."
+      "support": "One-off assistance for children whose attendance is affected by inability to afford school essentials."
     },
     {
       "name": "JCPD Assistive Aid Grant",
@@ -829,7 +829,7 @@
       "where": "Gideon Avenue, Port Antonio, Jamaica",
       "bring": "Ask facility or parish Poor Relief Department about admission and documentation.",
       "process": "Contact parish Poor Relief Department to confirm access and availability. Officially documented facility; current hours, admission, capacity and contact details are not independently confirmed. Contact Poor Relief before travel.",
-      "support": "Rehabilitation and drop-in support. Officially documented facility; current hours, admission, capacity and contact details are not independently confirmed. Contact Poor Relief before travel."
+      "support": "Published directory identifies this as a drop-in centre."
     },
     {
       "name": "Portland Drop-in Centre and Night Shelter",
@@ -846,18 +846,18 @@
       "support": "Day support. Officially documented facility; current hours, admission, capacity and contact details are not independently confirmed. Contact Poor Relief before travel."
     },
     {
-      "name": "St. Ann Drop-in Centre and Night Shelter",
+      "name": "St. Ann Drop-in Centre",
       "where": "Buckfield, St. Ann, Jamaica; published directory phone (reconfirm): 876-972-7171",
       "bring": "Ask facility or parish Poor Relief Department about admission and documentation.",
       "process": "Contact parish Poor Relief Department to confirm access and availability. Officially documented facility; current hours, admission, capacity and contact details are not independently confirmed. Contact Poor Relief before travel.",
-      "support": "Day support and overnight shelter. Officially documented facility; current hours, admission, capacity and contact details are not independently confirmed. Contact Poor Relief before travel."
+      "support": "Published directory confirms day drop-in service only; overnight service not verified."
     },
     {
-      "name": "Trelawny Drop-in Centre and Night Shelter",
+      "name": "Trelawny Drop-in Centre",
       "where": "Victoria Street, Falmouth (confirm shelter entrance), Jamaica; published directory phone (reconfirm): 876-954-3970",
       "bring": "Ask facility or parish Poor Relief Department about admission and documentation.",
       "process": "Contact parish Poor Relief Department to confirm access and availability. Officially documented facility; current hours, admission, capacity and contact details are not independently confirmed. Contact Poor Relief before travel.",
-      "support": "Day support and overnight shelter. Officially documented facility; current hours, admission, capacity and contact details are not independently confirmed. Contact Poor Relief before travel."
+      "support": "Published directory confirms day drop-in service only; overnight service not verified."
     },
     {
       "name": "St. James Care Centre",
@@ -885,7 +885,7 @@
       "where": "Dunbar’s River, Savanna-la-Mar, Jamaica; published directory phone (reconfirm): 876-955-2654",
       "bring": "Ask facility or parish Poor Relief Department about admission and documentation.",
       "process": "Contact parish Poor Relief Department to confirm access and availability. Officially documented facility; current hours, admission, capacity and contact details are not independently confirmed. Contact Poor Relief before travel.",
-      "support": "Homeless care; confirm current service type with provider. Officially documented facility; current hours, admission, capacity and contact details are not independently confirmed. Contact Poor Relief before travel."
+      "support": "Published directory identifies this as a drop-in centre."
     },
     {
       "name": "St. Elizabeth Drop-in Centre",
@@ -1937,25 +1937,25 @@
     {
       "category": "Cash Assistance",
       "programme": "Rehabilitation Assistance Grant",
-      "benefits": "Small income-generating projects for households facing hardship. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "benefits": "One-off grant for eligible applicants establishing or expanding income-generating activities.",
       "target": "People seeking to restore income"
     },
     {
       "category": "Cash Assistance",
       "programme": "Compassionate Assistance Grant",
-      "benefits": "One-off urgent support for uninsured applicants unable to obtain other assistance. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "benefits": "One-off urgent assistance for uninsured applicants unable to access other schemes; may cover medical aids, essential items, repairs or burial.",
       "target": "People needing urgent medical, burial or household support"
     },
     {
       "category": "Disaster Relief",
       "programme": "Emergency Assistance Grant",
-      "benefits": "Basic relief for uninsured people affected by disasters. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "benefits": "One-off disaster assistance for uninsured applicants; may cover essential personal items, food and toiletries.",
       "target": "People affected by fire, hurricane or other disaster"
     },
     {
       "category": "Education",
       "programme": "Education and Social Intervention Grant",
-      "benefits": "Support for school attendance barriers including uniforms and books. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "benefits": "One-off assistance for children whose attendance is affected by inability to afford school essentials.",
       "target": "Children with unmet school needs"
     },
     {
@@ -2507,7 +2507,7 @@
     {
       "category": "Housing Support",
       "programme": "Portland Rehabilitation Management Centre",
-      "benefits": "Rehabilitation and drop-in support. Officially documented facility; current hours, admission, capacity and contact details are not independently confirmed. Contact Poor Relief before travel.",
+      "benefits": "Published directory identifies this as a drop-in centre.",
       "target": "People experiencing homelessness or requiring residential social care in Portland"
     },
     {
@@ -2524,14 +2524,14 @@
     },
     {
       "category": "Housing Support",
-      "programme": "St. Ann Drop-in Centre and Night Shelter",
-      "benefits": "Day support and overnight shelter. Officially documented facility; current hours, admission, capacity and contact details are not independently confirmed. Contact Poor Relief before travel.",
+      "programme": "St. Ann Drop-in Centre",
+      "benefits": "Published directory confirms day drop-in service only; overnight service not verified.",
       "target": "People experiencing homelessness or requiring residential social care in St. Ann"
     },
     {
       "category": "Housing Support",
-      "programme": "Trelawny Drop-in Centre and Night Shelter",
-      "benefits": "Day support and overnight shelter. Officially documented facility; current hours, admission, capacity and contact details are not independently confirmed. Contact Poor Relief before travel.",
+      "programme": "Trelawny Drop-in Centre",
+      "benefits": "Published directory confirms day drop-in service only; overnight service not verified.",
       "target": "People experiencing homelessness or requiring residential social care in Trelawny"
     },
     {
@@ -2555,7 +2555,7 @@
     {
       "category": "Housing Support",
       "programme": "Westmoreland homeless care facility",
-      "benefits": "Homeless care; confirm current service type with provider. Officially documented facility; current hours, admission, capacity and contact details are not independently confirmed. Contact Poor Relief before travel.",
+      "benefits": "Published directory identifies this as a drop-in centre.",
       "target": "People experiencing homelessness or requiring residential social care in Westmoreland"
     },
     {
@@ -3995,12 +3995,12 @@
     },
     {
       "situation": "Homelessness, shelter or social care in St. Ann",
-      "options": "St. Ann Drop-in Centre and Night Shelter",
+      "options": "St. Ann Drop-in Centre",
       "provider": "Local Government / Poor Relief"
     },
     {
       "situation": "Homelessness, shelter or social care in Trelawny",
-      "options": "Trelawny Drop-in Centre and Night Shelter",
+      "options": "Trelawny Drop-in Centre",
       "provider": "Local Government / Poor Relief"
     },
     {
@@ -4629,7 +4629,7 @@
       "sourceType": "Supplementary agency research",
       "lastReviewed": "2026-11-28",
       "approvalStatus": "Not Ministry-approved manual content",
-      "verificationStatus": "Independent verification pending; confirm with provider",
+      "verificationStatus": "Published service description corrected; current access unconfirmed",
       "verification": {
         "existence": "Not independently revalidated in this audit",
         "eligibility": "unverified",
@@ -4640,7 +4640,8 @@
         "sourceType": "Supplementary research",
         "auditDate": "2026-11-28",
         "lastVerified": null,
-        "definitiveEligibilityAllowed": false
+        "definitiveEligibilityAllowed": false,
+        "sourceReviewedOn": "2026-11-28"
       }
     },
     "Compassionate Assistance Grant": {
@@ -4652,7 +4653,7 @@
       "sourceType": "Supplementary agency research",
       "lastReviewed": "2026-11-28",
       "approvalStatus": "Not Ministry-approved manual content",
-      "verificationStatus": "Independent verification pending; confirm with provider",
+      "verificationStatus": "Published service description corrected; current access unconfirmed",
       "verification": {
         "existence": "Not independently revalidated in this audit",
         "eligibility": "unverified",
@@ -4663,7 +4664,8 @@
         "sourceType": "Supplementary research",
         "auditDate": "2026-11-28",
         "lastVerified": null,
-        "definitiveEligibilityAllowed": false
+        "definitiveEligibilityAllowed": false,
+        "sourceReviewedOn": "2026-11-28"
       }
     },
     "Emergency Assistance Grant": {
@@ -4675,7 +4677,7 @@
       "sourceType": "Supplementary agency research",
       "lastReviewed": "2026-11-28",
       "approvalStatus": "Not Ministry-approved manual content",
-      "verificationStatus": "Independent verification pending; confirm with provider",
+      "verificationStatus": "Published service description corrected; current access unconfirmed",
       "verification": {
         "existence": "Not independently revalidated in this audit",
         "eligibility": "unverified",
@@ -4686,7 +4688,8 @@
         "sourceType": "Supplementary research",
         "auditDate": "2026-11-28",
         "lastVerified": null,
-        "definitiveEligibilityAllowed": false
+        "definitiveEligibilityAllowed": false,
+        "sourceReviewedOn": "2026-11-28"
       }
     },
     "Education and Social Intervention Grant": {
@@ -4698,7 +4701,7 @@
       "sourceType": "Supplementary agency research",
       "lastReviewed": "2026-11-28",
       "approvalStatus": "Not Ministry-approved manual content",
-      "verificationStatus": "Independent verification pending; confirm with provider",
+      "verificationStatus": "Published service description corrected; current access unconfirmed",
       "verification": {
         "existence": "Not independently revalidated in this audit",
         "eligibility": "unverified",
@@ -4709,7 +4712,8 @@
         "sourceType": "Supplementary research",
         "auditDate": "2026-11-28",
         "lastVerified": null,
-        "definitiveEligibilityAllowed": false
+        "definitiveEligibilityAllowed": false,
+        "sourceReviewedOn": "2026-11-28"
       }
     },
     "JCPD Assistive Aid Grant": {
@@ -6780,7 +6784,7 @@
       "publishedPhone": null,
       "sourceType": "Supplementary official directory",
       "approvalStatus": "Not Ministry-approved manual content",
-      "verificationStatus": "Independent verification pending; confirm with provider",
+      "verificationStatus": "Published service description corrected; current access unconfirmed",
       "verification": {
         "existence": "Not independently revalidated in this audit",
         "availability": "unverified",
@@ -6788,7 +6792,8 @@
         "parishAccess": "documented location; current access unverified",
         "lastVerified": null,
         "sourceUrl": "https://www.localgovjamaica.gov.jm/resources/homeless-shelter-drop-in-centers-and-transitional-facilities/",
-        "definitiveEligibilityAllowed": false
+        "definitiveEligibilityAllowed": false,
+        "sourceReviewedOn": "2026-11-28"
       }
     },
     "Portland Drop-in Centre and Night Shelter": {
@@ -6830,48 +6835,6 @@
         "parishAccess": "documented location; current access unverified",
         "lastVerified": null,
         "sourceUrl": "https://www.localgovjamaica.gov.jm/resources/homeless-shelter-drop-in-centers-and-transitional-facilities/",
-        "definitiveEligibilityAllowed": false
-      }
-    },
-    "St. Ann Drop-in Centre and Night Shelter": {
-      "agency": "Local Government / Poor Relief",
-      "officialUrl": "https://www.localgovjamaica.gov.jm/2023/09/",
-      "recordType": "facility",
-      "parish": "St. Ann",
-      "address": "Buckfield, St. Ann",
-      "facilityType": "Day support and overnight shelter",
-      "publishedPhone": "876-972-7171",
-      "sourceType": "Supplementary official directory",
-      "approvalStatus": "Not Ministry-approved manual content",
-      "verificationStatus": "Independent verification pending; confirm with provider",
-      "verification": {
-        "existence": "Not independently revalidated in this audit",
-        "availability": "unverified",
-        "contacts": "unverified",
-        "parishAccess": "documented location; current access unverified",
-        "lastVerified": null,
-        "sourceUrl": "https://www.localgovjamaica.gov.jm/2023/09/",
-        "definitiveEligibilityAllowed": false
-      }
-    },
-    "Trelawny Drop-in Centre and Night Shelter": {
-      "agency": "Local Government / Poor Relief",
-      "officialUrl": "https://www.localgovjamaica.gov.jm/2023/09/",
-      "recordType": "facility",
-      "parish": "Trelawny",
-      "address": "Victoria Street, Falmouth (confirm shelter entrance)",
-      "facilityType": "Day support and overnight shelter",
-      "publishedPhone": "876-954-3970",
-      "sourceType": "Supplementary official directory",
-      "approvalStatus": "Not Ministry-approved manual content",
-      "verificationStatus": "Independent verification pending; confirm with provider",
-      "verification": {
-        "existence": "Not independently revalidated in this audit",
-        "availability": "unverified",
-        "contacts": "unverified",
-        "parishAccess": "documented location; current access unverified",
-        "lastVerified": null,
-        "sourceUrl": "https://www.localgovjamaica.gov.jm/2023/09/",
         "definitiveEligibilityAllowed": false
       }
     },
@@ -6948,7 +6911,7 @@
       "publishedPhone": "876-955-2654",
       "sourceType": "Supplementary official directory",
       "approvalStatus": "Not Ministry-approved manual content",
-      "verificationStatus": "Independent verification pending; confirm with provider",
+      "verificationStatus": "Published service description corrected; current access unconfirmed",
       "verification": {
         "existence": "Not independently revalidated in this audit",
         "availability": "unverified",
@@ -6956,7 +6919,8 @@
         "parishAccess": "documented location; current access unverified",
         "lastVerified": null,
         "sourceUrl": "https://www.localgovjamaica.gov.jm/resources/homeless-shelter-drop-in-centers-and-transitional-facilities/",
-        "definitiveEligibilityAllowed": false
+        "definitiveEligibilityAllowed": false,
+        "sourceReviewedOn": "2026-11-28"
       }
     },
     "St. Elizabeth Drop-in Centre": {
@@ -9136,7 +9100,7 @@
       "recordType": "facility",
       "sourceType": "Supplementary official publication",
       "approvalStatus": "Not Ministry-approved manual content",
-      "verificationStatus": "Independent verification pending; confirm with provider",
+      "verificationStatus": "Historical relief directory; current contact not confirmed",
       "verification": {
         "existence": "Not independently revalidated in this audit",
         "contacts": "published only",
@@ -9144,7 +9108,9 @@
         "eligibility": "unverified",
         "sourceUrl": "https://supportjamaica.gov.jm/parish-manager",
         "lastVerified": null,
-        "definitiveEligibilityAllowed": false
+        "definitiveEligibilityAllowed": false,
+        "sourceReviewedOn": "2026-11-28",
+        "sourcePublishedOn": "2025-11-08"
       }
     },
     "MLSS relief coordination office – St. Thomas": {
@@ -9154,7 +9120,7 @@
       "recordType": "facility",
       "sourceType": "Supplementary official publication",
       "approvalStatus": "Not Ministry-approved manual content",
-      "verificationStatus": "Independent verification pending; confirm with provider",
+      "verificationStatus": "Historical relief directory; current contact not confirmed",
       "verification": {
         "existence": "Not independently revalidated in this audit",
         "contacts": "published only",
@@ -9162,7 +9128,9 @@
         "eligibility": "unverified",
         "sourceUrl": "https://supportjamaica.gov.jm/parish-manager",
         "lastVerified": null,
-        "definitiveEligibilityAllowed": false
+        "definitiveEligibilityAllowed": false,
+        "sourceReviewedOn": "2026-11-28",
+        "sourcePublishedOn": "2025-11-08"
       }
     },
     "MLSS relief coordination office – Portland": {
@@ -9172,7 +9140,7 @@
       "recordType": "facility",
       "sourceType": "Supplementary official publication",
       "approvalStatus": "Not Ministry-approved manual content",
-      "verificationStatus": "Independent verification pending; confirm with provider",
+      "verificationStatus": "Historical relief directory; current contact not confirmed",
       "verification": {
         "existence": "Not independently revalidated in this audit",
         "contacts": "published only",
@@ -9180,7 +9148,9 @@
         "eligibility": "unverified",
         "sourceUrl": "https://supportjamaica.gov.jm/parish-manager",
         "lastVerified": null,
-        "definitiveEligibilityAllowed": false
+        "definitiveEligibilityAllowed": false,
+        "sourceReviewedOn": "2026-11-28",
+        "sourcePublishedOn": "2025-11-08"
       }
     },
     "MLSS relief coordination office – St. Mary": {
@@ -9190,7 +9160,7 @@
       "recordType": "facility",
       "sourceType": "Supplementary official publication",
       "approvalStatus": "Not Ministry-approved manual content",
-      "verificationStatus": "Independent verification pending; confirm with provider",
+      "verificationStatus": "Historical relief directory; current contact not confirmed",
       "verification": {
         "existence": "Not independently revalidated in this audit",
         "contacts": "published only",
@@ -9198,7 +9168,9 @@
         "eligibility": "unverified",
         "sourceUrl": "https://supportjamaica.gov.jm/parish-manager",
         "lastVerified": null,
-        "definitiveEligibilityAllowed": false
+        "definitiveEligibilityAllowed": false,
+        "sourceReviewedOn": "2026-11-28",
+        "sourcePublishedOn": "2025-11-08"
       }
     },
     "MLSS relief coordination office – St. Ann": {
@@ -9208,7 +9180,7 @@
       "recordType": "facility",
       "sourceType": "Supplementary official publication",
       "approvalStatus": "Not Ministry-approved manual content",
-      "verificationStatus": "Independent verification pending; confirm with provider",
+      "verificationStatus": "Historical relief directory; current contact not confirmed",
       "verification": {
         "existence": "Not independently revalidated in this audit",
         "contacts": "published only",
@@ -9216,7 +9188,9 @@
         "eligibility": "unverified",
         "sourceUrl": "https://supportjamaica.gov.jm/parish-manager",
         "lastVerified": null,
-        "definitiveEligibilityAllowed": false
+        "definitiveEligibilityAllowed": false,
+        "sourceReviewedOn": "2026-11-28",
+        "sourcePublishedOn": "2025-11-08"
       }
     },
     "MLSS relief coordination office – Trelawny": {
@@ -9226,7 +9200,7 @@
       "recordType": "facility",
       "sourceType": "Supplementary official publication",
       "approvalStatus": "Not Ministry-approved manual content",
-      "verificationStatus": "Independent verification pending; confirm with provider",
+      "verificationStatus": "Historical relief directory; current contact not confirmed",
       "verification": {
         "existence": "Not independently revalidated in this audit",
         "contacts": "published only",
@@ -9234,7 +9208,9 @@
         "eligibility": "unverified",
         "sourceUrl": "https://supportjamaica.gov.jm/parish-manager",
         "lastVerified": null,
-        "definitiveEligibilityAllowed": false
+        "definitiveEligibilityAllowed": false,
+        "sourceReviewedOn": "2026-11-28",
+        "sourcePublishedOn": "2025-11-08"
       }
     },
     "MLSS relief coordination office – St. James": {
@@ -9244,7 +9220,7 @@
       "recordType": "facility",
       "sourceType": "Supplementary official publication",
       "approvalStatus": "Not Ministry-approved manual content",
-      "verificationStatus": "Independent verification pending; confirm with provider",
+      "verificationStatus": "Historical relief directory; current contact not confirmed",
       "verification": {
         "existence": "Not independently revalidated in this audit",
         "contacts": "published only",
@@ -9252,7 +9228,9 @@
         "eligibility": "unverified",
         "sourceUrl": "https://supportjamaica.gov.jm/parish-manager",
         "lastVerified": null,
-        "definitiveEligibilityAllowed": false
+        "definitiveEligibilityAllowed": false,
+        "sourceReviewedOn": "2026-11-28",
+        "sourcePublishedOn": "2025-11-08"
       }
     },
     "MLSS relief coordination office – Hanover": {
@@ -9262,7 +9240,7 @@
       "recordType": "facility",
       "sourceType": "Supplementary official publication",
       "approvalStatus": "Not Ministry-approved manual content",
-      "verificationStatus": "Independent verification pending; confirm with provider",
+      "verificationStatus": "Historical relief directory; current contact not confirmed",
       "verification": {
         "existence": "Not independently revalidated in this audit",
         "contacts": "published only",
@@ -9270,7 +9248,9 @@
         "eligibility": "unverified",
         "sourceUrl": "https://supportjamaica.gov.jm/parish-manager",
         "lastVerified": null,
-        "definitiveEligibilityAllowed": false
+        "definitiveEligibilityAllowed": false,
+        "sourceReviewedOn": "2026-11-28",
+        "sourcePublishedOn": "2025-11-08"
       }
     },
     "MLSS relief coordination office – Westmoreland": {
@@ -9280,7 +9260,7 @@
       "recordType": "facility",
       "sourceType": "Supplementary official publication",
       "approvalStatus": "Not Ministry-approved manual content",
-      "verificationStatus": "Independent verification pending; confirm with provider",
+      "verificationStatus": "Historical relief directory; current contact not confirmed",
       "verification": {
         "existence": "Not independently revalidated in this audit",
         "contacts": "published only",
@@ -9288,7 +9268,9 @@
         "eligibility": "unverified",
         "sourceUrl": "https://supportjamaica.gov.jm/parish-manager",
         "lastVerified": null,
-        "definitiveEligibilityAllowed": false
+        "definitiveEligibilityAllowed": false,
+        "sourceReviewedOn": "2026-11-28",
+        "sourcePublishedOn": "2025-11-08"
       }
     },
     "MLSS relief coordination office – Manchester": {
@@ -9298,7 +9280,7 @@
       "recordType": "facility",
       "sourceType": "Supplementary official publication",
       "approvalStatus": "Not Ministry-approved manual content",
-      "verificationStatus": "Independent verification pending; confirm with provider",
+      "verificationStatus": "Historical relief directory; current contact not confirmed",
       "verification": {
         "existence": "Not independently revalidated in this audit",
         "contacts": "published only",
@@ -9306,7 +9288,9 @@
         "eligibility": "unverified",
         "sourceUrl": "https://supportjamaica.gov.jm/parish-manager",
         "lastVerified": null,
-        "definitiveEligibilityAllowed": false
+        "definitiveEligibilityAllowed": false,
+        "sourceReviewedOn": "2026-11-28",
+        "sourcePublishedOn": "2025-11-08"
       }
     },
     "MLSS relief coordination office – Clarendon": {
@@ -9316,7 +9300,7 @@
       "recordType": "facility",
       "sourceType": "Supplementary official publication",
       "approvalStatus": "Not Ministry-approved manual content",
-      "verificationStatus": "Independent verification pending; confirm with provider",
+      "verificationStatus": "Historical relief directory; current contact not confirmed",
       "verification": {
         "existence": "Not independently revalidated in this audit",
         "contacts": "published only",
@@ -9324,7 +9308,9 @@
         "eligibility": "unverified",
         "sourceUrl": "https://supportjamaica.gov.jm/parish-manager",
         "lastVerified": null,
-        "definitiveEligibilityAllowed": false
+        "definitiveEligibilityAllowed": false,
+        "sourceReviewedOn": "2026-11-28",
+        "sourcePublishedOn": "2025-11-08"
       }
     },
     "MLSS relief coordination office – St. Catherine": {
@@ -9334,7 +9320,7 @@
       "recordType": "facility",
       "sourceType": "Supplementary official publication",
       "approvalStatus": "Not Ministry-approved manual content",
-      "verificationStatus": "Independent verification pending; confirm with provider",
+      "verificationStatus": "Historical relief directory; current contact not confirmed",
       "verification": {
         "existence": "Not independently revalidated in this audit",
         "contacts": "published only",
@@ -9342,7 +9328,9 @@
         "eligibility": "unverified",
         "sourceUrl": "https://supportjamaica.gov.jm/parish-manager",
         "lastVerified": null,
-        "definitiveEligibilityAllowed": false
+        "definitiveEligibilityAllowed": false,
+        "sourceReviewedOn": "2026-11-28",
+        "sourcePublishedOn": "2025-11-08"
       }
     },
     "St. Thomas Infirmary": {
@@ -9397,6 +9385,50 @@
         "sourceUrl": "https://ncdip.moh.gov.jm/non-communicable-disease/sickle-cell-disease/",
         "lastVerified": null,
         "definitiveEligibilityAllowed": false
+      }
+    },
+    "Trelawny Drop-in Centre": {
+      "agency": "Local Government / Poor Relief",
+      "officialUrl": "https://www.localgovjamaica.gov.jm/resources/homeless-shelter-drop-in-centers-and-transitional-facilities/",
+      "recordType": "facility",
+      "parish": "Trelawny",
+      "address": "Victoria Street, Falmouth (confirm shelter entrance)",
+      "facilityType": "Drop-in centre",
+      "publishedPhone": "876-954-3970",
+      "sourceType": "Supplementary official directory",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Published service description corrected; current access unconfirmed",
+      "verification": {
+        "existence": "Not independently revalidated in this audit",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "documented location; current access unverified",
+        "lastVerified": null,
+        "sourceUrl": "https://www.localgovjamaica.gov.jm/resources/homeless-shelter-drop-in-centers-and-transitional-facilities/",
+        "definitiveEligibilityAllowed": false,
+        "sourceReviewedOn": "2026-11-28"
+      }
+    },
+    "St. Ann Drop-in Centre": {
+      "agency": "Local Government / Poor Relief",
+      "officialUrl": "https://www.localgovjamaica.gov.jm/resources/homeless-shelter-drop-in-centers-and-transitional-facilities/",
+      "recordType": "facility",
+      "parish": "St. Ann",
+      "address": "Buckfield, St. Ann",
+      "facilityType": "Drop-in centre",
+      "publishedPhone": "876-972-7171",
+      "sourceType": "Supplementary official directory",
+      "approvalStatus": "Not Ministry-approved manual content",
+      "verificationStatus": "Published service description corrected; current access unconfirmed",
+      "verification": {
+        "existence": "Not independently revalidated in this audit",
+        "availability": "unverified",
+        "contacts": "unverified",
+        "parishAccess": "documented location; current access unverified",
+        "lastVerified": null,
+        "sourceUrl": "https://www.localgovjamaica.gov.jm/resources/homeless-shelter-drop-in-centers-and-transitional-facilities/",
+        "definitiveEligibilityAllowed": false,
+        "sourceReviewedOn": "2026-11-28"
       }
     }
   },
