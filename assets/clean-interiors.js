@@ -87,7 +87,7 @@ function buildReferral(){
 function paintReferral(){
  const steps=guide?.referralSteps;if(!steps?.length)return;
  activeStep=Math.min(activeStep,steps.length-1);let step=steps[activeStep];
- $('#flagship-step-photo').src=referralPhotos[activeStep];$('.flagship-stage-map button').forEach((b,i)=>{b.classList.toggle('selected',i===activeStep);b.setAttribute('aria-current',i===activeStep?'step':'false')});$('#cr-ref-counter').textContent='Step '+(activeStep+1)+' of 6';
+ $('#flagship-step-photo').src=referralPhotos[activeStep];$$('.flagship-stage-map button').forEach((b,i)=>{b.classList.toggle('selected',i===activeStep);b.setAttribute('aria-current',i===activeStep?'step':'false')});$('#cr-ref-counter').textContent='Step '+(activeStep+1)+' of 6';
  $('#cr-ref-title').textContent=step[0];
  $('#cr-ref-summary').textContent=referralTips[activeStep][0];
  $('#cr-ref-tip').textContent=referralTips[activeStep][1];
