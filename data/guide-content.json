@@ -256,6 +256,328 @@
       "bring": "Confirm documentation with the delivering agency.",
       "process": "Check NHF Benefits Finder and participating provider before testing. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
       "support": "Subsidy for Breast receptor studies subject to NHF eligibility and frequency rules. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability."
+    },
+    {
+      "name": "Social Pension Programme",
+      "where": "MLSS — consult source: https://www.mlss.gov.jm/departments/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for older adults without adequate pension income. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "PATH Appeals",
+      "where": "MLSS — consult source: https://www.mlss.gov.jm/departments/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for households seeking review of a path decision. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "PATH Tertiary Grants",
+      "where": "MLSS — consult source: https://www.mlss.gov.jm/departments/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for eligible students from path households. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Steps to Work",
+      "where": "MLSS — consult source: https://www.mlss.gov.jm/departments/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for path households seeking employment support. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Social Intervention Programme",
+      "where": "MLSS — consult source: https://www.mlss.gov.jm/departments/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for people facing hardship requiring social work assessment. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "NIS Retirement Pension",
+      "where": "MLSS — consult source: https://www.issa.int/sites/default/files/documents/2024-10/Jamaica.pdf",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for contributors approaching retirement. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "NIS Invalidity Benefit",
+      "where": "MLSS — consult source: https://www.issa.int/sites/default/files/documents/2024-10/Jamaica.pdf",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for contributors unable to work due to disability. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "NIS Survivors Benefit",
+      "where": "MLSS — consult source: https://www.issa.int/sites/default/files/documents/2024-10/Jamaica.pdf",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for dependants of deceased contributors. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "NIS Funeral Grant",
+      "where": "MLSS — consult source: https://www.issa.int/sites/default/files/documents/2024-10/Jamaica.pdf",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for people responsible for funeral expenses. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "NIS Maternity Allowance",
+      "where": "MLSS — consult source: https://www.issa.int/sites/default/files/documents/2024-10/Jamaica.pdf",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for eligible insured workers around childbirth. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "NIS Employment Injury Benefit",
+      "where": "MLSS — consult source: https://www.issa.int/sites/default/files/documents/2024-10/Jamaica.pdf",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for workers injured at work. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "NIS Orphan Benefit",
+      "where": "MLSS — consult source: https://www.issa.int/sites/default/files/documents/2024-10/Jamaica.pdf",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for eligible children of deceased contributors. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "NIS Special Child Benefit",
+      "where": "MLSS — consult source: https://www.issa.int/sites/default/files/documents/2024-10/Jamaica.pdf",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for children with qualifying circumstances under nis. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "NI Gold",
+      "where": "MLSS — consult source: https://www.issa.int/sites/default/files/documents/2024-10/Jamaica.pdf",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for nis pensioners seeking health insurance support. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Homeless drop-in services",
+      "where": "Municipal corporations — consult source: https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for people without shelter needing immediate basic support. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Homeless shelter services",
+      "where": "Municipal corporations — consult source: https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for people needing temporary accommodation. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Transitional housing support",
+      "where": "Municipal corporations — consult source: https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for people transitioning out of homelessness. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Poor Relief Programme",
+      "where": "Municipal corporations — consult source: https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for people unable to meet basic needs. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Food Supply Programme",
+      "where": "Food For The Poor — consult source: https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for households experiencing food insecurity. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Fishing livelihood support",
+      "where": "Food For The Poor — consult source: https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for small fishing communities seeking livelihood assistance. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Charitable housing assistance",
+      "where": "Food For The Poor — consult source: https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for households experiencing inadequate housing. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Salvation Army welfare assistance",
+      "where": "Salvation Army — consult source: https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for people experiencing poverty or hardship. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "School Feeding Programme",
+      "where": "Ministry of Education — consult source: https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for students experiencing food insecurity. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Career Advancement Programme",
+      "where": "Ministry of Education — consult source: https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for youth seeking vocational education. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Early Stimulation Programme",
+      "where": "MLSS — consult source: https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for young children with developmental disabilities and their families. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Child labour prevention services",
+      "where": "MLSS — consult source: https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for children at risk of exploitative labour. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "High School Diploma Equivalency",
+      "where": "HEART/NSTA — consult source: https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for adults without completed secondary schooling. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "NVQJ Certification",
+      "where": "HEART/NSTA — consult source: https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for people seeking vocational qualifications. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Labour Market Information System",
+      "where": "MLSS — consult source: https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for jobseekers seeking employment information. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Overseas Employment Programme",
+      "where": "MLSS — consult source: https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for eligible applicants seeking overseas work. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Labour Relations services",
+      "where": "MLSS — consult source: https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for workers experiencing employment disputes. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "MSME business advisory support",
+      "where": "JBDC — consult source: https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for small entrepreneurs needing guidance. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "MSME financing pathways",
+      "where": "DBJ — consult source: https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for small businesses seeking finance. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Agricultural extension services",
+      "where": "RADA — consult source: https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for small farmers needing technical assistance. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Local Economic Development support",
+      "where": "SDC — consult source: https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for communities seeking livelihood opportunities. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Land tenure assistance pathway",
+      "where": "National Land Agency — consult source: https://nprp.pioj.gov.jm/poverty-programmes/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for people seeking secure land tenure. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Legal Aid Council",
+      "where": "Ministry of Justice — consult source: https://moj.gov.jm/services",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for people needing legal assistance. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Restorative Justice",
+      "where": "Ministry of Justice — consult source: https://moj.gov.jm/services",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for people seeking supported resolution of harm. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "National Child Diversion Programme",
+      "where": "Ministry of Justice — consult source: https://moj.gov.jm/services",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for children accused of qualifying offences. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Expungement services",
+      "where": "Ministry of Justice — consult source: https://moj.gov.jm/services",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for people seeking lawful removal of eligible criminal records. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Access to Information",
+      "where": "Ministry of Justice — consult source: https://moj.gov.jm/services",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for people seeking access to government records. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Child abuse and neglect response",
+      "where": "CPFSA — consult source: https://childprotection.gov.jm/mission-vision-core-values/clients/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for children experiencing abuse, abandonment or neglect. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Foster care",
+      "where": "CPFSA — consult source: https://childprotection.gov.jm/mission-vision-core-values/clients/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for children needing family-based alternative care and prospective foster parents. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Adoption services",
+      "where": "CPFSA — consult source: https://childprotection.gov.jm/mission-vision-core-values/clients/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for prospective adoptive parents and eligible children. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Family support services",
+      "where": "CPFSA — consult source: https://childprotection.gov.jm/mission-vision-core-values/clients/",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for families experiencing difficulties caring for children. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
+    },
+    {
+      "name": "Child and family services directory",
+      "where": "Early Childhood Commission / UNICEF — consult source: https://www.unicef.org/jamaica/documents/directory-services-children-families-1",
+      "bring": "Ask provider about required documents before travelling.",
+      "process": "Contact responsible agency to request assessment or a referral. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "support": "Service navigation for families seeking local child development, disability, counselling or family support providers. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual."
     }
   ],
   "categories": [
@@ -498,6 +820,282 @@
       "programme": "NHF Breast receptor studies subsidy",
       "benefits": "Subsidy for Breast receptor studies subject to NHF eligibility and frequency rules. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
       "target": "People needing Breast receptor studies"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "Social Pension Programme",
+      "benefits": "Service navigation for older adults without adequate pension income. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Older adults without adequate pension income"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "PATH Appeals",
+      "benefits": "Service navigation for households seeking review of a path decision. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Households seeking review of a PATH decision"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "PATH Tertiary Grants",
+      "benefits": "Service navigation for eligible students from path households. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Eligible students from PATH households"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "Steps to Work",
+      "benefits": "Service navigation for path households seeking employment support. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "PATH households seeking employment support"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "Social Intervention Programme",
+      "benefits": "Service navigation for people facing hardship requiring social work assessment. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "People facing hardship requiring social work assessment"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "NIS Retirement Pension",
+      "benefits": "Service navigation for contributors approaching retirement. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Contributors approaching retirement"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "NIS Invalidity Benefit",
+      "benefits": "Service navigation for contributors unable to work due to disability. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Contributors unable to work due to disability"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "NIS Survivors Benefit",
+      "benefits": "Service navigation for dependants of deceased contributors. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Dependants of deceased contributors"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "NIS Funeral Grant",
+      "benefits": "Service navigation for people responsible for funeral expenses. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "People responsible for funeral expenses"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "NIS Maternity Allowance",
+      "benefits": "Service navigation for eligible insured workers around childbirth. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Eligible insured workers around childbirth"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "NIS Employment Injury Benefit",
+      "benefits": "Service navigation for workers injured at work. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Workers injured at work"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "NIS Orphan Benefit",
+      "benefits": "Service navigation for eligible children of deceased contributors. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Eligible children of deceased contributors"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "NIS Special Child Benefit",
+      "benefits": "Service navigation for children with qualifying circumstances under nis. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Children with qualifying circumstances under NIS"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "NI Gold",
+      "benefits": "Service navigation for nis pensioners seeking health insurance support. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "NIS pensioners seeking health insurance support"
+    },
+    {
+      "category": "Housing Support",
+      "programme": "Homeless drop-in services",
+      "benefits": "Service navigation for people without shelter needing immediate basic support. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "People without shelter needing immediate basic support"
+    },
+    {
+      "category": "Housing Support",
+      "programme": "Homeless shelter services",
+      "benefits": "Service navigation for people needing temporary accommodation. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "People needing temporary accommodation"
+    },
+    {
+      "category": "Housing Support",
+      "programme": "Transitional housing support",
+      "benefits": "Service navigation for people transitioning out of homelessness. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "People transitioning out of homelessness"
+    },
+    {
+      "category": "Housing Support",
+      "programme": "Poor Relief Programme",
+      "benefits": "Service navigation for people unable to meet basic needs. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "People unable to meet basic needs"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "Food Supply Programme",
+      "benefits": "Service navigation for households experiencing food insecurity. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Households experiencing food insecurity"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "Fishing livelihood support",
+      "benefits": "Service navigation for small fishing communities seeking livelihood assistance. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Small fishing communities seeking livelihood assistance"
+    },
+    {
+      "category": "Housing Support",
+      "programme": "Charitable housing assistance",
+      "benefits": "Service navigation for households experiencing inadequate housing. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Households experiencing inadequate housing"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "Salvation Army welfare assistance",
+      "benefits": "Service navigation for people experiencing poverty or hardship. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "People experiencing poverty or hardship"
+    },
+    {
+      "category": "Education & Youth",
+      "programme": "School Feeding Programme",
+      "benefits": "Service navigation for students experiencing food insecurity. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Students experiencing food insecurity"
+    },
+    {
+      "category": "Education & Youth",
+      "programme": "Career Advancement Programme",
+      "benefits": "Service navigation for youth seeking vocational education. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Youth seeking vocational education"
+    },
+    {
+      "category": "Family & Children Youth Support",
+      "programme": "Early Stimulation Programme",
+      "benefits": "Service navigation for young children with developmental disabilities and their families. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Young children with developmental disabilities and their families"
+    },
+    {
+      "category": "Family & Children Youth Support",
+      "programme": "Child labour prevention services",
+      "benefits": "Service navigation for children at risk of exploitative labour. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Children at risk of exploitative labour"
+    },
+    {
+      "category": "Skill Building",
+      "programme": "High School Diploma Equivalency",
+      "benefits": "Service navigation for adults without completed secondary schooling. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Adults without completed secondary schooling"
+    },
+    {
+      "category": "Skill Building",
+      "programme": "NVQJ Certification",
+      "benefits": "Service navigation for people seeking vocational qualifications. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "People seeking vocational qualifications"
+    },
+    {
+      "category": "Skill Building",
+      "programme": "Labour Market Information System",
+      "benefits": "Service navigation for jobseekers seeking employment information. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Jobseekers seeking employment information"
+    },
+    {
+      "category": "Skill Building",
+      "programme": "Overseas Employment Programme",
+      "benefits": "Service navigation for eligible applicants seeking overseas work. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Eligible applicants seeking overseas work"
+    },
+    {
+      "category": "Skill Building",
+      "programme": "Labour Relations services",
+      "benefits": "Service navigation for workers experiencing employment disputes. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Workers experiencing employment disputes"
+    },
+    {
+      "category": "Empowerment",
+      "programme": "MSME business advisory support",
+      "benefits": "Service navigation for small entrepreneurs needing guidance. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Small entrepreneurs needing guidance"
+    },
+    {
+      "category": "Empowerment",
+      "programme": "MSME financing pathways",
+      "benefits": "Service navigation for small businesses seeking finance. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Small businesses seeking finance"
+    },
+    {
+      "category": "Empowerment",
+      "programme": "Agricultural extension services",
+      "benefits": "Service navigation for small farmers needing technical assistance. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Small farmers needing technical assistance"
+    },
+    {
+      "category": "Empowerment",
+      "programme": "Local Economic Development support",
+      "benefits": "Service navigation for communities seeking livelihood opportunities. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Communities seeking livelihood opportunities"
+    },
+    {
+      "category": "Housing Support",
+      "programme": "Land tenure assistance pathway",
+      "benefits": "Service navigation for people seeking secure land tenure. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "People seeking secure land tenure"
+    },
+    {
+      "category": "Justice & Safety Support",
+      "programme": "Legal Aid Council",
+      "benefits": "Service navigation for people needing legal assistance. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "People needing legal assistance"
+    },
+    {
+      "category": "Justice & Safety Support",
+      "programme": "Restorative Justice",
+      "benefits": "Service navigation for people seeking supported resolution of harm. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "People seeking supported resolution of harm"
+    },
+    {
+      "category": "Justice & Safety Support",
+      "programme": "National Child Diversion Programme",
+      "benefits": "Service navigation for children accused of qualifying offences. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Children accused of qualifying offences"
+    },
+    {
+      "category": "Justice & Safety Support",
+      "programme": "Expungement services",
+      "benefits": "Service navigation for people seeking lawful removal of eligible criminal records. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "People seeking lawful removal of eligible criminal records"
+    },
+    {
+      "category": "Justice & Safety Support",
+      "programme": "Access to Information",
+      "benefits": "Service navigation for people seeking access to government records. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "People seeking access to government records"
+    },
+    {
+      "category": "Family & Children Youth Support",
+      "programme": "Child abuse and neglect response",
+      "benefits": "Service navigation for children experiencing abuse, abandonment or neglect. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Children experiencing abuse, abandonment or neglect"
+    },
+    {
+      "category": "Family & Children Youth Support",
+      "programme": "Foster care",
+      "benefits": "Service navigation for children needing family-based alternative care and prospective foster parents. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Children needing family-based alternative care and prospective foster parents"
+    },
+    {
+      "category": "Family & Children Youth Support",
+      "programme": "Adoption services",
+      "benefits": "Service navigation for prospective adoptive parents and eligible children. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Prospective adoptive parents and eligible children"
+    },
+    {
+      "category": "Family & Children Youth Support",
+      "programme": "Family support services",
+      "benefits": "Service navigation for families experiencing difficulties caring for children. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Families experiencing difficulties caring for children"
+    },
+    {
+      "category": "Family & Children Youth Support",
+      "programme": "Child and family services directory",
+      "benefits": "Service navigation for families seeking local child development, disability, counselling or family support providers. Supplementary research; source-listed service pathway. Current intake, eligibility and parish access must be confirmed with provider. Not an amendment to the Ministry manual.",
+      "target": "Families seeking local child development, disability, counselling or family support providers"
     }
   ],
   "documents": [
@@ -751,6 +1349,236 @@
       "situation": "People needing Breast receptor studies",
       "options": "NHF Breast receptor studies subsidy",
       "provider": "NHF"
+    },
+    {
+      "situation": "Older adults without adequate pension income",
+      "options": "Social Pension Programme",
+      "provider": "MLSS"
+    },
+    {
+      "situation": "Households seeking review of a PATH decision",
+      "options": "PATH Appeals",
+      "provider": "MLSS"
+    },
+    {
+      "situation": "Eligible students from PATH households",
+      "options": "PATH Tertiary Grants",
+      "provider": "MLSS"
+    },
+    {
+      "situation": "PATH households seeking employment support",
+      "options": "Steps to Work",
+      "provider": "MLSS"
+    },
+    {
+      "situation": "People facing hardship requiring social work assessment",
+      "options": "Social Intervention Programme",
+      "provider": "MLSS"
+    },
+    {
+      "situation": "Contributors approaching retirement",
+      "options": "NIS Retirement Pension",
+      "provider": "MLSS"
+    },
+    {
+      "situation": "Contributors unable to work due to disability",
+      "options": "NIS Invalidity Benefit",
+      "provider": "MLSS"
+    },
+    {
+      "situation": "Dependants of deceased contributors",
+      "options": "NIS Survivors Benefit",
+      "provider": "MLSS"
+    },
+    {
+      "situation": "People responsible for funeral expenses",
+      "options": "NIS Funeral Grant",
+      "provider": "MLSS"
+    },
+    {
+      "situation": "Eligible insured workers around childbirth",
+      "options": "NIS Maternity Allowance",
+      "provider": "MLSS"
+    },
+    {
+      "situation": "Workers injured at work",
+      "options": "NIS Employment Injury Benefit",
+      "provider": "MLSS"
+    },
+    {
+      "situation": "Eligible children of deceased contributors",
+      "options": "NIS Orphan Benefit",
+      "provider": "MLSS"
+    },
+    {
+      "situation": "Children with qualifying circumstances under NIS",
+      "options": "NIS Special Child Benefit",
+      "provider": "MLSS"
+    },
+    {
+      "situation": "NIS pensioners seeking health insurance support",
+      "options": "NI Gold",
+      "provider": "MLSS"
+    },
+    {
+      "situation": "People without shelter needing immediate basic support",
+      "options": "Homeless drop-in services",
+      "provider": "Municipal corporations"
+    },
+    {
+      "situation": "People needing temporary accommodation",
+      "options": "Homeless shelter services",
+      "provider": "Municipal corporations"
+    },
+    {
+      "situation": "People transitioning out of homelessness",
+      "options": "Transitional housing support",
+      "provider": "Municipal corporations"
+    },
+    {
+      "situation": "People unable to meet basic needs",
+      "options": "Poor Relief Programme",
+      "provider": "Municipal corporations"
+    },
+    {
+      "situation": "Households experiencing food insecurity",
+      "options": "Food Supply Programme",
+      "provider": "Food For The Poor"
+    },
+    {
+      "situation": "Small fishing communities seeking livelihood assistance",
+      "options": "Fishing livelihood support",
+      "provider": "Food For The Poor"
+    },
+    {
+      "situation": "Households experiencing inadequate housing",
+      "options": "Charitable housing assistance",
+      "provider": "Food For The Poor"
+    },
+    {
+      "situation": "People experiencing poverty or hardship",
+      "options": "Salvation Army welfare assistance",
+      "provider": "Salvation Army"
+    },
+    {
+      "situation": "Students experiencing food insecurity",
+      "options": "School Feeding Programme",
+      "provider": "Ministry of Education"
+    },
+    {
+      "situation": "Youth seeking vocational education",
+      "options": "Career Advancement Programme",
+      "provider": "Ministry of Education"
+    },
+    {
+      "situation": "Young children with developmental disabilities and their families",
+      "options": "Early Stimulation Programme",
+      "provider": "MLSS"
+    },
+    {
+      "situation": "Children at risk of exploitative labour",
+      "options": "Child labour prevention services",
+      "provider": "MLSS"
+    },
+    {
+      "situation": "Adults without completed secondary schooling",
+      "options": "High School Diploma Equivalency",
+      "provider": "HEART/NSTA"
+    },
+    {
+      "situation": "People seeking vocational qualifications",
+      "options": "NVQJ Certification",
+      "provider": "HEART/NSTA"
+    },
+    {
+      "situation": "Jobseekers seeking employment information",
+      "options": "Labour Market Information System",
+      "provider": "MLSS"
+    },
+    {
+      "situation": "Eligible applicants seeking overseas work",
+      "options": "Overseas Employment Programme",
+      "provider": "MLSS"
+    },
+    {
+      "situation": "Workers experiencing employment disputes",
+      "options": "Labour Relations services",
+      "provider": "MLSS"
+    },
+    {
+      "situation": "Small entrepreneurs needing guidance",
+      "options": "MSME business advisory support",
+      "provider": "JBDC"
+    },
+    {
+      "situation": "Small businesses seeking finance",
+      "options": "MSME financing pathways",
+      "provider": "DBJ"
+    },
+    {
+      "situation": "Small farmers needing technical assistance",
+      "options": "Agricultural extension services",
+      "provider": "RADA"
+    },
+    {
+      "situation": "Communities seeking livelihood opportunities",
+      "options": "Local Economic Development support",
+      "provider": "SDC"
+    },
+    {
+      "situation": "People seeking secure land tenure",
+      "options": "Land tenure assistance pathway",
+      "provider": "National Land Agency"
+    },
+    {
+      "situation": "People needing legal assistance",
+      "options": "Legal Aid Council",
+      "provider": "Ministry of Justice"
+    },
+    {
+      "situation": "People seeking supported resolution of harm",
+      "options": "Restorative Justice",
+      "provider": "Ministry of Justice"
+    },
+    {
+      "situation": "Children accused of qualifying offences",
+      "options": "National Child Diversion Programme",
+      "provider": "Ministry of Justice"
+    },
+    {
+      "situation": "People seeking lawful removal of eligible criminal records",
+      "options": "Expungement services",
+      "provider": "Ministry of Justice"
+    },
+    {
+      "situation": "People seeking access to government records",
+      "options": "Access to Information",
+      "provider": "Ministry of Justice"
+    },
+    {
+      "situation": "Children experiencing abuse, abandonment or neglect",
+      "options": "Child abuse and neglect response",
+      "provider": "CPFSA"
+    },
+    {
+      "situation": "Children needing family-based alternative care and prospective foster parents",
+      "options": "Foster care",
+      "provider": "CPFSA"
+    },
+    {
+      "situation": "Prospective adoptive parents and eligible children",
+      "options": "Adoption services",
+      "provider": "CPFSA"
+    },
+    {
+      "situation": "Families experiencing difficulties caring for children",
+      "options": "Family support services",
+      "provider": "CPFSA"
+    },
+    {
+      "situation": "Families seeking local child development, disability, counselling or family support providers",
+      "options": "Child and family services directory",
+      "provider": "Early Childhood Commission / UNICEF"
     }
   ],
   "contacts": [
@@ -1040,11 +1868,15 @@
       "officialUrl": "https://mlss.gov.jm/"
     },
     "Steps to Work": {
-      "agency": "Ministry of Labour and Social Security (MLSS)",
+      "agency": "MLSS",
+      "officialUrl": "https://www.mlss.gov.jm/departments/",
       "contactAgencies": [
-        "Ministry of Labour and Social Security"
+        "MLSS"
       ],
-      "officialUrl": "https://mlss.gov.jm/"
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
     },
     "Economic Empowerment Grant": {
       "agency": "Ministry of Labour and Social Security (MLSS)",
@@ -1215,6 +2047,501 @@
       "sourceType": "Supplementary agency research",
       "lastReviewed": "2026-11-28",
       "approvalStatus": "Not Ministry-approved manual content"
+    },
+    "Social Pension Programme": {
+      "agency": "MLSS",
+      "officialUrl": "https://www.mlss.gov.jm/departments/",
+      "contactAgencies": [
+        "MLSS"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "PATH Appeals": {
+      "agency": "MLSS",
+      "officialUrl": "https://www.mlss.gov.jm/departments/",
+      "contactAgencies": [
+        "MLSS"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "PATH Tertiary Grants": {
+      "agency": "MLSS",
+      "officialUrl": "https://www.mlss.gov.jm/departments/",
+      "contactAgencies": [
+        "MLSS"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Social Intervention Programme": {
+      "agency": "MLSS",
+      "officialUrl": "https://www.mlss.gov.jm/departments/",
+      "contactAgencies": [
+        "MLSS"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "NIS Retirement Pension": {
+      "agency": "MLSS",
+      "officialUrl": "https://www.issa.int/sites/default/files/documents/2024-10/Jamaica.pdf",
+      "contactAgencies": [
+        "MLSS"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "NIS Invalidity Benefit": {
+      "agency": "MLSS",
+      "officialUrl": "https://www.issa.int/sites/default/files/documents/2024-10/Jamaica.pdf",
+      "contactAgencies": [
+        "MLSS"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "NIS Survivors Benefit": {
+      "agency": "MLSS",
+      "officialUrl": "https://www.issa.int/sites/default/files/documents/2024-10/Jamaica.pdf",
+      "contactAgencies": [
+        "MLSS"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "NIS Funeral Grant": {
+      "agency": "MLSS",
+      "officialUrl": "https://www.issa.int/sites/default/files/documents/2024-10/Jamaica.pdf",
+      "contactAgencies": [
+        "MLSS"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "NIS Maternity Allowance": {
+      "agency": "MLSS",
+      "officialUrl": "https://www.issa.int/sites/default/files/documents/2024-10/Jamaica.pdf",
+      "contactAgencies": [
+        "MLSS"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "NIS Employment Injury Benefit": {
+      "agency": "MLSS",
+      "officialUrl": "https://www.issa.int/sites/default/files/documents/2024-10/Jamaica.pdf",
+      "contactAgencies": [
+        "MLSS"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "NIS Orphan Benefit": {
+      "agency": "MLSS",
+      "officialUrl": "https://www.issa.int/sites/default/files/documents/2024-10/Jamaica.pdf",
+      "contactAgencies": [
+        "MLSS"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "NIS Special Child Benefit": {
+      "agency": "MLSS",
+      "officialUrl": "https://www.issa.int/sites/default/files/documents/2024-10/Jamaica.pdf",
+      "contactAgencies": [
+        "MLSS"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "NI Gold": {
+      "agency": "MLSS",
+      "officialUrl": "https://www.issa.int/sites/default/files/documents/2024-10/Jamaica.pdf",
+      "contactAgencies": [
+        "MLSS"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Homeless drop-in services": {
+      "agency": "Municipal corporations",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "Municipal corporations"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Homeless shelter services": {
+      "agency": "Municipal corporations",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "Municipal corporations"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Transitional housing support": {
+      "agency": "Municipal corporations",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "Municipal corporations"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Poor Relief Programme": {
+      "agency": "Municipal corporations",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "Municipal corporations"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Food Supply Programme": {
+      "agency": "Food For The Poor",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "Food For The Poor"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Fishing livelihood support": {
+      "agency": "Food For The Poor",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "Food For The Poor"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Charitable housing assistance": {
+      "agency": "Food For The Poor",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "Food For The Poor"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Salvation Army welfare assistance": {
+      "agency": "Salvation Army",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "Salvation Army"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "School Feeding Programme": {
+      "agency": "Ministry of Education",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "Ministry of Education"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Career Advancement Programme": {
+      "agency": "Ministry of Education",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "Ministry of Education"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Early Stimulation Programme": {
+      "agency": "MLSS",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "MLSS"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Child labour prevention services": {
+      "agency": "MLSS",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "MLSS"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "High School Diploma Equivalency": {
+      "agency": "HEART/NSTA",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "HEART/NSTA"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "NVQJ Certification": {
+      "agency": "HEART/NSTA",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "HEART/NSTA"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Labour Market Information System": {
+      "agency": "MLSS",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "MLSS"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Overseas Employment Programme": {
+      "agency": "MLSS",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "MLSS"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Labour Relations services": {
+      "agency": "MLSS",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "MLSS"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "MSME business advisory support": {
+      "agency": "JBDC",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "JBDC"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "MSME financing pathways": {
+      "agency": "DBJ",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "DBJ"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Agricultural extension services": {
+      "agency": "RADA",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "RADA"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Local Economic Development support": {
+      "agency": "SDC",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "SDC"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Land tenure assistance pathway": {
+      "agency": "National Land Agency",
+      "officialUrl": "https://nprp.pioj.gov.jm/poverty-programmes/",
+      "contactAgencies": [
+        "National Land Agency"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Legal Aid Council": {
+      "agency": "Ministry of Justice",
+      "officialUrl": "https://moj.gov.jm/services",
+      "contactAgencies": [
+        "Ministry of Justice"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Restorative Justice": {
+      "agency": "Ministry of Justice",
+      "officialUrl": "https://moj.gov.jm/services",
+      "contactAgencies": [
+        "Ministry of Justice"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "National Child Diversion Programme": {
+      "agency": "Ministry of Justice",
+      "officialUrl": "https://moj.gov.jm/services",
+      "contactAgencies": [
+        "Ministry of Justice"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Expungement services": {
+      "agency": "Ministry of Justice",
+      "officialUrl": "https://moj.gov.jm/services",
+      "contactAgencies": [
+        "Ministry of Justice"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Access to Information": {
+      "agency": "Ministry of Justice",
+      "officialUrl": "https://moj.gov.jm/services",
+      "contactAgencies": [
+        "Ministry of Justice"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Child abuse and neglect response": {
+      "agency": "CPFSA",
+      "officialUrl": "https://childprotection.gov.jm/mission-vision-core-values/clients/",
+      "contactAgencies": [
+        "CPFSA"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Foster care": {
+      "agency": "CPFSA",
+      "officialUrl": "https://childprotection.gov.jm/mission-vision-core-values/clients/",
+      "contactAgencies": [
+        "CPFSA"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Adoption services": {
+      "agency": "CPFSA",
+      "officialUrl": "https://childprotection.gov.jm/mission-vision-core-values/clients/",
+      "contactAgencies": [
+        "CPFSA"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Family support services": {
+      "agency": "CPFSA",
+      "officialUrl": "https://childprotection.gov.jm/mission-vision-core-values/clients/",
+      "contactAgencies": [
+        "CPFSA"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
+    },
+    "Child and family services directory": {
+      "agency": "Early Childhood Commission / UNICEF",
+      "officialUrl": "https://www.unicef.org/jamaica/documents/directory-services-children-families-1",
+      "contactAgencies": [
+        "Early Childhood Commission / UNICEF"
+      ],
+      "sourceType": "Supplementary research",
+      "approvalStatus": "Not Ministry-approved",
+      "verificationStatus": "Source-listed; current operations not confirmed",
+      "lastReviewed": "2026-11-28"
     }
   },
   "quickContacts": [
