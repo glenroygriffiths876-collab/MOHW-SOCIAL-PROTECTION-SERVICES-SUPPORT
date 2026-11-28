@@ -697,7 +697,7 @@
     if(["results","service"].includes(state.view)||(state.view==="documents"&&state.selected)){
       content.insertAdjacentHTML("beforeend","<div class=\"gia2-chat-follow\"><label for=\"gia2Question\">Another question? Just ask.</label><form id=\"gia2SearchForm\" class=\"gia2-inputbar\"><input id=\"gia2Question\" name=\"question\" autocomplete=\"off\" maxlength=\"320\" placeholder=\"e.g. What documents do I bring?\" value=\"\">"+voiceButton()+"<button type=\"submit\" class=\"gia2-send\" aria-label=\"Ask GIA\">➜</button></form></div>");
     }
-    content.scrollTop=0;
+    content.classList.toggle("gia-conversation-mode",state.view==="home");content.scrollTop=0;
   }
   function open(view="home"){
     if(!guide){alert("GIA needs the guide data. Please refresh the page and try again.");return;}
@@ -726,13 +726,13 @@
     panel.className="gia2-local-panel";
     const heading=document.createElement("h4");heading.textContent="Gia · AI conversation";
     const answer=document.createElement("p");answer.setAttribute("role","status");answer.textContent="Thinking…";answer.style.whiteSpace="pre-wrap";
-    panel.append(heading,answer);const conversation=$("#giaConversation");if(conversation){const user=document.createElement("div");user.className="gia2-user-bubble";user.textContent=question;conversation.append(user,panel);}else mount.prepend(panel);
+    panel.append(heading,answer);const conversation=$("#giaConversation");if(conversation){const user=document.createElement("div");user.className="gia2-user-bubble";user.textContent=question;conversation.append(user,panel);conversation.scrollTop=conversation.scrollHeight;}else mount.prepend(panel);
     try{
-      const response=await fetch("https://universal-gia-staging.glenroygriffiths876.workers.dev/v1/social-protection",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:question,history:aiHistory.slice(-8)}),signal:AbortSignal.timeout(20000)});
+      const response=await fetch("https://universal-gia-staging.glenroygriffiths876.workers.dev/v1/social-protection",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:question+"\n\n[Response guidance: Be concise and actionable. Ask one relevant follow-up about needs or parish. Ground recommendations in the directory; do not invent eligibility or coverage. For blindness prioritize disability-specific agencies where supported.]",history:aiHistory.slice(-8)}),signal:AbortSignal.timeout(20000)});
       const data=await response.json();
       if(!response.ok||data.mode!=="generative-ai"||typeof data.reply!=="string")throw Error("AI unavailable");
       if(epoch!==aiEpoch||!panel.isConnected)return;
-      answer.textContent=data.reply;
+      answer.textContent=data.reply;conversation?.scrollTo({top:conversation.scrollHeight,behavior:"smooth"});
       aiHistory.push({role:"user",content:question},{role:"assistant",content:data.reply});if(aiHistory.length>8)aiHistory.splice(0,aiHistory.length-8);
     }catch{if(panel.isConnected){answer.textContent="AI conversation is currently unavailable. ";const fallback=document.createElement("button");fallback.type="button";fallback.textContent="Search the local guide";fallback.onclick=()=>handleAsk(question);panel.append(fallback);}}
   }
@@ -975,7 +975,7 @@
       if(/^(?:start again|reset|new request)$/i.test(question)){aiHistory.length=0;handleAsk(question);return;}
       if(state.view==="home"&&$("#giaCloudConsent"))cloudConsent=$("#giaCloudConsent").checked;
       if(!cloudConsent||/\d{7,}|\b[\w.+-]+@[\w.-]+\.[a-z]{2,}\b|(?:\d[\s().-]*){9,}/i.test(question)){handleAsk(question);return;}
-      state.view="home";render();askCloud(question);
+      state.question="";state.view="home";render();askCloud(question);
 
     });
     dialog.addEventListener("click",e=>{
