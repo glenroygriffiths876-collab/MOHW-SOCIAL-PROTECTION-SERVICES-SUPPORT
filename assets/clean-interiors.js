@@ -111,7 +111,7 @@ function buildDecision(){
   if(e.target.closest('#cr-decision-services'))openNative('referrals');
  });
  $('#cr-decision-query').addEventListener('input',paintDecisionList);
- paintDecisionList();
+ paintDecisionList();paintDecisionResults();
 }
 function paintDecisionList(){
  if(!guide?.decision)return;
@@ -125,7 +125,7 @@ function paintDecisionList(){
 }
 function paintDecisionResults(){
  if(!guide?.decision)return;
- const selected=Boolean(activeDecision);$('[data-flow]').forEach(b=>{b.disabled=b.dataset.flow!=='need'&&!selected;b.setAttribute('aria-current',b.dataset.flow===(selected?'routes':'need')?'step':'false')});
+ const selected=Boolean(activeDecision);$$('#cr-decision [data-flow]').forEach(b=>{b.disabled=b.dataset.flow!=='need'&&!selected;b.setAttribute('aria-current',b.dataset.flow===(selected?'routes':'need')?'step':'false')});
  $('#cr-decision-choice').hidden=selected;$('#cr-decision-results').hidden=!selected;
  if(!selected)return;
  const routes=guide.decision.filter(x=>x.situation===activeDecision);
