@@ -158,6 +158,104 @@
       "bring": "Basic personal information if safe to provide; Incident details or referral note if available; Immediate safety concerns and preferred safe contact method",
       "process": "Call or text for support → trained social worker or counsellor assesses safety and need → referral made for counselling, shelter, police, victim services, legal aid or welfare support → follow-up arranged where safe",
       "support": "Gender-based violence response, domestic violence support, psychosocial counselling, public education, gender equality training and referral coordination."
+    },
+    {
+      "name": "Rehabilitation Assistance Grant",
+      "where": "MLSS — https://www.mlss.gov.jm/departments/rehabilitation/",
+      "bring": "Confirm documentation with the delivering agency.",
+      "process": "Contact parish MLSS office for assessment. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "support": "Small income-generating projects for households facing hardship. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability."
+    },
+    {
+      "name": "Compassionate Assistance Grant",
+      "where": "MLSS — https://www.mlss.gov.jm/departments/rehabilitation/",
+      "bring": "Confirm documentation with the delivering agency.",
+      "process": "Contact parish MLSS office. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "support": "One-off urgent support for uninsured applicants unable to obtain other assistance. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability."
+    },
+    {
+      "name": "Emergency Assistance Grant",
+      "where": "MLSS — https://www.mlss.gov.jm/departments/rehabilitation/",
+      "bring": "Confirm documentation with the delivering agency.",
+      "process": "Contact parish MLSS office. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "support": "Basic relief for uninsured people affected by disasters. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability."
+    },
+    {
+      "name": "Education and Social Intervention Grant",
+      "where": "MLSS — https://www.mlss.gov.jm/departments/rehabilitation/",
+      "bring": "Confirm documentation with the delivering agency.",
+      "process": "Contact parish MLSS office. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "support": "Support for school attendance barriers including uniforms and books. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability."
+    },
+    {
+      "name": "JCPD Assistive Aid Grant",
+      "where": "JCPD — https://my.jcpd.gov.jm/grants",
+      "bring": "Confirm documentation with the delivering agency.",
+      "process": "Check grant portal; application intake may be closed. Confirm invoice requirements directly. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "support": "Support for assistive devices or therapy for registered persons with disabilities. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability."
+    },
+    {
+      "name": "JCPD Economic Empowerment Grant",
+      "where": "JCPD — https://my.jcpd.gov.jm/grants",
+      "bring": "Confirm documentation with the delivering agency.",
+      "process": "Check grant portal; application intake may be closed. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "support": "Business support for registered persons with disabilities on low incomes. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability."
+    },
+    {
+      "name": "JADEP",
+      "where": "NHF — https://www.nhf.org.jm/jadep-programme/",
+      "bring": "Confirm documentation with the delivering agency.",
+      "process": "Contact NHF or participating pharmacy. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "support": "Subsidised selected medicines for covered conditions for Jamaican residents aged 60 or older; dispensing fees apply. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability."
+    },
+    {
+      "name": "NHF ECG subsidy",
+      "where": "NHF — https://www.nhf.org.jm/benefits-search/?category=diagnostic",
+      "bring": "Confirm documentation with the delivering agency.",
+      "process": "Check NHF Benefits Finder and participating provider before testing. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "support": "Subsidy for ECG subject to NHF eligibility and frequency rules. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability."
+    },
+    {
+      "name": "NHF Echocardiogram subsidy",
+      "where": "NHF — https://www.nhf.org.jm/benefits-search/?category=diagnostic",
+      "bring": "Confirm documentation with the delivering agency.",
+      "process": "Check NHF Benefits Finder and participating provider before testing. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "support": "Subsidy for Echocardiogram subject to NHF eligibility and frequency rules. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability."
+    },
+    {
+      "name": "NHF Mammogram subsidy",
+      "where": "NHF — https://www.nhf.org.jm/benefits-search/?category=diagnostic",
+      "bring": "Confirm documentation with the delivering agency.",
+      "process": "Check NHF Benefits Finder and participating provider before testing. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "support": "Subsidy for Mammogram subject to NHF eligibility and frequency rules. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability."
+    },
+    {
+      "name": "NHF Pap smear subsidy",
+      "where": "NHF — https://www.nhf.org.jm/benefits-search/?category=diagnostic",
+      "bring": "Confirm documentation with the delivering agency.",
+      "process": "Check NHF Benefits Finder and participating provider before testing. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "support": "Subsidy for Pap smear subject to NHF eligibility and frequency rules. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability."
+    },
+    {
+      "name": "NHF PSA subsidy",
+      "where": "NHF — https://www.nhf.org.jm/benefits-search/?category=diagnostic",
+      "bring": "Confirm documentation with the delivering agency.",
+      "process": "Check NHF Benefits Finder and participating provider before testing. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "support": "Subsidy for PSA subject to NHF eligibility and frequency rules. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability."
+    },
+    {
+      "name": "NHF HbA1c subsidy",
+      "where": "NHF — https://www.nhf.org.jm/benefits-search/?category=diagnostic",
+      "bring": "Confirm documentation with the delivering agency.",
+      "process": "Check NHF Benefits Finder and participating provider before testing. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "support": "Subsidy for HbA1c subject to NHF eligibility and frequency rules. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability."
+    },
+    {
+      "name": "NHF Breast receptor studies subsidy",
+      "where": "NHF — https://www.nhf.org.jm/benefits-search/?category=diagnostic",
+      "bring": "Confirm documentation with the delivering agency.",
+      "process": "Check NHF Benefits Finder and participating provider before testing. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "support": "Subsidy for Breast receptor studies subject to NHF eligibility and frequency rules. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability."
     }
   ],
   "categories": [
@@ -316,6 +414,90 @@
       "programme": "Child Protection and Family Services Agency (CPFSA)",
       "benefits": "Child abuse reporting and investigation, Child protection and family support, Foster care and adoption, Residential care for children, Counselling and referrals",
       "target": "Children at risk of abuse, neglect or harm, Children needing care and protection, Parents and families needing support"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "Rehabilitation Assistance Grant",
+      "benefits": "Small income-generating projects for households facing hardship. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "target": "People seeking to restore income"
+    },
+    {
+      "category": "Cash Assistance",
+      "programme": "Compassionate Assistance Grant",
+      "benefits": "One-off urgent support for uninsured applicants unable to obtain other assistance. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "target": "People needing urgent medical, burial or household support"
+    },
+    {
+      "category": "Disaster Relief",
+      "programme": "Emergency Assistance Grant",
+      "benefits": "Basic relief for uninsured people affected by disasters. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "target": "People affected by fire, hurricane or other disaster"
+    },
+    {
+      "category": "Education",
+      "programme": "Education and Social Intervention Grant",
+      "benefits": "Support for school attendance barriers including uniforms and books. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "target": "Children with unmet school needs"
+    },
+    {
+      "category": "Disability Support",
+      "programme": "JCPD Assistive Aid Grant",
+      "benefits": "Support for assistive devices or therapy for registered persons with disabilities. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "target": "Registered persons with disabilities and caregivers"
+    },
+    {
+      "category": "Employment and Training",
+      "programme": "JCPD Economic Empowerment Grant",
+      "benefits": "Business support for registered persons with disabilities on low incomes. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "target": "Registered persons with disabilities seeking self-employment"
+    },
+    {
+      "category": "Healthcare",
+      "programme": "JADEP",
+      "benefits": "Subsidised selected medicines for covered conditions for Jamaican residents aged 60 or older; dispensing fees apply. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "target": "Older people needing medication"
+    },
+    {
+      "category": "Healthcare",
+      "programme": "NHF ECG subsidy",
+      "benefits": "Subsidy for ECG subject to NHF eligibility and frequency rules. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "target": "People needing ECG"
+    },
+    {
+      "category": "Healthcare",
+      "programme": "NHF Echocardiogram subsidy",
+      "benefits": "Subsidy for Echocardiogram subject to NHF eligibility and frequency rules. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "target": "People needing Echocardiogram"
+    },
+    {
+      "category": "Healthcare",
+      "programme": "NHF Mammogram subsidy",
+      "benefits": "Subsidy for Mammogram subject to NHF eligibility and frequency rules. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "target": "People needing Mammogram"
+    },
+    {
+      "category": "Healthcare",
+      "programme": "NHF Pap smear subsidy",
+      "benefits": "Subsidy for Pap smear subject to NHF eligibility and frequency rules. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "target": "People needing Pap smear"
+    },
+    {
+      "category": "Healthcare",
+      "programme": "NHF PSA subsidy",
+      "benefits": "Subsidy for PSA subject to NHF eligibility and frequency rules. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "target": "People needing PSA"
+    },
+    {
+      "category": "Healthcare",
+      "programme": "NHF HbA1c subsidy",
+      "benefits": "Subsidy for HbA1c subject to NHF eligibility and frequency rules. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "target": "People needing HbA1c"
+    },
+    {
+      "category": "Healthcare",
+      "programme": "NHF Breast receptor studies subsidy",
+      "benefits": "Subsidy for Breast receptor studies subject to NHF eligibility and frequency rules. Supplementary agency-sourced information; not Ministry-approved manual content. Confirm current availability.",
+      "target": "People needing Breast receptor studies"
     }
   ],
   "documents": [
@@ -499,6 +681,76 @@
       "situation": "A Pregnant Adolescent or Adolescent Mother or Vulnerable Chidren",
       "options": "Contact the Women's Centre for education continuation, counselling, parenting guidance, and school reintegration support,",
       "provider": "Women's Centre of Jamaica Foundation"
+    },
+    {
+      "situation": "People seeking to restore income",
+      "options": "Rehabilitation Assistance Grant",
+      "provider": "MLSS"
+    },
+    {
+      "situation": "People needing urgent medical, burial or household support",
+      "options": "Compassionate Assistance Grant",
+      "provider": "MLSS"
+    },
+    {
+      "situation": "People affected by fire, hurricane or other disaster",
+      "options": "Emergency Assistance Grant",
+      "provider": "MLSS"
+    },
+    {
+      "situation": "Children with unmet school needs",
+      "options": "Education and Social Intervention Grant",
+      "provider": "MLSS"
+    },
+    {
+      "situation": "Registered persons with disabilities and caregivers",
+      "options": "JCPD Assistive Aid Grant",
+      "provider": "JCPD"
+    },
+    {
+      "situation": "Registered persons with disabilities seeking self-employment",
+      "options": "JCPD Economic Empowerment Grant",
+      "provider": "JCPD"
+    },
+    {
+      "situation": "Older people needing medication",
+      "options": "JADEP",
+      "provider": "NHF"
+    },
+    {
+      "situation": "People needing ECG",
+      "options": "NHF ECG subsidy",
+      "provider": "NHF"
+    },
+    {
+      "situation": "People needing Echocardiogram",
+      "options": "NHF Echocardiogram subsidy",
+      "provider": "NHF"
+    },
+    {
+      "situation": "People needing Mammogram",
+      "options": "NHF Mammogram subsidy",
+      "provider": "NHF"
+    },
+    {
+      "situation": "People needing Pap smear",
+      "options": "NHF Pap smear subsidy",
+      "provider": "NHF"
+    },
+    {
+      "situation": "People needing PSA",
+      "options": "NHF PSA subsidy",
+      "provider": "NHF"
+    },
+    {
+      "situation": "People needing HbA1c",
+      "options": "NHF HbA1c subsidy",
+      "provider": "NHF"
+    },
+    {
+      "situation": "People needing Breast receptor studies",
+      "options": "NHF Breast receptor studies subsidy",
+      "provider": "NHF"
     }
   ],
   "contacts": [
@@ -823,6 +1075,146 @@
         "Ministry of Labour and Social Security"
       ],
       "officialUrl": "https://mlss.gov.jm/"
+    },
+    "Rehabilitation Assistance Grant": {
+      "agency": "MLSS",
+      "officialUrl": "https://www.mlss.gov.jm/departments/rehabilitation/",
+      "contactAgencies": [
+        "Ministry of Labour and Social Security"
+      ],
+      "sourceType": "Supplementary agency research",
+      "lastReviewed": "2026-11-28",
+      "approvalStatus": "Not Ministry-approved manual content"
+    },
+    "Compassionate Assistance Grant": {
+      "agency": "MLSS",
+      "officialUrl": "https://www.mlss.gov.jm/departments/rehabilitation/",
+      "contactAgencies": [
+        "Ministry of Labour and Social Security"
+      ],
+      "sourceType": "Supplementary agency research",
+      "lastReviewed": "2026-11-28",
+      "approvalStatus": "Not Ministry-approved manual content"
+    },
+    "Emergency Assistance Grant": {
+      "agency": "MLSS",
+      "officialUrl": "https://www.mlss.gov.jm/departments/rehabilitation/",
+      "contactAgencies": [
+        "Ministry of Labour and Social Security"
+      ],
+      "sourceType": "Supplementary agency research",
+      "lastReviewed": "2026-11-28",
+      "approvalStatus": "Not Ministry-approved manual content"
+    },
+    "Education and Social Intervention Grant": {
+      "agency": "MLSS",
+      "officialUrl": "https://www.mlss.gov.jm/departments/rehabilitation/",
+      "contactAgencies": [
+        "Ministry of Labour and Social Security"
+      ],
+      "sourceType": "Supplementary agency research",
+      "lastReviewed": "2026-11-28",
+      "approvalStatus": "Not Ministry-approved manual content"
+    },
+    "JCPD Assistive Aid Grant": {
+      "agency": "JCPD",
+      "officialUrl": "https://my.jcpd.gov.jm/grants",
+      "contactAgencies": [
+        "Jamaica Council for Persons with Disabilities"
+      ],
+      "sourceType": "Supplementary agency research",
+      "lastReviewed": "2026-11-28",
+      "approvalStatus": "Not Ministry-approved manual content"
+    },
+    "JCPD Economic Empowerment Grant": {
+      "agency": "JCPD",
+      "officialUrl": "https://my.jcpd.gov.jm/grants",
+      "contactAgencies": [
+        "Jamaica Council for Persons with Disabilities"
+      ],
+      "sourceType": "Supplementary agency research",
+      "lastReviewed": "2026-11-28",
+      "approvalStatus": "Not Ministry-approved manual content"
+    },
+    "JADEP": {
+      "agency": "NHF",
+      "officialUrl": "https://www.nhf.org.jm/jadep-programme/",
+      "contactAgencies": [
+        "National Health Fund"
+      ],
+      "sourceType": "Supplementary agency research",
+      "lastReviewed": "2026-11-28",
+      "approvalStatus": "Not Ministry-approved manual content"
+    },
+    "NHF ECG subsidy": {
+      "agency": "NHF",
+      "officialUrl": "https://www.nhf.org.jm/benefits-search/?category=diagnostic",
+      "contactAgencies": [
+        "National Health Fund"
+      ],
+      "sourceType": "Supplementary agency research",
+      "lastReviewed": "2026-11-28",
+      "approvalStatus": "Not Ministry-approved manual content"
+    },
+    "NHF Echocardiogram subsidy": {
+      "agency": "NHF",
+      "officialUrl": "https://www.nhf.org.jm/benefits-search/?category=diagnostic",
+      "contactAgencies": [
+        "National Health Fund"
+      ],
+      "sourceType": "Supplementary agency research",
+      "lastReviewed": "2026-11-28",
+      "approvalStatus": "Not Ministry-approved manual content"
+    },
+    "NHF Mammogram subsidy": {
+      "agency": "NHF",
+      "officialUrl": "https://www.nhf.org.jm/benefits-search/?category=diagnostic",
+      "contactAgencies": [
+        "National Health Fund"
+      ],
+      "sourceType": "Supplementary agency research",
+      "lastReviewed": "2026-11-28",
+      "approvalStatus": "Not Ministry-approved manual content"
+    },
+    "NHF Pap smear subsidy": {
+      "agency": "NHF",
+      "officialUrl": "https://www.nhf.org.jm/benefits-search/?category=diagnostic",
+      "contactAgencies": [
+        "National Health Fund"
+      ],
+      "sourceType": "Supplementary agency research",
+      "lastReviewed": "2026-11-28",
+      "approvalStatus": "Not Ministry-approved manual content"
+    },
+    "NHF PSA subsidy": {
+      "agency": "NHF",
+      "officialUrl": "https://www.nhf.org.jm/benefits-search/?category=diagnostic",
+      "contactAgencies": [
+        "National Health Fund"
+      ],
+      "sourceType": "Supplementary agency research",
+      "lastReviewed": "2026-11-28",
+      "approvalStatus": "Not Ministry-approved manual content"
+    },
+    "NHF HbA1c subsidy": {
+      "agency": "NHF",
+      "officialUrl": "https://www.nhf.org.jm/benefits-search/?category=diagnostic",
+      "contactAgencies": [
+        "National Health Fund"
+      ],
+      "sourceType": "Supplementary agency research",
+      "lastReviewed": "2026-11-28",
+      "approvalStatus": "Not Ministry-approved manual content"
+    },
+    "NHF Breast receptor studies subsidy": {
+      "agency": "NHF",
+      "officialUrl": "https://www.nhf.org.jm/benefits-search/?category=diagnostic",
+      "contactAgencies": [
+        "National Health Fund"
+      ],
+      "sourceType": "Supplementary agency research",
+      "lastReviewed": "2026-11-28",
+      "approvalStatus": "Not Ministry-approved manual content"
     }
   },
   "quickContacts": [
