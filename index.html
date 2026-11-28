@@ -115,4 +115,29 @@
 <script src="assets/phase2-config.js?v=2-custom-domain" defer></script><script src="assets/approved-preview-config.js?v=1" defer></script><script src="assets/phase2.js?v=1" defer></script><script src="assets/accessibility-premium.js?v=2-footer-visible" defer></script><script src="assets/app.js?v=referrals-decision-premium-3" defer></script><script src="assets/guide-tools.js?v=business-feedback-credit-7" defer></script><script src="assets/gia-next.js?v=simplified-welcome-1" defer></script>
 <!-- This independent preview deliberately does not install the production service worker. -->
 <script src="assets/manual-reader.js?v=6-sound-default" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" defer></script><script src="assets/approved-design.js?v=community-photo-9" defer></script><script src="assets/clean-interiors.js?v=decision-to-referrals-5" defer></script><script src="assets/referral-generator-preview.js?v=officer-fields-4" defer></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js" defer></script><script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script><script src="assets/referral-documents-enhanced.js?v=deaf-referral-8" defer></script><script src="assets/deaf-access-preview.js?v=isolated-modal-11" defer></script><script src="assets/beginning-concepts-credit.js?v=visible-bc-13" defer></script></body></html>
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" defer></script><script src="assets/approved-design.js?v=community-photo-9" defer></script><script src="assets/clean-interiors.js?v=decision-to-referrals-5" defer></script><script src="assets/referral-generator-preview.js?v=officer-fields-4" defer></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js" defer></script><script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script><script src="assets/referral-documents-enhanced.js?v=deaf-referral-8" defer></script><script src="assets/deaf-access-preview.js?v=isolated-modal-11" defer></script><script src="assets/beginning-concepts-credit.js?v=visible-bc-13" defer></script><style>
+html.ad-preview #ad-action-dock .ad-gia-action{display:none!important}
+html.ad-preview #gia2Launcher{display:grid!important;place-items:center!important;position:fixed!important;right: max(18px,env(safe-area-inset-right))!important;bottom:calc(24px + env(safe-area-inset-bottom))!important;z-index:1100!important;width:76px!important;height:76px!important;padding:5px!important;border-radius:50%!important;border:2px solid white!important;background:linear-gradient(145deg,#fff,#c8b9ff)!important;box-shadow:0 8px 28px #241b6555!important;overflow:visible!important}
+html.ad-preview #gia2Launcher img{width:100%!important;height:100%!important;border-radius:50%!important;object-fit:cover!important;margin:0!important}
+html.ad-preview #gia2Launcher span{position:absolute!important;bottom:-9px!important;left:50%!important;transform:translateX(-50%)!important;background:#241b65!important;color:white!important;border-radius:20px!important;padding:4px 9px!important;white-space:nowrap!important;font-size:11px!important}
+html.ad-preview #gia2Launcher small{display:none!important}
+html.ad-preview #gia2Launcher:focus-visible{outline:3px solid #e5a900!important;outline-offset:4px}
+html.ad-preview #ad-action-dock{padding-right:85px!important}
+@media(max-width:480px){html.ad-preview #gia2Launcher{width:64px!important;height:64px!important;right:14px!important}}
+</style>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+ const launcher=document.getElementById('gia2Launcher');if(launcher)launcher.setAttribute('aria-label','Ask Gia, your social support guide');
+ const video=document.getElementById('ad-video'), dialog=document.getElementById('ad-video-dialog');
+ if(!video||!dialog)return;
+ const key='mohw-gia-welcome-played-v1';let seen=false;try{seen=sessionStorage.getItem(key)==='1'}catch(e){}
+ if(seen||!['','#about'].includes(location.hash))return;
+ try{sessionStorage.setItem(key,'1')}catch(e){}
+ video.loop=false;video.muted=false;
+ if(!dialog.open)dialog.showModal();
+ video.play().catch(()=>{video.muted=true;video.play().catch(()=>{});const b=document.createElement('button');b.type='button';b.textContent='Play with sound';b.style.cssText='padding:10px 18px;border-radius:20px;margin:8px 0';b.onclick=()=>{video.muted=false;video.play().catch(()=>{});b.remove()};video.after(b);dialog.addEventListener('close',()=>b.remove(),{once:true});});
+ video.addEventListener('ended',()=>{video.muted=true; if(dialog.open)dialog.close()},{once:true});
+ dialog.addEventListener('close',()=>{video.pause();video.muted=true},{once:true});
+ document.addEventListener('click',e=>{if(e.target.closest('[data-ad-action="video"]'))video.muted=false;},true);
+});
+</script></body></html>
